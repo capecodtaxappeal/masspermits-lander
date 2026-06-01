@@ -1,0 +1,10 @@
+# Cloudflare Pages — pure static site (no build step, no Worker code).
+# Deploy with:  npx wrangler pages deploy . --project-name=masspermits-lander
+# (Mirrors the capecodtaxappeal-lander setup, but this site is plain static —
+#  the whole repo root IS the deployable site.)
+name = "masspermits-lander"
+compatibility_date = "2026-06-01"
+
+[assets]
+directory = "."
+not_found_handling = "single-page-application"
