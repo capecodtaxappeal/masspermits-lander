@@ -181,8 +181,6 @@ function render(){
   $("h-trade").textContent = trade ? tradeWord : "contractor";
   $("h-area").textContent = area.label;
   $("live-area").textContent = area.label;
-  $("p-trade").textContent = trade ? tradeWord : "matching";
-  $("p-area").textContent = area.label;
   if($("p-trade2")) $("p-trade2").textContent = trade ? tradeWord : "your trade";
   if($("p-area2")) $("p-area2").textContent = area.label;
   wireBuyButtons();  // refresh Stripe links with current trade/area
