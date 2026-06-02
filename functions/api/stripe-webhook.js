@@ -27,17 +27,8 @@ export async function onRequestPost(context) {
   // 1. Verify Stripe signature (HMAC-SHA256 over `${t}.${payload}`)
   const verdict = await verifyStripeSig(raw, sig, env.STRIPE_WEBHOOK_SECRET);
   if (!verdict.ok) {
-    // Diagnostic body (no secret leaked) so we can tell WHY it failed.
-    return json({
-      error: "bad signature",
-      reason: verdict.reason,
-      secretPresent: !!env.STRIPE_WEBHOOK_SECRET,
-      secretLen: env.STRIPE_WEBHOOK_SECRET ? env.STRIPE_WEBHOOK_SECRET.length : 0,
-      headerPresent: !!sig,
-      bodyLen: raw.length,
-      computedPrefix: verdict.computedPrefix || null,
-      gotPrefix: verdict.gotPrefix || null,
-    }, 400);
+    // Minimal, non-sensitive reason for observability; no secret/HMAC material leaked.
+    return json({ error: "bad signature", reason: verdict.reason }, 400);
   }
 
   let event;
