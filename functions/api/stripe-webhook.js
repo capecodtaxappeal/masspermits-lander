@@ -25,8 +25,20 @@ export async function onRequestPost(context) {
   const raw = await request.text();
 
   // 1. Verify Stripe signature (HMAC-SHA256 over `${t}.${payload}`)
-  const ok = await verifyStripeSig(raw, sig, env.STRIPE_WEBHOOK_SECRET);
-  if (!ok) return new Response("bad signature", { status: 400 });
+  const verdict = await verifyStripeSig(raw, sig, env.STRIPE_WEBHOOK_SECRET);
+  if (!verdict.ok) {
+    // Diagnostic body (no secret leaked) so we can tell WHY it failed.
+    return json({
+      error: "bad signature",
+      reason: verdict.reason,
+      secretPresent: !!env.STRIPE_WEBHOOK_SECRET,
+      secretLen: env.STRIPE_WEBHOOK_SECRET ? env.STRIPE_WEBHOOK_SECRET.length : 0,
+      headerPresent: !!sig,
+      bodyLen: raw.length,
+      computedPrefix: verdict.computedPrefix || null,
+      gotPrefix: verdict.gotPrefix || null,
+    }, 400);
+  }
 
   let event;
   try { event = JSON.parse(raw); } catch { return new Response("bad json", { status: 400 }); }
@@ -103,20 +115,31 @@ function niceName(_key, kind) {
 
 // ── Stripe signature verification (Web Crypto, no SDK) ───────────────────────
 async function verifyStripeSig(payload, header, secret) {
-  if (!secret || !header) return false;
-  const parts = Object.fromEntries(header.split(",").map(kv => kv.split("=")));
-  const t = parts.t, v1 = parts.v1;
-  if (!t || !v1) return false;
+  if (!secret) return { ok: false, reason: "no-secret-in-env" };
+  if (!header) return { ok: false, reason: "no-signature-header" };
+  // Stripe header: "t=...,v1=...,v1=..."  (may carry multiple v1 schemes)
+  const kvs = header.split(",").map(kv => kv.split("="));
+  const t = (kvs.find(([k]) => k === "t") || [])[1];
+  const v1s = kvs.filter(([k]) => k === "v1").map(([, v]) => v);
+  if (!t || v1s.length === 0) return { ok: false, reason: "header-missing-t-or-v1" };
   const enc = new TextEncoder();
-  const key = await crypto.subtle.importKey("raw", enc.encode(secret),
+  const key = await crypto.subtle.importKey("raw", enc.encode(secret.trim()),
     { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   const mac = await crypto.subtle.sign("HMAC", key, enc.encode(`${t}.${payload}`));
   const expected = [...new Uint8Array(mac)].map(b => b.toString(16).padStart(2, "0")).join("");
-  // constant-time-ish compare
-  if (expected.length !== v1.length) return false;
-  let diff = 0;
-  for (let i = 0; i < expected.length; i++) diff |= expected.charCodeAt(i) ^ v1.charCodeAt(i);
-  return diff === 0;
+  for (const v1 of v1s) {
+    if (expected.length === v1.length) {
+      let diff = 0;
+      for (let i = 0; i < expected.length; i++) diff |= expected.charCodeAt(i) ^ v1.charCodeAt(i);
+      if (diff === 0) return { ok: true };
+    }
+  }
+  return {
+    ok: false,
+    reason: "hmac-mismatch",
+    computedPrefix: expected.slice(0, 10),
+    gotPrefix: (v1s[0] || "").slice(0, 10),
+  };
 }
 
 function base64(buf) {
