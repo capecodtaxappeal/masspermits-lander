@@ -79,7 +79,7 @@ async function sendEmail(env, to, kind, ref, bytes, filename) {
       <h2 style="color:#0e7c6b">Your MassPermits leads are attached 📋</h2>
       <p>Thanks for your order. Attached is ${human} building-permit lead bundle.</p>
       ${refLine}
-      <p><b>Open <code>MassPermits-Leads.html</code></b> in any browser — search, filter by trade &amp; town, sort, and click any address to map it. The CSVs are there too (one master + one per trade).</p>
+      <p><b>Open <code>MassPermits-Leads.html</code></b> in any browser — it's a full interactive dashboard: live charts, search &amp; filter by trade &amp; town, sort by project value, look up any contractor's active jobs, and click any permit for the complete record. The CSVs are included too (one master + one per trade).</p>
       <p style="color:#667;font-size:13px">Sourced from public municipal building-permit records.<br>
       Questions? Just reply to this email.</p>
       <p style="color:#9aa;font-size:12px">— MassPermits · masspermits.com</p>
