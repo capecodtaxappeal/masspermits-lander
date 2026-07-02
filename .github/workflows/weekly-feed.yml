@@ -1,0 +1,19 @@
+name: MassPermits weekly feed
+
+# Emails every active MassPermits subscriber their fresh weekly bundle by hitting
+# the hosted sender (/api/weekly-send), which reuses the Resend + R2 bindings.
+# Fully hosted — no local machine required for the send.
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"   # every Monday 12:00 UTC (~7-8am ET)
+  workflow_dispatch: {}      # allows a manual "Run workflow" click too
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger weekly send
+        run: |
+          curl -fsS --retry 3 "https://masspermits.com/api/weekly-send?k=mpwk_k9Qw3Zr7Tp2Xv8Ln4Bd6Hs"
+          echo ""

@@ -46,6 +46,10 @@ export async function onRequestPost(context) {
     const bytes = await file.arrayBuffer();
 
     await sendEmail(env, email, kind, ref, bytes, bundleKey);
+    // add new SUBSCRIBERS (not one-time pack buyers) to the weekly-feed list in R2
+    if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
+      await addSubscriber(env, email, event);
+    }
     return json({ ok: true, delivered: kind, to: email, bundle: bundleKey });
   } catch (e) {
     return json({ ok: false, error: String(e && e.message || e) }, 500);
@@ -79,6 +83,26 @@ function decideDelivery(event) {
     return { email, ref: "", bundleKey: "latest-weekly.zip", kind: "weekly" };
   }
   return null;
+}
+
+// Maintain the weekly-feed subscriber list in R2 (read by /api/weekly-send).
+async function addSubscriber(env, email, event) {
+  try {
+    const o = (event.data && event.data.object) || {};
+    const cur = await env.BUNDLES.get("subscribers.json");
+    const list = cur ? JSON.parse(await cur.text()) : [];
+    if (!list.some((s) => s.email === email)) {
+      list.push({
+        email,
+        name: (o.customer_details && o.customer_details.name) || "",
+        since: new Date().toISOString().slice(0, 10),
+        active: true,
+      });
+      await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
+    }
+  } catch (e) {
+    /* non-fatal — the bundle was already delivered */
+  }
 }
 
 async function sendEmail(env, to, kind, ref, bytes, filename) {
