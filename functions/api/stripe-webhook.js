@@ -52,10 +52,19 @@ export async function onRequestPost(context) {
   }
 }
 
+// This Stripe account is SHARED with another product (IRWatch, ~$4.35/mo). Its
+// invoice.paid / checkout.session.completed events hit THIS endpoint too, so
+// without a filter we email MassPermits data to IRWatch customers. MassPermits
+// products are $49 (pack) / $99 (weekly feed); a $10 floor cleanly separates them
+// from the $4.35 product. (Follow-up: swap to an explicit MassPermits price-ID
+// allowlist if a cheaper MassPermits tier is ever added.)
+const MIN_CENTS = 1000;
+
 // Decide which bundle (if any) to send for this event.
 function decideDelivery(event) {
   const o = event.data && event.data.object || {};
   if (event.type === "checkout.session.completed") {
+    if ((o.amount_total || 0) < MIN_CENTS) return null; // not a MassPermits product
     const email = o.customer_details?.email || o.customer_email || "";
     const ref = o.client_reference_id || "";
     // subscription OR one-time both get the big MONTHLY batch as the first send
@@ -65,6 +74,7 @@ function decideDelivery(event) {
     // Only RENEWALS here — the very first subscription invoice is covered by
     // checkout.session.completed, so skip billing_reason=subscription_create.
     if (o.billing_reason !== "subscription_cycle") return null;
+    if ((o.amount_paid || o.total || 0) < MIN_CENTS) return null; // not a MassPermits product
     const email = o.customer_email || (o.customer_address && o.customer_address.email) || "";
     return { email, ref: "", bundleKey: "latest-weekly.zip", kind: "weekly" };
   }
