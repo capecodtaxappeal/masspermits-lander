@@ -53,14 +53,31 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Scrape, build bundles, upload to R2
+      - name: Scrape, quality-gate, build bundles
         run: |
           set -o pipefail
           python -u hosted_refresh.py 2>&1 | tee run.log
 
-      # Ship the full run log to R2 even when the step above fails — Actions
-      # logs need repo-admin auth, R2 doesn't. This is the pipeline's black box.
-      - name: Ship run log to R2 (always)
+      # Uploads happen here via curl, NOT inside Python: Cloudflare's WAF 403s
+      # Python-urllib PUTs (bot fingerprint) but passes curl. WEEKLY ships first
+      # (the 12:00 UTC send reads it). This step only runs when the gate passed.
+      - name: Ship bundles to R2 (curl + OIDC)
+        run: |
+          up() {
+            OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+            curl -fsS -X PUT -H "Authorization: Bearer $OIDC" -H "Content-Type: $3" \
+              --data-binary @"$1" "https://masspermits.com/api/upload-bundle?key=$2"
+            echo "  shipped $2"
+          }
+          up "$(ls -t data/bundles/MassPermits-*-WEEKLY.zip  | head -1)" latest-weekly.zip  application/zip
+          up "$(ls -t data/bundles/MassPermits-*-MONTHLY.zip | head -1)" latest-monthly.zip application/zip
+          up "$(ls -t data/bundles/MassPermits-*-SAMPLE.zip  | head -1)" latest-sample.zip  application/zip
+
+      # Status + full run log go to R2 even on failure — Actions logs need
+      # repo-admin auth, R2 doesn't. This is the pipeline's black box, and
+      # weekly-send checks status.json (ok + freshness) before mailing anyone.
+      - name: Ship status + run log to R2 (always)
         if: always()
         run: |
           [ -f run.log ] || echo "(no run.log produced)" > run.log
@@ -68,6 +85,10 @@ jobs:
             "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
           curl -fsS -X PUT -H "Authorization: Bearer $OIDC" -H "Content-Type: text/plain" \
             --data-binary @run.log "https://masspermits.com/api/upload-bundle?key=run-log.txt" || true
+          if [ -f status.json ]; then
+            curl -fsS -X PUT -H "Authorization: Bearer $OIDC" -H "Content-Type: application/json" \
+              --data-binary @status.json "https://masspermits.com/api/upload-bundle?key=refresh-status.json" || true
+          fi
 
       # GitHub auto-disables scheduled workflows on public repos after 60 days
       # without repo activity. This commit after each successful run counts as

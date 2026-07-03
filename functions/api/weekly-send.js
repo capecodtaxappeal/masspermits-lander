@@ -27,6 +27,10 @@ export async function onRequest(context) {
     const st = await env.BUNDLES.get("refresh-status.json");
     if (st) {
       const status = JSON.parse(await st.text());
+      if (status.ok === false) {
+        return json({ ok: false, error: "last refresh FAILED (" +
+          (status.error || "unknown") + ") — send aborted so this fails visibly" }, 500);
+      }
       const age = Date.now() - Date.parse(status.ran_at || 0);
       if (!(age < 8 * 86400_000)) {
         return json({ ok: false, error: "data refresh is stale (last: " +
