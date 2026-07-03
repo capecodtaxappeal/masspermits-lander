@@ -5,17 +5,35 @@
 // current latest-weekly.zip. Triggered weekly by a GitHub Actions cron (see
 // .github/workflows/weekly-feed.yml). Reuses the project's existing bindings:
 //   RESEND_API_KEY, FROM_EMAIL (env)  +  BUNDLES (R2)
-// so NO new secret has to be created. Protected by a trigger token in the query.
+// so NO new secret has to be created.
+//
+// Auth: GitHub Actions OIDC (see _github-oidc.js). The previous static query
+// token is dead — it was committed to a public repo, so anyone could have
+// triggered sends. OIDC is keyless and pinned to this repo's main branch.
 
-const TRIGGER_TOKEN = "mpwk_k9Qw3Zr7Tp2Xv8Ln4Bd6Hs";
+import { verifyGitHubOIDC } from "./_github-oidc.js";
 
 export async function onRequest(context) {
   const { request, env } = context;
-  const url = new URL(request.url);
-  if (url.searchParams.get("k") !== TRIGGER_TOKEN) {
-    return json({ error: "unauthorized" }, 401);
+  const auth = await verifyGitHubOIDC(request);
+  if (!auth.ok) {
+    return json({ error: "unauthorized", reason: auth.reason }, 401);
   }
   try {
+    // Freshness gate: never mail a stale bundle. The 09:00 UTC refresh writes
+    // refresh-status.json on success; if that's over 8 days old the refresh has
+    // been failing, so ABORT with a 500 — the Actions curl then fails and
+    // GitHub emails the owner. Failing loudly beats shipping old data.
+    const st = await env.BUNDLES.get("refresh-status.json");
+    if (st) {
+      const status = JSON.parse(await st.text());
+      const age = Date.now() - Date.parse(status.ran_at || 0);
+      if (!(age < 8 * 86400_000)) {
+        return json({ ok: false, error: "data refresh is stale (last: " +
+          (status.ran_at || "never") + ") — send aborted so this fails visibly" }, 500);
+      }
+    }
+
     let subs = [];
     const so = await env.BUNDLES.get("subscribers.json");
     if (so) subs = JSON.parse(await so.text());

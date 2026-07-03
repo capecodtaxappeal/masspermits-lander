@@ -35,6 +35,15 @@ export async function onRequestPost(context) {
   try { event = JSON.parse(raw); } catch { return new Response("bad json", { status: 400 }); }
 
   try {
+    // Churn: deactivate weekly-feed subscribers when their subscription ends,
+    // so cancelled customers stop receiving the paid bundle. (Requires the
+    // Stripe webhook destination to also subscribe to customer.subscription.deleted.)
+    if (event.type === "customer.subscription.deleted") {
+      const o = (event.data && event.data.object) || {};
+      const n = await deactivateSubscriber(env, o.customer);
+      return json({ ok: true, deactivated: n });
+    }
+
     const decision = decideDelivery(event);
     if (!decision) return json({ ok: true, skipped: event.type });
 
@@ -95,6 +104,7 @@ async function addSubscriber(env, email, event) {
       list.push({
         email,
         name: (o.customer_details && o.customer_details.name) || "",
+        customer: o.customer || "", // Stripe customer id — used to match cancellations
         since: new Date().toISOString().slice(0, 10),
         active: true,
       });
@@ -102,6 +112,28 @@ async function addSubscriber(env, email, event) {
     }
   } catch (e) {
     /* non-fatal — the bundle was already delivered */
+  }
+}
+
+// Flip a subscriber to inactive when their Stripe subscription is deleted.
+async function deactivateSubscriber(env, customerId) {
+  if (!customerId) return 0;
+  try {
+    const cur = await env.BUNDLES.get("subscribers.json");
+    if (!cur) return 0;
+    const list = JSON.parse(await cur.text());
+    let n = 0;
+    for (const s of list) {
+      if (s.customer === customerId && s.active !== false) {
+        s.active = false;
+        s.cancelled = new Date().toISOString().slice(0, 10);
+        n++;
+      }
+    }
+    if (n) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
+    return n;
+  } catch (e) {
+    return 0;
   }
 }
 

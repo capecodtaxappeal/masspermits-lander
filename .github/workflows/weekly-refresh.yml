@@ -1,0 +1,69 @@
+name: MassPermits weekly data refresh
+
+# Fully hosted refresh: fetch the scraper engine (kept OFF this public repo — it
+# streams from private R2 via the OIDC-gated /api/get-engine), scrape fresh MA
+# permits on a GitHub runner, build the customer bundles, and hand them back to
+# R2 via /api/upload-bundle. Runs Mondays 09:00 UTC — three hours BEFORE the
+# 12:00 UTC weekly-feed send, so subscribers always get same-morning data.
+# No local machine involved; no secrets exist anywhere in this repo (OIDC only).
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"    # Mondays 09:00 UTC (~4-5am ET)
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/weekly-refresh.yml"   # first push = immediate live test
+
+permissions:
+  id-token: write    # OIDC — keyless auth to /api/get-engine + /api/upload-bundle
+  contents: write    # heartbeat commit (prevents GitHub's 60-day cron auto-disable)
+
+concurrency:
+  group: weekly-refresh
+  cancel-in-progress: false   # never let two refreshes interleave R2 writes
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Fetch scraper engine (OIDC — engine is not in this repo)
+        run: |
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+          for i in 1 2 3 4 5 6; do
+            if curl -fsS -H "Authorization: Bearer $OIDC" \
+              -o engine.tar.gz https://masspermits.com/api/get-engine; then break; fi
+            echo "engine fetch attempt $i failed (Pages deploy may still be racing); retrying in 20s"
+            sleep 20
+          done
+          tar xzf engine.tar.gz && rm engine.tar.gz && ls -la
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Scrape, build bundles, upload to R2
+        run: python hosted_refresh.py
+
+      # GitHub auto-disables scheduled workflows on public repos after 60 days
+      # without repo activity. This commit after each successful run counts as
+      # activity, so the cron can never silently die. Pushed to a dedicated
+      # 'heartbeat' branch: no Pages rebuild, no workflow triggers.
+      - name: Keep-alive heartbeat commit
+        continue-on-error: true
+        run: |
+          git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" hb
+          cd hb
+          git config user.name "masspermits-refresh-bot"
+          git config user.email "actions@github.com"
+          date -u +"last successful refresh: %Y-%m-%dT%H:%M:%SZ" > .heartbeat
+          git add .heartbeat
+          git commit -m "heartbeat: weekly refresh succeeded"
+          git push -f origin HEAD:refs/heads/heartbeat

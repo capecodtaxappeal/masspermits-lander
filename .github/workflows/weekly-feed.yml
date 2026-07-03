@@ -1,19 +1,33 @@
 name: MassPermits weekly feed
 
 # Emails every active MassPermits subscriber their fresh weekly bundle by hitting
-# the hosted sender (/api/weekly-send), which reuses the Resend + R2 bindings.
-# Fully hosted — no local machine required for the send.
+# the hosted sender (/api/weekly-send). Runs AFTER the 09:00 UTC data refresh so
+# subscribers get same-morning data. Fully hosted — no local machine involved.
+#
+# Auth: GitHub OIDC (id-token) — keyless; the endpoint verifies this workflow
+# runs on this repo's main branch. No secrets exist in the repo.
 
 on:
   schedule:
     - cron: "0 12 * * 1"   # every Monday 12:00 UTC (~7-8am ET)
   workflow_dispatch: {}      # allows a manual "Run workflow" click too
 
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: weekly-feed
+  cancel-in-progress: false
+
 jobs:
   send:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger weekly send
+      - name: Trigger weekly send (OIDC-authenticated)
         run: |
-          curl -fsS --retry 3 "https://masspermits.com/api/weekly-send?k=mpwk_k9Qw3Zr7Tp2Xv8Ln4Bd6Hs"
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+          curl -fsS --retry 3 -X POST -H "Authorization: Bearer $OIDC" \
+            https://masspermits.com/api/weekly-send
           echo ""
