@@ -6,6 +6,7 @@ name: MassPermits weekly data refresh
 # R2 via /api/upload-bundle. Runs Mondays 09:00 UTC — three hours BEFORE the
 # 12:00 UTC weekly-feed send, so subscribers always get same-morning data.
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
+# Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
 on:
   schedule:
