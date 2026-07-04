@@ -90,6 +90,23 @@ jobs:
               --data-binary @status.json "https://masspermits.com/api/upload-bundle?key=refresh-status.json" || true
           fi
 
+      # Keep the PUBLIC SITE fresh too: regenerate the masked teaser data.json
+      # from this week's scrape and commit it to main -> Cloudflare Pages
+      # auto-redeploys. (Does not retrigger this workflow: its push trigger is
+      # paths-filtered to this yml file only.)
+      - name: Refresh website teaser (commit data.json to main)
+        continue-on-error: true
+        run: |
+          python export_lander.py site-data.json
+          git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" site
+          cp site-data.json site/data.json
+          cd site
+          git config user.name "masspermits-refresh-bot"
+          git config user.email "actions@github.com"
+          git add data.json
+          git commit -m "data: weekly site refresh (automated)" && git push origin main \
+            || echo "site data unchanged — nothing to push"
+
       # GitHub auto-disables scheduled workflows on public repos after 60 days
       # without repo activity. This commit after each successful run counts as
       # activity, so the cron can never silently die. Pushed to a dedicated
