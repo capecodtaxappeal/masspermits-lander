@@ -28,9 +28,14 @@ from email.utils import formataddr
 
 BASE = "https://masspermits.com"
 AUDIENCE = "masspermits-cron"
-GMAIL_USER = os.environ.get("GMAIL_USER", "patrick@masspermits.com")
-APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
-FROM_NAME = "Patrick Seeley"
+# Provider-agnostic SMTP: host/port/user set in the workflow env (non-secret),
+# the app password is the one repo SECRET (SMTP_PASSWORD). Defaults target Zoho
+# (patrick@masspermits.com) — override SMTP_HOST/SMTP_USER for Gmail/Workspace.
+SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.zoho.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
+SMTP_USER = os.environ.get("SMTP_USER", "patrick@masspermits.com")
+SMTP_PASS = os.environ.get("SMTP_PASSWORD", "")
+FROM_NAME = os.environ.get("FROM_NAME", "Patrick Seeley")
 
 RAMP_DAILY = 15   # first 7 days from ramp_start
 STEADY_DAILY = 25
@@ -62,8 +67,8 @@ def put_state(state: dict) -> None:
 
 
 def main() -> None:
-    if not APP_PASSWORD:
-        print("DORMANT: GMAIL_APP_PASSWORD secret not set — no sends. "
+    if not SMTP_PASS:
+        print("DORMANT: SMTP_PASSWORD secret not set — no sends. "
               "Add it in repo Settings -> Secrets to arm the pipeline.")
         return
 
@@ -98,12 +103,12 @@ def main() -> None:
 
     ctx = ssl.create_default_context()
     sent_n = 0
-    with smtplib.SMTP("smtp.gmail.com", 587, timeout=60) as smtp:
+    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=60) as smtp:
         smtp.starttls(context=ctx)
-        smtp.login(GMAIL_USER, APP_PASSWORD)
+        smtp.login(SMTP_USER, SMTP_PASS)
         for e in due:
             msg = EmailMessage()
-            msg["From"] = formataddr((FROM_NAME, GMAIL_USER))
+            msg["From"] = formataddr((FROM_NAME, SMTP_USER))
             msg["To"] = e["to"]
             msg["Subject"] = e["subject"]
             msg.set_content(e["body"])
