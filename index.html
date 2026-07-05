@@ -353,6 +353,15 @@ $("signup-form").addEventListener("submit", async e=>{
 });
 
 load();
+
+// First-party analytics beacon — logs the visit + its source (no cookies/PII).
+try{
+  var _u=new URL(location.href);
+  var _s=_u.searchParams.get('utm_source')||_u.searchParams.get('ref')||'';
+  var _b='/api/hit?p='+encodeURIComponent(location.pathname)
+        +'&s='+encodeURIComponent(_s)+'&r='+encodeURIComponent(document.referrer||'');
+  if(navigator.sendBeacon){ navigator.sendBeacon(_b); } else { new Image().src=_b; }
+}catch(e){}
 </script>
 </body>
 </html>

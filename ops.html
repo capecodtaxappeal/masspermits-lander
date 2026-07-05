@@ -56,6 +56,13 @@
   </div>
 
   <div class="sec">
+    <h2>Website traffic <span id="traffic-today" style="float:right;color:var(--teal);font-weight:800"></span></h2>
+    <div class="grid" id="traffic-days" style="margin:6px 0"></div>
+    <div class="muted" style="margin-top:6px">Top sources (7 days) — where visitors came from:</div>
+    <table><tbody id="traffic-sources"><tr><td>loading…</td></tr></tbody></table>
+  </div>
+
+  <div class="sec">
     <h2>Data pipeline</h2>
     <div class="muted" id="data-fresh">checking…</div>
   </div>
@@ -109,6 +116,31 @@ async function load(){
     $("data-fresh").innerHTML = `Site + bundle data refreshed <b style="color:var(--teal)">${fmtAgo(dj.generated)}</b>
       · ${total} active permits across ${(dj.areas||[]).length} areas · refresh runs Mondays 5am ET`;
   }catch(e){ $("data-fresh").textContent = "data.json unavailable"; }
+
+  // ---- website traffic ----
+  try{
+    const t = await (await fetch("/api/traffic?v=" + Date.now())).json();
+    const days = t.days || [];
+    const today = days[days.length-1] || {total:0, sources:{}};
+    $("traffic-today").textContent = today.total + (today.total===1?" visit today":" visits today");
+    const max = Math.max(1, ...days.map(d=>d.total));
+    $("traffic-days").innerHTML = days.map(d=>{
+      const h = Math.round(6 + (d.total/max)*40);
+      const lbl = d.day.slice(5).replace("-","/");
+      return `<div class="card" style="min-width:70px;text-align:center;padding:10px">
+        <div style="height:46px;display:flex;align-items:flex-end;justify-content:center">
+          <div style="width:22px;height:${h}px;background:var(--teal);border-radius:4px"></div></div>
+        <div class="n" style="font-size:17px;margin-top:6px">${d.total}</div>
+        <div class="l">${lbl}</div></div>`;
+    }).join("");
+    // aggregate sources across 7 days
+    const agg = {};
+    days.forEach(d=>Object.entries(d.sources||{}).forEach(([k,v])=>agg[k]=(agg[k]||0)+v));
+    const rows = Object.entries(agg).sort((a,b)=>b[1]-a[1]).slice(0,8);
+    $("traffic-sources").innerHTML = rows.length
+      ? rows.map(([s,n])=>`<tr><td style="color:var(--text)">${s}</td><td class="ok" style="text-align:right">${n}</td></tr>`).join("")
+      : '<tr><td class="muted">No visits logged yet — the beacon starts counting from now (share your links!).</td></tr>';
+  }catch(e){ $("traffic-sources").innerHTML='<tr><td class="err">traffic unavailable</td></tr>'; }
 }
 load();
 setInterval(load, 60000);
