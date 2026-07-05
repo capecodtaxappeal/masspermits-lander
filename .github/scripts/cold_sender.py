@@ -19,6 +19,7 @@ import os
 import random
 import smtplib
 import ssl
+import subprocess
 import sys
 import time
 import urllib.request
@@ -51,20 +52,30 @@ def oidc() -> str:
     return json.loads(urllib.request.urlopen(req, timeout=30).read())["value"]
 
 
-def get_json(key: str) -> dict | list:
-    req = urllib.request.Request(f"{BASE}/api/get-object?key={key}",
-                                 headers={"Authorization": "Bearer " + oidc()})
-    return json.loads(urllib.request.urlopen(req, timeout=60).read())
+# R2 reads/writes go through curl, NOT urllib: Cloudflare's WAF 403s the
+# python-urllib fingerprint but passes curl (same gotcha as the refresh pipeline).
+# OIDC minting hits github.com (not Cloudflare), so that stays on urllib.
+def get_json(key: str):
+    p = subprocess.run(
+        ["curl", "-fsS", "-H", "Authorization: Bearer " + oidc(),
+         f"{BASE}/api/get-object?key={key}"],
+        capture_output=True, text=True, timeout=90)
+    if p.returncode != 0:
+        raise RuntimeError(f"get {key} failed: {p.stderr.strip()[:200]}")
+    return json.loads(p.stdout)
 
 
 def put_state(state: dict) -> None:
-    req = urllib.request.Request(f"{BASE}/api/upload-bundle?key=cold-state.json",
-                                 data=json.dumps(state).encode(), method="PUT",
-                                 headers={"Content-Type": "application/json",
-                                          "Authorization": "Bearer " + oidc()})
-    resp = json.loads(urllib.request.urlopen(req, timeout=60).read())
+    p = subprocess.run(
+        ["curl", "-fsS", "-X", "PUT", "-H", "Authorization: Bearer " + oidc(),
+         "-H", "Content-Type: application/json", "--data-binary", "@-",
+         f"{BASE}/api/upload-bundle?key=cold-state.json"],
+        input=json.dumps(state), capture_output=True, text=True, timeout=90)
+    if p.returncode != 0:
+        raise RuntimeError("state PUT failed: " + p.stderr.strip()[:200])
+    resp = json.loads(p.stdout)
     if not resp.get("ok"):
-        raise RuntimeError("state checkpoint failed: " + str(resp)[:120])
+        raise RuntimeError("state checkpoint not-ok: " + str(resp)[:120])
 
 
 def main() -> None:
