@@ -63,6 +63,11 @@
   </div>
 
   <div class="sec">
+    <h2>Cloudflare edge — all traffic <span id="cf-note" style="float:right;color:var(--muted);font-size:12px"></span></h2>
+    <div id="cf-body" class="muted">checking…</div>
+  </div>
+
+  <div class="sec">
     <h2>Data pipeline</h2>
     <div class="muted" id="data-fresh">checking…</div>
   </div>
@@ -141,6 +146,30 @@ async function load(){
       ? rows.map(([s,n])=>`<tr><td style="color:var(--text)">${s}</td><td class="ok" style="text-align:right">${n}</td></tr>`).join("")
       : '<tr><td class="muted">No visits logged yet — the beacon starts counting from now (share your links!).</td></tr>';
   }catch(e){ $("traffic-sources").innerHTML='<tr><td class="err">traffic unavailable</td></tr>'; }
+
+  // ---- Cloudflare edge (all requests incl. bots) ----
+  try{
+    const cf = await (await fetch("/api/cf-traffic?v=" + Date.now())).json();
+    if(!cf.configured){
+      $("cf-note").textContent = "not connected";
+      $("cf-body").innerHTML = 'Add a read-only Cloudflare token (<b>CF_ANALYTICS_TOKEN</b>) to the Pages project to show edge totals + unique visitors here.';
+    } else if(!cf.ok){
+      $("cf-note").textContent = "error";
+      $("cf-body").innerHTML = '<span class="err">'+ (cf.error||'unavailable') +'</span>';
+    } else {
+      const days = cf.days||[];
+      const today = days[days.length-1] || {requests:0,uniques:0};
+      const total7 = days.reduce((a,d)=>a+(d.requests||0),0);
+      $("cf-note").textContent = "live · counts bots + assets";
+      $("cf-body").innerHTML =
+        '<div class="grid">'+
+        '<div class="card"><div class="n">'+(today.requests||0).toLocaleString()+'</div><div class="l">Requests today</div></div>'+
+        '<div class="card"><div class="n">'+(today.uniques||0).toLocaleString()+'</div><div class="l">Unique visitors today</div></div>'+
+        '<div class="card"><div class="n">'+total7.toLocaleString()+'</div><div class="l">Requests (7 days)</div></div>'+
+        '</div>'+
+        '<div class="muted" style="margin-top:8px">Cloudflare counts <i>every</i> request (bots + assets), so it reads higher than the human-only beacon above. Together: beacon = real people &amp; source, edge = raw totals &amp; uniques.</div>';
+    }
+  }catch(e){ $("cf-body").innerHTML='<span class="err">cf-traffic unavailable</span>'; }
 }
 load();
 setInterval(load, 60000);
