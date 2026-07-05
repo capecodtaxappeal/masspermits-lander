@@ -72,6 +72,25 @@ def main() -> None:
               "Add it in repo Settings -> Secrets to arm the pipeline.")
         return
 
+    # Smoke-test mode (push-triggered runs): validate SMTP auth end-to-end by
+    # emailing the OWNER once. Never touches the queue or state.
+    test_to = os.environ.get("TEST_RECIPIENT", "").strip()
+    if test_to:
+        ctx = ssl.create_default_context()
+        msg = EmailMessage()
+        msg["From"] = formataddr((FROM_NAME, SMTP_USER))
+        msg["To"] = test_to
+        msg["Subject"] = "MassPermits outreach pipeline — SMTP test OK"
+        msg.set_content("This is the cold-outreach pipeline verifying its SMTP login.\n"
+                        "If you're reading this, sending works. Real sends run weekdays "
+                        "9am-6pm ET at the configured ramp. No cold emails were sent.")
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=60) as smtp:
+            smtp.starttls(context=ctx)
+            smtp.login(SMTP_USER, SMTP_PASS)
+            smtp.send_message(msg)
+        print("SMOKE TEST: sent SMTP-verification email to the owner. No queue sends.")
+        return
+
     state = get_json("cold-state.json")
     if state.get("paused"):
         print("PAUSED via cold-state.json — no sends.")

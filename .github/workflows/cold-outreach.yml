@@ -12,6 +12,10 @@ on:
   schedule:
     - cron: "0 13-22 * * 1-5"   # hourly, 13:00-22:00 UTC = 9am-6pm ET, Mon-Fri
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/cold-outreach.yml"   # push = SMOKE TEST (emails owner once, no cold sends)
 
 permissions:
   id-token: write
@@ -39,4 +43,6 @@ jobs:
           SMTP_HOST: smtp.gmail.com                       # Google Workspace
           SMTP_PORT: "587"
           SMTP_USER: patrick@masspermits.com             # the sending mailbox (Workspace)
+          # push-triggered runs = smoke test: one email to the owner, zero cold sends
+          TEST_RECIPIENT: ${{ github.event_name == 'push' && 'patrick.seeley98@gmail.com' || '' }}
         run: python .github/scripts/cold_sender.py
