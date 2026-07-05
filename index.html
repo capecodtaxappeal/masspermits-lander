@@ -100,14 +100,15 @@
       <select id="sel-trade" aria-label="Trade"></select>
       <select id="sel-area" aria-label="Area"></select>
     </div>
-    <a class="cta" href="#get">See this week's leads &rarr;</a>
-    <span class="subcta">Free sample. No account. One-time packs from $49.</span>
+    <a class="cta" href="#get">Get the weekly feed &rarr;</a>
+    <span class="subcta">New permits in your trade, every Monday. Cancel anytime — free sample first.</span>
   </div>
 
   <div class="live">
     <div class="lbl">Available right now — <span id="live-area">Massachusetts</span></div>
     <div class="big" id="live-count">—</div>
     <div class="lbl" id="live-val"></div>
+    <div class="lbl" id="freshness" style="margin-top:6px;font-size:12px"></div>
     <table>
       <thead><tr><th>Issued</th><th>Town</th><th>Address</th><th>Trade</th><th style="text-align:right">Project value</th></tr></thead>
       <tbody id="teaser"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">loading live permits…</td></tr></tbody>
@@ -121,34 +122,40 @@
   </div>
 
   <div class="pricebox" id="get">
-    <p style="margin:0 0 18px;color:var(--muted);font-size:15px">Two ways to buy — for <span id="p-trade2">your trade</span> in <span id="p-area2">your area</span>:</p>
-    <div class="tierrow">
-      <div class="tier buy">
-        <div class="t">Single Lead Pack</div>
-        <div class="pr">$49 <small style="font-size:13px;color:var(--muted)">one-time</small></div>
-        <div class="d">The most-recent batch in your trade + area — homeowner name, address, project value. Spreadsheet + PDF. No subscription.</div>
-        <a class="cta sm buy-pack" id="buy-pack" href="#sample" style="display:block;margin-top:14px">Buy the $49 pack &rarr;</a>
-      </div>
-      <div class="tier buy" style="border-color:var(--teal)">
-        <div class="t">Weekly Feed <span style="background:var(--teal);color:#04201c;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;vertical-align:middle">BEST VALUE</span></div>
-        <div class="pr">$99 <small style="font-size:13px;color:var(--muted)">/ month</small></div>
-        <div class="d">A fresh batch every week — reach new homeowners <b>before your competitors do</b>. Cancel anytime.</div>
-        <a class="cta sm buy-feed" id="buy-feed" href="#sample" style="display:block;margin-top:14px">Start weekly feed &rarr;</a>
-      </div>
+    <p style="margin:0 0 16px;color:var(--muted);font-size:15px">A permit is only fresh for a few days — then a competitor's already knocked. The weekly feed keeps you first, every week — for <span id="p-trade2">your trade</span> in <span id="p-area2">your area</span>:</p>
+    <div class="tier buy" style="border:2px solid var(--teal);max-width:440px;margin:0 auto;text-align:center">
+      <div class="t" style="font-size:17px">Weekly Feed <span style="background:var(--teal);color:#04201c;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;vertical-align:middle">BEST VALUE</span></div>
+      <div class="pr" style="font-size:40px">$99 <small style="font-size:14px;color:var(--muted)">/ month</small></div>
+      <div style="color:var(--good);font-weight:700;font-size:14px;margin-top:2px">&asymp; $23/week for every fresh permit in your trade.</div>
+      <div id="feed-math" style="color:var(--muted);font-style:italic;font-size:13px;margin:2px 0 12px">Less than one job. One closed lead pays for the year.</div>
+      <div class="d">A fresh batch every week, automatically — full homeowner name, address, and project value for every new <span id="p-trade3">trade</span> permit in <span id="p-area3">your area</span>. You reach owners before your competitors even see the permit.</div>
+      <a class="cta buy-feed" id="buy-feed" href="#sample" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
+      <div style="color:var(--muted);font-size:12px;margin-top:9px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
     </div>
-    <span class="subcta" id="buy-note">Not ready? Grab a free sample below first.</span>
+    <div style="text-align:center;margin-top:14px">
+      <a href="#sample" class="buy-pack" id="buy-pack" style="color:var(--muted);font-size:13.5px;text-decoration:underline">Just need one batch? Grab a single $49 pack &rarr;</a>
+    </div>
+    <div style="max-width:560px;margin:20px auto 0;padding:14px 18px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:var(--muted);font-size:13px;line-height:1.55">
+      <b style="color:var(--text)">The MassPermits promise:</b> Start the weekly feed and if your first month's leads don't return more than they cost, email me for a full refund — no forms, no back-and-forth. Cancel anytime in one click; any leads already sent are yours to keep. Every lead is a real, verifiable public permit. <span style="color:var(--text)">— Pat, founder</span>
+    </div>
+    <span class="subcta" id="buy-note" style="display:block;margin-top:12px">Not ready? Grab a free sample below first.</span>
   </div>
 
   <div class="capture" id="sample">
-    <h2>Get a free sample first</h2>
-    <p>Drop your email and we'll send a free batch of real leads in your trade — see the goods before you buy.</p>
+    <h2>Get your first weekly batch free</h2>
+    <p>Drop your email and we'll send this week's real leads in your trade — the same batch subscribers get every Monday.</p>
     <form id="signup-form">
       <input type="email" id="email" placeholder="you@yourcompany.com" required>
-      <button class="cta sm" type="submit">Send my free sample</button>
+      <button class="cta sm" type="submit">Send my free batch</button>
     </form>
-    <div class="ok" id="signup-ok" style="display:none">&#10003; Got it! Your free sample is ready —
+    <div class="ok" id="signup-ok" style="display:none">&#10003; Got it! Your free batch is ready —
       <a id="sample-dl" href="/api/sample" style="font-weight:800;text-decoration:underline">download it here</a>
-      (also check your inbox).</div>
+      (also check your inbox).
+      <div style="margin-top:16px">
+        <a class="cta sm" id="sample-feed-cta" href="#get" style="display:inline-block">Keep them coming — Weekly Feed, $99/mo &rarr;</a>
+        <div style="color:var(--muted);font-size:12px;margin-top:7px">This batch goes stale in a week. A fresh one drops every Monday — cancel anytime.</div>
+      </div>
+    </div>
     <div class="err" id="signup-err" style="display:none"></div>
   </div>
 
@@ -158,7 +165,9 @@
     <h3>How fresh are they?</h3>
     <p>Updated every week. A lead pack covers the most recent permits in your trade and area.</p>
     <h3>Do I have to subscribe?</h3>
-    <p>No. Buy a single pack for $49 whenever you want leads. Prefer them automatically? The $99/mo weekly feed delivers fresh permits every week, so you reach owners first.</p>
+    <p>No — grab a single $49 pack whenever you want. But permits are a weekly flow, not a one-time list: the $99/mo feed delivers every fresh permit in your trade the week it's filed, so you reach owners first. One job off the feed covers 12 months of it.</p>
+    <h3>What if the leads don't pan out?</h3>
+    <p>Every lead is a real, verifiable public permit. If your first paid month doesn't return more than it cost, email hello@masspermits.com and I'll refund it — no forms, no argument. Cancel anytime from your Stripe receipt; any leads already delivered are yours to keep. — Pat</p>
     <h3>What do I actually get?</h3>
     <p>A clean spreadsheet plus a polished PDF report: homeowner name, full property address, project type, declared project value, and the permit holder.</p>
   </div>
@@ -197,9 +206,20 @@ function render(){
   $("live-area").textContent = area.label;
   if($("p-trade2")) $("p-trade2").textContent = trade ? tradeWord : "your trade";
   if($("p-area2")) $("p-area2").textContent = area.label;
+  if($("p-trade3")) $("p-trade3").textContent = trade ? tradeWord : "";
+  if($("p-area3")) $("p-area3").textContent = area.label;
+  if($("feed-math")) $("feed-math").textContent = trade
+    ? `Less than one ${tradeWord} job. One closed lead pays for the year.`
+    : "Less than one job. One closed lead pays for the year.";
   wireBuyButtons();  // refresh Stripe links with current trade/area
   $("live-count").innerHTML = `${(seg.count||0).toLocaleString()} <small>fresh ${tradeWord} permits available</small>`;
-  $("live-val").textContent = seg.total_val ? fmtMoney(seg.total_val) + " in declared project value" : "";
+  $("live-val").textContent = (seg.total_val > 0) ? fmtMoney(seg.total_val) + " in declared project value" : "";
+  const g = DATA.generated ? new Date(DATA.generated) : null;
+  if($("freshness") && g){
+    const hrs = Math.round((Date.now() - g.getTime()) / 3.6e6);
+    $("freshness").textContent = "Sourced from public municipal building-permit records · Updated "
+      + (hrs < 24 ? hrs + " hours" : Math.round(hrs/24) + " days") + " ago · New batch every Monday";
+  }
   const tb = $("teaser");
   const rows = seg.teaser || [];
   if(rows.length){
@@ -246,6 +266,9 @@ function wireBuyButtons(){
     if(feedUrl){ feed.href = feedUrl; feed.target = "_blank"; }
     else feed.href = "#sample";
   }
+  // the post-sample "keep them coming" CTA also deep-links to the $99 feed checkout
+  const sc = $("sample-feed-cta");
+  if(sc){ if(feedUrl){ sc.href = feedUrl; sc.target = "_blank"; } else sc.href = "#get"; }
   const live = !!(packUrl || feedUrl);
   $("buy-note").textContent = live
     ? "Secure checkout via Stripe. Your trade & area are passed with the order."

@@ -72,16 +72,22 @@ export async function onRequestPost(context) {
 async function sendSample(env, to, trade) {
   const t = trade && trade !== "all" && trade !== "Other" ? trade : "your trade";
   const html = wrap(`
-    <h2 style="color:#0e7c6b">Your free MassPermits sample 📋</h2>
-    <p>Here's your free batch of real Massachusetts building-permit leads:</p>
-    <p style="margin:18px 0"><a href="https://masspermits.com/api/sample"
-      style="background:#14b8a6;color:#04201c;font-weight:700;padding:12px 22px;border-radius:8px;text-decoration:none">
-      Download the free sample</a></p>
-    <p>Open <b>MassPermits-Leads.html</b> in any browser — live charts, filter by
-    trade &amp; town, and see the volume of ${t} work being permitted right now.
-    The sample masks street numbers &amp; names; the full packs unlock everything.</p>
-    <p style="color:#667">Any questions, just reply — a real person reads these.</p>`);
-  await send(env, to, "Your free MassPermits sample", html);
+    <h2 style="color:#0e7c6b">This week's MassPermits batch 📋</h2>
+    <p>Here's this week's real building-permit leads for ${t} in Massachusetts — the
+    same batch subscribers get every Monday:</p>
+    <p style="margin:16px 0"><a href="https://masspermits.com/api/sample"
+      style="color:#0e7c6b;font-weight:700;font-size:15px">↓ Download this week's free batch</a>
+      &nbsp;— open MassPermits-Leads.html in any browser (names &amp; street numbers masked in the free one).</p>
+    <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:18px 0;text-align:center">
+      <p style="margin:0 0 10px;font-weight:600;color:#0e1622">Want it fresh every Monday, automatically?</p>
+      <a href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01"
+        style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start the Weekly Feed — $99/mo →</a>
+      <p style="margin:10px 0 0;font-size:12px;color:#667">Cancel anytime · full refund if month one doesn't pay for itself</p>
+    </div>
+    <p style="color:#667">This batch goes stale in a week — permits are a flow, not a list.
+    The $99/mo feed unlocks every name &amp; address, fresh weekly; a single $49 pack is one
+    week only. Any questions, just reply — a real person reads these.</p>`);
+  await send(env, to, "This week's MassPermits batch — " + t, html);
 }
 
 function wrap(inner) {
