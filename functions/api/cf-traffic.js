@@ -13,8 +13,13 @@ const ZONE_NAME = "masspermits.com";
 export async function onRequestGet(context) {
   const { env } = context;
   const token = env.CF_ANALYTICS_TOKEN;
-  // build marker "d2" proves this deployment shipped; tokenSeen never leaks the value.
-  if (!token) return json({ ok: false, configured: false, build: "d2", tokenSeen: false });
+  // build marker proves this deployment shipped; tokenSeen never leaks the value.
+  // envKeys lists only NAMES (not values) of env vars matching cf/token/analytics,
+  // so a name typo / wrong-scope secret is diagnosable without another round trip.
+  if (!token) {
+    const envKeys = Object.keys(env).filter((k) => /cf|token|analyt/i.test(k));
+    return json({ ok: false, configured: false, build: "d3", tokenSeen: false, envKeys });
+  }
 
   const headers = { Authorization: "Bearer " + token, "Content-Type": "application/json" };
   try {
