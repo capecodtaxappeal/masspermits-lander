@@ -13,7 +13,8 @@ const ZONE_NAME = "masspermits.com";
 export async function onRequestGet(context) {
   const { env } = context;
   const token = env.CF_ANALYTICS_TOKEN;
-  if (!token) return json({ ok: false, configured: false });
+  // build marker "d2" proves this deployment shipped; tokenSeen never leaks the value.
+  if (!token) return json({ ok: false, configured: false, build: "d2", tokenSeen: false });
 
   const headers = { Authorization: "Bearer " + token, "Content-Type": "application/json" };
   try {
