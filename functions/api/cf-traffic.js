@@ -10,20 +10,25 @@
 
 const ZONE_NAME = "masspermits.com";
 
+// Resolve an env var tolerant of stray whitespace in the KEY name (a common
+// dashboard copy-paste artifact, e.g. "CF_ANALYTICS_TOKEN "), and trim the value.
+function pickEnv(env, name) {
+  let v = env[name];
+  if (v == null) {
+    const k = Object.keys(env).find((k) => k.trim() === name);
+    if (k) v = env[k];
+  }
+  return typeof v === "string" ? v.trim() : v;
+}
+
 export async function onRequestGet(context) {
   const { env } = context;
-  const token = env.CF_ANALYTICS_TOKEN;
-  // build marker proves this deployment shipped; tokenSeen never leaks the value.
-  // envKeys lists only NAMES (not values) of env vars matching cf/token/analytics,
-  // so a name typo / wrong-scope secret is diagnosable without another round trip.
-  if (!token) {
-    const envKeys = Object.keys(env).filter((k) => /cf|token|analyt/i.test(k));
-    return json({ ok: false, configured: false, build: "d3", tokenSeen: false, envKeys });
-  }
+  const token = pickEnv(env, "CF_ANALYTICS_TOKEN");
+  if (!token) return json({ ok: false, configured: false });
 
   const headers = { Authorization: "Bearer " + token, "Content-Type": "application/json" };
   try {
-    let zoneId = env.CF_ZONE_ID;
+    let zoneId = pickEnv(env, "CF_ZONE_ID");
     if (!zoneId) {
       const zr = await fetch(`https://api.cloudflare.com/client/v4/zones?name=${ZONE_NAME}`, { headers });
       const zd = await zr.json();
