@@ -83,6 +83,40 @@
   .faq{margin:30px 0}.faq h3{font-size:15px;margin:18px 0 4px}.faq p{color:var(--muted);margin:0;font-size:14px}
   footer{text-align:center;color:var(--muted);font-size:12px;padding:34px 0;border-top:1px solid var(--border);margin-top:32px}
   @media(max-width:600px){.steps{flex-direction:column}.hero h1{font-size:28px}}
+
+  /* ============ 2026 refresh: aurora bg · glass panels · desktop width ============ */
+  /* Drifting teal aurora behind everything — subtle, GPU-cheap, on-brand. */
+  body::before{content:"";position:fixed;inset:-12%;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(38% 48% at 18% 16%, rgba(45,212,191,.22), transparent 62%),
+      radial-gradient(42% 52% at 84% 26%, rgba(20,184,166,.17), transparent 62%),
+      radial-gradient(48% 55% at 50% 96%, rgba(74,222,128,.13), transparent 62%);
+    filter:blur(40px);animation:aurora 22s ease-in-out infinite alternate}
+  @keyframes aurora{
+    0%{transform:translate3d(-3%,-2%,0) scale(1.05)}
+    50%{transform:translate3d(3%,3%,0) scale(1.15)}
+    100%{transform:translate3d(-2%,4%,0) scale(1.06)}}
+  /* faint tech grid, fading out downward */
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background-image:linear-gradient(rgba(45,212,191,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(45,212,191,.035) 1px,transparent 1px);
+    background-size:46px 46px;
+    -webkit-mask-image:radial-gradient(ellipse 85% 55% at 50% 0%,#000,transparent 78%);
+    mask-image:radial-gradient(ellipse 85% 55% at 50% 0%,#000,transparent 78%)}
+  .wrap{max-width:1060px}
+  /* frosted-glass panels so the aurora glows through — the premium depth cue */
+  .live,.pricebox,.step,.capture,.tier{
+    background:rgba(20,31,45,.68)!important;
+    backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2)}
+  .cta{box-shadow:0 8px 26px rgba(45,212,191,.30);transition:box-shadow .2s ease,transform .2s ease}
+  .cta:hover{box-shadow:0 12px 38px rgba(45,212,191,.48);transform:translateY(-1px)}
+  @media(min-width:820px){
+    .hero{padding:66px 0 30px}
+    .hero h1{font-size:52px}
+    .hero p{font-size:19px;max-width:660px}
+    .steps{gap:20px}
+  }
+  @media(prefers-reduced-motion:reduce){body::before{animation:none}}
 </style>
 </head>
 <body>
