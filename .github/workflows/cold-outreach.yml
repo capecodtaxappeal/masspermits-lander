@@ -36,7 +36,7 @@ jobs:
       - name: Send this hour's batch
         env:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}   # the ONE secret you add to arm this
-          SMTP_HOST: smtp.zoho.com                       # <- change to smtp.gmail.com if sending from Gmail/Workspace
+          SMTP_HOST: smtp.gmail.com                       # Google Workspace
           SMTP_PORT: "587"
-          SMTP_USER: patrick@masspermits.com             # <- the sending mailbox
+          SMTP_USER: patrick@masspermits.com             # the sending mailbox (Workspace)
         run: python .github/scripts/cold_sender.py
