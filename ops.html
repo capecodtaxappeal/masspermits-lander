@@ -30,12 +30,87 @@
   .muted{color:var(--muted);font-size:12px}
   .err{color:var(--bad);padding:14px;text-align:center}
   a{color:var(--teal)}
+  /* ---- live visitors ---- */
+  .live-hd{display:flex;align-items:center;gap:10px;margin-bottom:2px}
+  .live-hd h2{margin:0}
+  .livedot{width:9px;height:9px;border-radius:50%;background:var(--muted);flex:0 0 auto}
+  .livedot.on{background:var(--good);box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+  .livegrid{display:grid;grid-template-columns:1.35fr 1fr;gap:14px}
+  @media(max-width:680px){.livegrid{grid-template-columns:1fr}}
+  .map{background:#0b1320;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .map svg{display:block;width:100%;height:auto}
+  .maplbl{fill:var(--muted);font-size:3.1px;font-family:inherit}
+  .refdot{fill:#3a4c63}
+  .vdot-ma{fill:var(--teal)} .vdot-near{fill:var(--warn)} .vdot-far{fill:#7c8aa0}
+  .feed{max-height:236px;overflow-y:auto}
+  .feed table{font-size:12px}
+  .feed td{padding:5px 6px;vertical-align:top}
+  .feed .loc{color:var(--text)} .feed .loc b{color:var(--teal)}
+  .feed .ma b{color:var(--teal)} .feed .near b{color:var(--warn)}
+  .feed .meta{color:var(--muted);font-size:11px}
+  .stbars{margin:10px 0 0}
+  .strow{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:12px}
+  .strow .k{width:34px;color:var(--text);font-weight:700}
+  .strow .b{flex:1;height:9px;background:#1d2a3a;border-radius:5px;overflow:hidden}
+  .strow .b i{display:block;height:100%;background:var(--teal);border-radius:5px}
+  .strow.near .b i{background:var(--warn)} .strow.far .b i{background:#5f7089}
+  .strow .v{width:26px;text-align:right;color:var(--muted)}
+  .chip{display:inline-block;background:#12202f;border:1px solid var(--border);border-radius:20px;padding:2px 9px;font-size:11px;color:var(--muted);margin:2px 4px 0 0}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1><b>Mass</b>Permits · Ops</h1>
-  <div class="sub">Cold outreach + data pipeline at a glance · auto-refreshes every 60s · counts only, no addresses</div>
+  <div class="sub">Live traffic + cold outreach + data pipeline · live feed refreshes every 12s · no IPs stored, city-level geo only</div>
+
+  <div class="sec">
+    <div class="live-hd">
+      <span class="livedot" id="livedot"></span>
+      <h2 style="flex:1">Live visitors <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">· real people on the site now</span></h2>
+      <span id="live-active" style="color:var(--teal);font-weight:800;font-size:15px"></span>
+    </div>
+    <div class="livegrid" style="margin-top:12px">
+      <div class="map">
+        <svg viewBox="0 0 132 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="132" height="100" fill="#0b1320"/>
+          <!-- faint graticule -->
+          <g stroke="#17232f" stroke-width="0.3">
+            <line x1="33" y1="0" x2="33" y2="100"/><line x1="66" y1="0" x2="66" y2="100"/><line x1="99" y1="0" x2="99" y2="100"/>
+            <line x1="0" y1="33" x2="132" y2="33"/><line x1="0" y1="66" x2="132" y2="66"/>
+          </g>
+          <!-- reference cities (static, for orientation) -->
+          <g class="refdot">
+            <circle cx="90.1" cy="47.7" r="0.9"/><circle cx="68.9" cy="51.5" r="0.9"/>
+            <circle cx="46.2" cy="57.7" r="0.9"/><circle cx="111.9" cy="75.0" r="0.9"/>
+            <circle cx="80.1" cy="68.5" r="0.9"/><circle cx="117.7" cy="89.2" r="0.9"/>
+            <circle cx="98.7" cy="20.4" r="0.9"/><circle cx="43.3" cy="70.8" r="0.9"/>
+          </g>
+          <g class="maplbl">
+            <text x="91.6" y="47" >Boston</text>
+            <text x="63.5" y="49" text-anchor="end">Worcester</text>
+            <text x="44.7" y="56" text-anchor="end">Springfield</text>
+            <text x="110" y="73.5" text-anchor="end">Cape Cod</text>
+            <text x="78.6" y="67" text-anchor="end">Providence</text>
+            <text x="116.2" y="88" text-anchor="end">Nantucket</text>
+            <text x="100.2" y="19.8">NH</text>
+            <text x="41.8" y="70.3" text-anchor="end">Hartford</text>
+          </g>
+          <!-- live visitor dots injected here -->
+          <g id="live-dots"></g>
+        </svg>
+      </div>
+      <div>
+        <div class="muted" style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">Last 15 min</div>
+        <div class="feed"><table><tbody id="live-feed"><tr><td class="muted">listening…</td></tr></tbody></table></div>
+      </div>
+    </div>
+    <div class="muted" style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 2px">Visitors by state · last 24h</div>
+    <div class="stbars" id="live-states"><span class="muted" style="font-size:12px">no located visits in the last 24h yet</span></div>
+    <div class="muted" style="font-size:11px;margin-top:8px">
+      <span style="color:var(--teal)">●</span> Massachusetts &nbsp; <span style="color:var(--warn)">●</span> neighboring (RI·CT·NH·VT·ME·NY) &nbsp; <span style="color:#7c8aa0">●</span> elsewhere
+    </div>
+  </div>
 
   <div class="sec">
     <h2>Cold outreach <span id="paused" style="float:right"></span></h2>
@@ -80,6 +155,7 @@
 
 <script>
 const $ = id => document.getElementById(id);
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function fmtAgo(iso){
   if(!iso) return "—";
   const s = (Date.now() - Date.parse(iso)) / 1000;
@@ -143,7 +219,7 @@ async function load(){
     days.forEach(d=>Object.entries(d.sources||{}).forEach(([k,v])=>agg[k]=(agg[k]||0)+v));
     const rows = Object.entries(agg).sort((a,b)=>b[1]-a[1]).slice(0,8);
     $("traffic-sources").innerHTML = rows.length
-      ? rows.map(([s,n])=>`<tr><td style="color:var(--text)">${s}</td><td class="ok" style="text-align:right">${n}</td></tr>`).join("")
+      ? rows.map(([s,n])=>`<tr><td style="color:var(--text)">${esc(s)}</td><td class="ok" style="text-align:right">${n}</td></tr>`).join("")
       : '<tr><td class="muted">No visits logged yet — the beacon starts counting from now (share your links!).</td></tr>';
   }catch(e){ $("traffic-sources").innerHTML='<tr><td class="err">traffic unavailable</td></tr>'; }
 
@@ -161,18 +237,68 @@ async function load(){
       const today = days[days.length-1] || {requests:0,uniques:0};
       const total7 = days.reduce((a,d)=>a+(d.requests||0),0);
       $("cf-note").textContent = "live · counts bots + assets";
+      const countries = cf.countries||{};
+      const crows = Object.entries(countries).sort((a,b)=>b[1]-a[1]).slice(0,6);
+      const cstr = crows.length
+        ? '<div style="margin-top:8px"><span class="muted" style="font-size:11px">By country (all edge requests, 7d): </span>'+
+          crows.map(([c,n])=>'<span class="chip">'+esc(c)+' '+n.toLocaleString()+'</span>').join('')+'</div>'
+        : '';
       $("cf-body").innerHTML =
         '<div class="grid">'+
         '<div class="card"><div class="n">'+(today.requests||0).toLocaleString()+'</div><div class="l">Requests today</div></div>'+
         '<div class="card"><div class="n">'+(today.uniques||0).toLocaleString()+'</div><div class="l">Unique visitors today</div></div>'+
         '<div class="card"><div class="n">'+total7.toLocaleString()+'</div><div class="l">Requests (7 days)</div></div>'+
-        '</div>'+
+        '</div>'+ cstr +
         '<div class="muted" style="margin-top:8px">Cloudflare counts <i>every</i> request (bots + assets), so it reads higher than the human-only beacon above. Together: beacon = real people &amp; source, edge = raw totals &amp; uniques.</div>';
     }
   }catch(e){ $("cf-body").innerHTML='<span class="err">cf-traffic unavailable</span>'; }
 }
+// ---- live visitors (fast loop, geo-tagged) ----
+function agoShort(s){ if(s<10) return "now"; if(s<60) return s+"s"; if(s<3600) return Math.round(s/60)+"m"; return Math.round(s/3600)+"h"; }
+const BOX={lonMin:-74.2,lonMax:-69.6,latMin:41.0,latMax:43.6};
+const NEAR=new Set(["RI","CT","NH","VT","ME","NY"]);
+function stCls(st){ return st==="MA"?"ma":(NEAR.has(st)?"near":"far"); }
+function proj(lon,lat){
+  let x=(lon-BOX.lonMin)/(BOX.lonMax-BOX.lonMin)*132;
+  let y=(BOX.latMax-lat)/(BOX.latMax-BOX.latMin)*100;
+  return {x:Math.max(1.5,Math.min(130.5,x)), y:Math.max(1.5,Math.min(98.5,y))};
+}
+async function loadLive(){
+  try{
+    const d = await (await fetch("/api/live?v="+Date.now())).json();
+    const active = d.active||0;
+    $("live-active").textContent = active + " on site now";
+    $("livedot").className = "livedot" + (active>0?" on":"");
+    const rec = d.recent||[];
+    // map dots — plot located visits, color by state, size/opacity by recency
+    const geo = rec.filter(v=>Number.isFinite(v.la)&&Number.isFinite(v.lo));
+    $("live-dots").innerHTML = geo.slice(0,40).map(v=>{
+      const p=proj(v.lo,v.la), r=v.ago<300?2:1.3, op=v.ago<300?1:(v.ago<900?0.7:0.45);
+      return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" class="vdot-${stCls(v.st)}" opacity="${op}"><title>${esc(v.ci||"?")}, ${esc(v.st||"?")} · ${agoShort(v.ago)} ago</title></circle>`;
+    }).join("");
+    // live feed
+    $("live-feed").innerHTML = rec.length ? rec.map(v=>{
+      const cls=stCls(v.st);
+      const loc = v.ci ? `${esc(v.ci)}, <b>${esc(v.st||"?")}</b>`
+                : (v.st ? `<b>${esc(v.st)}</b>` : (v.c && v.c!=="US" ? esc(v.c) : "unknown"));
+      return `<tr><td style="width:38px;color:var(--muted)">${agoShort(v.ago)}</td>`+
+             `<td class="loc ${cls}">${loc}<div class="meta">${esc(v.s||"direct")} · ${esc(v.p||"/")}</div></td></tr>`;
+    }).join("") : '<tr><td class="muted">nobody in the last 15 min — share your links to light this up</td></tr>';
+    // by-state bars (24h)
+    const st = Object.assign({}, d.states||{}); delete st["??"];
+    const rows = Object.entries(st).sort((a,b)=>b[1]-a[1]).slice(0,8);
+    const max = Math.max(1, ...rows.map(r=>r[1]));
+    $("live-states").innerHTML = rows.length ? rows.map(([k,n])=>{
+      const cls=stCls(k);
+      return `<div class="strow ${cls==="ma"?"":cls}"><span class="k">${esc(k)}</span>`+
+             `<span class="b"><i style="width:${Math.round(n/max*100)}%"></i></span><span class="v">${n}</span></div>`;
+    }).join("") : '<span class="muted" style="font-size:12px">no located visits in the last 24h yet</span>';
+  }catch(e){ /* keep last render */ }
+}
 load();
 setInterval(load, 60000);
+loadLive();
+setInterval(loadLive, 12000);
 </script>
 </body>
 </html>

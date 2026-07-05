@@ -1,14 +1,29 @@
 // MassPermits — first-party page-view beacon (no cookies, no PII, no third party).
 //
 // Each human page-load writes ONE empty R2 object under hits/<day>/ with the
-// source + path in customMetadata. Per-hit objects (not a shared counter) so a
-// traffic SPIKE — exactly when we want accuracy — never loses counts to a
-// read-modify-write race. /api/traffic aggregates from list()+customMetadata
-// (no body reads). Source = utm_source/ref param, else derived from the
-// referrer host, else "direct".
+// source + path + coarse geo in customMetadata. Per-hit objects (not a shared
+// counter) so a traffic SPIKE — exactly when we want accuracy — never loses
+// counts to a read-modify-write race. /api/traffic and /api/live aggregate from
+// list()+customMetadata (no body reads). Source = utm_source/ref param, else
+// derived from the referrer host, else "direct".
 
 const ipHits = new Map(); // per-isolate soft cap against write-spam
 const IP_CAP = 40;
+
+// Drop control chars (<0x20) and the HTML-breaking set  < > " ' `  so nothing
+// dangerous is ever stored. Built from numeric code points (no literal special
+// chars in source). /ops also HTML-escapes on render — defense in depth, since
+// the p/s params are attacker-controllable on this public beacon. Spaces,
+// hyphens and unicode letters (e.g. "New Bedford") are preserved.
+function clean(s, n) {
+  let out = "";
+  for (const ch of String(s == null ? "" : s)) {
+    const c = ch.charCodeAt(0);
+    if (c < 0x20 || c === 0x3c || c === 0x3e || c === 0x22 || c === 0x27 || c === 0x60) continue;
+    out += ch;
+  }
+  return out.slice(0, n);
+}
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -26,17 +41,28 @@ export async function onRequest(context) {
   try {
     const url = new URL(request.url);
     const day = new Date().toISOString().slice(0, 10);
-    const path = (url.searchParams.get("p") || "/").slice(0, 80);
+    const path = clean(url.searchParams.get("p") || "/", 80);
     const ref = (url.searchParams.get("r") || "").slice(0, 200);
-    let src = (url.searchParams.get("s") || "").slice(0, 40).toLowerCase();
+    let src = clean(url.searchParams.get("s") || "", 40).toLowerCase();
     if (!src) {
       try {
         const h = ref ? new URL(ref).hostname.replace(/^www\./, "") : "";
         src = (h && !h.endsWith("masspermits.com")) ? h : "direct";
       } catch { src = "direct"; }
     }
+    // Geolocation from Cloudflare's edge — city-level (coarse, approximate) and
+    // derived from IP WITHOUT us ever storing the IP itself. Privacy-safe: the
+    // lat/long is the city centroid, not the visitor's device.
+    const cf = request.cf || {};
+    const meta = { s: src, p: path };
+    if (cf.country) meta.c = String(cf.country).slice(0, 2);
+    if (cf.regionCode || cf.region) meta.st = clean(cf.regionCode || cf.region, 6);
+    if (cf.city) meta.ci = clean(cf.city, 40);
+    if (cf.latitude) meta.la = String(cf.latitude).slice(0, 12);
+    if (cf.longitude) meta.lo = String(cf.longitude).slice(0, 12);
+    if (cf.asOrganization) meta.o = clean(cf.asOrganization, 40);
     const key = `hits/${day}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
-    await env.BUNDLES.put(key, "", { customMetadata: { s: src, p: path } });
+    await env.BUNDLES.put(key, "", { customMetadata: meta });
   } catch (e) {
     /* analytics must never break the page */
   }

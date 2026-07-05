@@ -42,7 +42,7 @@ export async function onRequestGet(context) {
     const since = new Date(Date.now() - 6 * 86400_000).toISOString().slice(0, 10);
     const query = `{viewer{zones(filter:{zoneTag:"${zoneId}"}){httpRequests1dGroups(` +
       `limit:7,filter:{date_geq:"${since}",date_leq:"${until}"},orderBy:[date_ASC])` +
-      `{dimensions{date} sum{requests pageViews} uniq{uniques}}}}}`;
+      `{dimensions{date} sum{requests pageViews countryMap{clientCountryName requests}} uniq{uniques}}}}}`;
     const gr = await fetch("https://api.cloudflare.com/client/v4/graphql", {
       method: "POST", headers, body: JSON.stringify({ query }),
     });
@@ -52,13 +52,20 @@ export async function onRequestGet(context) {
     }
     const groups = (((gd.data || {}).viewer || {}).zones || [])[0];
     const rows = (groups && groups.httpRequests1dGroups) || [];
-    const days = rows.map((g) => ({
-      date: g.dimensions.date,
-      requests: (g.sum && g.sum.requests) || 0,
-      pageViews: (g.sum && g.sum.pageViews) || 0,
-      uniques: (g.uniq && g.uniq.uniques) || 0,
-    }));
-    return json({ ok: true, configured: true, days });
+    const countries = {}; // 7-day rollup of ALL edge requests by country (incl. bots)
+    const days = rows.map((g) => {
+      for (const cm of (g.sum && g.sum.countryMap) || []) {
+        const c = cm.clientCountryName || "??";
+        countries[c] = (countries[c] || 0) + (cm.requests || 0);
+      }
+      return {
+        date: g.dimensions.date,
+        requests: (g.sum && g.sum.requests) || 0,
+        pageViews: (g.sum && g.sum.pageViews) || 0,
+        uniques: (g.uniq && g.uniq.uniques) || 0,
+      };
+    });
+    return json({ ok: true, configured: true, days, countries });
   } catch (e) {
     return json({ ok: false, configured: true, error: String(e && e.message || e).slice(0, 180) });
   }
