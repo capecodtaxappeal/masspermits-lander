@@ -91,21 +91,22 @@ jobs:
           fi
 
       # Keep the PUBLIC SITE fresh too: regenerate the masked teaser data.json
-      # from this week's scrape and commit it to main -> Cloudflare Pages
-      # auto-redeploys. (Does not retrigger this workflow: its push trigger is
-      # paths-filtered to this yml file only.)
-      - name: Refresh website teaser (commit data.json to main)
+      # AND all ~200 programmatic SEO pages (fresh counts, sitemap, llms.txt)
+      # from this week's scrape, commit to main -> Cloudflare Pages redeploys.
+      # Weekly-changing content is a live-site signal to Google. (Does not
+      # retrigger this workflow: its push trigger is paths-filtered to the yml.)
+      - name: Refresh website teaser + SEO pages (commit to main)
         continue-on-error: true
         run: |
-          python export_lander.py site-data.json
           git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" site
-          cp site-data.json site/data.json
+          python export_lander.py site/data.json
+          python seo_build.py site
           cd site
           git config user.name "masspermits-refresh-bot"
           git config user.email "actions@github.com"
-          git add data.json
-          git commit -m "data: weekly site refresh (automated)" && git push origin main \
-            || echo "site data unchanged — nothing to push"
+          git add -A
+          git commit -m "data+seo: weekly site refresh (automated)" && git push origin main \
+            || echo "site unchanged — nothing to push"
 
       # GitHub auto-disables scheduled workflows on public repos after 60 days
       # without repo activity. This commit after each successful run counts as

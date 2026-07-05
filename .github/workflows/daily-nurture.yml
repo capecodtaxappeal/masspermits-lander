@@ -1,0 +1,35 @@
+name: MassPermits nurture follow-ups
+
+# Daily: process the opted-in nurture sequence for people who requested the free
+# sample (day-3 how-to email, day-7 pricing email). Requested mail only — this
+# system never sends cold outreach. Auth: GitHub OIDC, no secrets in repo.
+
+on:
+  schedule:
+    - cron: "0 14 * * *"   # daily 14:00 UTC (~9-10am ET)
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/daily-nurture.yml"   # first push = live smoke test
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: nurture
+  cancel-in-progress: false
+
+jobs:
+  nurture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Process due follow-ups (OIDC)
+        run: |
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+          # no --retry (sends are checkpointed per-prospect, but keep it single-shot);
+          # log counts only — never response fields that could carry addresses
+          curl -fsS -X POST -H "Authorization: Bearer $OIDC" https://masspermits.com/api/nurture \
+            | jq '{ok, prospects, sent_followup1, sent_followup2, errors}'
