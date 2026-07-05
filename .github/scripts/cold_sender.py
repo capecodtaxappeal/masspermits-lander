@@ -36,6 +36,7 @@ SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER = os.environ.get("SMTP_USER", "patrick@masspermits.com")
 SMTP_PASS = os.environ.get("SMTP_PASSWORD", "")
 FROM_NAME = os.environ.get("FROM_NAME", "Patrick Seeley")
+DRYRUN = bool(os.environ.get("COLD_DRYRUN"))  # verify reads + SMTP login without sending
 
 RAMP_DAILY = 15   # first 7 days from ramp_start
 STEADY_DAILY = 25
@@ -114,17 +115,23 @@ def main() -> None:
 
     due = [e for e in queue
            if e["to"].lower() not in sent_ever and e["to"].lower() not in suppression][:budget]
+    print(f"reads OK · queue={len(queue)} suppression={len(suppression)} sent_ever={len(sent_ever)} "
+          f"· daily_cap={daily_cap} sent_today={sent_today} budget={budget} · due={len(due)}", flush=True)
     if not due:
         print("Queue drained — nothing left to send. 🎉")
         return
 
-    time.sleep(random.randint(0, 240))  # de-robotize the cron cadence
+    if not DRYRUN:
+        time.sleep(random.randint(0, 240))  # de-robotize the cron cadence
 
     ctx = ssl.create_default_context()
     sent_n = 0
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=60) as smtp:
         smtp.starttls(context=ctx)
         smtp.login(SMTP_USER, SMTP_PASS)
+        if DRYRUN:
+            print("SMTP login OK — DRYRUN complete, no sends, no state written.", flush=True)
+            return
         for e in due:
             msg = EmailMessage()
             msg["From"] = formataddr((FROM_NAME, SMTP_USER))
@@ -157,7 +164,8 @@ def main() -> None:
 if __name__ == "__main__":
     try:
         main()
-    except Exception as e:  # noqa: BLE001
-        # fail visibly (GitHub emails the owner) but never leak addresses
-        print("ERROR:", type(e).__name__, str(e)[:200])
+    except Exception:  # noqa: BLE001
+        import traceback
+        # full traceback to stdout (shipped to R2 as cold-log.txt) — no addresses in errors
+        traceback.print_exc()
         sys.exit(1)

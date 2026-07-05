@@ -18,6 +18,7 @@ const ALLOWED_KEYS = {
   "refresh-status.json": "application/json",
   "run-log.txt": "text/plain", // workflow stdout — observable diagnostics without repo-admin log access
   "cold-state.json": "application/json", // cold-outreach sender checkpoints (queue/suppression stay wrangler-only)
+  "cold-log.txt": "text/plain", // cold sender stdout — observable diagnostics without repo-admin log access
 };
 const MAX_BYTES = 25 * 1024 * 1024; // bundles are <1MB today; hard ceiling anyway
 

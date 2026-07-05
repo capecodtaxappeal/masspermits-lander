@@ -45,4 +45,18 @@ jobs:
           SMTP_USER: patrick@masspermits.com             # the sending mailbox (Workspace)
           # push-triggered runs = smoke test: one email to the owner, zero cold sends
           TEST_RECIPIENT: ${{ github.event_name == 'push' && 'patrick.seeley98@gmail.com' || '' }}
-        run: python .github/scripts/cold_sender.py
+          COLD_DRYRUN: "1"                                # DIAGNOSTIC: verify reads+SMTP without sending (flip to "" to arm)
+        run: |
+          set -o pipefail
+          python -u .github/scripts/cold_sender.py 2>&1 | tee run.log
+
+      # Ship the sender's stdout to R2 (counts/errors only, no addresses) so the run
+      # is diagnosable without repo-admin log access — same black-box pattern as refresh.
+      - name: Ship cold-sender log to R2 (always)
+        if: always()
+        run: |
+          [ -f run.log ] || echo "(no run.log produced)" > run.log
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+          curl -fsS -X PUT -H "Authorization: Bearer $OIDC" -H "Content-Type: text/plain" \
+            --data-binary @run.log "https://masspermits.com/api/upload-bundle?key=cold-log.txt" || true
