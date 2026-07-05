@@ -1,0 +1,39 @@
+name: MassPermits cold outreach
+
+# Unattended founder outreach: 2-3 pre-written emails per hourly run from the
+# owner's Gmail, weekdays 9am-6pm ET, ramping 15/day -> 25/day (hard cap 30).
+# Queue + copy live in PRIVATE R2 (via OIDC-gated endpoints) — never this repo.
+# DORMANT until the GMAIL_APP_PASSWORD repo secret is added (exits 0 with a
+# notice). Kill switch: set paused:true in cold-state.json.
+# Owner handles all inbound (replies, bounces, "stop" -> suppression list).
+
+on:
+  schedule:
+    - cron: "0 13-22 * * 1-5"   # hourly, 13:00-22:00 UTC = 9am-6pm ET, Mon-Fri
+  workflow_dispatch: {}
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: cold-outreach
+  cancel-in-progress: false   # never two senders at once
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Send this hour's batch
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_USER: patrick@masspermits.com
+        run: python .github/scripts/cold_sender.py
