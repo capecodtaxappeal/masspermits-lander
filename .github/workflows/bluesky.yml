@@ -31,7 +31,8 @@ jobs:
       - run: pip install "atproto>=0.0.55"
       - name: Post to Bluesky
         env:
-          BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
+          # handle is public, not a secret — default it; secret overrides if ever set
+          BSKY_HANDLE: ${{ secrets.BSKY_HANDLE || 'masspermits.bsky.social' }}
           BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
         run: python .github/scripts/bluesky_post.py
 
