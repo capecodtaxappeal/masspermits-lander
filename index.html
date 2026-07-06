@@ -212,9 +212,23 @@
     <p>A clean spreadsheet plus a polished PDF report: homeowner name, full property address, project type, declared project value, and the permit holder.</p>
   </div>
 
+  <div id="digest" style="background:rgba(20,31,45,.68);border:1px solid var(--border);border-radius:14px;padding:24px 22px;margin:30px 0;text-align:center;backdrop-filter:blur(16px)">
+    <h2 style="margin:0 0 6px;font-size:21px">Free: <span style="color:var(--teal)">This Week in MA Permits</span></h2>
+    <p style="color:var(--muted);margin:0 0 14px;font-size:14px">One email every Monday — which towns are surging, which trades are filing, and the week's biggest projects. No spam, one-click unsubscribe.</p>
+    <form id="digest-form" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+      <input type="email" id="digest-email" required placeholder="you@company.com" autocomplete="email"
+        style="flex:1;min-width:220px;background:#0e1622;border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:14px">
+      <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <button type="submit" style="background:var(--teal);color:#04201c;font-weight:800;border:0;border-radius:8px;padding:11px 20px;font-size:14px;cursor:pointer">Get the digest</button>
+    </form>
+    <p id="digest-msg" style="color:var(--teal);font-size:13px;margin:10px 0 0;display:none"></p>
+  </div>
+
   <footer>
     <strong style="color:var(--text)">MassPermits</strong> · Building-permit lead intelligence · Massachusetts<br>
-    <a href="/permits/" style="color:var(--teal)">Browse building permits by town &amp; trade →</a><br>
+    <a href="/permits/" style="color:var(--teal)">Browse building permits by town &amp; trade →</a> ·
+    <a href="/feed.xml" style="color:var(--teal)">RSS</a> ·
+    <a href="#digest" style="color:var(--teal)">Weekly digest</a><br>
     <span id="contact-line">Questions? <span id="contact-email">hello@masspermits.com</span></span>
   </footer>
 </div>
@@ -285,12 +299,23 @@ function initSelectors(){
 
 // Build a Stripe link carrying the buyer's trade+area so fulfillment knows
 // exactly what to send (Stripe records it as client_reference_id on the payment).
+// referral cookie/param (set by /r/<code>) — rides checkout as client_reference_id
+// so the webhook can credit the referrer ("give a month, get a month")
+function refCode(){
+  try{
+    const m = document.cookie.match(/(?:^|;\s*)mp_ref=(ref-[a-z0-9]{4,24})/);
+    if(m) return m[1];
+    const q = new URL(location.href).searchParams.get("ref")||"";
+    if(/^ref-[a-z0-9]{4,24}$/.test(q)) return q;
+  }catch(e){}
+  return "";
+}
 function stripeWith(base){
   if(!base) return null;
   try{
     const u = new URL(base);
     const ref = `${SELTRADE||'all'}__${SELAREA||'all'}`.replace(/[^a-zA-Z0-9_]/g,'-');
-    u.searchParams.set("client_reference_id", ref);
+    u.searchParams.set("client_reference_id", refCode() || ref);
     return u.toString();
   }catch(e){ return base; }
 }
@@ -351,6 +376,27 @@ $("signup-form").addEventListener("submit", async e=>{
     else { $("signup-err").style.display="block"; $("signup-err").textContent = d?.message||"Something went wrong — please email us directly."; }
   }catch(err){ okMsg(); } // fail soft — never block the lead
 });
+
+// weekly-digest signup (double opt-in via /api/newsletter)
+(function(){
+  const f = $("digest-form");
+  if(!f) return;
+  f.addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const msg = $("digest-msg"), email = ($("digest-email").value||"").trim();
+    const hp = f.querySelector('input[name="company"]');
+    msg.style.display = "block"; msg.textContent = "Sending…";
+    try{
+      const r = await fetch("/api/newsletter", { method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ email, company: hp ? hp.value : "" }) });
+      const d = await r.json();
+      msg.textContent = d && d.ok !== false
+        ? "Check your inbox — click the confirm link and you're in. 📬"
+        : "Hmm, that didn't work — double-check the email?";
+    }catch(err){ msg.textContent = "Network hiccup — try again in a second."; }
+  });
+})();
 
 load();
 

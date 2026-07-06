@@ -54,10 +54,21 @@ export async function onRequestPost(context) {
     if (!file) return json({ ok: false, error: `bundle ${bundleKey} not in R2` }, 500);
     const bytes = await file.arrayBuffer();
 
-    await sendEmail(env, email, kind, ref, bytes, bundleKey);
+    // Referral loop — NEW purchases only. Renewal emails (kind="weekly", existing
+    // subscribers) deliberately carry no referral block yet, per owner decision.
+    let myCode = "";
+    if (kind === "monthly") {
+      try { myCode = await mintReferralCode(env, email); } catch (e) { /* non-fatal */ }
+    }
+
+    await sendEmail(env, email, kind, ref, bytes, bundleKey, myCode);
     // add new SUBSCRIBERS (not one-time pack buyers) to the weekly-feed list in R2
     if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
       await addSubscriber(env, email, event);
+    }
+    // if this buyer arrived via someone's referral link, credit the referrer
+    if (kind === "monthly" && ref && ref.startsWith("ref-")) {
+      try { await creditReferrer(env, ref.slice(4), email); } catch (e) { /* non-fatal */ }
     }
     return json({ ok: true, delivered: kind, to: email, bundle: bundleKey });
   } catch (e) {
@@ -137,15 +148,64 @@ async function deactivateSubscriber(env, customerId) {
   }
 }
 
-async function sendEmail(env, to, kind, ref, bytes, filename) {
+// ── Referral loop ("give a month, get a month") ──────────────────────────────
+// Codes live at referral/codes/<code>; credits at referral/credits/<ts>-<code>.
+// Payout stays owner-confirmed: a credit fires an email to the owner with the
+// exact Stripe action to take — no automatic money movement.
+async function mintReferralCode(env, email) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(email.toLowerCase()));
+  const code = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("").slice(0, 10);
+  await env.BUNDLES.put("referral/codes/" + code, JSON.stringify({
+    email, ts: new Date().toISOString() }), {
+    httpMetadata: { contentType: "application/json" } });
+  return code;
+}
+
+async function creditReferrer(env, code, buyerEmail) {
+  if (!/^[a-z0-9]{4,24}$/.test(code)) return;
+  const obj = await env.BUNDLES.get("referral/codes/" + code);
+  if (!obj) return;
+  const { email: referrer } = JSON.parse(await obj.text());
+  if (!referrer || referrer.toLowerCase() === (buyerEmail || "").toLowerCase()) return; // no self-referrals
+  const ts = new Date().toISOString();
+  await env.BUNDLES.put(`referral/credits/${Date.now()}-${code}`, JSON.stringify({
+    code, referrer, buyer: buyerEmail, ts }), {
+    httpMetadata: { contentType: "application/json" },
+    customMetadata: { referrer, ts } });
+  // notify the owner with the exact action (credit = -$99 one-time on referrer's sub)
+  const owner = env.OWNER_EMAIL || "patrick@masspermits.com";
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: env.FROM_EMAIL, to: [owner],
+      subject: `💸 Referral landed: ${referrer} referred ${buyerEmail}`,
+      html: `<div style="font-family:sans-serif"><p><b>${escapeHtml(referrer)}</b> referred
+      <b>${escapeHtml(buyerEmail)}</b> (code ${escapeHtml(code)}).</p>
+      <p>To honor "give a month, get a month": Stripe → Customers → ${escapeHtml(referrer)} →
+      their subscription → add a one-time <b>-$99 credit</b> (or a 100%-off-one-month coupon).</p>
+      <p>Logged in R2 at referral/credits/.</p></div>` }),
+  }).catch(() => {});
+}
+
+async function sendEmail(env, to, kind, ref, bytes, filename, myCode) {
   const human = kind === "weekly" ? "this week's fresh" : "your";
-  const refLine = ref ? `<p style="color:#667">Your selection: <b>${escapeHtml(ref.replace(/__/g," · "))}</b></p>` : "";
+  const isRefCode = ref && ref.startsWith("ref-");
+  const refLine = (ref && !isRefCode) ? `<p style="color:#667">Your selection: <b>${escapeHtml(ref.replace(/__/g," · "))}</b></p>` : "";
+  const shareBlock = myCode ? `
+      <div style="background:#f2fbf8;border:1px solid #b9e8dc;border-radius:10px;padding:14px 16px;margin:18px 0">
+        <p style="margin:0 0 6px;font-weight:700;color:#0e7c6b">Give a month, get a month 🤝</p>
+        <p style="margin:0;font-size:14px;color:#334">Know another contractor who'd use these leads?
+        Send them your link — when they subscribe, you both get a month of the weekly feed free:</p>
+        <p style="margin:8px 0 0"><a href="https://masspermits.com/r/${myCode}"
+          style="color:#0e7c6b;font-weight:700">masspermits.com/r/${myCode}</a></p>
+      </div>` : "";
   const html = `
     <div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
       <h2 style="color:#0e7c6b">Your MassPermits leads are attached 📋</h2>
       <p>Thanks for your order. Attached is ${human} building-permit lead bundle.</p>
       ${refLine}
       <p><b>Open <code>MassPermits-Leads.html</code></b> in any browser — it's a full interactive dashboard: live charts, search &amp; filter by trade &amp; town, sort by project value, look up any contractor's active jobs, and click any permit for the complete record. The CSVs are included too (one master + one per trade).</p>
+      ${shareBlock}
       <p style="color:#667;font-size:13px">Sourced from public municipal building-permit records.<br>
       Questions? Just reply to this email.</p>
       <p style="color:#9aa;font-size:12px">— MassPermits · masspermits.com</p>

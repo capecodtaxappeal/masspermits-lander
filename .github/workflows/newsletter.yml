@@ -1,0 +1,36 @@
+name: MassPermits weekly digest
+
+# Fires the double-opt-in "This Week in MA Permits" digest via the OIDC-gated
+# /api/newsletter-send. Mondays 14:00 UTC — after the 09:00 data refresh and the
+# 12:00 paid-feed send, so readers always get same-morning data. Sends nothing
+# until people confirm via the signup form; safe to merge immediately.
+on:
+  schedule:
+    - cron: "0 14 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  id-token: write
+
+concurrency:
+  group: newsletter-send
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Trigger digest send (OIDC)
+        run: |
+          ok=""
+          for i in $(seq 1 3); do
+            OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+            if resp=$(curl -fsS -X POST -H "Authorization: Bearer $OIDC" \
+              https://masspermits.com/api/newsletter-send); then
+              echo "$resp"; ok=1; break
+            fi
+            echo "attempt $i failed; retrying in 30s"; sleep 30
+          done
+          [ -n "$ok" ] || { echo "::error::digest send failed after 3 attempts"; exit 1; }
