@@ -74,7 +74,9 @@ export async function onRequestGet(context) {
     await env.BUNDLES.put(key, JSON.stringify({ email: parsed.email, tok: parsed.tok,
       ts: meta.ts || "", confirmed: true }), {
       httpMetadata: { contentType: "application/json" },
-      customMetadata: { ...meta, c: "1" },
+      // clear any prior unsubscribe flag — confirming IS re-joining, and the
+      // sender excludes un="1", so a stale flag would silently mute this reader
+      customMetadata: { ...meta, c: "1", un: "0" },
     });
     return page("You're in ✅", "Every Monday morning: fresh Massachusetts permit activity — towns, trades and " +
       "notable projects. Want full leads (address + owner) now? <a style='color:#2dd4bf' " +
