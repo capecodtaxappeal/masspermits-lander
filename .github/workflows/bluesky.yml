@@ -1,0 +1,36 @@
+name: Bluesky daily post
+
+# Posts one Massachusetts permit nugget/day to @masspermits on Bluesky from the
+# public feed. DORMANT until BSKY_HANDLE + BSKY_PASSWORD (app password) secrets
+# are set — the script exits quietly without them, so this is safe to merge now.
+on:
+  schedule:
+    - cron: "0 13 * * *"    # daily 13:00 UTC (~8-9am ET)
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/bluesky.yml"   # first push = smoke test (skips cleanly if no secrets)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bluesky-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "atproto>=0.0.55"
+      - name: Post to Bluesky
+        env:
+          BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
+        run: python .github/scripts/bluesky_post.py
