@@ -34,3 +34,5 @@ jobs:
           BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
           BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
         run: python .github/scripts/bluesky_post.py
+
+# smoke: secrets added 2026-07-05
