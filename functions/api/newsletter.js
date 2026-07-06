@@ -30,7 +30,12 @@ export async function onRequestPost(context) {
 
   const key = "newsletter/" + encodeURIComponent(email);
   try {
-    if (await env.BUNDLES.head(key)) return json({ ok: true }); // never re-email a confirm
+    // Existing active/pending signups are never re-emailed (bomb-proof). But an
+    // UNSUBSCRIBED address that signs up again is a deliberate re-join — the
+    // unsub page promises "re-join anytime" — so let it through to a fresh
+    // token + confirm email (the put below overwrites with un cleared).
+    const existing = await env.BUNDLES.head(key);
+    if (existing && (existing.customMetadata || {}).un !== "1") return json({ ok: true });
 
     const day = new Date().toISOString().slice(0, 10);
     const capKey = "newsletter-meta/day-" + day;
