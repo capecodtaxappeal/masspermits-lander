@@ -95,18 +95,46 @@ jobs:
       # from this week's scrape, commit to main -> Cloudflare Pages redeploys.
       # Weekly-changing content is a live-site signal to Google. (Does not
       # retrigger this workflow: its push trigger is paths-filtered to the yml.)
-      - name: Refresh website teaser + SEO pages (commit to main)
+      - name: Refresh website teaser + SEO pages + report + video (commit to main)
         continue-on-error: true
         run: |
           git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" site
           python export_lander.py site/data.json
           python seo_build.py site
+          # weekly PR report page (masspermits.com/report/) + pitch digest artifacts
+          python pr_report.py || echo "::warning::pr_report failed — report page not refreshed"
+          if [ -f out/pr/report.html ]; then mkdir -p site/report && cp out/pr/report.html site/report/index.html; fi
+          # weekly narrated data video (embedded on site + posted to Bluesky below)
+          python video_report.py || echo "::warning::video render failed — keeping last week's video"
+          if [ -f data/video/weekly_report.mp4 ]; then mkdir -p site/video && cp data/video/weekly_report.mp4 site/video/weekly_report.mp4; fi
           cd site
           git config user.name "masspermits-refresh-bot"
           git config user.email "actions@github.com"
           git add -A
-          git commit -m "data+seo: weekly site refresh (automated)" && git push origin main \
+          git commit -m "data+seo+report: weekly site refresh (automated)" && git push origin main \
             || echo "site unchanged — nothing to push"
+
+      # Weekly PR pitch digest -> owner's inbox (recipient hard-locked server-side).
+      # He forwards the pitches he likes; nothing is ever auto-sent to outsiders.
+      - name: Mail PR pitch digest to owner (OIDC)
+        continue-on-error: true
+        run: |
+          [ -f out/pr/email_digest.html ] || { echo "no digest produced"; exit 0; }
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+          curl -fsS -X POST -H "Authorization: Bearer $OIDC" -H "Content-Type: text/html" \
+            --data-binary @out/pr/email_digest.html \
+            "https://masspermits.com/api/mail-owner?subject=$(python -c 'import urllib.parse;print(urllib.parse.quote("Weekly PR pitches — forward the ones you like"))')"
+
+      # Weekly data video -> Bluesky (skips cleanly if creds absent)
+      - name: Post weekly video to Bluesky
+        continue-on-error: true
+        env:
+          BSKY_HANDLE: ${{ secrets.BSKY_HANDLE || 'masspermits.bsky.social' }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
+        run: |
+          pip install "atproto>=0.0.55" >/dev/null 2>&1 || true
+          python bsky_video_post.py || echo "::warning::bsky video post failed"
 
       # GitHub auto-disables scheduled workflows on public repos after 60 days
       # without repo activity. This commit after each successful run counts as
