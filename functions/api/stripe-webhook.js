@@ -88,7 +88,12 @@ const MIN_CENTS = 1000;
 function decideDelivery(event) {
   const o = event.data && event.data.object || {};
   if (event.type === "checkout.session.completed") {
-    if ((o.amount_total || 0) < MIN_CENTS) return null; // not a MassPermits product
+    // $0 + subscription = a FREE-TRIAL start (Farm Town Permit Radar's 7-day
+    // trial). IRWatch has no trials and bills $4.35 (never $0), so this stays
+    // cleanly separated from the shared-account floor below. If IRWatch ever
+    // adds $0 trials, switch to a price-ID allowlist.
+    const isTrialStart = o.mode === "subscription" && (o.amount_total || 0) === 0;
+    if ((o.amount_total || 0) < MIN_CENTS && !isTrialStart) return null; // not a MassPermits product
     const email = o.customer_details?.email || o.customer_email || "";
     const ref = o.client_reference_id || "";
     // subscription OR one-time both get the big MONTHLY batch as the first send
