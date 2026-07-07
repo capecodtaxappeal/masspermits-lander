@@ -51,7 +51,28 @@ export async function onRequestPost(context) {
   }
 
   try { await sendTownSample(env, email, town); } catch (e) { /* enrolled; non-fatal */ }
+  try { await notifyOwner(env, email, town); } catch (e) { /* non-fatal */ }
   return json({ ok: true });
+}
+
+const OWNER_EMAIL = "patrick@masspermits.com";
+
+// Heads-up to the owner on every new sample request — the prospect already got
+// their CSV + trial link automatically; this is for personal follow-up.
+async function notifyOwner(env, email, town) {
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const resp = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: env.FROM_EMAIL, to: [OWNER_EMAIL],
+      subject: `Agent sample request: ${town}`,
+      html: `<p><b>${esc(email)}</b> requested the free <b>${esc(town)}</b> sample on /agents.</p>
+        <p>They already received the masked town CSV + trial link automatically.
+        Reply to them from your inbox if you want to follow up personally.</p>`,
+    }),
+  });
+  if (!resp.ok) throw new Error("resend " + resp.status);
 }
 
 async function sendTownSample(env, to, town) {
