@@ -78,11 +78,15 @@ export async function onRequestPost(context) {
 
 // This Stripe account is SHARED with another product (IRWatch, ~$4.35/mo). Its
 // invoice.paid / checkout.session.completed events hit THIS endpoint too, so
-// without a filter we email MassPermits data to IRWatch customers. MassPermits
-// products are $49 (pack) / $99 (weekly feed); a $10 floor cleanly separates them
-// from the $4.35 product. (Follow-up: swap to an explicit MassPermits price-ID
-// allowlist if a cheaper MassPermits tier is ever added.)
-const MIN_CENTS = 1000;
+// without a filter we email MassPermits data to IRWatch customers. MassPermits'
+// CHEAPEST real charge is the FIRST90 promo (90% off $99 = $9.90 = 990¢); its
+// regular tiers are $49 (pack) / $99 (weekly feed). IRWatch bills $4.35 (435¢).
+// The floor must sit BETWEEN those two, so $5.00 separates them cleanly while
+// letting the $9.90 promo through — the old $10 floor silently dropped every
+// FIRST90 sale (customer charged, no bundle delivered). Follow-up: swap to an
+// explicit MassPermits price-ID allowlist to also cover a hypothetical IRWatch
+// annual plan (12×$4.35=$52.20 would clear this floor).
+const MIN_CENTS = 500;
 
 // Decide which bundle (if any) to send for this event.
 function decideDelivery(event) {
