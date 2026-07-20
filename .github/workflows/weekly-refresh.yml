@@ -8,8 +8,8 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v7 (2026-07-07): +11 Cape OpenGov towns (Chatham, Dennis, Yarmouth,
-# Harwich, Brewster, Eastham, Orleans, Wellfleet, Truro, Provincetown, Bourne)
+# engine v15 (2026-07-20): 111 MA towns + per-town permit MAPS (town_visual.py),
+# lead-intent titles, packed viewer HTML, PR-spike + $0-median fixes
 on:
   schedule:
     - cron: "0 9 * * 1"    # Mondays 09:00 UTC (~4-5am ET)
