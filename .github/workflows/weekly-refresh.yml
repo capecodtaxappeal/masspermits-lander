@@ -8,8 +8,13 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v15 (2026-07-20): 111 MA towns + per-town permit MAPS (town_visual.py),
-# lead-intent titles, packed viewer HTML, PR-spike + $0-median fixes
+# engine v16 (2026-07-20): 111 MA towns + per-town permit MAPS (town_visual.py)
+# now drawn inside real municipal outlines (data/town_bounds.json — Census TIGER,
+# public domain). Map framing favours where permits actually are, so a large
+# empty appendage like Monomoy no longer squeezes the town into a corner. Teaser
+# tables drop the "Project value" column entirely in towns that publish no
+# valuations, instead of printing a column of $0.
+# Plus: lead-intent titles, packed viewer HTML, PR-spike + $0-median fixes.
 on:
   schedule:
     - cron: "0 9 * * 1"    # Mondays 09:00 UTC (~4-5am ET)
