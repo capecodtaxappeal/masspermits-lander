@@ -61,6 +61,11 @@ export async function onRequest(context) {
     if (cf.latitude) meta.la = String(cf.latitude).slice(0, 12);
     if (cf.longitude) meta.lo = String(cf.longitude).slice(0, 12);
     if (cf.asOrganization) meta.o = clean(cf.asOrganization, 40);
+    // Primary browser-language tag (coarse setting, not PII) — captured to test
+    // whether inbound traffic skews Portuguese/pt-BR, which would corroborate the
+    // Brazilian-tradesman ICP hypothesis far beyond our first 2 customers.
+    const al = request.headers.get("accept-language") || "";
+    if (al) meta.lang = clean(al.split(",")[0].trim(), 8).toLowerCase();
     const key = `hits/${day}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
     await env.BUNDLES.put(key, "", { customMetadata: meta });
   } catch (e) {
