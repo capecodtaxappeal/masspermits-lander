@@ -52,6 +52,8 @@
     padding:7px 8px;border-bottom:1px solid var(--border)}
   td{padding:8px 8px;border-bottom:1px solid #1c2737}
   .badge{background:var(--teal);color:#04201c;border-radius:5px;padding:1px 7px;font-size:11px;font-weight:700}
+  .townlink{color:inherit;text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px}
+  .townlink:hover{color:var(--teal)}
   .val{color:var(--good);font-weight:700;text-align:right;white-space:nowrap}
   .blur{filter:blur(4.5px);user-select:none;color:var(--muted)}
   .lockrow td{text-align:center;color:var(--muted);font-style:italic;padding:13px}
@@ -277,8 +279,11 @@ function render(){
   const tb = $("teaser");
   const rows = seg.teaser || [];
   if(rows.length){
+    // t.s = slug of that town's live /permits/ page (set server-side only when
+    // the page exists — villages like Hyannis carry their own slug). Rows
+    // without it (older data.json, sub-threshold towns) render as plain text.
     tb.innerHTML = rows.map(t=>`<tr>
-      <td style="color:var(--muted)">${t.d}</td><td>${t.city}</td>
+      <td style="color:var(--muted)">${t.d}</td><td>${t.s?`<a class="townlink" href="/permits/${t.s}">${t.city}</a>`:t.city}</td>
       <td><span class="blur">${t.addr}</span></td>
       <td><span class="badge">${t.trade}</span></td>
       <td class="val">${t.val}</td></tr>`).join("")
