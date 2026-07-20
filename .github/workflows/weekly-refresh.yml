@@ -8,7 +8,16 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v19 (2026-07-20): weekly per-town permit briefs at /news/<town>/<week>
+# engine v20 (2026-07-20): +13 OpenGov towns -> 124 sources. New Bedford + Fall
+# River (South Coast cities, verified same-day data) and 11 Worcester County
+# towns re-probed clean after the future-date guard (Dudley, Grafton, Harvard,
+# Lunenburg, Mendon, Westminster [trades only — no Building type], Gardner,
+# Paxton, Rutland, Millbury, Douglas). Skip-regex now drops vacant-building
+# registrations + demolition-delay reviews. Boundaries fetched for all 13;
+# regions updated (Central MA +10, MetroWest +Harvard, South Coast +2 cities).
+# Full recon detail: PermitPulse/data/expansion_recon_2026-07-20.json (also
+# maps 17 PermitEyes towns for the NEXT batch + 5 Citizenserve cities).
+# v19: weekly per-town permit briefs at /news/<town>/<week>
 # (blog_build.py + blog_voice.py — data-driven local-news pages, ~30/week, gated
 # at >=6 filings; fact-aware phrasing rotation, first-write-wins archives, whole
 # /news/ tree re-added to the sitemap every run). Town pages link their brief
