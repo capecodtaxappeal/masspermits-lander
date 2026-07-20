@@ -1,10 +1,14 @@
-# Cloudflare Pages — pure static site (no build step, no Worker code).
-# Deploy with:  npx wrangler pages deploy . --project-name=masspermits-lander
-# (Mirrors the capecodtaxappeal-lander setup, but this site is plain static —
-#  the whole repo root IS the deployable site.)
+# Cloudflare Pages — static site at the repo root PLUS Pages Functions (functions/).
+#
+# `pages_build_output_dir` is REQUIRED by Pages. This file previously used the
+# Workers-style `[assets]` block instead, which Cloudflare began rejecting on
+# 2026-07-20: every git-integration build failed with "missing
+# pages_build_output_dir" (even an empty commit), while `wrangler pages deploy`
+# only printed a warning and carried on — so the site silently stopped receiving
+# automated updates while manual deploys still worked. Keep this field.
+#
+# Manual deploy (fallback):
+#   npx wrangler pages deploy . --project-name=masspermits-lander
 name = "masspermits-lander"
 compatibility_date = "2026-06-01"
-
-[assets]
-directory = "."
-not_found_handling = "single-page-application"
+pages_build_output_dir = "."
