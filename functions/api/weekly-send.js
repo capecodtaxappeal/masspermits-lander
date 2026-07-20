@@ -57,6 +57,17 @@ export async function onRequest(context) {
         sent.push({ to: s.email, ok: false, error: String(e && e.message || e).slice(0, 120) });
       }
     }
+    // Persist per-recipient results to R2. The Actions log that shows this
+    // response needs repo-admin auth — when a paying subscriber said "I never
+    // get my emails" (Silvestre, 2026-07-20), there was NO readable record of
+    // whether their sends were ever attempted or how they failed. Same
+    // black-box pattern as refresh-status.json. Keeps the last 12 sends.
+    try {
+      const lo = await env.BUNDLES.get("feed-send-log.json");
+      const log = lo ? JSON.parse(await lo.text()) : [];
+      log.unshift({ at: new Date().toISOString(), subscribers: subs.length, sent });
+      await env.BUNDLES.put("feed-send-log.json", JSON.stringify(log.slice(0, 12)));
+    } catch (_) { /* logging must never fail the send */ }
     return json({ ok: true, subscribers: subs.length, sent });
   } catch (e) {
     return json({ ok: false, error: String(e && e.message || e) }, 500);

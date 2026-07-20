@@ -62,6 +62,17 @@ export async function onRequestPost(context) {
     }
 
     await sendEmail(env, email, kind, ref, bytes, bundleKey, myCode);
+    // Black-box the delivery to R2 (same pattern as feed-send-log.json): when a
+    // subscriber says "I never got my emails", this is the only place that
+    // records the signup-bundle attempt. A Resend rejection throws before this
+    // line -> 500 -> Stripe retries, so a logged entry means Resend ACCEPTED
+    // the mail — anything missing after that is filtering on the receiving end.
+    try {
+      const lo = await env.BUNDLES.get("delivery-log.json");
+      const log = lo ? JSON.parse(await lo.text()) : [];
+      log.unshift({ at: new Date().toISOString(), to: email, kind, bundle: bundleKey });
+      await env.BUNDLES.put("delivery-log.json", JSON.stringify(log.slice(0, 50)));
+    } catch (_) { /* logging must never fail the delivery */ }
     // add new SUBSCRIBERS (not one-time pack buyers) to the weekly-feed list in R2
     if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
       await addSubscriber(env, email, event);
