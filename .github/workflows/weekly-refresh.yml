@@ -8,7 +8,12 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v18 (2026-07-20): town names across the public site now LINK to their
+# engine v19 (2026-07-20): weekly per-town permit briefs at /news/<town>/<week>
+# (blog_build.py + blog_voice.py — data-driven local-news pages, ~30/week, gated
+# at >=6 filings; fact-aware phrasing rotation, first-write-wins archives, whole
+# /news/ tree re-added to the sitemap every run). Town pages link their brief
+# archive. Junk city strings excluded from town pages and briefs alike.
+# v18: town names across the public site now LINK to their
 # /permits/<town> pages — homepage teaser rows carry an "s" slug (only when the
 # page exists; villages link to their own page, Hyannis -> /permits/hyannis)
 # and statewide trade pages gain a linked Town column. The homepage region
@@ -115,6 +120,12 @@ jobs:
           git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" site
           python export_lander.py site/data.json
           python seo_build.py site
+          # weekly per-town permit briefs (/news/<town>/) — runs AFTER seo_build
+          # because it re-adds the whole /news/ tree to the sitemap seo_build
+          # regenerates from scratch (a skipped run would deindex the archive).
+          # Past weeks' briefs are first-write-wins and never touched. NEVER set
+          # BLOG_ANCHOR here — it re-anchors every run to that past week.
+          python blog_build.py site || echo "::warning::blog_build failed — briefs AND their sitemap entries missing this week"
           # weekly PR report page (masspermits.com/report/) + pitch digest artifacts
           python pr_report.py || echo "::warning::pr_report failed — report page not refreshed"
           if [ -f out/pr/report.html ]; then mkdir -p site/report && cp out/pr/report.html site/report/index.html; fi
