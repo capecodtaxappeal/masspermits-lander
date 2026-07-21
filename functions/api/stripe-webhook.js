@@ -138,6 +138,8 @@ async function addSubscriber(env, email, event) {
         customer: o.customer || "", // Stripe customer id — used to match cancellations
         since: new Date().toISOString().slice(0, 10),
         active: true,
+        // self-serve download token for the /api/my-leads fallback link
+        token: crypto.randomUUID().replace(/-/g, ""),
       });
       await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
     }

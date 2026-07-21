@@ -8,7 +8,16 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v20 (2026-07-20): +13 OpenGov towns -> 124 sources. New Bedford + Fall
+# engine v21 (2026-07-20): +16 PermitEyes towns -> 140 sources. Taunton (publishes
+# project VALUES), Attleboro, Milton, Randolph, Stoughton, Easton, Bridgewater,
+# West Bridgewater, Hanson, Avon, Cohasset, Norwell, Mansfield, Foxborough
+# (values too), Fairhaven, Sandwich. fetch_permiteyes now supports 3 ajax endpoint
+# variants + valuation columns + the sane-date guard; every layout live-validated
+# (Other <10% all towns). Bare-number address guard added. Boundaries + regions
+# updated. (Also: /api/my-leads self-serve download button — see functions.)
+# Citizenserve cities (Lawrence/Brockton/Medford/Revere/Somerville) probed and
+# SHELVED — reCAPTCHA v3 gated, not pursued (no bot-detection bypass).
+# v20 (2026-07-20): +13 OpenGov towns -> 124 sources. New Bedford + Fall
 # River (South Coast cities, verified same-day data) and 11 Worcester County
 # towns re-probed clean after the future-date guard (Dudley, Grafton, Harvard,
 # Lunenburg, Mendon, Westminster [trades only — no Building type], Gardner,

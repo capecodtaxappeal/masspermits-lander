@@ -44,6 +44,12 @@ export async function onRequest(context) {
     subs = (subs || []).filter((s) => s && s.email && s.active !== false);
     if (!subs.length) return json({ ok: true, note: "no active subscribers" });
 
+    // NOTE: weekly-send is READ-ONLY on subscribers.json. Tokens for the
+    // /api/my-leads download button are minted by the Stripe webhook when a
+    // subscriber is added (the only writer), so there is no second concurrent
+    // writer to race. A subscriber without a token (shouldn't happen after the
+    // one-time backfill) simply gets the email with no download button.
+
     const file = await env.BUNDLES.get("latest-weekly.zip");
     if (!file) return json({ ok: false, error: "no latest-weekly.zip in R2" }, 500);
     const b64 = base64(await file.arrayBuffer());
@@ -51,7 +57,7 @@ export async function onRequest(context) {
     const sent = [];
     for (const s of subs) {
       try {
-        const ok = await sendEmail(env, s.email, s.name || "", b64);
+        const ok = await sendEmail(env, s.email, s.name || "", b64, s.token || "");
         sent.push({ to: s.email, ok });
       } catch (e) {
         sent.push({ to: s.email, ok: false, error: String(e && e.message || e).slice(0, 120) });
@@ -74,9 +80,18 @@ export async function onRequest(context) {
   }
 }
 
-async function sendEmail(env, to, name, b64) {
+async function sendEmail(env, to, name, b64, token) {
   const first = name ? " " + name.split(" ")[0] : "";
   const d = new Date().toISOString().slice(0, 10);
+  // Self-serve download button — the always-works fallback when a spam filter
+  // strips or quarantines the attachment (see functions/api/my-leads.js).
+  const dl = token
+    ? '<p style="margin:18px 0"><a href="https://masspermits.com/api/my-leads?t=' + token + '" ' +
+      'style="background:#0e7c6b;color:#fff;font-weight:700;padding:11px 20px;border-radius:8px;' +
+      'text-decoration:none;display:inline-block">Download this week\'s leads &rarr;</a></p>' +
+      '<p style="color:#667;font-size:12.5px">Attachment not showing? Use the button above — same file, ' +
+      'straight from masspermits.com. Add leads@masspermits.com to your contacts so it always reaches your inbox.</p>'
+    : "";
   const html =
     '<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;color:#0e1622">' +
     '<h2 style="color:#0e7c6b">This week\'s MassPermits leads 📋</h2>' +
@@ -84,6 +99,7 @@ async function sendEmail(env, to, name, b64) {
     '<p><b>Open MassPermits-Leads.html</b> in any browser — interactive dashboard: live charts, ' +
     'filter by trade &amp; town, look up any contractor\'s active jobs, and click any permit for the ' +
     'full record. CSVs included too.</p>' +
+    dl +
     '<p style="color:#667;font-size:13px">Sourced from public municipal building-permit records. ' +
     'Just reply with any questions.<br>— MassPermits · masspermits.com</p></div>';
   const resp = await fetch("https://api.resend.com/emails", {
