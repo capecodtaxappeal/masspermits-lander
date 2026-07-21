@@ -8,7 +8,17 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v21 (2026-07-20): +16 PermitEyes towns -> 140 sources. Taunton (publishes
+# engine v22 (2026-07-21): per-town CONTRACTOR GUIDES + PermitEyes recency cap.
+# 14 evergreen bilingual (EN + Brazilian-Portuguese) SEO guides at
+# /guides/<town>-building-permits for the highest-value Portuguese/Brazilian
+# audience towns (New Bedford, Fall River, Marlborough, Framingham, Everett,
+# Hudson, Taunton, Stoughton, Dartmouth, Peabody, Chelsea, Ashland, Milton,
+# Dracut) — agent-authored, adversarially verified, grounded in each town's real
+# trade mix, data/town_guides.json in the tarball. Town pages + hub link them.
+# ALSO: PermitEyes fetcher now applies the 180-day recency window (matching
+# OpenGov) — low-volume towns (Avon/Hanson/West Bridgewater) were padding
+# "recent" leads with 1-2yr-old permits; now capped. Verified 0 stale.
+# v21 (2026-07-20): +16 PermitEyes towns -> 140 sources. Taunton (publishes
 # project VALUES), Attleboro, Milton, Randolph, Stoughton, Easton, Bridgewater,
 # West Bridgewater, Hanson, Avon, Cohasset, Norwell, Mansfield, Foxborough
 # (values too), Fairhaven, Sandwich. fetch_permiteyes now supports 3 ajax endpoint
