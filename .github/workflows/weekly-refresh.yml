@@ -8,7 +8,12 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v22 (2026-07-21): per-town CONTRACTOR GUIDES + PermitEyes recency cap.
+# engine v23 (2026-07-21): STATEWIDE guide coverage — 107 per-town contractor
+# guides (/guides/<town>-building-permits): the 14 curated bilingual target-town
+# guides + 93 English guides for every other covered town, each written from a
+# live fetch of that town's real trade mix (self-grounded agents). 33 towns hit
+# the session credit ceiling mid-run and backfill later via workflow resume.
+# v22 (2026-07-21): per-town CONTRACTOR GUIDES + PermitEyes recency cap.
 # 14 evergreen bilingual (EN + Brazilian-Portuguese) SEO guides at
 # /guides/<town>-building-permits for the highest-value Portuguese/Brazilian
 # audience towns (New Bedford, Fall River, Marlborough, Framingham, Everett,
