@@ -8,7 +8,11 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v23 (2026-07-21): STATEWIDE guide coverage — 107 per-town contractor
+# engine v24 (2026-07-22): COMPLETE guide coverage — 140/140 towns have a
+# contractor guide (/guides/<town>-building-permits). Final 28 S-Y towns
+# written by a scoped fan-out (self-grounded against live pages), validated
+# (word count, no ext links/emails/phones, comparison-accuracy prompt).
+# v23 (2026-07-21): STATEWIDE guide coverage — 107 per-town contractor
 # guides (/guides/<town>-building-permits): the 14 curated bilingual target-town
 # guides + 93 English guides for every other covered town, each written from a
 # live fetch of that town's real trade mix (self-grounded agents). 33 towns hit
