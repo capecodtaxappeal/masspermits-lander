@@ -8,7 +8,13 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v26 (2026-07-25): SEO deep-audit fixes. NEW region×trade pages
+# engine v27 (2026-07-25): SEO batch 2. NEW cost pages
+# /permits/<town>-<trade>-cost — homeowner "how much does <trade> cost in
+# <town>" intent from real declared permit values (data-gated >=8 valued rows,
+# ~160+ pages, median + 25/75 range), redirecting to the contractor CTA; linked
+# from the trade×town page. Guide titles reframed to "<Town> Contractor Guide —
+# Where the Work Is" so they stop cannibalizing the /permits/<town> data page
+# for the "<town> building permits" query. v26: SEO deep-audit fixes. NEW region×trade pages
 # (/roofing-leads-cape-cod etc. — ~29+ high-intent commercial pages filling the
 # town→statewide tier gap, all data-gated + linked from statewide pages). Trade
 # acronym casing fixed (HVAC not "hvac") across every meta/intro/FAQ. Trade×town
