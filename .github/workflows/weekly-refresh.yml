@@ -8,7 +8,13 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v24 (2026-07-22): COMPLETE guide coverage — 140/140 towns have a
+# engine v25 (2026-07-24): SEO RANKING push — internal-link graph so the 140
+# guides stop being islands: each links to 6 nearby-town guides + its town's
+# trade money-pages (spreads rank equity across the whole set, not just
+# externally-linked Chatham). Sitemap now carries <lastmod> (weekly build date =
+# honest freshness signal). Plus IndexNow: every URL pushed to Bing/Yandex each
+# run (key file 7f0001...e302.txt in repo root) for fast crawl/index.
+# v24 (2026-07-22): COMPLETE guide coverage — 140/140 towns have a
 # contractor guide (/guides/<town>-building-permits). Final 28 S-Y towns
 # written by a scoped fan-out (self-grounded against live pages), validated
 # (word count, no ext links/emails/phones, comparison-accuracy prompt).
@@ -175,6 +181,22 @@ jobs:
           git add -A
           git commit -m "data+seo+report: weekly site refresh (automated)" && git push origin main \
             || echo "site unchanged — nothing to push"
+
+      # IndexNow: proactively tell Bing/Yandex/Seznam/Naver (and, indirectly,
+      # Google) about every URL each week so fresh guides/briefs get crawled in
+      # hours instead of waiting on organic discovery. Key file is served from
+      # the repo root (public by design). Runs from the freshly-built sitemap.
+      - name: Submit URLs to IndexNow
+        continue-on-error: true
+        run: |
+          KEY=7f0001add081ec7e0301b1a76611e302
+          # extract every <loc> from the sitemap we just built + committed
+          URLS=$(grep -oE '<loc>[^<]+</loc>' site/sitemap.xml | sed 's/<[^>]*>//g' \
+            | python3 -c "import sys,json; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))")
+          BODY=$(python3 -c "import json,sys; u=json.load(sys.stdin); print(json.dumps({'host':'masspermits.com','key':'$KEY','keyLocation':'https://masspermits.com/'+'$KEY'+'.txt','urlList':u}))" <<< "$URLS")
+          code=$(curl -s -o /dev/null -w '%{http_code}' -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json' --data "$BODY")
+          echo "IndexNow submit: HTTP $code ($(echo "$URLS" | python3 -c 'import sys,json;print(len(json.load(sys.stdin)))') urls)"
 
       # Weekly PR pitch digest -> owner's inbox (recipient hard-locked server-side).
       # He forwards the pitches he likes; nothing is ever auto-sent to outsiders.
