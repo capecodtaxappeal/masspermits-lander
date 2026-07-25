@@ -8,7 +8,16 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v25 (2026-07-24): SEO RANKING push — internal-link graph so the 140
+# engine v26 (2026-07-25): SEO deep-audit fixes. NEW region×trade pages
+# (/roofing-leads-cape-cod etc. — ~29+ high-intent commercial pages filling the
+# town→statewide tier gap, all data-gated + linked from statewide pages). Trade
+# acronym casing fixed (HVAC not "hvac") across every meta/intro/FAQ. Trade×town
+# pages gain reciprocal+lateral links (guide, sibling trades, same trade nearby,
+# statewide). Statewide pages cross-link other trades + their regions. Schema:
+# Article gains image/datePublished/publisher.logo, Dataset gains feed
+# distribution, Org gains logo/email/areaServed; og:image (og.png) sitewide.
+# pt-BR lang on Portuguese guide sections. Homepage internal-link block.
+# v25 (2026-07-24): SEO RANKING push — internal-link graph so the 140
 # guides stop being islands: each links to 6 nearby-town guides + its town's
 # trade money-pages (spreads rank equity across the whole set, not just
 # externally-linked Chatham). Sitemap now carries <lastmod> (weekly build date =
