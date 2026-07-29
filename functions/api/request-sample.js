@@ -66,7 +66,21 @@ export async function onRequestPost(context) {
   }
 
   try { await sendSample(env, email, trade); } catch (e) { /* enrolled; nurture continues */ }
+  // Notify the owner in the BUSINESS inbox (mirrors agent-sample.js). Contractor
+  // sample requests used to only reach the owner's personal Gmail via Web3Forms,
+  // so they were invisible in the masspermits inbox — this closes that blind spot.
+  try { await notifyOwner(env, email, trade, area); } catch (e) { /* non-fatal */ }
   return json({ ok: true });
+}
+
+const OWNER_EMAIL = "patrick@masspermits.com";
+async function notifyOwner(env, email, trade, area) {
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  await send(env, OWNER_EMAIL, `Free-sample request: ${trade || "Building"} / ${area || "all"}`,
+    wrap(`<p><b>${esc(email)}</b> requested a free sample on masspermits.com.</p>
+      <p>Trade: <b>${esc(trade || "—")}</b> &nbsp; Area: <b>${esc(area || "—")}</b></p>
+      <p>They already got the masked sample + are in the nurture drip. Reply from your
+      inbox if you want to follow up personally.</p>`));
 }
 
 async function sendSample(env, to, trade) {
