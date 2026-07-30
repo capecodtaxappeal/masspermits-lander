@@ -8,7 +8,11 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v28 (2026-07-30): Patch.com weekly pack (patch_pack.py). Picks the 2-3
+# engine v29 (2026-07-30): Patch coverage gate. Patch only has sites for 49 of
+# our 140 towns (probed live: Yarmouth/Dennis/Chatham + 88 others 404), so the
+# pack was picking towns with nowhere to post. patch_pack now selects only from
+# data/patch_towns.json and every picked slug is verified live.
+# v28: Patch.com weekly pack (patch_pack.py). Picks the 2-3
 # most NEWSWORTHY towns from the week (ranked on real movement, not town size),
 # writes each as a resident-facing local-news item with masked streets, and
 # emails a paste-ready pack to the owner. Deliberately human-posted: one real
