@@ -8,7 +8,15 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v27 (2026-07-25): SEO batch 2. NEW cost pages
+# engine v28 (2026-07-30): Patch.com weekly pack (patch_pack.py). Picks the 2-3
+# most NEWSWORTHY towns from the week (ranked on real movement, not town size),
+# writes each as a resident-facing local-news item with masked streets, and
+# emails a paste-ready pack to the owner. Deliberately human-posted: one real
+# Patch account, one town per post — a multi-town blast is spam and would cost
+# the backlinks. Honesty guards: never quotes a >80% swing (municipal batch
+# processing skews single weeks — compares to the 4-week average instead),
+# suppresses outlier valuations, drops mangled street names, self-checks length
+# and masking before emitting. v27: SEO batch 2. NEW cost pages
 # /permits/<town>-<trade>-cost — homeowner "how much does <trade> cost in
 # <town>" intent from real declared permit values (data-gated >=8 valued rows,
 # ~160+ pages, median + 25/75 range), redirecting to the contractor CTA; linked
@@ -184,6 +192,10 @@ jobs:
           # Past weeks' briefs are first-write-wins and never touched. NEVER set
           # BLOG_ANCHOR here — it re-anchors every run to that past week.
           python blog_build.py site || echo "::warning::blog_build failed — briefs AND their sitemap entries missing this week"
+          # Patch.com paste-ready pack (2-3 most newsworthy towns, written as
+          # local news). Emailed to the owner below; posting is a human step by
+          # design — one real account, one town per post, never a blast.
+          python patch_pack.py || echo "::warning::patch_pack failed — no Patch pack this week"
           # weekly PR report page (masspermits.com/report/) + pitch digest artifacts
           python pr_report.py || echo "::warning::pr_report failed — report page not refreshed"
           if [ -f out/pr/report.html ]; then mkdir -p site/report && cp out/pr/report.html site/report/index.html; fi
@@ -224,6 +236,18 @@ jobs:
           curl -fsS -X POST -H "Authorization: Bearer $OIDC" -H "Content-Type: text/html" \
             --data-binary @out/pr/email_digest.html \
             "https://masspermits.com/api/mail-owner?subject=$(python -c 'import urllib.parse;print(urllib.parse.quote("Weekly PR pitches — forward the ones you like"))')"
+
+      # Patch pack -> owner's inbox, paste-ready. Deliberately NOT auto-posted:
+      # Patch is one real account posting genuine local news, one town at a time.
+      - name: Mail Patch pack to owner (OIDC)
+        continue-on-error: true
+        run: |
+          [ -f out/patch/pack.html ] || { echo "no patch pack produced"; exit 0; }
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+          curl -fsS -X POST -H "Authorization: Bearer $OIDC" -H "Content-Type: text/html" \
+            --data-binary @out/patch/pack.html \
+            "https://masspermits.com/api/mail-owner?subject=$(python -c 'import urllib.parse;print(urllib.parse.quote("Patch pack — paste-ready local news, 3 towns"))')"
 
       # Weekly data video -> Bluesky (skips cleanly if creds absent)
       - name: Post weekly video to Bluesky
