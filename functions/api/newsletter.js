@@ -23,6 +23,14 @@ export async function onRequestPost(context) {
   if (email.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
     return json({ error: "invalid email" }, 400);
   }
+  // Optional town — signups coming from a /permits/<town> page pass it, and the
+  // weekly digest is then scoped to THAT town instead of the statewide roundup.
+  // This is the free tier: it turns organic town-page traffic (2,000+ indexed
+  // pages that previously had NO email capture at all) into a list to upsell.
+  // Slug charset only, so it can never address anything but a real town page.
+  const town = String(b.town || "").trim().toLowerCase().slice(0, 40);
+  const townOk = /^[a-z][a-z0-9-]{1,39}$/.test(town) ? town : "";
+
   const ip = request.headers.get("cf-connecting-ip") || "?";
   const n = (ipCounts.get(ip) || 0) + 1;
   ipCounts.set(ip, n);
@@ -46,9 +54,11 @@ export async function onRequestPost(context) {
 
     const tok = crypto.randomUUID().replace(/-/g, "");
     const ts = new Date().toISOString();
-    await env.BUNDLES.put(key, JSON.stringify({ email, tok, ts, confirmed: false }), {
+    await env.BUNDLES.put(key, JSON.stringify({ email, tok, ts, confirmed: false, town: townOk }), {
       httpMetadata: { contentType: "application/json" },
-      customMetadata: { c: "0", ts, tok },
+      // town rides in metadata so the weekly sender can scope each reader's
+      // digest without a body read per subscriber (Workers subrequest budget)
+      customMetadata: { c: "0", ts, tok, ...(townOk ? { town: townOk } : {}) },
     });
     await sendConfirm(env, email, tok);
   } catch (e) {

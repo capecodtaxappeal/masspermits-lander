@@ -36,7 +36,8 @@ export async function onRequest(context) {
       for (const o of list.objects) {
         const m = o.customMetadata || {};
         if (m.c === "1" && m.un !== "1" && m.tok) {
-          readers.push({ email: decodeURIComponent(o.key.slice("newsletter/".length)), tok: m.tok });
+          readers.push({ email: decodeURIComponent(o.key.slice("newsletter/".length)),
+                         tok: m.tok, town: m.town || "" });
         }
       }
       cursor = list.truncated ? list.cursor : undefined;
@@ -49,10 +50,22 @@ export async function onRequest(context) {
     const items = (await feedResp.json()).items || [];
     const digest = buildDigest(items);
 
+    // Free TOWN tier: readers who signed up from a /permits/<town> page get a
+    // digest scoped to their own town. Built once per distinct town (not per
+    // reader) so a big list can't blow the subrequest budget. A town with no
+    // items this week falls back to the statewide digest rather than sending
+    // an empty email.
+    const townDigests = new Map();
+    for (const r of readers) {
+      if (!r.town || townDigests.has(r.town)) continue;
+      const mine = items.filter(i => slug(i._town) === r.town);
+      townDigests.set(r.town, mine.length ? { ...buildDigest(mine), town: r.town } : null);
+    }
+
     const sent = [];
     for (const r of readers.slice(0, MAX_PER_RUN)) {
       try {
-        await sendDigest(env, r, digest);
+        await sendDigest(env, r, (r.town && townDigests.get(r.town)) || digest);
         sent.push({ to: r.email, ok: true });
       } catch (e) {
         sent.push({ to: r.email, ok: false, error: String(e && e.message || e).slice(0, 120) });
@@ -95,13 +108,25 @@ async function sendDigest(env, reader, d) {
   const tradeChips = d.topTrades.map(([t, n]) =>
     `<span style="display:inline-block;background:#eef7f4;border:1px solid #cfe9e2;border-radius:14px;padding:3px 10px;margin:2px;font-size:12px;color:#0e7c6b">${esc(t)} · ${n}</span>`).join(" ");
 
+  // A town reader gets their own town named in the header; the statewide reader
+  // gets the roundup. Same data, scoped — that's the whole free-tier promise.
+  const townName = d.town ? (d.topTowns[0] ? d.topTowns[0][0] : d.town) : "";
+  const kicker = townName ? `${esc(townName)} Permits · ${date}` : `This Week in MA Permits · ${date}`;
+  const headline = townName
+    ? `${d.total} new building permits in ${esc(townName)}`
+    : `${d.total} fresh building permits across Massachusetts`;
+  const intro = townName
+    ? `Every permit filed in ${esc(townName)} this week — each one a property owner cleared to spend.
+       Full detail (exact address + owner) at <a href="https://masspermits.com/permits/${slug(townName)}" style="color:#0e7c6b">masspermits.com</a>.`
+    : `Where the work is being approved this week — every permit below is a
+       homeowner cleared to spend. Full leads (exact address + owner) at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.`;
+
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:580px;margin:0 auto;color:#0e1622">
-    <p style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#0e7c6b;font-weight:700;margin:0 0 4px">This Week in MA Permits · ${date}</p>
-    <h2 style="margin:0 0 12px">${d.total} fresh building permits across Massachusetts</h2>
-    <p style="color:#445;margin:0 0 18px">Where the work is being approved this week — every permit below is a
-    homeowner cleared to spend. Full leads (exact address + owner) at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.</p>
-    <h3 style="margin:18px 0 6px;font-size:15px">Busiest towns</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:14px">${townRows}</table>
+    <p style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#0e7c6b;font-weight:700;margin:0 0 4px">${kicker}</p>
+    <h2 style="margin:0 0 12px">${headline}</h2>
+    <p style="color:#445;margin:0 0 18px">${intro}</p>
+    ${townName ? "" : `<h3 style="margin:18px 0 6px;font-size:15px">Busiest towns</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:14px">${townRows}</table>`}
     <h3 style="margin:18px 0 6px;font-size:15px">Trades filing this week</h3>
     <p style="margin:0 0 6px">${tradeChips}</p>
     ${bigRows ? `<h3 style="margin:18px 0 6px;font-size:15px">Biggest projects</h3>
@@ -118,7 +143,9 @@ async function sendDigest(env, reader, d) {
     method: "POST",
     headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from: env.FROM_EMAIL, to: [reader.email],
-      subject: `This Week in MA Permits — ${d.total} new filings, top town ${d.topTowns[0] ? d.topTowns[0][0] : "Boston"}`,
+      subject: townName
+        ? `${townName} permits — ${d.total} new filings this week`
+        : `This Week in MA Permits — ${d.total} new filings, top town ${d.topTowns[0] ? d.topTowns[0][0] : "Boston"}`,
       html,
       headers: { "List-Unsubscribe": `<${unsub}>` } }),
   });

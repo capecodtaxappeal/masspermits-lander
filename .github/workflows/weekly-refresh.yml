@@ -8,7 +8,16 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v29 (2026-07-30): Patch coverage gate. Patch only has sites for 49 of
+# engine v30 (2026-07-30): FREE TOWN-ALERT TIER — the funnel widener. Every
+# /permits/<town> page now carries a free weekly signup ("Get <Town> permits
+# free, every Monday") posting to /api/newsletter with the town slug. Until now
+# 2,000+ indexed pages offered exactly ONE action (pay $49/$99), so organic
+# visitors who weren't ready to buy simply left. newsletter.js stores the town in
+# customMetadata; newsletter-send.js scopes each reader's Monday digest to their
+# own town (built once per town, not per reader, to stay inside the subrequest
+# budget; empty town falls back to the statewide roundup rather than sending a
+# blank email). Double opt-in, one-click unsubscribe, honeypot + daily cap all
+# inherited. v29: Patch coverage gate. Patch only has sites for 49 of
 # our 140 towns (probed live: Yarmouth/Dennis/Chatham + 88 others 404), so the
 # pack was picking towns with nowhere to post. patch_pack now selects only from
 # data/patch_towns.json and every picked slug is verified live.
