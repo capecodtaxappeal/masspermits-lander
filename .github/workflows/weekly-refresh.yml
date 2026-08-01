@@ -359,14 +359,20 @@ jobs:
       # without repo activity. This commit after each successful run counts as
       # activity, so the cron can never silently die. Pushed to a dedicated
       # 'heartbeat' branch: no Pages rebuild, no workflow triggers.
+      # if: always() is load-bearing. Without it the heartbeat is skipped exactly
+      # when it matters most: the coverage gate aborts the job, every later step
+      # is skipped, and the mechanism that stops GitHub disabling the cron stops
+      # running for as long as the outage lasts. A dead cron would then outlive
+      # the outage that caused it.
       - name: Keep-alive heartbeat commit
+        if: always()
         continue-on-error: true
         run: |
           git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" hb
           cd hb
           git config user.name "masspermits-refresh-bot"
           git config user.email "actions@github.com"
-          date -u +"last successful refresh: %Y-%m-%dT%H:%M:%SZ" > .heartbeat
+          date -u +"last refresh attempt: %Y-%m-%dT%H:%M:%SZ (job status: ${{ job.status }})" > .heartbeat
           git add .heartbeat
-          git commit -m "heartbeat: weekly refresh succeeded"
+          git commit -m "heartbeat: weekly refresh ran (${{ job.status }})"
           git push -f origin HEAD:refs/heads/heartbeat

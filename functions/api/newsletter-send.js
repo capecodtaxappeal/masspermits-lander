@@ -47,8 +47,9 @@ export async function onRequest(context) {
     // digest content from our own public feed
     const feedResp = await fetch("https://masspermits.com/feed/permits.json");
     if (!feedResp.ok) return json({ ok: false, error: "feed fetch " + feedResp.status }, 500);
-    const items = (await feedResp.json()).items || [];
-    const digest = buildDigest(items);
+    const feedJson = await feedResp.json();
+    const items = feedJson.items || [];
+    const digest = buildDigest(items, feedJson);
 
     // Free TOWN tier: readers who signed up from a /permits/<town> page get a
     // digest scoped to their own town. Built once per distinct town (not per
@@ -67,12 +68,13 @@ export async function onRequest(context) {
       if (!r.town || townDigests.has(r.town)) continue;
       if (fetched >= MAX_TOWN_FETCHES) { townDigests.set(r.town, null); continue; }
       fetched++;
-      let mine = null;
+      let mine = null, meta = null;
       try {
         const tr = await fetch(`https://masspermits.com/feed/${r.town}.json`);
-        if (tr.ok) mine = (await tr.json()).items || [];
-      } catch { mine = null; }
-      townDigests.set(r.town, mine && mine.length ? { ...buildDigest(mine), town: r.town } : null);
+        if (tr.ok) { meta = await tr.json(); mine = meta.items || []; }
+      } catch { mine = null; meta = null; }
+      townDigests.set(r.town, mine && mine.length
+        ? { ...buildDigest(mine, meta), town: r.town } : null);
     }
 
     const sent = [];
@@ -91,19 +93,35 @@ export async function onRequest(context) {
   }
 }
 
-function buildDigest(items) {
+function buildDigest(items, meta) {
   const towns = {}, trades = {};
   for (const it of items) {
     if (it._town) towns[it._town] = (towns[it._town] || 0) + 1;
     if (it._trade) trades[it._trade] = (trades[it._trade] || 0) + 1;
   }
-  const topTowns = Object.entries(towns).sort((a, b) => b[1] - a[1]).slice(0, 6);
+  const counts = Object.entries(towns).sort((a, b) => b[1] - a[1]);
+  const topTowns = counts.slice(0, 6);
   const topTrades = Object.entries(trades).sort((a, b) => b[1] - a[1]).slice(0, 5);
   const biggest = items.filter(i => typeof i._value === "number" && i._value > 0)
     .sort((a, b) => b._value - a._value).slice(0, 3);
   const dates = items.map(i => String(i.date_published || "").slice(0, 10)).filter(Boolean).sort();
-  return { total: items.length, topTowns, topTrades, biggest,
-           newest: dates[dates.length - 1] || "", oldest: dates[0] || "" };
+  // items is TRUNCATED (60 per town / 100 statewide, and the statewide feed
+  // additionally caps 3 per town). So items.length is a cap, not a count, and
+  // its min/max dates narrow as a town gets busier. The feed now publishes the
+  // uncapped window; prefer it, and fall back only when it is absent.
+  const known = meta && Number.isInteger(meta._window_total);
+  const total = known ? meta._window_total : items.length;
+  // If the feed does not publish a window total we CANNOT state a count —
+  // items.length would be the cap. Say "the latest" rather than a number.
+  const unknownTotal = !known;
+  // The statewide feed allows only 3 rows per town, so "busiest towns" there
+  // ranks the cap, not activity: most towns tie at 3 and the genuinely busiest
+  // town does not stand out. Claim a ranking only when the top is strictly
+  // ahead of SECOND place — otherwise "top town X" is a coin flip.
+  const ranked = counts.length > 1 && counts[0][1] > counts[1][1];
+  return { total, unknownTotal, ranked, topTowns, topTrades, biggest,
+           newest: (meta && meta._window_to) || dates[dates.length - 1] || "",
+           oldest: (meta && meta._window_from) || dates[0] || "" };
 }
 
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -126,27 +144,32 @@ async function sendDigest(env, reader, d) {
   // A town reader gets their own town named in the header; the statewide reader
   // gets the roundup. Same data, scoped — that's the whole free-tier promise.
   const townName = d.town ? (d.topTowns[0] ? d.topTowns[0][0] : d.town) : "";
-  // Say "recent", not "this week", and never "every permit filed".
-  // Both feeds are a rolling ~30-day window, capped (60 per town / 100
-  // statewide) — so the count is a floor, not a census. Claiming a weekly total
-  // we cannot compute would be a fabricated statistic, and this goes out over
-  // email where it cannot be corrected later.
+  // Say "recent", not "this week", and never "every permit filed" — the feed is
+  // a rolling window, not a weekly census. d.total is the UNCAPPED window count
+  // (items itself is truncated); if that is unavailable we say "the latest"
+  // rather than print a cap as if it were a count.
   const kicker = townName ? `${esc(townName)} Permits · ${date}` : `MA Permit Activity · ${date}`;
+  const n = d.unknownTotal ? "" : `${d.total} `;
   const headline = townName
-    ? `${d.total} recent building permits in ${esc(townName)}`
-    : `${d.total} recent building permits across Massachusetts`;
+    ? `${n}recent building permits in ${esc(townName)}`.replace(/^recent/, "Recent")
+    : `${n}recent building permits across Massachusetts`.replace(/^recent/, "Recent");
   const window = d.oldest && d.newest ? ` Filed between ${d.oldest} and ${d.newest}.` : "";
+  // "homeowner" was wrong on the statewide branch: it sits directly above a
+  // Biggest-projects table sorted by valuation, which structurally selects the
+  // LEAST residential rows in the set. "Property owner" is true of both.
   const intro = townName
     ? `The latest permit activity in ${esc(townName)} — each one a property owner cleared to spend.${window}
        Full detail (exact address + owner) at <a href="https://masspermits.com/permits/${slug(townName)}" style="color:#0e7c6b">masspermits.com</a>.`
     : `Where the work is being approved — every permit below is a
-       homeowner cleared to spend.${window} Full leads (exact address + owner) at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.`;
+       property owner cleared to spend.${window} Full leads (exact address + owner) at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.`;
 
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:580px;margin:0 auto;color:#0e1622">
     <p style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#0e7c6b;font-weight:700;margin:0 0 4px">${kicker}</p>
     <h2 style="margin:0 0 12px">${headline}</h2>
     <p style="color:#445;margin:0 0 18px">${intro}</p>
-    ${townName ? "" : `<h3 style="margin:18px 0 6px;font-size:15px">Busiest towns</h3>
+    ${townName || !d.ranked ? (townName ? "" : `<h3 style="margin:18px 0 6px;font-size:15px">Towns filing</h3>
+    <p style="margin:0 0 6px;font-size:14px">${d.topTowns.map(([t]) => `<a href="https://masspermits.com/permits/${slug(t)}" style="color:#0e7c6b;text-decoration:none">${esc(t)}</a>`).join(" · ")}</p>`)
+      : `<h3 style="margin:18px 0 6px;font-size:15px">Busiest towns</h3>
     <table style="width:100%;border-collapse:collapse;font-size:14px">${townRows}</table>`}
     <h3 style="margin:18px 0 6px;font-size:15px">Trades filing</h3>
     <p style="margin:0 0 6px">${tradeChips}</p>
@@ -164,9 +187,12 @@ async function sendDigest(env, reader, d) {
     method: "POST",
     headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from: env.FROM_EMAIL, to: [reader.email],
+      // No "top town X" unless the counts actually rank — on the statewide feed
+      // most towns tie at the 3-per-town cap, so naming a winner is a coin flip
+      // dressed as a fact (and the genuinely busiest town goes unnamed).
       subject: townName
-        ? `${townName} permits — ${d.total} recent filings`
-        : `MA permit activity — ${d.total} recent filings, top town ${d.topTowns[0] ? d.topTowns[0][0] : "Boston"}`,
+        ? `${townName} permits — ${d.unknownTotal ? "latest filings" : d.total + " recent filings"}`
+        : `MA permit activity — ${d.unknownTotal ? "the latest filings" : d.total + " recent filings"}${d.ranked && d.topTowns[0] ? ", top town " + d.topTowns[0][0] : ""}`,
       html,
       headers: { "List-Unsubscribe": `<${unsub}>` } }),
   });
