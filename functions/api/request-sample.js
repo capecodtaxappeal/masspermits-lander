@@ -86,11 +86,12 @@ async function notifyOwner(env, email, trade, area) {
 async function sendSample(env, to, trade) {
   const t = trade && trade !== "all" && trade !== "Other" ? trade : "your trade";
   const html = wrap(`
-    <h2 style="color:#0e7c6b">This week's MassPermits batch 📋</h2>
-    <p>Here's this week's real building-permit leads for ${t} in Massachusetts — the
-    same batch subscribers get every Monday:</p>
+    <h2 style="color:#0e7c6b">Your MassPermits sample file 📋</h2>
+    <p>Around a thousand recent Massachusetts building permits, ~45 towns and every trade —
+    open it and filter to ${t}. (The $99/mo feed is the fresh weekly cut, unmasked; this
+    sample is so you can judge the format and the data quality first.)</p>
     <p style="margin:16px 0"><a href="https://masspermits.com/api/sample"
-      style="color:#0e7c6b;font-weight:700;font-size:15px">↓ Download this week's free batch</a>
+      style="color:#0e7c6b;font-weight:700;font-size:15px">↓ Download the free sample</a>
       &nbsp;— open MassPermits-Leads.html in any browser (names &amp; street numbers masked in the free one).</p>
     <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:18px 0;text-align:center">
       <p style="margin:0 0 10px;font-weight:600;color:#0e1622">Want it fresh every Monday, automatically?</p>
@@ -101,7 +102,7 @@ async function sendSample(env, to, trade) {
     <p style="color:#667">This batch goes stale in a week — permits are a flow, not a list.
     The $99/mo feed unlocks every name &amp; address, fresh weekly; a single $49 pack is one
     week only. Any questions, just reply — a real person reads these.</p>`);
-  await send(env, to, "This week's MassPermits batch — " + t, html);
+  await send(env, to, "Your MassPermits sample file — " + t, html);
 }
 
 function wrap(inner) {
