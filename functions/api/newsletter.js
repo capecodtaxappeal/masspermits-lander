@@ -60,7 +60,16 @@ export async function onRequestPost(context) {
       // digest without a body read per subscriber (Workers subrequest budget)
       customMetadata: { c: "0", ts, tok, ...(townOk ? { town: townOk } : {}) },
     });
-    await sendConfirm(env, email, tok);
+    try {
+      await sendConfirm(env, email, tok);
+    } catch (e) {
+      // Roll the signup back. The existence check above refuses to re-send a
+      // confirm to an address already on file, so leaving an unconfirmed record
+      // behind after a Resend outage would lock that person out of the list
+      // PERMANENTLY — every later attempt returns ok:true and mails nothing.
+      await env.BUNDLES.delete(key).catch(() => {});
+      throw e;
+    }
   } catch (e) {
     return json({ ok: false, error: "store failed" }, 500);
   }
