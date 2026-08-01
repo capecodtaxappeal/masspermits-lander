@@ -131,7 +131,7 @@
 
   <div style="background:rgba(45,212,191,.10);border:1px solid var(--teal);border-radius:10px;padding:10px 16px;text-align:center;font-size:14px;margin-top:6px">
     🚀 <b style="color:var(--teal)">Founders' rate:</b> first month of the Weekly Feed for
-    <b>$49</b> — use code <b style="letter-spacing:.04em">FOUNDERS49</b> at checkout. Ends July&nbsp;31.
+    <b>$49</b> — use code <b style="letter-spacing:.04em">FOUNDERS49</b> at checkout.
   </div>
 
   <div class="hero">
@@ -171,7 +171,7 @@
       <div id="feed-math" style="color:var(--muted);font-style:italic;font-size:13px;margin:2px 0 12px">Less than one job. One closed lead pays for the year.</div>
       <div class="d">A fresh batch every week, automatically — full homeowner name, address, and project value for every new <span id="p-trade3">trade</span> permit in <span id="p-area3">your area</span>. You reach owners before your competitors even see the permit.</div>
       <a class="cta buy-feed" id="buy-feed" href="#sample" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
-      <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 — code <span style="letter-spacing:.04em">FOUNDERS49</span> at checkout (ends Jul 31)</div>
+      <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 — code <span style="letter-spacing:.04em">FOUNDERS49</span> at checkout</div>
       <div style="color:var(--muted);font-size:12px;margin-top:7px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
     </div>
     <div style="text-align:center;margin-top:14px">
@@ -338,6 +338,16 @@ function initSelectors(){
   st.innerHTML = `<option value="">All trades</option>` + DATA.trade_list.map(t=>`<option value="${t}">${t}</option>`).join("");
   sa.innerHTML = DATA.areas.map(a=>`<option value="${a.key}">${a.label}</option>`).join("");
   SELAREA = DATA.areas[0].key;
+  // Prefill from ?trade=&area= — the 2,000+ SEO pages now carry the visitor's
+  // trade and region on every CTA, so a roofer arriving from /permits/plymouth-roofing
+  // lands already filtered instead of re-declaring who he is. Validated against
+  // the real option lists so nothing arbitrary can reach client_reference_id.
+  try {
+    const qp = new URL(location.href).searchParams;
+    const qt = qp.get("trade") || "", qa = qp.get("area") || "";
+    if (qt && DATA.trade_list.includes(qt)) { SELTRADE = qt; st.value = qt; }
+    if (qa && DATA.areas.some(a => a.key === qa)) { SELAREA = qa; sa.value = qa; }
+  } catch (_e) {}
   st.onchange = ()=>{ SELTRADE = st.value; render(); };
   sa.onchange = ()=>{ SELAREA = sa.value; render(); };
 }

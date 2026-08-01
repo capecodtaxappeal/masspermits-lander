@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found — MassPermits</title>
+<!-- Without this file Cloudflare Pages falls back to index.html with HTTP 200,
+     so EVERY nonsense URL returned a 200 "index,follow" copy of the homepage.
+     With a 2,176-page sitemap that reads to Google as an unbounded soft-404
+     space and suppresses crawl rate across the whole site. -->
+<meta name="robots" content="noindex,follow">
+<style>
+:root{--bg:#0e1622;--fg:#e8eef5;--muted:#8aa0b6;--teal:#2dd4bf;--border:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,Segoe UI,Arial,sans-serif;
+ display:flex;align-items:center;justify-content:center;min-height:100vh;padding:32px}
+.wrap{max-width:560px;text-align:center}
+.brand{font-size:20px;font-weight:800;margin-bottom:22px}
+.brand b{color:var(--teal)}
+h1{font-size:28px;margin:0 0 10px}
+p{color:var(--muted);margin:0 0 22px}
+.links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+a.chip{display:inline-block;padding:9px 16px;border:1px solid var(--border);border-radius:999px;
+ color:var(--fg);text-decoration:none;font-size:14px}
+a.chip:hover{border-color:var(--teal);color:var(--teal)}
+a.cta{display:inline-block;margin-top:24px;background:var(--teal);color:#04201c;font-weight:700;
+ padding:12px 26px;border-radius:9px;text-decoration:none}
+</style></head><body>
+<div class="wrap">
+  <div class="brand">Mass<b>Permits</b></div>
+  <h1>That page doesn't exist</h1>
+  <p>The link may be old, or the town or trade you're after isn't one we publish yet.</p>
+  <div class="links">
+    <a class="chip" href="/permits/">All towns</a>
+    <a class="chip" href="/report/">Weekly activity report</a>
+    <a class="chip" href="/news/">Permit news by town</a>
+    <a class="chip" href="/feed.xml">RSS feed</a>
+    <a class="chip" href="/feed/permits.json">JSON API</a>
+  </div>
+  <a class="cta" href="/">Find leads in your trade &rarr;</a>
+</div>
+</body></html>

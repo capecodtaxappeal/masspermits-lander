@@ -8,7 +8,34 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v30 (2026-07-30): FREE TOWN-ALERT TIER — the funnel widener. Every
+# engine v31 (2026-08-01): CAPTURE EVERYWHERE + FEED/SCHEMA/CTA REPAIR.
+# (a) The free town-alert signup was live on ONE page type — /permits/<town>,
+# 302 of 2,179 indexed pages. It now also renders on trade×town, cost pages,
+# the 141 town guides and every /news/ brief: ~1,940 pages of capture instead
+# of 302, for code that was already written.
+# (b) The public feeds were unusable as a syndication asset and were verified
+# so: /feed/permits.json served 100 items that resolved to 35 URLs, all from a
+# SINGLE date, with "Project value $0" on every row (valuation is genuinely
+# absent for ~78% of towns, and the generator printed the 0 anyway). Feeds now
+# draw from a rolling 30-day window with a per-town cap and dedupe, omit value
+# rather than publish a false $0, and link the town+trade page when one exists.
+# A registry or aggregator that opens the feed no longer concludes it's broken.
+# (c) Dataset JSON-LD: all ~140 town pages advertised the SAME two global feed
+# URLs, reading as 140 copies of one dataset. Each now carries its own feed,
+# url, identifier, license, per-page temporalCoverage (computed from that
+# page's own rows — a global span would claim coverage the town lacks),
+# variableMeasured and catalog membership. Google Dataset Search needs no
+# account, so this is a channel we can actually open ourselves.
+# (d) Every CTA on 2,000+ pages pointed at a bare "/", throwing away the trade
+# and town the visitor had just searched for; the homepage then asked them to
+# re-declare it. CTAs now carry ?trade=&area=#sample and index.html prefills
+# its selects from them — which also means Stripe's client_reference_id finally
+# records which page produced a sale.
+# ALSO (site repo, not engine): 404.html. Cloudflare Pages was serving
+# index.html with HTTP 200 + "index,follow" for EVERY unknown path, an
+# unbounded soft-404 space next to a 2,176-URL sitemap.
+#
+# v30 (2026-07-30): FREE TOWN-ALERT TIER — the funnel widener. Every
 # /permits/<town> page now carries a free weekly signup ("Get <Town> permits
 # free, every Monday") posting to /api/newsletter with the town slug. Until now
 # 2,000+ indexed pages offered exactly ONE action (pay $49/$99), so organic
