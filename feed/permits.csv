@@ -1,5 +1,8 @@
 town,trade,issued_date,street_masked,valuation
 Braintree,Building,2026-08-01,Solar Avenue,
+Rockland,Electrical,2026-08-01,Pond St,
+Rockland,Windows/Doors/Siding,2026-08-01,Liberty St,
+Stoughton,Electrical,2026-08-01,Pearl St,
 Stoughton,Building,2026-08-01,West St,
 Fairhaven,Electrical,2026-08-01,Howland Road,
 Braintree,Roofing,2026-07-31,Walnut Street,
@@ -239,10 +242,10 @@ Stoughton,HVAC,2026-07-30,Crescent Ave,
 Stoughton,Building,2026-07-30,Christopher Dr,
 Stoughton,Electrical,2026-07-30,Queen Anne Way,
 Stoughton,HVAC,2026-07-30,Ridgewood Ave,
-Stoughton,Building,2026-07-30,Washington St,
-Stoughton,Plumbing,2026-07-30,Christie Murphy Dr,
 Stoughton,Building,2026-07-30,Richard Rd,
 Stoughton,Building,2026-07-30,Robinette Rd,
+Stoughton,Plumbing,2026-07-30,Christie Murphy Dr,
+Stoughton,Building,2026-07-30,Washington St,
 Stoughton,Plumbing,2026-07-30,Brickel Rd,
 Stoughton,Gas,2026-07-30,Christie Murphy Dr,
 Easton,Renovation/Remodel,2026-07-30,Goodspeed Lane,
@@ -482,11 +485,11 @@ Stoughton,Gas,2026-07-29,Prospect St,
 Stoughton,Gas,2026-07-29,Central Street,
 Stoughton,Electrical,2026-07-29,Carey Cir,
 Stoughton,Building,2026-07-29,Palisades Cir,
+Stoughton,Plumbing,2026-07-29,Central Street,
+Stoughton,Other,2026-07-29,Freeman St,
 Stoughton,Plumbing,2026-07-29,Carey Cir,
 Stoughton,Building,2026-07-29,Kevin Clancy Way,
 Stoughton,Plumbing,2026-07-29,Washington St,
-Stoughton,Plumbing,2026-07-29,Central Street,
-Stoughton,Other,2026-07-29,Freeman St,
 Stoughton,Building,2026-07-29,Wentworth Ave,
 Stoughton,Plumbing,2026-07-29,Prospect St,
 Stoughton,Demolition,2026-07-29,Ethyl Way,
@@ -754,10 +757,10 @@ Stoughton,Gas,2026-07-28,Washington St,
 Stoughton,Sign/Awning,2026-07-28,Canton St,
 Stoughton,Plumbing,2026-07-28,Shuman Ave,
 Stoughton,Building,2026-07-28,Jamie Ln,
-Stoughton,Plumbing,2026-07-28,Morton St,
-Stoughton,HVAC,2026-07-28,Fitzpatrick St,
 Stoughton,Building,2026-07-28,Simpson St,
 Stoughton,Electrical,2026-07-28,Sumner St,
+Stoughton,Plumbing,2026-07-28,Morton St,
+Stoughton,HVAC,2026-07-28,Fitzpatrick St,
 Stoughton,Building,2026-07-28,Spring St,
 Easton,HVAC,2026-07-28,South Street,
 Easton,Renovation/Remodel,2026-07-28,Center Street,
@@ -1018,8 +1021,8 @@ Stoughton,Electrical,2026-07-27,Ethyl Way,
 Stoughton,Other,2026-07-27,Leach St,
 Stoughton,HVAC,2026-07-27,Turnpike St,
 Stoughton,Building,2026-07-27,Pine St,
-Stoughton,Building,2026-07-27,Ralph Mann Dr,
 Stoughton,Building,2026-07-27,Claire Dr,
+Stoughton,Building,2026-07-27,Ralph Mann Dr,
 Stoughton,Building,2026-07-27,Washington St,
 Stoughton,Plumbing,2026-07-27,Ralph Mann Dr,
 Stoughton,Building,2026-07-27,Zabrosky Ave,
@@ -1187,12 +1190,12 @@ Brighton,Roofing,2026-07-24,Dickinson Rd,16431.0
 Brighton,Solar,2026-07-24,Woodstock Av,26359.0
 South Boston,Windows/Doors/Siding,2026-07-24,E Third St,22732.0
 Dorchester,Renovation/Remodel,2026-07-24,Bloomfield St,19768.0
-Boston,Electrical,2026-07-24,High St,5000.0
 Boston,Electrical,2026-07-24,High St,25000.0
+Boston,Electrical,2026-07-24,High St,5000.0
 Boston,Electrical,2026-07-24,Pinckney St,207000.0
 Dorchester,Plumbing,2026-07-24,Melville Av,7000.0
-Boston,Electrical,2026-07-24,Center Pz,58000.0
 Boston,Electrical,2026-07-24,Federal St,23000.0
+Boston,Electrical,2026-07-24,Center Pz,58000.0
 Boston,Plumbing,2026-07-24,Dartmouth St,2000.0
 West Roxbury,Other,2026-07-24,Centre St,30000.0
 Roslindale,Electrical,2026-07-24,Beech St,30000.0
@@ -1307,9 +1310,9 @@ Milton,Gas,2026-07-24,Gulliver St,
 Milton,Electrical,2026-07-24,Highland St,
 Milton,Electrical,2026-07-24,Hurlcroft Rd,
 Stoughton,Electrical,2026-07-24,Shuman Ave,
+Stoughton,Building,2026-07-24,Bramblebush Rd,
 Stoughton,Plumbing,2026-07-24,Westwood Rd,
 Stoughton,Building,2026-07-24,Cottonwood Dr,
-Stoughton,Building,2026-07-24,Bramblebush Rd,
 Stoughton,Electrical,2026-07-24,Bramblebush Rd,
 Stoughton,Electrical,2026-07-24,Mcevoy Cir,
 Stoughton,Electrical,2026-07-24,Rosewood Dr,
@@ -1375,8 +1378,8 @@ East Boston,Plumbing,2026-07-23,Homer St,2000.0
 Brighton,Renovation/Remodel,2026-07-23,Market St,30000.0
 Roxbury,Electrical,2026-07-23,Westminster Av,1.0
 West Roxbury,Solar,2026-07-23,Cedarcrest Rd,44789.04
-Boston,Electrical,2026-07-23,Shattuck St,10000.0
 Boston,Electrical,2026-07-23,Longwood Av,10000.0
+Boston,Electrical,2026-07-23,Shattuck St,10000.0
 Boston,Electrical,2026-07-23,Newbury St,6425.33
 Boston,Renovation/Remodel,2026-07-23,Federal St,28250.0
 Boston,Electrical,2026-07-23,Longwood Av,25000.0
@@ -1412,8 +1415,8 @@ West Roxbury,Electrical,2026-07-23,Lagrange St,12500.0
 Jamaica Plain,Roofing,2026-07-23,Round Hill St,12950.0
 East Boston,Electrical,2026-07-23,East Pier Dr,6500.0
 Boston,HVAC,2026-07-23,Boston Wharf Rd,9100.0
-Boston,Electrical,2026-07-23,Boston Wharf Rd,1114.0
 Boston,Electrical,2026-07-23,State St,15925.0
+Boston,Electrical,2026-07-23,Boston Wharf Rd,1114.0
 East Boston,HVAC,2026-07-23,Harborside Dr,96435.0
 West Roxbury,Solar,2026-07-23,Halford Rd,2500.0
 Charlestown,Roofing,2026-07-23,Elm St,300000.0
@@ -1434,8 +1437,8 @@ Boston,Electrical,2026-07-23,Pier Bl,50000.0
 Dorchester,HVAC,2026-07-23,William T Morrissey Bl,126300.0
 Boston,Electrical,2026-07-23,Franklin St,330000.0
 Boston,Electrical,2026-07-23,Marina Park Dr,25000.0
-Boston,Electrical,2026-07-23,Federal St,4000.0
 Boston,Electrical,2026-07-23,Clarendon St,25000.0
+Boston,Electrical,2026-07-23,Federal St,4000.0
 Boston,Electrical,2026-07-23,High St,375000.0
 Brighton,Plumbing,2026-07-23,Washington St,28000.0
 Boston,Electrical,2026-07-23,Beacon St,34400.0
@@ -1467,9 +1470,9 @@ Brighton,Plumbing,2026-07-23,Westminster Te,10000.0
 Boston,Electrical,2026-07-23,Beacon St,8500.0
 Boston,Other,2026-07-23,High St,20000.0
 Boston,Renovation/Remodel,2026-07-23,Fenwood Rd,18740316.0
-West Roxbury,Electrical,2026-07-23,Garnet Rd,500.0
-West Roxbury,Plumbing,2026-07-23,Park St,8000.0
 West Roxbury,Plumbing,2026-07-23,Garnet Rd,5000.0
+West Roxbury,Plumbing,2026-07-23,Park St,8000.0
+West Roxbury,Electrical,2026-07-23,Garnet Rd,500.0
 Dorchester,Windows/Doors/Siding,2026-07-23,Mayhew St,6760.0
 Jamaica Plain,Demolition,2026-07-23,Peter Parley Rd,11500.0
 Boston,HVAC,2026-07-23,Beacon St,75000.0
@@ -1596,9 +1599,9 @@ Stoughton,Building,2026-07-23,Washington St,
 Stoughton,Building,2026-07-23,Greenbrook Dr,
 Stoughton,Building,2026-07-23,Bay Rd,
 Stoughton,Plumbing,2026-07-23,Woodpecker Rd,
-Stoughton,Plumbing,2026-07-23,Vaughn Ct,
-Stoughton,Building,2026-07-23,Connell Dr,
 Stoughton,Gas,2026-07-23,Greenbrook Dr,
+Stoughton,Building,2026-07-23,Connell Dr,
+Stoughton,Plumbing,2026-07-23,Vaughn Ct,
 Easton,Renovation/Remodel,2026-07-23,Miller Road,
 Easton,Renovation/Remodel,2026-07-23,Scotch Dam Road,
 Easton,Gas,2026-07-23,Winthrop Street,
@@ -1698,8 +1701,8 @@ West Roxbury,HVAC,2026-07-22,Goethe St,6487.25
 Roxbury,Renovation/Remodel,2026-07-22,Harrison Av,245315.83
 Jamaica Plain,Electrical,2026-07-22,Chilcott Pl,6274.25
 Jamaica Plain,Renovation/Remodel,2026-07-22,Wyman St,1000.0
-West Roxbury,Solar,2026-07-22,Searle Rd,7500.0
 West Roxbury,Solar,2026-07-22,Searle Rd,21787.0
+West Roxbury,Solar,2026-07-22,Searle Rd,7500.0
 West Roxbury,Other,2026-07-22,Howitt Rd,5000.0
 West Roxbury,Other,2026-07-22,Parklawn Rd,6000.0
 West Roxbury,Electrical,2026-07-22,Temple St,4000.0
@@ -1791,8 +1794,8 @@ Dorchester,Windows/Doors/Siding,2026-07-22,Lafield St,68500.0
 West Roxbury,Other,2026-07-22,Russett Rd,3613.0
 Boston,Renovation/Remodel,2026-07-22,Beacon St,135374.0
 West Roxbury,Deck/Porch,2026-07-22,Churchill Rd,10000.0
-West Roxbury,Roofing,2026-07-22,Belgrade Av,5000.0
 West Roxbury,Windows/Doors/Siding,2026-07-22,Alameda Rd,40000.0
+West Roxbury,Roofing,2026-07-22,Belgrade Av,5000.0
 Dorchester,Electrical,2026-07-22,Talbot Av,2500.0
 Dorchester,Electrical,2026-07-22,Adanac Te,975.0
 Jamaica Plain,HVAC,2026-07-22,South St,1500.0
@@ -1917,16 +1920,16 @@ Milton,Building,2026-07-22,Granite Av,
 Milton,Building,2026-07-22,Bassett St,
 Milton,Plumbing,2026-07-22,Highland St,
 Milton,Electrical,2026-07-22,Blue Hill Av,
+Stoughton,Electrical,2026-07-22,Cushing St,
+Stoughton,Building,2026-07-22,Central St,
+Stoughton,Building,2026-07-22,Pearl St,
 Stoughton,Building,2026-07-22,Golden Rd,
 Stoughton,Building,2026-07-22,Voses Ct,
-Stoughton,Electrical,2026-07-22,Drake Ave,
 Stoughton,HVAC,2026-07-22,Washington St,
 Stoughton,Building,2026-07-22,Smith Ave,
 Stoughton,Electrical,2026-07-22,Pearl St,
 Stoughton,Building,2026-07-22,Bay Rd,
-Stoughton,Electrical,2026-07-22,Cushing St,
-Stoughton,Building,2026-07-22,Central St,
-Stoughton,Building,2026-07-22,Pearl St,
+Stoughton,Electrical,2026-07-22,Drake Ave,
 Stoughton,Building,2026-07-22,West St,
 Stoughton,Building,2026-07-22,George Dr,
 Stoughton,Building,2026-07-22,Park St,
@@ -1996,6 +1999,3 @@ Attleboro,Electrical,2026-07-22,Newport Ave,
 Attleboro,Electrical,2026-07-22,Walton St,
 Attleboro,Renovation/Remodel,2026-07-22,Codding Rd,
 Attleboro,Renovation/Remodel,2026-07-22,Robert St,
-Attleboro,Renovation/Remodel,2026-07-22,Park St,
-Mansfield,Renovation/Remodel,2026-07-22,Jonathan Rd,
-Mansfield,Renovation/Remodel,2026-07-22,Harvestwood Ln,

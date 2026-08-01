@@ -120,8 +120,11 @@ function mpAlert(e, town){
   btn.disabled = true; btn.textContent = 'Sending…';
   fetch('/api/newsletter', {method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({email: email, town: town, company: f.company.value})})
-   .then(function(r){ return r.json(); })
-   .then(function(){
+   .then(function(r){ return r.json().then(function(j){ return r.ok && j.ok !== false; }); })
+   .then(function(ok){
+      // A 500 still parses as JSON, so "we got JSON back" was being read as
+      // success: the visitor saw a green tick and no confirm email ever came.
+      if(!ok) throw new Error('signup failed');
       f.style.display='none';
       msg.innerHTML = '\u2713 Check your inbox and confirm — then permits land every Monday.';
       msg.style.color = '#2dd4bf';

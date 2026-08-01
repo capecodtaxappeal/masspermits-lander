@@ -38,8 +38,9 @@ function mpAlert(e, town){
   btn.disabled=true; btn.textContent='Sending\u2026';
   fetch('/api/newsletter',{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({email:email,town:town,company:f.company.value})})
-   .then(function(r){return r.json();})
-   .then(function(){f.style.display='none';
+   .then(function(r){return r.json().then(function(j){return r.ok && j.ok !== false;});})
+   .then(function(ok){if(!ok) throw new Error('signup failed');
+     f.style.display='none';
      msg.innerHTML='\u2713 Check your inbox and confirm \u2014 then permits land every Monday.';
      msg.style.color='#2dd4bf';})
    .catch(function(){btn.disabled=false;btn.textContent='Try again';
