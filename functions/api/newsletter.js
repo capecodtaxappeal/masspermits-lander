@@ -119,8 +119,10 @@ async function sendConfirm(env, to, tok) {
   const link = `https://masspermits.com/api/newsletter?c=${b64url(to)}.${tok}`;
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
     <h2 style="color:#0e7c6b">Confirm your weekly MA permits digest 📋</h2>
-    <p>One click and you'll get "This Week in MA Permits" every Monday morning — where building
-    activity is rising, which trades are filing, and the week's biggest projects.</p>
+    <p>One click and you'll get a Monday-morning roundup of recent Massachusetts permit
+    activity — where building is picking up, which trades are filing, and the biggest
+    recent projects. (Municipal records post on their own schedule, so each issue covers
+    the latest activity we have, not a strict seven days.)</p>
     <p style="margin:20px 0;text-align:center"><a href="${link}"
       style="background:#14b8a6;color:#04201c;font-weight:700;padding:12px 26px;border-radius:8px;text-decoration:none;display:inline-block">Confirm — send me the digest →</a></p>
     <p style="color:#667;font-size:13px">Didn't sign up at masspermits.com? Ignore this and nothing will ever arrive.</p>

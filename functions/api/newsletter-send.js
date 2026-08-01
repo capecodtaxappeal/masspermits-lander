@@ -52,14 +52,27 @@ export async function onRequest(context) {
 
     // Free TOWN tier: readers who signed up from a /permits/<town> page get a
     // digest scoped to their own town. Built once per distinct town (not per
-    // reader) so a big list can't blow the subrequest budget. A town with no
-    // items this week falls back to the statewide digest rather than sending
-    // an empty email.
+    // reader) so a big list can't blow the subrequest budget.
+    //
+    // This USED to filter the statewide feed — which caps at 3 items per town.
+    // A Falmouth reader would have been told "3 new building permits in
+    // Falmouth" when the real number was an order of magnitude higher. That is
+    // a fabricated statistic in outbound email, so we now read the town's OWN
+    // feed (/feed/<town>.json), which is that town's real recent window.
+    // Falls back to the statewide roundup rather than sending a wrong number.
+    const MAX_TOWN_FETCHES = 20;   // subrequest budget guard
     const townDigests = new Map();
+    let fetched = 0;
     for (const r of readers) {
       if (!r.town || townDigests.has(r.town)) continue;
-      const mine = items.filter(i => slug(i._town) === r.town);
-      townDigests.set(r.town, mine.length ? { ...buildDigest(mine), town: r.town } : null);
+      if (fetched >= MAX_TOWN_FETCHES) { townDigests.set(r.town, null); continue; }
+      fetched++;
+      let mine = null;
+      try {
+        const tr = await fetch(`https://masspermits.com/feed/${r.town}.json`);
+        if (tr.ok) mine = (await tr.json()).items || [];
+      } catch { mine = null; }
+      townDigests.set(r.town, mine && mine.length ? { ...buildDigest(mine), town: r.town } : null);
     }
 
     const sent = [];
@@ -88,7 +101,9 @@ function buildDigest(items) {
   const topTrades = Object.entries(trades).sort((a, b) => b[1] - a[1]).slice(0, 5);
   const biggest = items.filter(i => typeof i._value === "number" && i._value > 0)
     .sort((a, b) => b._value - a._value).slice(0, 3);
-  return { total: items.length, topTowns, topTrades, biggest };
+  const dates = items.map(i => String(i.date_published || "").slice(0, 10)).filter(Boolean).sort();
+  return { total: items.length, topTowns, topTrades, biggest,
+           newest: dates[dates.length - 1] || "", oldest: dates[0] || "" };
 }
 
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -111,15 +126,21 @@ async function sendDigest(env, reader, d) {
   // A town reader gets their own town named in the header; the statewide reader
   // gets the roundup. Same data, scoped — that's the whole free-tier promise.
   const townName = d.town ? (d.topTowns[0] ? d.topTowns[0][0] : d.town) : "";
-  const kicker = townName ? `${esc(townName)} Permits · ${date}` : `This Week in MA Permits · ${date}`;
+  // Say "recent", not "this week", and never "every permit filed".
+  // Both feeds are a rolling ~30-day window, capped (60 per town / 100
+  // statewide) — so the count is a floor, not a census. Claiming a weekly total
+  // we cannot compute would be a fabricated statistic, and this goes out over
+  // email where it cannot be corrected later.
+  const kicker = townName ? `${esc(townName)} Permits · ${date}` : `MA Permit Activity · ${date}`;
   const headline = townName
-    ? `${d.total} new building permits in ${esc(townName)}`
-    : `${d.total} fresh building permits across Massachusetts`;
+    ? `${d.total} recent building permits in ${esc(townName)}`
+    : `${d.total} recent building permits across Massachusetts`;
+  const window = d.oldest && d.newest ? ` Filed between ${d.oldest} and ${d.newest}.` : "";
   const intro = townName
-    ? `Every permit filed in ${esc(townName)} this week — each one a property owner cleared to spend.
+    ? `The latest permit activity in ${esc(townName)} — each one a property owner cleared to spend.${window}
        Full detail (exact address + owner) at <a href="https://masspermits.com/permits/${slug(townName)}" style="color:#0e7c6b">masspermits.com</a>.`
-    : `Where the work is being approved this week — every permit below is a
-       homeowner cleared to spend. Full leads (exact address + owner) at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.`;
+    : `Where the work is being approved — every permit below is a
+       homeowner cleared to spend.${window} Full leads (exact address + owner) at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.`;
 
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:580px;margin:0 auto;color:#0e1622">
     <p style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#0e7c6b;font-weight:700;margin:0 0 4px">${kicker}</p>
@@ -127,7 +148,7 @@ async function sendDigest(env, reader, d) {
     <p style="color:#445;margin:0 0 18px">${intro}</p>
     ${townName ? "" : `<h3 style="margin:18px 0 6px;font-size:15px">Busiest towns</h3>
     <table style="width:100%;border-collapse:collapse;font-size:14px">${townRows}</table>`}
-    <h3 style="margin:18px 0 6px;font-size:15px">Trades filing this week</h3>
+    <h3 style="margin:18px 0 6px;font-size:15px">Trades filing</h3>
     <p style="margin:0 0 6px">${tradeChips}</p>
     ${bigRows ? `<h3 style="margin:18px 0 6px;font-size:15px">Biggest projects</h3>
     <table style="width:100%;border-collapse:collapse;font-size:14px">${bigRows}</table>` : ""}
@@ -144,8 +165,8 @@ async function sendDigest(env, reader, d) {
     headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from: env.FROM_EMAIL, to: [reader.email],
       subject: townName
-        ? `${townName} permits — ${d.total} new filings this week`
-        : `This Week in MA Permits — ${d.total} new filings, top town ${d.topTowns[0] ? d.topTowns[0][0] : "Boston"}`,
+        ? `${townName} permits — ${d.total} recent filings`
+        : `MA permit activity — ${d.total} recent filings, top town ${d.topTowns[0] ? d.topTowns[0][0] : "Boston"}`,
       html,
       headers: { "List-Unsubscribe": `<${unsub}>` } }),
   });
