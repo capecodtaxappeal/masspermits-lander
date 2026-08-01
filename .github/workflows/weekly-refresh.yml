@@ -8,7 +8,34 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v31 (2026-08-01): CAPTURE EVERYWHERE + FEED/SCHEMA/CTA REPAIR.
+# engine v32 (2026-08-01): COVERAGE GATE — written after this morning's run
+# lost 117 of 140 towns and shipped anyway. OpenGov/ViewPoint closed its
+# `records` endpoint (403 for every anonymous caller; `recordTypes` still 200),
+# and fetch_opengov swallowed each failure with a bare `continue`, so every
+# affected town returned [] with NO error recorded. 23,575 rows still cleared
+# the 2,000-row floor and "did Boston work", so half-empty bundles went to
+# paying subscribers and the sitemap fell 2,176 -> 1,231.
+# Now: hosted_refresh.py aborts if >25% of towns return zero rows, or if a whole
+# vendor family drops under 20% live (replayed against the incident's own
+# status.json — both fire; PermitEyes at 21/21 correctly does not). scraper.py
+# raises instead of silently returning []. While the vendor stays 403 the run
+# ABORTS and R2 keeps last week's good bundles — that is the intended outcome.
+# ALSO in v32, from an adversarial audit of v31:
+#  - capture card now on 99% of generated pages (was 302 of ~2,176). news
+#    ARCHIVES shipped the CSS and the mpAlert handler but never rendered a form;
+#    statewide + region pages had no card at all and now get a town-less variant
+#    (NOT alert_card(region) — mpAlert would post 'cape-cod-islands' as a town,
+#    newsletter.js would accept the slug, and the sender would match nothing).
+#  - mpAlert treated any JSON response as success, so an HTTP 500 showed the
+#    visitor a green tick and no confirm email ever arrived.
+#  - guides and /news/ never carried the ?trade=&area= prefill v31 claimed for
+#    "every CTA" — 603 of 1,231 pages. Both now do.
+#  - _guid() hashed a field that carries workflow STATES on some sources
+#    ("Permit Issued" x565), collapsing rows onto one id; widened.
+#  - v31's own feed deep-link never matched: page() returns SITE+path but the
+#    lookup compared a bare path. 30 -> 66 distinct URLs per 88 items.
+#
+# v31 (2026-08-01): CAPTURE EVERYWHERE + FEED/SCHEMA/CTA REPAIR.
 # (a) The free town-alert signup was live on ONE page type — /permits/<town>,
 # 302 of 2,179 indexed pages. It now also renders on trade×town, cost pages,
 # the 141 town guides and every /news/ brief: ~1,940 pages of capture instead
