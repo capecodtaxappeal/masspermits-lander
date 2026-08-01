@@ -25,7 +25,13 @@ name: MassPermits weekly data refresh
 # url, identifier, license, per-page temporalCoverage (computed from that
 # page's own rows — a global span would claim coverage the town lacks),
 # variableMeasured and catalog membership. Google Dataset Search needs no
-# account, so this is a channel we can actually open ourselves.
+# account, so this is a channel we can actually open ourselves. Each town also
+# now ships its OWN distributions — /feed/<town>.json and /feed/<town>.csv —
+# because a dataset with no distinct download isn't a dataset. Masked street,
+# trade, date, value; never house number, owner or contractor (that withheld
+# identity IS the paid product). Plus /catalog.json, a DCAT-US index of all ~140
+# town datasets that CKAN/DKAN/udata harvesters already know how to read, and
+# WebSub hub declaration + a weekly publish ping.
 # (d) Every CTA on 2,000+ pages pointed at a bare "/", throwing away the trade
 # and town the visitor had just searched for; the homepage then asked them to
 # re-declare it. CTAs now carry ?trade=&area=#sample and index.html prefills
@@ -264,6 +270,18 @@ jobs:
           code=$(curl -s -o /dev/null -w '%{http_code}' -X POST 'https://api.indexnow.org/indexnow' \
             -H 'Content-Type: application/json' --data "$BODY")
           echo "IndexNow submit: HTTP $code ($(echo "$URLS" | python3 -c 'import sys,json;print(len(json.load(sys.stdin)))') urls)"
+
+      # WebSub: tell the public hub the feeds changed, so anyone subscribed gets
+      # pushed instead of polling. Costs one request; expected traffic is small,
+      # but it is a real no-account syndication rail and it runs itself.
+      - name: Ping WebSub hub
+        continue-on-error: true
+        run: |
+          for f in https://masspermits.com/feed.xml https://masspermits.com/feed/permits.json; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -X POST https://pubsubhubbub.appspot.com/ \
+              -d "hub.mode=publish" --data-urlencode "hub.url=$f")
+            echo "WebSub publish $f -> HTTP $code"
+          done
 
       # Weekly PR pitch digest -> owner's inbox (recipient hard-locked server-side).
       # He forwards the pitches he likes; nothing is ever auto-sent to outsiders.
