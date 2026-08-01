@@ -8,7 +8,18 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
-# engine v32 (2026-08-01): COVERAGE GATE — written after this morning's run
+# engine v33 (2026-08-01): COVERAGE GATE, CORRECTED. v32's gate divided by
+# len(sources) — but `sources` only holds towns whose fetch RETURNED. The v32
+# scraper change made fetch_opengov raise on total failure, which moved all 117
+# dead towns out of `sources` and into `errors`, so the gate saw 23/23 healthy
+# and shipped a SECOND half-empty bundle at 15:19 UTC. The denominator is now
+# what the scraper TRIED (the OPENGOV_TOWNS + PERMITEYES_TOWNS registries plus
+# Boston and Barnstable), dead = zero-row towns UNION errored towns, and there
+# is an absolute floor on live towns. Replayed against both of today's real
+# status.json snapshots — both abort — and against a healthy week and a week
+# with 11 quiet towns — both ship.
+#
+# v32 (2026-08-01): COVERAGE GATE — written after this morning's run
 # lost 117 of 140 towns and shipped anyway. OpenGov/ViewPoint closed its
 # `records` endpoint (403 for every anonymous caller; `recordTypes` still 200),
 # and fetch_opengov swallowed each failure with a bare `continue`, so every
