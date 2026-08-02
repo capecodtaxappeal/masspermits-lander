@@ -256,7 +256,10 @@
       <a href="/permits/new-bedford">New Bedford</a> · <a href="/permits/fall-river">Fall River</a> ·
       <a href="/permits/framingham">Framingham</a> · <a href="/permits/plymouth">Plymouth</a> ·
       <a href="/permits/marlborough">Marlborough</a> · <a href="/permits/taunton">Taunton</a> ·
-      <a href="/permits/">all 140 towns →</a>
+      <!-- No hardcoded town count here. This file is hand-maintained and the
+           build never regenerates it, so any number typed here drifts silently
+           from the hub it links to (it read "140" while the hub said 43). -->
+      <a href="/permits/">browse permits by town →</a>
     </div>
     <h2 style="font-size:18px;color:var(--text);margin:18px 0 8px">Town contractor guides</h2>
     <div style="color:var(--muted)">
