@@ -179,7 +179,18 @@ name: MassPermits weekly data refresh
 # fix + per-town permit maps.
 on:
   schedule:
-    - cron: "0 9 * * 1"    # Mondays 09:00 UTC (~4-5am ET)
+    - cron: "0 9 * * 1"    # Mondays 09:00 UTC (~4-5am ET) — the anchor run
+    # Daily probe, added 2026-08-01. Two reasons, both real:
+    #  1. RECOVERY LATENCY. When the OpenGov outage ends on, say, a Tuesday, a
+    #     Monday-only cron leaves the site broken for six more days. With the
+    #     coverage gate in place a failed daily run is free — it aborts in
+    #     seconds, ships nothing, and R2 keeps the good bundles.
+    #  2. FRESHNESS. A daily rebuild moves sitemap <lastmod> every day instead
+    #     of weekly, which is the signal Google uses to decide how often to
+    #     recrawl. Search Console shows it last read our sitemap 2026-06-19.
+    # Owner emails, the Patch pack and the video stay Monday-only (see the
+    # is_monday guard) so this does not turn into a daily inbox.
+    - cron: "0 9 * * 0,2-6"
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -213,6 +224,16 @@ jobs:
           done
           [ -n "$ok" ] || { echo "::error::engine fetch failed after 10 attempts"; exit 1; }
           tar xzf engine.tar.gz && rm engine.tar.gz && ls -la
+
+      # The daily probe runs the scrape + site rebuild every day, but the
+      # owner-facing weekly artifacts (PR pitches, Patch pack, Bluesky video)
+      # stay Monday-only — a daily version of those is just inbox noise.
+      - name: Flag the weekly (Monday) run
+        id: cadence
+        run: |
+          if [ "$(date -u +%u)" = "1" ]; then echo "monday=true" >> "$GITHUB_OUTPUT";
+          else echo "monday=false" >> "$GITHUB_OUTPUT"; fi
+          echo "weekly-artifacts: $(date -u +%u) (1 = Monday)"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -279,12 +300,16 @@ jobs:
           # Patch.com paste-ready pack (2-3 most newsworthy towns, written as
           # local news). Emailed to the owner below; posting is a human step by
           # design — one real account, one town per post, never a blast.
-          python patch_pack.py || echo "::warning::patch_pack failed — no Patch pack this week"
+          if [ "${{ steps.cadence.outputs.monday }}" = "true" ]; then
+            python patch_pack.py || echo "::warning::patch_pack failed — no Patch pack this week"
+          fi
           # weekly PR report page (masspermits.com/report/) + pitch digest artifacts
           python pr_report.py || echo "::warning::pr_report failed — report page not refreshed"
           if [ -f out/pr/report.html ]; then mkdir -p site/report && cp out/pr/report.html site/report/index.html; fi
           # weekly narrated data video (embedded on site + posted to Bluesky below)
-          python video_report.py || echo "::warning::video render failed — keeping last week's video"
+          if [ "${{ steps.cadence.outputs.monday }}" = "true" ]; then
+            python video_report.py || echo "::warning::video render failed — keeping last week's video"
+          fi
           if [ -f data/video/weekly_report.mp4 ]; then mkdir -p site/video && cp data/video/weekly_report.mp4 site/video/weekly_report.mp4; fi
           cd site
           git config user.name "masspermits-refresh-bot"
@@ -324,6 +349,7 @@ jobs:
       # Weekly PR pitch digest -> owner's inbox (recipient hard-locked server-side).
       # He forwards the pitches he likes; nothing is ever auto-sent to outsiders.
       - name: Mail PR pitch digest to owner (OIDC)
+        if: steps.cadence.outputs.monday == 'true'
         continue-on-error: true
         run: |
           [ -f out/pr/email_digest.html ] || { echo "no digest produced"; exit 0; }
@@ -336,6 +362,7 @@ jobs:
       # Patch pack -> owner's inbox, paste-ready. Deliberately NOT auto-posted:
       # Patch is one real account posting genuine local news, one town at a time.
       - name: Mail Patch pack to owner (OIDC)
+        if: steps.cadence.outputs.monday == 'true'
         continue-on-error: true
         run: |
           [ -f out/patch/pack.html ] || { echo "no patch pack produced"; exit 0; }
@@ -347,6 +374,7 @@ jobs:
 
       # Weekly data video -> Bluesky (skips cleanly if creds absent)
       - name: Post weekly video to Bluesky
+        if: steps.cadence.outputs.monday == 'true'
         continue-on-error: true
         env:
           BSKY_HANDLE: ${{ secrets.BSKY_HANDLE || 'masspermits.bsky.social' }}
