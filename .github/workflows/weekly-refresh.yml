@@ -285,7 +285,13 @@ jobs:
       # from this week's scrape, commit to main -> Cloudflare Pages redeploys.
       # Weekly-changing content is a live-site signal to Google. (Does not
       # retrigger this workflow: its push trigger is paths-filtered to the yml.)
+      # Skipped on a DEGRADED run. Bundles still ship above — a subscriber gets a
+      # smaller true file with the shortfall disclosed. But regenerating the site
+      # from a partial scrape DELETES the pages of every town that went dark, and
+      # that is the one loss here that does not heal. Frozen pages carry a dated
+      # coverage note instead; see the 2026-08-03 annotation pass.
       - name: Refresh website teaser + SEO pages + report + video (commit to main)
+        if: hashFiles('degraded.flag') == ''
         continue-on-error: true
         run: |
           git clone --depth 1 "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" site
@@ -323,6 +329,7 @@ jobs:
       # hours instead of waiting on organic discovery. Key file is served from
       # the repo root (public by design). Runs from the freshly-built sitemap.
       - name: Submit URLs to IndexNow
+        if: hashFiles('degraded.flag') == ''
         continue-on-error: true
         run: |
           KEY=7f0001add081ec7e0301b1a76611e302
