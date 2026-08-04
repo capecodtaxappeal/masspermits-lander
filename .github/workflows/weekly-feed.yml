@@ -11,6 +11,13 @@ on:
   schedule:
     - cron: "0 12 * * 1"   # every Monday 12:00 UTC (~7-8am ET)
   workflow_dispatch: {}      # allows a manual "Run workflow" click too
+  push:
+    branches: [main]
+    paths:
+      # Editing this file fires a send. Added 2026-08-04 so a missed delivery can
+      # be made good the same day from a commit, without needing the GitHub UI.
+      # Same pattern weekly-refresh.yml already uses.
+      - ".github/workflows/weekly-feed.yml"
 
 permissions:
   id-token: write
