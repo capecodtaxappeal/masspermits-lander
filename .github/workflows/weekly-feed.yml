@@ -7,6 +7,7 @@ name: MassPermits weekly feed
 # Auth: GitHub OIDC (id-token) — keyless; the endpoint verifies this workflow
 # runs on this repo's main branch. No secrets exist in the repo.
 
+# retrigger: 2026-08-04 make-good send for the missed 2026-08-03 delivery
 on:
   schedule:
     - cron: "0 12 * * 1"   # every Monday 12:00 UTC (~7-8am ET)
