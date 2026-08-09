@@ -1,0 +1,102 @@
+name: MassPermits delivery watchdog
+
+# Written after the 2026-08-03 incident, in which both paying subscribers
+# received nothing and no part of the system noticed. The delivery log is only
+# written on success, so a missed send produced an ABSENCE — and nothing was
+# watching for an absence.
+#
+# Runs 90 minutes after the Monday 12:00 UTC send, and again Tuesday morning as
+# a backstop in case Monday's runner was itself delayed (GitHub can defer
+# scheduled jobs by hours under load — on 2026-08-03 the 09:00 refresh did not
+# finish until 12:26, after the send had already run).
+#
+# Behaviour is deliberately asymmetric:
+#   missed  -> the sender never started. Retry once; a retry cannot double-send
+#              because last-send-attempt.json is written BEFORE the first email.
+#   unknown -> it started but never recorded results. Do NOT retry — someone may
+#              already hold the file. Email the owner and let a human decide.
+#   partial -> some recipients failed. Email the owner with who and why.
+#   ok      -> stay quiet. A watchdog that emails on success gets filtered.
+
+on:
+  schedule:
+    - cron: "30 13 * * 1"   # Monday 13:30 UTC — 90 min after the send
+    - cron: "0 11 * * 2"    # Tuesday 11:00 UTC — backstop for a delayed runner
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/send-watchdog.yml"
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: send-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check whether the weekly delivery actually happened
+        run: |
+          set -euo pipefail
+          mint() {
+            curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value
+          }
+
+          STATUS=$(curl -fsS -H "Authorization: Bearer $(mint)" \
+            https://masspermits.com/api/send-status)
+          echo "$STATUS" | jq .
+
+          VERDICT=$(echo "$STATUS" | jq -r .verdict)
+          DETAIL=$(echo "$STATUS" | jq -r .detail)
+          RETRY=$(echo "$STATUS" | jq -r .retry_safe)
+
+          if [ "$VERDICT" = "ok" ]; then
+            echo "delivery confirmed — nothing to do"
+            exit 0
+          fi
+
+          RETRIED="not attempted"
+          if [ "$VERDICT" = "missed" ] && [ "$RETRY" = "true" ]; then
+            echo "::warning::no delivery recorded — retrying the send"
+            if curl -fsS --retry 2 -X POST -H "Authorization: Bearer $(mint)" \
+                 https://masspermits.com/api/weekly-send; then
+              RETRIED="retry SUCCEEDED"
+            else
+              RETRIED="retry FAILED"
+            fi
+            echo ""
+            # Re-read so the alert reports the state after the retry, not before
+            STATUS=$(curl -fsS -H "Authorization: Bearer $(mint)" \
+              https://masspermits.com/api/send-status)
+            VERDICT=$(echo "$STATUS" | jq -r .verdict)
+            DETAIL=$(echo "$STATUS" | jq -r .detail)
+          fi
+
+          # Always tell the owner when something was wrong — including when the
+          # retry fixed it, because a silent self-heal hides a recurring fault.
+          BODY=$(jq -n --arg v "$VERDICT" --arg d "$DETAIL" --arg r "$RETRIED" --arg s "$STATUS" '
+            "<div style=\"font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px\">"
+            + "<h2 style=\"color:#b45309\">Weekly delivery watchdog: " + $v + "</h2>"
+            + "<p>" + $d + "</p><p><b>Automatic retry:</b> " + $r + "</p>"
+            + "<pre style=\"background:#f6f8fa;padding:12px;border-radius:8px;font-size:12px;white-space:pre-wrap\">"
+            + $s + "</pre>"
+            + "<p style=\"color:#667;font-size:13px\">If this says <b>unknown</b>, a send started but never "
+            + "recorded results — some subscribers may already have the file, so it was NOT retried "
+            + "automatically. Check feed-send-log.json before resending.</p></div>"')
+
+          curl -fsS -X POST -H "Authorization: Bearer $(mint)" -H "Content-Type: text/html" \
+            --data-binary "$BODY" \
+            "https://masspermits.com/api/mail-owner?subject=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote('MassPermits ALERT — weekly delivery: '+sys.argv[1]))" "$VERDICT")"
+          echo ""
+
+          # Fail the job so it also surfaces in the Actions UI, not only by email
+          if [ "$VERDICT" != "ok" ]; then
+            echo "::error::weekly delivery verdict=$VERDICT ($DETAIL)"
+            exit 1
+          fi

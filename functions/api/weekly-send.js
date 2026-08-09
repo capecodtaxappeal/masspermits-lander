@@ -68,6 +68,17 @@ export async function onRequest(context) {
     if (!file) return json({ ok: false, error: "no latest-weekly.zip in R2" }, 500);
     const b64 = base64(await file.arrayBuffer());
 
+    // ATTEMPT MARKER, written before the first email goes out.
+    // The 2026-08-03 miss was invisible because feed-send-log.json is only
+    // written AFTER a successful run — so "no send happened" and "the send ran
+    // but the log write failed" looked identical, which meant nothing could
+    // safely alert or retry. This marker separates them: no marker => we never
+    // got here => a retry cannot double-send.
+    try {
+      await env.BUNDLES.put("last-send-attempt.json", JSON.stringify({
+        at: new Date().toISOString(), subscribers: subs.length, degraded: !!coverage }));
+    } catch (_) { /* never block a delivery on bookkeeping */ }
+
     const sent = [];
     for (const s of subs) {
       try {
