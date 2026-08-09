@@ -66,6 +66,24 @@ export async function onRequest(context) {
 
     const file = await env.BUNDLES.get("latest-weekly.zip");
     if (!file) return json({ ok: false, error: "no latest-weekly.zip in R2" }, 500);
+
+    // NEVER email the same file twice.
+    // On 2026-08-09 a watchdog bug fired an unscheduled retry and both
+    // subscribers received a second copy 15 hours before their scheduled one.
+    // Whatever triggers a send — cron, watchdog, a human, a future mistake —
+    // the bundle's own identity is the backstop: if a subscriber already has
+    // these exact bytes, there is nothing to deliver.
+    // ?force=1 for a deliberate resend (e.g. after a Resend outage).
+    const etag = file.etag || file.httpEtag || "";
+    const force = new URL(request.url).searchParams.get("force") === "1";
+    const priorLog = (await readJsonSafe(env, "feed-send-log.json")) || [];
+    const prior = Array.isArray(priorLog) && priorLog.length ? priorLog[0] : null;
+    if (!force && etag && prior && prior.bundle_etag === etag &&
+        (prior.sent || []).some((x) => x.ok)) {
+      return json({ ok: true, skipped: "identical bundle already delivered",
+                    bundle_etag: etag, previously_sent_at: prior.at });
+    }
+
     const b64 = base64(await file.arrayBuffer());
 
     // ATTEMPT MARKER, written before the first email goes out.
@@ -96,7 +114,8 @@ export async function onRequest(context) {
     try {
       const lo = await env.BUNDLES.get("feed-send-log.json");
       const log = lo ? JSON.parse(await lo.text()) : [];
-      log.unshift({ at: new Date().toISOString(), subscribers: subs.length, sent, coverage });
+      log.unshift({ at: new Date().toISOString(), subscribers: subs.length, sent, coverage,
+                    bundle_etag: etag });
       await env.BUNDLES.put("feed-send-log.json", JSON.stringify(log.slice(0, 12)));
     } catch (_) { /* logging must never fail the send */ }
     return json({ ok: true, subscribers: subs.length, sent });
@@ -154,6 +173,13 @@ async function sendEmail(env, to, name, b64, token, coverage) {
   });
   if (!resp.ok) throw new Error("resend " + resp.status + " " + (await resp.text()).slice(0, 160));
   return true;
+}
+
+async function readJsonSafe(env, key) {
+  try {
+    const o = await env.BUNDLES.get(key);
+    return o ? JSON.parse(await o.text()) : null;
+  } catch { return null; }
 }
 
 function base64(buf) {
