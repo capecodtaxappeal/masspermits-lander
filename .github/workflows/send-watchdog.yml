@@ -56,8 +56,11 @@ jobs:
           DETAIL=$(echo "$STATUS" | jq -r .detail)
           RETRY=$(echo "$STATUS" | jq -r .retry_safe)
 
-          if [ "$VERDICT" = "ok" ]; then
-            echo "delivery confirmed — nothing to do"
+          # not_due: no send was owed yet (or we are inside the grace window).
+          # This is the state on any run that is not shortly after a scheduled
+          # send — including the push-triggered run that deploys this file.
+          if [ "$VERDICT" = "ok" ] || [ "$VERDICT" = "not_due" ]; then
+            echo "nothing to do (verdict=$VERDICT): $DETAIL"
             exit 0
           fi
 

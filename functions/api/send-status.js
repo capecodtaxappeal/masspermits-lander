@@ -19,7 +19,23 @@
 
 import { verifyGitHubOIDC } from "./_github-oidc.js";
 
-const DUE_WITHIN_HOURS = 8;   // a Monday send at 12:00 must be visible by 20:00
+// The delivery cadence is WEEKLY (weekly-feed.yml: "0 12 * * 1"). So the
+// question is never "did we send in the last N hours" — five days after a
+// perfectly good send that is true and fine. The question is "has a delivery
+// happened since the most recent scheduled send time".
+const SEND_DOW = 1;            // Monday (UTC)
+const SEND_HOUR = 12;          // 12:00 UTC
+const GRACE_HOURS = 1.5;       // runner slip; GitHub deferred a 09:00 job to 12:26 on 2026-08-03
+
+// Most recent Monday 12:00 UTC at or before `now`.
+function lastDueAt(now) {
+  const d = new Date(now);
+  d.setUTCHours(SEND_HOUR, 0, 0, 0);
+  const back = (d.getUTCDay() - SEND_DOW + 7) % 7;
+  d.setUTCDate(d.getUTCDate() - back);
+  if (d.getTime() > now) d.setUTCDate(d.getUTCDate() - 7);
+  return d.getTime();
+}
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -37,14 +53,27 @@ export async function onRequest(context) {
   const logAge = hours(last && last.at);
   const failed = last ? (last.sent || []).filter((s) => !s.ok) : [];
 
+  const dueAt = lastDueAt(now);
+  const dueIso = new Date(dueAt).toISOString();
+  const graceOver = now >= dueAt + GRACE_HOURS * 3600_000;
+  const sentSinceDue = !!(last && Date.parse(last.at) >= dueAt);
+  const triedSinceDue = !!(attempt && Date.parse(attempt.at) >= dueAt);
+
   let verdict, detail, retry_safe = false;
-  if (logAge <= DUE_WITHIN_HOURS && !failed.length) {
+  if (!graceOver) {
+    // Inside the grace window, or no send is due yet. Saying "missed" here is
+    // how a watchdog turns into an unscheduled second delivery.
+    verdict = "not_due";
+    detail = `nothing due yet — last scheduled send ${dueIso}, still inside the ` +
+             `${GRACE_HOURS}h grace window`;
+  } else if (sentSinceDue && !failed.length) {
     verdict = "ok";
-    detail = `delivered to ${(last.sent || []).length} subscriber(s) ${logAge.toFixed(1)}h ago`;
-  } else if (logAge <= DUE_WITHIN_HOURS && failed.length) {
+    detail = `delivered to ${(last.sent || []).length} subscriber(s) ${logAge.toFixed(1)}h ago, ` +
+             `after the ${dueIso} send time`;
+  } else if (sentSinceDue && failed.length) {
     verdict = "partial";
     detail = `${failed.length} of ${(last.sent || []).length} deliveries FAILED`;
-  } else if (attemptAge <= DUE_WITHIN_HOURS) {
+  } else if (triedSinceDue) {
     // It started but never finished writing results — a crash mid-send, or the
     // log write failed. Some subscribers may already hold the file, so a retry
     // could double-send. A human decides this one.
@@ -53,13 +82,13 @@ export async function onRequest(context) {
              "it may have partially delivered; NOT retrying automatically";
   } else {
     verdict = "missed";
-    detail = `no delivery in the last ${DUE_WITHIN_HOURS}h ` +
+    detail = `no delivery since the ${dueIso} scheduled send ` +
              `(last recorded: ${last ? last.at : "never"}) and no send was even attempted`;
     retry_safe = true;
   }
 
   return json({
-    verdict, detail, retry_safe,
+    verdict, detail, retry_safe, due_at: dueIso,
     last_attempt_at: (attempt && attempt.at) || null,
     last_log_at: (last && last.at) || null,
     last_subscribers: last ? (last.sent || []).length : 0,
