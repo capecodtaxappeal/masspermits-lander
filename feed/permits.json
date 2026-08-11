@@ -10,7 +10,7 @@
    "url": "https://masspermits.com"
   }
  ],
- "_window_total": 7596,
+ "_window_total": 7619,
  "_window_from": "2026-07-12",
  "_window_to": "2026-08-11",
  "items": [
@@ -24,12 +24,30 @@
    "_trade": "Electrical"
   },
   {
+   "id": "747f555b90fab7c2",
+   "url": "https://masspermits.com/permits/sandwich-electrical",
+   "title": "Electrical permit \u2014 Old Fields Road, Sandwich",
+   "content_text": "Electrical permit in Sandwich, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Sandwich",
+   "_trade": "Electrical"
+  },
+  {
    "id": "3d1498d14c3fd40f",
    "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Reflection Drive, Sandwich",
    "content_text": "Renovation/Remodel permit in Sandwich, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-11T00:00:00Z",
    "_town": "Sandwich",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "872fe1a0bbf64fcb",
+   "url": "https://masspermits.com/permits/randolph-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Old Mill Ln, Randolph",
+   "content_text": "Renovation/Remodel permit in Randolph, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Randolph",
    "_trade": "Renovation/Remodel"
   },
   {
@@ -67,6 +85,15 @@
    "date_published": "2026-08-11T00:00:00Z",
    "_town": "Attleboro",
    "_trade": "Gas"
+  },
+  {
+   "id": "d4136b6545d56b74",
+   "url": "https://masspermits.com/permits/attleboro-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Emory St, Attleboro",
+   "content_text": "Renovation/Remodel permit in Attleboro, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Attleboro",
+   "_trade": "Renovation/Remodel"
   },
   {
    "id": "f289062869d621b4",
@@ -204,15 +231,6 @@
    "_trade": "Electrical"
   },
   {
-   "id": "6b44405aa7e359b7",
-   "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Greenville Drive, Sandwich",
-   "content_text": "Renovation/Remodel permit in Sandwich, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-10T00:00:00Z",
-   "_town": "Sandwich",
-   "_trade": "Renovation/Remodel"
-  },
-  {
    "id": "e9e3700d8f7b340d",
    "url": "https://masspermits.com/permits/randolph",
    "title": "Windows/Doors/Siding permit \u2014 Zanga Circle, Randolph",
@@ -220,15 +238,6 @@
    "date_published": "2026-08-10T00:00:00Z",
    "_town": "Randolph",
    "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "329d6917cac670d7",
-   "url": "https://masspermits.com/permits/randolph-plumbing",
-   "title": "Plumbing permit \u2014 Janet Rd, Randolph",
-   "content_text": "Plumbing permit in Randolph, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-10T00:00:00Z",
-   "_town": "Randolph",
-   "_trade": "Plumbing"
   },
   {
    "id": "f5c9c0208d7993f6",
@@ -456,15 +465,6 @@
    "_trade": "Gas"
   },
   {
-   "id": "5b5d2475d3aeb238",
-   "url": "https://masspermits.com/permits/attleboro-hvac",
-   "title": "HVAC permit \u2014 Smith St, Attleboro",
-   "content_text": "HVAC permit in Attleboro, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-10T00:00:00Z",
-   "_town": "Attleboro",
-   "_trade": "HVAC"
-  },
-  {
    "id": "60ace8af922c6b73",
    "url": "https://masspermits.com/permits/mansfield-gas",
    "title": "Gas permit \u2014 Tremont St, Mansfield",
@@ -579,14 +579,34 @@
    "_value": 1500.0
   },
   {
-   "id": "be79c5c613f1335f",
-   "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Memorial Dr, Cambridge ($25,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $25,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-08T00:00:00Z",
+   "id": "53d6903ec9c5d80d",
+   "url": "https://masspermits.com/permits/cambridge-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Fayerweather St, Cambridge ($35,000)",
+   "content_text": "Kitchen/Bath permit in Cambridge, MA. Value $35,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
    "_town": "Cambridge",
-   "_trade": "Electrical",
-   "_value": 25000.0
+   "_trade": "Kitchen/Bath",
+   "_value": 35000.0
+  },
+  {
+   "id": "679c50a03db0571f",
+   "url": "https://masspermits.com/permits/cambridge-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pleasant Pl, Cambridge ($5,130)",
+   "content_text": "Windows/Doors/Siding permit in Cambridge, MA. Value $5,130. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5130.0
+  },
+  {
+   "id": "7304b2098d066622",
+   "url": "https://masspermits.com/permits/cambridge-building",
+   "title": "Building permit \u2014 Rindge Ave, Cambridge ($20,135)",
+   "content_text": "Building permit in Cambridge, MA. Value $20,135. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Building",
+   "_value": 20134.74
   },
   {
    "id": "40de02a716ca08fb",
@@ -624,26 +644,6 @@
    "_town": "Dorchester",
    "_trade": "Electrical",
    "_value": 28000.0
-  },
-  {
-   "id": "6057cec4007d0b3c",
-   "url": "https://masspermits.com/permits/cambridge-demolition",
-   "title": "Demolition permit \u2014 Griswold St, Cambridge ($8,000)",
-   "content_text": "Demolition permit in Cambridge, MA. Value $8,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-07T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Demolition",
-   "_value": 8000.0
-  },
-  {
-   "id": "ec1f4951d242a68f",
-   "url": "https://masspermits.com/permits/cambridge-demolition",
-   "title": "Demolition permit \u2014 Rice St, Cambridge ($40,000)",
-   "content_text": "Demolition permit in Cambridge, MA. Value $40,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-07T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Demolition",
-   "_value": 40000.0
   },
   {
    "id": "50fb6fd24db4586a",
@@ -796,7 +796,7 @@
    "_value": 2200.0
   },
   {
-   "id": "68f54257791de5bd",
+   "id": "843b9369e09c9167",
    "url": "https://masspermits.com/permits/roslindale-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Poplar St, Roslindale ($23,900)",
    "content_text": "Renovation/Remodel permit in Roslindale, MA. Value $23,900. Full lead at masspermits.com.",

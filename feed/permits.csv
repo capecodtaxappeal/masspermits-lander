@@ -1,10 +1,13 @@
 town,trade,issued_date,street_masked,valuation
 Rockland,Electrical,2026-08-11,North Av,
+Sandwich,Electrical,2026-08-11,Old Fields Road,
 Sandwich,Renovation/Remodel,2026-08-11,Reflection Drive,
+Randolph,Renovation/Remodel,2026-08-11,Old Mill Ln,
 Randolph,Electrical,2026-08-11,Imrie St,
 Easton,Electrical,2026-08-11,Winnecunnet Way,
 Attleboro,Gas,2026-08-11,Highland Ave,
 Attleboro,Gas,2026-08-11,Meadowsweet Trail,
+Attleboro,Renovation/Remodel,2026-08-11,Emory St,
 Braintree,Other,2026-08-10,Grove Street,
 Braintree,Kitchen/Bath,2026-08-10,Baker Avenue,
 Braintree,Other,2026-08-10,Howie Road,
@@ -233,6 +236,13 @@ Norwell,Plumbing,2026-08-10,Parker St,
 Norwell,Renovation/Remodel,2026-08-10,Cape Cod Ln,
 Norwell,Renovation/Remodel,2026-08-10,Prospect St,
 Norwell,Plumbing,2026-08-10,Grove St,
+Attleboro,Electrical,2026-08-10,Read St,
+Attleboro,Plumbing,2026-08-10,Handy St,
+Attleboro,Plumbing,2026-08-10,St James Pl,
+Attleboro,Renovation/Remodel,2026-08-10,Pamela Lane,
+Attleboro,Building,2026-08-10,Pleasant St Subway,
+Attleboro,Electrical,2026-08-10,Henshaw Ave,
+Attleboro,Gas,2026-08-10,Greenwich St,
 Attleboro,HVAC,2026-08-10,Smith St,
 Attleboro,Renovation/Remodel,2026-08-10,St James Pl,
 Attleboro,Gas,2026-08-10,St James Pl,
@@ -244,13 +254,6 @@ Attleboro,Electrical,2026-08-10,Kayleigh Lyn Ln,
 Attleboro,Electrical,2026-08-10,St James Pl,
 Attleboro,Plumbing,2026-08-10,Wilmarth St,
 Attleboro,Renovation/Remodel,2026-08-10,Curtis Ave,
-Attleboro,Electrical,2026-08-10,Henshaw Ave,
-Attleboro,Gas,2026-08-10,Greenwich St,
-Attleboro,Electrical,2026-08-10,Read St,
-Attleboro,Plumbing,2026-08-10,Handy St,
-Attleboro,Plumbing,2026-08-10,St James Pl,
-Attleboro,Renovation/Remodel,2026-08-10,Pamela Lane,
-Attleboro,Building,2026-08-10,Pleasant St Subway,
 Mansfield,Gas,2026-08-10,Tremont St,
 Mansfield,Renovation/Remodel,2026-08-10,Church St,
 Mansfield,Electrical,2026-08-10,River Edge Rd,
@@ -302,6 +305,35 @@ Taunton,Electrical,2026-08-10,Ashland Street,2000.0
 Taunton,Electrical,2026-08-10,Burt Street,6000.0
 Taunton,Electrical,2026-08-10,Monica Street,500.0
 Taunton,Renovation/Remodel,2026-08-10,Scaddings Street,17250.0
+Cambridge,Kitchen/Bath,2026-08-10,Fayerweather St,35000.0
+Cambridge,Windows/Doors/Siding,2026-08-10,Pleasant Pl,5130.0
+Cambridge,Building,2026-08-10,Rindge Ave,20134.74
+Cambridge,Building,2026-08-10,Murray Hill Rd,17127.91
+Cambridge,Roofing,2026-08-10,Gore St,5000.0
+Cambridge,Electrical,2026-08-10,Warren St,500.0
+Cambridge,Electrical,2026-08-10,Vassar St,222570.0
+Cambridge,Electrical,2026-08-10,"Jay St, Unit D",1000.0
+Cambridge,Electrical,2026-08-10,Alewife Pk,150000.0
+Cambridge,Plumbing,2026-08-10,"Brattle Sq, Unit",
+Cambridge,Plumbing,2026-08-10,Huron Ave,
+Cambridge,Plumbing,2026-08-10,"Porter Rd, Unit A",
+Cambridge,Plumbing,2026-08-10,Portsmouth St,
+Cambridge,Gas,2026-08-10,"Porter Rd, Unit A",
+Cambridge,Gas,2026-08-10,Winthrop St,
+Cambridge,Gas,2026-08-10,Sacramento St,
+Cambridge,Gas,2026-08-10,"Tremont St, Unit",
+Cambridge,HVAC,2026-08-10,Fayette St,
+Cambridge,HVAC,2026-08-10,Jacobs St,
+Cambridge,HVAC,2026-08-10,Ames St,30000.0
+Cambridge,Fire/Sprinkler,2026-08-10,Charles St,
+Cambridge,Fire/Sprinkler,2026-08-10,Sidney St,
+Cambridge,Fire/Sprinkler,2026-08-10,First St,
+Cambridge,Fire/Sprinkler,2026-08-10,Winter Street,
+Cambridge,Fire/Sprinkler,2026-08-10,Cambridge Pkwy,
+Cambridge,Electrical,2026-08-10,Concord Ave,2000.0
+Cambridge,Other,2026-08-10,Kendall St,185000.0
+Cambridge,Other,2026-08-10,Alewife Brook Pkwy,2400.0
+Cambridge,Building,2026-08-10,Allston St,
 Rockland,Roofing,2026-08-09,Market St,
 Rockland,Renovation/Remodel,2026-08-09,Leisurewoods Villa,
 Mashpee,Renovation/Remodel,2026-08-09,Wilsons Grv,
@@ -440,8 +472,8 @@ Attleboro,Plumbing,2026-08-07,Bicknell St,
 Attleboro,Electrical,2026-08-07,Constitution Ave,
 Attleboro,Plumbing,2026-08-07,Holcott Dr,
 Attleboro,Building,2026-08-07,Pleasant St,
-Attleboro,Electrical,2026-08-07,Bicknell St,
 Attleboro,Electrical,2026-08-07,Davis Ave,
+Attleboro,Electrical,2026-08-07,Bicknell St,
 Mansfield,Electrical,2026-08-07,Heather Ln,
 Foxborough,Building,2026-08-07,Washington Street,
 Foxborough,Electrical,2026-08-07,Cutler Lane,1000.0
@@ -471,28 +503,28 @@ Taunton,Renovation/Remodel,2026-08-07,Bay Street,12700.0
 Taunton,Renovation/Remodel,2026-08-07,Worcester Street,10170.0
 Cambridge,Demolition,2026-08-07,Griswold St,8000.0
 Cambridge,Demolition,2026-08-07,Rice St,40000.0
-Cambridge,Electrical,2026-08-07,Ames St,2500.0
-Cambridge,HVAC,2026-08-07,Sacramento St,5600.0
-Cambridge,HVAC,2026-08-07,Massachusetts Ave,3950.0
-Cambridge,Electrical,2026-08-07,Massachusetts Ave,40000.0
-Cambridge,Electrical,2026-08-07,Harvard Yard,750.0
-Cambridge,Electrical,2026-08-07,Morgan Ave,2500.0
 Cambridge,Electrical,2026-08-07,"Otis St, Unit",2000.0
 Cambridge,Electrical,2026-08-07,Bent St,5000.0
 Cambridge,HVAC,2026-08-07,Jacobs St,6295.0
-Cambridge,Electrical,2026-08-07,Massachusetts Ave,3800.0
 Cambridge,Electrical,2026-08-07,Lexington Ave,37700.0
-Cambridge,Plumbing,2026-08-07,"Canal Pk, Unit",
-Cambridge,Plumbing,2026-08-07,Pilgrim St,
+Cambridge,Electrical,2026-08-07,Massachusetts Ave,3800.0
+Cambridge,Electrical,2026-08-07,Morgan Ave,2500.0
+Cambridge,Electrical,2026-08-07,Harvard Yard,750.0
+Cambridge,Electrical,2026-08-07,Massachusetts Ave,40000.0
+Cambridge,Electrical,2026-08-07,Ames St,2500.0
+Cambridge,HVAC,2026-08-07,Massachusetts Ave,3950.0
+Cambridge,HVAC,2026-08-07,Sacramento St,5600.0
 Cambridge,Plumbing,2026-08-07,"Columbia St, Unit",
-Cambridge,Plumbing,2026-08-07,"Hampshire St, Unit",
+Cambridge,Plumbing,2026-08-07,"Canal Pk, Unit",
 Cambridge,Plumbing,2026-08-07,Massachusetts Ave,
-Cambridge,Plumbing,2026-08-07,Main St,
+Cambridge,Plumbing,2026-08-07,"Hampshire St, Unit",
 Cambridge,Plumbing,2026-08-07,Fayette Pk,
 Cambridge,Plumbing,2026-08-07,Brookline St,
+Cambridge,Plumbing,2026-08-07,Pilgrim St,
+Cambridge,Plumbing,2026-08-07,Main St,
 Cambridge,Gas,2026-08-07,"Columbia St, Unit",
-Cambridge,Gas,2026-08-07,"Canal Pk, Unit",
 Cambridge,Gas,2026-08-07,"Hampshire St, Unit",
+Cambridge,Gas,2026-08-07,"Canal Pk, Unit",
 Cambridge,Gas,2026-08-07,"Tremont St, Unit",
 Cambridge,HVAC,2026-08-07,Ames St,95000.0
 Cambridge,Fire/Sprinkler,2026-08-07,Mt Auburn St,
@@ -608,8 +640,8 @@ Boston,Electrical,2026-08-06,Newbury St,15000.0
 Charlestown,Kitchen/Bath,2026-08-06,Main St,899873.0
 Hyde Park,Renovation/Remodel,2026-08-06,Solaris Rd,
 Hyde Park,Roofing,2026-08-06,Linwood St,16500.0
-Dorchester,Plumbing,2026-08-06,Longfellow St,21000.0
 Dorchester,Plumbing,2026-08-06,Longfellow St,1000.0
+Dorchester,Plumbing,2026-08-06,Longfellow St,21000.0
 Boston,Electrical,2026-08-06,Hanover St,7000.0
 Boston,Electrical,2026-08-06,Pemberton Sq,300000.0
 Dorchester,Windows/Doors/Siding,2026-08-06,Aspinwall Rd,97657.61
@@ -618,8 +650,8 @@ South Boston,Electrical,2026-08-06,Liberty Pl,1000.0
 Roxbury,Renovation/Remodel,2026-08-06,Upton St,12500.0
 Roxbury,Electrical,2026-08-06,Rutland Sq,1000.0
 Boston,Electrical,2026-08-06,Commonwealth Av,10000.0
-Roxbury,Electrical,2026-08-06,Rutland Sq,2000.0
 Boston,Electrical,2026-08-06,Commonwealth Av,120000.0
+Roxbury,Electrical,2026-08-06,Rutland Sq,2000.0
 Roxbury,Electrical,2026-08-06,Rutland Sq,20000.0
 Boston,Electrical,2026-08-06,Commonwealth Av,5000.0
 Boston,Plumbing,2026-08-06,Dalton St,1000.0
@@ -654,16 +686,16 @@ East Boston,Other,2026-08-06,Webster St,4500.0
 Roxbury,Other,2026-08-06,Massachusetts Av,14000.0
 West Roxbury,Electrical,2026-08-06,Parklawn Rd,0.01
 Dorchester,HVAC,2026-08-06,Elm St,1000.0
-Mattapan,HVAC,2026-08-06,Manchester St,5000.0
 West Roxbury,HVAC,2026-08-06,Westover St,5000.0
+Mattapan,HVAC,2026-08-06,Manchester St,5000.0
 Dorchester,HVAC,2026-08-06,Bicknell St,1000.0
 Dorchester,HVAC,2026-08-06,Oakton Av,170000.0
 Dorchester,HVAC,2026-08-06,Buttonwood St,1000.0
 Boston,HVAC,2026-08-06,Boylston St,1000.0
 Boston,Plumbing,2026-08-06,D St,4000.0
 Dorchester,Renovation/Remodel,2026-08-06,Adams St,10000.0
-Roxbury,Gas,2026-08-06,School St,2500.0
 Roxbury,Gas,2026-08-06,School St,500.0
+Roxbury,Gas,2026-08-06,School St,2500.0
 East Boston,Other,2026-08-06,Princeton St,12909.54
 Allston,Windows/Doors/Siding,2026-08-06,Kelton St,4639.0
 Boston,Electrical,2026-08-06,Federal St,800.0
@@ -676,8 +708,8 @@ Allston,Other,2026-08-06,N Harvard St,3581.28
 Boston,Electrical,2026-08-06,Forsyth St,75000.0
 Boston,Electrical,2026-08-06,Boylston St,1200.0
 Boston,HVAC,2026-08-06,Bedford St,391910.0
-Dorchester,Electrical,2026-08-06,Erie St,80000.0
 Dorchester,Electrical,2026-08-06,Erie St,20000.0
+Dorchester,Electrical,2026-08-06,Erie St,80000.0
 Braintree,Sign/Awning,2026-08-06,Granite Street,
 Braintree,Roofing,2026-08-06,Standish Avenue,
 Braintree,Windows/Doors/Siding,2026-08-06,West Street,
@@ -843,9 +875,9 @@ Norwell,Renovation/Remodel,2026-08-06,Grove St,
 Norwell,Renovation/Remodel,2026-08-06,Mt Blue St,
 Norwell,Building,2026-08-06,Washington St,
 Norwell,Plumbing,2026-08-06,Jacobs Ln,
-Attleboro,Building,2026-08-06,Solomon St,
-Attleboro,HVAC,2026-08-06,South Ave,
 Attleboro,Plumbing,2026-08-06,Ingraham St,
+Attleboro,HVAC,2026-08-06,South Ave,
+Attleboro,Building,2026-08-06,Solomon St,
 Attleboro,Plumbing,2026-08-06,Read St,
 Attleboro,Building,2026-08-06,Commonwealth Ave,
 Attleboro,Renovation/Remodel,2026-08-06,Washburn St,
@@ -894,34 +926,34 @@ Taunton,Electrical,2026-08-06,Demi Way,20000.0
 Taunton,Gas,2026-08-06,Hart Street,1700.0
 Taunton,Plumbing,2026-08-06,Washington Street,9000.0
 Cambridge,Building,2026-08-06,Grozier Rd,5000.0
-Cambridge,Electrical,2026-08-06,"Jackson Pl, Unit Building",3000.0
 Cambridge,Electrical,2026-08-06,Fayette St,3500.0
-Cambridge,Electrical,2026-08-06,Oxford Ave,7800.0
-Cambridge,Electrical,2026-08-06,"Jackson Pl, Unit Building",1000.0
-Cambridge,Electrical,2026-08-06,Massachusetts Ave,289000.0
-Cambridge,Electrical,2026-08-06,"Cambridge Pkwy, Unit",7500.0
-Cambridge,Electrical,2026-08-06,"Jackson Pl, Unit Building",2000.0
-Cambridge,Roofing,2026-08-06,Concord Ave,1000.0
-Cambridge,Electrical,2026-08-06,Gerrys Landing Rd,50000.0
-Cambridge,Electrical,2026-08-06,Massachusetts Ave,2000.0
-Cambridge,Electrical,2026-08-06,Morgan Ave,2000.0
-Cambridge,Electrical,2026-08-06,Highland St,5000.0
-Cambridge,Electrical,2026-08-06,Binney St,11000.0
-Cambridge,Electrical,2026-08-06,Harvard Yard,15000.0
 Cambridge,Electrical,2026-08-06,"Massachusetts Ave, Unit",600.0
-Cambridge,Electrical,2026-08-06,"Broadway, Unit",14500.0
-Cambridge,Electrical,2026-08-06,Memorial Dr,30000.0
-Cambridge,Electrical,2026-08-06,Brattle St,10000.0
+Cambridge,Electrical,2026-08-06,Massachusetts Ave,2000.0
+Cambridge,Electrical,2026-08-06,"Jackson Pl, Unit Building",2000.0
+Cambridge,Electrical,2026-08-06,"Jackson Pl, Unit Building",3000.0
+Cambridge,Electrical,2026-08-06,Massachusetts Ave,289000.0
+Cambridge,Electrical,2026-08-06,Highland St,5000.0
 Cambridge,Electrical,2026-08-06,Massachusetts Ave,28000.0
-Cambridge,Plumbing,2026-08-06,River St,
+Cambridge,Electrical,2026-08-06,"Cambridge Pkwy, Unit",7500.0
+Cambridge,Electrical,2026-08-06,"Broadway, Unit",14500.0
+Cambridge,Electrical,2026-08-06,"Jackson Pl, Unit Building",1000.0
+Cambridge,Roofing,2026-08-06,Concord Ave,1000.0
+Cambridge,Electrical,2026-08-06,Morgan Ave,2000.0
+Cambridge,Electrical,2026-08-06,Harvard Yard,15000.0
+Cambridge,Electrical,2026-08-06,Memorial Dr,30000.0
+Cambridge,Electrical,2026-08-06,Binney St,11000.0
+Cambridge,Electrical,2026-08-06,Oxford Ave,7800.0
+Cambridge,Electrical,2026-08-06,Brattle St,10000.0
+Cambridge,Electrical,2026-08-06,Gerrys Landing Rd,50000.0
 Cambridge,Plumbing,2026-08-06,Fairfield St,
-Cambridge,Plumbing,2026-08-06,"Harvard St, Unit",
+Cambridge,Plumbing,2026-08-06,River St,
 Cambridge,Plumbing,2026-08-06,First St,
-Cambridge,Gas,2026-08-06,River St,
+Cambridge,Plumbing,2026-08-06,"Harvard St, Unit",
 Cambridge,Gas,2026-08-06,"Harvard St, Unit",
-Cambridge,HVAC,2026-08-06,Lakeview Ave,
+Cambridge,Gas,2026-08-06,River St,
 Cambridge,HVAC,2026-08-06,Cogswell Ct,
 Cambridge,HVAC,2026-08-06,"Hancock St, Unit",
+Cambridge,HVAC,2026-08-06,Lakeview Ave,
 Cambridge,HVAC,2026-08-06,Acorn Park Dr,4725.0
 Cambridge,HVAC,2026-08-06,Mt Auburn St,607000.0
 Cambridge,HVAC,2026-08-06,Mt Auburn St,228335.0
@@ -1074,8 +1106,8 @@ Roslindale,Kitchen/Bath,2026-08-05,Delano Ct,41052.0
 Boston,New Construction,2026-08-05,North St,3980.0
 Boston,Renovation/Remodel,2026-08-05,Boylston St,500000.0
 Hyde Park,Electrical,2026-08-05,Vallaro Rd,6500.0
-Roslindale,Kitchen/Bath,2026-08-05,Havey St,40000.0
 Roslindale,Kitchen/Bath,2026-08-05,Beech St,100000.0
+Roslindale,Kitchen/Bath,2026-08-05,Havey St,40000.0
 Dorchester,Solar,2026-08-05,William T Morrissey Bl,135000.0
 Jamaica Plain,Roofing,2026-08-05,Rossmore Rd,33250.0
 Boston,Electrical,2026-08-05,Boylston St,97000.0
@@ -1324,10 +1356,10 @@ Attleboro,Renovation/Remodel,2026-08-05,County St Rachel Dr,
 Attleboro,Renovation/Remodel,2026-08-05,East St,
 Attleboro,Electrical,2026-08-05,County St,
 Attleboro,HVAC,2026-08-05,Grant St,
-Attleboro,Plumbing,2026-08-05,West St,
 Attleboro,Renovation/Remodel,2026-08-05,Alex Dr,
 Attleboro,HVAC,2026-08-05,Ides Hill Lane,
 Attleboro,Gas,2026-08-05,Glendale Rd,
+Attleboro,Plumbing,2026-08-05,West St,
 Mansfield,Renovation/Remodel,2026-08-05,Judys Ln,
 Mansfield,Plumbing,2026-08-05,Carriage House Ln,
 Mansfield,Plumbing,2026-08-05,Warren Ave,
@@ -1372,21 +1404,21 @@ Taunton,Other,2026-08-05,Johnson St Unit A Johnson St,
 Taunton,Other,2026-08-05,Johnson St Unit B Johnson St,
 Taunton,Other,2026-08-05,Johnson St Unit C Johnson St,
 Taunton,Electrical,2026-08-05,Stevens Street,2500.0
-Cambridge,Windows/Doors/Siding,2026-08-05,Pine St,13987.0
-Cambridge,Kitchen/Bath,2026-08-05,"Brattle St, Unit",18900.0
-Cambridge,Windows/Doors/Siding,2026-08-05,Cogswell Ave,9925.0
 Cambridge,Kitchen/Bath,2026-08-05,"Lexington Ave, Unit",63950.0
 Cambridge,Building,2026-08-05,Clifton St,8068.46
-Cambridge,Electrical,2026-08-05,Portsmouth St,1800.0
+Cambridge,Windows/Doors/Siding,2026-08-05,Pine St,13987.0
+Cambridge,Windows/Doors/Siding,2026-08-05,Cogswell Ave,9925.0
+Cambridge,Kitchen/Bath,2026-08-05,"Brattle St, Unit",18900.0
 Cambridge,HVAC,2026-08-05,Binney St,12261.0
+Cambridge,Electrical,2026-08-05,Portsmouth St,1800.0
 Cambridge,Electrical,2026-08-05,Memorial Dr,600000.0
-Cambridge,Plumbing,2026-08-05,Massachusetts Ave,
 Cambridge,Plumbing,2026-08-05,"Grant St, Unit",
+Cambridge,Plumbing,2026-08-05,Massachusetts Ave,
 Cambridge,Plumbing,2026-08-05,Porter Rd,
-Cambridge,Gas,2026-08-05,Jfk St,
+Cambridge,Gas,2026-08-05,Massachusetts Ave,
 Cambridge,Gas,2026-08-05,"Ware St, Unit",
 Cambridge,Gas,2026-08-05,Porter Rd,
-Cambridge,Gas,2026-08-05,Massachusetts Ave,
+Cambridge,Gas,2026-08-05,Jfk St,
 Cambridge,Fire/Sprinkler,2026-08-05,"One Kendall Square Complex, Unit",
 Cambridge,Roofing,2026-08-05,Tremont St,40000.0
 Worcester,Building,2026-08-05,Radmore St,
@@ -1554,15 +1586,15 @@ Dorchester,Electrical,2026-08-04,Hinckley St,4000.0
 Roxbury,HVAC,2026-08-04,Union Pk,10000.0
 Roslindale,Plumbing,2026-08-04,Bateman St,650.0
 South Boston,Plumbing,2026-08-04,Old Colony Av,4000.0
-Roslindale,Plumbing,2026-08-04,Kittredge St,650.0
 Roslindale,Plumbing,2026-08-04,Kittredge St,850.0
+Roslindale,Plumbing,2026-08-04,Kittredge St,650.0
 Roslindale,Plumbing,2026-08-04,Gretter Rd,650.0
 Boston,HVAC,2026-08-04,Chauncy St,8135.0
 Boston,Plumbing,2026-08-04,Commonwealth Av,10000.0
 South Boston,Plumbing,2026-08-04,Old Colony Av,52000.0
 Dorchester,Plumbing,2026-08-04,Annapolis St,10000.0
-Roxbury,Windows/Doors/Siding,2026-08-04,Tremont St,86625.0
 Roxbury,Windows/Doors/Siding,2026-08-04,Tremont St,61842.0
+Roxbury,Windows/Doors/Siding,2026-08-04,Tremont St,86625.0
 Mattapan,Solar,2026-08-04,Mariposa St,36900.0
 Mattapan,Solar,2026-08-04,Alabama St,65700.0
 Dorchester,New Construction,2026-08-04,Burt St,50000.0
@@ -1817,13 +1849,13 @@ Norwell,HVAC,2026-08-04,Longwater Cir,
 Norwell,Electrical,2026-08-04,Stetson Shrine Ln,
 Norwell,Plumbing,2026-08-04,River St,
 Norwell,Electrical,2026-08-04,Shrine Rd,
-Attleboro,Gas,2026-08-04,Newport Ave,
+Attleboro,HVAC,2026-08-04,Kimberly Court,
+Attleboro,Electrical,2026-08-04,Avalon Dr,
 Attleboro,Renovation/Remodel,2026-08-04,Oak Hill Ave Catherine Dr,
 Attleboro,Renovation/Remodel,2026-08-04,Tyler St,
 Attleboro,Electrical,2026-08-04,Carrier Ave,
+Attleboro,Gas,2026-08-04,Newport Ave,
 Attleboro,Electrical,2026-08-04,Dorrance St,
-Attleboro,HVAC,2026-08-04,Kimberly Court,
-Attleboro,Electrical,2026-08-04,Avalon Dr,
 Attleboro,HVAC,2026-08-04,Carrier Ave,
 Attleboro,Renovation/Remodel,2026-08-04,Dorrance St,
 Attleboro,Other,2026-08-04,Washington St,
@@ -1921,26 +1953,26 @@ Cambridge,Windows/Doors/Siding,2026-08-04,Harvard St,54471.0
 Cambridge,Roofing,2026-08-04,Harrington Rd,68207.0
 Cambridge,HVAC,2026-08-04,Fairmont St,309525.04
 Cambridge,Building,2026-08-04,Clay St,15728.0
-Cambridge,Electrical,2026-08-04,Hancock St,5000.0
-Cambridge,Solar,2026-08-04,Kelly Rd,9000.0
 Cambridge,Electrical,2026-08-04,"Putnam Ave, Unit",3500.0
 Cambridge,Electrical,2026-08-04,Third St,2500000.0
+Cambridge,Solar,2026-08-04,Kelly Rd,9000.0
+Cambridge,Electrical,2026-08-04,Hancock St,5000.0
 Cambridge,Plumbing,2026-08-04,"Trowbridge St, Unit",
-Cambridge,Plumbing,2026-08-04,Auburn St,
-Cambridge,Plumbing,2026-08-04,Broadway,
-Cambridge,Plumbing,2026-08-04,Main St,
 Cambridge,Plumbing,2026-08-04,Homer Ave,
+Cambridge,Plumbing,2026-08-04,Main St,
+Cambridge,Plumbing,2026-08-04,Broadway,
+Cambridge,Plumbing,2026-08-04,Auburn St,
+Cambridge,Gas,2026-08-04,Auburn St,
 Cambridge,Gas,2026-08-04,Homer Ave,
 Cambridge,Gas,2026-08-04,Broadway,
-Cambridge,Gas,2026-08-04,Auburn St,
 Cambridge,HVAC,2026-08-04,Massachusetts Ave,
 Cambridge,Solar,2026-08-04,Inman St,28714.5
 Cambridge,Roofing,2026-08-04,Rindge Ave,8245.0
-Cambridge,Roofing,2026-08-04,Chestnut St,
 Cambridge,Building,2026-08-04,Linnaean St,15000.0
-Cambridge,Building,2026-08-04,Kinnaird St,3500.0
-Cambridge,Building,2026-08-04,Beech St,15000.0
+Cambridge,Roofing,2026-08-04,Chestnut St,
 Cambridge,Building,2026-08-04,Kirkland St,3500.0
+Cambridge,Building,2026-08-04,Beech St,15000.0
+Cambridge,Building,2026-08-04,Kinnaird St,3500.0
 Worcester,Building,2026-08-04,Sterling St,
 Worcester,Building,2026-08-04,Elbridge St,
 Worcester,Building,2026-08-04,Park Ave,
@@ -1967,35 +1999,3 @@ Worcester,Electrical,2026-08-04,Midland St,
 Worcester,Plumbing,2026-08-04,Massasoit Rd,
 Worcester,Plumbing,2026-08-04,William St,
 Worcester,Plumbing,2026-08-04,Randall St,
-Worcester,Plumbing,2026-08-04,Merlin Ct,
-Worcester,Plumbing,2026-08-04,Danielle'S Way,
-Worcester,Plumbing,2026-08-04,Danielle'S Way Worcester Ma,
-Worcester,Plumbing,2026-08-04,Nevada St,
-Worcester,Plumbing,2026-08-04,Victor Ave,
-Worcester,Plumbing,2026-08-04,Mason St,
-Worcester,Plumbing,2026-08-04,Grafton St,
-Worcester,Plumbing,2026-08-04,Canterbury St,
-Worcester,Plumbing,2026-08-04,Chandler St,
-Worcester,Plumbing,2026-08-04,Grove St,
-Worcester,Plumbing,2026-08-04,Fay St,
-Worcester,Plumbing,2026-08-04,Institute Rd,
-Worcester,Plumbing,2026-08-04,Westborough St,
-Worcester,Plumbing,2026-08-04,Alvarado Ave,
-Worcester,Plumbing,2026-08-04,Pleasant St,
-Worcester,Plumbing,2026-08-04,Dillon St,
-Worcester,Plumbing,2026-08-04,Davidson Rd,
-Worcester,Plumbing,2026-08-04,Tatman St,
-Worcester,Gas,2026-08-04,Sorrento St,
-Worcester,Gas,2026-08-04,William St,
-Worcester,Gas,2026-08-04,Massasoit Rd,
-Worcester,Gas,2026-08-04,Upsala St,
-Worcester,Gas,2026-08-04,Acton St,
-Worcester,Gas,2026-08-04,Victor Ave,
-Worcester,Gas,2026-08-04,Pilgrim Ave,
-Worcester,Gas,2026-08-04,Institute Rd,
-Worcester,Gas,2026-08-04,Indian Hill Rd,
-Worcester,Gas,2026-08-04,Adams St,
-Worcester,Gas,2026-08-04,Hamilton St,
-Worcester,HVAC,2026-08-04,Marcius Rd,
-Worcester,HVAC,2026-08-04,Boston Ave,
-Worcester,HVAC,2026-08-04,Tucker St,
