@@ -49,7 +49,14 @@ export async function onRequest(context) {
         return json({ ok: false, error: "last refresh FAILED (" +
           (status.error || "unknown") + ") — send aborted so this fails visibly" }, 500);
       }
-      if (status.degraded) coverage = status.coverage || { note: "reduced coverage" };
+      // Disclosure is keyed on coverage.disclose, NOT on `degraded`. After the
+      // source rebuild a scrape can be perfectly healthy against what we now
+      // attempt (27/27) while still far below the 140 towns the product was
+      // sold as. The subscriber compares against what they bought, so the note
+      // stays until real coverage returns — or the product is repositioned.
+      if ((status.coverage && status.coverage.disclose) || status.degraded) {
+        coverage = status.coverage || { note: "reduced coverage" };
+      }
     }
 
     let subs = [];
@@ -156,8 +163,14 @@ async function sendEmail(env, to, name, b64, token, coverage) {
     '<p style="margin:0 0 8px;font-weight:700;color:#8a5a00">Reduced coverage this week — please read</p>' +
     `<p style="margin:0 0 8px;color:#5c4300;font-size:14px">This file covers <b>${coverage.live_sources || "fewer"} of ` +
     `${coverage.expected_sources || "our usual"}</b> town sources. On 1 August our largest upstream provider closed ` +
-    `public access to its permit records, which removed ${coverage.lost_sources || "many"} towns at once — including ` +
-    'most of Cape Cod, MetroWest, the North Shore, and Central and Western Massachusetts.</p>' +
+    'public access to its permit records. We are rebuilding town by town from municipal sources — ' +
+    'Worcester, Cambridge, Lexington and Chatham are back as of 11 August.</p>' +
+    (coverage.monthly_sources && coverage.monthly_sources.length
+      ? '<p style="margin:0 0 8px;color:#5c4300;font-size:14px">Note: ' +
+        coverage.monthly_sources.map((m) => m.replace(", MA", "")).join(", ") +
+        ' publish their permits <b>monthly</b>, so their new rows arrive in a batch early each month ' +
+        'rather than weekly. Every row shows its issue date.</p>'
+      : "") +
     '<p style="margin:0;color:#5c4300;font-size:14px">Everything in the attached file is real and current. ' +
     'We are rebuilding the missing towns from their own municipal sources and will tell you as they come back. ' +
     'If a reduced feed is not worth your subscription in the meantime, reply and we will refund you — no argument.</p></div>'
