@@ -80,6 +80,19 @@ export async function onRequest(context) {
     const prior = Array.isArray(priorLog) && priorLog.length ? priorLog[0] : null;
     if (!force && etag && prior && prior.bundle_etag === etag &&
         (prior.sent || []).some((x) => x.ok)) {
+      // RECORD the skip. A skip writes no delivery, so if it were silent the
+      // watchdog would read "nothing since the due time", call it `missed`, and
+      // retry into the same skip forever — reporting a cause that isn't true.
+      // Worse: a refresh that fails to produce a NEW bundle would silently mean
+      // no delivery again, which is the exact 2026-08-03 failure re-created
+      // through the guard meant to prevent it. Logged, it is visible.
+      try {
+        const l2 = (await readJsonSafe(env, "feed-send-log.json")) || [];
+        l2.unshift({ at: new Date().toISOString(), subscribers: subs.length, sent: [],
+                     skipped: "identical bundle already delivered " + prior.at,
+                     bundle_etag: etag, coverage });
+        await env.BUNDLES.put("feed-send-log.json", JSON.stringify(l2.slice(0, 12)));
+      } catch (_) { /* never fail on bookkeeping */ }
       return json({ ok: true, skipped: "identical bundle already delivered",
                     bundle_etag: etag, previously_sent_at: prior.at });
     }

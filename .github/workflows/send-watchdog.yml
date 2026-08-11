@@ -16,7 +16,9 @@ name: MassPermits delivery watchdog
 #   unknown -> it started but never recorded results. Do NOT retry — someone may
 #              already hold the file. Email the owner and let a human decide.
 #   partial -> some recipients failed. Email the owner with who and why.
-#   ok      -> stay quiet. A watchdog that emails on success gets filtered.
+#   stale_bundle -> the send ran but skipped: the refresh produced no new file,
+#              so subscribers got nothing new. Retrying cannot help. Alert only.
+#   ok / not_due -> stay quiet. A watchdog that emails on success gets filtered.
 
 on:
   schedule:

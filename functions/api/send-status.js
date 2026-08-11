@@ -56,7 +56,12 @@ export async function onRequest(context) {
   const dueAt = lastDueAt(now);
   const dueIso = new Date(dueAt).toISOString();
   const graceOver = now >= dueAt + GRACE_HOURS * 3600_000;
-  const sentSinceDue = !!(last && Date.parse(last.at) >= dueAt);
+  // A SKIPPED run is not a delivery. weekly-send skips when the bundle is
+  // byte-identical to the one already sent — which also means the data refresh
+  // produced nothing new, so the subscriber is owed an explanation, not a retry.
+  const lastDelivered = !!(last && !last.skipped && (last.sent || []).length);
+  const sentSinceDue = !!(last && !last.skipped && Date.parse(last.at) >= dueAt);
+  const skippedSinceDue = !!(last && last.skipped && Date.parse(last.at) >= dueAt);
   const triedSinceDue = !!(attempt && Date.parse(attempt.at) >= dueAt);
 
   let verdict, detail, retry_safe = false;
@@ -73,6 +78,12 @@ export async function onRequest(context) {
   } else if (sentSinceDue && failed.length) {
     verdict = "partial";
     detail = `${failed.length} of ${(last.sent || []).length} deliveries FAILED`;
+  } else if (skippedSinceDue) {
+    // Retrying cannot help — the bundle is unchanged because the upstream
+    // refresh produced nothing new. A human has to look at the pipeline.
+    verdict = "stale_bundle";
+    detail = "the send ran but was skipped: " + last.skipped +
+             " — the data refresh produced no new bundle, so subscribers received nothing new";
   } else if (triedSinceDue) {
     // It started but never finished writing results — a crash mid-send, or the
     // log write failed. Some subscribers may already hold the file, so a retry
