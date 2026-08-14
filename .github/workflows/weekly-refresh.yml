@@ -8,6 +8,19 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v36 (2026-08-11): SOURCE REBUILD WAVE 2 — Plymouth, Reading, Sudbury.
+# Plymouth is the second-biggest town in the whole feed now (~875 unique
+# permits/mo from 180-page monthly PDFs; the record-number wrap trap is solved
+# with a <500-rows/doc raise so a bad parse can never present as a quiet
+# month). Reading (~95/mo XLSX) tolerates one corrupt archive month with a
+# loud warning instead of blanking the town — its first production run lost
+# June+July to a bad May document. Sudbury (~98/mo PDF) raises loudly on
+# clerk header renames. Amherst is BUILT and in the tarball but NOT wired:
+# amherstma.gov has a site-wide TLS outage; wire once `python fetch_amherst.py
+# 2` succeeds live. Local full-run: 28 live sources, 36,117 rows. All three
+# join CADENCE (monthly) + CORE_SOURCES. Free-sample README no longer promises
+# CSVs and map links the sample zip does not contain.
+#
 # engine v35 (2026-08-11): SOURCE REBUILD — first recovery after the OpenGov
 # lockout. Four towns return via their OWN public data: Worcester (5 ArcGIS
 # FeatureServers, ~985/mo — 5.6x what the capped OpenGov path ever gave MA's
