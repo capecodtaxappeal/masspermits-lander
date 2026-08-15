@@ -8,6 +8,24 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v38 (2026-08-14): PROJECT-SUBTYPE SEO TIER — ~330 new pages targeting
+# the queries homeowners actually type ("water heater permit", "generator",
+# "mini-split", "service upgrade", "ADU") instead of only our invented trade
+# taxonomy. Unlocked by the source rebuild: Cambridge/Plymouth/Lexington now
+# carry free text AND valuations in the same rows, which the 2026-08-01
+# analysis lacked. 22 statewide /projects/<sub>-permits-massachusetts + cost
+# twins + ~200 town x subtype pages, every one gated (statewide >=40 free-text
+# rows, town pair >=10, any cost figure >=8 valued rows) and adversarially
+# verified: gates recomputed exact on all pages, cost medians exact, privacy
+# clean. Two verifier refutations fixed BEFORE wiring: bare kitchen/bath rules
+# matched wrong work ~1-in-6 (guards added, garage/heat-pump promoted above);
+# pool/deck-porch/solar subtypes cannibalized their existing trade-page
+# families (dropped). Hub gains a "Browse by project type" block so the tier
+# has inbound links beyond the sitemap. ALSO: Amherst wired for autonomous
+# recovery — its town site has a TLS outage; until it recovers the town shows
+# as one honest error entry per run, and the first day it answers, rows flow
+# with zero intervention.
+#
 # engine v36 (2026-08-11): SOURCE REBUILD WAVE 2 — Plymouth, Reading, Sudbury.
 # Plymouth is the second-biggest town in the whole feed now (~875 unique
 # permits/mo from 180-page monthly PDFs; the record-number wrap trap is solved
