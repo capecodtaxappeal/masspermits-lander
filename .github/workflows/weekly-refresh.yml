@@ -8,6 +8,44 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v47 (2026-08-18): AN ADVERSARIAL AUDIT OF THE /research/ TIER FOUND
+# THREE PUBLISHED CLAIMS WRONG ON ITS FIRST DAY. All three are corrected, and
+# all three are now PUBLISHED at /research/corrections, which is what that page
+# is for. The pattern in all three: a sentence asserted a relationship that no
+# code ever evaluated, sitting between numbers that were computed.
+#  - heat-pump: "these sources carry MORE THAN the entire eligible sample" while
+#    the page's own evidence JSON said 462 vs 499. The comparative was hardcoded
+#    prose between two computed numbers, so nothing could check it. The relation
+#    is computed now and the eligible total prints beside it.
+#  - ADU: inferred from the word "garage" that the work is "a conversion of
+#    existing structure far more often than new construction". The opposite is
+#    true - matching both vocabularies gives new construction 53 to 25 - and the
+#    garage subset is too close to call either way. A third of ADU permits use
+#    neither vocabulary and are now reported as unclassified.
+#  - Friday: claimed the pattern held "across towns that share no software, no
+#    vendor and no county" when 21 of 28 sources run ONE vendor. The article now
+#    splits on the vendor and publishes both halves. The finding SURVIVES: all 7
+#    sources on independent systems (Boston, Worcester, Cambridge among them) sit
+#    below their own weekday average, and the shared-vendor towns dip harder,
+#    which is stated rather than hidden.
+# ALSO, from the same audit:
+#  - A tripped guard band did NOT withdraw an article. It stopped re-rendering
+#    while the old HTML kept serving, kept its hub card and llms.txt line, and
+#    was put back in the sitemap by the orphan rescue - so the page went on
+#    asserting exactly what the build had just ruled unsupported, which is the
+#    opposite of what /research/methodology promises. A skipped article is now
+#    replaced in place by a noindexed withdrawal notice naming the stat that
+#    tripped, and is dropped from the sitemap, hub, llms.txt, hub cards and RSS.
+#    Verified by forcing a band.
+#  - 10 frozen cost pages were de-listed from the sitemap but never de-indexed:
+#    the sitemap exclusion is a filename test that hits all 390, while the
+#    noindex meta is written by the generator, which no longer runs for dark
+#    towns. 8 had no inbound link either, so a crawler had no path to ever
+#    discover a de-indexing signal. Now retrofitted.
+#  - "One Organization @id sitewide" was false. ~1,300 frozen pages carried only
+#    an anonymous inline publisher, and the HOMEPAGE declared a second
+#    unidentified Organization on the site's root URL. Both fixed.
+#
 # engine v46 (2026-08-18): v44 was only half a fix. The ~800 frozen pages that
 # just gained a signup form were still shipping the mpAlert from 2026-07-30 --
 # the version that treats ANY JSON response as success, so an HTTP 500 shows the

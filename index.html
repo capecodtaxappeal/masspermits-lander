@@ -12,7 +12,11 @@
 <meta property="og:url" content="https://masspermits.com/">
 <meta property="og:site_name" content="MassPermits">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MassPermits","url":"https://masspermits.com","description":"Building-permit leads for Massachusetts contractors.","email":"hello@masspermits.com"}</script>
+<!-- The site-wide Organization entity. The @id MUST match the one seo_build
+     emits on every generated page (SITE + "/#org"): without it the homepage
+     declared a SECOND, anonymous organization on the root URL, which is the
+     one page where entity identity matters most. -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://masspermits.com/#org","name":"MassPermits","url":"https://masspermits.com","description":"Building-permit leads for Massachusetts contractors.","logo":{"@type":"ImageObject","url":"https://masspermits.com/logo.png"},"email":"hello@masspermits.com","sameAs":["https://masspermits.com/research/","https://masspermits.com/permits/"],"knowsAbout":["building permits","Massachusetts","construction leads","municipal public records"],"publishingPrinciples":"https://masspermits.com/research/methodology","areaServed":{"@type":"State","name":"Massachusetts"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"MassPermits","url":"https://masspermits.com"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Massachusetts Building-Permit Leads","description":"Ready-to-work contractor leads built from Massachusetts building permits — address, owner, and project value, by trade and town.","brand":{"@type":"Brand","name":"MassPermits"},"offers":[{"@type":"Offer","name":"Lead Pack","price":"49","priceCurrency":"USD","availability":"https://schema.org/InStock"},{"@type":"Offer","name":"Weekly Feed","price":"99","priceCurrency":"USD","availability":"https://schema.org/InStock"}]}</script>
 <meta name="description" content="Every Massachusetts building permit, sorted by trade and town, delivered as ready-to-work leads. Roofing, solar, HVAC, pools, remodels and more — name, address, and project value. One-time lead packs from $49.">
