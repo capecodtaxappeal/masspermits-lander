@@ -8,6 +8,27 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v48 (2026-08-18): the two honesty defects the audit reported but never
+# got to judge, both verified by hand and both real.
+#  - The 21 frozen /<trade>-leads-<region> pages were the ONLY frozen pages that
+#    are pure sales pages, and the only ones with no coverage note at all. They
+#    open "Fresh electrical building permits across MetroWest & 495 ... 419+
+#    recent permits" beside a $49/$99 CTA, for a region whose towns stopped
+#    reporting on 2026-08-01. Every /permits/ and /guides/ page for those same
+#    towns has disclosed it for weeks. They now carry the note, above the lead
+#    it corrects, naming the real 2026-07-30 snapshot date.
+#  - The 8-week filing-history tables added in v42 rendered a town's
+#    un-published weeks as "0". Plymouth read 196, 0, 0 - which tells a reader
+#    the town built nothing when it publishes MONTHLY and simply has not filed
+#    that month yet. Every monthly-cadence town had it. A week now only carries
+#    a count if it ends on or before the town's newest record; the rest say "not
+#    published yet", and monthly towns say so in a line above the table.
+#    Zero is a measurement; absence is not, and they must not render the same.
+#  - Archives with no briefs fall back to the newest record behind the town for
+#    lastmod (9 -> 8 without one). The remaining 8 are Barnstable and its
+#    villages, which have no rows to date them by, so they assert nothing --
+#    which is the correct answer, not a gap.
+#
 # engine v47 (2026-08-18): AN ADVERSARIAL AUDIT OF THE /research/ TIER FOUND
 # THREE PUBLISHED CLAIMS WRONG ON ITS FIRST DAY. All three are corrected, and
 # all three are now PUBLISHED at /research/corrections, which is what that page
