@@ -8,6 +8,20 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v43 (2026-08-18): DISTRIBUTION FOR THE RESEARCH TIER. Three additions,
+# all machine-facing, none of them new pages:
+#  - /research/feed.xml, its own RSS with a WebSub hub declaration and a publish
+#    ping. Deliberately NOT items bolted onto /feed.xml: that feed is a stream
+#    of individual permits for contractors, and mixing articles into it breaks
+#    what a subscriber signed up for.
+#  - Every /research/ page now carries rel=alternate pointing at its evidence
+#    JSON, so "check our numbers" is discoverable by a machine rather than being
+#    a link buried in the body.
+#  - The four evidence files join catalog.json as DCAT datasets. They ARE open
+#    datasets - the complete figures behind a published analysis plus the rules
+#    and thresholds that produced them - and DCAT is how an aggregator or
+#    Dataset Search finds them at all.
+#
 # engine v42 (2026-08-18): THE THINNEST TIER IS GONE. The 160 /news/<town>/
 # archives were an <h1> and a list of links - a median of 24 words, the lowest
 # on the site by a wide margin. They are now the town's filing HISTORY: an
@@ -553,7 +567,7 @@ jobs:
       - name: Ping WebSub hub
         continue-on-error: true
         run: |
-          for f in https://masspermits.com/feed.xml https://masspermits.com/feed/permits.json; do
+          for f in https://masspermits.com/feed.xml https://masspermits.com/feed/permits.json https://masspermits.com/research/feed.xml; do
             code=$(curl -s -o /dev/null -w '%{http_code}' -X POST https://pubsubhubbub.appspot.com/ \
               -d "hub.mode=publish" --data-urlencode "hub.url=$f")
             echo "WebSub publish $f -> HTTP $code"
