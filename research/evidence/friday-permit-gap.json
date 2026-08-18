@@ -1,8 +1,8 @@
 {
  "slug": "friday-permit-gap",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-18T08:37:36.068735+00:00",
- "corpus_rows": 37359,
+ "corpus_fetched_at": "2026-08-18T08:41:46.343882+00:00",
+ "corpus_rows": 37360,
  "corpus_sources": 31,
  "corpus_first": "2026-02-19",
  "corpus_last": "2026-08-18",
@@ -43,7 +43,7 @@
   ]
  },
  "stats": {
-  "n_dated": 37359,
+  "n_dated": 37360,
   "n_sources": 31,
   "n_shown": 31,
   "mon_pct": 21.7,
@@ -284,6 +284,15 @@
     "last": "2026-08-18"
    },
    {
+    "source": "Rockland, MA",
+    "weekday": 742,
+    "friday": 99,
+    "friday_pct": 13.3,
+    "issue_days": 126,
+    "first": "2026-02-19",
+    "last": "2026-08-18"
+   },
+   {
     "source": "Sandwich, MA",
     "weekday": 843,
     "friday": 113,
@@ -291,15 +300,6 @@
     "issue_days": 68,
     "first": "2026-05-14",
     "last": "2026-08-18"
-   },
-   {
-    "source": "Rockland, MA",
-    "weekday": 741,
-    "friday": 99,
-    "friday_pct": 13.4,
-    "issue_days": 125,
-    "first": "2026-02-19",
-    "last": "2026-08-17"
    },
    {
     "source": "Taunton, MA",
