@@ -8,6 +8,59 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v40 (2026-08-18): THE EDITORIAL TIER + INDEX HYGIENE.
+# (a) /research/ - 7 URLs, 3 articles, and the honest number is three. Six
+#     candidate stories were mined from the corpus and three were killed by
+#     their own data: a "kitchen costs 7x more in one town" spread that is a
+#     permit-mix artifact (61% of two towns' valuation-bearing kitchen rows are
+#     electrical/plumbing sub-permits vs 9% in the town at the other end;
+#     building-to-building it collapses to 1.9x against a 1.6x roofing control),
+#     a contractor-concentration story whose top filer is a private individual,
+#     and a "towns revise counts downward" story that was measuring our own
+#     source churn. All three rejections are PUBLISHED at /research/corrections,
+#     because a corrections page that is empty on day one proves nothing.
+#     The heat-pump article nearly shipped wrong the same way: Lexington files
+#     84 gas permits under ONE distinct description string, so a text search
+#     finds 100% of its heat pumps and 0% of its boilers and reports it at
+#     100.0%. Same in Worcester (314 heating rows, 1 string, reads as 0%) and
+#     Cambridge. An eligibility gate on description entropy now excludes them by
+#     name, in the article, and the exclusion IS the story.
+#     research_stats.py computes every figure; research_pages.py holds the prose
+#     and a GUARD BAND per article. Move a figure outside the range its sentence
+#     was written for and the article DOES NOT RENDER - never re-worded
+#     silently, never published over stale numbers.
+# (b) The whole cost family is noindexed: /permits/<town>-<trade>-cost (366),
+#     /permits/<town>-<subtype>-cost (78) and /projects/<sub>-cost-massachusetts
+#     (23). Measured on the built site: ~300 words, ~7 distinct figures, and
+#     median pairwise 6-gram similarity of 0.50-0.69, against 0.39 for the
+#     subtype pages, 0.18 for the weekly briefs, 0.08 for the guides and 0.08
+#     for the new research pages. The trade-cost tier took 0 of 193 hits in a
+#     full week against a 4.23% per-page base rate predicting ~15 (p = 2e-7).
+#     They stay live and internally linked; they stop being 19% of the index.
+# (c) Orphan rescue extended to /research/, /projects/ and the root
+#     <trade>-leads-<region> pages (a whole region, north-shore-merrimack, had
+#     gone dark), with the cost family excluded so no page is submitted and
+#     noindexed by the same build. Undatable orphans are now logged, not
+#     silently dropped.
+# (d) lastmod is PER PAGE, from the data behind that page. ~1,800 URLs used to
+#     carry an identical rewritten-today date, and 533 /news/ URLs carried none
+#     at all. Briefs now assert the week they cover; archives their newest brief.
+# (e) ONE Organization @id sitewide. org_ld() was emitted on a single page while
+#     every Article inlined its own anonymous publisher - ~1,900 unrelated
+#     organizations instead of one entity. For an anonymous publisher, entity
+#     consolidation is the whole E-E-A-T play. /news/ Article markup also gains
+#     the image + publisher.logo it needs to be rich-result eligible at all.
+# (f) 336 frozen /news/ briefs and archives for towns that went dark on
+#     2026-08-01 now carry the same paused-coverage banner their /permits/ and
+#     /guides/ siblings have had for weeks. /news/ is 29.5% of measured traffic
+#     and NOT ONE of those pages disclosed that its town had stopped reporting.
+#     Injected, never re-rendered, so no published figure moves - and removed
+#     automatically if a town's source comes back.
+# (g) IndexNow submits only what CHANGED, intersected with the sitemap this
+#     build wrote. Delivery was never the problem (200 api.indexnow.org / 200
+#     Bing / 202 Yandex / 200 Seznam on a live test); resubmitting ~2,400
+#     unchanged URLs daily is indistinguishable from submitting nothing.
+#
 # engine v39 (2026-08-18): SITEMAP ORPHAN RESCUE — the biggest SEO defect found
 # so far, and it was self-inflicted. seo_build regenerates sitemap.xml from THIS
 # build's towns, so when the OpenGov lockout took 117 towns on 2026-08-01 their
@@ -383,25 +436,44 @@ jobs:
           git config user.name "masspermits-refresh-bot"
           git config user.email "actions@github.com"
           git add -A
+          # Record exactly which files this run changed, for IndexNow below.
+          # Read from the staged index BEFORE committing: after the commit,
+          # "what changed" would need a HEAD~1 that may not exist on a shallow
+          # clone. An empty file means nothing changed, and the submit step
+          # then correctly sends nothing.
+          git diff --cached --name-only > "$GITHUB_WORKSPACE/changed-paths.txt" || true
+          echo "changed files: $(wc -l < "$GITHUB_WORKSPACE/changed-paths.txt")"
           git commit -m "data+seo+report: weekly site refresh (automated)" && git push origin main \
             || echo "site unchanged — nothing to push"
 
-      # IndexNow: proactively tell Bing/Yandex/Seznam/Naver (and, indirectly,
-      # Google) about every URL each week so fresh guides/briefs get crawled in
-      # hours instead of waiting on organic discovery. Key file is served from
-      # the repo root (public by design). Runs from the freshly-built sitemap.
+      # IndexNow: tell Bing/Yandex/Seznam/Naver (and, indirectly, Google) which
+      # pages CHANGED, rather than resubmitting ~2,400 unchanged URLs every day.
+      # Delivery was never the problem - a live submission on 2026-08-18 returned
+      # 200 from api.indexnow.org, 200 Bing, 202 Yandex and 200 Seznam. Signal
+      # dilution was: "everything changed today", every day, is indistinguishable
+      # from "nothing changed". Key file is served from the repo root (public).
       - name: Submit URLs to IndexNow
         if: hashFiles('degraded.flag') == ''
         continue-on-error: true
         run: |
           KEY=7f0001add081ec7e0301b1a76611e302
-          # extract every <loc> from the sitemap we just built + committed
-          URLS=$(grep -oE '<loc>[^<]+</loc>' site/sitemap.xml | sed 's/<[^>]*>//g' \
-            | python3 -c "import sys,json; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))")
+          # Changed files -> URLs, intersected with the sitemap we just built.
+          # The intersection is load-bearing: it is what stops the noindexed
+          # cost tier (and any page this build dropped from the index) from
+          # being submitted, which would contradict the same build's own robots
+          # meta tag.
+          # Lives under .github/ so Cloudflare Pages never serves it; it
+          # arrives with the clone at site/ a step above.
+          URLS=$(python3 site/.github/scripts/indexnow_changed.py)
+          COUNT=$(echo "$URLS" | python3 -c 'import sys,json;print(len(json.load(sys.stdin)))')
+          if [ "$COUNT" = "0" ]; then
+            echo "IndexNow: nothing changed that is in the index - submitting nothing"
+            exit 0
+          fi
           BODY=$(python3 -c "import json,sys; u=json.load(sys.stdin); print(json.dumps({'host':'masspermits.com','key':'$KEY','keyLocation':'https://masspermits.com/'+'$KEY'+'.txt','urlList':u}))" <<< "$URLS")
           code=$(curl -s -o /dev/null -w '%{http_code}' -X POST 'https://api.indexnow.org/indexnow' \
             -H 'Content-Type: application/json' --data "$BODY")
-          echo "IndexNow submit: HTTP $code ($(echo "$URLS" | python3 -c 'import sys,json;print(len(json.load(sys.stdin)))') urls)"
+          echo "IndexNow submit: HTTP $code ($COUNT changed urls, of $(grep -c "<loc>" site/sitemap.xml) indexed)"
 
       # WebSub: tell the public hub the feeds changed, so anyone subscribed gets
       # pushed instead of polling. Costs one request; expected traffic is small,
