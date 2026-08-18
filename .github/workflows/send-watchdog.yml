@@ -50,6 +50,14 @@ jobs:
               "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value
           }
 
+          # Snapshot the funnel here too. The watchdog runs on a different
+          # schedule to the refresh, so if one workflow is wedged the other
+          # still records a datapoint - the whole point of this endpoint is
+          # that the free-tier numbers stop going dark.
+          curl -fsS -H "Authorization: Bearer $(mint)" \
+            https://masspermits.com/api/funnel | jq -c . || true
+          echo ""
+
           STATUS=$(curl -fsS -H "Authorization: Bearer $(mint)" \
             https://masspermits.com/api/send-status)
           echo "$STATUS" | jq .
