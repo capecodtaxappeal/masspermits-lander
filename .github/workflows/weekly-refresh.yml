@@ -8,6 +8,39 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v49 (2026-08-18): the rest of the audit's findings, hand-verified.
+#  - AN UNDISCLOSED 900-ROW CAP. fetch_permiteyes pages 300 at a time while
+#    start < 800, so it stops at exactly 900 newest records: 14 of 28 sources sit
+#    on that number. Hingham's "900 weekday permits spanning 2026-05-19 to
+#    2026-08-13" - the zero-Friday headline - was reporting a CEILING as a count
+#    and our pull's start as the town's history. The article now says so, the
+#    per-source table has a "Count is: a ceiling / complete" column, and the
+#    coverage page carries the cap. The finding SURVIVES and the reason is worth
+#    stating: the Friday figure is a share of each source's own rows, and taking
+#    the newest N records does not change which weekday they fall on. This is
+#    exactly why the within-source-ratio rule exists.
+#  - "Barely half of any other weekday" overstated the gap. Computed now: 58% of
+#    the next-quietest weekday.
+#  - The ADU rate was described as normalized "against the same N sources". It is
+#    not - the reporting set climbs from 4 sources to 17 across the series. The
+#    table gains a "Sources reporting" column, which makes the article's own
+#    argument better than the false sentence did, and the partial final month is
+#    disclosed.
+#  - The hub said "six candidates, three survived" while corrections listed four
+#    rejections. 3 + 4 = 7. Computed from the lists now.
+#  - 109 of 160 /news/ archives shipped the capture CSS and handler with NO form
+#    (the /permits/ defect again, in the tier taking 29.5% of traffic), 481
+#    /news/ pages carried no Organization @id, and 0 of 372 briefs linked
+#    /research/. All retrofitted; idempotent.
+#  - The rolling /report/ was submitted at priority 0.8 while canonicalising to
+#    the dated copy - asking a crawler to index a page we point away from. No
+#    longer submitted; the dated copies reach the sitemap via orphan rescue.
+#  - ~24 live, indexable pages with no parseable date were being DROPPED from the
+#    sitemap and have no inbound links either, so they were invisible rather than
+#    merely undated. <lastmod> is optional in the spec: publish the location,
+#    omit the date.
+#  - pr_report rendered the report twice with identical arguments; once now.
+#
 # engine v48 (2026-08-18): the two honesty defects the audit reported but never
 # got to judge, both verified by hand and both real.
 #  - The 21 frozen /<trade>-leads-<region> pages were the ONLY frozen pages that
