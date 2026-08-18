@@ -1,8 +1,8 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-18T13:01:35.219100+00:00",
- "corpus_rows": 37366,
+ "corpus_fetched_at": "2026-08-18T13:24:04.955759+00:00",
+ "corpus_rows": 37367,
  "corpus_sources": 31,
  "corpus_first": "2026-02-19",
  "corpus_last": "2026-08-18",
@@ -51,52 +51,69 @@
   "raw_first": 1,
   "raw_peak": 37,
   "rate_min": 30.8,
-  "rate_max": 72.3,
+  "rate_max": 72.5,
   "n_months": 7,
   "series": [
    {
     "month": "2026-02",
     "raw": 1,
     "base": 310,
+    "sources": 4,
+    "partial": false,
     "rate": 32.3
    },
    {
     "month": "2026-03",
     "raw": 4,
     "base": 1300,
+    "sources": 4,
+    "partial": false,
     "rate": 30.8
    },
    {
     "month": "2026-04",
     "raw": 15,
-    "base": 2074,
-    "rate": 72.3
+    "base": 2070,
+    "sources": 7,
+    "partial": false,
+    "rate": 72.5
    },
    {
     "month": "2026-05",
     "raw": 28,
     "base": 4470,
+    "sources": 16,
+    "partial": false,
     "rate": 62.6
    },
    {
     "month": "2026-06",
     "raw": 37,
     "base": 6881,
+    "sources": 19,
+    "partial": false,
     "rate": 53.8
    },
    {
     "month": "2026-07",
     "raw": 37,
-    "base": 9799,
+    "base": 9798,
+    "sources": 20,
+    "partial": false,
     "rate": 37.8
    },
    {
     "month": "2026-08",
     "raw": 14,
-    "base": 3602,
-    "rate": 38.9
+    "base": 3607,
+    "sources": 13,
+    "partial": true,
+    "rate": 38.8
    }
   ],
+  "src_first": 4,
+  "src_peak": 20,
+  "partial_month": "2026-08",
   "town_list": [
    "Amherst, MA",
    "Barnstable, MA",

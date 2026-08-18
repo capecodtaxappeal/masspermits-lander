@@ -472,7 +472,54 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-04-23/2026-08-18"
+   "temporal": "2026-04-24/2026-08-18"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Milton, Massachusetts",
+   "description": "Recent building-permit activity in Milton, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/milton",
+   "landingPage": "https://masspermits.com/permits/milton",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "accessLevel": "public",
+   "modified": "2026-08-18",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits"
+   },
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Milton"
+   ],
+   "spatial": "Milton, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/milton.csv",
+     "format": "CSV"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/milton.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/milton.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-05-01/2026-08-18"
   },
   {
    "@type": "dcat:Dataset",
@@ -802,53 +849,6 @@
     }
    ],
    "temporal": "2026-05-26/2026-08-18"
-  },
-  {
-   "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Milton, Massachusetts",
-   "description": "Recent building-permit activity in Milton, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/milton",
-   "landingPage": "https://masspermits.com/permits/milton",
-   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-   "accessLevel": "public",
-   "modified": "2026-08-18",
-   "publisher": {
-    "@type": "org:Organization",
-    "name": "MassPermits"
-   },
-   "contactPoint": {
-    "@type": "vcard:Contact",
-    "fn": "MassPermits",
-    "hasEmail": "mailto:hello@masspermits.com"
-   },
-   "keyword": [
-    "building permits",
-    "construction",
-    "massachusetts",
-    "Milton"
-   ],
-   "spatial": "Milton, Massachusetts",
-   "distribution": [
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/milton.csv",
-     "format": "CSV"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/milton.json",
-     "format": "JSON Feed"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/milton.xml",
-     "format": "RSS"
-    }
-   ],
-   "temporal": "2026-04-30/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
