@@ -8,6 +8,16 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v45 (2026-08-18): a defect in v44's own fix, caught before it ran.
+# The frozen-page capture injector globs /report/ too - and /report/ pages come
+# from pr_report.py, which has its OWN stylesheet and never defines mpAlert.
+# Injecting seo_build's card there would have rendered an unstyled box whose
+# submit handler throws: worse than the no-form state it was fixing. /report/
+# is now excluded from the injector and gets its free-tier CTA from its own
+# generator, in its own styles. It also gains a "Republishing this?" block
+# pointing journalists at /research/methodology and /research/coverage - the
+# report is the press asset, and provenance is what makes a figure quotable.
+#
 # engine v44 (2026-08-18): ~800 PAGES THAT COULD NOT CONVERT ANYONE.
 # Measured on the LIVE site: 25 of 25 sampled frozen /permits/<town>-<trade>
 # pages and 8 of 8 frozen region pages ship the .alertform CSS and the mpAlert
