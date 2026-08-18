@@ -8,6 +8,25 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v41 (2026-08-18): PERMANENT WEEKLY REPORT URLS + AN ENGINE GATE.
+# /report/ was the best-written page on the site and lived at exactly one URL
+# that was destroyed and rebuilt every week: 19 weeks of original analysis had
+# been published and none of it was reachable (/report/2026-08-10 -> 404). Each
+# week now also writes /report/<YYYY-MM-DD>, self-canonical and permanent, with
+# the rolling /report/ copy pointing its canonical at the current dated URL so
+# the two never compete on identical content. Dated reports reach the sitemap
+# through the orphan rescue, at their own honest date. Also: the page declares
+# Article as well as Dataset (it was Dataset-only, which made it ineligible for
+# every Article signal), the licence is CC BY-NC everywhere instead of CC BY
+# here and CC BY-NC on town pages, and spike cards stop printing "Median
+# project $0 - largest $0" for the many towns that publish no valuations.
+# AND an engine-integrity gate. The tarball is assembled by pulling it from R2,
+# swapping files and re-tarring - but R2 serves stale reads on a hot key, so
+# that pull can predate your last upload and the re-tar silently deletes what
+# you added. It happened today: a rebuild from a stale pull dropped both
+# research modules. The build now asserts every module exists AND parses before
+# it runs, so that failure is free instead of half-finished.
+#
 # engine v40 (2026-08-18): THE EDITORIAL TIER + INDEX HYGIENE.
 # (a) /research/ - 7 URLs, 3 articles, and the honest number is three. Six
 #     candidate stories were mined from the corpus and three were killed by
@@ -340,6 +359,30 @@ jobs:
           [ -n "$ok" ] || { echo "::error::engine fetch failed after 10 attempts"; exit 1; }
           tar xzf engine.tar.gz && rm engine.tar.gz && ls -la
 
+      # The engine tarball is assembled by hand: pull it from R2, swap the files
+      # you changed, re-tar, put it back. R2 serves STALE reads on a hot key
+      # (measured >20 min), so that pull can hand you a copy from before your
+      # last upload -- and re-tarring it silently DELETES whatever you added in
+      # between. That happened on 2026-08-18: a rebuild from a stale pull
+      # dropped research_stats.py and research_pages.py, and nothing would have
+      # noticed until seo_build died mid-run with most of the site rewritten.
+      # So: assert the parts exist BEFORE anything runs. Failing here is free;
+      # failing halfway through a build is not.
+      - name: Verify the engine is complete
+        run: |
+          set -euo pipefail
+          missing=""
+          for f in scraper.py hosted_refresh.py build_bundle.py export_lander.py                    seo_build.py blog_build.py blog_voice.py subtype_pages.py                    research_stats.py research_pages.py pr_report.py town_visual.py                    fetch_cambridge.py fetch_worcester.py fetch_civicplus.py                    fetch_plymouth.py fetch_reading.py fetch_sudbury.py                    fetch_amherst.py data/town_bounds.json data/town_guides.json; do
+            [ -f "$f" ] || missing="$missing $f"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::engine tarball is missing:$missing — a stale-read rebuild almost certainly clobbered it. Re-upload from a verified stage before rerunning."
+            exit 1
+          fi
+          # Syntax-check every module too: a truncated upload extracts fine.
+          python3 -m compileall -q $(ls *.py) > /dev/null
+          echo "engine complete: $(ls *.py | wc -l) modules, all parse"
+
       # The daily probe runs the scrape + site rebuild every day, but the
       # owner-facing weekly artifacts (PR pitches, Patch pack, Bluesky video)
       # stay Monday-only — a daily version of those is just inbox noise.
@@ -425,7 +468,11 @@ jobs:
             python patch_pack.py || echo "::warning::patch_pack failed — no Patch pack this week"
           fi
           # weekly PR report page (masspermits.com/report/) + pitch digest artifacts
-          python pr_report.py || echo "::warning::pr_report failed — report page not refreshed"
+          # Second arg = the live /report/ directory: writes a PERMANENT dated
+          # copy alongside the rolling one. /report/ was the best page on the
+          # site and lived at one URL that was destroyed every week - 19 weeks
+          # of analysis existed and /report/2026-08-10 returned 404.
+          python pr_report.py site/report || echo "::warning::pr_report failed — report page not refreshed"
           if [ -f out/pr/report.html ]; then mkdir -p site/report && cp out/pr/report.html site/report/index.html; fi
           # weekly narrated data video (embedded on site + posted to Bluesky below)
           if [ "${{ steps.cadence.outputs.monday }}" = "true" ]; then
