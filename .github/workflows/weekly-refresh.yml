@@ -8,6 +8,18 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v42 (2026-08-18): THE THINNEST TIER IS GONE. The 160 /news/<town>/
+# archives were an <h1> and a list of links - a median of 24 words, the lowest
+# on the site by a wide margin. They are now the town's filing HISTORY: an
+# eight-week series rendered as a text table (never an image - a chart a crawler
+# cannot read is not a chart), the trade mix across every permit on record, and
+# the town's valuation profile where it publishes values. Median 24 -> 193
+# words, sibling similarity 0.218, and the framing stays on history throughout
+# with /permits/<town> linked top and bottom, so the archive and the town page
+# do not compete for the same query. Dark towns are deliberately NOT re-rendered
+# - their archives stay frozen behind the coverage banner, which is the honest
+# state.
+#
 # engine v41 (2026-08-18): PERMANENT WEEKLY REPORT URLS + AN ENGINE GATE.
 # /report/ was the best-written page on the site and lived at exactly one URL
 # that was destroyed and rebuilt every week: 19 weeks of original analysis had
