@@ -1,8 +1,8 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-18T09:33:48.710994+00:00",
- "corpus_rows": 37361,
+ "corpus_fetched_at": "2026-08-18T12:32:15.087120+00:00",
+ "corpus_rows": 37364,
  "corpus_sources": 31,
  "corpus_first": "2026-02-19",
  "corpus_last": "2026-08-18",
@@ -41,11 +41,17 @@
   "n_sources": 31,
   "garage": 34,
   "garage_share": 25.0,
+  "conversion": 31,
+  "new_build": 57,
+  "unclassified": 48,
+  "garage_conversion": 14,
+  "garage_new_build": 14,
+  "form_leader": "new construction",
   "pooled_rate": 47.8,
   "raw_first": 1,
   "raw_peak": 37,
   "rate_min": 30.8,
-  "rate_max": 72.0,
+  "rate_max": 72.3,
   "n_months": 7,
   "series": [
    {
@@ -63,32 +69,32 @@
    {
     "month": "2026-04",
     "raw": 15,
-    "base": 2082,
-    "rate": 72.0
+    "base": 2075,
+    "rate": 72.3
    },
    {
     "month": "2026-05",
     "raw": 28,
-    "base": 4477,
-    "rate": 62.5
+    "base": 4471,
+    "rate": 62.6
    },
    {
     "month": "2026-06",
     "raw": 37,
-    "base": 7078,
+    "base": 7076,
     "rate": 52.3
    },
    {
     "month": "2026-07",
     "raw": 37,
-    "base": 9814,
-    "rate": 37.7
+    "base": 9800,
+    "rate": 37.8
    },
    {
     "month": "2026-08",
     "raw": 14,
-    "base": 3372,
-    "rate": 41.5
+    "base": 3403,
+    "rate": 41.1
    }
   ],
   "town_list": [

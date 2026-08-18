@@ -10,7 +10,7 @@
    "url": "https://masspermits.com"
   }
  ],
- "_window_total": 7964,
+ "_window_total": 8003,
  "_window_from": "2026-07-19",
  "_window_to": "2026-08-18",
  "items": [
@@ -24,6 +24,42 @@
    "_trade": "Other"
   },
   {
+   "id": "9e9dc4736f0cc509",
+   "url": "https://masspermits.com/permits/hingham-electrical",
+   "title": "Electrical permit \u2014 South Lane, Hingham",
+   "content_text": "Electrical permit in Hingham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Hingham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "993f6a3cb0d4c5df",
+   "url": "https://masspermits.com/permits/hingham-plumbing",
+   "title": "Plumbing permit \u2014 Bradford Road, Hingham",
+   "content_text": "Plumbing permit in Hingham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Hingham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "bb657ce6e8901e72",
+   "url": "https://masspermits.com/permits/rockland-electrical",
+   "title": "Electrical permit \u2014 Josh Gray Rd, Rockland",
+   "content_text": "Electrical permit in Rockland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Rockland",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "5248677c858d310c",
+   "url": "https://masspermits.com/permits/rockland-solar",
+   "title": "Solar permit \u2014 Josh Gray Rd, Rockland",
+   "content_text": "Solar permit in Rockland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Rockland",
+   "_trade": "Solar"
+  },
+  {
    "id": "7fac1a0927dcbe5e",
    "url": "https://masspermits.com/permits/rockland-other",
    "title": "Other permit \u2014 Manzella Ct, Rockland",
@@ -33,22 +69,103 @@
    "_trade": "Other"
   },
   {
-   "id": "07700c6829a1e7a7",
-   "url": "https://masspermits.com/permits/rockland-other",
-   "title": "Other permit \u2014 Everett St, Rockland",
-   "content_text": "Other permit in Rockland, MA. Full lead at masspermits.com.",
+   "id": "90980222220e9cad",
+   "url": "https://masspermits.com/permits/falmouth-gas",
+   "title": "Gas permit \u2014 Amherst Ave, Falmouth",
+   "content_text": "Gas permit in Falmouth, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-18T00:00:00Z",
-   "_town": "Rockland",
-   "_trade": "Other"
+   "_town": "Falmouth",
+   "_trade": "Gas"
   },
   {
-   "id": "e89eecbd70a5bab3",
+   "id": "20cc01b6092739da",
+   "url": "https://masspermits.com/permits/falmouth-gas",
+   "title": "Gas permit \u2014 Shore St, Falmouth",
+   "content_text": "Gas permit in Falmouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Falmouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "65824129bca0b9ea",
+   "url": "https://masspermits.com/permits/falmouth-electrical",
+   "title": "Electrical permit \u2014 Harrington St, Falmouth",
+   "content_text": "Electrical permit in Falmouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Falmouth",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "36833dfc3d862ce4",
+   "url": "https://masspermits.com/permits/mashpee-gas",
+   "title": "Gas permit \u2014 Shields Rd, Mashpee",
+   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "e0ba2010ad304a41",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 Jackbon Rd, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "e5e47d69a7bb4428",
+   "url": "https://masspermits.com/permits/sandwich-sign-awning",
+   "title": "Sign/Awning permit \u2014 Country Club Road, Sandwich",
+   "content_text": "Sign/Awning permit in Sandwich, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Sandwich",
+   "_trade": "Sign/Awning"
+  },
+  {
+   "id": "9476441c70210ba9",
    "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Fox Run, Sandwich",
+   "title": "Renovation/Remodel permit \u2014 Shagbark Road, Sandwich",
    "content_text": "Renovation/Remodel permit in Sandwich, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-18T00:00:00Z",
    "_town": "Sandwich",
    "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "a449029de25b380d",
+   "url": "https://masspermits.com/permits/sandwich-gas",
+   "title": "Gas permit \u2014 Quaker Meetinghouse Road, Sandwich",
+   "content_text": "Gas permit in Sandwich, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Sandwich",
+   "_trade": "Gas"
+  },
+  {
+   "id": "f31849ea11c4f3d0",
+   "url": "https://masspermits.com/permits/stoughton-plumbing",
+   "title": "Plumbing permit \u2014 Lacivita Court, Stoughton",
+   "content_text": "Plumbing permit in Stoughton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Stoughton",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "9e8a5422081a6089",
+   "url": "https://masspermits.com/permits/stoughton-building",
+   "title": "Building permit \u2014 Greenbrook Dr, Stoughton",
+   "content_text": "Building permit in Stoughton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Stoughton",
+   "_trade": "Building"
+  },
+  {
+   "id": "a60b0197588d9a61",
+   "url": "https://masspermits.com/permits/easton-plumbing",
+   "title": "Plumbing permit \u2014 Norton Avenue, Easton",
+   "content_text": "Plumbing permit in Easton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Easton",
+   "_trade": "Plumbing"
   },
   {
    "id": "c9ad553a330f220d",
@@ -60,12 +177,21 @@
    "_trade": "Electrical"
   },
   {
-   "id": "78f4fe77ef5af8d7",
-   "url": "https://masspermits.com/permits/easton-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Kingsley Road, Easton",
-   "content_text": "Renovation/Remodel permit in Easton, MA. Full lead at masspermits.com.",
+   "id": "35f7c85a58ade239",
+   "url": "https://masspermits.com/permits/easton-electrical",
+   "title": "Electrical permit \u2014 Robert Drive, Easton",
+   "content_text": "Electrical permit in Easton, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-18T00:00:00Z",
    "_town": "Easton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "93fc8bdcf61102b7",
+   "url": "https://masspermits.com/permits/norwell-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Mayelm Ln, Norwell",
+   "content_text": "Renovation/Remodel permit in Norwell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Norwell",
    "_trade": "Renovation/Remodel"
   },
   {
@@ -78,6 +204,15 @@
    "_trade": "Electrical"
   },
   {
+   "id": "c836c81f125df413",
+   "url": "https://masspermits.com/permits/attleboro-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Cherry St, Attleboro",
+   "content_text": "Renovation/Remodel permit in Attleboro, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Attleboro",
+   "_trade": "Renovation/Remodel"
+  },
+  {
    "id": "442874c7a5eb2f8d",
    "url": "https://masspermits.com/permits/attleboro-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Hodges St, Attleboro",
@@ -87,6 +222,63 @@
    "_trade": "Renovation/Remodel"
   },
   {
+   "id": "93c2b93a6ead6de3",
+   "url": "https://masspermits.com/permits/mansfield-electrical",
+   "title": "Electrical permit \u2014 South Main St, Mansfield",
+   "content_text": "Electrical permit in Mansfield, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Mansfield",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "9c4428280c1440ce",
+   "url": "https://masspermits.com/permits/mansfield-electrical",
+   "title": "Electrical permit \u2014 Copeland Dr, Mansfield",
+   "content_text": "Electrical permit in Mansfield, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Mansfield",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "a80c134de5ebd505",
+   "url": "https://masspermits.com/permits/mansfield-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Judys Ln, Mansfield",
+   "content_text": "Renovation/Remodel permit in Mansfield, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Mansfield",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e85d9f95a979e4bb",
+   "url": "https://masspermits.com/permits/foxborough-electrical",
+   "title": "Electrical permit \u2014 Foxborough Boulevard, Foxborough ($2,400)",
+   "content_text": "Electrical permit in Foxborough, MA. Value $2,400. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Foxborough",
+   "_trade": "Electrical",
+   "_value": 2400.0
+  },
+  {
+   "id": "7e82bb86739373b7",
+   "url": "https://masspermits.com/permits/foxborough-electrical",
+   "title": "Electrical permit \u2014 Cross Street, Foxborough ($1,000)",
+   "content_text": "Electrical permit in Foxborough, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Foxborough",
+   "_trade": "Electrical",
+   "_value": 1000.0
+  },
+  {
+   "id": "7256744fe19c0fe8",
+   "url": "https://masspermits.com/permits/foxborough-electrical",
+   "title": "Electrical permit \u2014 Holbrook Street, Foxborough ($30,000)",
+   "content_text": "Electrical permit in Foxborough, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Foxborough",
+   "_trade": "Electrical",
+   "_value": 30000.0
+  },
+  {
    "id": "d1838bff86bef50c",
    "url": "https://masspermits.com/permits/fairhaven-electrical",
    "title": "Electrical permit \u2014 Magnolia Avenue, Fairhaven",
@@ -94,6 +286,54 @@
    "date_published": "2026-08-18T00:00:00Z",
    "_town": "Fairhaven",
    "_trade": "Electrical"
+  },
+  {
+   "id": "f47fe91cc48d9b91",
+   "url": "https://masspermits.com/permits/fairhaven-plumbing",
+   "title": "Plumbing permit \u2014 Bridge Street, Fairhaven",
+   "content_text": "Plumbing permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "81d8f977776343ed",
+   "url": "https://masspermits.com/permits/fairhaven-electrical",
+   "title": "Electrical permit \u2014 Dover Street, Fairhaven",
+   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "1f1a4646925d369b",
+   "url": "https://masspermits.com/permits/taunton-plumbing",
+   "title": "Plumbing permit \u2014 Cherry Avenue, Taunton ($17,900)",
+   "content_text": "Plumbing permit in Taunton, MA. Value $17,900. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Plumbing",
+   "_value": 17900.0
+  },
+  {
+   "id": "55f4b148180ce5bd",
+   "url": "https://masspermits.com/permits/taunton-plumbing",
+   "title": "Plumbing permit \u2014 Fisher Street, Taunton ($2,000)",
+   "content_text": "Plumbing permit in Taunton, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Plumbing",
+   "_value": 2000.0
+  },
+  {
+   "id": "eeab77266383b5b9",
+   "url": "https://masspermits.com/permits/taunton-gas",
+   "title": "Gas permit \u2014 Burt Street, Taunton ($500)",
+   "content_text": "Gas permit in Taunton, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Gas",
+   "_value": 500.0
   },
   {
    "id": "3cee88afc291c375",
@@ -114,112 +354,22 @@
    "_trade": "Other"
   },
   {
-   "id": "921bd65b48345540",
-   "url": "https://masspermits.com/permits/hingham-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Winthrop Road, Hingham",
-   "content_text": "Renovation/Remodel permit in Hingham, MA. Full lead at masspermits.com.",
+   "id": "e6f064b4823feaa1",
+   "url": "https://masspermits.com/permits/hingham-plumbing",
+   "title": "Plumbing permit \u2014 High Street, Hingham",
+   "content_text": "Plumbing permit in Hingham, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-17T00:00:00Z",
    "_town": "Hingham",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "0bd4eae2de4d50b1",
-   "url": "https://masspermits.com/permits/hingham-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Stayner Drive, Hingham",
-   "content_text": "Renovation/Remodel permit in Hingham, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Hingham",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "47529a56cf35a57f",
-   "url": "https://masspermits.com/permits/hingham-building",
-   "title": "Building permit \u2014 Main Street, Hingham",
-   "content_text": "Building permit in Hingham, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Hingham",
-   "_trade": "Building"
-  },
-  {
-   "id": "f0bf7be71fc1e7ae",
-   "url": "https://masspermits.com/permits/rockland-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Reed St, Rockland",
-   "content_text": "Windows/Doors/Siding permit in Rockland, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Rockland",
-   "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "eaea462ed35f4f2e",
-   "url": "https://masspermits.com/permits/falmouth-gas",
-   "title": "Gas permit \u2014 Seacoast Shores Blvd, Falmouth",
-   "content_text": "Gas permit in Falmouth, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Falmouth",
-   "_trade": "Gas"
-  },
-  {
-   "id": "9e29eac3c8169a4e",
-   "url": "https://masspermits.com/permits/falmouth-plumbing",
-   "title": "Plumbing permit \u2014 Pinecrest Beach Dr, Falmouth",
-   "content_text": "Plumbing permit in Falmouth, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Falmouth",
    "_trade": "Plumbing"
   },
   {
-   "id": "9e90969badc7a964",
-   "url": "https://masspermits.com/permits/falmouth-gas",
-   "title": "Gas permit \u2014 Mill Farm Way, Falmouth",
-   "content_text": "Gas permit in Falmouth, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Falmouth",
-   "_trade": "Gas"
-  },
-  {
-   "id": "2843427a4e6f132b",
-   "url": "https://masspermits.com/permits/mashpee-gas",
-   "title": "Gas permit \u2014 Wheeler Rd, Mashpee",
-   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Gas"
-  },
-  {
-   "id": "05f8dab4aa9cf814",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Nehoiden Rd, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "885f6e885c6f41fc",
+   "id": "29593fe69689c400",
    "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Frog Pond Close, Mashpee",
+   "title": "Renovation/Remodel permit \u2014 Eagle Dr, Mashpee",
    "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-17T00:00:00Z",
    "_town": "Mashpee",
    "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "5ae32cb9837fff57",
-   "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Quaker Meetinghouse Road, Sandwich",
-   "content_text": "Renovation/Remodel permit in Sandwich, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Sandwich",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "c37439b086ef5633",
-   "url": "https://masspermits.com/permits/sandwich-plumbing",
-   "title": "Plumbing permit \u2014 Main Street, Sandwich",
-   "content_text": "Plumbing permit in Sandwich, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Sandwich",
-   "_trade": "Plumbing"
   },
   {
    "id": "2a1314844e9a5de0",
@@ -276,40 +426,13 @@
    "_trade": "Electrical"
   },
   {
-   "id": "209f411b731eaf35",
-   "url": "https://masspermits.com/permits/stoughton-building",
-   "title": "Building permit \u2014 Green St, Stoughton",
-   "content_text": "Building permit in Stoughton, MA. Full lead at masspermits.com.",
+   "id": "05685cd548636af9",
+   "url": "https://masspermits.com/permits/stoughton",
+   "title": "Sign/Awning permit \u2014 Washington St, Stoughton",
+   "content_text": "Sign/Awning permit in Stoughton, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-17T00:00:00Z",
    "_town": "Stoughton",
-   "_trade": "Building"
-  },
-  {
-   "id": "e779b618ea06e2fb",
-   "url": "https://masspermits.com/permits/stoughton-building",
-   "title": "Building permit \u2014 Washington St, Stoughton",
-   "content_text": "Building permit in Stoughton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Stoughton",
-   "_trade": "Building"
-  },
-  {
-   "id": "879aaffc5fff37bc",
-   "url": "https://masspermits.com/permits/stoughton-building",
-   "title": "Building permit \u2014 Brock St, Stoughton",
-   "content_text": "Building permit in Stoughton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Stoughton",
-   "_trade": "Building"
-  },
-  {
-   "id": "8dc877bf3e9c5d00",
-   "url": "https://masspermits.com/permits/easton-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Harmony Lane, Easton",
-   "content_text": "Renovation/Remodel permit in Easton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Easton",
-   "_trade": "Renovation/Remodel"
+   "_trade": "Sign/Awning"
   },
   {
    "id": "49816f2afe90c849",
@@ -445,120 +568,6 @@
    "date_published": "2026-08-17T00:00:00Z",
    "_town": "Norwell",
    "_trade": "Plumbing"
-  },
-  {
-   "id": "8f6c1352e34d2986",
-   "url": "https://masspermits.com/permits/attleboro-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Leawood Ln, Attleboro",
-   "content_text": "Renovation/Remodel permit in Attleboro, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Attleboro",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "f05a725f7dadf545",
-   "url": "https://masspermits.com/permits/mansfield-building",
-   "title": "Building permit \u2014 West St, Mansfield",
-   "content_text": "Building permit in Mansfield, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Mansfield",
-   "_trade": "Building"
-  },
-  {
-   "id": "55aa09d825ffbcf1",
-   "url": "https://masspermits.com/permits/mansfield-gas",
-   "title": "Gas permit \u2014 Deer Path Ln, Mansfield",
-   "content_text": "Gas permit in Mansfield, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Mansfield",
-   "_trade": "Gas"
-  },
-  {
-   "id": "dcee1ed5b27239e2",
-   "url": "https://masspermits.com/permits/mansfield-electrical",
-   "title": "Electrical permit \u2014 Reservoir St, Mansfield",
-   "content_text": "Electrical permit in Mansfield, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Mansfield",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "e69a7caba5844737",
-   "url": "https://masspermits.com/permits/foxborough-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Pine Acres Road, Foxborough ($27,801)",
-   "content_text": "Renovation/Remodel permit in Foxborough, MA. Value $27,801. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Foxborough",
-   "_trade": "Renovation/Remodel",
-   "_value": 27801.0
-  },
-  {
-   "id": "6acb4406e6a3ff29",
-   "url": "https://masspermits.com/permits/foxborough-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Link Street, Foxborough ($94,627)",
-   "content_text": "Renovation/Remodel permit in Foxborough, MA. Value $94,627. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Foxborough",
-   "_trade": "Renovation/Remodel",
-   "_value": 94626.55
-  },
-  {
-   "id": "eb2f6989708aace2",
-   "url": "https://masspermits.com/permits/foxborough-electrical",
-   "title": "Electrical permit \u2014 Ridgewood Path, Foxborough ($9,000)",
-   "content_text": "Electrical permit in Foxborough, MA. Value $9,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Foxborough",
-   "_trade": "Electrical",
-   "_value": 9000.0
-  },
-  {
-   "id": "518f590ea669f9a5",
-   "url": "https://masspermits.com/permits/fairhaven-gas",
-   "title": "Gas permit \u2014 Howland Road, Fairhaven",
-   "content_text": "Gas permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Gas"
-  },
-  {
-   "id": "d9423deb25fef5a4",
-   "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Baxter Avenue, Fairhaven",
-   "content_text": "Renovation/Remodel permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "c26b63393c3b2b4f",
-   "url": "https://masspermits.com/permits/taunton-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 County Street, Taunton ($6,450)",
-   "content_text": "Renovation/Remodel permit in Taunton, MA. Value $6,450. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Renovation/Remodel",
-   "_value": 6450.0
-  },
-  {
-   "id": "e6780ebb82cb6032",
-   "url": "https://masspermits.com/permits/taunton-electrical",
-   "title": "Electrical permit \u2014 West Water Street, Taunton ($75,000)",
-   "content_text": "Electrical permit in Taunton, MA. Value $75,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Electrical",
-   "_value": 75000.0
-  },
-  {
-   "id": "e8ca56b0461cf16e",
-   "url": "https://masspermits.com/permits/taunton-electrical",
-   "title": "Electrical permit \u2014 Whittenton Street, Taunton ($1,500)",
-   "content_text": "Electrical permit in Taunton, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-08-17T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Electrical",
-   "_value": 1500.0
   },
   {
    "id": "a204f5db5050092b",
@@ -949,16 +958,6 @@
    "_town": "Brighton",
    "_trade": "Electrical",
    "_value": 4720.0
-  },
-  {
-   "id": "8bf999df7a3af166",
-   "url": "https://masspermits.com/permits/mission-hill-hvac",
-   "title": "HVAC permit \u2014 Alleghany St, Mission Hill ($135,000)",
-   "content_text": "HVAC permit in Mission Hill, MA. Value $135,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-14T00:00:00Z",
-   "_town": "Mission Hill",
-   "_trade": "HVAC",
-   "_value": 135000.0
   }
  ]
 }
