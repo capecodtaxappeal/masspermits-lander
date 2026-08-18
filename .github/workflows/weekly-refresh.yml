@@ -8,6 +8,25 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v44 (2026-08-18): ~800 PAGES THAT COULD NOT CONVERT ANYONE.
+# Measured on the LIVE site: 25 of 25 sampled frozen /permits/<town>-<trade>
+# pages and 8 of 8 frozen region pages ship the .alertform CSS and the mpAlert
+# handler but NO FORM AT ALL - 0 <form>, 0 email inputs. They were generated on
+# 2026-07-30, days before the capture card reached those page types in v32, and
+# frozen pages are never regenerated, so the fix that reached "99% of generated
+# pages" never reached them. That is ~800 pages, and per the traffic sample the
+# single biggest slice of what actually lands on this site, offering a visitor
+# nothing to do but leave. They now get a working signup.
+# AND the copy on the frozen pages that DID have a card was a promise the
+# plumbing cannot keep: "New building permits filed in Danvers - emailed to you
+# weekly", for a town that has published nothing since it went dark.
+# newsletter-send.js reads /feed/<town>.json, finds nothing, and quietly sends
+# the statewide roundup instead. The product behaviour is right - the town is
+# remembered, and a reader is switched back automatically the moment that
+# town's feed has rows again - so the slug is kept and only the words change,
+# to describe what actually happens. Injection, not regeneration: no published
+# figure on any frozen page moves.
+#
 # engine v43 (2026-08-18): DISTRIBUTION FOR THE RESEARCH TIER. Three additions,
 # all machine-facing, none of them new pages:
 #  - /research/feed.xml, its own RSS with a WebSub hub declaration and a publish
