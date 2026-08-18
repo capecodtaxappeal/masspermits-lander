@@ -8,6 +8,21 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v39 (2026-08-18): SITEMAP ORPHAN RESCUE — the biggest SEO defect found
+# so far, and it was self-inflicted. seo_build regenerates sitemap.xml from THIS
+# build's towns, so when the OpenGov lockout took 117 towns on 2026-08-01 their
+# pages stayed live and kept ranking but silently dropped out of the sitemap.
+# Measured 2026-08-18: 947 live pages absent from the sitemap, taking 36% of ALL
+# site traffic (69 of 193 loads that week — Danvers, Salem, Marblehead, Hanover,
+# Beverly). Telling Google a page is gone while it still serves and still earns
+# clicks is how you lose rankings you already own.
+# They are now emitted at priority 0.3 with lastmod read from the page's OWN
+# dateModified — NOT file mtime, because the runner git-clones the site and
+# checkout stamps every file with the clone time, which would have made every
+# frozen page claim it was updated today. A page we cannot date honestly is left
+# out rather than guessed. Verified: rescued pages carry 2026-07-30, their real
+# frozen date; live pages carry today.
+#
 # engine v38 (2026-08-14): PROJECT-SUBTYPE SEO TIER — ~330 new pages targeting
 # the queries homeowners actually type ("water heater permit", "generator",
 # "mini-split", "service upgrade", "ADU") instead of only our invented trade
