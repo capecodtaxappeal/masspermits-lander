@@ -391,6 +391,19 @@ jobs:
       # WebSub: tell the public hub the feeds changed, so anyone subscribed gets
       # pushed instead of polling. Costs one request; expected traffic is small,
       # but it is a real no-account syndication rail and it runs itself.
+      # Snapshot the funnel every run. Counting the free list and the prospect
+      # list requires an R2 prefix listing, which only the Worker binding can do
+      # — so the numbers stay invisible unless something calls this. Runs with
+      # if: always() because a degraded scrape does not stop people signing up,
+      # and a coverage outage is exactly when you want to watch the funnel.
+      - name: Snapshot funnel metrics
+        if: always()
+        continue-on-error: true
+        run: |
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN"             "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+          curl -fsS -H "Authorization: Bearer $OIDC" https://masspermits.com/api/funnel | jq .
+          echo ""
+
       - name: Ping WebSub hub
         continue-on-error: true
         run: |
