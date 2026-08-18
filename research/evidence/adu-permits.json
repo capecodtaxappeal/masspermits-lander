@@ -1,0 +1,115 @@
+{
+ "slug": "adu-permits",
+ "computed_from": "masspermits.com build",
+ "corpus_fetched_at": "2026-08-18T08:29:07.474442+00:00",
+ "corpus_rows": 37359,
+ "corpus_sources": 31,
+ "corpus_first": "2026-02-19",
+ "corpus_last": "2026-08-18",
+ "method": {
+  "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
+  "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
+  "adu": "\\baccessory dwelling|\\badu\\b|in[- ]law (apartment|suite)|accessory apartment",
+  "min_desc_chars": 8,
+  "min_heating_rows": 20,
+  "min_gas_distinctness": 0.5,
+  "min_weekday_rows": 100,
+  "min_calendar_fridays": 6
+ },
+ "guards": {
+  "adu_rows": [
+   60,
+   null
+  ],
+  "adu_towns": [
+   8,
+   null
+  ],
+  "garage_share": [
+   10.0,
+   45.0
+  ],
+  "n_months": [
+   4,
+   null
+  ]
+ },
+ "stats": {
+  "adu_rows": 136,
+  "adu_towns": 18,
+  "eligible_sources": 20,
+  "n_sources": 31,
+  "garage": 34,
+  "garage_share": 25.0,
+  "pooled_rate": 47.8,
+  "raw_first": 1,
+  "raw_peak": 37,
+  "rate_min": 30.8,
+  "rate_max": 72.0,
+  "n_months": 7,
+  "series": [
+   {
+    "month": "2026-02",
+    "raw": 1,
+    "base": 310,
+    "rate": 32.3
+   },
+   {
+    "month": "2026-03",
+    "raw": 4,
+    "base": 1300,
+    "rate": 30.8
+   },
+   {
+    "month": "2026-04",
+    "raw": 15,
+    "base": 2082,
+    "rate": 72.0
+   },
+   {
+    "month": "2026-05",
+    "raw": 28,
+    "base": 4477,
+    "rate": 62.5
+   },
+   {
+    "month": "2026-06",
+    "raw": 37,
+    "base": 7078,
+    "rate": 52.3
+   },
+   {
+    "month": "2026-07",
+    "raw": 37,
+    "base": 9814,
+    "rate": 37.7
+   },
+   {
+    "month": "2026-08",
+    "raw": 14,
+    "base": 3370,
+    "rate": 41.5
+   }
+  ],
+  "town_list": [
+   "Amherst, MA",
+   "Barnstable, MA",
+   "Braintree, MA",
+   "Cambridge, MA",
+   "Chatham, MA",
+   "Falmouth, MA",
+   "Hanson, MA",
+   "Hingham, MA",
+   "Lexington, MA",
+   "Mansfield, MA",
+   "Milton, MA",
+   "Plymouth, MA",
+   "Randolph, MA",
+   "Reading, MA",
+   "Rockland, MA",
+   "Taunton, MA",
+   "West Bridgewater, MA",
+   "Worcester, MA"
+  ]
+ }
+}
