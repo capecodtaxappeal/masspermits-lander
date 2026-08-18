@@ -8,6 +8,21 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v46 (2026-08-18): v44 was only half a fix. The ~800 frozen pages that
+# just gained a signup form were still shipping the mpAlert from 2026-07-30 --
+# the version that treats ANY JSON response as success, so an HTTP 500 shows the
+# visitor a green "Check your inbox" tick and no confirm email is ever sent. The
+# 2026-08-01 fix for that reached every regenerated page and none of the frozen
+# ones. Adding forms without this would have wired ~800 new signups to a handler
+# that lies on failure, which is worse than the no-form state v44 replaced.
+# mpAlert now lives in ONE constant (_ALERT_JS) that page() renders and the
+# frozen-page repair rewrites stale copies with, so this class of drift cannot
+# recur. Also: the retrofit counters were sharing one "pages written" number and
+# reported "dark-town copy corrected on 3 pages" when exactly one page's copy
+# had changed - a log that makes a half-applied fix look complete. Each repair
+# is counted separately now. All three are idempotent; verified byte-identical
+# across consecutive runs.
+#
 # engine v45 (2026-08-18): a defect in v44's own fix, caught before it ran.
 # The frozen-page capture injector globs /report/ too - and /report/ pages come
 # from pr_report.py, which has its OWN stylesheet and never defines mpAlert.
