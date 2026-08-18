@@ -1,8 +1,8 @@
 {
  "slug": "heat-pump-share",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-18T12:32:15.087120+00:00",
- "corpus_rows": 37364,
+ "corpus_fetched_at": "2026-08-18T13:01:35.219100+00:00",
+ "corpus_rows": 37366,
  "corpus_sources": 31,
  "corpus_first": "2026-02-19",
  "corpus_last": "2026-08-18",
@@ -40,7 +40,7 @@
  },
  "stats": {
   "eligible_towns": 10,
-  "eligible_n": 501,
+  "eligible_n": 502,
   "eligible_hp": 176,
   "pooled_share": 35.1,
   "min_share": 20.0,
@@ -108,11 +108,11 @@
    },
    {
     "source": "Falmouth, MA",
-    "n": 50,
+    "n": 51,
     "hp": 17,
-    "ff": 33,
-    "share": 34.0,
-    "gas_rows": 179,
+    "ff": 34,
+    "share": 33.3,
+    "gas_rows": 178,
     "gas_distinctness": 0.82
    },
    {

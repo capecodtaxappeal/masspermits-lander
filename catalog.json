@@ -190,7 +190,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-22/2026-08-18"
   },
   {
    "@type": "dcat:Dataset",
@@ -426,6 +426,53 @@
     }
    ],
    "temporal": "2026-05-14/2026-08-18"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Randolph, Massachusetts",
+   "description": "Recent building-permit activity in Randolph, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/randolph",
+   "landingPage": "https://masspermits.com/permits/randolph",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "accessLevel": "public",
+   "modified": "2026-08-18",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits"
+   },
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Randolph"
+   ],
+   "spatial": "Randolph, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/randolph.csv",
+     "format": "CSV"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/randolph.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/randolph.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-04-23/2026-08-18"
   },
   {
    "@type": "dcat:Dataset",
@@ -758,53 +805,6 @@
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Randolph, Massachusetts",
-   "description": "Recent building-permit activity in Randolph, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/randolph",
-   "landingPage": "https://masspermits.com/permits/randolph",
-   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-   "accessLevel": "public",
-   "modified": "2026-08-18",
-   "publisher": {
-    "@type": "org:Organization",
-    "name": "MassPermits"
-   },
-   "contactPoint": {
-    "@type": "vcard:Contact",
-    "fn": "MassPermits",
-    "hasEmail": "mailto:hello@masspermits.com"
-   },
-   "keyword": [
-    "building permits",
-    "construction",
-    "massachusetts",
-    "Randolph"
-   ],
-   "spatial": "Randolph, Massachusetts",
-   "distribution": [
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/randolph.csv",
-     "format": "CSV"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/randolph.json",
-     "format": "JSON Feed"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/randolph.xml",
-     "format": "RSS"
-    }
-   ],
-   "temporal": "2026-04-23/2026-08-17"
-  },
-  {
-   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Milton, Massachusetts",
    "description": "Recent building-permit activity in Milton, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/milton",
@@ -989,7 +989,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-15"
+   "temporal": "2026-06-22/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -1130,7 +1130,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-02-19/2026-08-17"
+   "temporal": "2026-02-19/2026-08-18"
   },
   {
    "@type": "dcat:Dataset",
@@ -1271,7 +1271,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-23/2026-08-18"
   },
   {
    "@type": "dcat:Dataset",
@@ -1318,7 +1318,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-15"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -1365,7 +1365,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-22/2026-08-18"
   },
   {
    "@type": "dcat:Dataset",
@@ -1412,7 +1412,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-22/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -1459,7 +1459,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -1600,7 +1600,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -1788,7 +1788,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-22/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -1835,7 +1835,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -1882,7 +1882,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -2023,7 +2023,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-18/2026-08-14"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -2117,7 +2117,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-22/2026-08-14"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -2168,53 +2168,6 @@
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Mission Hill, Massachusetts",
-   "description": "Recent building-permit activity in Mission Hill, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/mission-hill",
-   "landingPage": "https://masspermits.com/permits/mission-hill",
-   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-   "accessLevel": "public",
-   "modified": "2026-08-18",
-   "publisher": {
-    "@type": "org:Organization",
-    "name": "MassPermits"
-   },
-   "contactPoint": {
-    "@type": "vcard:Contact",
-    "fn": "MassPermits",
-    "hasEmail": "mailto:hello@masspermits.com"
-   },
-   "keyword": [
-    "building permits",
-    "construction",
-    "massachusetts",
-    "Mission Hill"
-   ],
-   "spatial": "Mission Hill, Massachusetts",
-   "distribution": [
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/mission-hill.csv",
-     "format": "CSV"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/mission-hill.json",
-     "format": "JSON Feed"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/mission-hill.xml",
-     "format": "RSS"
-    }
-   ],
-   "temporal": "2026-06-18/2026-08-14"
-  },
-  {
-   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Cotuit, Massachusetts",
    "description": "Recent building-permit activity in Cotuit, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/cotuit",
@@ -2259,6 +2212,53 @@
     }
    ],
    "temporal": "2026-05-06/2026-07-31"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Mission Hill, Massachusetts",
+   "description": "Recent building-permit activity in Mission Hill, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/mission-hill",
+   "landingPage": "https://masspermits.com/permits/mission-hill",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "accessLevel": "public",
+   "modified": "2026-08-18",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits"
+   },
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Mission Hill"
+   ],
+   "spatial": "Mission Hill, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/mission-hill.csv",
+     "format": "CSV"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/mission-hill.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/mission-hill.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",
@@ -2399,7 +2399,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-06-23/2026-08-10"
+   "temporal": "2026-06-23/2026-08-17"
   },
   {
    "@type": "dcat:Dataset",

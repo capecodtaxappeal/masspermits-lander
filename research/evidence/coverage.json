@@ -1,8 +1,8 @@
 {
  "slug": "coverage",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-18T12:32:15.087120+00:00",
- "corpus_rows": 37364,
+ "corpus_fetched_at": "2026-08-18T13:01:35.219100+00:00",
+ "corpus_rows": 37366,
  "corpus_sources": 31,
  "corpus_first": "2026-02-19",
  "corpus_last": "2026-08-18",
@@ -19,8 +19,8 @@
  "guards": {},
  "stats": {
   "n_sources": 31,
-  "n_rows": 37364,
-  "fetched_at": "2026-08-18T12:32:15.087120+00:00",
+  "n_rows": 37366,
+  "fetched_at": "2026-08-18T13:01:35.219100+00:00",
   "no_valuation": 20,
   "with_coords": 2,
   "no_freetext": 11,
@@ -46,9 +46,9 @@
    },
    {
     "source": "Boston, MA",
-    "rows": 5661,
-    "first": "2026-06-18",
-    "last": "2026-08-15",
+    "rows": 5662,
+    "first": "2026-06-22",
+    "last": "2026-08-18",
     "valued_pct": 99.1,
     "freetext_pct": 100.0,
     "coords": true
@@ -183,7 +183,7 @@
     "source": "Randolph, MA",
     "rows": 900,
     "first": "2026-04-23",
-    "last": "2026-08-17",
+    "last": "2026-08-18",
     "valued_pct": 0.0,
     "freetext_pct": 93.8,
     "coords": false
@@ -244,9 +244,9 @@
    },
    {
     "source": "Cohasset, MA",
-    "rows": 717,
+    "rows": 718,
     "first": "2026-02-19",
-    "last": "2026-08-17",
+    "last": "2026-08-18",
     "valued_pct": 0.0,
     "freetext_pct": 0.0,
     "coords": false

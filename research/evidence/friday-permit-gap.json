@@ -1,8 +1,8 @@
 {
  "slug": "friday-permit-gap",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-18T12:32:15.087120+00:00",
- "corpus_rows": 37364,
+ "corpus_fetched_at": "2026-08-18T13:01:35.219100+00:00",
+ "corpus_rows": 37366,
  "corpus_sources": 31,
  "corpus_first": "2026-02-19",
  "corpus_last": "2026-08-18",
@@ -43,35 +43,35 @@
   ]
  },
  "stats": {
-  "n_dated": 37364,
+  "n_dated": 37366,
   "n_sources": 31,
   "n_shown": 31,
   "vendor_split": {
    "shared": {
-    "n": 16969,
+    "n": 16970,
     "sources": 21,
     "fri_pct": 11.5,
     "weekday_mean": 21.6,
     "ratio": 0.53
    },
    "other": {
-    "n": 20395,
+    "n": 20396,
     "sources": 10,
-    "fri_pct": 13.9,
-    "weekday_mean": 21.2,
-    "ratio": 0.66
+    "fri_pct": 13.8,
+    "weekday_mean": 21.1,
+    "ratio": 0.65
    },
    "other_below_avg": 10,
    "other_shown": 10
   },
-  "mon_pct": 21.6,
-  "tue_pct": 22.3,
+  "mon_pct": 21.8,
+  "tue_pct": 22.4,
   "wed_pct": 20.8,
-  "thu_pct": 20.5,
+  "thu_pct": 20.3,
   "fri_pct": 12.8,
   "sat_pct": 0.9,
   "sun_pct": 1.0,
-  "weekend_rows": 703,
+  "weekend_rows": 714,
   "weekend_sources": 20,
   "weekend_pct": 1.9,
   "zero_friday_town": "Hingham, MA",
@@ -112,12 +112,12 @@
   "highest": [
    {
     "source": "Boston, MA",
-    "weekday": 5572,
-    "friday": 1017,
-    "friday_pct": 18.3,
+    "weekday": 5560,
+    "friday": 997,
+    "friday_pct": 17.9,
     "issue_days": 42,
-    "first": "2026-06-18",
-    "last": "2026-08-15"
+    "first": "2026-06-22",
+    "last": "2026-08-18"
    },
    {
     "source": "Barnstable, MA",
@@ -133,9 +133,9 @@
     "weekday": 861,
     "friday": 146,
     "friday_pct": 17.0,
-    "issue_days": 83,
+    "issue_days": 84,
     "first": "2026-04-23",
-    "last": "2026-08-17"
+    "last": "2026-08-18"
    }
   ],
   "table": [
@@ -230,21 +230,21 @@
     "last": "2026-08-18"
    },
    {
+    "source": "Braintree, MA",
+    "weekday": 871,
+    "friday": 100,
+    "friday_pct": 11.5,
+    "issue_days": 55,
+    "first": "2026-06-02",
+    "last": "2026-08-18"
+   },
+   {
     "source": "Foxborough, MA",
     "weekday": 900,
     "friday": 104,
     "friday_pct": 11.6,
     "issue_days": 86,
     "first": "2026-04-13",
-    "last": "2026-08-18"
-   },
-   {
-    "source": "Braintree, MA",
-    "weekday": 869,
-    "friday": 103,
-    "friday_pct": 11.9,
-    "issue_days": 55,
-    "first": "2026-06-02",
     "last": "2026-08-18"
    },
    {
@@ -267,12 +267,12 @@
    },
    {
     "source": "Cohasset, MA",
-    "weekday": 710,
+    "weekday": 711,
     "friday": 85,
     "friday_pct": 12.0,
-    "issue_days": 114,
+    "issue_days": 115,
     "first": "2026-02-19",
-    "last": "2026-08-17"
+    "last": "2026-08-18"
    },
    {
     "source": "Worcester, MA",
@@ -396,9 +396,9 @@
     "weekday": 861,
     "friday": 146,
     "friday_pct": 17.0,
-    "issue_days": 83,
+    "issue_days": 84,
     "first": "2026-04-23",
-    "last": "2026-08-17"
+    "last": "2026-08-18"
    },
    {
     "source": "Barnstable, MA",
@@ -411,12 +411,12 @@
    },
    {
     "source": "Boston, MA",
-    "weekday": 5572,
-    "friday": 1017,
-    "friday_pct": 18.3,
+    "weekday": 5560,
+    "friday": 997,
+    "friday_pct": 17.9,
     "issue_days": 42,
-    "first": "2026-06-18",
-    "last": "2026-08-15"
+    "first": "2026-06-22",
+    "last": "2026-08-18"
    }
   ]
  }
