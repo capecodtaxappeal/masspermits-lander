@@ -8,6 +8,29 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v55 (2026-08-20): A FOURTH RESEARCH ARTICLE - the growth audit's one
+# surviving opportunity, validated before a line of page code was written.
+# 6,538 of 22,583 addresses file more than one trade. Co-occurrence is not
+# sequence, so the premise was tested first: 11 trade pairs run one way at least
+# 65% of the time across 40+ addresses. Kitchen/Bath -> Electrical, 79%, median
+# 19 days. Renovation -> Building, 75%, median 70 days. That is ten weeks of
+# notice that a different trade is coming to an address - which is the actual
+# product this business sells, stated as a measurable fact.
+# Two things kept it honest:
+#  - SAME-DAY PAIRS ARE NOT SEQUENCES. Gas -> Plumbing runs 84% one way with a
+#    median gap of ZERO days: one job, two permits, one morning. Two such pairs
+#    are excluded from the finding and PUBLISHED in their own table, because
+#    dropping them silently would make the main table look cleaner than the data.
+#  - THE 900-ROW CAP COULD HAVE FABRICATED THE WHOLE THING. On a truncated
+#    source the EARLIER permit at an address is the one most likely to be
+#    missing, which would invent orderings wholesale. Every pair is computed
+#    separately on capped and uncapped sources, both figures ship in the
+#    evidence file, and the one pair the two groups disagreed about was dropped.
+# Sibling similarity 0.02-0.10, the most distinct page on the site.
+# ALSO: the article labels existed in TWO places, and adding a fourth article
+# crashed the build on a KeyError. Failing loudly was right; the duplicate was
+# not. research_pages.LABELS is now the single source and seo_build reads it.
+#
 # engine v54 (2026-08-20): the same trap, a third time. A 60-URL live health
 # sweep found 112 dark-town GUIDES still selling "the full Westfield permit
 # list" - the exact defect v51 fixed on ~900 /permits/ pages. Guides are
