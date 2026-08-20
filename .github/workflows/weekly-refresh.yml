@@ -8,6 +8,24 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v51 (2026-08-20): WE WERE SELLING A LIST WE CANNOT DELIVER.
+# A growth audit went looking for traffic and found a PAID defect instead.
+# /permits/danvers-hvac - a town that stopped publishing on 2026-08-01 - still
+# carried the CTA it was generated with: "Get the full Danvers HVAC list -
+# exact addresses, contractor & owner details, and a sortable file". Click,
+# pay $49, and the delivered bundle is latest-monthly.zip: one statewide file
+# containing ZERO Danvers rows. Live on roughly 856 frozen pages.
+# Same class as the newsletter promise fixed on 2026-08-18, except this one
+# takes money. The offer is real and worth buying, so it stays - described
+# truthfully: the file covers every town still reporting, and this town is not
+# one of them. A buyer who reads that and still buys has bought what we sell.
+# ALSO, at the point of sale: the homepage's step 2 read "You pick your trade &
+# town - only the leads that fit your business", which promises a PRE-SCOPED
+# file. Delivery is one statewide bundle - an interactive dashboard you filter
+# by trade and town, plus a master CSV and one CSV per trade. That is a superset
+# rather than a shortfall, but it is not what the words described, so the words
+# now describe the product we actually ship.
+#
 # engine v50 (2026-08-20): THE DEAD END. Built the site's full internal link
 # graph (2,828 pages, 36,724 edges) and found the biggest conversion leak on the
 # site, which no page-level audit could see because every page looked fine on
