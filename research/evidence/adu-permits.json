@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-19T09:36:27.720532+00:00",
- "corpus_rows": 37355,
+ "corpus_fetched_at": "2026-08-20T04:06:20.481040+00:00",
+ "corpus_rows": 37595,
  "corpus_sources": 31,
- "corpus_first": "2026-02-20",
- "corpus_last": "2026-08-19",
+ "corpus_first": "2026-02-21",
+ "corpus_last": "2026-08-20",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,14 +35,14 @@
   ]
  },
  "stats": {
-  "adu_rows": 136,
+  "adu_rows": 137,
   "adu_towns": 18,
   "eligible_sources": 20,
   "n_sources": 31,
   "garage": 34,
-  "garage_share": 25.0,
+  "garage_share": 24.8,
   "conversion": 31,
-  "new_build": 57,
+  "new_build": 58,
   "unclassified": 48,
   "garage_conversion": 14,
   "garage_new_build": 14,
@@ -51,13 +51,13 @@
   "raw_first": 0,
   "raw_peak": 37,
   "rate_min": 0.0,
-  "rate_max": 73.0,
+  "rate_max": 75.2,
   "n_months": 7,
   "series": [
    {
     "month": "2026-02",
     "raw": 0,
-    "base": 273,
+    "base": 223,
     "sources": 4,
     "partial": false,
     "rate": 0.0
@@ -73,42 +73,42 @@
    {
     "month": "2026-04",
     "raw": 15,
-    "base": 2056,
+    "base": 1996,
     "sources": 7,
     "partial": false,
-    "rate": 73.0
+    "rate": 75.2
    },
    {
     "month": "2026-05",
-    "raw": 28,
-    "base": 4447,
+    "raw": 27,
+    "base": 4400,
     "sources": 16,
     "partial": false,
-    "rate": 63.0
+    "rate": 61.4
    },
    {
     "month": "2026-06",
     "raw": 37,
-    "base": 6844,
+    "base": 6689,
     "sources": 19,
     "partial": false,
-    "rate": 54.1
+    "rate": 55.3
    },
    {
     "month": "2026-07",
     "raw": 37,
-    "base": 9777,
+    "base": 9740,
     "sources": 20,
     "partial": false,
-    "rate": 37.8
+    "rate": 38.0
    },
    {
     "month": "2026-08",
-    "raw": 15,
-    "base": 3730,
+    "raw": 17,
+    "base": 4316,
     "sources": 13,
     "partial": true,
-    "rate": 40.2
+    "rate": 39.4
    }
   ],
   "src_first": 4,
