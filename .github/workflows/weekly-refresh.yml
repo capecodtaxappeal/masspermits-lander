@@ -8,6 +8,24 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v53 (2026-08-20): GOOGLE DATASET SEARCH. The audit found us 100% absent
+# from it while five competitors saturate it - despite ~145 town pages already
+# carrying schema.org/Dataset. Two causes, one of them mine.
+#  - v40 replaced every inline publisher/creator with a bare {"@id": ...}. That
+#    is correct JSON-LD only if the consumer merges every <script> block on the
+#    page into one graph. Google's validators are documented to; many consumers
+#    are not, and to those a Dataset with a bare @id creator reads as a Dataset
+#    with NO creator. Two extra keys (@type + name) alongside the @id cost
+#    nothing, still consolidate to one entity, and cannot be misread.
+#  - The four /research/evidence/*.json files were described ONLY in DCAT
+#    (/catalog.json). Dataset Search reads schema.org/Dataset on HTML pages, so
+#    they were invisible there. Each carries the complete figures behind a
+#    published analysis plus the rules that produced them - structured,
+#    licensed, dated, downloadable. They now declare Dataset alongside Article,
+#    with the evidence file as the distribution.
+# Also added the two recommended Dataset properties we were missing, sameAs and
+# citation (pointing at /research/methodology, where the method is written down).
+#
 # engine v52 (2026-08-20): ROUTE BY DISTANCE, NOT BY SIZE. v50 gave frozen pages
 # a way out but picked the destination by permit VOLUME, so a Danvers reader was
 # sent to Worcester. A contractor works a radius; "Worcester, 78 miles away" is
