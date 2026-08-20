@@ -8,6 +8,39 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v50 (2026-08-20): THE DEAD END. Built the site's full internal link
+# graph (2,828 pages, 36,724 edges) and found the biggest conversion leak on the
+# site, which no page-level audit could see because every page looked fine on
+# its own.
+# ~36% of all traffic lands on a FROZEN page - a town whose source died on
+# 2026-08-01. Those pages emitted 12,455 contextual links to other town / trade
+# / guide pages and 10,594 of them - 85% - pointed at ANOTHER frozen page.
+# 405 frozen pages had EVERY contextual link dead: /permits/newburyport offered
+# 19 onward links and all 19 were towns we no longer cover.
+# Nobody wrote a bug. The "nearby towns" module was generated from each town's
+# REGION, and whole regions went dark together - the neighbourhood died around
+# these pages. A third of everyone who arrives was being handed a list of more
+# pages about towns we cannot sell them.
+# Every frozen page now carries a "Towns still reporting" block, matched to the
+# trade the visitor was already reading (HVAC readers get live HVAC towns), and
+# placed directly under the coverage note so the bad news and the way out arrive
+# together. Applied in three places because frozen pages reach the build three
+# different ways: retrofit for /permits/ (902), generator for dark /guides/
+# (112, which are regenerated and so never pass through the retrofit), and
+# blog_build retrofit for /news/ (336). Result: frozen pages with every
+# contextual link dead went 405 -> 0, and frozen->live editorial edges went to
+# 2,146.
+# ALSO: 21 region x trade lead pages had ZERO inbound links and were unreachable
+# from the homepage while sitting in the sitemap - submitted as important while
+# nothing on the site linked them. The /permits/ hub now carries a "Leads by
+# region" block covering all 82, with dark regions labelled "(paused)". And 61
+# live town x trade pages under COMBO_MIN, likewise unreachable, get a quiet
+# second line on their town's guide.
+# Housekeeping found on the way: some chip hrefs used single quotes while the
+# rest of the site used double. Valid HTML either way - but it made my own crawl
+# under-report real links, which is exactly the kind of thing that hides a
+# defect like the one above. Normalised.
+#
 # engine v49 (2026-08-18): the rest of the audit's findings, hand-verified.
 #  - AN UNDISCLOSED 900-ROW CAP. fetch_permiteyes pages 300 at a time while
 #    start < 800, so it stops at exactly 900 newest records: 14 of 28 sources sit
