@@ -8,6 +8,19 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v54 (2026-08-20): the same trap, a third time. A 60-URL live health
+# sweep found 112 dark-town GUIDES still selling "the full Westfield permit
+# list" - the exact defect v51 fixed on ~900 /permits/ pages. Guides are
+# REGENERATED every build, so the frozen-page retrofit never touches them; the
+# fix has to live where the page is built. Now handled in the guide generator,
+# with the same words the retrofit uses, so a reader gets one consistent story
+# wherever they land.
+# Worth naming: this is the third instance of one shape - a fix that reaches
+# generated pages and misses regenerated dark ones, or reaches frozen pages and
+# misses generated ones. Whenever a promise is corrected in ONE place, check the
+# other two paths: retrofit (frozen), generator (live), generator-with-dark-flag
+# (regenerated but stale).
+#
 # engine v53 (2026-08-20): GOOGLE DATASET SEARCH. The audit found us 100% absent
 # from it while five competitors saturate it - despite ~145 town pages already
 # carrying schema.org/Dataset. Two causes, one of them mine.
