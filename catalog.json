@@ -2508,6 +2508,41 @@
   },
   {
    "@type": "dcat:Dataset",
+   "title": "MassPermits Research \u2014 figures behind /research/permit-sequence",
+   "description": "Figures behind a MassPermits analysis.",
+   "identifier": "https://masspermits.com/research/evidence/permit-sequence.json",
+   "landingPage": "https://masspermits.com/research/coverage",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "accessLevel": "public",
+   "modified": "2026-08-20",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits"
+   },
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "massachusetts",
+    "open data",
+    "methodology",
+    "permit-sequence"
+   ],
+   "spatial": "Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/research/evidence/permit-sequence.json",
+     "format": "JSON"
+    }
+   ]
+  },
+  {
+   "@type": "dcat:Dataset",
    "title": "MassPermits Research \u2014 figures behind /research/coverage",
    "description": "What each Massachusetts municipal source publishes: row counts, date spans, and the share of rows carrying a project value or a work description.",
    "identifier": "https://masspermits.com/research/evidence/coverage.json",
