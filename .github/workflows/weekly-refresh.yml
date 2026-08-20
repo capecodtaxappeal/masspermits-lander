@@ -8,6 +8,29 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v52 (2026-08-20): ROUTE BY DISTANCE, NOT BY SIZE. v50 gave frozen pages
+# a way out but picked the destination by permit VOLUME, so a Danvers reader was
+# sent to Worcester. A contractor works a radius; "Worcester, 78 miles away" is
+# not a lead. Now routed on town_bounds.json (160 US Census TIGER polygons,
+# already in the tarball, public domain): area-weighted centroids, great-circle
+# distance, nearest 4 live towns that publish that same trade, distance printed
+# on every chip.
+#   nearest offered town, median   15 mi -> 11 mi
+#   distinct live pages receiving a route   8 -> 167
+#   pages routed to a real neighbour   514 -> 849 of 874
+# The 25 that still fall back are western MA, where nothing live is within 45
+# miles - they get the statewide list and no distance claim, which is the honest
+# answer rather than pretending Worcester is nearby.
+# THE DESIGN FIX THAT MATTERS: these retrofits were "add if missing", so a
+# change to the RULE could never reach the 902 pages already carrying the old
+# block - the frozen-page trap one level up, in the very code written to escape
+# it. The block now carries data-v and is REPLACED when the version bumps.
+# Two bugs the diagnostic caught before shipping: the fallback town list was
+# still capped at the 8 biggest (which is why Abington, a few miles from live
+# Rockland and Braintree, was being pointed at Worcester), and pages whose trade
+# we no longer publish - septic, sign-awning - never had their town parsed out
+# of the slug at all, so 34 of them could not be placed.
+#
 # engine v51 (2026-08-20): WE WERE SELLING A LIST WE CANNOT DELIVER.
 # A growth audit went looking for traffic and found a PAID defect instead.
 # /permits/danvers-hvac - a town that stopped publishing on 2026-08-01 - still
