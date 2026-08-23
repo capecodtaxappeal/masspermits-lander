@@ -1,15 +1,42 @@
 town,trade,issued_date,street_masked,valuation
+Boston,New Construction,2026-08-21,Endicott St,5150.0
+Boston,Electrical,2026-08-21,Commonwealth Av,5000.0
+Boston,Electrical,2026-08-21,Longwood Av,1500000.0
+Boston,Electrical,2026-08-21,Longwood Av,8000.0
+Boston,Gas,2026-08-21,Saint Botolph St,200.0
+Boston,Electrical,2026-08-21,Oliver St,8000.0
+Boston,Electrical,2026-08-21,Kingston St,14000.0
+Boston,Electrical,2026-08-21,Oliver St,15000.0
+Boston,Electrical,2026-08-21,Commonwealth Av,14000.0
+Boston,Electrical,2026-08-21,Milk St,40000.0
+Boston,Electrical,2026-08-21,Broad St,12000.0
+Boston,Electrical,2026-08-21,Summer St,139100.0
+Boston,Renovation/Remodel,2026-08-21,Commonwealth Av,77680.0
+Boston,Windows/Doors/Siding,2026-08-21,Beacon St,10000.0
+Boston,Kitchen/Bath,2026-08-21,Gray St,26350.0
+Boston,Electrical,2026-08-21,Congress St,9850.0
+Boston,Electrical,2026-08-21,Congress St,217000.0
+Boston,Deck/Porch,2026-08-21,Jersey St,50000.0
+Boston,Roofing,2026-08-21,Jersey St,48000.0
+Boston,HVAC,2026-08-21,Braddock Pk,165975.59
+Boston,Electrical,2026-08-21,Huntington Av,38000.0
+Boston,Electrical,2026-08-21,Washington St,95000.0
+Boston,Electrical,2026-08-21,Revere St,13000.0
+Boston,Plumbing,2026-08-21,Beacon St,23500.0
+Boston,HVAC,2026-08-21,Pier Bl,2504000.0
+Boston,Electrical,2026-08-21,Summer St,138000.0
+Boston,Plumbing,2026-08-21,Charter St,2500.0
 Boston,Kitchen/Bath,2026-08-20,Clarendon St,24200.0
 Boston,Electrical,2026-08-20,Oliver St,31887.0
-Boston,Electrical,2026-08-20,Oliver St,29658.0
 Boston,Electrical,2026-08-20,Oliver St,17500.0
-Boston,Electrical,2026-08-20,Oliver St,18500.0
+Boston,Electrical,2026-08-20,Oliver St,29658.0
 Boston,Electrical,2026-08-20,Oliver St,60645.0
+Boston,Electrical,2026-08-20,Oliver St,18500.0
 Boston,Electrical,2026-08-20,Oliver St,53807.0
-Boston,Electrical,2026-08-20,Oliver St,26650.0
 Boston,Electrical,2026-08-20,Oliver St,52494.0
-Boston,Electrical,2026-08-20,Oliver St,53050.0
+Boston,Electrical,2026-08-20,Oliver St,26650.0
 Boston,Electrical,2026-08-20,Oliver St,17385.0
+Boston,Electrical,2026-08-20,Oliver St,53050.0
 Boston,Electrical,2026-08-20,Oliver St,17000.0
 Boston,Demolition,2026-08-20,N Grove St,435000.0
 Boston,Demolition,2026-08-20,Cambridge St,2440000.0
@@ -188,8 +215,8 @@ Boston,Kitchen/Bath,2026-08-17,Commonwealth Av,87500.0
 Boston,Gas,2026-08-16,Beacon St,500.0
 Boston,Kitchen/Bath,2026-08-16,Queensberry St,16000.0
 Boston,Plumbing,2026-08-16,Parmenter St,1000.0
-Boston,Gas,2026-08-15,Norway St,250.0
 Boston,Gas,2026-08-15,Hemenway St,375.0
+Boston,Gas,2026-08-15,Norway St,250.0
 Boston,Gas,2026-08-15,Saint Stephen St,375.0
 Boston,Kitchen/Bath,2026-08-15,Edgerly Rd,43675.0
 Boston,Electrical,2026-08-14,Massachusetts Av,24000.0
@@ -239,13 +266,13 @@ Boston,Demolition,2026-08-13,Boylston St,1089803.06
 Boston,Other,2026-08-13,City Hall Pz,1000.0
 Boston,Gas,2026-08-13,Longwood Av,5000.0
 Boston,Windows/Doors/Siding,2026-08-13,Hawthorne Pl,403500.0
-Boston,Windows/Doors/Siding,2026-08-13,Whittier Pl,348475.0
 Boston,Windows/Doors/Siding,2026-08-13,Whittier Pl,478460.0
+Boston,Windows/Doors/Siding,2026-08-13,Whittier Pl,348475.0
 Boston,Windows/Doors/Siding,2026-08-13,Hawthorne Pl,339295.0
 Boston,Renovation/Remodel,2026-08-13,Beacon St,385000.0
 Boston,Plumbing,2026-08-13,Blackwood St,5500.0
-Boston,Electrical,2026-08-13,Summer St,75000.0
 Boston,Electrical,2026-08-13,Summer St,300000.0
+Boston,Electrical,2026-08-13,Summer St,75000.0
 Boston,HVAC,2026-08-12,Boylston St,450000.0
 Boston,Plumbing,2026-08-12,Brimmer St,75000.0
 Boston,Plumbing,2026-08-12,Blossom St,9000.0
@@ -447,8 +474,8 @@ Boston,Electrical,2026-08-05,Boylston St,97000.0
 Boston,HVAC,2026-08-05,D St,4000.0
 Boston,Electrical,2026-08-05,Post Office Sq,32000.0
 Boston,Windows/Doors/Siding,2026-08-05,Lawrence St,4500.0
-Boston,Electrical,2026-08-05,Oliver St,60333.0
 Boston,Electrical,2026-08-05,Oliver St,13500.0
+Boston,Electrical,2026-08-05,Oliver St,60333.0
 Boston,Other,2026-08-05,City Hall Pz,12100.0
 Boston,Electrical,2026-08-05,City Hall Pz,3400.0
 Boston,Electrical,2026-08-05,Longwood Av,2450000.0
@@ -472,30 +499,3 @@ Boston,Electrical,2026-08-04,Blossom St,44165.0
 Boston,Kitchen/Bath,2026-08-04,Dalton St,15463.24
 Boston,HVAC,2026-08-04,Boylston St,16807.0
 Boston,Plumbing,2026-08-04,Francis St,40484.0
-Boston,Electrical,2026-08-04,Boston Wharf Rd,65000.0
-Boston,Electrical,2026-08-04,High St,10000.0
-Boston,Windows/Doors/Siding,2026-08-04,State St,89871.3
-Boston,Electrical,2026-08-04,Brookline Av,20000.0
-Boston,Plumbing,2026-08-04,Commercial St,21500.0
-Boston,Plumbing,2026-08-04,Follen St,3500.0
-Boston,HVAC,2026-08-04,Chauncy St,8135.0
-Boston,Plumbing,2026-08-04,Commonwealth Av,10000.0
-Boston,Electrical,2026-08-04,Boylston St,125000.0
-Boston,Electrical,2026-08-04,Bedford St,125000.0
-Boston,Electrical,2026-08-04,Boylston St,102000.0
-Boston,Electrical,2026-08-04,Boylston St,6000.0
-Boston,Gas,2026-08-04,Liberty Dr,1500.0
-Boston,Kitchen/Bath,2026-08-04,Commonwealth Av,28000.0
-Boston,Electrical,2026-08-04,Boylston St,30000.0
-Boston,Electrical,2026-08-04,Congress St,850.0
-Boston,Electrical,2026-08-04,Charles St,2500.0
-Boston,Electrical,2026-08-04,Tileston St,5000.0
-Boston,Plumbing,2026-08-04,Congress St,750.0
-Boston,Electrical,2026-08-04,Charles St,15000.0
-Boston,Electrical,2026-08-04,Charles St,5000.0
-Boston,Electrical,2026-08-03,Oliver St,21000.0
-Boston,Plumbing,2026-08-03,W Cedar St,6000.0
-Boston,Renovation/Remodel,2026-08-03,State St,150000.0
-Boston,Plumbing,2026-08-03,Boylston St,8000.0
-Boston,Plumbing,2026-08-03,Boylston St,12000.0
-Boston,Electrical,2026-08-03,Ashburton Pl,24000.0
