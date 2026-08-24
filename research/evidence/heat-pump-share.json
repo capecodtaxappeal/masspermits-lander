@@ -1,11 +1,11 @@
 {
  "slug": "heat-pump-share",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-23T09:29:47.165562+00:00",
- "corpus_rows": 37590,
+ "corpus_fetched_at": "2026-08-24T09:45:57.339454+00:00",
+ "corpus_rows": 37527,
  "corpus_sources": 31,
- "corpus_first": "2026-02-24",
- "corpus_last": "2026-08-23",
+ "corpus_first": "2026-02-25",
+ "corpus_last": "2026-08-24",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -49,7 +49,7 @@
   "excluded_towns": 3,
   "thin_towns": 18,
   "n_sources": 31,
-  "excluded_rows": 462,
+  "excluded_rows": 458,
   "excluded_vs_eligible": "nearly as many as",
   "top": {
    "source": "Randolph, MA",
@@ -57,7 +57,7 @@
    "hp": 27,
    "ff": 33,
    "share": 45.0,
-   "gas_rows": 59,
+   "gas_rows": 58,
    "gas_distinctness": 0.78
   },
   "bottom": {
@@ -76,7 +76,7 @@
     "hp": 27,
     "ff": 33,
     "share": 45.0,
-    "gas_rows": 59,
+    "gas_rows": 58,
     "gas_distinctness": 0.78
    },
    {
@@ -148,7 +148,7 @@
     "hp": 21,
     "ff": 68,
     "share": 23.6,
-    "gas_rows": 21,
+    "gas_rows": 19,
     "gas_distinctness": 1.0
    },
    {
@@ -164,11 +164,11 @@
   "excluded": [
    {
     "source": "Worcester, MA",
-    "n": 307,
+    "n": 303,
     "hp": 0,
-    "ff": 307,
+    "ff": 303,
     "share": 0.0,
-    "gas_rows": 568,
+    "gas_rows": 567,
     "gas_distinctness": 0.01
    },
    {
