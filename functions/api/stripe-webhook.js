@@ -40,8 +40,56 @@ export async function onRequestPost(context) {
     // Stripe webhook destination to also subscribe to customer.subscription.deleted.)
     if (event.type === "customer.subscription.deleted") {
       const o = (event.data && event.data.object) || {};
-      const n = await deactivateSubscriber(env, o.customer);
+      const n = await deactivateSubscriber(env, o.customer, o);
       return json({ ok: true, deactivated: n });
+    }
+
+    // A FAILING PAYMENT WAS COMPLETELY INVISIBLE TO US. This event was not
+    // handled at all, so a declined card produced no flag, no alert and no
+    // record anywhere in MassPermits — the owner could only learn about it from
+    // Stripe directly. Meanwhile weekly-send.js keeps delivering to every
+    // subscriber with active !== false, so a customer who has stopped paying
+    // goes on receiving the paid feed every Monday.
+    //
+    // Deliberately does NOT deactivate. One decline is usually an expired card,
+    // and Stripe retries on its own dunning schedule; cutting a paying customer
+    // off over a temporary failure is worse than the problem. Stripe ends
+    // dunning with customer.subscription.deleted, which is handled above. This
+    // marks the record and tells the owner while it is still fixable.
+    if (event.type === "invoice.payment_failed") {
+      const o = (event.data && event.data.object) || {};
+      const who = o.customer_email || (o.customer_details && o.customer_details.email) || "";
+      const marked = await flagPaymentIssue(env, o.customer, who, {
+        attempt: o.attempt_count || 0,
+        nextAttempt: o.next_payment_attempt
+          ? new Date(o.next_payment_attempt * 1000).toISOString().slice(0, 10) : null,
+        amount: o.amount_due,
+      });
+      await notifyOwner(env,
+        `Payment FAILED: ${who || o.customer || "unknown customer"}`,
+        `<div style="font-family:sans-serif;max-width:560px">
+         <h2 style="color:#b45309">A subscriber payment failed</h2>
+         <p><b>${escapeHtml(who || "(no email on the event)")}</b>${
+           o.customer ? ` &middot; <code>${escapeHtml(o.customer)}</code>` : ""}</p>
+         <p>Attempt ${o.attempt_count || "?"}${
+           o.next_payment_attempt
+             ? `, Stripe retries on ${new Date(o.next_payment_attempt * 1000)
+                 .toISOString().slice(0, 10)}`
+             : ", no further automatic retry scheduled"}.</p>
+         <p>Subscriber record ${marked ? "flagged <code>payment_failing</code>" :
+           "<b>NOT FOUND</b> — no record matched this customer id or email, so nothing was flagged"}.</p>
+         <p style="color:#667;font-size:13px">They are still receiving the weekly feed. That is
+         deliberate: one decline is usually an expired card. If Stripe gives up it will send
+         customer.subscription.deleted and they are deactivated automatically.</p></div>`);
+      return json({ ok: true, flagged: marked, type: event.type });
+    }
+
+    // Payment recovered — clear the flag so a resolved card does not leave a
+    // subscriber marked as failing forever.
+    if (event.type === "invoice.paid" || event.type === "invoice.payment_succeeded") {
+      const o = (event.data && event.data.object) || {};
+      await clearPaymentIssue(env, o.customer,
+        o.customer_email || (o.customer_details && o.customer_details.email) || "");
     }
 
     const decision = decideDelivery(event);
@@ -149,15 +197,29 @@ async function addSubscriber(env, email, event) {
 }
 
 // Flip a subscriber to inactive when their Stripe subscription is deleted.
-async function deactivateSubscriber(env, customerId) {
-  if (!customerId) return 0;
+//
+// Matching on customer id ALONE silently fails for any record that does not
+// carry one. subscribers.json currently holds a $99/mo subscriber signed up
+// 2026-06-26 with no `customer` field at all — the field is only written on the
+// checkout.session.completed path, and their record predates it. For them
+// `s.customer === customerId` is `undefined === "cus_..."`, so a Stripe
+// cancellation would match nobody and they would keep receiving the paid feed
+// forever, unpaid, with nothing in the system aware of it.
+//
+// Email is the other identifier Stripe gives us, so use both.
+async function deactivateSubscriber(env, customerId, evObj) {
+  const byEmail = ((evObj && (evObj.customer_email ||
+    (evObj.customer_details && evObj.customer_details.email))) || "").toLowerCase();
+  if (!customerId && !byEmail) return 0;
   try {
     const cur = await env.BUNDLES.get("subscribers.json");
     if (!cur) return 0;
     const list = JSON.parse(await cur.text());
     let n = 0;
     for (const s of list) {
-      if (s.customer === customerId && s.active !== false) {
+      const hit = (customerId && s.customer === customerId) ||
+                  (byEmail && (s.email || "").toLowerCase() === byEmail);
+      if (hit && s.active !== false) {
         s.active = false;
         s.cancelled = new Date().toISOString().slice(0, 10);
         n++;
@@ -168,6 +230,67 @@ async function deactivateSubscriber(env, customerId) {
   } catch (e) {
     return 0;
   }
+}
+
+// Mark a subscriber whose payment failed. Returns true if a record matched.
+// Also backfills the Stripe customer id when we learn it, so the NEXT event —
+// including the eventual cancellation — can match on id rather than luck.
+async function flagPaymentIssue(env, customerId, email, detail) {
+  const byEmail = (email || "").toLowerCase();
+  if (!customerId && !byEmail) return false;
+  try {
+    const cur = await env.BUNDLES.get("subscribers.json");
+    if (!cur) return false;
+    const list = JSON.parse(await cur.text());
+    let hit = false;
+    for (const s of list) {
+      const match = (customerId && s.customer === customerId) ||
+                    (byEmail && (s.email || "").toLowerCase() === byEmail);
+      if (!match) continue;
+      hit = true;
+      if (customerId && !s.customer) s.customer = customerId;   // backfill
+      s.payment_failing = new Date().toISOString().slice(0, 10);
+      s.payment_detail = detail || {};
+    }
+    if (hit) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
+    return hit;
+  } catch { return false; }
+}
+
+// Payment went through after a failure: drop the flag.
+async function clearPaymentIssue(env, customerId, email) {
+  const byEmail = (email || "").toLowerCase();
+  if (!customerId && !byEmail) return;
+  try {
+    const cur = await env.BUNDLES.get("subscribers.json");
+    if (!cur) return;
+    const list = JSON.parse(await cur.text());
+    let changed = false;
+    for (const s of list) {
+      const match = (customerId && s.customer === customerId) ||
+                    (byEmail && (s.email || "").toLowerCase() === byEmail);
+      if (!match) continue;
+      if (customerId && !s.customer) { s.customer = customerId; changed = true; }
+      if (s.payment_failing) {
+        delete s.payment_failing;
+        delete s.payment_detail;
+        changed = true;
+      }
+    }
+    if (changed) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
+  } catch { /* never block a successful delivery on bookkeeping */ }
+}
+
+// One place to reach the owner. Never throws: a failed alert must not turn into
+// a failed webhook, which Stripe would retry.
+async function notifyOwner(env, subject, html) {
+  const owner = env.OWNER_EMAIL || "patrick@masspermits.com";
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+               "Content-Type": "application/json" },
+    body: JSON.stringify({ from: env.FROM_EMAIL, to: [owner], subject, html }),
+  }).catch(() => {});
 }
 
 // ── Referral loop ("give a month, get a month") ──────────────────────────────

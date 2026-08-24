@@ -63,12 +63,21 @@ export async function onRequest(context) {
     Object.entries(pros.by_trade).sort((a, b) => b[1] - a[1]).slice(0, 10));
 
   // ---- paying ----
-  let paying = 0, paying_total = 0;
+  let paying = 0, paying_total = 0, payment_failing = 0, no_customer_id = 0;
   try {
     const so = await env.BUNDLES.get("subscribers.json");
     const subs = so ? JSON.parse(await so.text()) : [];
     paying_total = (subs || []).length;
     paying = (subs || []).filter((s) => s && s.email && s.active !== false).length;
+    // Billing health. A failing payment used to be invisible to MassPermits
+    // entirely — the webhook did not handle invoice.payment_failed, so the only
+    // place it existed was Stripe. Surfacing it here puts it in the daily
+    // snapshot and the watchdog's output, not just one email that can be missed.
+    payment_failing = (subs || []).filter((s) => s && s.payment_failing).length;
+    // A record with no Stripe customer id cannot be matched by a cancellation
+    // or a failure event, so it would keep receiving the paid feed unpaid.
+    no_customer_id = (subs || [])
+      .filter((s) => s && s.active !== false && !s.customer).length;
   } catch { /* leave at 0 rather than guess */ }
 
   // ---- the two numbers that actually matter ----
@@ -79,7 +88,7 @@ export async function onRequest(context) {
     at: new Date(now).toISOString(),
     newsletter: news,
     prospects: pros,
-    paying, paying_total,
+    paying, paying_total, payment_failing, no_customer_id,
     conversion: {
       // free list -> paid, and warm prospects -> paid
       newsletter_to_paid_pct: rate(paying, news.confirmed),
