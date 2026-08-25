@@ -1,11 +1,11 @@
 {
  "slug": "permit-sequence",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-24T09:45:57.339454+00:00",
- "corpus_rows": 37527,
+ "corpus_fetched_at": "2026-08-25T09:36:25.173405+00:00",
+ "corpus_rows": 37758,
  "corpus_sources": 31,
- "corpus_first": "2026-02-25",
- "corpus_last": "2026-08-24",
+ "corpus_first": "2026-02-26",
+ "corpus_last": "2026-08-25",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -31,8 +31,8 @@
   ]
  },
  "stats": {
-  "n_addresses": 23905,
-  "multi_trade_addresses": 6661,
+  "n_addresses": 24025,
+  "multi_trade_addresses": 6707,
   "pairs": 12,
   "sequences": 10,
   "co_filed": 2,
@@ -56,14 +56,14 @@
    {
     "first": "Renovation/Remodel",
     "then": "Building",
-    "n": 56,
-    "reverse": 16,
-    "share": 77.8,
-    "median_days": 62,
+    "n": 59,
+    "reverse": 15,
+    "share": 79.7,
+    "median_days": 64,
     "p25_days": 28,
-    "p75_days": 91,
+    "p75_days": 99,
     "co_filed": false,
-    "uncapped_share": 77.8,
+    "uncapped_share": 80.0,
     "capped_share": 77.8
    },
    {
@@ -74,7 +74,7 @@
     "share": 76.5,
     "median_days": 27,
     "p25_days": 13,
-    "p75_days": 60,
+    "p75_days": 62,
     "co_filed": false,
     "uncapped_share": 76.5,
     "capped_share": null
@@ -134,41 +134,41 @@
    {
     "first": "Renovation/Remodel",
     "then": "Gas",
-    "n": 174,
-    "reverse": 72,
-    "share": 70.7,
-    "median_days": 32,
+    "n": 173,
+    "reverse": 70,
+    "share": 71.2,
+    "median_days": 29,
     "p25_days": 13,
-    "p75_days": 60,
+    "p75_days": 58,
     "co_filed": false,
-    "uncapped_share": 71.1,
-    "capped_share": 70.5
-   },
-   {
-    "first": "Renovation/Remodel",
-    "then": "HVAC",
-    "n": 93,
-    "reverse": 46,
-    "share": 66.9,
-    "median_days": 46,
-    "p25_days": 19,
-    "p75_days": 77,
-    "co_filed": false,
-    "uncapped_share": 69.4,
-    "capped_share": 64.2
+    "uncapped_share": 70.3,
+    "capped_share": 72.0
    },
    {
     "first": "Renovation/Remodel",
     "then": "Plumbing",
-    "n": 473,
-    "reverse": 236,
-    "share": 66.7,
+    "n": 474,
+    "reverse": 234,
+    "share": 66.9,
     "median_days": 22,
     "p25_days": 11,
     "p75_days": 42,
     "co_filed": false,
-    "uncapped_share": 65.3,
-    "capped_share": 67.9
+    "uncapped_share": 65.2,
+    "capped_share": 68.4
+   },
+   {
+    "first": "Renovation/Remodel",
+    "then": "HVAC",
+    "n": 92,
+    "reverse": 46,
+    "share": 66.7,
+    "median_days": 47,
+    "p25_days": 19,
+    "p75_days": 86,
+    "co_filed": false,
+    "uncapped_share": 69.0,
+    "capped_share": 64.2
    }
   ],
   "cofiled_table": [
@@ -188,15 +188,15 @@
    {
     "first": "Gas",
     "then": "Plumbing",
-    "n": 1170,
-    "reverse": 200,
-    "share": 85.4,
+    "n": 1177,
+    "reverse": 204,
+    "share": 85.2,
     "median_days": 0,
     "p25_days": 0,
     "p75_days": 0,
     "co_filed": true,
-    "uncapped_share": 81.7,
-    "capped_share": 90.9
+    "uncapped_share": 81.3,
+    "capped_share": 91.0
    }
   ],
   "top": {
@@ -215,14 +215,14 @@
   "longest": {
    "first": "Renovation/Remodel",
    "then": "Building",
-   "n": 56,
-   "reverse": 16,
-   "share": 77.8,
-   "median_days": 62,
+   "n": 59,
+   "reverse": 15,
+   "share": 79.7,
+   "median_days": 64,
    "p25_days": 28,
-   "p75_days": 91,
+   "p75_days": 99,
    "co_filed": false,
-   "uncapped_share": 77.8,
+   "uncapped_share": 80.0,
    "capped_share": 77.8
   }
  }
