@@ -1,11 +1,11 @@
 {
  "slug": "heat-pump-share",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-25T09:36:25.173405+00:00",
- "corpus_rows": 37758,
+ "corpus_fetched_at": "2026-08-26T09:41:47.317919+00:00",
+ "corpus_rows": 37626,
  "corpus_sources": 31,
- "corpus_first": "2026-02-26",
- "corpus_last": "2026-08-25",
+ "corpus_first": "2026-02-27",
+ "corpus_last": "2026-08-26",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -41,22 +41,22 @@
  "stats": {
   "eligible_towns": 10,
   "eligible_n": 534,
-  "eligible_hp": 174,
-  "pooled_share": 32.6,
+  "eligible_hp": 175,
+  "pooled_share": 32.8,
   "min_share": 17.9,
-  "max_share": 45.8,
-  "spread": 2.6,
+  "max_share": 44.8,
+  "spread": 2.5,
   "excluded_towns": 3,
   "thin_towns": 18,
   "n_sources": 31,
-  "excluded_rows": 470,
+  "excluded_rows": 466,
   "excluded_vs_eligible": "nearly as many as",
   "top": {
    "source": "Randolph, MA",
-   "n": 59,
-   "hp": 27,
+   "n": 58,
+   "hp": 26,
    "ff": 32,
-   "share": 45.8,
+   "share": 44.8,
    "gas_rows": 58,
    "gas_distinctness": 0.78
   },
@@ -66,27 +66,27 @@
    "hp": 5,
    "ff": 23,
    "share": 17.9,
-   "gas_rows": 42,
-   "gas_distinctness": 0.9
+   "gas_rows": 43,
+   "gas_distinctness": 0.91
   },
   "table": [
    {
     "source": "Randolph, MA",
-    "n": 59,
-    "hp": 27,
+    "n": 58,
+    "hp": 26,
     "ff": 32,
-    "share": 45.8,
+    "share": 44.8,
     "gas_rows": 58,
     "gas_distinctness": 0.78
    },
    {
     "source": "Mansfield, MA",
     "n": 76,
-    "hp": 33,
-    "ff": 43,
-    "share": 43.4,
-    "gas_rows": 100,
-    "gas_distinctness": 0.89
+    "hp": 34,
+    "ff": 42,
+    "share": 44.7,
+    "gas_rows": 96,
+    "gas_distinctness": 0.91
    },
    {
     "source": "Hingham, MA",
@@ -94,7 +94,7 @@
     "hp": 15,
     "ff": 24,
     "share": 38.5,
-    "gas_rows": 112,
+    "gas_rows": 113,
     "gas_distinctness": 0.92
    },
    {
@@ -104,7 +104,7 @@
     "ff": 37,
     "share": 38.3,
     "gas_rows": 85,
-    "gas_distinctness": 0.95
+    "gas_distinctness": 0.96
    },
    {
     "source": "Hanson, MA",
@@ -114,6 +114,15 @@
     "share": 35.5,
     "gas_rows": 61,
     "gas_distinctness": 0.85
+   },
+   {
+    "source": "Taunton, MA",
+    "n": 39,
+    "hp": 11,
+    "ff": 28,
+    "share": 28.2,
+    "gas_rows": 127,
+    "gas_distinctness": 0.7
    },
    {
     "source": "Rockland, MA",
@@ -126,21 +135,12 @@
    },
    {
     "source": "Falmouth, MA",
-    "n": 55,
+    "n": 57,
     "hp": 14,
-    "ff": 41,
-    "share": 25.5,
-    "gas_rows": 191,
-    "gas_distinctness": 0.79
-   },
-   {
-    "source": "Taunton, MA",
-    "n": 40,
-    "hp": 10,
-    "ff": 30,
-    "share": 25.0,
-    "gas_rows": 127,
-    "gas_distinctness": 0.71
+    "ff": 43,
+    "share": 24.6,
+    "gas_rows": 193,
+    "gas_distinctness": 0.8
    },
    {
     "source": "Braintree, MA",
@@ -148,7 +148,7 @@
     "hp": 21,
     "ff": 71,
     "share": 22.8,
-    "gas_rows": 20,
+    "gas_rows": 21,
     "gas_distinctness": 1.0
    },
    {
@@ -157,27 +157,27 @@
     "hp": 5,
     "ff": 23,
     "share": 17.9,
-    "gas_rows": 42,
-    "gas_distinctness": 0.9
+    "gas_rows": 43,
+    "gas_distinctness": 0.91
    }
   ],
   "excluded": [
    {
     "source": "Worcester, MA",
-    "n": 315,
+    "n": 313,
     "hp": 0,
-    "ff": 315,
+    "ff": 313,
     "share": 0.0,
-    "gas_rows": 590,
+    "gas_rows": 576,
     "gas_distinctness": 0.01
    },
    {
     "source": "Cambridge, MA",
-    "n": 103,
-    "hp": 90,
+    "n": 101,
+    "hp": 88,
     "ff": 13,
-    "share": 87.4,
-    "gas_rows": 226,
+    "share": 87.1,
+    "gas_rows": 223,
     "gas_distinctness": 0.05
    },
    {
