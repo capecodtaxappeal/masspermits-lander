@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-08-26T09:41:47.317919+00:00",
- "corpus_rows": 37626,
+ "corpus_fetched_at": "2026-08-27T19:29:26.445646+00:00",
+ "corpus_rows": 37656,
  "corpus_sources": 31,
- "corpus_first": "2026-02-27",
- "corpus_last": "2026-08-26",
+ "corpus_first": "2026-02-28",
+ "corpus_last": "2026-08-27",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,72 +35,72 @@
   ]
  },
  "stats": {
-  "adu_rows": 132,
+  "adu_rows": 135,
   "adu_towns": 18,
   "eligible_sources": 20,
   "n_sources": 31,
-  "garage": 33,
-  "garage_share": 25.0,
-  "conversion": 31,
-  "new_build": 56,
+  "garage": 34,
+  "garage_share": 25.2,
+  "conversion": 33,
+  "new_build": 57,
   "unclassified": 45,
-  "garage_conversion": 14,
+  "garage_conversion": 16,
   "garage_new_build": 14,
   "form_leader": "new construction",
-  "pooled_rate": 46.0,
+  "pooled_rate": 47.0,
   "raw_first": 4,
   "raw_peak": 37,
   "rate_min": 30.8,
-  "rate_max": 63.1,
+  "rate_max": 61.7,
   "n_months": 6,
   "series": [
    {
     "month": "2026-03",
     "raw": 4,
-    "base": 1300,
+    "base": 1299,
     "sources": 4,
     "partial": false,
     "rate": 30.8
    },
    {
     "month": "2026-04",
-    "raw": 11,
-    "base": 1742,
+    "raw": 10,
+    "base": 1673,
     "sources": 6,
     "partial": false,
-    "rate": 63.1
+    "rate": 59.8
    },
    {
     "month": "2026-05",
     "raw": 26,
-    "base": 4268,
-    "sources": 15,
+    "base": 4211,
+    "sources": 14,
     "partial": false,
-    "rate": 60.9
+    "rate": 61.7
    },
    {
     "month": "2026-06",
-    "raw": 35,
-    "base": 5924,
-    "sources": 19,
+    "raw": 34,
+    "base": 5707,
+    "sources": 18,
     "partial": false,
-    "rate": 59.1
+    "rate": 59.6
    },
    {
     "month": "2026-07",
     "raw": 37,
-    "base": 9556,
+    "base": 9353,
     "sources": 20,
     "partial": false,
-    "rate": 38.7
+    "rate": 39.6
    },
    {
     "month": "2026-08",
-    "raw": 19,
-    "base": 5878,
+    "raw": 24,
+    "base": 6472,
     "sources": 13,
     "partial": true,
-    "rate": 32.3
+    "rate": 37.1
    }
   ],
   "src_first": 4,
