@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-01T13:59:04.946911+00:00",
- "corpus_rows": 37724,
+ "corpus_fetched_at": "2026-09-02T13:18:30.209812+00:00",
+ "corpus_rows": 37720,
  "corpus_sources": 31,
- "corpus_first": "2026-03-05",
- "corpus_last": "2026-09-01",
+ "corpus_first": "2026-03-06",
+ "corpus_last": "2026-09-02",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,77 +35,85 @@
   ]
  },
  "stats": {
-  "adu_rows": 136,
+  "adu_rows": 137,
   "adu_towns": 17,
   "eligible_sources": 20,
   "n_sources": 31,
   "garage": 35,
-  "garage_share": 25.7,
+  "garage_share": 25.5,
   "conversion": 34,
-  "new_build": 57,
+  "new_build": 58,
   "unclassified": 45,
   "garage_conversion": 17,
   "garage_new_build": 14,
   "form_leader": "new construction",
-  "pooled_rate": 47.3,
+  "pooled_rate": 47.6,
   "raw_first": 4,
   "raw_peak": 37,
-  "rate_min": 34.3,
-  "rate_max": 64.9,
-  "n_months": 6,
+  "rate_min": 33.2,
+  "rate_max": 87.7,
+  "n_months": 7,
   "series": [
    {
     "month": "2026-03",
     "raw": 4,
-    "base": 1165,
+    "base": 1103,
     "sources": 4,
     "partial": false,
-    "rate": 34.3
+    "rate": 36.3
    },
    {
     "month": "2026-04",
     "raw": 10,
-    "base": 1540,
+    "base": 1533,
     "sources": 5,
     "partial": false,
-    "rate": 64.9
+    "rate": 65.2
    },
    {
     "month": "2026-05",
     "raw": 24,
-    "base": 4041,
-    "sources": 13,
+    "base": 3621,
+    "sources": 12,
     "partial": false,
-    "rate": 59.4
+    "rate": 66.3
    },
    {
     "month": "2026-06",
     "raw": 34,
-    "base": 5643,
+    "base": 5608,
     "sources": 18,
     "partial": false,
-    "rate": 60.3
+    "rate": 60.6
    },
    {
     "month": "2026-07",
     "raw": 37,
-    "base": 8987,
+    "base": 8848,
     "sources": 20,
     "partial": false,
-    "rate": 41.2
+    "rate": 41.8
    },
    {
     "month": "2026-08",
     "raw": 26,
-    "base": 7357,
-    "sources": 14,
+    "base": 7843,
+    "sources": 15,
     "partial": false,
-    "rate": 35.3
+    "rate": 33.2
+   },
+   {
+    "month": "2026-09",
+    "raw": 2,
+    "base": 228,
+    "sources": 12,
+    "partial": true,
+    "rate": 87.7
    }
   ],
   "src_first": 4,
   "src_peak": 20,
-  "partial_month": null,
+  "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
    "Barnstable, MA",
