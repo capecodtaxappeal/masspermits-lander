@@ -1,11 +1,11 @@
 {
  "slug": "heat-pump-share",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-03T13:18:45.340764+00:00",
- "corpus_rows": 37348,
+ "corpus_fetched_at": "2026-09-04T13:12:23.335487+00:00",
+ "corpus_rows": 37393,
  "corpus_sources": 30,
- "corpus_first": "2026-03-07",
- "corpus_last": "2026-09-03",
+ "corpus_first": "2026-03-08",
+ "corpus_last": "2026-09-04",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -40,12 +40,12 @@
  },
  "stats": {
   "eligible_towns": 10,
-  "eligible_n": 556,
-  "eligible_hp": 172,
+  "eligible_n": 550,
+  "eligible_hp": 170,
   "pooled_share": 30.9,
-  "min_share": 14.8,
+  "min_share": 13.8,
   "max_share": 44.2,
-  "spread": 3.0,
+  "spread": 3.2,
   "excluded_towns": 3,
   "thin_towns": 17,
   "n_sources": 30,
@@ -57,17 +57,17 @@
    "hp": 34,
    "ff": 43,
    "share": 44.2,
-   "gas_rows": 99,
+   "gas_rows": 98,
    "gas_distinctness": 0.92
   },
   "bottom": {
    "source": "West Bridgewater, MA",
-   "n": 27,
+   "n": 29,
    "hp": 4,
-   "ff": 23,
-   "share": 14.8,
-   "gas_rows": 42,
-   "gas_distinctness": 0.9
+   "ff": 25,
+   "share": 13.8,
+   "gas_rows": 43,
+   "gas_distinctness": 0.91
   },
   "table": [
    {
@@ -76,25 +76,25 @@
     "hp": 34,
     "ff": 43,
     "share": 44.2,
-    "gas_rows": 99,
+    "gas_rows": 98,
     "gas_distinctness": 0.92
    },
    {
     "source": "Randolph, MA",
-    "n": 71,
-    "hp": 29,
+    "n": 72,
+    "hp": 30,
     "ff": 42,
-    "share": 40.8,
-    "gas_rows": 60,
-    "gas_distinctness": 0.75
+    "share": 41.7,
+    "gas_rows": 59,
+    "gas_distinctness": 0.76
    },
    {
     "source": "Hingham, MA",
-    "n": 41,
-    "hp": 16,
-    "ff": 25,
-    "share": 39.0,
-    "gas_rows": 107,
+    "n": 38,
+    "hp": 15,
+    "ff": 23,
+    "share": 39.5,
+    "gas_rows": 105,
     "gas_distinctness": 0.92
    },
    {
@@ -103,16 +103,16 @@
     "hp": 22,
     "ff": 37,
     "share": 37.3,
-    "gas_rows": 80,
+    "gas_rows": 79,
     "gas_distinctness": 0.95
    },
    {
     "source": "Hanson, MA",
-    "n": 32,
+    "n": 34,
     "hp": 11,
-    "ff": 21,
-    "share": 34.4,
-    "gas_rows": 65,
+    "ff": 23,
+    "share": 32.4,
+    "gas_rows": 66,
     "gas_distinctness": 0.85
    },
    {
@@ -121,44 +121,44 @@
     "hp": 16,
     "ff": 40,
     "share": 28.6,
-    "gas_rows": 70,
-    "gas_distinctness": 0.74
-   },
-   {
-    "source": "Falmouth, MA",
-    "n": 54,
-    "hp": 12,
-    "ff": 42,
-    "share": 22.2,
-    "gas_rows": 197,
-    "gas_distinctness": 0.74
+    "gas_rows": 71,
+    "gas_distinctness": 0.75
    },
    {
     "source": "Braintree, MA",
-    "n": 96,
+    "n": 95,
     "hp": 21,
-    "ff": 75,
-    "share": 21.9,
+    "ff": 74,
+    "share": 22.1,
     "gas_rows": 18,
     "gas_distinctness": 1.0
    },
    {
+    "source": "Falmouth, MA",
+    "n": 47,
+    "hp": 9,
+    "ff": 38,
+    "share": 19.1,
+    "gas_rows": 190,
+    "gas_distinctness": 0.75
+   },
+   {
     "source": "Taunton, MA",
     "n": 43,
-    "hp": 7,
-    "ff": 36,
-    "share": 16.3,
+    "hp": 8,
+    "ff": 35,
+    "share": 18.6,
     "gas_rows": 128,
     "gas_distinctness": 0.73
    },
    {
     "source": "West Bridgewater, MA",
-    "n": 27,
+    "n": 29,
     "hp": 4,
-    "ff": 23,
-    "share": 14.8,
-    "gas_rows": 42,
-    "gas_distinctness": 0.9
+    "ff": 25,
+    "share": 13.8,
+    "gas_rows": 43,
+    "gas_distinctness": 0.91
    }
   ],
   "excluded": [
@@ -177,7 +177,7 @@
     "hp": 84,
     "ff": 14,
     "share": 85.7,
-    "gas_rows": 219,
+    "gas_rows": 214,
     "gas_distinctness": 0.05
    },
    {
