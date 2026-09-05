@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-04T13:12:23.335487+00:00",
- "corpus_rows": 37393,
+ "corpus_fetched_at": "2026-09-05T12:25:53.908215+00:00",
+ "corpus_rows": 37448,
  "corpus_sources": 30,
- "corpus_first": "2026-03-08",
- "corpus_last": "2026-09-04",
+ "corpus_first": "2026-03-09",
+ "corpus_last": "2026-09-05",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -50,17 +50,17 @@
   "pooled_rate": 49.2,
   "raw_first": 4,
   "raw_peak": 36,
-  "rate_min": 34.7,
-  "rate_max": 74.4,
+  "rate_min": 32.4,
+  "rate_max": 77.3,
   "n_months": 7,
   "series": [
    {
     "month": "2026-03",
     "raw": 4,
-    "base": 1054,
+    "base": 1049,
     "sources": 4,
     "partial": false,
-    "rate": 38.0
+    "rate": 38.1
    },
    {
     "month": "2026-04",
@@ -73,42 +73,42 @@
    {
     "month": "2026-05",
     "raw": 20,
-    "base": 2687,
-    "sources": 10,
+    "base": 2586,
+    "sources": 9,
     "partial": false,
-    "rate": 74.4
+    "rate": 77.3
    },
    {
     "month": "2026-06",
     "raw": 35,
-    "base": 5404,
+    "base": 5392,
     "sources": 17,
     "partial": false,
-    "rate": 64.8
+    "rate": 64.9
    },
    {
     "month": "2026-07",
     "raw": 36,
-    "base": 8371,
+    "base": 8358,
     "sources": 19,
     "partial": false,
-    "rate": 43.0
+    "rate": 43.1
    },
    {
     "month": "2026-08",
     "raw": 33,
-    "base": 8548,
-    "sources": 16,
+    "base": 8648,
+    "sources": 17,
     "partial": false,
-    "rate": 38.6
+    "rate": 38.2
    },
    {
     "month": "2026-09",
     "raw": 3,
-    "base": 865,
+    "base": 926,
     "sources": 12,
     "partial": true,
-    "rate": 34.7
+    "rate": 32.4
    }
   ],
   "src_first": 4,

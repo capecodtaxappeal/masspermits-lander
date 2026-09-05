@@ -10,8 +10,8 @@
    "url": "https://masspermits.com"
   }
  ],
- "_window_total": 167,
- "_window_from": "2026-08-05",
+ "_window_total": 155,
+ "_window_from": "2026-08-06",
  "_window_to": "2026-09-04",
  "items": [
   {
@@ -24,6 +24,24 @@
    "_trade": "Renovation/Remodel"
   },
   {
+   "id": "e6647e4a61775f60",
+   "url": "https://masspermits.com/permits/fairhaven-electrical",
+   "title": "Electrical permit \u2014 Balsam Street, Fairhaven",
+   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "a30e8737de055dce",
+   "url": "https://masspermits.com/permits/fairhaven-electrical",
+   "title": "Electrical permit \u2014 Starboard Drive, Fairhaven",
+   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Electrical"
+  },
+  {
    "id": "ae052679d8168a57",
    "url": "https://masspermits.com/permits/fairhaven-plumbing",
    "title": "Plumbing permit \u2014 Hathaway Street, Fairhaven",
@@ -33,31 +51,13 @@
    "_trade": "Plumbing"
   },
   {
-   "id": "3ff3b7c905d355c1",
+   "id": "3e7df1eb741d5e7c",
    "url": "https://masspermits.com/permits/fairhaven-electrical",
-   "title": "Electrical permit \u2014 Starboard Drive, Fairhaven",
+   "title": "Electrical permit \u2014 Bridge St, Fairhaven",
    "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-03T00:00:00Z",
+   "date_published": "2026-09-04T00:00:00Z",
    "_town": "Fairhaven",
    "_trade": "Electrical"
-  },
-  {
-   "id": "ce708e0073a0702a",
-   "url": "https://masspermits.com/permits/fairhaven-gas",
-   "title": "Gas permit \u2014 Almond Street, Fairhaven",
-   "content_text": "Gas permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-03T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Gas"
-  },
-  {
-   "id": "58691b7599f8685d",
-   "url": "https://masspermits.com/permits/fairhaven-hvac",
-   "title": "HVAC permit \u2014 Sconticut Neck Road, Fairhaven",
-   "content_text": "HVAC permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-03T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "HVAC"
   },
   {
    "id": "2b084a9bf9204d74",
@@ -99,6 +99,24 @@
    "id": "4d9e6208c5b3b494",
    "url": "https://masspermits.com/permits/fairhaven-hvac",
    "title": "HVAC permit \u2014 Kane Street, Fairhaven",
+   "content_text": "HVAC permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "ce708e0073a0702a",
+   "url": "https://masspermits.com/permits/fairhaven-gas",
+   "title": "Gas permit \u2014 Almond Street, Fairhaven",
+   "content_text": "Gas permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Gas"
+  },
+  {
+   "id": "58691b7599f8685d",
+   "url": "https://masspermits.com/permits/fairhaven-hvac",
+   "title": "HVAC permit \u2014 Sconticut Neck Road, Fairhaven",
    "content_text": "HVAC permit in Fairhaven, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-03T00:00:00Z",
    "_town": "Fairhaven",
@@ -204,24 +222,6 @@
    "_trade": "Other"
   },
   {
-   "id": "c7fd3fe57dad4bbb",
-   "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Howland Road, Fairhaven",
-   "content_text": "Renovation/Remodel permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "350051473f126667",
-   "url": "https://masspermits.com/permits/fairhaven-electrical",
-   "title": "Electrical permit \u2014 Moravia Avenue, Fairhaven",
-   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Electrical"
-  },
-  {
    "id": "1513df10b0e83441",
    "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Main Street, Fairhaven",
@@ -249,13 +249,22 @@
    "_trade": "Building"
   },
   {
-   "id": "491a483eabcff59a",
+   "id": "c7fd3fe57dad4bbb",
    "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Reservation Road, Fairhaven",
+   "title": "Renovation/Remodel permit \u2014 Howland Road, Fairhaven",
    "content_text": "Renovation/Remodel permit in Fairhaven, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-02T00:00:00Z",
    "_town": "Fairhaven",
    "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "350051473f126667",
+   "url": "https://masspermits.com/permits/fairhaven-electrical",
+   "title": "Electrical permit \u2014 Moravia Avenue, Fairhaven",
+   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Electrical"
   },
   {
    "id": "bc457ddf1399f696",
@@ -270,6 +279,15 @@
    "id": "1ac91657bac2f8e6",
    "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Causeway Road, Fairhaven",
+   "content_text": "Renovation/Remodel permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "491a483eabcff59a",
+   "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Reservation Road, Fairhaven",
    "content_text": "Renovation/Remodel permit in Fairhaven, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-02T00:00:00Z",
    "_town": "Fairhaven",
@@ -357,6 +375,33 @@
    "_trade": "Renovation/Remodel"
   },
   {
+   "id": "4e3c93c4a36bc561",
+   "url": "https://masspermits.com/permits/fairhaven-electrical",
+   "title": "Electrical permit \u2014 Hamlet Street, Fairhaven",
+   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "266349af62429534",
+   "url": "https://masspermits.com/permits/fairhaven-building",
+   "title": "Building permit \u2014 Union Street, Fairhaven",
+   "content_text": "Building permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Building"
+  },
+  {
+   "id": "55fe9211b86373ec",
+   "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Hathaway Street, Fairhaven",
+   "content_text": "Renovation/Remodel permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Renovation/Remodel"
+  },
+  {
    "id": "5d6bd9fc92290f78",
    "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Weeden Road, Fairhaven",
@@ -393,33 +438,6 @@
    "_trade": "Plumbing"
   },
   {
-   "id": "4e3c93c4a36bc561",
-   "url": "https://masspermits.com/permits/fairhaven-electrical",
-   "title": "Electrical permit \u2014 Hamlet Street, Fairhaven",
-   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "266349af62429534",
-   "url": "https://masspermits.com/permits/fairhaven-building",
-   "title": "Building permit \u2014 Union Street, Fairhaven",
-   "content_text": "Building permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Building"
-  },
-  {
-   "id": "55fe9211b86373ec",
-   "url": "https://masspermits.com/permits/fairhaven-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Hathaway Street, Fairhaven",
-   "content_text": "Renovation/Remodel permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Renovation/Remodel"
-  },
-  {
    "id": "706861998ef99646",
    "url": "https://masspermits.com/permits/fairhaven-electrical",
    "title": "Electrical permit \u2014 Bridge Street, Fairhaven",
@@ -443,24 +461,6 @@
    "title": "Electrical permit \u2014 Main Street, Fairhaven",
    "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "c7bc2a5666b417f4",
-   "url": "https://masspermits.com/permits/fairhaven-electrical",
-   "title": "Electrical permit \u2014 Weeden Road, Fairhaven",
-   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "f560480e075f47b7",
-   "url": "https://masspermits.com/permits/fairhaven-electrical",
-   "title": "Electrical permit \u2014 Manhattan Avenue, Fairhaven",
-   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
    "_town": "Fairhaven",
    "_trade": "Electrical"
   },
@@ -490,6 +490,24 @@
    "date_published": "2026-08-31T00:00:00Z",
    "_town": "Fairhaven",
    "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "c7bc2a5666b417f4",
+   "url": "https://masspermits.com/permits/fairhaven-electrical",
+   "title": "Electrical permit \u2014 Weeden Road, Fairhaven",
+   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f560480e075f47b7",
+   "url": "https://masspermits.com/permits/fairhaven-electrical",
+   "title": "Electrical permit \u2014 Manhattan Avenue, Fairhaven",
+   "content_text": "Electrical permit in Fairhaven, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Fairhaven",
+   "_trade": "Electrical"
   },
   {
    "id": "a7660cb98c525db6",
@@ -535,24 +553,6 @@
    "date_published": "2026-08-28T00:00:00Z",
    "_town": "Fairhaven",
    "_trade": "Plumbing"
-  },
-  {
-   "id": "7d6f7c802ba9b5de",
-   "url": "https://masspermits.com/permits/fairhaven-gas",
-   "title": "Gas permit \u2014 Doane Street, Fairhaven",
-   "content_text": "Gas permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-28T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Gas"
-  },
-  {
-   "id": "fadf78fa902f38de",
-   "url": "https://masspermits.com/permits/fairhaven-gas",
-   "title": "Gas permit \u2014 Livesey Parkway, Fairhaven",
-   "content_text": "Gas permit in Fairhaven, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-28T00:00:00Z",
-   "_town": "Fairhaven",
-   "_trade": "Gas"
   }
  ]
 }
