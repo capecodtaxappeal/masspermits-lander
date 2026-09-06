@@ -8,6 +8,24 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v62 (2026-09-06): THE FREE SAMPLE LOOKED EMPTY.
+# A prospect opened the free sample, said it contained no permits, and was
+# right about what he saw. The file was fine -- 1,145 rows in the DOM, verified
+# by fetching /api/sample and rendering it in a real browser. But measured on a
+# 1280x900 viewport the first permit row sat at y=936, i.e. 36px BELOW a 900px
+# fold, behind a header, four stat tiles and three chart cards -- and the
+# document contained ZERO in-page jump links. So the whole visible page was
+# charts, and nothing told the reader there was a table underneath. He scrolled
+# nowhere, saw no permits, and reported no permits.
+# Fix: a full-width "See all N leads" bar between the stat tiles and the charts,
+# anchored to the table, with the count filled from DATA.length so the promise
+# above the fold matches the table below it. Re-measured after the change: the
+# bar renders at y=212, well above the fold, reading "See all 1,145 leads".
+# Also in v62: fetch_cambridge shipped lat/lng as JSON STRINGS on all 2,776 live
+# Cambridge rows (Socrata quotes its numbers) -- now coerced to float. The same
+# bug and a missing today+30 sane-date ceiling were fixed in fetch_somerville,
+# which is written and tested but not yet wired into CORE_SOURCES.
+#
 # engine v61 (2026-09-06): MASHPEE SHIPPED A DATE INSIDE EVERY ISSUED ADDRESS.
 # PE_LAYOUT["mashpee"] had "addr": (5, 6) -- a TUPLE, which joins cell 5 to cell
 # 6, and cell 5 is the ISSUE DATE. Every issued Mashpee row carried an address
