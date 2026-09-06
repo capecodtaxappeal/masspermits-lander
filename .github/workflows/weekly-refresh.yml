@@ -8,6 +8,52 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v61 (2026-09-06): MASHPEE SHIPPED A DATE INSIDE EVERY ISSUED ADDRESS.
+# PE_LAYOUT["mashpee"] had "addr": (5, 6) -- a TUPLE, which joins cell 5 to cell
+# 6, and cell 5 is the ISSUE DATE. Every issued Mashpee row carried an address
+# of the form "09/04/26 45 leather leaf ln": 2,165 of 2,400 rows. Rows not yet
+# issued have an empty cell 5 and looked correct, which is why it survived from
+# July. Three harms, one cause: the paid bundle shipped a date glued to the
+# street; map_url was built from that string so every issued Mashpee pin was
+# broken; and it DEFEATED THE FREE-SAMPLE MASK -- _mask_for_sample strips the
+# FIRST token, so it removed the date and left the house number standing
+# ("**** 45 leather leaf ln"). Same defect class as v57, reached by the other
+# route: v57 fixed the free text, the structured field was wrong all along.
+# Fix: "addr": 6, and "date": [5, 4] (it was [4] -- the application date ONLY,
+# so Mashpee never used its issue date even when present). Verified: malformed
+# addresses 2,165 -> 0, rows unchanged at 2,400, permit_number 90% populated.
+# All SEVEN tuple-address towns were then audited against the 57,321-row corpus
+# (hingham, falmouth, mashpee, stoughton, westbridgewater, easthampton, otis):
+# Mashpee was the only one affected.
+#
+# engine v60 (2026-09-06): +Hopedale, Ludlow, Ipswich, North Reading,
+# Easthampton, Otis (+4,586 rows in the 180-day window). All six recovered from
+# the statewide survey's workflow JOURNAL after the survey payload was truncated
+# mid-record after Norwood -- the research existed but had never been persisted.
+# Every slug live-probed before shipping: publicview.php must still resolve to
+# publicview.php (the Norwell test), then columns mapped off a real ajax payload
+# rather than the page's <th> row. Concord was deliberately NOT added: its
+# newest rows are TEST RECORDS ("test test street" / applicant "test") that pass
+# the address guard and would have been sold as leads.
+#
+# engine v59 (2026-09-06): BRAINTREE'S COLUMN MAP WAS SHIFTED BY ONE AND HAD
+# BEEN SHIPPING GARBAGE TO PAYING CUSTOMERS. type/status/permit read 10/11/12
+# where the payload has description/type/status at 10/11/12 and the permit
+# number at 13. Result on ~900 rows/run: permit_number was a workflow state
+# ("Permit Issued", "Closed"), zero of 899 contained a digit; status was a trade
+# code; and the description was discarded entirely. Now 2,056/2,056 permit
+# numbers contain a digit and 1,979 rows carry real descriptions. Also in v59:
+# Taunton's sort column 4 -> 5 (it sorted on the APPLICATION date while rows are
+# filtered on the ISSUE date -- 856 out-of-order pairs and 21 in-window rows
+# hidden past the cap; now 0 inversions, 2,102 rows, provably complete);
+# PE_TRUNCATED no longer reports false ceilings (it flagged Sandwich as capped
+# when lifting the cap to 4,200 returned ZERO extra rows -- a false ceiling that
+# would have been published into /research/); +Chicopee; row cap 900 -> 2,400.
+# NORWELL WAS REMOVED, not added: it switched its public view off (publicview.php
+# now lands on login.php) while the vendor left ajax/getpublichome.php open, so
+# we were reading through a side door after the town shut the front one. Same
+# shape as the OpenGov lockout, same answer. Commented out, not deleted.
+#
 # engine v57 (2026-09-06): THE FREE SAMPLE HANDED BACK WHAT IT MASKED.
 # _mask_for_sample() masked address, contractor, map_url and permit_number and
 # left the FREE TEXT alone. Measured on the 36,117-row corpus: 140 rows repeat
@@ -712,6 +758,15 @@ jobs:
           # Syntax-check every module too: a truncated upload extracts fine.
           python3 -m compileall -q $(ls *.py) > /dev/null
           echo "engine complete: $(ls *.py | wc -l) modules, all parse"
+          # Warn-only tier, for a module whose absence degrades observability but
+          # must never abort a run. source_health.py reached this repo in the
+          # same change that added the health step, and pushing THIS FILE fires
+          # a run immediately (see the paths-filtered push trigger) -- so on the
+          # first deploy the tarball legitimately does not have it yet. Promote
+          # it into the hard list above once a run reports it present.
+          for f in source_health.py; do
+            [ -f "$f" ] || echo "::warning::engine is missing $f -- per-source health tracking is OFF this run (see OPERATIONS.md 5.9)"
+          done
 
       # The daily probe runs the scrape + site rebuild every day, but the
       # owner-facing weekly artifacts (PR pitches, Patch pack, Bluesky video)
@@ -751,6 +806,72 @@ jobs:
           up "$(ls -t data/bundles/MassPermits-*-WEEKLY.zip  | head -1)" latest-weekly.zip  application/zip
           up "$(ls -t data/bundles/MassPermits-*-MONTHLY.zip | head -1)" latest-monthly.zip application/zip
           up "$(ls -t data/bundles/MassPermits-*-SAMPLE.zip  | head -1)" latest-sample.zip  application/zip
+
+      # ---- SOURCE-LEVEL CONTINUITY -------------------------------------
+      # The coverage gate above is deliberately tolerant: one town going dark is
+      # 1 in 34 attempted sources, far under MAX_ZERO_FRACTION, so the run is
+      # healthy and the bundles ship. Correct — but it meant that WHICH town
+      # died was recorded only in this run's status.json, which the next run
+      # overwrites. Amherst has been
+      # failing with "no parsable column-header line found on any page" and the
+      # only way to learn that was to open refresh-status.json by hand.
+      #
+      # This step keeps a history across runs in R2 (source-health.json: rows
+      # per source per run, first_seen, last_good, consecutive_failure count)
+      # and mails the owner when a source has been dead long enough to be worth
+      # his attention — 3 consecutive failed runs AND 48h without rows, then
+      # quiet for 7 days before reminding, plus a one-off note when it recovers.
+      # The thresholds and every anti-false-positive case are in
+      # source_health.py; PermitPulse/test_source_health.py replays them.
+      #
+      # Runs BEFORE the status upload on purpose: --merge-status folds the
+      # roll-up into status.json, so refresh-status.json itself names the dead
+      # towns and nobody has to know a second object exists.
+      #
+      # continue-on-error, and source_health.py always exits 0: observability
+      # must never be what fails a refresh. The worst case here is a missing
+      # alert, not a missing bundle - which is also why the step sits AFTER the
+      # bundle upload, where it cannot delay the paying-customer path. A 404 on
+      # the history (the first ever run, or the object not yet written) is
+      # normal and bootstraps an empty history.
+      - name: Per-source health history + dead-source alert
+        if: always()
+        continue-on-error: true
+        run: |
+          [ -f source_health.py ] || { echo "source_health.py not in this engine tarball - skipping health tracking"; exit 0; }
+          [ -f status.json ] || { echo "no status.json - the run died before scraping; nothing to score"; exit 0; }
+          mint() {
+            curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value
+          }
+
+          # 404 on the first ever run is normal and bootstraps an empty history.
+          curl -fsS -H "Authorization: Bearer $(mint)" \
+            "https://masspermits.com/api/get-object?key=source-health.json" \
+            -o prev-health.json || echo '{}' > prev-health.json
+          echo "previous history: $(wc -c < prev-health.json) bytes"
+
+          python -u source_health.py \
+            --status status.json --history prev-health.json \
+            --out source-health.json --alert health-alert.html \
+            --merge-status 2>&1 | tee -a run.log
+
+          curl -fsS -X PUT -H "Authorization: Bearer $(mint)" -H "Content-Type: application/json" \
+            --data-binary @source-health.json \
+            "https://masspermits.com/api/upload-bundle?key=source-health.json" \
+            && echo "  shipped source-health.json ($(wc -c < source-health.json) bytes)"
+
+          # The alert file exists ONLY when a source actually changed state.
+          # Silence on a healthy day is the design, not a broken step.
+          if [ -f health-alert.html ]; then
+            SUBJ=$(python3 -c "import urllib.parse;print(urllib.parse.quote(open('health-alert.subject',encoding='utf-8').read().strip()))")
+            curl -fsS -X POST -H "Authorization: Bearer $(mint)" -H "Content-Type: text/html" \
+              --data-binary @health-alert.html \
+              "https://masspermits.com/api/mail-owner?subject=$SUBJ" && echo "  alert mailed"
+            echo "::warning::source health changed - see the emailed alert"
+          else
+            echo "no source-health state changes this run - no email"
+          fi
 
       # Status + full run log go to R2 even on failure — Actions logs need
       # repo-admin auth, R2 doesn't. This is the pipeline's black box, and

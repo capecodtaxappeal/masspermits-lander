@@ -6,7 +6,13 @@
 
 import { verifyGitHubOIDC } from "./_github-oidc.js";
 
-const READABLE = new Set(["cold-queue.json", "cold-state.json", "suppression.json"]);
+// source-health.json is read back by weekly-refresh at the start of each run:
+// the failure-streak rule is stateful, so without a read the history cannot
+// exist. Same class as the cold-* entries — the CI job's own checkpoint
+// state, no customer or subscriber data. subscribers.json stays out of this
+// set forever; so do the bundles, the engine and the prospect list.
+const READABLE = new Set(["cold-queue.json", "cold-state.json", "suppression.json",
+                          "source-health.json"]);
 
 export async function onRequestGet(context) {
   const { request, env } = context;

@@ -19,7 +19,17 @@ const ALLOWED_KEYS = {
   "run-log.txt": "text/plain", // workflow stdout — observable diagnostics without repo-admin log access
   "cold-state.json": "application/json", // cold-outreach sender checkpoints (queue/suppression stay wrangler-only)
   "cold-log.txt": "text/plain", // cold sender stdout — observable diagnostics without repo-admin log access
+  // Per-source scraper health history (rows/first-seen/last-good/failure
+  // streak per town), written by the weekly-refresh job via source_health.py.
+  // Operational telemetry only: town names, row counts and fetcher error
+  // strings. No customer, subscriber, contractor or address data is in it,
+  // and none may ever be added — if this object ever needs a person's name
+  // in it, that is the signal to stop, not to widen it.
+  "source-health.json": "application/json",
 };
+// STILL EXCLUDED, deliberately and permanently: subscribers.json,
+// cold-queue.json, suppression.json, the engine tarball. A valid OIDC
+// caller must not be able to replace the subscriber list.
 const MAX_BYTES = 25 * 1024 * 1024; // bundles are <1MB today; hard ceiling anyway
 
 export async function onRequest(context) {
