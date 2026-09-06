@@ -37,14 +37,19 @@ export async function onRequestGet(context) {
       { status: 403, headers: { "Content-Type": "text/plain" } });
   }
 
-  const file = await env.BUNDLES.get("latest-weekly.zip");
+  // Which bundle. Defaults to weekly so every link already in the wild keeps
+  // working; the purchase email asks for monthly, which is what that buyer paid
+  // for. Anything else falls back to weekly rather than reaching R2 with it.
+  const want = new URL(request.url).searchParams.get("k") === "monthly"
+    ? "monthly" : "weekly";
+  const file = await env.BUNDLES.get(`latest-${want}.zip`);
   if (!file) return new Response("This week's file isn't ready yet — check back shortly.", { status: 404 });
 
   const d = new Date().toISOString().slice(0, 10);
   return new Response(file.body, {
     headers: {
       "Content-Type": "application/zip",
-      "Content-Disposition": `attachment; filename="MassPermits-weekly-${d}.zip"`,
+      "Content-Disposition": `attachment; filename="MassPermits-${want}-${d}.zip"`,
       "Cache-Control": "no-store",
     },
   });

@@ -109,7 +109,13 @@ export async function onRequestPost(context) {
       try { myCode = await mintReferralCode(env, email); } catch (e) { /* non-fatal */ }
     }
 
-    await sendEmail(env, email, kind, ref, bytes, bundleKey, myCode);
+    // Subscriber record FIRST, so its download token can go in the email.
+    let dlToken = "";
+    if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
+      dlToken = await addSubscriber(env, email, event);
+    }
+
+    await sendEmail(env, email, kind, ref, bytes, bundleKey, myCode, dlToken);
     // Black-box the delivery to R2 (same pattern as feed-send-log.json): when a
     // subscriber says "I never got my emails", this is the only place that
     // records the signup-bundle attempt. A Resend rejection throws before this
@@ -121,10 +127,6 @@ export async function onRequestPost(context) {
       log.unshift({ at: new Date().toISOString(), to: email, kind, bundle: bundleKey });
       await env.BUNDLES.put("delivery-log.json", JSON.stringify(log.slice(0, 50)));
     } catch (_) { /* logging must never fail the delivery */ }
-    // add new SUBSCRIBERS (not one-time pack buyers) to the weekly-feed list in R2
-    if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
-      await addSubscriber(env, email, event);
-    }
     // if this buyer arrived via someone's referral link, credit the referrer
     if (kind === "monthly" && ref && ref.startsWith("ref-")) {
       try { await creditReferrer(env, ref.slice(4), email); } catch (e) { /* non-fatal */ }
@@ -174,12 +176,27 @@ function decideDelivery(event) {
 }
 
 // Maintain the weekly-feed subscriber list in R2 (read by /api/weekly-send).
+// RETURNS the subscriber's download token so the purchase email can link to
+// /api/my-leads. It used to return nothing and run AFTER the email was sent,
+// which is the whole reason every purchase email could only say "see attached".
 async function addSubscriber(env, email, event) {
   try {
     const o = (event.data && event.data.object) || {};
     const cur = await env.BUNDLES.get("subscribers.json");
     const list = cur ? JSON.parse(await cur.text()) : [];
-    if (!list.some((s) => s.email === email)) {
+    const existing = list.find((s) => s.email === email);
+    if (existing) {
+      // Re-subscribe after a cancellation, or a second checkout. Reactivate and
+      // backfill anything missing rather than creating a duplicate row.
+      let changed = false;
+      if (existing.active === false) { existing.active = true; delete existing.cancelled; changed = true; }
+      if (!existing.token) { existing.token = crypto.randomUUID().replace(/-/g, ""); changed = true; }
+      if (!existing.customer && o.customer) { existing.customer = o.customer; changed = true; }
+      if (changed) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
+      return existing.token || "";
+    }
+    {
+      const token = crypto.randomUUID().replace(/-/g, "");
       list.push({
         email,
         name: (o.customer_details && o.customer_details.name) || "",
@@ -187,13 +204,15 @@ async function addSubscriber(env, email, event) {
         since: new Date().toISOString().slice(0, 10),
         active: true,
         // self-serve download token for the /api/my-leads fallback link
-        token: crypto.randomUUID().replace(/-/g, ""),
+        token,
       });
       await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
+      return token;
     }
   } catch (e) {
-    /* non-fatal — the bundle was already delivered */
+    /* non-fatal — the bundle still goes out, just without the link */
   }
+  return "";
 }
 
 // Flip a subscriber to inactive when their Stripe subscription is deleted.
@@ -332,7 +351,21 @@ async function creditReferrer(env, code, buyerEmail) {
   }).catch(() => {});
 }
 
-async function sendEmail(env, to, kind, ref, bytes, filename, myCode) {
+async function sendEmail(env, to, kind, ref, bytes, filename, myCode, dlToken) {
+  // A download button, not just an attachment. The attachment is the part of
+  // this email most likely never to arrive: corporate filters strip archives,
+  // and a phone cannot open one even when it does. Both customers who bought in
+  // the last ten days were stopped by exactly that.
+  const dl = dlToken
+    ? `<p style="margin:18px 0"><a href="https://masspermits.com/api/my-leads?t=${dlToken}&k=monthly"
+         style="background:#0e7c6b;color:#fff;padding:12px 20px;border-radius:8px;
+                text-decoration:none;font-weight:700;display:inline-block">
+         Download your leads &rarr;</a></p>
+       <p style="color:#667;font-size:13px;margin:-6px 0 0">Private link tied to your
+       subscription — keep it, it always serves the current file. Use it if the
+       attachment below is missing or your mail system stripped it.</p>`
+    : `<p style="color:#667;font-size:13px">If the attachment did not arrive, just reply to
+       this email and I will send you a direct download link.</p>`;
   const human = kind === "weekly" ? "this week's fresh" : "your";
   const isRefCode = ref && ref.startsWith("ref-");
   const refLine = (ref && !isRefCode) ? `<p style="color:#667">Your selection: <b>${escapeHtml(ref.replace(/__/g," · "))}</b></p>` : "";
@@ -347,9 +380,10 @@ async function sendEmail(env, to, kind, ref, bytes, filename, myCode) {
   const html = `
     <div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
       <h2 style="color:#0e7c6b">Your MassPermits leads are attached 📋</h2>
-      <p>Thanks for your order. Attached is ${human} building-permit lead bundle.</p>
+      <p>Thanks for your order. Here is ${human} building-permit lead bundle.</p>
+      ${dl}
       ${refLine}
-      <p><b>Open <code>MassPermits-Leads.html</code></b> in any browser — it's a full interactive dashboard: live charts, search &amp; filter by trade &amp; town, sort by project value, look up any contractor's active jobs, and click any permit for the complete record. The CSVs are included too (one master + one per trade).</p>
+      <p>Unzip it, then <b>open <code>MassPermits-Leads.html</code></b> in any browser — it's a full interactive dashboard: live charts, search &amp; filter by trade &amp; town, sort by project value, look up any contractor's active jobs, and click any permit for the complete record. The CSVs are included too (one master + one per trade).</p>
       ${shareBlock}
       <p style="color:#667;font-size:13px">Sourced from public municipal building-permit records.<br>
       Questions? Just reply to this email.</p>
