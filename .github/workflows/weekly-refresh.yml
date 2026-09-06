@@ -8,6 +8,24 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v56 (2026-09-06): AMHERST — one bad month took the whole town down.
+# Amherst has errored since the 2026-09-05 run with "no parsable column-header
+# line found on any page". It is NOT a layout change to the report we parse.
+# Checked against the live archive:
+#   2026-05   4 pages  parses     2026-06   4 pages  parses
+#   2026-07   3 pages  parses     2026-08  24 pages  FAILS
+# August is a DIFFERENT REPORT: five columns (record number, record type, fee,
+# applicant, applicant phone) and nothing else — no issue date, no location, no
+# description, no estimated cost. Somebody ran the wrong export. The parser was
+# RIGHT to refuse it; those rows are not leads. The bug is that one raise killed
+# July, June and May too, so a healthy town went dark over one bad file.
+# Reading solved this exact problem in v36 after a corrupt May document cost us
+# June and July. Amherst now gets the same shape: per-document try/except, the
+# skipped month named in a ::warning::, and a raise only if NOTHING parses —
+# because a silently empty return is what cost us 117 towns on 2026-08-01.
+# Verified live: 277 rows from May/June/July, address 277/277, description
+# 277/277, 0 phone leaks, August skipped with a warning.
+#
 # engine v55 (2026-08-20): A FOURTH RESEARCH ARTICLE - the growth audit's one
 # surviving opportunity, validated before a line of page code was written.
 # 6,538 of 22,583 addresses file more than one trade. Co-occurrence is not
