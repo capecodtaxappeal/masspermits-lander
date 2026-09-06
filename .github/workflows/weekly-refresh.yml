@@ -8,6 +8,28 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v57 (2026-09-06): THE FREE SAMPLE HANDED BACK WHAT IT MASKED.
+# _mask_for_sample() masked address, contractor, map_url and permit_number and
+# left the FREE TEXT alone. Measured on the 36,117-row corpus: 140 rows repeat
+# the exact house number the address mask had just removed --
+#   address     "80 burt street"  ->  "•••• burt street"
+#   description "80 burt st., taunton, ma - electrical supplies and labor..."
+# -- and 16 repeat the contractor name that was replaced with "unlock in full
+# pack". The sample handed back the one thing the sample exists to withhold.
+# Blast radius is the free sample only. I checked the public site and the public
+# per-town feeds for the same pattern: /permits/taunton, /permits/braintree,
+# /permits/cambridge and /feed/taunton.json all returned ZERO address-shaped
+# strings. The open web was never affected.
+# description, type_desc and work_type are now scrubbed in the same function
+# that masks the structured fields, so the masked and unmasked views of a row
+# cannot disagree again. The house number is removed only as a standalone token
+# (the 80 in "80 amps" and in "1980" survive), and the contractor is matched on
+# the LONGEST PREFIX that appears rather than the exact string -- exact matching
+# left 9 of 16 standing, because descriptions carry truncated forms
+# ("marine lodge a.f. & a.m" for "marine lodge a.f. & a.m.").
+# Verified: address leaks 140 -> 0, contractor leaks 16 -> 0, median description
+# length unchanged.
+#
 # engine v56 (2026-09-06): AMHERST — one bad month took the whole town down.
 # Amherst has errored since the 2026-09-05 run with "no parsable column-header
 # line found on any page". It is NOT a layout change to the report we parse.
