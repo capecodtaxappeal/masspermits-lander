@@ -1,0 +1,1544 @@
+{
+ "schema": "masspermits-widget-evidence/1",
+ "built": "2026-09-07",
+ "corpus": {
+  "fetched_at": "2026-09-07T05:43:23.912274+00:00",
+  "rows": 66818,
+  "sources": 59,
+  "newest_permit": "2026-09-07",
+  "cities_after_junk_filter": 86
+ },
+ "gates": {
+  "TOWN_MIN": 15,
+  "TOWN_MIN_note": "imported from export_lander._TOWN_PAGE_MIN \u2014 a location gets a widget only if it also has a /permits/<slug> page",
+  "WINDOW_DAYS": 30,
+  "WINDOW_note": "the window ENDS at the location's own newest record, never at the build date; a stale town therefore reports a stale window with its real dates rather than an empty 'this month'",
+  "LONG_WINDOW_DAYS": 90,
+  "MAX_ROWS": 40,
+  "COST_MIN_VALUED": 8,
+  "COST_note": "value statistics are published only at >=8 rows with a declared value strictly greater than zero; zero- and one-dollar rows are excluded and counted in n_zero_valued",
+  "TRADE_MIN_WINDOW": 3,
+  "STALE_DAYS": 21,
+  "HARD_STALE_DAYS": 60,
+  "STALE_note": "matches functions/api/v1/_lib.js freshness(); past hard-stale the renderer shows a coverage notice INSTEAD of the counts",
+  "junk_city_filter": "\\d|#|\\bunit\\b|\\bbldg\\b|\\bfl(oor)?\\b",
+  "mask_rule": "export_lander._mask_addr \u2014 every whitespace token containing any digit is dropped, street name only; the build aborts if a digit survives into a payload",
+  "forbidden_keys": [
+   "addr",
+   "address",
+   "applicant",
+   "contractor",
+   "description",
+   "email",
+   "lat",
+   "lng",
+   "map_url",
+   "occupancy",
+   "owner",
+   "permit",
+   "permit_number",
+   "phone",
+   "sqft",
+   "type_desc",
+   "work_type",
+   "zip"
+  ]
+ },
+ "row_cap": {
+  "detected": 2400,
+  "rule": "a row count shared by three or more sources with none above it is a ceiling, not a measurement (research_stats._truncated)",
+  "capped_sources": [
+   "Attleboro, MA",
+   "Falmouth, MA",
+   "Mashpee, MA"
+  ],
+  "effect": "a capped location's totals are rendered as 'at least N' and its oldest date is where our pull stopped, not where the town's records begin"
+ },
+ "guards": {
+  "rule": "per-location bands protect VALUES; a location outside its band is WITHDRAWN, not re-worded. Its data file is replaced with a payload naming the failed checks (the /research/ withdrawal contract, KB/03 section 8)",
+  "checks": [
+   "n_total >= TOWN_MIN",
+   "n_window >= 1",
+   "n_window <= n_total",
+   "as_of present and not in the future",
+   "window_from <= window_to",
+   "at least one classified trade",
+   "p25 <= median <= p75"
+  ],
+  "withdrawn": {}
+ },
+ "coverage": {
+  "live_locations": 77,
+  "municipalities": 57,
+  "villages": 6,
+  "neighbourhoods": 14,
+  "paused": 0,
+  "of_351_municipalities": 57,
+  "note": "Massachusetts has 351 municipalities. The 'municipalities' figure counts only live locations classified as a town \u2014 Boston neighbourhoods and Cape villages are page labels, not municipalities, and are counted separately. No coverage claim on the site may use the location count as a municipality count."
+ },
+ "table": [
+  {
+   "slug": "allston",
+   "town": "Allston",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 115,
+   "n_window": 55,
+   "n_long_window": 115,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 55,
+   "n_zero_valued": 0,
+   "median_value": 10000,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "amherst",
+   "town": "Amherst",
+   "kind": "town",
+   "region": "Western MA",
+   "n_total": 215,
+   "n_window": 99,
+   "n_long_window": 215,
+   "as_of": "2026-07-30",
+   "oldest": "2026-06-01",
+   "age_days": 39,
+   "n_valued": 85,
+   "n_zero_valued": 14,
+   "median_value": 13415,
+   "capped": false,
+   "sources": [
+    "Amherst, MA"
+   ]
+  },
+  {
+   "slug": "attleboro",
+   "town": "Attleboro",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 2400,
+   "n_window": 397,
+   "n_long_window": 1212,
+   "as_of": "2026-09-07",
+   "oldest": "2026-03-17",
+   "age_days": 0,
+   "n_valued": 0,
+   "n_zero_valued": 397,
+   "median_value": null,
+   "capped": true,
+   "sources": [
+    "Attleboro, MA"
+   ]
+  },
+  {
+   "slug": "avon",
+   "town": "Avon",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 272,
+   "n_window": 45,
+   "n_long_window": 129,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 45,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Avon, MA"
+   ]
+  },
+  {
+   "slug": "barnstable",
+   "town": "Barnstable",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 65,
+   "n_window": 17,
+   "n_long_window": 65,
+   "as_of": "2026-07-28",
+   "oldest": "2026-05-04",
+   "age_days": 41,
+   "n_valued": 17,
+   "n_zero_valued": 0,
+   "median_value": 32281,
+   "capped": false,
+   "sources": [
+    "Barnstable, MA"
+   ]
+  },
+  {
+   "slug": "bellingham",
+   "town": "Bellingham",
+   "kind": "town",
+   "region": "",
+   "n_total": 1198,
+   "n_window": 215,
+   "n_long_window": 615,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 215,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Bellingham, MA"
+   ]
+  },
+  {
+   "slug": "boston",
+   "town": "Boston",
+   "kind": "town",
+   "region": "Greater Boston",
+   "n_total": 1568,
+   "n_window": 821,
+   "n_long_window": 1568,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 818,
+   "n_zero_valued": 3,
+   "median_value": 16754,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "bourne",
+   "town": "Bourne",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 1776,
+   "n_window": 135,
+   "n_long_window": 560,
+   "as_of": "2026-08-25",
+   "oldest": "2025-12-01",
+   "age_days": 13,
+   "n_valued": 132,
+   "n_zero_valued": 3,
+   "median_value": 6500,
+   "capped": false,
+   "sources": [
+    "Bourne, MA"
+   ]
+  },
+  {
+   "slug": "boylston",
+   "town": "Boylston",
+   "kind": "town",
+   "region": "",
+   "n_total": 342,
+   "n_window": 41,
+   "n_long_window": 147,
+   "as_of": "2026-09-03",
+   "oldest": "2026-03-11",
+   "age_days": 4,
+   "n_valued": 9,
+   "n_zero_valued": 32,
+   "median_value": 28000,
+   "capped": false,
+   "sources": [
+    "Boylston, MA"
+   ]
+  },
+  {
+   "slug": "braintree",
+   "town": "Braintree",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 2041,
+   "n_window": 396,
+   "n_long_window": 1054,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 396,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Braintree, MA"
+   ]
+  },
+  {
+   "slug": "bridgewater",
+   "town": "Bridgewater",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1350,
+   "n_window": 219,
+   "n_long_window": 653,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 219,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Bridgewater, MA"
+   ]
+  },
+  {
+   "slug": "brighton",
+   "town": "Brighton",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 246,
+   "n_window": 137,
+   "n_long_window": 246,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 135,
+   "n_zero_valued": 2,
+   "median_value": 8500,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "cambridge",
+   "town": "Cambridge",
+   "kind": "town",
+   "region": "Greater Boston",
+   "n_total": 2776,
+   "n_window": 550,
+   "n_long_window": 2070,
+   "as_of": "2026-09-05",
+   "oldest": "2026-05-11",
+   "age_days": 2,
+   "n_valued": 399,
+   "n_zero_valued": 151,
+   "median_value": 10000,
+   "capped": false,
+   "sources": [
+    "Cambridge, MA"
+   ]
+  },
+  {
+   "slug": "centerville",
+   "town": "Centerville",
+   "kind": "village",
+   "region": "Cape Cod & Islands",
+   "n_total": 212,
+   "n_window": 81,
+   "n_long_window": 209,
+   "as_of": "2026-07-31",
+   "oldest": "2026-05-01",
+   "age_days": 38,
+   "n_valued": 76,
+   "n_zero_valued": 5,
+   "median_value": 15547,
+   "capped": false,
+   "sources": [
+    "Barnstable, MA"
+   ]
+  },
+  {
+   "slug": "charlestown",
+   "town": "Charlestown",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 181,
+   "n_window": 106,
+   "n_long_window": 181,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 105,
+   "n_zero_valued": 1,
+   "median_value": 9698,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "chatham",
+   "town": "Chatham",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 277,
+   "n_window": 97,
+   "n_long_window": 263,
+   "as_of": "2026-08-31",
+   "oldest": "2026-06-01",
+   "age_days": 7,
+   "n_valued": 97,
+   "n_zero_valued": 0,
+   "median_value": 24077,
+   "capped": false,
+   "sources": [
+    "Chatham, MA"
+   ]
+  },
+  {
+   "slug": "chestnut-hill",
+   "town": "Chestnut Hill",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 16,
+   "n_window": 15,
+   "n_long_window": 16,
+   "as_of": "2026-09-02",
+   "oldest": "2026-08-03",
+   "age_days": 5,
+   "n_valued": 15,
+   "n_zero_valued": 0,
+   "median_value": 2000,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "chicopee",
+   "town": "Chicopee",
+   "kind": "town",
+   "region": "",
+   "n_total": 1754,
+   "n_window": 357,
+   "n_long_window": 943,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 357,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Chicopee, MA"
+   ]
+  },
+  {
+   "slug": "cohasset",
+   "town": "Cohasset",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 736,
+   "n_window": 124,
+   "n_long_window": 370,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 124,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Cohasset, MA"
+   ]
+  },
+  {
+   "slug": "colrain",
+   "town": "Colrain",
+   "kind": "town",
+   "region": "",
+   "n_total": 47,
+   "n_window": 5,
+   "n_long_window": 16,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-18",
+   "age_days": 3,
+   "n_valued": 3,
+   "n_zero_valued": 2,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Colrain, MA"
+   ]
+  },
+  {
+   "slug": "concord",
+   "town": "Concord",
+   "kind": "town",
+   "region": "",
+   "n_total": 1513,
+   "n_window": 286,
+   "n_long_window": 813,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 286,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Concord, MA"
+   ]
+  },
+  {
+   "slug": "cotuit",
+   "town": "Cotuit",
+   "kind": "village",
+   "region": "Cape Cod & Islands",
+   "n_total": 78,
+   "n_window": 28,
+   "n_long_window": 78,
+   "as_of": "2026-07-31",
+   "oldest": "2026-05-06",
+   "age_days": 38,
+   "n_valued": 27,
+   "n_zero_valued": 1,
+   "median_value": 16321,
+   "capped": false,
+   "sources": [
+    "Barnstable, MA"
+   ]
+  },
+  {
+   "slug": "dorchester",
+   "town": "Dorchester",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 868,
+   "n_window": 489,
+   "n_long_window": 868,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 483,
+   "n_zero_valued": 6,
+   "median_value": 9139,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "east-boston",
+   "town": "East Boston",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 292,
+   "n_window": 146,
+   "n_long_window": 292,
+   "as_of": "2026-09-03",
+   "oldest": "2026-07-09",
+   "age_days": 4,
+   "n_valued": 145,
+   "n_zero_valued": 1,
+   "median_value": 11500,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "easthampton",
+   "town": "Easthampton",
+   "kind": "town",
+   "region": "",
+   "n_total": 969,
+   "n_window": 201,
+   "n_long_window": 498,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 201,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Easthampton, MA"
+   ]
+  },
+  {
+   "slug": "easton",
+   "town": "Easton",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1438,
+   "n_window": 272,
+   "n_long_window": 717,
+   "as_of": "2026-09-05",
+   "oldest": "2026-03-11",
+   "age_days": 2,
+   "n_valued": 0,
+   "n_zero_valued": 272,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Easton, MA"
+   ]
+  },
+  {
+   "slug": "fairhaven",
+   "town": "Fairhaven",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 993,
+   "n_window": 185,
+   "n_long_window": 539,
+   "as_of": "2026-09-06",
+   "oldest": "2026-03-11",
+   "age_days": 1,
+   "n_valued": 0,
+   "n_zero_valued": 185,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Fairhaven, MA"
+   ]
+  },
+  {
+   "slug": "falmouth",
+   "town": "Falmouth",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 2400,
+   "n_window": 713,
+   "n_long_window": 2030,
+   "as_of": "2026-09-04",
+   "oldest": "2026-05-20",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 713,
+   "median_value": null,
+   "capped": true,
+   "sources": [
+    "Falmouth, MA"
+   ]
+  },
+  {
+   "slug": "foxborough",
+   "town": "Foxborough",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1267,
+   "n_window": 241,
+   "n_long_window": 668,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 235,
+   "n_zero_valued": 6,
+   "median_value": 7000,
+   "capped": false,
+   "sources": [
+    "Foxborough, MA"
+   ]
+  },
+  {
+   "slug": "granby",
+   "town": "Granby",
+   "kind": "town",
+   "region": "",
+   "n_total": 17,
+   "n_window": 17,
+   "n_long_window": 17,
+   "as_of": "2026-09-06",
+   "oldest": "2026-08-26",
+   "age_days": 1,
+   "n_valued": 0,
+   "n_zero_valued": 17,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Granby, MA"
+   ]
+  },
+  {
+   "slug": "groveland",
+   "town": "Groveland",
+   "kind": "town",
+   "region": "",
+   "n_total": 23,
+   "n_window": 23,
+   "n_long_window": 23,
+   "as_of": "2026-09-03",
+   "oldest": "2026-08-19",
+   "age_days": 4,
+   "n_valued": 0,
+   "n_zero_valued": 23,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Groveland, MA"
+   ]
+  },
+  {
+   "slug": "hadley",
+   "town": "Hadley",
+   "kind": "town",
+   "region": "",
+   "n_total": 17,
+   "n_window": 17,
+   "n_long_window": 17,
+   "as_of": "2026-09-02",
+   "oldest": "2026-08-24",
+   "age_days": 5,
+   "n_valued": 0,
+   "n_zero_valued": 17,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Hadley, MA"
+   ]
+  },
+  {
+   "slug": "hanson",
+   "town": "Hanson",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 499,
+   "n_window": 91,
+   "n_long_window": 244,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 91,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Hanson, MA"
+   ]
+  },
+  {
+   "slug": "hingham",
+   "town": "Hingham",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1759,
+   "n_window": 287,
+   "n_long_window": 889,
+   "as_of": "2026-09-03",
+   "oldest": "2026-03-11",
+   "age_days": 4,
+   "n_valued": 0,
+   "n_zero_valued": 287,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Hingham, MA"
+   ]
+  },
+  {
+   "slug": "hopedale",
+   "town": "Hopedale",
+   "kind": "town",
+   "region": "",
+   "n_total": 438,
+   "n_window": 70,
+   "n_long_window": 264,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 70,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Hopedale, MA"
+   ]
+  },
+  {
+   "slug": "hyannis",
+   "town": "Hyannis",
+   "kind": "village",
+   "region": "Cape Cod & Islands",
+   "n_total": 251,
+   "n_window": 98,
+   "n_long_window": 246,
+   "as_of": "2026-07-31",
+   "oldest": "2026-05-01",
+   "age_days": 38,
+   "n_valued": 85,
+   "n_zero_valued": 13,
+   "median_value": 15000,
+   "capped": false,
+   "sources": [
+    "Barnstable, MA"
+   ]
+  },
+  {
+   "slug": "hyde-park",
+   "town": "Hyde Park",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 286,
+   "n_window": 166,
+   "n_long_window": 286,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 163,
+   "n_zero_valued": 3,
+   "median_value": 10000,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "ipswich",
+   "town": "Ipswich",
+   "kind": "town",
+   "region": "",
+   "n_total": 1023,
+   "n_window": 159,
+   "n_long_window": 523,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 159,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Ipswich, MA"
+   ]
+  },
+  {
+   "slug": "jamaica-plain",
+   "town": "Jamaica Plain",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 316,
+   "n_window": 138,
+   "n_long_window": 316,
+   "as_of": "2026-09-03",
+   "oldest": "2026-07-09",
+   "age_days": 4,
+   "n_valued": 136,
+   "n_zero_valued": 2,
+   "median_value": 9100,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "lexington",
+   "town": "Lexington",
+   "kind": "town",
+   "region": "Greater Boston",
+   "n_total": 1225,
+   "n_window": 397,
+   "n_long_window": 1171,
+   "as_of": "2026-08-31",
+   "oldest": "2026-06-01",
+   "age_days": 7,
+   "n_valued": 292,
+   "n_zero_valued": 105,
+   "median_value": 10928,
+   "capped": false,
+   "sources": [
+    "Lexington, MA"
+   ]
+  },
+  {
+   "slug": "ludlow",
+   "town": "Ludlow",
+   "kind": "town",
+   "region": "",
+   "n_total": 956,
+   "n_window": 173,
+   "n_long_window": 456,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 173,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Ludlow, MA"
+   ]
+  },
+  {
+   "slug": "mansfield",
+   "town": "Mansfield",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1178,
+   "n_window": 188,
+   "n_long_window": 582,
+   "as_of": "2026-09-03",
+   "oldest": "2026-03-12",
+   "age_days": 4,
+   "n_valued": 0,
+   "n_zero_valued": 188,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Mansfield, MA"
+   ]
+  },
+  {
+   "slug": "marstons-mills",
+   "town": "Marstons Mills",
+   "kind": "village",
+   "region": "Cape Cod & Islands",
+   "n_total": 152,
+   "n_window": 31,
+   "n_long_window": 151,
+   "as_of": "2026-07-31",
+   "oldest": "2026-05-01",
+   "age_days": 38,
+   "n_valued": 30,
+   "n_zero_valued": 1,
+   "median_value": 19000,
+   "capped": false,
+   "sources": [
+    "Barnstable, MA"
+   ]
+  },
+  {
+   "slug": "mashpee",
+   "town": "Mashpee",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 2400,
+   "n_window": 393,
+   "n_long_window": 1272,
+   "as_of": "2026-09-06",
+   "oldest": "2026-03-26",
+   "age_days": 1,
+   "n_valued": 0,
+   "n_zero_valued": 393,
+   "median_value": null,
+   "capped": true,
+   "sources": [
+    "Mashpee, MA"
+   ]
+  },
+  {
+   "slug": "mattapan",
+   "town": "Mattapan",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 219,
+   "n_window": 119,
+   "n_long_window": 219,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 119,
+   "n_zero_valued": 0,
+   "median_value": 11000,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "milton",
+   "town": "Milton",
+   "kind": "town",
+   "region": "Greater Boston",
+   "n_total": 1452,
+   "n_window": 261,
+   "n_long_window": 820,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 261,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Milton, MA"
+   ]
+  },
+  {
+   "slug": "mission-hill",
+   "town": "Mission Hill",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 72,
+   "n_window": 36,
+   "n_long_window": 72,
+   "as_of": "2026-09-01",
+   "oldest": "2026-07-09",
+   "age_days": 6,
+   "n_valued": 36,
+   "n_zero_valued": 0,
+   "median_value": 13750,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "newbury",
+   "town": "Newbury",
+   "kind": "town",
+   "region": "",
+   "n_total": 29,
+   "n_window": 29,
+   "n_long_window": 29,
+   "as_of": "2026-09-03",
+   "oldest": "2026-08-27",
+   "age_days": 4,
+   "n_valued": 0,
+   "n_zero_valued": 29,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Newbury, MA"
+   ]
+  },
+  {
+   "slug": "north-reading",
+   "town": "North Reading",
+   "kind": "town",
+   "region": "",
+   "n_total": 998,
+   "n_window": 143,
+   "n_long_window": 553,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 143,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "North Reading, MA"
+   ]
+  },
+  {
+   "slug": "osterville",
+   "town": "Osterville",
+   "kind": "village",
+   "region": "Cape Cod & Islands",
+   "n_total": 95,
+   "n_window": 28,
+   "n_long_window": 95,
+   "as_of": "2026-07-29",
+   "oldest": "2026-05-01",
+   "age_days": 40,
+   "n_valued": 28,
+   "n_zero_valued": 0,
+   "median_value": 20000,
+   "capped": false,
+   "sources": [
+    "Barnstable, MA"
+   ]
+  },
+  {
+   "slug": "otis",
+   "town": "Otis",
+   "kind": "town",
+   "region": "",
+   "n_total": 169,
+   "n_window": 32,
+   "n_long_window": 91,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 32,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Otis, MA"
+   ]
+  },
+  {
+   "slug": "plymouth",
+   "town": "Plymouth",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 2468,
+   "n_window": 715,
+   "n_long_window": 2369,
+   "as_of": "2026-08-31",
+   "oldest": "2026-06-01",
+   "age_days": 7,
+   "n_valued": 425,
+   "n_zero_valued": 290,
+   "median_value": 15000,
+   "capped": false,
+   "sources": [
+    "Plymouth, MA"
+   ]
+  },
+  {
+   "slug": "provincetown",
+   "town": "Provincetown",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 226,
+   "n_window": 28,
+   "n_long_window": 90,
+   "as_of": "2026-08-01",
+   "oldest": "2026-03-01",
+   "age_days": 37,
+   "n_valued": 28,
+   "n_zero_valued": 0,
+   "median_value": 19600,
+   "capped": false,
+   "sources": [
+    "Provincetown, MA"
+   ]
+  },
+  {
+   "slug": "randolph",
+   "town": "Randolph",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1382,
+   "n_window": 215,
+   "n_long_window": 700,
+   "as_of": "2026-09-05",
+   "oldest": "2026-03-11",
+   "age_days": 2,
+   "n_valued": 0,
+   "n_zero_valued": 215,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Randolph, MA"
+   ]
+  },
+  {
+   "slug": "reading",
+   "town": "Reading",
+   "kind": "town",
+   "region": "Greater Boston",
+   "n_total": 223,
+   "n_window": 94,
+   "n_long_window": 223,
+   "as_of": "2026-07-30",
+   "oldest": "2026-06-01",
+   "age_days": 39,
+   "n_valued": 94,
+   "n_zero_valued": 0,
+   "median_value": 28708,
+   "capped": false,
+   "sources": [
+    "Reading, MA"
+   ]
+  },
+  {
+   "slug": "rehoboth",
+   "town": "Rehoboth",
+   "kind": "town",
+   "region": "",
+   "n_total": 713,
+   "n_window": 138,
+   "n_long_window": 368,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 138,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Rehoboth, MA"
+   ]
+  },
+  {
+   "slug": "rockland",
+   "town": "Rockland",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 850,
+   "n_window": 176,
+   "n_long_window": 483,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-11",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 176,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Rockland, MA"
+   ]
+  },
+  {
+   "slug": "roslindale",
+   "town": "Roslindale",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 369,
+   "n_window": 187,
+   "n_long_window": 369,
+   "as_of": "2026-09-03",
+   "oldest": "2026-07-09",
+   "age_days": 4,
+   "n_valued": 186,
+   "n_zero_valued": 1,
+   "median_value": 7935,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "roxbury",
+   "town": "Roxbury",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 461,
+   "n_window": 278,
+   "n_long_window": 461,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 274,
+   "n_zero_valued": 4,
+   "median_value": 7960,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "sandwich",
+   "town": "Sandwich",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 1721,
+   "n_window": 289,
+   "n_long_window": 840,
+   "as_of": "2026-09-06",
+   "oldest": "2026-03-11",
+   "age_days": 1,
+   "n_valued": 0,
+   "n_zero_valued": 289,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Sandwich, MA"
+   ]
+  },
+  {
+   "slug": "somerville",
+   "town": "Somerville",
+   "kind": "town",
+   "region": "",
+   "n_total": 2577,
+   "n_window": 490,
+   "n_long_window": 1311,
+   "as_of": "2026-09-03",
+   "oldest": "2026-03-12",
+   "age_days": 4,
+   "n_valued": 364,
+   "n_zero_valued": 126,
+   "median_value": 14211,
+   "capped": false,
+   "sources": [
+    "Somerville, MA"
+   ]
+  },
+  {
+   "slug": "south-boston",
+   "town": "South Boston",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 248,
+   "n_window": 122,
+   "n_long_window": 248,
+   "as_of": "2026-09-02",
+   "oldest": "2026-07-09",
+   "age_days": 5,
+   "n_valued": 120,
+   "n_zero_valued": 2,
+   "median_value": 8000,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "stoughton",
+   "town": "Stoughton",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1725,
+   "n_window": 292,
+   "n_long_window": 893,
+   "as_of": "2026-09-06",
+   "oldest": "2026-03-11",
+   "age_days": 1,
+   "n_valued": 0,
+   "n_zero_valued": 292,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Stoughton, MA"
+   ]
+  },
+  {
+   "slug": "stow",
+   "town": "Stow",
+   "kind": "town",
+   "region": "",
+   "n_total": 20,
+   "n_window": 20,
+   "n_long_window": 20,
+   "as_of": "2026-09-04",
+   "oldest": "2026-08-24",
+   "age_days": 3,
+   "n_valued": 0,
+   "n_zero_valued": 20,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Stow, MA"
+   ]
+  },
+  {
+   "slug": "sudbury",
+   "town": "Sudbury",
+   "kind": "town",
+   "region": "MetroWest & 495",
+   "n_total": 296,
+   "n_window": 101,
+   "n_long_window": 282,
+   "as_of": "2026-08-31",
+   "oldest": "2026-06-01",
+   "age_days": 7,
+   "n_valued": 100,
+   "n_zero_valued": 1,
+   "median_value": 24361,
+   "capped": false,
+   "sources": [
+    "Sudbury, MA"
+   ]
+  },
+  {
+   "slug": "taunton",
+   "town": "Taunton",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 2067,
+   "n_window": 381,
+   "n_long_window": 1096,
+   "as_of": "2026-09-04",
+   "oldest": "2026-03-12",
+   "age_days": 3,
+   "n_valued": 364,
+   "n_zero_valued": 17,
+   "median_value": 5260,
+   "capped": false,
+   "sources": [
+    "Taunton, MA"
+   ]
+  },
+  {
+   "slug": "townsend",
+   "town": "Townsend",
+   "kind": "town",
+   "region": "",
+   "n_total": 29,
+   "n_window": 29,
+   "n_long_window": 29,
+   "as_of": "2026-09-05",
+   "oldest": "2026-08-24",
+   "age_days": 2,
+   "n_valued": 0,
+   "n_zero_valued": 29,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Townsend, MA"
+   ]
+  },
+  {
+   "slug": "truro",
+   "town": "Truro",
+   "kind": "town",
+   "region": "Cape Cod & Islands",
+   "n_total": 206,
+   "n_window": 32,
+   "n_long_window": 109,
+   "as_of": "2026-07-30",
+   "oldest": "2026-02-02",
+   "age_days": 39,
+   "n_valued": 31,
+   "n_zero_valued": 1,
+   "median_value": 16000,
+   "capped": false,
+   "sources": [
+    "Truro, MA"
+   ]
+  },
+  {
+   "slug": "wakefield",
+   "town": "Wakefield",
+   "kind": "town",
+   "region": "Greater Boston",
+   "n_total": 513,
+   "n_window": 88,
+   "n_long_window": 233,
+   "as_of": "2026-08-31",
+   "oldest": "2026-03-02",
+   "age_days": 7,
+   "n_valued": 88,
+   "n_zero_valued": 0,
+   "median_value": 21500,
+   "capped": false,
+   "sources": [
+    "Wakefield, MA"
+   ]
+  },
+  {
+   "slug": "waltham",
+   "town": "Waltham",
+   "kind": "town",
+   "region": "",
+   "n_total": 944,
+   "n_window": 149,
+   "n_long_window": 494,
+   "as_of": "2026-07-31",
+   "oldest": "2026-02-02",
+   "age_days": 38,
+   "n_valued": 137,
+   "n_zero_valued": 12,
+   "median_value": 20000,
+   "capped": false,
+   "sources": [
+    "Waltham, MA"
+   ]
+  },
+  {
+   "slug": "wareham",
+   "town": "Wareham",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 1414,
+   "n_window": 177,
+   "n_long_window": 604,
+   "as_of": "2026-08-27",
+   "oldest": "2026-02-01",
+   "age_days": 11,
+   "n_valued": 0,
+   "n_zero_valued": 177,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Wareham, MA"
+   ]
+  },
+  {
+   "slug": "west-barnstable",
+   "town": "West Barnstable",
+   "kind": "village",
+   "region": "Cape Cod & Islands",
+   "n_total": 59,
+   "n_window": 15,
+   "n_long_window": 59,
+   "as_of": "2026-07-30",
+   "oldest": "2026-05-05",
+   "age_days": 39,
+   "n_valued": 14,
+   "n_zero_valued": 1,
+   "median_value": 8735,
+   "capped": false,
+   "sources": [
+    "Barnstable, MA"
+   ]
+  },
+  {
+   "slug": "west-bridgewater",
+   "town": "West Bridgewater",
+   "kind": "town",
+   "region": "South Shore & South Coast",
+   "n_total": 486,
+   "n_window": 91,
+   "n_long_window": 240,
+   "as_of": "2026-09-05",
+   "oldest": "2026-03-11",
+   "age_days": 2,
+   "n_valued": 0,
+   "n_zero_valued": 91,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "West Bridgewater, MA"
+   ]
+  },
+  {
+   "slug": "west-newbury",
+   "town": "West Newbury",
+   "kind": "town",
+   "region": "",
+   "n_total": 23,
+   "n_window": 23,
+   "n_long_window": 23,
+   "as_of": "2026-09-03",
+   "oldest": "2026-08-19",
+   "age_days": 4,
+   "n_valued": 0,
+   "n_zero_valued": 23,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "West Newbury, MA"
+   ]
+  },
+  {
+   "slug": "west-roxbury",
+   "town": "West Roxbury",
+   "kind": "neighbourhood",
+   "region": "Greater Boston",
+   "n_total": 343,
+   "n_window": 168,
+   "n_long_window": 343,
+   "as_of": "2026-09-03",
+   "oldest": "2026-07-09",
+   "age_days": 4,
+   "n_valued": 167,
+   "n_zero_valued": 1,
+   "median_value": 7000,
+   "capped": false,
+   "sources": [
+    "Boston, MA"
+   ]
+  },
+  {
+   "slug": "westhampton",
+   "town": "Westhampton",
+   "kind": "town",
+   "region": "",
+   "n_total": 29,
+   "n_window": 28,
+   "n_long_window": 29,
+   "as_of": "2026-09-03",
+   "oldest": "2026-08-03",
+   "age_days": 4,
+   "n_valued": 0,
+   "n_zero_valued": 28,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Westhampton, MA"
+   ]
+  },
+  {
+   "slug": "worcester",
+   "town": "Worcester",
+   "kind": "town",
+   "region": "Central MA",
+   "n_total": 6377,
+   "n_window": 1169,
+   "n_long_window": 3442,
+   "as_of": "2026-08-29",
+   "oldest": "2026-03-11",
+   "age_days": 9,
+   "n_valued": 0,
+   "n_zero_valued": 1169,
+   "median_value": null,
+   "capped": false,
+   "sources": [
+    "Worcester, MA"
+   ]
+  }
+ ]
+}

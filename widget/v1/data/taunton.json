@@ -1,0 +1,368 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Taunton",
+ "slug": "taunton",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/taunton",
+ "feed_url": "https://masspermits.com/feed/taunton.json",
+ "status": "live",
+ "n_total": 2067,
+ "n_window": 381,
+ "n_long_window": 1096,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-12",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 108,
+   "page": "/permits/taunton-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 93,
+   "page": "/permits/taunton-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 74,
+   "page": "/permits/taunton-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 60,
+   "page": "/permits/taunton-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 27,
+   "page": "/permits/taunton-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 13,
+   "page": "/permits/taunton-hvac"
+  }
+ ],
+ "value": {
+  "n_valued": 364,
+  "median": 5260,
+  "p25": 1700,
+  "p75": 20316
+ },
+ "n_valued": 364,
+ "n_zero_valued": 17,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "King James Boulevard",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Plain Street",
+   "v": 200
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Tania Drive",
+   "v": 22000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Building",
+   "ts": "building",
+   "s": "Cohannet Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "State Street",
+   "v": 250
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Country Way",
+   "v": 5000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Middleboro Avenue",
+   "v": 2500
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Cohannet Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Williams Street",
+   "v": 38000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "King James Boulevard",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Crane Avenue South",
+   "v": 5000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Connie Street",
+   "v": 6499
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Charles F Colton Road",
+   "v": 114309
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mellos Farm Road",
+   "v": 1498
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Winthrop St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Plain Street",
+   "v": 9000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Steve Drive",
+   "v": 26900
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Somerset Avenue",
+   "v": 6481
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Glebe Street",
+   "v": 30000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Hart Street",
+   "v": 250000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Myricks Street",
+   "v": 13000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Bay Street",
+   "v": 75000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Paul Revere Terrace",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont Street",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Berkley Street",
+   "v": 15780
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Broadway",
+   "v": 3500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Laneway Street",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Fremont Street",
+   "v": 500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Somerset Avenue",
+   "v": 1700
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Highland Street",
+   "v": 21385
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "County Street",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Christine Lane",
+   "v": 1700
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Garfield Street",
+   "v": 3478
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pine Street",
+   "v": 900
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Couch St",
+   "v": 30000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Silver Street",
+   "v": 2803
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Van Buren Street",
+   "v": 6500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Dean",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Demi Way",
+   "v": 400
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Seventh Street",
+   "v": 1000
+  }
+ ],
+ "sources": [
+  "Taunton, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

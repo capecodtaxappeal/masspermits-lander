@@ -142,6 +142,17 @@
     <div id="cf-body" class="muted">checking…</div>
   </div>
 
+  <!-- KB/07 F3. Until this tile existed, delivery health and data-refresh
+       health were absent from the operator's own dashboard entirely: this page
+       fetched cold-status, data.json, traffic, cf-traffic and live, and none of
+       those can tell you the paid product is stale. /api/health is counts-only
+       and public for the same reason /api/cold-status is. -->
+  <div class="sec">
+    <h2>Product health <span id="health-pill" style="float:right"></span></h2>
+    <div class="grid" id="health-cards" style="margin:6px 0"></div>
+    <div id="health-notes" class="muted">checking…</div>
+  </div>
+
   <div class="sec">
     <h2>Data pipeline</h2>
     <div class="muted" id="data-fresh">checking…</div>
@@ -149,7 +160,8 @@
 
   <div class="muted" style="margin-top:18px">
     Sends run weekdays 9am–6pm ET (2–3/hour) · ramp 15/day → 25/day, cap 30 ·
-    kill switch &amp; opt-outs: ask Claude · <a href="/api/cold-status">raw JSON</a>
+    kill switch &amp; opt-outs: ask Claude · <a href="/api/cold-status">raw JSON</a> ·
+    <a href="/api/health">health JSON</a>
   </div>
 </div>
 
@@ -295,10 +307,62 @@ async function loadLive(){
     }).join("") : '<span class="muted" style="font-size:12px">no located visits in the last 24h yet</span>';
   }catch(e){ /* keep last render */ }
 }
+// ---- product health (KB/07 §6.4 / F3) ----
+// The one tile that answers "is the thing customers pay for actually working".
+// Counts only — /api/health reads no subscriber data and returns no town names.
+// A FAILED FETCH IS NOT A HEALTHY PRODUCT: the catch below says so out loud
+// rather than leaving the last good render on screen, because a tile that keeps
+// showing "ok" while its source is unreachable is the exact failure this whole
+// surface exists to stop.
+async function loadHealth(){
+  const pill = $("health-pill"), cards = $("health-cards"), notes = $("health-notes");
+  try{
+    const h = await (await fetch("/api/health?v=" + Date.now())).json();
+    // .pill.on is green and .pill.off is amber; there is no red pill in this
+    // stylesheet, so "bad" borrows --bad inline rather than reading as amber.
+    const label = h.status === "bad" ? "✕ BROKEN" : (h.status === "warn" ? "▲ DEGRADED" : "● HEALTHY");
+    const style = h.status === "bad"
+      ? ' style="background:rgba(248,113,113,.12);color:var(--bad);border:1px solid rgba(248,113,113,.45)"' : "";
+    pill.innerHTML = `<span class="pill ${h.status === "ok" ? "on" : "off"}"${style}>${label}</span>`;
+
+    const r = h.refresh || {}, c = h.coverage || {}, p = h.portal || {}, s = h.sources || {};
+    // Three states, never collapsed: "never ran" is not "ran and produced nothing".
+    const refreshTxt = r.state === "never_ran" ? "never ran"
+      : r.state === "failed" ? "FAILED"
+      : (r.age_hours === null ? "unknown" : (r.age_hours < 48 ? Math.round(r.age_hours) + " hr" : Math.round(r.age_hours/24) + " days"));
+    const portalTxt = p.state === "not_published" ? "not published"
+      : p.state === "stale" ? "STALE"
+      : p.state === "drift" ? "out of step"
+      : (p.age_hours === null ? "unknown" : (p.age_hours < 48 ? Math.round(p.age_hours) + " hr" : Math.round(p.age_hours/24) + " days"));
+    // 19px, not the sheet's 30px: three of these five cards hold words
+    // ("not published", "out of step"), which wrap to three lines at 30px.
+    const card = (n, l, bad) =>
+      `<div class="card"><div class="n" style="font-size:19px${bad ? ";color:var(--bad)" : ""}">${esc(n)}</div><div class="l">${esc(l)}</div></div>`;
+    cards.innerHTML =
+      card(refreshTxt, "Refresh age", r.state !== "ran" || (r.age_hours||0) > 192) +
+      card(portalTxt, "Portal page", p.state === "stale" || p.state === "drift") +
+      card((c.live_sources ?? "?") + " / " + (c.expected_sources ?? "?"), "Live sources", !!c.disclose) +
+      card((r.rows ?? 0).toLocaleString(), "Permit rows", !r.rows) +
+      card((s.dead ?? 0) + " / " + (s.failing ?? 0), "Dead / failing", !!(s.dead || s.failing));
+
+    const lines = (h.problems || []).map(x => `<div style="color:var(--bad);padding:3px 0">✕ ${esc(x)}</div>`)
+      .concat((h.warnings || []).map(x => `<div style="color:var(--warn);padding:3px 0">▲ ${esc(x)}</div>`));
+    notes.innerHTML = lines.length
+      ? lines.join("")
+      : `Refresh ran <b style="color:var(--teal)">${fmtAgo(r.ran_at)}</b> · portal page published <b style="color:var(--teal)">${fmtAgo(p.published_at)}</b> · nothing to report.`;
+  }catch(e){
+    pill.innerHTML = '<span class="pill off">? UNKNOWN</span>';
+    cards.innerHTML = "";
+    notes.innerHTML = '<div style="color:var(--bad);padding:3px 0">✕ /api/health did not answer — this tile cannot tell you whether the product is healthy. That is itself a problem worth chasing.</div>';
+  }
+}
+
 load();
 setInterval(load, 60000);
 loadLive();
 setInterval(loadLive, 12000);
+loadHealth();
+setInterval(loadHealth, 60000);
 </script>
 </body>
 </html>

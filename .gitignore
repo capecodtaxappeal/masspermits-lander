@@ -5,3 +5,51 @@ node_modules/
 
 # wrangler local cache (holds the Cloudflare account id) - never commit
 .wrangler/
+
+# KB/07 A7 — NO SUBSCRIBER DATA MAY EVER ENTER THIS REPO.
+# This repo is PUBLIC, the Pages build output is "/" (DEPLOY.md), DEPLOY.md
+# instructs `git add -A`, and a static auth token was already committed here
+# once and had to be killed (weekly-send.js:11). The lead bundles are the paid
+# product: unmasked addresses and contractor names for every permit.
+# build_bundle.py writes them to PermitPulse/data/bundles - OUTSIDE this repo -
+# which is the real control. These lines are the belt to that pair of braces:
+# they catch a bundle copied or generated into the lander tree by hand.
+# NOTE: deliberately NOT a bare `*.html` - the root holds ~40 public SEO pages
+# named like roofing-leads-greater-boston.html, and ignoring those would silently
+# stop deploying most of the site.
+*.zip
+out/
+data/bundles/
+latest-weekly.html
+latest-monthly.html
+MassPermits-*.html
+MassPermits-*.csv
+
+# The R2 money-path objects, when pulled into this tree for inspection.
+# `npx wrangler r2 object get ... --file subscribers.json` run from this
+# directory is the normal way to read them, and on 2026-09-06 every one of these
+# was sitting UNTRACKED AND UNIGNORED in this working tree while DEPLOY.md:20,
+# DEPLOY.md:62 and AUTODELIVERY_SETUP.md:73 all instruct
+# `git add -A && git commit && git push`. One such push publishes, to a PUBLIC repo:
+#   subscribers.json   every buyer's email, name, Stripe customer id AND their
+#                      /api/my-leads download token — the token is the auth for the
+#                      paid product, so that is credential disclosure, not only PII
+#   delivery-log.json  recipient addresses (`to`)
+#   feed-send-log.json recipient addresses (`sent[].to`)
+# None had ever been committed, so these lines close the hole outright with no
+# history rewrite. Ignoring them changes nothing about the deployed site: R2 is
+# the authoritative store and the Pages Functions read it through the BUNDLES
+# binding, never from disk.
+subscribers.json
+delivery-log.json
+feed-send-log.json
+last-send-attempt.json
+funnel-metrics.json
+refresh-status.json
+# The lifecycle rollup written by functions/api/engagement.js. It deliberately
+# holds NO email, name or full token — only an 8-hex token prefix, a signup
+# date and per-customer behaviour — so a leak here would not be credential
+# disclosure the way subscribers.json would. It is still every paying
+# customer's usage history, and it gets pulled into this directory by the same
+# `wrangler r2 object get --file` habit as the objects above.
+engagement.json

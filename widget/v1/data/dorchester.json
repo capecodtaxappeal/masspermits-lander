@@ -1,0 +1,428 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Dorchester",
+ "slug": "dorchester",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/dorchester",
+ "feed_url": "https://masspermits.com/feed/dorchester.json",
+ "status": "live",
+ "n_total": 868,
+ "n_window": 489,
+ "n_long_window": 868,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 137,
+   "page": "/permits/dorchester-electrical"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 54,
+   "page": "/permits/dorchester-hvac"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 48,
+   "page": "/permits/dorchester-plumbing"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 43,
+   "page": "/permits/dorchester-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 30,
+   "page": "/permits/dorchester-windows-doors-siding"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 29,
+   "page": "/permits/dorchester-renovation-remodel"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 27,
+   "page": "/permits/dorchester-solar"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 21,
+   "page": "/permits/dorchester-deck-porch"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 21,
+   "page": "/permits/dorchester-gas"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 20,
+   "page": "/permits/dorchester-kitchen-bath"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 5,
+   "page": "/permits/dorchester-fire-sprinkler"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 5,
+   "page": "/permits/dorchester-demolition"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 4,
+   "page": "/permits/dorchester-new-construction"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 483,
+  "median": 9139,
+  "p25": 2650,
+  "p75": 23912
+ },
+ "n_valued": 483,
+ "n_zero_valued": 6,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Park St",
+   "v": 65000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Grayson St",
+   "v": 29800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Floyd St",
+   "v": 13000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Robinson St",
+   "v": 90000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Fuller St",
+   "v": 1500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Fuller St",
+   "v": 2500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Dorchester Av",
+   "v": 7264
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Elmont St",
+   "v": 42300
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Chelmsford St",
+   "v": 31000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Columbia Rd",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Larchmont St",
+   "v": 2200
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Adams St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Downer Av",
+   "v": 21450
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Westglow St",
+   "v": 6186
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Centre St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Centre St",
+   "v": 500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Mount Ida Rd",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Auckland St",
+   "v": 7000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Blue Hill Av",
+   "v": 629
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Blue Hill Av",
+   "v": 450
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Blue Hill Av",
+   "v": 1500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Brent St",
+   "v": 4200
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Harlow St",
+   "v": 7000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tuttle St",
+   "v": 7000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Oakwood St",
+   "v": 13500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Clifton St",
+   "v": 1500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Pasadena Rd",
+   "v": 83000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Elton St",
+   "v": 3500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Nightingale St",
+   "v": 757000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Westmoreland St",
+   "v": 2467
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Mallon Rd",
+   "v": 11000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Gallivan Bl",
+   "v": 45600
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Page St",
+   "v": 56005
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Worrell St",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Minot St",
+   "v": 17500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Nazing Ct",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Sagamore St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Elmont St",
+   "v": 8131
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Sudan St",
+   "v": 219000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Castlegate Rd",
+   "v": 2500
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

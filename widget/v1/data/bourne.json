@@ -1,0 +1,422 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Bourne",
+ "slug": "bourne",
+ "kind": "town",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/bourne",
+ "feed_url": "https://masspermits.com/feed/bourne.json",
+ "status": "live",
+ "n_total": 1776,
+ "n_window": 135,
+ "n_long_window": 560,
+ "as_of": "2026-08-25",
+ "oldest": "2025-12-01",
+ "window_from": "2026-07-27",
+ "window_to": "2026-08-25",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 31,
+   "page": "/permits/bourne-electrical"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 19,
+   "page": "/permits/bourne-roofing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 16,
+   "page": "/permits/bourne-hvac"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 12,
+   "page": "/permits/bourne-gas"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 12,
+   "page": "/permits/bourne-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 10,
+   "page": "/permits/bourne-building"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 10,
+   "page": "/permits/bourne-plumbing"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 7,
+   "page": "/permits/bourne-kitchen-bath"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 7,
+   "page": "/permits/bourne-solar"
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 3,
+   "page": "/permits/bourne-pool-spa"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 132,
+  "median": 6500,
+  "p25": 2041,
+  "p75": 14735
+ },
+ "n_valued": 132,
+ "n_zero_valued": 3,
+ "rows": [
+  {
+   "d": "2026-08-25",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bourne Rotary",
+   "v": 30000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Crump Rd",
+   "v": 85000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Shore Rd",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Winston Ave",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-21",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Barlows Landing Rd",
+   "v": 5500
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Mariners Ln",
+   "v": 12400
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Mizzen Ln",
+   "v": 1
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Clipper Rd",
+   "v": 42600
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Colonial Rd",
+   "v": 16035
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Worcester Ave",
+   "v": 7500
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Squeteague Harbor Rd",
+   "v": 215000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Ridgehill Ln",
+   "v": 450000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Scraggy Neck Rd",
+   "v": 500000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Cedar Point Dr",
+   "v": 13283
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Macarthur Blvd",
+   "v": 100000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Ships View Terr",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Ships View Terr",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Ships View Terr",
+   "v": null
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Williston Rd",
+   "v": 30000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Shore Rd",
+   "v": 64525
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Chapel Ave",
+   "v": 6337
+  },
+  {
+   "d": "2026-08-14",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Macarthur Blvd",
+   "v": 13231
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Pasture Rd",
+   "v": 800798
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Circuit Ave",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bournedale Rd",
+   "v": 6589
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Building",
+   "ts": "building",
+   "s": "Studio Dr",
+   "v": 4682
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Old Cataumet Passage",
+   "v": 24500
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Deseret Dr",
+   "v": 65000
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Route",
+   "v": 120000
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Bourne Rotary",
+   "v": 82448
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Holt Rd",
+   "v": 500
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Andrew Rd",
+   "v": 7923
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Howard Ave",
+   "v": 15599
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Circuit Ave",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-11",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Old Plymouth Rd, Unit Bldg",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bluff Rd",
+   "v": 8146
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Central Blvd",
+   "v": 6350
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bluff Rd",
+   "v": 500
+  },
+  {
+   "d": "2026-08-10",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Pier View Rd",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tory Ln",
+   "v": 1500
+  }
+ ],
+ "sources": [
+  "Bourne, MA"
+ ],
+ "capped": false,
+ "age_days": 13
+}

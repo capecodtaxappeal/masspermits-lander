@@ -1,0 +1,146 @@
+name: MassPermits inbox watchdog (is anyone waiting on a reply?)
+
+# THE HUMAN HALF OF send-watchdog.yml.
+#
+# send-watchdog.yml asks "did the machine deliver". Nothing asked "did a person
+# reply". The one cancellation in company history happened inside that gap: on
+# 2026-08-03 the pipeline genuinely sent nothing, a $99/mo subscriber wrote to
+# ask where his file was, and the reply came 34 days later. He cancelled inside
+# that silence, four days after volunteering a testimonial.
+#
+# WHAT THIS JOB IS AND IS NOT
+# It does NOT read the mailbox. Gmail is read by inbox_watchdog.gs, a Google
+# Apps Script, which classifies threads, labels the ones owed a reply, and mails
+# a digest to a DIFFERENT mailbox from the one it is watching. That script is
+# the alarm.
+#
+# This job watches the alarm. The Apps Script deliberately sends nothing when
+# nobody is waiting — the same reasoning send-status.js uses for `ok`, because a
+# watchdog that reports success gets filtered and then ignored. Which means
+# SILENCE IS ITS SUCCESS STATE, and a deleted trigger, a lapsed OAuth grant or
+# an Apps Script quota trip produces that identical silence. The watchdog could
+# die on a Tuesday and nobody would find out until the next customer churned.
+#
+# That is the 2026-08-03 signature exactly: the failure is an ABSENCE. So the
+# script posts a heartbeat on every run including the empty ones, and this job
+# reads its freshness. If the alarm dies, this is what notices.
+#
+# It also fails LOUD on `unarmed` — the state where the watchdog ran but could
+# not fetch the subscriber roster, so the never-spam rule was not actually
+# protecting any paying customer. A silently disarmed guarantee is worse than no
+# guarantee, because it looks like a guarantee.
+#
+# SAFETY
+# Read-only. It calls exactly two endpoints: /api/inbox-status (read-only,
+# sends nothing) and /api/mail-owner (recipient hard-locked server-side). It
+# never retries anything and never sends customer mail. Deliberately: the only
+# thing that resolves an unanswered customer is a human writing a reply, and
+# 2026-08-09 is what happens when a watchdog is handed an action it should not
+# have — it declared `missed` on a healthy weekly cadence, fired an unscheduled
+# retry, and double-sent to both paying subscribers.
+#
+# Everything in the alert body comes from /api/inbox-status, which returns
+# counts, ages and booleans only. inbox-heartbeat.js builds its stored object
+# from a fixed allowlist of numeric and boolean fields, so there is no path by
+# which an address or a subject line can reach an Actions log or this email.
+#
+# Auth: GitHub OIDC. Keyless, no secret in this public repo.
+
+on:
+  schedule:
+    # The Apps Script trigger fires 12:00-13:00 America/New_York (16:00-18:00
+    # UTC depending on DST), so check well after it. Two runs a day because
+    # GitHub drops scheduled jobs under load — documented in KB/01 §3, and
+    # observed on 2026-09-06 when weekly-refresh's 09:00 cron never fired at
+    # all. Either run alone is enough to catch a 30h staleness.
+    - cron: "0 20 * * *"   # 20:00 UTC — ~3h after the latest expected script run
+    - cron: "0 8 * * *"    # 08:00 UTC — backstop if the evening run is dropped
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      # First push = live smoke test, same pattern as daily-nurture.yml. Before
+      # the Apps Script is installed this run will report `never`, email the
+      # owner once, and exit 0 (see below) — that is the correct pre-install
+      # reading, not a regression.
+      - ".github/workflows/inbox-watchdog.yml"
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: inbox-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Is anything waiting on a human, and is the watcher still alive?
+        run: |
+          set -euo pipefail
+
+          # Re-mint per call: OIDC JWTs expire in ~5 minutes and a long job with
+          # one token fails late (KB/01 §4).
+          mint() {
+            curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value
+          }
+
+          STATUS=$(curl -fsS -H "Authorization: Bearer $(mint)" \
+            https://masspermits.com/api/inbox-status)
+          echo "$STATUS" | jq .
+
+          VERDICT=$(echo "$STATUS" | jq -r .verdict)
+          DETAIL=$(echo "$STATUS"  | jq -r .detail)
+          ALERT=$(echo "$STATUS"   | jq -r .alert)
+
+          # `ok`      nothing waiting, watcher alive, roster armed.
+          # `waiting` people waiting but under 72h — the Apps Script digest has
+          #           ALREADY reported it. A second email for the same fact is
+          #           how an alert channel gets trained into background noise,
+          #           which is exactly why 6 of 6 owner alerts in the week to
+          #           2026-09-06 were unread. Stay quiet and let the digest work.
+          if [ "$ALERT" != "true" ]; then
+            echo "nothing to raise (verdict=$VERDICT): $DETAIL"
+            exit 0
+          fi
+
+          case "$VERDICT" in
+            stale)    HEAD="The inbox watchdog has stopped running" ;;
+            never)    HEAD="The inbox watchdog has never run" ;;
+            unarmed)  HEAD="The never-spam rule is NOT armed" ;;
+            backlog)  HEAD="Someone has been waiting more than 72 hours" ;;
+            *)        HEAD="Inbox watchdog: $VERDICT" ;;
+          esac
+
+          BODY=$(jq -n --arg h "$HEAD" --arg v "$VERDICT" --arg d "$DETAIL" --arg s "$STATUS" '
+            "<div style=\"font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px\">"
+            + "<h2 style=\"color:#b45309\">" + $h + "</h2>"
+            + "<p>" + $d + "</p>"
+            + "<pre style=\"background:#f6f8fa;padding:12px;border-radius:8px;font-size:12px;white-space:pre-wrap\">"
+            + $s + "</pre>"
+            + "<p style=\"color:#667;font-size:13px\">This job does not read your mail. It watches "
+            + "<b>inbox_watchdog.gs</b>, the Apps Script that does. That script stays silent when "
+            + "nobody is waiting, so its silence cannot be trusted on its own — this is the check "
+            + "that tells a quiet inbox apart from a dead watchdog.</p>"
+            + "<p style=\"color:#667;font-size:13px\">Counts only. No sender, subject or address "
+            + "can reach this email: the stored heartbeat is built from a fixed allowlist of "
+            + "numeric and boolean fields.</p></div>"')
+
+          curl -fsS -X POST -H "Authorization: Bearer $(mint)" -H "Content-Type: text/html" \
+            --data-binary "$BODY" \
+            "https://masspermits.com/api/mail-owner?subject=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote('MassPermits ALERT — inbox watchdog: '+sys.argv[1]))" "$VERDICT")"
+          echo ""
+
+          # `never` is the pre-install state, not a regression — warn, do not go
+          # red, or this workflow sits permanently failed until step 4 of the
+          # install is done. Everything else fails the job so it surfaces in the
+          # Actions UI as well as by email, the same way send-watchdog.yml does.
+          if [ "$VERDICT" = "never" ]; then
+            echo "::warning::inbox watchdog not installed yet (verdict=never)"
+            exit 0
+          fi
+          echo "::error::inbox watchdog verdict=$VERDICT ($DETAIL)"
+          exit 1

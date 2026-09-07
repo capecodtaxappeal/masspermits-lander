@@ -1,0 +1,363 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Fairhaven",
+ "slug": "fairhaven",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/fairhaven",
+ "feed_url": "https://masspermits.com/feed/fairhaven.json",
+ "status": "live",
+ "n_total": 993,
+ "n_window": 185,
+ "n_long_window": 539,
+ "as_of": "2026-09-06",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-08",
+ "window_to": "2026-09-06",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 60,
+   "page": "/permits/fairhaven-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 51,
+   "page": "/permits/fairhaven-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 24,
+   "page": "/permits/fairhaven-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 24,
+   "page": "/permits/fairhaven-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 11,
+   "page": "/permits/fairhaven-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 9,
+   "page": "/permits/fairhaven-hvac"
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 185,
+ "rows": [
+  {
+   "d": "2026-09-06",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Balsam Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Nelson Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Balsam Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Starboard Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Hathaway Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bridge St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Almond Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Sconticut Neck Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Almond Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Kane Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Almond Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Sconticut Neck Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Karen Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Green Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Raymond Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Fort Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Winona Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Dover Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Alden Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bridge Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Academy Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Chestnut Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Main Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Alden Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Dover Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Main Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Dogwood St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Howland Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Moravia Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Fort Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Causeway Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Reservation Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Starboard Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "New Boston Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Winona Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ocean Meadows",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Livesey Parkway",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Sconticut Neck Road",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Fairhaven, MA"
+ ],
+ "capped": false,
+ "age_days": 1
+}

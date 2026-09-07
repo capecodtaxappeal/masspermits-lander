@@ -1,0 +1,404 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Mattapan",
+ "slug": "mattapan",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/mattapan",
+ "feed_url": "https://masspermits.com/feed/mattapan.json",
+ "status": "live",
+ "n_total": 219,
+ "n_window": 119,
+ "n_long_window": 219,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 34,
+   "page": "/permits/mattapan-electrical"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 15,
+   "page": "/permits/mattapan-solar"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 15,
+   "page": "/permits/mattapan-plumbing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 10,
+   "page": "/permits/mattapan-windows-doors-siding"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 10,
+   "page": "/permits/mattapan-kitchen-bath"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 7,
+   "page": "/permits/mattapan-renovation-remodel"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 7,
+   "page": "/permits/mattapan-roofing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 6,
+   "page": "/permits/mattapan-hvac"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 4,
+   "page": "/permits/mattapan-gas"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 3,
+   "page": "/permits/mattapan-deck-porch"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 119,
+  "median": 11000,
+  "p25": 3000,
+  "p75": 32453
+ },
+ "n_valued": 119,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "W Selden St",
+   "v": 13763
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Hallowell St",
+   "v": 1500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Arborcrest Te",
+   "v": 5000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oakridge St",
+   "v": 350
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Taunton Av",
+   "v": 37000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Almont St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Astoria St",
+   "v": 12000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Washington St",
+   "v": 40000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Ormond St",
+   "v": 110400
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Ormond St",
+   "v": 110400
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Wilmore St",
+   "v": 1700
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ledgebrook Rd",
+   "v": 3600
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Corman Rd",
+   "v": 12600
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ridlon Rd",
+   "v": 70000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Tennis Rd",
+   "v": 50000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Pleasant Hill Av",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Tampa St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Rosewood St",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Holmfield Av",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Halborn St",
+   "v": 7500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Westmore Rd",
+   "v": 38000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Blake St",
+   "v": 9000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Tanglewood Rd",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Leston St",
+   "v": 82659
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Leston St",
+   "v": 70799
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Old Morton St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "River St",
+   "v": 75000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Deering Rd",
+   "v": 40000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "W Selden St",
+   "v": 499
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Wellington Hill St",
+   "v": 48000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Belnel Rd",
+   "v": 100000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pleasant Hill Av",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Rockway St",
+   "v": 15713
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Adams St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Almont St",
+   "v": 175000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Mariposa St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mariposa St",
+   "v": 6500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Sutton St",
+   "v": 11000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rosebery Rd",
+   "v": 2600
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hopewell Rd",
+   "v": 4000
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

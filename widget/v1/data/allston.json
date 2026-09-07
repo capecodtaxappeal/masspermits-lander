@@ -1,0 +1,398 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Allston",
+ "slug": "allston",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/allston",
+ "feed_url": "https://masspermits.com/feed/allston.json",
+ "status": "live",
+ "n_total": 115,
+ "n_window": 55,
+ "n_long_window": 115,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 20,
+   "page": "/permits/allston-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 6,
+   "page": "/permits/allston-plumbing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 6,
+   "page": "/permits/allston-windows-doors-siding"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 4,
+   "page": "/permits/allston-roofing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 4,
+   "page": "/permits/allston-hvac"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 3,
+   "page": "/permits/allston-fire-sprinkler"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 55,
+  "median": 10000,
+  "p25": 2250,
+  "p75": 39822
+ },
+ "n_valued": 55,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Franklin St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Everett St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Islington Te",
+   "v": 3200
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cambridge St",
+   "v": 3500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Holton St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cambridge St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Commonwealth Av",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Cambridge Te",
+   "v": 50000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Babcock St",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Commonwealth Av",
+   "v": 95000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Malvern St",
+   "v": 41000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Clevemont Av",
+   "v": 35000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Brighton Av",
+   "v": 39644
+  },
+  {
+   "d": "2026-08-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Commonwealth Av",
+   "v": 52000
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "N Beacon St",
+   "v": 58000
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Royal St",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Empire St",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Hooker St",
+   "v": 45200
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Other",
+   "ts": "other",
+   "s": "Guilford St",
+   "v": 2694
+  },
+  {
+   "d": "2026-08-20",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Warren St",
+   "v": 0
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Western Av",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Gardner St",
+   "v": 1200
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Commonwealth Av",
+   "v": 78375
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ashford St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bayard St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Other",
+   "ts": "other",
+   "s": "Cambridge St",
+   "v": 500
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Adamson St",
+   "v": 12000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ashford St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Ashford St",
+   "v": 40000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Commonwealth Av",
+   "v": 1800
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Fire/Sprinkler",
+   "ts": "fire-sprinkler",
+   "s": "N Harvard St",
+   "v": 151102
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Brighton Av",
+   "v": 45847
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Islington Te",
+   "v": 25800
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Glenville Av",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cambridge St",
+   "v": 30000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Fire/Sprinkler",
+   "ts": "fire-sprinkler",
+   "s": "Cambridge St",
+   "v": 198000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Warren St",
+   "v": 15500
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Other",
+   "ts": "other",
+   "s": "Gordon St",
+   "v": 13000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hopedale St",
+   "v": 11246
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Harvard Av",
+   "v": 61700
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

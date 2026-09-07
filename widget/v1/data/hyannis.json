@@ -1,0 +1,404 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Hyannis",
+ "slug": "hyannis",
+ "kind": "village",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/hyannis",
+ "feed_url": "https://masspermits.com/feed/hyannis.json",
+ "status": "live",
+ "n_total": 251,
+ "n_window": 98,
+ "n_long_window": 246,
+ "as_of": "2026-07-31",
+ "oldest": "2026-05-01",
+ "window_from": "2026-07-02",
+ "window_to": "2026-07-31",
+ "trades": [
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 39,
+   "page": "/permits/hyannis-building"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 18,
+   "page": "/permits/hyannis-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 13,
+   "page": "/permits/hyannis-windows-doors-siding"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 8,
+   "page": "/permits/hyannis-solar"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 5,
+   "page": "/permits/hyannis-kitchen-bath"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 5,
+   "page": "/permits/hyannis-deck-porch"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 3,
+   "page": "/permits/hyannis-fire-sprinkler"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 3,
+   "page": "/permits/hyannis-renovation-remodel"
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 85,
+  "median": 15000,
+  "p25": 5200,
+  "p75": 34034
+ },
+ "n_valued": 85,
+ "n_zero_valued": 13,
+ "rows": [
+  {
+   "d": "2026-07-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Guy Lane",
+   "v": 4500
+  },
+  {
+   "d": "2026-07-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "High School Road",
+   "v": 26748
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bishops Terrace",
+   "v": 8000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Bristol Avenue",
+   "v": 24273
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Louis Street",
+   "v": 29000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Atlantic Avenue",
+   "v": 22785
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Building",
+   "ts": "building",
+   "s": "Chase Street",
+   "v": 112500
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Bay Shore Road",
+   "v": 25000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Sudbury Lane",
+   "v": 4000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Craigville Beach Road",
+   "v": 22262
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Old Town Road",
+   "v": 6000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Camp Street",
+   "v": null
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Ridgewood Avenue",
+   "v": 4011
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Brookshire Road",
+   "v": 6500
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street (Hyannis)",
+   "v": 1416
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Bay Shore Road",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Circle Drive",
+   "v": 35000
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Old Strawberry Hill Road",
+   "v": 150000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Building",
+   "ts": "building",
+   "s": "Chase Street",
+   "v": 10424
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Sixth Avenue (Hyannis)",
+   "v": 18910
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bearse'S Way",
+   "v": 1619
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Fiddlers Circle",
+   "v": 60000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Building",
+   "ts": "building",
+   "s": "Phinney'S Lane",
+   "v": 5514
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Quaker Road",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Falmouth Road/Rte",
+   "v": 111368
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Compass Circle",
+   "v": 7500
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Kennedy Circle",
+   "v": 57000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Grouse Lane",
+   "v": 8400
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Lincoln Road",
+   "v": 400
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Kelley Road",
+   "v": 3000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Garden Lane",
+   "v": 33758
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bishops Terrace",
+   "v": 4000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Strawberry Hill Road",
+   "v": 3000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "George Street",
+   "v": 20000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Fifth Avenue (Hyannis)",
+   "v": 7800
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Settlers Lane",
+   "v": 80000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Blue Jay Drive",
+   "v": 15484
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Main Street (Hyannis)",
+   "v": 45000
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Straightway",
+   "v": 875
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Third Avenue (Hyannis)",
+   "v": 322155
+  }
+ ],
+ "sources": [
+  "Barnstable, MA"
+ ],
+ "capped": false,
+ "age_days": 38
+}

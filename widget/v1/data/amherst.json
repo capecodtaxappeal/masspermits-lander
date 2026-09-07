@@ -1,0 +1,410 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Amherst",
+ "slug": "amherst",
+ "kind": "town",
+ "region": "Western MA",
+ "page_url": "https://masspermits.com/permits/amherst",
+ "feed_url": "https://masspermits.com/feed/amherst.json",
+ "status": "live",
+ "n_total": 215,
+ "n_window": 99,
+ "n_long_window": 215,
+ "as_of": "2026-07-30",
+ "oldest": "2026-06-01",
+ "window_from": "2026-07-01",
+ "window_to": "2026-07-30",
+ "trades": [
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 30,
+   "page": "/permits/amherst-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 16,
+   "page": "/permits/amherst-building"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 15,
+   "page": "/permits/amherst-roofing"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 8,
+   "page": "/permits/amherst-solar"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 7,
+   "page": "/permits/amherst-kitchen-bath"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 6,
+   "page": "/permits/amherst-hvac"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 6,
+   "page": "/permits/amherst-deck-porch"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 3,
+   "page": "/permits/amherst-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 3,
+   "page": "/permits/amherst-electrical"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 85,
+  "median": 13415,
+  "p25": 7200,
+  "p75": 25365
+ },
+ "n_valued": 85,
+ "n_zero_valued": 14,
+ "rows": [
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Western Lane",
+   "v": 12360
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "East Drive, Unit Science Center",
+   "v": 100120
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Building",
+   "ts": "building",
+   "s": "Town Common",
+   "v": null
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Leverett Road",
+   "v": 5
+  },
+  {
+   "d": "2026-07-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Edgehill Place",
+   "v": 4500
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Station Road",
+   "v": 15000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Johnson Chapel Road, Unit Octagon",
+   "v": 49650
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "North Whitney Street",
+   "v": 2000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Tanglewood Road",
+   "v": 30000
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Jenks Street",
+   "v": 9269
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Sunset Avenue",
+   "v": 113400
+  },
+  {
+   "d": "2026-07-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Forestedge Road",
+   "v": 15000
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street",
+   "v": 3500
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Taylor Street",
+   "v": null
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Chapel Road",
+   "v": 18647
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Sunset Avenue",
+   "v": 45000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "State Street",
+   "v": 28869
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Fire/Sprinkler",
+   "ts": "fire-sprinkler",
+   "s": "South Pleasant Street",
+   "v": 41000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Shays Street",
+   "v": null
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Summerfield Road",
+   "v": 20407
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "North Pleasant Street",
+   "v": null
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "South East Street",
+   "v": null
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Sunrise Avenue",
+   "v": 1000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Fire/Sprinkler",
+   "ts": "fire-sprinkler",
+   "s": "North Pleasant Street",
+   "v": 1000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Meadow Street",
+   "v": 4500
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Chapel Road",
+   "v": 4000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Harlow Drive",
+   "v": 8706
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Hunters Hill Circle",
+   "v": 47138
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bay Road",
+   "v": 12303
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "University Drive",
+   "v": 14161
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Mount Pleasant Street",
+   "v": 70500
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Mechanic Street",
+   "v": 46657
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Linden Ridge Road",
+   "v": 3804
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "East Pleasant Street",
+   "v": 13750
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Autumn Lane",
+   "v": 15355
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Main Street",
+   "v": 9438
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Building",
+   "ts": "building",
+   "s": "Greenwich Road",
+   "v": 1300
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Wentworth Manor Drive",
+   "v": 7200
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "West Pomeroy Lane",
+   "v": null
+  },
+  {
+   "d": "2026-07-16",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Foxglove Lane",
+   "v": 25365
+  }
+ ],
+ "sources": [
+  "Amherst, MA"
+ ],
+ "capped": false,
+ "age_days": 39
+}

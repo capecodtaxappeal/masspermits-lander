@@ -1,0 +1,410 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "East Boston",
+ "slug": "east-boston",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/east-boston",
+ "feed_url": "https://masspermits.com/feed/east-boston.json",
+ "status": "live",
+ "n_total": 292,
+ "n_window": 146,
+ "n_long_window": 292,
+ "as_of": "2026-09-03",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 51,
+   "page": "/permits/east-boston-electrical"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 20,
+   "page": "/permits/east-boston-roofing"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 14,
+   "page": "/permits/east-boston-solar"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 11,
+   "page": "/permits/east-boston-renovation-remodel"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 10,
+   "page": "/permits/east-boston-windows-doors-siding"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 10,
+   "page": "/permits/east-boston-plumbing"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 6,
+   "page": "/permits/east-boston-deck-porch"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 6,
+   "page": "/permits/east-boston-hvac"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 5,
+   "page": "/permits/east-boston-gas"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 4,
+   "page": "/permits/east-boston-kitchen-bath"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 145,
+  "median": 11500,
+  "p25": 5500,
+  "p75": 30261
+ },
+ "n_valued": 145,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Saratoga St",
+   "v": 22194
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Annavoy St",
+   "v": 6000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Everett St",
+   "v": 30000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "London St",
+   "v": 16000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Condor St",
+   "v": 24840
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Everett St",
+   "v": 8200
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Havre St",
+   "v": 37500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Eagle Sq",
+   "v": 4582
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Gladstone St",
+   "v": 56250
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Lexington St",
+   "v": 34300
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Saratoga St",
+   "v": 500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Saratoga St",
+   "v": 500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Harborside Dr",
+   "v": 250000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Saratoga St",
+   "v": 5600
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Neptune Rd",
+   "v": 11000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Condor St",
+   "v": 7400000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Eutaw St",
+   "v": 36000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Maverick Sq",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Condor St",
+   "v": 24840
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Frankfort St",
+   "v": 35000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Porter St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Border St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Maverick Sq",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Maverick St",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Brooks St",
+   "v": 4000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Paris St",
+   "v": 11500
+  },
+  {
+   "d": "2026-08-26",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Falcon St",
+   "v": 24000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "William C Kelly Sq",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Neptune Rd",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Terminal Rd",
+   "v": 150000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Condor St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Saratoga St",
+   "v": 3500
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Maverick Sq",
+   "v": 1
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Terminal Rd",
+   "v": 420000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Terminal Rd",
+   "v": 7000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Terminal Rd",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Harborside Dr",
+   "v": 7880
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Other",
+   "ts": "other",
+   "s": "Havre St",
+   "v": 5192
+  },
+  {
+   "d": "2026-08-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Maverick St",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Breed St",
+   "v": 26444
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

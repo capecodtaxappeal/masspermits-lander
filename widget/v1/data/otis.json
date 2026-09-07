@@ -1,0 +1,295 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Otis",
+ "slug": "otis",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/otis",
+ "feed_url": "https://masspermits.com/feed/otis.json",
+ "status": "live",
+ "n_total": 169,
+ "n_window": 32,
+ "n_long_window": 91,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 15,
+   "page": "/permits/otis-electrical"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 10,
+   "page": "/permits/otis-renovation-remodel"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 4,
+   "page": "/permits/otis-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 3,
+   "page": "/permits/otis-gas"
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 32,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "North Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Kibbe Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Brookman Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Evergreen Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Drive D",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Brookman Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Tolland Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-30",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Stebbins Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Reservoir Heights Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "North Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ticonderoga Av",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Becket Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "South Lake Av",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Benton Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-23",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "North Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Leisure Lane",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Leonard Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "East Otis Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hayes Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Hayes Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Hayes Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "North Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South Lake Av",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Dimmock Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Monterey Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "East Otis Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Dimmock Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "East Otis Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Brookman Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South St",
+   "v": null
+  },
+  {
+   "d": "2026-08-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Dimmock Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-06",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Pike Rd",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Otis, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

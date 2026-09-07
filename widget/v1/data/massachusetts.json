@@ -1,0 +1,498 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Massachusetts",
+ "slug": "massachusetts",
+ "kind": "state",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/",
+ "feed_url": "https://masspermits.com/feed/permits.json",
+ "status": "live",
+ "n_total": 66818,
+ "n_window": 12358,
+ "n_long_window": 38286,
+ "as_of": "2026-09-07",
+ "oldest": "2025-12-01",
+ "window_from": "2026-08-09",
+ "window_to": "2026-09-07",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 3472,
+   "page": "/permits/massachusetts-electrical"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 2099,
+   "page": "/permits/massachusetts-renovation-remodel"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 1603,
+   "page": "/permits/massachusetts-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 1205,
+   "page": "/permits/massachusetts-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 1075,
+   "page": "/permits/massachusetts-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 784,
+   "page": "/permits/massachusetts-hvac"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 517,
+   "page": "/permits/massachusetts-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 346,
+   "page": "/permits/massachusetts-windows-doors-siding"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 215,
+   "page": "/permits/massachusetts-kitchen-bath"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 169,
+   "page": "/permits/massachusetts-solar"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 128,
+   "page": "/permits/massachusetts-deck-porch"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 96,
+   "page": "/permits/massachusetts-new-construction"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 64,
+   "page": "/permits/massachusetts-sign-awning"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 56,
+   "page": "/permits/massachusetts-fire-sprinkler"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 51,
+   "page": "/permits/massachusetts-demolition"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 48,
+   "page": "/permits/massachusetts-addition"
+  },
+  {
+   "trade": "Asbestos",
+   "slug": "asbestos",
+   "n": 17,
+   "page": "/permits/massachusetts-asbestos"
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 10,
+   "page": "/permits/massachusetts-pool-spa"
+  }
+ ],
+ "value": {
+  "n_valued": 4467,
+  "median": 11000,
+  "p25": 3500,
+  "p75": 33000
+ },
+ "n_valued": 4467,
+ "n_zero_valued": 7891,
+ "rows": [
+  {
+   "d": "2026-09-07",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Downing Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Fir Ct",
+   "v": null
+  },
+  {
+   "d": "2026-09-06",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Wood Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-06",
+   "t": "Building",
+   "ts": "building",
+   "s": "Cottonwood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Meadowood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-06",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Balsam Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "New Ludlow Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Jan Sebastian Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "High St",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Corcoran St",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Smith Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Highland Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Penny Lane",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Spring Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Apple Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South St",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Manley St",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Emory St",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cushing St",
+   "v": 500
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Turnpike Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Wilkins Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Town Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Building Units Though John W Mahar Highway",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Harding Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Baker Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Granite Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wildwood Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Watson Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Liberty Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Parkside Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Skyline Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wood Road",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Amherst, MA",
+  "Attleboro, MA",
+  "Avon, MA",
+  "Barnstable, MA",
+  "Bellingham, MA",
+  "Boston, MA",
+  "Bourne, MA",
+  "Boylston, MA",
+  "Braintree, MA",
+  "Bridgewater, MA",
+  "Cambridge, MA",
+  "Chatham, MA",
+  "Chicopee, MA",
+  "Cohasset, MA",
+  "Colrain, MA",
+  "Concord, MA",
+  "Easthampton, MA",
+  "Easton, MA",
+  "Fairhaven, MA",
+  "Falmouth, MA",
+  "Foxborough, MA",
+  "Granby, MA",
+  "Groveland, MA",
+  "Hadley, MA",
+  "Hanson, MA",
+  "Hingham, MA",
+  "Hopedale, MA",
+  "Ipswich, MA",
+  "Lexington, MA",
+  "Ludlow, MA",
+  "Mansfield, MA",
+  "Mashpee, MA",
+  "Milton, MA",
+  "Newbury, MA",
+  "North Reading, MA",
+  "Otis, MA",
+  "Plymouth, MA",
+  "Provincetown, MA",
+  "Randolph, MA",
+  "Reading, MA",
+  "Rehoboth, MA",
+  "Rockland, MA",
+  "Sandwich, MA",
+  "Somerville, MA",
+  "Southampton, MA",
+  "Stoughton, MA",
+  "Stow, MA",
+  "Sudbury, MA",
+  "Sunderland, MA",
+  "Taunton, MA",
+  "Townsend, MA",
+  "Truro, MA",
+  "Wakefield, MA",
+  "Waltham, MA",
+  "Wareham, MA",
+  "West Bridgewater, MA",
+  "West Newbury, MA",
+  "Westhampton, MA",
+  "Worcester, MA"
+ ],
+ "capped": true,
+ "age_days": 0
+}

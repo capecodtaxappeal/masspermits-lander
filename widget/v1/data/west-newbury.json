@@ -1,0 +1,256 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "West Newbury",
+ "slug": "west-newbury",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/west-newbury",
+ "feed_url": "https://masspermits.com/feed/west-newbury.json",
+ "status": "live",
+ "n_total": 23,
+ "n_window": 23,
+ "n_long_window": 23,
+ "as_of": "2026-09-03",
+ "oldest": "2026-08-19",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 7,
+   "page": "/permits/west-newbury-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 4,
+   "page": "/permits/west-newbury-plumbing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 4,
+   "page": "/permits/west-newbury-windows-doors-siding"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 3,
+   "page": "/permits/west-newbury-hvac"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 23,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Crane Neck St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Crane Neck St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Rogers St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Bridge St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Brickett St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Georgetown Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Crane Neck St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Cortland Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "River Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "River Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Way To The River Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bridge St",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Maple St",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Crane Neck St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ash St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Indian Ridge Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Way To The River Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Turkey Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Indian Ridge Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Rogers St",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Turkey Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Turkey Hill Rd",
+   "v": null
+  }
+ ],
+ "sources": [
+  "West Newbury, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

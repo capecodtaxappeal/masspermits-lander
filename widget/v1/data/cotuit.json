@@ -1,0 +1,302 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Cotuit",
+ "slug": "cotuit",
+ "kind": "village",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/cotuit",
+ "feed_url": "https://masspermits.com/feed/cotuit.json",
+ "status": "live",
+ "n_total": 78,
+ "n_window": 28,
+ "n_long_window": 78,
+ "as_of": "2026-07-31",
+ "oldest": "2026-05-06",
+ "window_from": "2026-07-02",
+ "window_to": "2026-07-31",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 9,
+   "page": "/permits/cotuit-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 6,
+   "page": "/permits/cotuit-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 6,
+   "page": "/permits/cotuit-building"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 27,
+  "median": 16321,
+  "p25": 6000,
+  "p75": 34917
+ },
+ "n_valued": 27,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-07-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Sandalwood Drive",
+   "v": 28898
+  },
+  {
+   "d": "2026-07-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Forest Hills Road",
+   "v": 25000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Pinquickset Cove Cir",
+   "v": 1
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Pinquickset Cove Cir",
+   "v": 85000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Vineyard Road",
+   "v": 2000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Main Street (Cotuit)",
+   "v": 19000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Little River Road",
+   "v": 6000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Content Lane",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Forsyth Court",
+   "v": 44000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Cherry Tree Road",
+   "v": 10016
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Putnam Avenue",
+   "v": 8000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Ocean View Avenue",
+   "v": 75000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Vineyard Road",
+   "v": 5000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Highland Avenue",
+   "v": 3000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Vineyard Road",
+   "v": 5200
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Main Street (Cotuit)",
+   "v": 120000
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Mooring Drive",
+   "v": 38968
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Cotuit Bay Drive",
+   "v": 7400
+  },
+  {
+   "d": "2026-07-16",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Crystal Ridge Road",
+   "v": 32802
+  },
+  {
+   "d": "2026-07-16",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Piney Road",
+   "v": 6000
+  },
+  {
+   "d": "2026-07-16",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Sandalwood Drive",
+   "v": 37031
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Building",
+   "ts": "building",
+   "s": "Eisenhower Drive",
+   "v": null
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Main Street (Cotuit)",
+   "v": 25000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Main Street (Cotuit)",
+   "v": 16321
+  },
+  {
+   "d": "2026-07-08",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Prudence Lane",
+   "v": 13200
+  },
+  {
+   "d": "2026-07-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "High Street",
+   "v": 68000
+  },
+  {
+   "d": "2026-07-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "School Street",
+   "v": 150
+  },
+  {
+   "d": "2026-07-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Stub Toe Road",
+   "v": 20000
+  }
+ ],
+ "sources": [
+  "Barnstable, MA"
+ ],
+ "capped": false,
+ "age_days": 38
+}

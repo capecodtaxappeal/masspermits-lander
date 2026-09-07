@@ -1,0 +1,376 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Mission Hill",
+ "slug": "mission-hill",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/mission-hill",
+ "feed_url": "https://masspermits.com/feed/mission-hill.json",
+ "status": "live",
+ "n_total": 72,
+ "n_window": 36,
+ "n_long_window": 72,
+ "as_of": "2026-09-01",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-03",
+ "window_to": "2026-09-01",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 15,
+   "page": "/permits/mission-hill-electrical"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 5,
+   "page": "/permits/mission-hill-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 3,
+   "page": "/permits/mission-hill-renovation-remodel"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 3,
+   "page": "/permits/mission-hill-plumbing"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 36,
+  "median": 13750,
+  "p25": 5000,
+  "p75": 31557
+ },
+ "n_valued": 36,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Tremont St",
+   "v": 232844
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Hillside St",
+   "v": 90000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Hillside St",
+   "v": 4500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont St",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Huntington Av",
+   "v": 430007
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Tremont St",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Tremont St",
+   "v": 7000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Huntington Av",
+   "v": 30000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Parker St",
+   "v": 833000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Calumet St",
+   "v": 7000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont St",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Calumet St",
+   "v": 13500
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Tremont St",
+   "v": 34897
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Gore St",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-18",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Columbus Av",
+   "v": 1160
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Wigglesworth St",
+   "v": 30850
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Gore St",
+   "v": 6500
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Parker Hill Av",
+   "v": 14000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Parker St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Parker St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Alleghany St",
+   "v": 135000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Alleghany St",
+   "v": 135000
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Fire/Sprinkler",
+   "ts": "fire-sprinkler",
+   "s": "Columbus Av",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Terrace St",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oswald St",
+   "v": 1800
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont St",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Oswald St",
+   "v": 450000
+  },
+  {
+   "d": "2026-08-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Parker Hill Av",
+   "v": 339
+  },
+  {
+   "d": "2026-08-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Eldora St",
+   "v": 31728
+  },
+  {
+   "d": "2026-08-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Heath St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont St",
+   "v": 3500
+  },
+  {
+   "d": "2026-08-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Oswald St",
+   "v": 22000
+  },
+  {
+   "d": "2026-08-04",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Delle Av",
+   "v": 31500
+  },
+  {
+   "d": "2026-08-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ruggles St",
+   "v": 5000
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 6
+}

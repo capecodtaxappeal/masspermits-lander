@@ -1,0 +1,369 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "North Reading",
+ "slug": "north-reading",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/north-reading",
+ "feed_url": "https://masspermits.com/feed/north-reading.json",
+ "status": "live",
+ "n_total": 998,
+ "n_window": 143,
+ "n_long_window": 553,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 57,
+   "page": "/permits/north-reading-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 31,
+   "page": "/permits/north-reading-electrical"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 15,
+   "page": "/permits/north-reading-gas"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 14,
+   "page": "/permits/north-reading-plumbing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 14,
+   "page": "/permits/north-reading-hvac"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 6,
+   "page": "/permits/north-reading-building"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 2,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 143,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Peabody Ct",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Memory Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Westward Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mid Iron Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lakeside Blvd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Park St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Aspen Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Shirley Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Shirley Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Fairway Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bishops Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Anglewood Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Peabody St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Woodcutter Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Berridge Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Peabody St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Little Meadow Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Harvest Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Riverpark Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Eames St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Stonecleave Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Washington St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Shasta Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Hillview Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Samuel Phelps Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Chester St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Greene St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Haverhill St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cleek Ct",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ashwood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Evergreen Ter",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Belmont Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Haverhill St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Nutter Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Belmont Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Shirley Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Central St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Haverhill St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Macintyre Dr",
+   "v": null
+  }
+ ],
+ "sources": [
+  "North Reading, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

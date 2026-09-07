@@ -1,0 +1,369 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Chicopee",
+ "slug": "chicopee",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/chicopee",
+ "feed_url": "https://masspermits.com/feed/chicopee.json",
+ "status": "live",
+ "n_total": 1754,
+ "n_window": 357,
+ "n_long_window": 943,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 97,
+   "page": "/permits/chicopee-electrical"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 84,
+   "page": "/permits/chicopee-building"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 70,
+   "page": "/permits/chicopee-renovation-remodel"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 50,
+   "page": "/permits/chicopee-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 28,
+   "page": "/permits/chicopee-gas"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 7,
+   "page": "/permits/chicopee-sign-awning"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 357,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Boulay Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Perkins",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Building",
+   "ts": "building",
+   "s": "(address hidden)",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Pine St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Celebration Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Building",
+   "ts": "building",
+   "s": "Coolidge Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Building",
+   "ts": "building",
+   "s": "Gardner Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Grandview St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Grove St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wayfield Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Laskowski Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Memorial Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Davenport St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Fernwood St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Chicopee St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Chicopee St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Montgomery St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Narragansett Blvd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Greenwood Ter",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Granby Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Britton St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Leo Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Memorial Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Johnson Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Church St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Dulong Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Robbins Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Greenwood Ter",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Post Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Memorial Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Barbara St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Waite Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Meadow St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Post Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Barbara St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Circle Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Memorial Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Medford St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Granville Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Warwick Rd",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Chicopee, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

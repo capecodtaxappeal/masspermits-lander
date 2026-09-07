@@ -1,0 +1,110 @@
+name: MassPermits lifecycle emails
+
+# The four subscriber lifecycle messages: welcome, day-3 trade fit, day-14
+# no-download rescue, and the 30-day win-back. See functions/api/_lifecycle_mail.js
+# for the copy and the evidence behind each one.
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# THIS WORKFLOW SENDS NOTHING AS WRITTEN. The curl below has no `send=1`, so the
+# endpoint runs in dry mode: it decides who would get what, renders every email
+# in full, throws the copy away and returns counts. Turning it on is one query
+# parameter, and it is deliberately not set here so that committing this file
+# cannot mail anybody.
+#
+# TO GO LIVE, in this order:
+#   1. Leave it dry for one week. Read the `planned` counts in the Actions log.
+#   2. Then add ONE kind at a time, starting with the least dangerous:
+#        ...&send=1&only=welcome
+#      Watch a real purchase land, read the mail yourself, then add the next.
+#   3. `only=` accepts welcome | tradefit | rescue | winback.
+#      `backfill=1` additionally allows messages to subscribers older than their
+#      normal window. Do NOT use it on a first live run: it is how you mail your
+#      whole back catalogue by accident.
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# THERE IS NO `push:` TRIGGER, ON PURPOSE.
+# weekly-feed.yml has one, and editing that file on main sends real email to
+# real subscribers (KB/02 landmine L-12). daily-nurture.yml has one too, and
+# fires prospect mail on any edit. This file must be editable without anything
+# leaving the building, so it is schedule and manual-dispatch only. Do not add
+# a push trigger to it.
+#
+# CADENCE. Hourly on weekday daytimes, so a purchase gets its welcome inside an
+# hour rather than a day. The endpoint is idempotent (an R2 ledger records each
+# message per subscriber and MIN_GAP_DAYS keeps two messages apart), so a run
+# that repeats or a run that GitHub drops costs nothing. Scheduled runs are
+# best-effort and GitHub drops them under load (KB/01 §3), which is exactly why
+# the cadence is hourly rather than daily: the next one picks it up.
+#
+# It runs at :20 past, deliberately away from :00. Nothing else in this repo
+# runs at :20, and on-the-hour crons are peak contention.
+
+on:
+  schedule:
+    - cron: "20 12-22 * * 1-5"   # hourly, 12:20-22:20 UTC, weekdays (~8am-6pm ET)
+  workflow_dispatch:
+    inputs:
+      send:
+        description: "Actually send. Leave false for a dry run."
+        type: boolean
+        default: false
+      only:
+        description: "Restrict to one kind: welcome, tradefit, rescue, winback"
+        type: string
+        default: ""
+      backfill:
+        description: "Allow messages to subscribers older than their window. Dangerous."
+        type: boolean
+        default: false
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: lifecycle
+  cancel-in-progress: false
+
+jobs:
+  lifecycle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run the lifecycle sender (DRY RUN unless dispatched with send=true)
+        env:
+          # Through the environment, never interpolated into the script body.
+          # ${{ }} inside `run:` is textual substitution and a value containing a
+          # quote or a semicolon becomes shell. Nothing here is attacker-supplied
+          # today, but a public repo is the wrong place to leave that pattern
+          # lying around for the next person to copy.
+          EVENT: ${{ github.event_name }}
+          IN_SEND: ${{ inputs.send }}
+          IN_BACKFILL: ${{ inputs.backfill }}
+          IN_ONLY: ${{ inputs.only }}
+        run: |
+          set -euo pipefail
+          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
+
+          # A scheduled run is ALWAYS a dry run. Only an explicit manual
+          # dispatch can send, and only when the box is ticked. github.event_name
+          # is not spoofable from a commit.
+          Q=""
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            [ "${IN_SEND:-false}" = "true" ] && Q="${Q}&send=1"
+            [ "${IN_BACKFILL:-false}" = "true" ] && Q="${Q}&backfill=1"
+            case "${IN_ONLY:-}" in
+              welcome|tradefit|rescue|winback) Q="${Q}&only=${IN_ONLY}" ;;
+              "") ;;
+              *) echo "::error::only= must be welcome, tradefit, rescue or winback"; exit 1 ;;
+            esac
+          fi
+
+          # Counts only. This log is world-readable: the repo is public. The
+          # endpoint returns no address, name, token or rendered copy, and the
+          # jq filter is a second line of defence rather than the only one.
+          curl -fsS -X POST -H "Authorization: Bearer $OIDC" \
+            "https://masspermits.com/api/lifecycle-send?_=1${Q}" \
+            | jq '{ok, mode, subscribers, considered, planned, sent, rendered,
+                   capped, errors, checkpoints, have_lifecycle, have_tradefit,
+                   have_facts, tradefit_age_days, facts_age_days, reasons}'
+          echo ""

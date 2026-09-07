@@ -1,0 +1,211 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Stow",
+ "slug": "stow",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/stow",
+ "feed_url": "https://masspermits.com/feed/stow.json",
+ "status": "live",
+ "n_total": 20,
+ "n_window": 20,
+ "n_long_window": 20,
+ "as_of": "2026-09-04",
+ "oldest": "2026-08-24",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 9,
+   "page": "/permits/stow-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 5,
+   "page": "/permits/stow-plumbing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 4,
+   "page": "/permits/stow-hvac"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 2,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 20,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Walnut Ridge Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Red Acre Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Red Acre Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hiley Brook Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Gates Lane",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Great Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wildwood Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Sandy Brook Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Great Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Barton Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "West Acton Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Heather Lane",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Taylor Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Elaine Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Randall Road",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "High Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "High Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Cricket Court",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Kettell Plain Road",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Farm Road",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Stow, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

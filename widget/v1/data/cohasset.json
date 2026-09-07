@@ -1,0 +1,363 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Cohasset",
+ "slug": "cohasset",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/cohasset",
+ "feed_url": "https://masspermits.com/feed/cohasset.json",
+ "status": "live",
+ "n_total": 736,
+ "n_window": 124,
+ "n_long_window": 370,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 36,
+   "page": "/permits/cohasset-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 33,
+   "page": "/permits/cohasset-electrical"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 24,
+   "page": "/permits/cohasset-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 14,
+   "page": "/permits/cohasset-building"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 11,
+   "page": "/permits/cohasset-plumbing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 2,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 124,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "North Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Locust Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Heather Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Beechwood St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Building",
+   "ts": "building",
+   "s": "Ripley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Ripley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hill St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ripley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Forest Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "North Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ox Pasture Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Old Pasture Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Howe Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Doane St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Howe Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Atlantic Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ripley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Ripley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Ox Pasture Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Black Horse Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Summer St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Howard Gleason Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Rust Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Lamberts Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Forest Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Sohier St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Jerusalem Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Rust Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Church St",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Cohasset, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

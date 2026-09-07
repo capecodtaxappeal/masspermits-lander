@@ -1,0 +1,308 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Provincetown",
+ "slug": "provincetown",
+ "kind": "town",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/provincetown",
+ "feed_url": "https://masspermits.com/feed/provincetown.json",
+ "status": "live",
+ "n_total": 226,
+ "n_window": 28,
+ "n_long_window": 90,
+ "as_of": "2026-08-01",
+ "oldest": "2026-03-01",
+ "window_from": "2026-07-03",
+ "window_to": "2026-08-01",
+ "trades": [
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 9,
+   "page": "/permits/provincetown-windows-doors-siding"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 4,
+   "page": "/permits/provincetown-kitchen-bath"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 3,
+   "page": "/permits/provincetown-solar"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 28,
+  "median": 19600,
+  "p25": 10098,
+  "p75": 76740
+ },
+ "n_valued": 28,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Point St",
+   "v": 6600
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Commercial St",
+   "v": 14545
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Nelson Ave",
+   "v": 56000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Point St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Commercial St, Unit",
+   "v": 1897
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Franklin St",
+   "v": 24095
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Sandy Hill Ln, Unit Ub",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Commercial St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Sandy Hill Ln, Unit Ub",
+   "v": 20200
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Bayberry Ave",
+   "v": 12062
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Bradford St, Unit Ua",
+   "v": 38459
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Commercial St",
+   "v": 73159
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Seashore Park Dr, Unit Ue",
+   "v": 10131
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mayflower Ave, Unit",
+   "v": 87480
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Bradford St",
+   "v": 100000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Mayflower Ave",
+   "v": 4000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Commercial St",
+   "v": 19000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Commercial St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Commercial St, Unit Ua",
+   "v": 18000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Bradford St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Commercial St",
+   "v": 11101
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Alden St, Unit",
+   "v": 45000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Commercial St",
+   "v": 125000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Bradford St, Unit",
+   "v": 70473
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Franklin St",
+   "v": 615580
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Mayflower Ave, Unit",
+   "v": 115000
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Bayberry Ave",
+   "v": 220800
+  },
+  {
+   "d": "2026-08-01",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Bayberry Ave",
+   "v": 4166400
+  }
+ ],
+ "sources": [
+  "Provincetown, MA"
+ ],
+ "capped": false,
+ "age_days": 37
+}

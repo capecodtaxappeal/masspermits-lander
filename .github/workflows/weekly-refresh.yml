@@ -766,7 +766,7 @@ jobs:
         run: |
           set -euo pipefail
           missing=""
-          for f in scraper.py hosted_refresh.py build_bundle.py export_lander.py                    seo_build.py blog_build.py blog_voice.py subtype_pages.py                    research_stats.py research_pages.py pr_report.py town_visual.py                    fetch_cambridge.py fetch_worcester.py fetch_civicplus.py                    fetch_plymouth.py fetch_reading.py fetch_sudbury.py                    fetch_amherst.py data/town_bounds.json data/town_guides.json; do
+          for f in entity.py scraper.py hosted_refresh.py build_bundle.py export_lander.py                    seo_build.py blog_build.py blog_voice.py subtype_pages.py                    research_stats.py research_pages.py pr_report.py town_visual.py                    fetch_cambridge.py fetch_worcester.py fetch_civicplus.py                    fetch_plymouth.py fetch_reading.py fetch_sudbury.py                    fetch_amherst.py data/town_bounds.json data/town_guides.json; do
             [ -f "$f" ] || missing="$missing $f"
           done
           if [ -n "$missing" ]; then
@@ -782,8 +782,8 @@ jobs:
           # a run immediately (see the paths-filtered push trigger) -- so on the
           # first deploy the tarball legitimately does not have it yet. Promote
           # it into the hard list above once a run reports it present.
-          for f in source_health.py; do
-            [ -f "$f" ] || echo "::warning::engine is missing $f -- per-source health tracking is OFF this run (see OPERATIONS.md 5.9)"
+          for f in source_health.py bundle_manifest.py; do
+            [ -f "$f" ] || echo "::warning::engine is missing $f -- observability degraded this run (see OPERATIONS.md 5.9)"
           done
 
       # The daily probe runs the scrape + site rebuild every day, but the
@@ -824,6 +824,63 @@ jobs:
           up "$(ls -t data/bundles/MassPermits-*-WEEKLY.zip  | head -1)" latest-weekly.zip  application/zip
           up "$(ls -t data/bundles/MassPermits-*-MONTHLY.zip | head -1)" latest-monthly.zip application/zip
           up "$(ls -t data/bundles/MassPermits-*-SAMPLE.zip  | head -1)" latest-sample.zip  application/zip
+
+      # ---- BUNDLE FINGERPRINT ------------------------------------------
+      # THE ONE FACT NOTHING IN THIS PIPELINE HAS EVER RECORDED: whether the
+      # file that just shipped contains DIFFERENT LEADS from the one that
+      # shipped last week, as opposed to merely different bytes.
+      #
+      # build_bundle.py:185 writes date.today() into MassPermits-Leads.html and
+      # into the zip filename, so the bytes — and therefore the etag, and
+      # therefore every freshness check that exists today — change every single
+      # day whether or not one new permit was scraped. Measured 2026-09-06 with
+      # `bundle_manifest.py --compare` on the real 2026-08-11 and 2026-08-13
+      # bundles: 3,965 of 5,687 distinct rows are identical, so 69.7% of the
+      # newer file is a repeat. Nothing counts that anywhere.
+      #
+      # --merge-status folds the fingerprint into status.json as `bundle`, so it
+      # travels inside refresh-status.json. NO NEW R2 KEY and NO ALLOWLIST
+      # CHANGE: a standalone bundle-manifest.json would have needed an entry in
+      # upload-bundle.js's ALLOWED_KEYS to be written and one in get-object.js's
+      # READABLE set to be read back, and both of those stay exactly as they are.
+      # Same trick, same reason, as source_health.py --merge-status below.
+      # Measured cost: refresh-status.json goes from ~0.9KB to ~1.2KB.
+      #
+      # AFTER the bundle upload, deliberately: this is observability and must
+      # never sit between a paying customer and their file. BEFORE the status
+      # upload, necessarily: the status PUT is what carries it to R2.
+      #
+      # `if: always()` is load-bearing rather than defensive. When the upload
+      # step above FAILS, this still fingerprints the locally built zip, the
+      # status still ships, and the gate then finds status.bundle.weekly.sha256
+      # disagreeing with the bytes actually in R2 — which is the B1 "the PUT did
+      # not land while the if:always() status PUT did" failure, named exactly,
+      # instead of surfacing three hours later as a mystery `stale_bundle`.
+      #
+      # continue-on-error, and bundle_manifest.py always exits 0: a fingerprint
+      # that cannot be computed must never be the reason a customer's file does
+      # not ship. Its absence degrades the gate to "row freshness unverifiable",
+      # which the gate reports in those words rather than treating as verified.
+      - name: Fingerprint the bundles (rows, not bytes)
+        if: always()
+        continue-on-error: true
+        run: |
+          [ -f bundle_manifest.py ] || { echo "bundle_manifest.py not in this engine tarball - skipping fingerprint"; exit 0; }
+          [ -f status.json ] || { echo "no status.json - the run died before scraping; nothing to fingerprint into"; exit 0; }
+          # Never pass an empty --weekly: `ls | head -1` yields "" when the build
+          # produced nothing, and Path("") resolves to the working DIRECTORY.
+          W="$(ls -t data/bundles/MassPermits-*-WEEKLY.zip  2>/dev/null | head -1)"
+          M="$(ls -t data/bundles/MassPermits-*-MONTHLY.zip 2>/dev/null | head -1)"
+          S="$(ls -t data/bundles/MassPermits-*-SAMPLE.zip  2>/dev/null | head -1)"
+          if [ -z "$W" ]; then
+            echo "::warning::no WEEKLY bundle on disk - nothing to fingerprint"
+            exit 0
+          fi
+          python -u bundle_manifest.py \
+            --weekly "$W" \
+            ${M:+--monthly "$M"} \
+            ${S:+--sample "$S"} \
+            --status status.json --merge-status 2>&1 | tee -a run.log
 
       # ---- SOURCE-LEVEL CONTINUITY -------------------------------------
       # The coverage gate above is deliberately tolerant: one town going dark is

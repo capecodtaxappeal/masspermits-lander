@@ -1,0 +1,363 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Hanson",
+ "slug": "hanson",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/hanson",
+ "feed_url": "https://masspermits.com/feed/hanson.json",
+ "status": "live",
+ "n_total": 499,
+ "n_window": 91,
+ "n_long_window": 244,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 32,
+   "page": "/permits/hanson-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 25,
+   "page": "/permits/hanson-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 17,
+   "page": "/permits/hanson-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 12,
+   "page": "/permits/hanson-gas"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 4,
+   "page": "/permits/hanson-hvac"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 91,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Woodbine Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pierce Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Arlene St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Arlene St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Brook St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Brook St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Stonebridge Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Brook St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pine Grove Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Birchbark Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Woodbine Avenue Ext",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Brook St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Big Rock Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Monponsett St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Brook St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Whitman St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Winter St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tavern Waye",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Union Park St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lakeside Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Brook St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Cross St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Arlene St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Indian Head St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Indian Head St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Liberty St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Princeton Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Maquan St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "King St",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Winter Ter",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "William Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "William Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lakeside Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Helen Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Indian Head St",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Crescent Pl",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Brookside Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Captain Nathaniel Dr",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Hanson, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

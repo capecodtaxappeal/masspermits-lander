@@ -1,0 +1,363 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Milton",
+ "slug": "milton",
+ "kind": "town",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/milton",
+ "feed_url": "https://masspermits.com/feed/milton.json",
+ "status": "live",
+ "n_total": 1452,
+ "n_window": 261,
+ "n_long_window": 820,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 87,
+   "page": "/permits/milton-electrical"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 87,
+   "page": "/permits/milton-renovation-remodel"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 41,
+   "page": "/permits/milton-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 24,
+   "page": "/permits/milton-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 15,
+   "page": "/permits/milton-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 6,
+   "page": "/permits/milton-hvac"
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 261,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Governors Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Blue Hill Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Old Farm Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Webster Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Adams St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pagoda St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Smith Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Denmark Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Brush Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Blue Hills Pw",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Canton Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Canton Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Canton Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Brush Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Brook Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ford Ranch Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Carisbrooke Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lyman Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Spafford Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "West Side Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Harland St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Brook Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Garden St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Harland St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Edge Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Randolph Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Reedsdale Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Gulliver St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "St Agatha Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Grafton Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Pagoda St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Meagher Av",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Gulliver St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Audubon Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Loew Cr",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Adams St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Gordon Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Nancy Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Highland St",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Milton, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

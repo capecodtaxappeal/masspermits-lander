@@ -26,6 +26,24 @@ const ALLOWED_KEYS = {
   // and none may ever be added — if this object ever needs a person's name
   // in it, that is the signal to stop, not to widen it.
   "source-health.json": "application/json",
+  // KB/07 Stage B1 — the hosted portal's page body. The SAME dashboard HTML
+  // that already ships inside latest-weekly.zip, written to disk by
+  // build_bundle.py next to the ZIP and shipped by an adjacent `up` call in
+  // weekly-refresh.yml's "Ship bundles to R2" step. functions/leads.js streams
+  // it to an authenticated subscriber; nobody else can read it, because it is
+  // deliberately NOT in get-object.js's READABLE set and never will be.
+  //
+  // Widening this map is normally the wrong move, so state why this one is not:
+  // a valid OIDC caller is this repo's main branch, which ALREADY controls the
+  // byte-identical dashboard inside the ZIP that the same customer opens on
+  // their own machine. This grants CI no trust it did not already hold, adds no
+  // read path, and touches none of the four permanent exclusions below.
+  //
+  // ADJACENCY IS LOAD-BEARING (KB/07 §2.4): the portal proves the page and the
+  // download came from one run by comparing their R2 `uploaded` times and going
+  // amber past a 15-minute gap. That check only works while this object is
+  // shipped by an `up` line immediately next to the WEEKLY zip's.
+  "latest-weekly.html": "text/html",
 };
 // STILL EXCLUDED, deliberately and permanently: subscribers.json,
 // cold-queue.json, suppression.json, the engine tarball. A valid OIDC

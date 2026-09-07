@@ -1,0 +1,375 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Ipswich",
+ "slug": "ipswich",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/ipswich",
+ "feed_url": "https://masspermits.com/feed/ipswich.json",
+ "status": "live",
+ "n_total": 1023,
+ "n_window": 159,
+ "n_long_window": 523,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 53,
+   "page": "/permits/ipswich-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 36,
+   "page": "/permits/ipswich-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 21,
+   "page": "/permits/ipswich-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 21,
+   "page": "/permits/ipswich-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 9,
+   "page": "/permits/ipswich-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 5,
+   "page": "/permits/ipswich-hvac"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 159,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Topsfield Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lakemans Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Skytop Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Drumlin Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Cape Ann Cr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "County Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Lafayette Rd Unit Str",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Hillside Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Lakemans Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Pine St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Clark Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Linebrook Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lakemans Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lakemans Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Linebrook Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Estes St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Central St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Argilla Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Linebrook Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lillian Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Central St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Lakemans Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Hodgkins Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Island Park Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "County St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Congress St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Hodgkins Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Intervale Wy",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Congress St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Cape Ann Cr",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South Village Green",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wayne Av",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Linebrook Rd",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Ipswich, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

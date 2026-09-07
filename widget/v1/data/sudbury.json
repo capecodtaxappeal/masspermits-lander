@@ -1,0 +1,380 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Sudbury",
+ "slug": "sudbury",
+ "kind": "town",
+ "region": "MetroWest & 495",
+ "page_url": "https://masspermits.com/permits/sudbury",
+ "feed_url": "https://masspermits.com/feed/sudbury.json",
+ "status": "live",
+ "n_total": 296,
+ "n_window": 101,
+ "n_long_window": 282,
+ "as_of": "2026-08-31",
+ "oldest": "2026-06-01",
+ "window_from": "2026-08-02",
+ "window_to": "2026-08-31",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 44,
+   "page": "/permits/sudbury-roofing"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 18,
+   "page": "/permits/sudbury-renovation-remodel"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 16,
+   "page": "/permits/sudbury-kitchen-bath"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 7,
+   "page": "/permits/sudbury-solar"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 6,
+   "page": "/permits/sudbury-deck-porch"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 5,
+   "page": "/permits/sudbury-windows-doors-siding"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 3,
+   "page": "/permits/sudbury-hvac"
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 100,
+  "median": 24361,
+  "p25": 12750,
+  "p75": 45445
+ },
+ "n_valued": 100,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Lincoln Rd",
+   "v": 17502
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Bridle Path",
+   "v": 12545
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Haynes Rd",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Crescent Ln",
+   "v": 19466
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Widow Rites Ln",
+   "v": 35000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Clark Rd",
+   "v": 95000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Boston Post Rd",
+   "v": 28800
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Allen Pl",
+   "v": 42993
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Peakham Rd",
+   "v": 100190
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Birchwood Ave",
+   "v": 4020
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Pratts Mill Rd",
+   "v": 24612
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Wolbach Rd",
+   "v": 29728
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Belcher Dr",
+   "v": 29756
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Concord Rd",
+   "v": 12818
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Summer St",
+   "v": 18000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Twin Meadow Ln",
+   "v": 139434
+  },
+  {
+   "d": "2026-08-26",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Baldwin Dr",
+   "v": 4300
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Warren Rd",
+   "v": 11252
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Scotts Wood Dr",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Maynard Farm Cir",
+   "v": 120000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Concord Rd",
+   "v": 75180
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Other",
+   "ts": "other",
+   "s": "Puritan Ln",
+   "v": 3825
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Phillips Rd",
+   "v": 45000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Puffer Ln",
+   "v": 116000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Boston Post Rd",
+   "v": 53912
+  },
+  {
+   "d": "2026-08-26",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Old Coach Rd",
+   "v": 22000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Cutler Farm Rd",
+   "v": 11201
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Bridle Path",
+   "v": 42600
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Blueberry Hill Ln",
+   "v": 13279
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Morse Rd",
+   "v": 36950
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Hudson Rd",
+   "v": 7000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Old Meadow Rd",
+   "v": 15800
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Old Framingham Rd",
+   "v": 6254
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Peakham Rd",
+   "v": 32460
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Dutton Rd",
+   "v": 2958
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Phillips Rd",
+   "v": 19393
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Moran Cir",
+   "v": 18900
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Normandy Dr",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Oakwood Ave",
+   "v": 27250
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cider Mill Rd",
+   "v": 93000
+  }
+ ],
+ "sources": [
+  "Sudbury, MA"
+ ],
+ "capped": false,
+ "age_days": 7
+}

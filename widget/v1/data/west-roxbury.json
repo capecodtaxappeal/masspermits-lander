@@ -1,0 +1,404 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "West Roxbury",
+ "slug": "west-roxbury",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/west-roxbury",
+ "feed_url": "https://masspermits.com/feed/west-roxbury.json",
+ "status": "live",
+ "n_total": 343,
+ "n_window": 168,
+ "n_long_window": 343,
+ "as_of": "2026-09-03",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 38,
+   "page": "/permits/west-roxbury-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 27,
+   "page": "/permits/west-roxbury-plumbing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 24,
+   "page": "/permits/west-roxbury-hvac"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 13,
+   "page": "/permits/west-roxbury-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 12,
+   "page": "/permits/west-roxbury-windows-doors-siding"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 10,
+   "page": "/permits/west-roxbury-solar"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 10,
+   "page": "/permits/west-roxbury-gas"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 7,
+   "page": "/permits/west-roxbury-kitchen-bath"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 5,
+   "page": "/permits/west-roxbury-renovation-remodel"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 167,
+  "median": 7000,
+  "p25": 2500,
+  "p75": 19260
+ },
+ "n_valued": 167,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Sherbrook St",
+   "v": 6897
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Chesbrough Rd",
+   "v": 3116
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Bertson Av",
+   "v": 2754
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Cricket Ln",
+   "v": 12000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Alaric St",
+   "v": 11375
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Rockland St",
+   "v": 5582
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Landseer St",
+   "v": 3500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "New Haven St",
+   "v": 2000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Hollywood Rd",
+   "v": 16900
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Belle Av",
+   "v": 17000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Parklawn Rd",
+   "v": 2000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Grayfield Av",
+   "v": 8000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Woodard Rd",
+   "v": 9060
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Glenellen Rd",
+   "v": 1676
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Manthorne Rd",
+   "v": 62890
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Overlook Rd",
+   "v": 4959
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Maple St",
+   "v": 49500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wren St",
+   "v": 1800
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Stimson St",
+   "v": 17848
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Birchwood St",
+   "v": 32669
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Broadlawn Pk",
+   "v": 3749
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Newfield St",
+   "v": 7000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Weld St",
+   "v": 5700
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Westover St",
+   "v": 80000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Anderer Ln",
+   "v": 8000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Bellevue St",
+   "v": 115000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Starling St",
+   "v": 37500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Lagrange St",
+   "v": 20560
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Vermont St",
+   "v": 7500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Greaton Rd",
+   "v": 30000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Greaton Rd",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Richwood St",
+   "v": 42600
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rendall Rd",
+   "v": 52801
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Washington St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-30",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Vfw Pw",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Manthorne Rd",
+   "v": 1200
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Spring St",
+   "v": 378500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Wren St",
+   "v": 213200
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Lagrange St",
+   "v": 8100
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Woodbrier Rd",
+   "v": 150
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

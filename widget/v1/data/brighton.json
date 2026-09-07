@@ -1,0 +1,410 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Brighton",
+ "slug": "brighton",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/brighton",
+ "feed_url": "https://masspermits.com/feed/brighton.json",
+ "status": "live",
+ "n_total": 246,
+ "n_window": 137,
+ "n_long_window": 246,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 38,
+   "page": "/permits/brighton-electrical"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 18,
+   "page": "/permits/brighton-new-construction"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 13,
+   "page": "/permits/brighton-plumbing"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 12,
+   "page": "/permits/brighton-renovation-remodel"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 10,
+   "page": "/permits/brighton-hvac"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 9,
+   "page": "/permits/brighton-windows-doors-siding"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 9,
+   "page": "/permits/brighton-roofing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 7,
+   "page": "/permits/brighton-gas"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 5,
+   "page": "/permits/brighton-kitchen-bath"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 4,
+   "page": "/permits/brighton-deck-porch"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 135,
+  "median": 8500,
+  "p25": 3900,
+  "p75": 27690
+ },
+ "n_valued": 135,
+ "n_zero_valued": 2,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Lane Pk",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Commonwealth Av",
+   "v": 9894
+  },
+  {
+   "d": "2026-09-02",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Saint Thomas More Rd",
+   "v": 1720
+  },
+  {
+   "d": "2026-09-02",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Saint Thomas More Rd",
+   "v": 1720
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hunnewell Av",
+   "v": 9500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Litchfield St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Kenrick St",
+   "v": 12943
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "S Hobart St",
+   "v": 9710
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Etna St",
+   "v": 4500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Washington St",
+   "v": 1895
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Lane Pk",
+   "v": 25000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Corey Rd",
+   "v": 350000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Warren St",
+   "v": 80000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Kirkwood Rd",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tremont St",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Breck Av",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Warren St",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Colwell Av",
+   "v": 6725
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Colwell Av",
+   "v": 45000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Chestnut Hill Av",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Monastery Rd",
+   "v": 18000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Other",
+   "ts": "other",
+   "s": "Saint Thomas More Rd",
+   "v": 43229
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Radnor Rd",
+   "v": 50000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Donnybrook Rd",
+   "v": 1200
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Beacon St",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Commonwealth Av",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Commonwealth Ct",
+   "v": 151060
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Seager Ct",
+   "v": 4238
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Kilsyth Rd",
+   "v": 99160
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Antwerp St",
+   "v": 12000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Washington St",
+   "v": 19500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Antwerp St",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bothwell Rd",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Other",
+   "ts": "other",
+   "s": "Sutherland Rd",
+   "v": 100000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Etna St",
+   "v": 30000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Warren St",
+   "v": 80000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Newton St",
+   "v": 500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Perthshire Rd",
+   "v": 40000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Beacon St",
+   "v": 4005
+  },
+  {
+   "d": "2026-08-27",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Beacon St",
+   "v": 4005
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

@@ -1,0 +1,374 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Foxborough",
+ "slug": "foxborough",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/foxborough",
+ "feed_url": "https://masspermits.com/feed/foxborough.json",
+ "status": "live",
+ "n_total": 1267,
+ "n_window": 241,
+ "n_long_window": 668,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 70,
+   "page": "/permits/foxborough-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 65,
+   "page": "/permits/foxborough-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 30,
+   "page": "/permits/foxborough-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 29,
+   "page": "/permits/foxborough-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 20,
+   "page": "/permits/foxborough-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 11,
+   "page": "/permits/foxborough-hvac"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 4,
+   "page": "/permits/foxborough-sign-awning"
+  }
+ ],
+ "value": {
+  "n_valued": 235,
+  "median": 7000,
+  "p25": 2450,
+  "p75": 20000
+ },
+ "n_valued": 235,
+ "n_zero_valued": 6,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Lyon Lane",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Lyon Lane",
+   "v": 500
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Creighton Avenue",
+   "v": 5500
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lawton Lane",
+   "v": 20935
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Spruce Street",
+   "v": 339726
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "South Street",
+   "v": 26694
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Robert Street",
+   "v": 26582
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Washburn Drive",
+   "v": 66296
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Washburn Drive",
+   "v": 46000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lyon Lane",
+   "v": 4800
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street",
+   "v": 57750
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Patriot Place",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Kinsman Way",
+   "v": 24000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Merigan Way",
+   "v": 14250
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Patriot Place",
+   "v": 1
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Edwards Road",
+   "v": 15288
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Main Street",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Cocasset Street",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Cocasset Street",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Maura Elizabeth Lane",
+   "v": 32000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Patriot Place",
+   "v": 1
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Chestnut Street",
+   "v": 20651
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Patriot Place",
+   "v": 21329
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Bicknell Street",
+   "v": 12035
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Foxborough Boulevard",
+   "v": 2000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Sheehan Way",
+   "v": 20500
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Patriot Place",
+   "v": 28000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Beach Street",
+   "v": 20000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Creighton Avenue",
+   "v": 5500
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Patriot Place",
+   "v": 11800
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Mechanic Street",
+   "v": 200
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Patriot Place",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Fisher Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Shea Lane",
+   "v": 800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cannon Forge Drive",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Cannon Forge Drive",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ridge Road",
+   "v": 22000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Summer Street",
+   "v": 33788
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "James Street",
+   "v": 33978
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Beaumonts Pond Drive",
+   "v": 2750
+  }
+ ],
+ "sources": [
+  "Foxborough, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

@@ -1,0 +1,398 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Jamaica Plain",
+ "slug": "jamaica-plain",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/jamaica-plain",
+ "feed_url": "https://masspermits.com/feed/jamaica-plain.json",
+ "status": "live",
+ "n_total": 316,
+ "n_window": 138,
+ "n_long_window": 316,
+ "as_of": "2026-09-03",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 30,
+   "page": "/permits/jamaica-plain-electrical"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 23,
+   "page": "/permits/jamaica-plain-windows-doors-siding"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 21,
+   "page": "/permits/jamaica-plain-plumbing"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 19,
+   "page": "/permits/jamaica-plain-roofing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 13,
+   "page": "/permits/jamaica-plain-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 7,
+   "page": "/permits/jamaica-plain-renovation-remodel"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 6,
+   "page": "/permits/jamaica-plain-kitchen-bath"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 5,
+   "page": "/permits/jamaica-plain-gas"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 3,
+   "page": "/permits/jamaica-plain-deck-porch"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 3,
+   "page": "/permits/jamaica-plain-solar"
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 136,
+  "median": 9100,
+  "p25": 3000,
+  "p75": 27962
+ },
+ "n_valued": 136,
+ "n_zero_valued": 2,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Hampstead Rd",
+   "v": 21426
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wyman St",
+   "v": 2500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Bolster St",
+   "v": 162185
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Neillian Cr",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Neillian Cr",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Centre St",
+   "v": 6056
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Germania St",
+   "v": 30000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bismarck St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Westchester Rd",
+   "v": 800
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Wyman St",
+   "v": 50000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Barbara St",
+   "v": 65000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Slocum Rd",
+   "v": 6048
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "South St",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Carolina Av",
+   "v": 47571
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Pond St",
+   "v": 500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Forbes St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Chilcott Pl",
+   "v": 9200
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Round Hill St",
+   "v": 14500
+  },
+  {
+   "d": "2026-08-29",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ackley Pl",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Chestnut Av",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Hampstead Rd",
+   "v": 500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Hampstead Rd",
+   "v": 500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "South St",
+   "v": 450
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Centre St",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Germania St",
+   "v": 1
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Rockview St",
+   "v": 27498
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Centre St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Chilcott Pl",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Chestnut Av",
+   "v": 72300
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Westchester Rd",
+   "v": 11200
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Eliot St",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Forest Hills St",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Perkins St",
+   "v": 26806
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hampstead Rd",
+   "v": 4044
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bismarck St",
+   "v": 75000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Parkton Rd",
+   "v": 55000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Bourne St",
+   "v": 31965
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Other",
+   "ts": "other",
+   "s": "Adelaide Te",
+   "v": 21497
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Wyman St",
+   "v": 55749
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Walnut Av",
+   "v": 115000
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

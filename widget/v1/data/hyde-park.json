@@ -1,0 +1,404 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Hyde Park",
+ "slug": "hyde-park",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/hyde-park",
+ "feed_url": "https://masspermits.com/feed/hyde-park.json",
+ "status": "live",
+ "n_total": 286,
+ "n_window": 166,
+ "n_long_window": 286,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 44,
+   "page": "/permits/hyde-park-electrical"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 24,
+   "page": "/permits/hyde-park-solar"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 17,
+   "page": "/permits/hyde-park-plumbing"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 16,
+   "page": "/permits/hyde-park-roofing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 16,
+   "page": "/permits/hyde-park-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 11,
+   "page": "/permits/hyde-park-renovation-remodel"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 8,
+   "page": "/permits/hyde-park-windows-doors-siding"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 6,
+   "page": "/permits/hyde-park-gas"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 4,
+   "page": "/permits/hyde-park-kitchen-bath"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 163,
+  "median": 10000,
+  "p25": 3754,
+  "p75": 28196
+ },
+ "n_valued": 163,
+ "n_zero_valued": 3,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "W Milton St",
+   "v": 300000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Garfield Av",
+   "v": 11608
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Arlington St",
+   "v": 31505
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Badger Rd",
+   "v": 75000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Huntington Av",
+   "v": 3878
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Prescott St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Windham Rd",
+   "v": 2000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "West St",
+   "v": 20000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Williams Av",
+   "v": 19800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Sherrin St",
+   "v": 9897
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Williams Av",
+   "v": 25000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Yuill Ci",
+   "v": 78600
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Garfield Av",
+   "v": 12900
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Dodge Rd",
+   "v": 2000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bradlee St",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Danny Rd",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Faraday St",
+   "v": 4000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Norris Rd",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Bradlee St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Other",
+   "ts": "other",
+   "s": "Summit St",
+   "v": 16469
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Needham Rd",
+   "v": 8367
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Wood Av",
+   "v": 7350
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Dana Av",
+   "v": 37000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Prescott St",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Neponset Av",
+   "v": 103200
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Neponset Av",
+   "v": 103200
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "River St",
+   "v": 28000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Chesterfield St",
+   "v": 114600
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Bradlee St",
+   "v": 77400
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Davison St",
+   "v": 131700
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Faraday St",
+   "v": 4500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Danny Rd",
+   "v": 600000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Prospect Ci",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "West St",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Poplar St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Other",
+   "ts": "other",
+   "s": "Webster St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Windham Rd",
+   "v": 57300
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Alwin St",
+   "v": 30000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "West St",
+   "v": 29000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Bradlee St",
+   "v": 77400
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

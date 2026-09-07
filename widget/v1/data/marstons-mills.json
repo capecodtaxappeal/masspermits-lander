@@ -1,0 +1,323 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Marstons Mills",
+ "slug": "marstons-mills",
+ "kind": "village",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/marstons-mills",
+ "feed_url": "https://masspermits.com/feed/marstons-mills.json",
+ "status": "live",
+ "n_total": 152,
+ "n_window": 31,
+ "n_long_window": 151,
+ "as_of": "2026-07-31",
+ "oldest": "2026-05-01",
+ "window_from": "2026-07-02",
+ "window_to": "2026-07-31",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 9,
+   "page": "/permits/marstons-mills-roofing"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 6,
+   "page": "/permits/marstons-mills-building"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 4,
+   "page": "/permits/marstons-mills-deck-porch"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 3,
+   "page": "/permits/marstons-mills-windows-doors-siding"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 3,
+   "page": "/permits/marstons-mills-solar"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 30,
+  "median": 19000,
+  "p25": 10066,
+  "p75": 39918
+ },
+ "n_valued": 30,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-07-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cedar Tree Neck Road",
+   "v": 16000
+  },
+  {
+   "d": "2026-07-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Fairhaven Lane",
+   "v": null
+  },
+  {
+   "d": "2026-07-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Route",
+   "v": 700000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Whistleberry Drive",
+   "v": 10266
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Mistic Drive",
+   "v": 43600
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Camelback Road",
+   "v": 9064
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tanbark Road",
+   "v": 20000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Santuit- Newtown Road",
+   "v": 58373
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Acadia Drive",
+   "v": 41557
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Goldenrod Lane",
+   "v": 15000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Hollidge Hill Lane",
+   "v": 28875
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Watershed Way",
+   "v": 33000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Watershed Way",
+   "v": 20000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Olde Homestead Drive",
+   "v": 50000
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Saddler Lane",
+   "v": 7000
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Lauries Lane",
+   "v": 3000
+  },
+  {
+   "d": "2026-07-16",
+   "t": "Building",
+   "ts": "building",
+   "s": "Santuit- Newtown Road",
+   "v": 15599
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "River Road",
+   "v": 7500
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Building",
+   "ts": "building",
+   "s": "Appaloosa Way",
+   "v": 4046
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ost.-W.Barn. Rd",
+   "v": 35000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Mockingbird Lane",
+   "v": 5818
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Santuit- Newtown Road",
+   "v": 49000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Stone Bridge Lane",
+   "v": 7500
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Building",
+   "ts": "building",
+   "s": "Long Pond Road",
+   "v": 84400
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Ost.-W.Barn. Rd",
+   "v": 18000
+  },
+  {
+   "d": "2026-07-09",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Peony Lane",
+   "v": 11572
+  },
+  {
+   "d": "2026-07-07",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Hi River Road",
+   "v": 28150
+  },
+  {
+   "d": "2026-07-07",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Bramble Path",
+   "v": 27840
+  },
+  {
+   "d": "2026-07-07",
+   "t": "Building",
+   "ts": "building",
+   "s": "Fairhaven Lane",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Willington Avenue",
+   "v": 15599
+  },
+  {
+   "d": "2026-07-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Jones Road",
+   "v": 227000
+  }
+ ],
+ "sources": [
+  "Barnstable, MA"
+ ],
+ "capped": false,
+ "age_days": 38
+}

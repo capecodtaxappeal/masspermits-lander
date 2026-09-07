@@ -1,0 +1,423 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Embeddable Massachusetts building-permit widget &mdash; MassPermits</title>
+<meta name="description" content="Show recent building permits for any of 77 Massachusetts locations on your own site. One line of HTML, no dependencies, no cookies, free under CC BY-NC 4.0.">
+<link rel="canonical" href="https://masspermits.com/widget/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Embeddable Massachusetts building-permit widget">
+<meta property="og:description" content="Recent building permits in your town, on your site. One line of HTML, no dependencies, free.">
+<meta property="og:url" content="https://masspermits.com/widget/">
+<meta property="og:site_name" content="MassPermits">
+<meta property="og:image" content="https://masspermits.com/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://masspermits.com/og.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128203;</text></svg>">
+<link rel="alternate" type="application/json" title="MassPermits widget manifest" href="/widget/v1/index.json">
+<style>
+:root{--ink:#e8eef5;--mut:#8aa0b6;--accent:#2dd4bf;--line:#2a3a4f;--bg:#0e1622;--panel:#16212f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:400 15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{
+ outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.site{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.brand{font-size:20px;font-weight:800;letter-spacing:-.3px;color:var(--ink)}.brand b{color:var(--accent)}
+header.site .cta{margin-left:auto}
+.cta{display:inline-block;background:var(--accent);color:#04201c;font-weight:800;
+ padding:11px 20px;border-radius:9px;font-size:15px}.cta.sm{padding:9px 16px;font-size:13px}
+.crumbs{font-size:12.5px;color:var(--mut);padding:14px 0 0}
+h1{font-size:32px;line-height:1.12;letter-spacing:-.5px;margin:20px 0 10px}
+h2{font-size:22px;margin:38px 0 10px;letter-spacing:-.2px}
+h3{font-size:16px;margin:22px 0 6px}
+.lead{font-size:17.5px;color:#c7d3e0;max-width:720px}
+.muted{color:var(--mut)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;
+ color:var(--mut);margin:0 0 4px;font-weight:600}
+select{width:100%;background:var(--bg);border:1px solid var(--line);
+ color:var(--ink);border-radius:8px;padding:9px 11px;font-size:14.5px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.row>div{flex:1 1 130px}
+pre{background:#0a1119;border:1px solid var(--line);border-radius:10px;padding:13px;
+ overflow-x:auto;font-size:12.5px;line-height:1.5;margin:8px 0;
+ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#cfe3ef}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;
+ background:#0a1119;border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+pre code{background:none;border:0;padding:0}
+button.copy{background:var(--accent);color:#04201c;border:0;border-radius:8px;
+ padding:9px 15px;font-weight:800;font-size:13px;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0}
+caption{text-align:left;color:var(--mut);font-size:12.5px;padding-bottom:8px}
+th{text-align:left;color:var(--mut);font-size:11px;text-transform:uppercase;
+ letter-spacing:.05em;padding:8px 8px 8px 0;border-bottom:1px solid var(--line)}
+td{padding:8px 8px 8px 0;border-bottom:1px solid #1c2737}
+td.n,th.n{text-align:right}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;
+ border:1px solid var(--line);border-radius:999px;padding:1px 7px;color:var(--mut)}
+.note{border:1px solid #5a4a1c;background:#241f10;color:#e8cf8a;border-radius:10px;
+ padding:12px 14px;margin:16px 0;font-size:14px}
+.note b{color:#f5e2ad}
+.scroll{overflow-x:auto}
+iframe.preview{width:100%;border:1px dashed var(--line);border-radius:12px;background:#fff;
+ min-height:330px;display:block}
+footer.site{border-top:1px solid var(--line);margin-top:44px;padding:20px 0 40px;
+ color:var(--mut);font-size:13px}
+ul.tight{margin:8px 0;padding-left:20px}ul.tight li{margin:5px 0}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://masspermits.com/widget/#page", "url": "https://masspermits.com/widget/", "name": "Embeddable Massachusetts building-permit widget", "description": "A free, dependency-free widget showing recent building permits in a Massachusetts town, for any website to embed.", "isPartOf": {"@id": "https://masspermits.com/#website"}, "publisher": {"@id": "https://masspermits.com/#org", "@type": "Organization", "name": "MassPermits"}, "license": "https://creativecommons.org/licenses/by-nc/4.0/", "dateModified": "2026-09-07"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MassPermits", "item": "https://masspermits.com/"}, {"@type": "ListItem", "position": 2, "name": "Embeddable widget", "item": "https://masspermits.com/widget/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does the widget cost?", "acceptedAnswer": {"@type": "Answer", "text": "Nothing. It is free to embed on any site under CC BY-NC 4.0, which requires attribution and rules out reselling the data itself."}}, {"@type": "Question", "name": "Which Massachusetts towns can I embed?", "acceptedAnswer": {"@type": "Answer", "text": "57 municipalities plus 6 Cape villages and 14 Boston neighbourhoods - 77 locations in all, each with at least 15 recent permits. Massachusetts has 351 municipalities, so most of the state is not here; a widget pointed at a town we do not publish says so and gives the reason, rather than showing an estimate."}}, {"@type": "Question", "name": "What happens if a town stops publishing?", "acceptedAnswer": {"@type": "Answer", "text": "The widget starts saying so on its own. Every embed loads its figures from masspermits.com at view time, and each location's data file carries its own freshness dates. Past 60 days with no new record the counts are suppressed and a coverage notice is shown instead - on every page that embedded it, without those pages being touched."}}, {"@type": "Question", "name": "Does the widget track visitors?", "acceptedAnswer": {"@type": "Answer", "text": "It sets no cookie, reads no storage and identifies nobody. It records one count per view - which town was shown and the domain of the site showing it - so we can tell whether the widget reaches anyone. Add data-analytics=\"off\" to switch that off; everything else works identically."}}, {"@type": "Question", "name": "Where do the numbers come from?", "acceptedAnswer": {"@type": "Answer", "text": "Public municipal building-permit records, recomputed at build time. Every gate, threshold and per-location figure is published at /widget/v1/evidence.json, and each location's payload is at /widget/v1/data/<slug>.json with CORS open."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "MassPermits town widget v1", "codeRepository": "https://masspermits.com/widget/v1.js", "programmingLanguage": "JavaScript", "runtimePlatform": "Web browser", "license": "https://creativecommons.org/licenses/by-nc/4.0/", "about": {"@id": "https://masspermits.com/#org", "@type": "Organization", "name": "MassPermits"}, "dateModified": "2026-09-07"}</script>
+</head><body><div class="wrap">
+<header class="site"><a class="brand" href="/">Mass<b>Permits</b></a>
+<a class="cta sm" href="/">Get leads &rarr;</a></header>
+<div class="crumbs"><a href="/">MassPermits</a> &rsaquo; Embeddable widget</div>
+
+<h1>Put your town&rsquo;s building permits on your own site</h1>
+<p class="lead">One line of HTML shows recent building-permit activity for a Massachusetts
+town &mdash; how many, which trades, the median declared value, and the latest filings with
+house numbers removed. It costs nothing, loads nothing from anyone but us, sets no cookie,
+and refreshes itself every week without you touching the page again.</p>
+
+<p class="muted">Built for the people already publishing about their own town: chambers of
+commerce, town news sites, realtors, supply houses, trade associations, building-department
+pages. Currently <b>77 locations</b> &mdash; 57 municipalities,
+6 Cape villages and 14 Boston neighbourhoods.
+Massachusetts has 351 municipalities, so most of the state is <em>not</em> here; a widget
+pointed at a town we do not publish says exactly that, and why.</p>
+
+<h2>Build your snippet</h2>
+<div class="card">
+ <div class="row">
+  <div><label for="w-town">Location</label><select id="w-town"><option value="massachusetts">Massachusetts (statewide)</option><option value="allston">Allston (Boston)</option><option value="amherst">Amherst</option><option value="attleboro">Attleboro</option><option value="avon">Avon</option><option value="barnstable">Barnstable</option><option value="bellingham">Bellingham</option><option value="boston">Boston</option><option value="bourne">Bourne</option><option value="boylston">Boylston</option><option value="braintree">Braintree</option><option value="bridgewater">Bridgewater</option><option value="brighton">Brighton (Boston)</option><option value="cambridge">Cambridge</option><option value="centerville">Centerville (village)</option><option value="charlestown">Charlestown (Boston)</option><option value="chatham">Chatham</option><option value="chestnut-hill">Chestnut Hill (Boston)</option><option value="chicopee">Chicopee</option><option value="cohasset">Cohasset</option><option value="colrain">Colrain</option><option value="concord">Concord</option><option value="cotuit">Cotuit (village)</option><option value="dorchester">Dorchester (Boston)</option><option value="east-boston">East Boston (Boston)</option><option value="easthampton">Easthampton</option><option value="easton">Easton</option><option value="fairhaven">Fairhaven</option><option value="falmouth">Falmouth</option><option value="foxborough">Foxborough</option><option value="granby">Granby</option><option value="groveland">Groveland</option><option value="hadley">Hadley</option><option value="hanson">Hanson</option><option value="hingham">Hingham</option><option value="hopedale">Hopedale</option><option value="hyannis">Hyannis (village)</option><option value="hyde-park">Hyde Park (Boston)</option><option value="ipswich">Ipswich</option><option value="jamaica-plain">Jamaica Plain (Boston)</option><option value="lexington">Lexington</option><option value="ludlow">Ludlow</option><option value="mansfield">Mansfield</option><option value="marstons-mills">Marstons Mills (village)</option><option value="mashpee">Mashpee</option><option value="mattapan">Mattapan (Boston)</option><option value="milton">Milton</option><option value="mission-hill">Mission Hill (Boston)</option><option value="newbury">Newbury</option><option value="north-reading">North Reading</option><option value="osterville">Osterville (village)</option><option value="otis">Otis</option><option value="plymouth">Plymouth</option><option value="provincetown">Provincetown</option><option value="randolph">Randolph</option><option value="reading">Reading</option><option value="rehoboth">Rehoboth</option><option value="rockland">Rockland</option><option value="roslindale">Roslindale (Boston)</option><option value="roxbury">Roxbury (Boston)</option><option value="sandwich">Sandwich</option><option value="somerville">Somerville</option><option value="south-boston">South Boston (Boston)</option><option value="stoughton">Stoughton</option><option value="stow">Stow</option><option value="sudbury">Sudbury</option><option value="taunton">Taunton</option><option value="townsend">Townsend</option><option value="truro">Truro</option><option value="wakefield">Wakefield</option><option value="waltham">Waltham</option><option value="wareham">Wareham</option><option value="west-barnstable">West Barnstable (village)</option><option value="west-bridgewater">West Bridgewater</option><option value="west-newbury">West Newbury</option><option value="west-roxbury">West Roxbury (Boston)</option><option value="westhampton">Westhampton</option><option value="worcester">Worcester</option></select></div>
+  <div><label for="w-trade">Trade</label><select id="w-trade"><option value="">All trades</option><option value="roofing">Roofing</option><option value="solar">Solar</option><option value="hvac">HVAC</option><option value="electrical">Electrical</option><option value="plumbing">Plumbing</option><option value="kitchen-bath">Kitchen/Bath</option><option value="windows-doors-siding">Windows/Doors/Siding</option><option value="pool-spa">Pool/Spa</option><option value="new-construction">New Construction</option><option value="deck-porch">Deck/Porch</option><option value="renovation-remodel">Renovation/Remodel</option></select></div>
+ </div>
+ <div class="row">
+  <div><label for="w-theme">Theme</label><select id="w-theme">
+    <option value="auto">Auto &mdash; follows the visitor</option>
+    <option value="light">Light</option><option value="dark">Dark</option></select></div>
+  <div><label for="w-rows">Permits listed</label><select id="w-rows">
+    <option>5</option><option selected>8</option><option>12</option><option>20</option>
+    </select></div>
+  <div><label for="w-compact">Compact</label>
+    <input type="checkbox" id="w-compact">
+    <span class="muted" style="font-size:13px">&nbsp;hide the stat tiles</span></div>
+ </div>
+ <p class="muted" id="w-ctx" style="font-size:13px;margin:4px 0 0"></p>
+</div>
+
+<div class="grid" style="margin-top:20px">
+ <div>
+  <h3>Preview</h3>
+  <iframe class="preview" id="w-prev" src="/widget/v1/t/allston.html"
+    title="Widget preview" loading="lazy" scrolling="no"></iframe>
+  <p class="muted" style="font-size:12.5px">The real widget, from the real files. What you
+  see is what your visitors get.</p>
+ </div>
+ <div>
+  <h3>Paste this</h3>
+  <pre><code id="snip-script"></code></pre>
+  <button class="copy" data-for="snip-script">Copy</button>
+  <p class="muted" style="font-size:12.5px;margin-top:10px">Renders where the tag sits and
+  resizes itself to fit.</p>
+
+  <h3>Or plain HTML, no JavaScript</h3>
+  <pre><code id="snip-iframe"></code></pre>
+  <button class="copy" data-for="snip-iframe">Copy</button>
+  <p class="muted" style="font-size:12.5px;margin-top:10px">For a CMS that strips scripts.
+  Fixed height &mdash; adjust to taste.</p>
+ </div>
+</div>
+
+<h3>Several widgets, one script</h3>
+<pre><code>&lt;div data-mp-permits="barnstable"&gt;&lt;/div&gt;
+&lt;div data-mp-permits="chatham" data-trade="roofing"&gt;&lt;/div&gt;
+&lt;script src="https://masspermits.com/widget/v1.js" async&gt;&lt;/script&gt;</code></pre>
+
+<h2>Options</h2>
+<div class="scroll"><table>
+<caption>Every option works as a <code>data-</code> attribute on the script or container,
+and as a query parameter on the iframe URL.</caption>
+<thead><tr><th>Attribute</th><th>Values</th><th>Default</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>data-town</code></td><td>a slug from the coverage table</td><td>&mdash;</td>
+    <td>required &mdash; which location to show</td></tr>
+<tr><td><code>data-trade</code></td><td><code>roofing</code>, <code>solar</code>,
+    <code>hvac</code>, <code>electrical</code>, <code>plumbing</code>,
+    <code>kitchen-bath</code>, <code>windows-doors-siding</code>, <code>pool-spa</code>,
+    <code>new-construction</code>, <code>deck-porch</code>,
+    <code>renovation-remodel</code></td><td>all trades</td>
+    <td>one trade only. If that trade has no permits in the window, the widget says so
+    rather than showing an empty box.</td></tr>
+<tr><td><code>data-theme</code></td><td><code>auto</code> &middot; <code>light</code>
+    &middot; <code>dark</code></td><td><code>auto</code></td>
+    <td>auto follows the visitor&rsquo;s own light/dark setting</td></tr>
+<tr><td><code>data-rows</code></td><td>1&ndash;25</td><td>8</td><td>permits listed</td></tr>
+<tr><td><code>data-compact</code></td><td><code>true</code></td><td>off</td>
+    <td>drops the stat tiles, keeps the list</td></tr>
+<tr><td><code>data-maxwidth</code></td><td>a CSS length</td><td><code>680px</code></td>
+    <td>caps the width; fluid below that</td></tr>
+<tr><td><code>data-analytics</code></td><td><code>off</code></td><td>on</td>
+    <td>stops the single view count described below</td></tr>
+</tbody></table></div>
+
+<h2>What it sends, and what it does not</h2>
+<div class="card"><ul class="tight">
+<li><b>No cookie, no storage, no fingerprint, no third party.</b> The widget loads two
+files from masspermits.com and nothing from anywhere else &mdash; no font, no image, no
+framework, no analytics vendor.</li>
+<li><b>One count per view.</b> We record which town was shown and the <em>domain</em> of
+the site showing it. Not the page, not the query string, not the visitor. It is the same
+first-party counter every page on masspermits.com uses, and it is the only way we can tell
+whether this reaches anyone. <code>data-analytics="off"</code> turns it off.</li>
+<li><b>Nothing is written to your page.</b> The script creates one iframe and sets its
+height. It reads no other element and defines no global but its own.</li>
+<li><b>Clicks are marked.</b> Links back to masspermits.com carry
+<code>utm_source=widget</code>, so widget traffic can be told apart from search traffic.</li>
+</ul></div>
+
+<h2>What is in it &mdash; and what is deliberately not</h2>
+<p>The widget publishes exactly what our <a href="/catalog.json">open-data catalog</a> and
+<a href="/feed/permits.json">public feeds</a> already publish for free: trade, issue date,
+street name with every house number removed, and the declared project value. It never
+publishes a contractor, an owner, a house number or a permit number &mdash; the build
+aborts rather than emit one.</p>
+<p>Every figure is computed from the corpus at build time, and the rule behind each one is
+published. <a href="/widget/v1/evidence.json">evidence.json</a> carries the gates, the
+thresholds, the row-cap detection and the per-location table behind the list below.
+<a href="/widget/v1/index.json">index.json</a> is the machine-readable manifest. Each
+location&rsquo;s payload sits at <code>/widget/v1/data/&lt;slug&gt;.json</code> with CORS
+open &mdash; you are welcome to build your own thing on it instead of using ours.</p>
+<ul class="tight">
+<li><b>Median declared value</b> is shown only where at least 8 permits in the window carry
+a value above zero. Many Massachusetts sources record a literal <code>0</code> or
+<code>1</code>; those rows are excluded and counted, never averaged in.</li>
+<li><b>Some sources cap what they hand us.</b> Where a count is a ceiling rather than a
+total, the widget shows &ldquo;at least N&rdquo; and says why.</li>
+<li><b>The window ends at that location&rsquo;s newest record</b>, not at today&rsquo;s
+date. A town whose records stopped in July reports a July window with its real dates,
+instead of an empty &ldquo;this month&rdquo;.</li>
+</ul>
+
+<div class="note">
+<b>When a town goes dark, the widget tells your visitors before we can tell you.</b>
+On 1 August 2026 a records vendor cut off anonymous access and 117 Massachusetts towns
+stopped publishing to us overnight. An embed pasted into a page in March is one we can
+never edit &mdash; so the embed is not what decides what to say. Each location&rsquo;s data
+file carries its own dates, and past 60 days with no new record the widget replaces its
+counts with a coverage notice, on every page that embedded it, with nobody touching those
+pages. A location we drop is never deleted; its file is replaced with the reason.
+</div>
+
+<h2>Terms</h2>
+<p>Free under <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license">CC
+BY-NC 4.0</a>. Attribution is required and is built in &mdash; please leave the
+&ldquo;Data: MassPermits&rdquo; line in place. Non-commercial means you may not resell the
+data itself; putting the widget on a business&rsquo;s website, including a business that
+sells building services, is fine and is what it is for. No warranty: these are municipal
+records as published, with every limitation set out in our
+<a href="/research/coverage">coverage analysis</a> and
+<a href="/research/methodology">methodology</a>.</p>
+<p><code>/widget/v1.js</code> and <code>/widget/v1/t/&lt;slug&gt;.html</code> are a
+permanent contract and will keep working. A breaking change becomes
+<code>/widget/v2.js</code> rather than changing what v1 does underneath a page we cannot
+edit.</p>
+
+<h2>Questions</h2>
+<h3>What does the widget cost?</h3><p class="muted">Nothing. It is free to embed on any site under CC BY-NC 4.0, which requires attribution and rules out reselling the data itself.</p><h3>Which Massachusetts towns can I embed?</h3><p class="muted">57 municipalities plus 6 Cape villages and 14 Boston neighbourhoods - 77 locations in all, each with at least 15 recent permits. Massachusetts has 351 municipalities, so most of the state is not here; a widget pointed at a town we do not publish says so and gives the reason, rather than showing an estimate.</p><h3>What happens if a town stops publishing?</h3><p class="muted">The widget starts saying so on its own. Every embed loads its figures from masspermits.com at view time, and each location&#x27;s data file carries its own freshness dates. Past 60 days with no new record the counts are suppressed and a coverage notice is shown instead - on every page that embedded it, without those pages being touched.</p><h3>Does the widget track visitors?</h3><p class="muted">It sets no cookie, reads no storage and identifies nobody. It records one count per view - which town was shown and the domain of the site showing it - so we can tell whether the widget reaches anyone. Add data-analytics=&quot;off&quot; to switch that off; everything else works identically.</p><h3>Where do the numbers come from?</h3><p class="muted">Public municipal building-permit records, recomputed at build time. Every gate, threshold and per-location figure is published at /widget/v1/evidence.json, and each location&#x27;s payload is at /widget/v1/data/&lt;slug&gt;.json with CORS open.</p>
+
+<h2>Coverage &mdash; every location you can embed</h2>
+<p class="muted">Computed 2026-09-07 from 66,818 permit records across
+59 municipal sources, newest 2026-09-07. A location
+appears only if it has at least 15 recent permits &mdash; the same gate that decides
+whether it gets a page on this site. &ldquo;30 days&rdquo; counts the 30 days ending at
+that location&rsquo;s own newest record. A <code>+</code> marks a source that caps what it
+returns, so the number is a floor rather than a total.</p>
+<div class="scroll"><table>
+<caption>77 embeddable locations, plus <code>massachusetts</code> for a statewide
+widget.</caption>
+<thead><tr><th>Location</th><th>Type</th><th>Region</th><th class="n">30 days</th>
+<th class="n">Corpus</th><th class="n">Newest</th><th>Slug</th></tr></thead>
+<tbody>
+<tr><td>Allston</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">55</td><td class="n">115</td><td class="n muted">2026-09-02</td><td><code>allston</code></td></tr>
+<tr><td>Amherst</td><td><span class="tag">Municipality</span></td><td class="muted">Western MA</td><td class="n">99</td><td class="n">215</td><td class="n muted">2026-07-30</td><td><code>amherst</code></td></tr>
+<tr><td>Attleboro</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">397+</td><td class="n">2400+</td><td class="n muted">2026-09-07</td><td><code>attleboro</code></td></tr>
+<tr><td>Avon</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">45</td><td class="n">272</td><td class="n muted">2026-09-04</td><td><code>avon</code></td></tr>
+<tr><td>Barnstable</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">17</td><td class="n">65</td><td class="n muted">2026-07-28</td><td><code>barnstable</code></td></tr>
+<tr><td>Bellingham</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">215</td><td class="n">1198</td><td class="n muted">2026-09-04</td><td><code>bellingham</code></td></tr>
+<tr><td>Boston</td><td><span class="tag">Municipality</span></td><td class="muted">Greater Boston</td><td class="n">821</td><td class="n">1568</td><td class="n muted">2026-09-02</td><td><code>boston</code></td></tr>
+<tr><td>Bourne</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">135</td><td class="n">1776</td><td class="n muted">2026-08-25</td><td><code>bourne</code></td></tr>
+<tr><td>Boylston</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">41</td><td class="n">342</td><td class="n muted">2026-09-03</td><td><code>boylston</code></td></tr>
+<tr><td>Braintree</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">396</td><td class="n">2041</td><td class="n muted">2026-09-04</td><td><code>braintree</code></td></tr>
+<tr><td>Bridgewater</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">219</td><td class="n">1350</td><td class="n muted">2026-09-04</td><td><code>bridgewater</code></td></tr>
+<tr><td>Brighton</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">137</td><td class="n">246</td><td class="n muted">2026-09-02</td><td><code>brighton</code></td></tr>
+<tr><td>Cambridge</td><td><span class="tag">Municipality</span></td><td class="muted">Greater Boston</td><td class="n">550</td><td class="n">2776</td><td class="n muted">2026-09-05</td><td><code>cambridge</code></td></tr>
+<tr><td>Centerville</td><td><span class="tag">Village</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">81</td><td class="n">212</td><td class="n muted">2026-07-31</td><td><code>centerville</code></td></tr>
+<tr><td>Charlestown</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">106</td><td class="n">181</td><td class="n muted">2026-09-02</td><td><code>charlestown</code></td></tr>
+<tr><td>Chatham</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">97</td><td class="n">277</td><td class="n muted">2026-08-31</td><td><code>chatham</code></td></tr>
+<tr><td>Chestnut Hill</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">15</td><td class="n">16</td><td class="n muted">2026-09-02</td><td><code>chestnut-hill</code></td></tr>
+<tr><td>Chicopee</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">357</td><td class="n">1754</td><td class="n muted">2026-09-04</td><td><code>chicopee</code></td></tr>
+<tr><td>Cohasset</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">124</td><td class="n">736</td><td class="n muted">2026-09-04</td><td><code>cohasset</code></td></tr>
+<tr><td>Colrain</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">5</td><td class="n">47</td><td class="n muted">2026-09-04</td><td><code>colrain</code></td></tr>
+<tr><td>Concord</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">286</td><td class="n">1513</td><td class="n muted">2026-09-04</td><td><code>concord</code></td></tr>
+<tr><td>Cotuit</td><td><span class="tag">Village</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">28</td><td class="n">78</td><td class="n muted">2026-07-31</td><td><code>cotuit</code></td></tr>
+<tr><td>Dorchester</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">489</td><td class="n">868</td><td class="n muted">2026-09-02</td><td><code>dorchester</code></td></tr>
+<tr><td>East Boston</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">146</td><td class="n">292</td><td class="n muted">2026-09-03</td><td><code>east-boston</code></td></tr>
+<tr><td>Easthampton</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">201</td><td class="n">969</td><td class="n muted">2026-09-04</td><td><code>easthampton</code></td></tr>
+<tr><td>Easton</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">272</td><td class="n">1438</td><td class="n muted">2026-09-05</td><td><code>easton</code></td></tr>
+<tr><td>Fairhaven</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">185</td><td class="n">993</td><td class="n muted">2026-09-06</td><td><code>fairhaven</code></td></tr>
+<tr><td>Falmouth</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">713+</td><td class="n">2400+</td><td class="n muted">2026-09-04</td><td><code>falmouth</code></td></tr>
+<tr><td>Foxborough</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">241</td><td class="n">1267</td><td class="n muted">2026-09-04</td><td><code>foxborough</code></td></tr>
+<tr><td>Granby</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">17</td><td class="n">17</td><td class="n muted">2026-09-06</td><td><code>granby</code></td></tr>
+<tr><td>Groveland</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">23</td><td class="n">23</td><td class="n muted">2026-09-03</td><td><code>groveland</code></td></tr>
+<tr><td>Hadley</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">17</td><td class="n">17</td><td class="n muted">2026-09-02</td><td><code>hadley</code></td></tr>
+<tr><td>Hanson</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">91</td><td class="n">499</td><td class="n muted">2026-09-04</td><td><code>hanson</code></td></tr>
+<tr><td>Hingham</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">287</td><td class="n">1759</td><td class="n muted">2026-09-03</td><td><code>hingham</code></td></tr>
+<tr><td>Hopedale</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">70</td><td class="n">438</td><td class="n muted">2026-09-04</td><td><code>hopedale</code></td></tr>
+<tr><td>Hyannis</td><td><span class="tag">Village</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">98</td><td class="n">251</td><td class="n muted">2026-07-31</td><td><code>hyannis</code></td></tr>
+<tr><td>Hyde Park</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">166</td><td class="n">286</td><td class="n muted">2026-09-02</td><td><code>hyde-park</code></td></tr>
+<tr><td>Ipswich</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">159</td><td class="n">1023</td><td class="n muted">2026-09-04</td><td><code>ipswich</code></td></tr>
+<tr><td>Jamaica Plain</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">138</td><td class="n">316</td><td class="n muted">2026-09-03</td><td><code>jamaica-plain</code></td></tr>
+<tr><td>Lexington</td><td><span class="tag">Municipality</span></td><td class="muted">Greater Boston</td><td class="n">397</td><td class="n">1225</td><td class="n muted">2026-08-31</td><td><code>lexington</code></td></tr>
+<tr><td>Ludlow</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">173</td><td class="n">956</td><td class="n muted">2026-09-04</td><td><code>ludlow</code></td></tr>
+<tr><td>Mansfield</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">188</td><td class="n">1178</td><td class="n muted">2026-09-03</td><td><code>mansfield</code></td></tr>
+<tr><td>Marstons Mills</td><td><span class="tag">Village</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">31</td><td class="n">152</td><td class="n muted">2026-07-31</td><td><code>marstons-mills</code></td></tr>
+<tr><td>Mashpee</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">393+</td><td class="n">2400+</td><td class="n muted">2026-09-06</td><td><code>mashpee</code></td></tr>
+<tr><td>Mattapan</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">119</td><td class="n">219</td><td class="n muted">2026-09-02</td><td><code>mattapan</code></td></tr>
+<tr><td>Milton</td><td><span class="tag">Municipality</span></td><td class="muted">Greater Boston</td><td class="n">261</td><td class="n">1452</td><td class="n muted">2026-09-04</td><td><code>milton</code></td></tr>
+<tr><td>Mission Hill</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">36</td><td class="n">72</td><td class="n muted">2026-09-01</td><td><code>mission-hill</code></td></tr>
+<tr><td>Newbury</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">29</td><td class="n">29</td><td class="n muted">2026-09-03</td><td><code>newbury</code></td></tr>
+<tr><td>North Reading</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">143</td><td class="n">998</td><td class="n muted">2026-09-04</td><td><code>north-reading</code></td></tr>
+<tr><td>Osterville</td><td><span class="tag">Village</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">28</td><td class="n">95</td><td class="n muted">2026-07-29</td><td><code>osterville</code></td></tr>
+<tr><td>Otis</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">32</td><td class="n">169</td><td class="n muted">2026-09-04</td><td><code>otis</code></td></tr>
+<tr><td>Plymouth</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">715</td><td class="n">2468</td><td class="n muted">2026-08-31</td><td><code>plymouth</code></td></tr>
+<tr><td>Provincetown</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">28</td><td class="n">226</td><td class="n muted">2026-08-01</td><td><code>provincetown</code></td></tr>
+<tr><td>Randolph</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">215</td><td class="n">1382</td><td class="n muted">2026-09-05</td><td><code>randolph</code></td></tr>
+<tr><td>Reading</td><td><span class="tag">Municipality</span></td><td class="muted">Greater Boston</td><td class="n">94</td><td class="n">223</td><td class="n muted">2026-07-30</td><td><code>reading</code></td></tr>
+<tr><td>Rehoboth</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">138</td><td class="n">713</td><td class="n muted">2026-09-04</td><td><code>rehoboth</code></td></tr>
+<tr><td>Rockland</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">176</td><td class="n">850</td><td class="n muted">2026-09-04</td><td><code>rockland</code></td></tr>
+<tr><td>Roslindale</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">187</td><td class="n">369</td><td class="n muted">2026-09-03</td><td><code>roslindale</code></td></tr>
+<tr><td>Roxbury</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">278</td><td class="n">461</td><td class="n muted">2026-09-02</td><td><code>roxbury</code></td></tr>
+<tr><td>Sandwich</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">289</td><td class="n">1721</td><td class="n muted">2026-09-06</td><td><code>sandwich</code></td></tr>
+<tr><td>Somerville</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">490</td><td class="n">2577</td><td class="n muted">2026-09-03</td><td><code>somerville</code></td></tr>
+<tr><td>South Boston</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">122</td><td class="n">248</td><td class="n muted">2026-09-02</td><td><code>south-boston</code></td></tr>
+<tr><td>Stoughton</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">292</td><td class="n">1725</td><td class="n muted">2026-09-06</td><td><code>stoughton</code></td></tr>
+<tr><td>Stow</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">20</td><td class="n">20</td><td class="n muted">2026-09-04</td><td><code>stow</code></td></tr>
+<tr><td>Sudbury</td><td><span class="tag">Municipality</span></td><td class="muted">MetroWest &amp; 495</td><td class="n">101</td><td class="n">296</td><td class="n muted">2026-08-31</td><td><code>sudbury</code></td></tr>
+<tr><td>Taunton</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">381</td><td class="n">2067</td><td class="n muted">2026-09-04</td><td><code>taunton</code></td></tr>
+<tr><td>Townsend</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">29</td><td class="n">29</td><td class="n muted">2026-09-05</td><td><code>townsend</code></td></tr>
+<tr><td>Truro</td><td><span class="tag">Municipality</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">32</td><td class="n">206</td><td class="n muted">2026-07-30</td><td><code>truro</code></td></tr>
+<tr><td>Wakefield</td><td><span class="tag">Municipality</span></td><td class="muted">Greater Boston</td><td class="n">88</td><td class="n">513</td><td class="n muted">2026-08-31</td><td><code>wakefield</code></td></tr>
+<tr><td>Waltham</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">149</td><td class="n">944</td><td class="n muted">2026-07-31</td><td><code>waltham</code></td></tr>
+<tr><td>Wareham</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">177</td><td class="n">1414</td><td class="n muted">2026-08-27</td><td><code>wareham</code></td></tr>
+<tr><td>West Barnstable</td><td><span class="tag">Village</span></td><td class="muted">Cape Cod &amp; Islands</td><td class="n">15</td><td class="n">59</td><td class="n muted">2026-07-30</td><td><code>west-barnstable</code></td></tr>
+<tr><td>West Bridgewater</td><td><span class="tag">Municipality</span></td><td class="muted">South Shore &amp; South Coast</td><td class="n">91</td><td class="n">486</td><td class="n muted">2026-09-05</td><td><code>west-bridgewater</code></td></tr>
+<tr><td>West Newbury</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">23</td><td class="n">23</td><td class="n muted">2026-09-03</td><td><code>west-newbury</code></td></tr>
+<tr><td>West Roxbury</td><td><span class="tag">Boston neighbourhood</span></td><td class="muted">Greater Boston</td><td class="n">168</td><td class="n">343</td><td class="n muted">2026-09-03</td><td><code>west-roxbury</code></td></tr>
+<tr><td>Westhampton</td><td><span class="tag">Municipality</span></td><td class="muted">&mdash;</td><td class="n">28</td><td class="n">29</td><td class="n muted">2026-09-03</td><td><code>westhampton</code></td></tr>
+<tr><td>Worcester</td><td><span class="tag">Municipality</span></td><td class="muted">Central MA</td><td class="n">1169</td><td class="n">6377</td><td class="n muted">2026-08-29</td><td><code>worcester</code></td></tr>
+</tbody></table></div>
+
+
+
+<h3>Your town isn&rsquo;t listed</h3>
+<p>Then we do not publish it, and a widget pointed at it will say so and give the reason we
+recorded when we surveyed how that town publishes &mdash; a vendor portal that will not
+answer anonymous requests, a building department that keeps paper only, or a source we have
+simply not built a reader for yet. That is a real finding about the town, not a gap in this
+page; the survey behind it is in our <a href="/research/coverage">coverage analysis</a>. If
+you know a public source we have missed,
+<a href="mailto:hello@masspermits.com?subject=Permit%20source">tell us</a> &mdash; that is
+the fastest way for a town to appear here.</p>
+
+<footer class="site">
+<p><b>MassPermits</b> &mdash; building-permit leads for Massachusetts contractors.</p>
+<p><a href="/permits/">All towns</a> &middot; <a href="/research/">Research</a> &middot;
+<a href="/research/methodology">Methodology</a> &middot;
+<a href="/research/corrections">Corrections</a> &middot;
+<a href="/catalog.json">Open-data catalog</a> &middot;
+<a href="/widget/v1/evidence.json">Widget evidence</a> &middot;
+<a href="/">Home &amp; free sample</a></p>
+</footer>
+</div>
+<script>window.__MP_WIDGET_INDEX={"towns": [{"slug": "allston", "town": "Allston", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 115, "n_window": 55, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "amherst", "town": "Amherst", "kind": "town", "region": "Western MA", "n_total": 215, "n_window": 99, "as_of": "2026-07-30", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "attleboro", "town": "Attleboro", "kind": "town", "region": "South Shore & South Coast", "n_total": 2400, "n_window": 397, "as_of": "2026-09-07", "capped": true, "built": "2026-09-07", "status": "live"}, {"slug": "avon", "town": "Avon", "kind": "town", "region": "South Shore & South Coast", "n_total": 272, "n_window": 45, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "barnstable", "town": "Barnstable", "kind": "town", "region": "Cape Cod & Islands", "n_total": 65, "n_window": 17, "as_of": "2026-07-28", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "bellingham", "town": "Bellingham", "kind": "town", "region": "", "n_total": 1198, "n_window": 215, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "boston", "town": "Boston", "kind": "town", "region": "Greater Boston", "n_total": 1568, "n_window": 821, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "bourne", "town": "Bourne", "kind": "town", "region": "Cape Cod & Islands", "n_total": 1776, "n_window": 135, "as_of": "2026-08-25", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "boylston", "town": "Boylston", "kind": "town", "region": "", "n_total": 342, "n_window": 41, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "braintree", "town": "Braintree", "kind": "town", "region": "South Shore & South Coast", "n_total": 2041, "n_window": 396, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "bridgewater", "town": "Bridgewater", "kind": "town", "region": "South Shore & South Coast", "n_total": 1350, "n_window": 219, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "brighton", "town": "Brighton", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 246, "n_window": 137, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "cambridge", "town": "Cambridge", "kind": "town", "region": "Greater Boston", "n_total": 2776, "n_window": 550, "as_of": "2026-09-05", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "centerville", "town": "Centerville", "kind": "village", "region": "Cape Cod & Islands", "n_total": 212, "n_window": 81, "as_of": "2026-07-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "charlestown", "town": "Charlestown", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 181, "n_window": 106, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "chatham", "town": "Chatham", "kind": "town", "region": "Cape Cod & Islands", "n_total": 277, "n_window": 97, "as_of": "2026-08-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "chestnut-hill", "town": "Chestnut Hill", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 16, "n_window": 15, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "chicopee", "town": "Chicopee", "kind": "town", "region": "", "n_total": 1754, "n_window": 357, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "cohasset", "town": "Cohasset", "kind": "town", "region": "South Shore & South Coast", "n_total": 736, "n_window": 124, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "colrain", "town": "Colrain", "kind": "town", "region": "", "n_total": 47, "n_window": 5, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "concord", "town": "Concord", "kind": "town", "region": "", "n_total": 1513, "n_window": 286, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "cotuit", "town": "Cotuit", "kind": "village", "region": "Cape Cod & Islands", "n_total": 78, "n_window": 28, "as_of": "2026-07-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "dorchester", "town": "Dorchester", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 868, "n_window": 489, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "east-boston", "town": "East Boston", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 292, "n_window": 146, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "easthampton", "town": "Easthampton", "kind": "town", "region": "", "n_total": 969, "n_window": 201, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "easton", "town": "Easton", "kind": "town", "region": "South Shore & South Coast", "n_total": 1438, "n_window": 272, "as_of": "2026-09-05", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "fairhaven", "town": "Fairhaven", "kind": "town", "region": "South Shore & South Coast", "n_total": 993, "n_window": 185, "as_of": "2026-09-06", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "falmouth", "town": "Falmouth", "kind": "town", "region": "Cape Cod & Islands", "n_total": 2400, "n_window": 713, "as_of": "2026-09-04", "capped": true, "built": "2026-09-07", "status": "live"}, {"slug": "foxborough", "town": "Foxborough", "kind": "town", "region": "South Shore & South Coast", "n_total": 1267, "n_window": 241, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "granby", "town": "Granby", "kind": "town", "region": "", "n_total": 17, "n_window": 17, "as_of": "2026-09-06", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "groveland", "town": "Groveland", "kind": "town", "region": "", "n_total": 23, "n_window": 23, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "hadley", "town": "Hadley", "kind": "town", "region": "", "n_total": 17, "n_window": 17, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "hanson", "town": "Hanson", "kind": "town", "region": "South Shore & South Coast", "n_total": 499, "n_window": 91, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "hingham", "town": "Hingham", "kind": "town", "region": "South Shore & South Coast", "n_total": 1759, "n_window": 287, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "hopedale", "town": "Hopedale", "kind": "town", "region": "", "n_total": 438, "n_window": 70, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "hyannis", "town": "Hyannis", "kind": "village", "region": "Cape Cod & Islands", "n_total": 251, "n_window": 98, "as_of": "2026-07-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "hyde-park", "town": "Hyde Park", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 286, "n_window": 166, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "ipswich", "town": "Ipswich", "kind": "town", "region": "", "n_total": 1023, "n_window": 159, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "jamaica-plain", "town": "Jamaica Plain", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 316, "n_window": 138, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "lexington", "town": "Lexington", "kind": "town", "region": "Greater Boston", "n_total": 1225, "n_window": 397, "as_of": "2026-08-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "ludlow", "town": "Ludlow", "kind": "town", "region": "", "n_total": 956, "n_window": 173, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "mansfield", "town": "Mansfield", "kind": "town", "region": "South Shore & South Coast", "n_total": 1178, "n_window": 188, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "marstons-mills", "town": "Marstons Mills", "kind": "village", "region": "Cape Cod & Islands", "n_total": 152, "n_window": 31, "as_of": "2026-07-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "mashpee", "town": "Mashpee", "kind": "town", "region": "Cape Cod & Islands", "n_total": 2400, "n_window": 393, "as_of": "2026-09-06", "capped": true, "built": "2026-09-07", "status": "live"}, {"slug": "mattapan", "town": "Mattapan", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 219, "n_window": 119, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "milton", "town": "Milton", "kind": "town", "region": "Greater Boston", "n_total": 1452, "n_window": 261, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "mission-hill", "town": "Mission Hill", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 72, "n_window": 36, "as_of": "2026-09-01", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "newbury", "town": "Newbury", "kind": "town", "region": "", "n_total": 29, "n_window": 29, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "north-reading", "town": "North Reading", "kind": "town", "region": "", "n_total": 998, "n_window": 143, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "osterville", "town": "Osterville", "kind": "village", "region": "Cape Cod & Islands", "n_total": 95, "n_window": 28, "as_of": "2026-07-29", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "otis", "town": "Otis", "kind": "town", "region": "", "n_total": 169, "n_window": 32, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "plymouth", "town": "Plymouth", "kind": "town", "region": "South Shore & South Coast", "n_total": 2468, "n_window": 715, "as_of": "2026-08-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "provincetown", "town": "Provincetown", "kind": "town", "region": "Cape Cod & Islands", "n_total": 226, "n_window": 28, "as_of": "2026-08-01", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "randolph", "town": "Randolph", "kind": "town", "region": "South Shore & South Coast", "n_total": 1382, "n_window": 215, "as_of": "2026-09-05", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "reading", "town": "Reading", "kind": "town", "region": "Greater Boston", "n_total": 223, "n_window": 94, "as_of": "2026-07-30", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "rehoboth", "town": "Rehoboth", "kind": "town", "region": "", "n_total": 713, "n_window": 138, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "rockland", "town": "Rockland", "kind": "town", "region": "South Shore & South Coast", "n_total": 850, "n_window": 176, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "roslindale", "town": "Roslindale", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 369, "n_window": 187, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "roxbury", "town": "Roxbury", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 461, "n_window": 278, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "sandwich", "town": "Sandwich", "kind": "town", "region": "Cape Cod & Islands", "n_total": 1721, "n_window": 289, "as_of": "2026-09-06", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "somerville", "town": "Somerville", "kind": "town", "region": "", "n_total": 2577, "n_window": 490, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "south-boston", "town": "South Boston", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 248, "n_window": 122, "as_of": "2026-09-02", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "stoughton", "town": "Stoughton", "kind": "town", "region": "South Shore & South Coast", "n_total": 1725, "n_window": 292, "as_of": "2026-09-06", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "stow", "town": "Stow", "kind": "town", "region": "", "n_total": 20, "n_window": 20, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "sudbury", "town": "Sudbury", "kind": "town", "region": "MetroWest & 495", "n_total": 296, "n_window": 101, "as_of": "2026-08-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "taunton", "town": "Taunton", "kind": "town", "region": "South Shore & South Coast", "n_total": 2067, "n_window": 381, "as_of": "2026-09-04", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "townsend", "town": "Townsend", "kind": "town", "region": "", "n_total": 29, "n_window": 29, "as_of": "2026-09-05", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "truro", "town": "Truro", "kind": "town", "region": "Cape Cod & Islands", "n_total": 206, "n_window": 32, "as_of": "2026-07-30", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "wakefield", "town": "Wakefield", "kind": "town", "region": "Greater Boston", "n_total": 513, "n_window": 88, "as_of": "2026-08-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "waltham", "town": "Waltham", "kind": "town", "region": "", "n_total": 944, "n_window": 149, "as_of": "2026-07-31", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "wareham", "town": "Wareham", "kind": "town", "region": "South Shore & South Coast", "n_total": 1414, "n_window": 177, "as_of": "2026-08-27", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "west-barnstable", "town": "West Barnstable", "kind": "village", "region": "Cape Cod & Islands", "n_total": 59, "n_window": 15, "as_of": "2026-07-30", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "west-bridgewater", "town": "West Bridgewater", "kind": "town", "region": "South Shore & South Coast", "n_total": 486, "n_window": 91, "as_of": "2026-09-05", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "west-newbury", "town": "West Newbury", "kind": "town", "region": "", "n_total": 23, "n_window": 23, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "west-roxbury", "town": "West Roxbury", "kind": "neighbourhood", "region": "Greater Boston", "n_total": 343, "n_window": 168, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "westhampton", "town": "Westhampton", "kind": "town", "region": "", "n_total": 29, "n_window": 28, "as_of": "2026-09-03", "capped": false, "built": "2026-09-07", "status": "live"}, {"slug": "worcester", "town": "Worcester", "kind": "town", "region": "Central MA", "n_total": 6377, "n_window": 1169, "as_of": "2026-08-29", "capped": false, "built": "2026-09-07", "status": "live"}]};</script>
+<script>
+(function(){
+ "use strict";
+ var IDX = window.__MP_WIDGET_INDEX || {towns:[]};
+ function $(id){ return document.getElementById(id); }
+ var town=$("w-town"), trade=$("w-trade"), theme=$("w-theme"), rows=$("w-rows"),
+     compact=$("w-compact"), prev=$("w-prev"), snipS=$("snip-script"),
+     snipI=$("snip-iframe"), ctx=$("w-ctx");
+ if(!town||!prev) return;
+
+ function embedURL(){
+  var q=[];
+  if(trade.value) q.push("trade="+encodeURIComponent(trade.value));
+  if(rows.value && rows.value!=="8") q.push("rows="+encodeURIComponent(rows.value));
+  if(theme.value!=="auto") q.push("theme="+encodeURIComponent(theme.value));
+  if(compact.checked) q.push("compact=1");
+  return "/widget/v1/t/"+town.value+".html"+(q.length?"?"+q.join("&"):"");
+ }
+ function attrs(){
+  var a=' data-town="'+town.value+'"';
+  if(trade.value) a+=' data-trade="'+trade.value+'"';
+  if(rows.value && rows.value!=="8") a+=' data-rows="'+rows.value+'"';
+  if(theme.value!=="auto") a+=' data-theme="'+theme.value+'"';
+  if(compact.checked) a+=' data-compact="true"';
+  return a;
+ }
+ function render(){
+  prev.src = embedURL();
+  var label = town.options[town.selectedIndex].text;
+  prev.title = "Preview: recent building permits in "+label;
+  snipS.textContent =
+    '<script src="https://masspermits.com/widget/v1.js"'+attrs()+' async><\/script>';
+  snipI.textContent =
+    '<iframe src="https://masspermits.com'+embedURL()+'"\n'+
+    '        title="Recent building permits in '+label+', Massachusetts - MassPermits"\n'+
+    '        width="100%" height="'+(196+Math.min(25,parseInt(rows.value||"8",10))*34+62)+'"\n'+
+    '        loading="lazy" scrolling="no" style="border:0;max-width:680px"><\/iframe>';
+  var t=null;
+  for(var i=0;i<IDX.towns.length;i++){ if(IDX.towns[i].slug===town.value){ t=IDX.towns[i]; break; } }
+  if(ctx){
+   ctx.textContent = t
+    ? (t.town+" - "+t.n_window+" permits in the 30 days to "+t.as_of+", "+t.n_total+
+       " in the corpus"+(t.capped?" (a floor: this source caps what it returns)":"")+".")
+    : "Statewide, across every source we publish.";
+  }
+ }
+ [town,trade,theme,rows,compact].forEach(function(el){
+   el.addEventListener("change",render,false); });
+
+ window.addEventListener("message",function(e){
+  if(e.origin!==location.origin && e.origin!=="https://masspermits.com") return;
+  if(!e.data||e.data.mp!==1||typeof e.data.h!=="number") return;
+  if(prev.contentWindow===e.source) prev.style.height=Math.max(120,Math.round(e.data.h))+"px";
+ },false);
+
+ var btns=document.querySelectorAll("button.copy");
+ for(var b=0;b<btns.length;b++){
+  btns[b].addEventListener("click",function(){
+   var pre=document.getElementById(this.getAttribute("data-for")), self=this;
+   function done(){ var o=self.textContent; self.textContent="Copied";
+                    setTimeout(function(){ self.textContent=o; },1400); }
+   if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(pre.textContent).then(done,function(){});
+   }else{
+    var r=document.createRange(); r.selectNodeContents(pre);
+    var s=getSelection(); s.removeAllRanges(); s.addRange(r);
+    try{ document.execCommand("copy"); done(); }catch(e){}
+   }
+  },false);
+ }
+ render();
+})();
+</script>
+<script>try{var u=new URL(location.href),s=u.searchParams.get('utm_source')||u.searchParams.get('ref')||'',b='/api/hit?p='+encodeURIComponent(location.pathname)+'&s='+encodeURIComponent(s)+'&r='+encodeURIComponent(document.referrer||'');navigator.sendBeacon?navigator.sendBeacon(b):(new Image().src=b);}catch(e){}</script>
+</body></html>

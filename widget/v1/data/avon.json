@@ -1,0 +1,363 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Avon",
+ "slug": "avon",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/avon",
+ "feed_url": "https://masspermits.com/feed/avon.json",
+ "status": "live",
+ "n_total": 272,
+ "n_window": 45,
+ "n_long_window": 129,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 17,
+   "page": "/permits/avon-electrical"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 15,
+   "page": "/permits/avon-renovation-remodel"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 4,
+   "page": "/permits/avon-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 4,
+   "page": "/permits/avon-gas"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 3,
+   "page": "/permits/avon-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 45,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oliver St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Blanchard St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Page St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Old Pratt St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Old Pratt St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Wales Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Blanchard St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Page St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Freeman St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Glendower St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "East High St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Connolly Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Leo`S Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Glendower St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "East High St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "East Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wales Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Granite St",
+   "v": null
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Other",
+   "ts": "other",
+   "s": "Stockwell Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "East St",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Building",
+   "ts": "building",
+   "s": "North Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Stockwell Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "West Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oliver St",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Building",
+   "ts": "building",
+   "s": "Robbie Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Brentwood Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "East High St",
+   "v": null
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Joanna Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Joanna Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-14",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Central St",
+   "v": null
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Blanchard St",
+   "v": null
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Highland St",
+   "v": null
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Highland St",
+   "v": null
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Foster St",
+   "v": null
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Oliver St",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Foster St",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pond St",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Feeley St",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Hendricks St",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Stockwell Dr",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Avon, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

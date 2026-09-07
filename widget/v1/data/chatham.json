@@ -1,0 +1,416 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Chatham",
+ "slug": "chatham",
+ "kind": "town",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/chatham",
+ "feed_url": "https://masspermits.com/feed/chatham.json",
+ "status": "live",
+ "n_total": 277,
+ "n_window": 97,
+ "n_long_window": 263,
+ "as_of": "2026-08-31",
+ "oldest": "2026-06-01",
+ "window_from": "2026-08-02",
+ "window_to": "2026-08-31",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 27,
+   "page": "/permits/chatham-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 21,
+   "page": "/permits/chatham-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 12,
+   "page": "/permits/chatham-building"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 10,
+   "page": "/permits/chatham-kitchen-bath"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 10,
+   "page": "/permits/chatham-hvac"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 3,
+   "page": "/permits/chatham-demolition"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 3,
+   "page": "/permits/chatham-solar"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 3,
+   "page": "/permits/chatham-deck-porch"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 97,
+  "median": 24077,
+  "p25": 10143,
+  "p75": 46600
+ },
+ "n_valued": 97,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Ridgevale Rd",
+   "v": 36340
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "School St",
+   "v": 12334
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Misty Meadow Ln",
+   "v": 24500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Misty Meadow Ln",
+   "v": 24500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Pond St",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Valley Rd",
+   "v": 45000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "George Ryder Rd",
+   "v": 775000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Ethelma Dr",
+   "v": 45000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Strawberry Ln",
+   "v": 36500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Hitching Post Rd",
+   "v": 27400
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Elkanah St",
+   "v": 4000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Main St",
+   "v": 22900
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Training Field Rd",
+   "v": 65000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Crescent Rd",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Joshua Jethro Rd",
+   "v": 85000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Orleans Rd",
+   "v": 6700
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Seapine Rd",
+   "v": 28000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Chase St",
+   "v": 14800
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Aire Ln",
+   "v": 32500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Old Salt Works Rd",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "Dairy St",
+   "v": 3100
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Martha Kendrick Dr",
+   "v": 17851
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Riverview Dr",
+   "v": 77000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "Hitching Post Rd",
+   "v": 7871
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "A Leonard Way",
+   "v": 2650
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Barcliff Ave",
+   "v": 41850
+  },
+  {
+   "d": "2026-08-26",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "East Rd",
+   "v": 50000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Captains Walk",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Pleasant St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Vineyard Ave",
+   "v": 31920
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Monomoit Ln",
+   "v": 96000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Woodland Way",
+   "v": 8395
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Pleasant St",
+   "v": 150000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Sea Mist Ln",
+   "v": 1000001
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Geranium Dr",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Gramps Way",
+   "v": 22000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Middle Road",
+   "v": 48000
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Forest Beach Rd",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Vineyard Ave",
+   "v": 5941
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Oak Hill Rd",
+   "v": 1922
+  }
+ ],
+ "sources": [
+  "Chatham, MA"
+ ],
+ "capped": false,
+ "age_days": 7
+}

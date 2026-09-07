@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MassPermits — Pipeline</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚦</text></svg>">
+<!--
+  MassPermits — internal ingest board. Served at /admin/pipeline (Pages strips
+  .html). NOT a public page.
+
+  GATE, in three layers, none of which is this file:
+    1. Cloudflare Access, a Zero Trust self-hosted application on the zone,
+       covering masspermits.com/admin* AND masspermits.com/api/pipeline* —
+       BOTH, or the API is naked.
+    2. Full Cf-Access-Jwt-Assertion verification in functions/api/_cf-access.js.
+       An edge-only gate fails OPEN and silently if the Access app is deleted or
+       its path expression drifts. Every number on this page arrives through
+       /api/pipeline, which verifies the signature itself — so if Access
+       vanished, this HTML would still serve and would show nothing but a 403.
+       That is the intended failure: the shell is public-harmless, the data is
+       not, and the data is what is verified.
+    3. functions/_middleware.js pins the hostname, so the permanent
+       <hash>.pages.dev twin 404s this path.
+
+  "Signed in as ..." in the header is rendered from the VERIFIED email claim.
+  If that line is missing, the gate is not working. That is its job.
+
+  NO BEACON ON THIS PAGE, DELIBERATELY. hit.js writes p=<pathname> into R2
+  customMetadata, and traffic.js and live.js are UNAUTHENTICATED and echo
+  customMetadata.p verbatim into a public JSON response rendered on the public
+  /ops. Pasting the site-wide beacon here would continuously publish the
+  existence and exact path of this admin surface. Do not "instrument" this
+  page. (The endpoint is not named in full anywhere in this file, so the
+  build-time assertion for "no beacon here" is a plain grep for its path.)
+
+  robots: `Disallow: /admin` belongs in PermitPulse/seo_build.py's hardcoded
+  _robots string (line ~1204), NOT in the lander's robots.txt — that file is
+  rebuilt and committed every run, so a hand-edit is destroyed silently. And
+  noindex is a request to crawlers, not an access control. Access is the access
+  control.
+
+  Every pipeline- and vendor-derived string on this page is written with
+  textContent, never innerHTML. Those strings come from town websites via
+  fetcher exception text.
+-->
+<style>
+  /* ops.html's palette — the only one of the three in this repo with a
+     vocabulary for "degraded" and "broken" (--warn / --bad exist nowhere else).
+     Do not blend it with index.html's or the generated town pages'. */
+  :root{--bg:#0e1622;--panel:#16212f;--panel2:#1d2a3a;--border:#2a3a4f;--rule:#1c2737;
+        --text:#e8eef5;--lead:#c7d3e0;--muted:#8aa0b6;--teal:#2dd4bf;--teal2:#14b8a6;
+        --good:#4ade80;--warn:#fbbf24;--bad:#f87171;--on-accent:#04201c}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  /* Wider than ops.html's 760 because 39 rows x 7 columns will not fit there.
+     1100 is in family with index.html's 2026 refresh (780 -> 1060). */
+  .wrap{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+  h1{font-size:24px;margin:0 0 4px;letter-spacing:-.4px}
+  h1 b{color:var(--teal)}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+  .sub .who{color:var(--teal)}
+  a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+
+  .sec{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:12px 0}
+  .sec h2{font-size:14px;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .muted{color:var(--muted);font-size:12px}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+  /* ---- the board banner. Layer 0 outranks every light on the page. ---- */
+  .board{border-radius:12px;padding:18px 20px;margin:14px 0;border:1px solid var(--border);background:var(--panel)}
+  .board.green{border-left:5px solid var(--good)}
+  .board.amber{border-left:5px solid var(--warn)}
+  .board.red{border-left:5px solid var(--bad);background:rgba(248,113,113,.06)}
+  .board .v{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .board.green .v{color:var(--good)} .board.amber .v{color:var(--warn)} .board.red .v{color:var(--bad)}
+  .board h3{margin:4px 0 6px;font-size:20px;font-weight:800;letter-spacing:-.3px}
+  .board p{margin:0 0 6px;color:var(--lead);font-size:14px}
+  .board .meta{color:var(--muted);font-size:12px;margin-top:10px}
+  .board .meta span{margin-right:14px;white-space:nowrap}
+  details.tb{margin-top:10px}
+  details.tb summary{cursor:pointer;color:var(--muted);font-size:12px}
+  pre.tb{background:#0b1320;border:1px solid var(--border);border-radius:8px;padding:10px;
+         font-size:11px;overflow-x:auto;white-space:pre-wrap;color:var(--lead);margin:8px 0 0}
+
+  .warnbar{background:rgba(248,113,113,.10);border:1px solid rgba(248,113,113,.45);
+           border-radius:10px;padding:12px 14px;margin:10px 0;color:var(--text);font-size:13px}
+  .warnbar b{color:var(--bad)}
+  .warnbar.amber{background:rgba(251,191,36,.10);border-color:rgba(251,191,36,.45)}
+  .warnbar.amber b{color:var(--warn)}
+
+  /* ---- counters ---- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+  .card .n{font-size:28px;font-weight:800;color:var(--teal)}
+  .card .n.good{color:var(--good)} .card .n.warn{color:var(--warn)}
+  .card .n.bad{color:var(--bad)} .card .n.grey{color:var(--muted)}
+  .card .l{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:2px}
+  /* Under a board that does not know, the counters are struck through: a number
+     that is three runs stale must not read as a measurement of now. */
+  .stale .card .n{text-decoration:line-through;color:var(--muted)!important}
+
+  /* ---- tabs ---- */
+  .tabs{display:flex;gap:8px;margin:18px 0 4px;border-bottom:1px solid var(--border)}
+  .tab{background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);
+       font:inherit;font-weight:700;font-size:14px;padding:8px 14px;cursor:pointer}
+  .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--teal)}
+
+  /* ---- town table ---- */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+     color:var(--muted);font-weight:700;padding:6px 8px;border-bottom:1px solid var(--border)}
+  td{padding:8px;border-bottom:1px solid var(--rule);vertical-align:top}
+  tr:hover td{background:rgba(45,212,191,.03)}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;flex:0 0 auto}
+  .dot.green{background:var(--good)} .dot.yellow{background:var(--warn)}
+  .dot.red{background:var(--bad)} .dot.grey{background:#4a5b71}
+  .st{display:flex;align-items:center}
+  .st .w{font-weight:700}
+  .st.green .w{color:var(--good)} .st.yellow .w{color:var(--warn)}
+  .st.red .w{color:var(--bad)} .st.grey .w{color:var(--muted)}
+  .town{font-weight:700;white-space:nowrap}
+  .rows{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .badge{display:inline-block;border:1px solid var(--border);background:var(--panel2);
+         border-radius:5px;padding:1px 6px;font-size:10px;letter-spacing:.04em;
+         color:var(--muted);margin:2px 4px 0 0;white-space:nowrap}
+  .badge.err{border-color:rgba(251,191,36,.4);color:var(--warn)}
+  .badge.inf{opacity:.7;font-style:italic}
+  .why{color:var(--muted);font-size:11.5px;margin-top:3px}
+  .errtxt{color:var(--warn);font-size:11.5px;margin-top:4px;word-break:break-word}
+  .spark{display:block}
+  .btn{background:var(--panel2);border:1px solid var(--border);color:var(--text);
+       font:inherit;font-size:11px;font-weight:700;border-radius:8px;padding:5px 10px;cursor:pointer;white-space:nowrap}
+  .btn:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .btn.go{background:var(--teal);color:var(--on-accent);border-color:var(--teal)}
+
+  /* ---- probe result ---- */
+  .verdict{display:inline-block;border-radius:5px;padding:2px 8px;font-size:11px;font-weight:800;
+           letter-spacing:.05em;border:1px solid var(--border);background:var(--panel2);color:var(--lead)}
+  .cells{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+  .cells td{border-bottom:1px solid var(--rule);padding:5px 8px}
+  .cells .i{color:var(--muted);width:44px;text-align:right;font-variant-numeric:tabular-nums}
+  .cells .f{color:var(--teal);width:190px}
+  .cells .f.none{color:#5c6f86;font-style:italic}
+  .cells .v{color:var(--text);word-break:break-word}
+  .hide{color:var(--muted);font-style:italic;cursor:pointer;text-decoration:underline dotted}
+
+  /* ---- coverage tab: NEUTRAL. No status colours anywhere in here. ---- */
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .chip{border:1px solid var(--border);background:var(--panel2);border-radius:20px;
+        padding:3px 10px;font-size:11.5px;color:var(--muted)}
+  .chip b{color:var(--lead);font-weight:700}
+  .covgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:12px}
+  .covbox{border:1px solid var(--border);background:var(--panel2);border-radius:10px;padding:10px 12px}
+  .covbox .h{font-size:12px;font-weight:800;color:var(--lead)}
+  .covbox .c{font-size:22px;font-weight:800;color:var(--muted);margin-top:2px}
+
+  ul.tight{margin:6px 0 0;padding-left:18px;color:var(--lead);font-size:12.5px}
+  ul.tight li{margin:3px 0}
+  .rule-armed{color:var(--good)} .rule-unarmed{color:var(--warn)}
+
+  @media(max-width:760px){
+    .wrap{padding:16px 12px 40px}
+    th.hidesm,td.hidesm{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><b>Mass</b>Permits &middot; Pipeline</h1>
+  <div class="sub" id="sub">
+    Internal ingest board &middot; daily refresh, 09:00 UTC &middot;
+    <span class="who" id="who">checking the gate&hellip;</span>
+  </div>
+
+  <div id="fatal"></div>
+  <div id="board"></div>
+  <div id="warnings"></div>
+  <div id="counts" class="grid"></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" id="tab-pipeline" role="tab" aria-selected="true" aria-controls="pane-pipeline">Pipeline</button>
+    <button class="tab" id="tab-coverage" role="tab" aria-selected="false" aria-controls="pane-coverage">Coverage</button>
+  </div>
+
+  <div id="pane-pipeline" role="tabpanel">
+    <div id="coverage"></div>
+    <div id="confidence"></div>
+    <div id="drift"></div>
+    <div class="sec">
+      <h2>Sources <span id="srccount" class="muted" style="text-transform:none;letter-spacing:0"></span></h2>
+      <div class="muted" style="margin:-4px 0 10px">
+        The column is <b>rows fetched</b>, never leads: <code>sources[town]</code> is
+        counted at fetch time and the lead filter runs afterwards on the pooled list,
+        so no per-town count of what actually shipped exists anywhere.
+      </div>
+      <div style="overflow-x:auto">
+        <table id="towns">
+          <thead><tr>
+            <th>Town</th><th>State</th><th class="rows">Rows fetched</th>
+            <th class="hidesm">Trend (21 runs)</th><th>Notes</th><th></th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="probe"></div>
+  </div>
+
+  <div id="pane-coverage" role="tabpanel" hidden></div>
+
+  <div class="muted" style="margin-top:22px;line-height:1.7">
+    Sources of truth on this page:
+    <code>refresh-status.json</code> (this run) and <code>source-health.json</code>
+    (the trend), read through the <code>BUNDLES</code> binding;
+    <code>probe-map.json</code> (roster, registry, probe specs), published by
+    <code>PermitPulse/emit_probe_map.py</code> with <code>wrangler</code>.
+    No permit row, contractor, owner, address, subscriber, email or token is read
+    by any endpoint behind this page.
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var data = null, coverageLoaded = false, probing = false;
+
+  // ── tiny DOM helpers. Every pipeline- or vendor-derived string goes through
+  // txt()/el(), which use textContent. Never innerHTML for anything that came
+  // out of R2 — those strings come from town websites via fetcher exception
+  // text, and /ops's own convention is escape-on-render as defence in depth.
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = String(text);
+    return e;
+  }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+  function fmt(n) { return n === null || n === undefined ? "—" : Number(n).toLocaleString(); }
+  function ago(iso) {
+    if (!iso) return "never";
+    var ms = Date.now() - Date.parse(iso);
+    if (!isFinite(ms)) return String(iso);
+    var h = ms / 3600000;
+    if (h < 1) return Math.max(0, Math.round(ms / 60000)) + "m ago";
+    return h < 48 ? h.toFixed(1) + "h ago" : (h / 24).toFixed(1) + "d ago";
+  }
+
+  // ── SECOND, INDEPENDENT FRESHNESS CHECK ─────────────────────────────────
+  // The server decides staleness in /api/pipeline. This re-derives the same
+  // verdict in the browser against Date.now() and disagrees out loud if it must.
+  // It costs nothing and it means a bug in the Function's own freshness logic
+  // does not produce a confidently-fresh board. The client clock is untrusted,
+  // but the failure is benign and symmetric: a wrong clock shows a wrong AGE.
+  // There is no version of this where a dead pipeline reads green on a
+  // correctly-set machine.
+  function clientSaysStale(board) {
+    if (!board || !board.uploaded_at) return true;
+    var hour = board.refresh_hour_utc, grace = board.grace_hours;
+    if (typeof hour !== "number" || typeof grace !== "number") return false;
+    var d = new Date();
+    d.setUTCHours(hour, 0, 0, 0);
+    if (d.getTime() > Date.now()) d.setUTCDate(d.getUTCDate() - 1);
+    var due = d.getTime();
+    return Date.now() > due + grace * 3600000 && Date.parse(board.uploaded_at) < due;
+  }
+
+  function fatal(title, detail) {
+    var box = el("div", "warnbar");
+    box.appendChild(el("b", null, title));
+    box.appendChild(el("div", null, detail));
+    clear($("fatal")); $("fatal").appendChild(box);
+  }
+
+  // ── board banner ────────────────────────────────────────────────────────
+  function renderBoard(b, disagree) {
+    var host = $("board"); clear(host);
+    var box = el("div", "board " + (b.level || "red"));
+    box.appendChild(el("div", "v", (b.verdict || "?") + " · " + (b.label || "")));
+    box.appendChild(el("h3", null, b.headline || ""));
+    if (b.detail) box.appendChild(el("p", null, b.detail));
+    if (b.error) {
+      var p = el("p", null, b.error);
+      p.style.color = "var(--warn)";
+      p.className = "mono";
+      box.appendChild(p);
+    }
+    if (b.last_unscored_why) {
+      box.appendChild(el("p", null, "source_health did not score this run: " + b.last_unscored_why));
+    }
+    if (b.traceback_head) {
+      var d = el("details", "tb");
+      d.appendChild(el("summary", null, "traceback (first 1200 chars)"));
+      d.appendChild(el("pre", "tb", b.traceback_head));
+      box.appendChild(d);
+    }
+
+    var meta = el("div", "meta");
+    function m(k, v) { meta.appendChild(el("span", null, k + ": " + v)); }
+    m("due", b.due_at || "?");
+    m("uploaded", (b.uploaded_at || "never") + " (" + ago(b.uploaded_at) + ")");
+    m("ran_at", (b.ran_at || "?") + " (" + ago(b.ran_at) + ")");
+    m("grace", b.grace_hours + "h");
+    m("history", b.runs_scored + " scored / " + b.runs_seen + " seen");
+    box.appendChild(meta);
+    host.appendChild(box);
+
+    // Write the timestamps onto <body> so the independent check above has a
+    // source that does not depend on this closure, and so the disagreement is
+    // inspectable from the console.
+    document.body.setAttribute("data-ran-at", b.ran_at || "");
+    document.body.setAttribute("data-uploaded-at", b.uploaded_at || "");
+    document.body.setAttribute("data-verdict", b.verdict || "");
+    if (disagree) document.body.classList.add("stale");
+  }
+
+  function renderWarnings(d) {
+    var host = $("warnings"); clear(host);
+    var b = d.board;
+
+    function warn(title, text, amber) {
+      var box = el("div", "warnbar" + (amber ? " amber" : ""));
+      box.appendChild(el("b", null, title + " "));
+      box.appendChild(document.createTextNode(text));
+      host.appendChild(box);
+    }
+
+    if (b.client_disagrees) {
+      warn("THE BROWSER DISAGREES WITH THE SERVER.",
+        "This page re-derived the freshness verdict against your own clock and " +
+        "got a different answer from /api/pipeline. One of the two is wrong. " +
+        "Until that is resolved, treat every light below as unknown.");
+    }
+    if (b.health_missing) {
+      warn("NO HEALTH HISTORY.",
+        "source-health.json is absent or empty, so there are no per-town states " +
+        "to render — only this run's row counts. Every dot is grey because " +
+        "green cannot be earned without the history. The health step is " +
+        "continue-on-error and source_health.py sits in the engine verify's " +
+        "WARN-ONLY tier, so a tarball rebuild that dropped it fails exactly " +
+        "this way, silently.");
+    }
+    if (b.replayed) {
+      warn("STATUS OBJECT LOOKS REPLAYED.",
+        "R2 recorded the upload " + b.replay_gap_hours + "h after the run stamped " +
+        "ran_at. Somebody may have re-uploaded an old status object. A fresh " +
+        "upload time over stale contents is a banner, not a green light.", true);
+    }
+    if (d.constants_drift && d.constants_drift.checked && d.constants_drift.mismatches.length) {
+      var box = el("div", "warnbar");
+      box.appendChild(el("b", null, "ALERT CONSTANTS HAVE DRIFTED. "));
+      box.appendChild(document.createTextNode(
+        "This board's copy of source_health.py's thresholds disagrees with what " +
+        "the engine emitted. The confidence panel below is computed from the " +
+        "board's copy, so it is currently wrong:"));
+      var ul = el("ul", "tight");
+      d.constants_drift.mismatches.forEach(function (m) { ul.appendChild(el("li", null, m)); });
+      box.appendChild(ul);
+      host.appendChild(box);
+    }
+  }
+
+  // ── counters ────────────────────────────────────────────────────────────
+  function renderCounts(d) {
+    var host = $("counts"); clear(host);
+    host.className = "grid" + (d.board.dots_grey ? " stale" : "");
+    var c = d.counts || {};
+    [["green", "ok", "good"], ["yellow", "warning", "warn"],
+     ["red", "alertable", "bad"], ["grey", "unknown", "grey"]].forEach(function (r) {
+      var card = el("div", "card");
+      card.appendChild(el("div", "n " + r[2], fmt(c[r[0]] || 0)));
+      card.appendChild(el("div", "l", r[1]));
+      host.appendChild(card);
+    });
+    var fv = d.fetched_vs_shipped || {};
+    var card = el("div", "card");
+    card.appendChild(el("div", "n", fmt(fv.shipped_leads)));
+    card.appendChild(el("div", "l", "leads shipped"));
+    card.appendChild(el("div", "muted",
+      fv.gap === null || fv.gap === undefined
+        ? "no gap figure available"
+        : fmt(fv.sum_fetched) + " fetched − " + fmt(fv.gap) +
+          " dropped by the lead/address filter. Board-level only — there is " +
+          "no per-town attribution for the gap, so it is not distributed."));
+    card.style.gridColumn = "span 2";
+    host.appendChild(card);
+  }
+
+  // ── coverage tiles (this run's gate, NOT the 351-town tab) ──────────────
+  function renderCoverage(d) {
+    var host = $("coverage"); clear(host);
+    var sec = el("div", "sec");
+    sec.appendChild(el("h2", null, "This run's coverage gate"));
+    if (!d.coverage) {
+      sec.appendChild(el("div", "muted",
+        "Not computed — the run aborted at the gate, or crashed while " +
+        "building bundles. hosted_refresh.py writes coverage: null on both " +
+        "paths, so there is no number here to show and none is invented."));
+      host.appendChild(sec); return;
+    }
+    var c = d.coverage;
+    var g = el("div", "grid");
+    [[c.live_sources, "live sources"], [c.attempted_sources, "attempted (health denominator)"],
+     [c.rows, "rows this run"]].forEach(function (r) {
+      var card = el("div", "card");
+      card.appendChild(el("div", "n", fmt(r[0])));
+      card.appendChild(el("div", "l", r[1]));
+      g.appendChild(card);
+    });
+    sec.appendChild(g);
+
+    // Marketing-disclosure fields, in their own muted panel, colouring nothing.
+    // expected_sources is the constant MARKETED_BASELINE (140) and lost_sources
+    // is 140 minus live, so on a PERFECT run they read 140 and 101 and
+    // disclose:true. Painting those red would make the board red forever.
+    var dis = c.disclosure || {};
+    var box = el("div", "covbox");
+    box.appendChild(el("div", "h", "Marketing disclosure — not a health signal"));
+    box.appendChild(el("div", "muted",
+      "expected " + fmt(dis.expected_sources) + " · lost " + fmt(dis.lost_sources) +
+      " · disclose " + (dis.disclose ? "true" : "false") + ". These are measured " +
+      "against the towns sold before the 2026-08-01 OpenGov lockout, not against " +
+      "what the pipeline attempts. They are permanent on a perfect run and drive " +
+      "the reduced-coverage note in the customer email. They never colour anything."));
+    if ((c.monthly_sources || []).length) {
+      box.appendChild(el("div", "muted", "monthly publishers this run: " + c.monthly_sources.join(", ")));
+    }
+    box.style.marginTop = "10px";
+    sec.appendChild(box);
+    host.appendChild(sec);
+  }
+
+  // ── confidence: "a green run is not proof", computed ────────────────────
+  function renderConfidence(d) {
+    var host = $("confidence"); clear(host);
+    var cf = d.confidence || {};
+    if (cf.available && cf.all_armed) return; // retires itself; not furniture
+    var sec = el("div", "sec");
+    sec.appendChild(el("h2", null, "How much this green is worth"));
+    if (!cf.available) {
+      sec.appendChild(el("div", "muted", cf.reason || "unavailable"));
+      host.appendChild(sec); return;
+    }
+    sec.appendChild(el("div", "muted",
+      "A board reading “0 dead · 0 collapsed · 0 vanished” implies " +
+      "those checks ran and passed. Some of them cannot yet run. " +
+      cf.runs_scored + " scored run(s) of history across " + cf.tracked + " sources" +
+      (cf.runs_unscored ? " (" + cf.runs_unscored + " unscored)" : "") + "."));
+    var ul = el("ul", "tight");
+    (cf.rules || []).forEach(function (r) {
+      var li = el("li");
+      li.appendChild(el("b", null, r.rule + ": "));
+      var s = el("span", r.armed ? "rule-armed" : "rule-unarmed",
+        r.armed ? "armed" : "NOT ARMED");
+      li.appendChild(s);
+      li.appendChild(document.createTextNode(
+        " — needs " + r.requires + "; have " + r.have +
+        (!r.armed && r.not_before ? "; not before " + r.not_before : "")));
+      ul.appendChild(li);
+    });
+    sec.appendChild(ul);
+    host.appendChild(sec);
+  }
+
+  // ── roster drift: computed, never asserted ──────────────────────────────
+  function renderDrift(d) {
+    var host = $("drift"); clear(host);
+    var dr = d.drift || {};
+    var sec = el("div", "sec");
+    sec.appendChild(el("h2", null, "Roster drift"));
+    if (!dr.available) {
+      sec.appendChild(el("div", "muted", dr.reason || "unavailable"));
+      host.appendChild(sec); return;
+    }
+    var any = false;
+    function list(title, arr, note) {
+      if (!arr || !arr.length) return;
+      any = true;
+      var w = el("div", "warnbar amber");
+      w.appendChild(el("b", null, title + " (" + arr.length + ") "));
+      w.appendChild(document.createTextNode(note));
+      var ul = el("ul", "tight");
+      arr.forEach(function (n) { ul.appendChild(el("li", null, n)); });
+      w.appendChild(ul);
+      sec.appendChild(w);
+    }
+    list("In the engine roster but NOT attempted this run", dr.in_a_not_b,
+      "— this is the `vanished` precursor. Nothing else in the system can " +
+      "see it: no fetcher raised, so `errors` is empty and the coverage gate's " +
+      "denominator shrank to match.");
+    list("Attempted this run but NOT in the probe map", dr.in_b_not_a,
+      "— the probe map is stale. Re-run emit_probe_map.py and re-publish it.");
+    list("Wired but not recorded as live in the registry", dr.in_ab_not_c,
+      "— a town reached production without the registry being updated.");
+    list("Registry says live but nothing attempts it", dr.in_c_not_ab,
+      "— the registry claims coverage the pipeline does not have.");
+    (dr.registry_warnings || []).forEach(function (w) {
+      any = true;
+      var box = el("div", "warnbar amber");
+      box.appendChild(el("b", null, "REGISTRY DATA QUALITY. "));
+      box.appendChild(document.createTextNode(w));
+      sec.appendChild(box);
+    });
+
+    var age = el("div", "muted");
+    age.textContent = "probe-map.json generated " + (dr.map_generated_at || "?") +
+      " (" + ago(dr.map_generated_at) + "), roster fingerprint " +
+      (dr.roster_fingerprint || "?") + ". Sets: engine roster " + dr.a_count +
+      " · attempted this run " + dr.b_count + " · registry already_live " +
+      dr.c_count + ".";
+    if (!any) {
+      var okline = el("div", "muted", "No asymmetry between the three rosters.");
+      sec.appendChild(okline);
+    }
+    sec.appendChild(age);
+    host.appendChild(sec);
+  }
+
+  // ── the town table ──────────────────────────────────────────────────────
+  function sparkline(recent, grey) {
+    // recent is newest-first; draw left-to-right in time order.
+    var pts = (recent || []).slice().reverse();
+    var w = 120, h = 22;
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+    svg.setAttribute("width", w); svg.setAttribute("height", h);
+    svg.setAttribute("class", "spark");
+    if (pts.length < 2) {
+      var t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      t.setAttribute("x", 0); t.setAttribute("y", 15);
+      t.setAttribute("fill", "#5c6f86"); t.setAttribute("font-size", "10");
+      t.textContent = pts.length ? "1 run" : "no history";
+      svg.appendChild(t);
+      return svg;
+    }
+    var max = 1;
+    pts.forEach(function (p) { if (p.rows > max) max = p.rows; });
+    var step = w / (pts.length - 1);
+    var dstr = pts.map(function (p, i) {
+      return (i ? "L" : "M") + (i * step).toFixed(1) + " " +
+             (h - 2 - (p.rows / max) * (h - 4)).toFixed(1);
+    }).join(" ");
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", dstr);
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke-width", "1.5");
+    path.setAttribute("stroke", grey ? "#4a5b71" : "#2dd4bf");
+    svg.appendChild(path);
+    pts.forEach(function (p, i) {
+      if (p.ok) return;
+      var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      c.setAttribute("cx", (i * step).toFixed(1));
+      c.setAttribute("cy", (h - 2 - (p.rows / max) * (h - 4)).toFixed(1));
+      c.setAttribute("r", "2");
+      c.setAttribute("fill", grey ? "#4a5b71" : "#f87171");
+      svg.appendChild(c);
+    });
+    svg.appendChild(titleNode(pts.length + " runs, peak " + fmt(max) + " rows"));
+    return svg;
+  }
+  function titleNode(text) {
+    var t = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    t.textContent = text; return t;
+  }
+
+  function renderTowns(d) {
+    var tb = $("tbody"); clear(tb);
+    var grey = !!d.board.dots_grey;
+    var probeOk = d.probe && d.probe.available;
+    var specs = (d.probe && d.probe.sources) || {};
+
+    $("srccount").textContent = "· " + d.towns.length + " attempted";
+    $("tab-pipeline").textContent = "Pipeline (" + d.towns.length + ")";
+
+    d.towns.forEach(function (t) {
+      var tr = el("tr");
+
+      tr.appendChild((function () { var td = el("td"); td.appendChild(el("div", "town", t.key)); return td; })());
+
+      var tdS = el("td");
+      var st = el("div", "st " + t.light);
+      st.appendChild(el("span", "dot " + t.light));
+      st.appendChild(el("span", "w", t.label));
+      tdS.appendChild(st);
+      if (t.why) tdS.appendChild(el("div", "why", t.why));
+      if (grey && t.state) tdS.appendChild(el("div", "why", "stored state: " + t.state));
+      tr.appendChild(tdS);
+
+      var tdR = el("td", "rows", t.rows === null ? "—" : fmt(t.rows));
+      if (t.last_good_rows !== null && t.last_good_rows !== undefined && t.rows === null) {
+        tdR.appendChild(el("div", "why", "last good " + fmt(t.last_good_rows)));
+      }
+      tr.appendChild(tdR);
+
+      var tdT = el("td", "hidesm");
+      tdT.appendChild(sparkline(t.recent, grey));
+      tdT.appendChild(el("div", "why", t.scored_runs + " scored"));
+      tr.appendChild(tdT);
+
+      var tdN = el("td");
+      (t.badges || []).forEach(function (b) {
+        var sp = el("span", "badge" + (b.k === "SILENT ZERO" || b.k === "FETCH ERROR" ? " err" : "") +
+                                (b.inferred ? " inf" : ""), b.k);
+        sp.title = b.t || "";
+        tdN.appendChild(sp);
+      });
+      if (t.last_error) tdN.appendChild(el("div", "errtxt", t.last_error));
+      tr.appendChild(tdN);
+
+      var tdB = el("td");
+      var spec = specs[t.key];
+      var btn = el("button", "btn", spec && spec.probe === "transport" ? "Test reachability" : "Test live pull");
+      btn.disabled = !probeOk || !spec || (spec.probe !== "payload" && spec.probe !== "transport");
+      btn.title = !probeOk ? (d.probe.reason || "")
+                : !spec ? "This source is not in probe-map.json."
+                : spec.probe === "none" ? (spec.reason || "no probe spec")
+                : (spec.note || "");
+      btn.addEventListener("click", function () { runProbe(t.key, btn); });
+      tdB.appendChild(btn);
+      if (spec && spec.probe === "none") tdB.appendChild(el("div", "why", spec.reason || "not probeable"));
+      tr.appendChild(tdB);
+
+      tb.appendChild(tr);
+    });
+
+    if (!d.towns.length) {
+      var tr = el("tr"), td = el("td");
+      td.colSpan = 6;
+      td.appendChild(el("div", "muted",
+        "No town rows. This is not an empty board rendered green — the " +
+        "banner above says why there is nothing to show."));
+      tr.appendChild(td); tb.appendChild(tr);
+    }
+  }
+
+  // ── the probe ───────────────────────────────────────────────────────────
+  function runProbe(key, btn) {
+    if (probing) return;
+    probing = true;
+    var old = btn.textContent;
+    btn.textContent = "testing…"; btn.disabled = true;
+    fetch("/api/pipeline-probe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-MassPermits-Probe": "1" },
+      body: JSON.stringify({ key: key }),
+    }).then(function (r) { return r.json(); })
+      .then(function (j) { renderProbe(key, j); })
+      .catch(function (e) { renderProbe(key, { verdict: "vendor_unreachable", detail: String(e) }); })
+      .then(function () { probing = false; btn.textContent = old; btn.disabled = false; });
+  }
+
+  function renderProbe(key, p) {
+    var host = $("probe"); clear(host);
+    var sec = el("div", "sec");
+    var h = el("h2"); h.textContent = "Probe · " + key;
+    sec.appendChild(h);
+
+    var line = el("div");
+    line.appendChild(el("span", "verdict", p.verdict || "unknown"));
+    line.appendChild(document.createTextNode(" "));
+    line.appendChild(el("span", "muted",
+      [p.http_status !== undefined && p.http_status !== null ? "HTTP " + p.http_status : null,
+       p.ms !== undefined ? p.ms + "ms" : null,
+       p.rows_returned !== undefined && p.rows_returned !== null ? p.rows_returned + " rows" : null,
+       p.cells !== undefined && p.cells !== null ? p.cells + " cells" : null,
+       p.bytes !== undefined ? fmt(p.bytes) + " bytes" : null,
+       p.content_type || null,
+       p.url_host || null].filter(Boolean).join(" · ")));
+    sec.appendChild(line);
+
+    if (p.detail) sec.appendChild(el("p", null, p.detail));
+    if (p.transport_note) sec.appendChild(el("div", "muted", p.transport_note));
+    if (p.retry_in_s) sec.appendChild(el("div", "muted", "Cooldown — retry in " + p.retry_in_s + "s."));
+    if (p.body_head) {
+      var det = el("details", "tb");
+      det.appendChild(el("summary", null, "first 300 bytes of the response"));
+      det.appendChild(el("pre", "tb", p.body_head));
+      sec.appendChild(det);
+    }
+    if (p.cells_prev !== null && p.cells_prev !== undefined) {
+      sec.appendChild(el("div", "muted",
+        "width last probe: " + p.cells_prev + " · requested ncols: " +
+        (p.requested_ncols === null ? "—" : p.requested_ncols) +
+        " · highest index PE_LAYOUT reads: " +
+        (p.max_index_used === null ? "—" : p.max_index_used) +
+        " — the requested width is what we ASK for, not what the server " +
+        "returns, so it is not the assertion."));
+    }
+
+    if (p.sample && p.sample.length) {
+      // THE PRIVACY EXCEPTION, ARGUED ON SCREEN. One row, the newest, from one
+      // town, fetched live, on operator demand, behind the Access gate, never
+      // persisted. Masking would be WORSE here: the view's entire purpose is to
+      // detect which column holds what, and column drift is itself a privacy
+      // bug — Mashpee's tuple defeated the sample mask because the mask strips
+      // the first token and the first token was the date.
+      var note = el("div", "muted");
+      note.textContent = "One row — the newest — exactly as the vendor " +
+        "returned it. Name and address cells are withheld until clicked so a " +
+        "screenshot of this board does not casually contain a resident's name. " +
+        "Nothing here is stored: probe/<town> keeps only {verdict, http, rows, " +
+        "cells, ms, at}.";
+      note.style.margin = "10px 0 0";
+      sec.appendChild(note);
+
+      var det2 = el("details");
+      det2.appendChild(el("summary", null, "Show raw cells"));
+      var tbl = el("table", "cells");
+      var pat = null;
+      try { pat = p.sensitive_key_pattern ? new RegExp(p.sensitive_key_pattern, "i") : null; } catch (e) { pat = null; }
+
+      p.sample.forEach(function (c) {
+        var tr = el("tr");
+        tr.appendChild(el("td", "i", "[" + c.i + "]"));
+        var label = c.field || c.key || null;
+        tr.appendChild(el("td", "f" + (label ? "" : " none"), label || "(unmapped)"));
+        var isSensitive = c.sensitive === true || (c.sensitive === null && pat && c.key && pat.test(c.key));
+        var tdv = el("td", "v");
+        if (isSensitive && c.value) {
+          var span = el("span", "hide", "<withheld — click to reveal>");
+          (function (val, node) {
+            node.addEventListener("click", function () {
+              var s = el("span", null, val);
+              node.parentNode.replaceChild(s, node);
+            });
+          })(c.value, span);
+          tdv.appendChild(span);
+        } else {
+          tdv.textContent = c.value;
+        }
+        tr.appendChild(tdv);
+        tbl.appendChild(tr);
+      });
+      det2.appendChild(tbl);
+      sec.appendChild(det2);
+    }
+
+    var foot = el("div", "muted");
+    foot.style.marginTop = "12px";
+    foot.textContent = p.note ? p.note + " " : "";
+    foot.textContent += "This does not run our parser — that is what the daily " +
+      "run above shows — and it does not change any town's status. The " +
+      "automated checks catch outages and silent-empties; only a human reading " +
+      "the indexed cells catches a column map that shifted while the width and " +
+      "the row counts stayed normal.";
+    sec.appendChild(foot);
+    host.appendChild(sec);
+    sec.scrollIntoView({ block: "nearest" });
+  }
+
+  // ── coverage tab: 351 towns, NEUTRAL chips, no colours at all ───────────
+  function loadCoverage() {
+    if (coverageLoaded) return;
+    coverageLoaded = true;
+    var pane = $("pane-coverage"); clear(pane);
+    pane.appendChild(el("div", "sec", "Loading the statewide registry…"));
+    fetch("/api/pipeline?view=coverage", { headers: { "Accept": "application/json" } })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { renderCoverageTab(j); })
+      .catch(function (e) {
+        clear(pane);
+        var w = el("div", "warnbar");
+        w.appendChild(el("b", null, "Could not load the registry. "));
+        w.appendChild(document.createTextNode(String(e)));
+        pane.appendChild(w);
+      });
+  }
+
+  function renderCoverageTab(j) {
+    var pane = $("pane-coverage"); clear(pane);
+    if (!j.ok || !j.registry) {
+      var w = el("div", "warnbar");
+      w.appendChild(el("b", null, "Registry not published. "));
+      w.appendChild(document.createTextNode(j.reason || "probe-map.json carries no registry projection."));
+      pane.appendChild(w);
+      return;
+    }
+    var r = j.registry;
+    $("tab-coverage").textContent = "Coverage (" + r.total + ")";
+
+    var head = el("div", "sec");
+    head.appendChild(el("h2", null, "Statewide coverage — a roadmap, not a status board"));
+    head.appendChild(el("div", "muted",
+      "All " + r.total + " Massachusetts municipalities. Nothing here has a " +
+      "traffic light: these towns have no health record because the pipeline " +
+      "does not attempt them, and a colour would imply a measurement that does " +
+      "not exist. There are no probe buttons on this tab — the 117 " +
+      "OpenGov/ViewPoint towns are unreachable by construction, and the 403 is " +
+      "a permanent, intentional access decision."));
+    (r.warnings || []).forEach(function (wtext) {
+      var b = el("div", "warnbar amber");
+      b.appendChild(el("b", null, "REGISTRY DATA QUALITY. "));
+      b.appendChild(document.createTextNode(wtext));
+      head.appendChild(b);
+    });
+    head.appendChild(el("div", "muted",
+      "Join key: the per-town already_live boolean (" + r.already_live_names.length +
+      " towns). Never _meta.already_live_towns (" + r.meta_already_live_listed +
+      " listed) and never feasibility=='live' (" + r.feasibility_live_count + ")."));
+    pane.appendChild(head);
+
+    var byFeas = {}, byMethod = {};
+    r.towns.forEach(function (t) {
+      byFeas[t.feasibility || "unknown"] = (byFeas[t.feasibility || "unknown"] || 0) + 1;
+      byMethod[t.method || "unknown"] = (byMethod[t.method || "unknown"] || 0) + 1;
+    });
+
+    var s1 = el("div", "sec");
+    s1.appendChild(el("h2", null, "By feasibility"));
+    var g1 = el("div", "covgrid");
+    Object.keys(byFeas).sort().forEach(function (k) {
+      var b = el("div", "covbox");
+      b.appendChild(el("div", "h", k));
+      b.appendChild(el("div", "c", fmt(byFeas[k])));
+      g1.appendChild(b);
+    });
+    s1.appendChild(g1);
+    s1.appendChild(el("h2", null, "By publishing method"));
+    var ch = el("div", "chips");
+    Object.keys(byMethod).sort(function (a, b) { return byMethod[b] - byMethod[a]; })
+      .forEach(function (k) {
+        var c = el("span", "chip");
+        c.appendChild(el("b", null, k));
+        c.appendChild(document.createTextNode(" · " + byMethod[k]));
+        ch.appendChild(c);
+      });
+    s1.appendChild(ch);
+    pane.appendChild(s1);
+
+    var s2 = el("div", "sec");
+    s2.appendChild(el("h2", null, "All " + r.total + " towns"));
+    var wrap = el("div"); wrap.style.overflowX = "auto";
+    var tbl = el("table");
+    var thead = el("thead"), htr = el("tr");
+    ["Town", "County", "Method", "Feasibility", "Live now", "Desc", "Val"].forEach(function (x) {
+      htr.appendChild(el("th", null, x));
+    });
+    thead.appendChild(htr); tbl.appendChild(thead);
+    var tb = el("tbody");
+    r.towns.forEach(function (t) {
+      var tr = el("tr");
+      tr.appendChild(el("td", "town", t.name));
+      tr.appendChild(el("td", "muted", t.county || "—"));
+      var tdm = el("td");
+      tdm.appendChild(el("div", null, t.method || "—"));
+      if (t.method_detail) tdm.appendChild(el("div", "why", t.method_detail));
+      tr.appendChild(tdm);
+      tr.appendChild(el("td", "muted", t.feasibility || "—"));
+      tr.appendChild(el("td", "muted", t.already_live ? "yes" : "—"));
+      tr.appendChild(el("td", "muted", t.has_description ? "yes" : "—"));
+      tr.appendChild(el("td", "muted", t.has_valuation ? "yes" : "—"));
+      tb.appendChild(tr);
+    });
+    tbl.appendChild(tb); wrap.appendChild(tbl); s2.appendChild(wrap);
+    pane.appendChild(s2);
+  }
+
+  // ── tabs ────────────────────────────────────────────────────────────────
+  function selectTab(which) {
+    var p = which === "pipeline";
+    $("tab-pipeline").setAttribute("aria-selected", p ? "true" : "false");
+    $("tab-coverage").setAttribute("aria-selected", p ? "false" : "true");
+    $("pane-pipeline").hidden = !p;
+    $("pane-coverage").hidden = p;
+    if (!p) loadCoverage();
+  }
+  $("tab-pipeline").addEventListener("click", function () { selectTab("pipeline"); });
+  $("tab-coverage").addEventListener("click", function () { selectTab("coverage"); });
+
+  // ── boot ────────────────────────────────────────────────────────────────
+  // DEGRADE HONESTLY. There is no comforting empty state anywhere in here: a
+  // failed load, a 403, a missing artifact and a stale artifact each say what
+  // happened, loudly, and none of them renders a green dot.
+  function load() {
+    fetch("/api/pipeline", { headers: { "Accept": "application/json" } })
+      .then(function (r) {
+        return r.json().then(function (j) { return { status: r.status, body: j }; });
+      })
+      .then(function (res) {
+        var j = res.body;
+        if (res.status === 403) {
+          $("who").textContent = "NOT SIGNED IN";
+          $("who").style.color = "var(--bad)";
+          fatal("THE GATE REFUSED THIS REQUEST.",
+            "reason: " + (j.reason || "unknown") + ". " + (j.detail || "") +
+            " If this says 'aud' or 'not-configured', the Cloudflare Access " +
+            "application was recreated or CF_ACCESS_AUD / CF_ACCESS_TEAM_DOMAIN " +
+            "are not set on the Pages project. Nothing below is being rendered.");
+          return;
+        }
+        if (!j.board) {
+          fatal("THE BOARD ENDPOINT RETURNED SOMETHING UNRECOGNISABLE.",
+            "HTTP " + res.status + ". No status is being shown, because the " +
+            "alternative is showing one that is made up.");
+          return;
+        }
+        data = j;
+        $("who").textContent = j.signed_in_as
+          ? "signed in as " + j.signed_in_as
+          : "NO VERIFIED IDENTITY — the gate is not working";
+        if (!j.signed_in_as) $("who").style.color = "var(--bad)";
+
+        var disagree = clientSaysStale(j.board) !== (j.board.verdict === "B2");
+        j.board.client_disagrees = disagree;
+        if (disagree) { j.board.dots_grey = true; j.board.level = "red"; }
+
+        clear($("fatal"));
+        renderBoard(j.board, disagree);
+        renderWarnings(j);
+        renderCounts(j);
+        renderCoverage(j);
+        renderConfidence(j);
+        renderDrift(j);
+        renderTowns(j);
+      })
+      .catch(function (e) {
+        $("who").textContent = "unknown";
+        fatal("COULD NOT REACH /api/pipeline.",
+          String(e) + " — this page is showing nothing rather than a stale " +
+          "copy of something. Reload; if it persists the Function is down or " +
+          "Access is refusing the XHR.");
+      });
+  }
+
+  load();
+  // No auto-refresh loop. The board answers a once-a-day question, and a
+  // silently self-refreshing diagnostic page is how a stale tab gets mistaken
+  // for a live one. Reload deliberately.
+})();
+</script>
+</body>
+</html>

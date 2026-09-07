@@ -1,0 +1,398 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Wakefield",
+ "slug": "wakefield",
+ "kind": "town",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/wakefield",
+ "feed_url": "https://masspermits.com/feed/wakefield.json",
+ "status": "live",
+ "n_total": 513,
+ "n_window": 88,
+ "n_long_window": 233,
+ "as_of": "2026-08-31",
+ "oldest": "2026-03-02",
+ "window_from": "2026-08-02",
+ "window_to": "2026-08-31",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 46,
+   "page": "/permits/wakefield-roofing"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 15,
+   "page": "/permits/wakefield-building"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 8,
+   "page": "/permits/wakefield-kitchen-bath"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 5,
+   "page": "/permits/wakefield-deck-porch"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 4,
+   "page": "/permits/wakefield-addition"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 88,
+  "median": 21500,
+  "p25": 11000,
+  "p75": 34250
+ },
+ "n_valued": 88,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Nahant St",
+   "v": 43000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Old Nahant Rd",
+   "v": 26000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Humphrey St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Houston St",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Ballister St, Unit",
+   "v": 82000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Eustis Ave",
+   "v": 11000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Lovis Ave",
+   "v": 469000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Harrison Ave",
+   "v": 67000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Richardson Ave",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Spruce St",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Converse St",
+   "v": 13000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Main St",
+   "v": 7000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Millbrook Ln",
+   "v": 49000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Nahant St",
+   "v": 16000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Farm St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Valley St",
+   "v": 4000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Highland St",
+   "v": 48000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Meriam St",
+   "v": 27000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Ludlow Ave",
+   "v": 21000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Oakledge Rd",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Foundry St",
+   "v": 400000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Holland Rd",
+   "v": 115000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Marion Cir",
+   "v": 44000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Richardson Ave",
+   "v": 32000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Lakeview Ave",
+   "v": 23000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Greenwood Ave",
+   "v": 22000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Princess St",
+   "v": 7000
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Norway St",
+   "v": 221000
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Parker Rd",
+   "v": 26997
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Old Nahant Rd",
+   "v": 16000
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Building",
+   "ts": "building",
+   "s": "Herbert St",
+   "v": 11000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Parker Rd, Unit",
+   "v": 48000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Woodcrest Dr",
+   "v": 28000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Stark Ave",
+   "v": 27000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Partridge Ln",
+   "v": 22000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Memory Ln",
+   "v": 21000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Building",
+   "ts": "building",
+   "s": "Wave Ave",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-17",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Lowell St",
+   "v": 35000
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Building",
+   "ts": "building",
+   "s": "Albion St",
+   "v": 24000
+  }
+ ],
+ "sources": [
+  "Wakefield, MA"
+ ],
+ "capped": false,
+ "age_days": 7
+}

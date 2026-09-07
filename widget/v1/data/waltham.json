@@ -1,0 +1,404 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Waltham",
+ "slug": "waltham",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/waltham",
+ "feed_url": "https://masspermits.com/feed/waltham.json",
+ "status": "live",
+ "n_total": 944,
+ "n_window": 149,
+ "n_long_window": 494,
+ "as_of": "2026-07-31",
+ "oldest": "2026-02-02",
+ "window_from": "2026-07-02",
+ "window_to": "2026-07-31",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 26,
+   "page": "/permits/waltham-roofing"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 25,
+   "page": "/permits/waltham-kitchen-bath"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 17,
+   "page": "/permits/waltham-windows-doors-siding"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 12,
+   "page": "/permits/waltham-deck-porch"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 10,
+   "page": "/permits/waltham-demolition"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 8,
+   "page": "/permits/waltham-building"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 6,
+   "page": "/permits/waltham-solar"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 5,
+   "page": "/permits/waltham-renovation-remodel"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 4,
+   "page": "/permits/waltham-hvac"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 137,
+  "median": 20000,
+  "p25": 9300,
+  "p75": 44167
+ },
+ "n_valued": 137,
+ "n_zero_valued": 12,
+ "rows": [
+  {
+   "d": "2026-07-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Hillcroft Rd",
+   "v": 15000
+  },
+  {
+   "d": "2026-07-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Ravenswood Rd",
+   "v": 8650
+  },
+  {
+   "d": "2026-07-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Ravenswood Rd",
+   "v": 42512
+  },
+  {
+   "d": "2026-07-31",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Worcester Ln",
+   "v": 150000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Azalea Rd",
+   "v": 16200
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Bennett St",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Other",
+   "ts": "other",
+   "s": "Bennett St",
+   "v": 7183
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Cedarcroft Ln",
+   "v": 44167
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Francis St Unit",
+   "v": 37400
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Other",
+   "ts": "other",
+   "s": "Galen St",
+   "v": 3079
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Gregory St",
+   "v": 30000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Hardy Pond Rd",
+   "v": 12968
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Harland Rd",
+   "v": 134378
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Lake St",
+   "v": 53247
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Marlborough Rd",
+   "v": 3475
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Piedmont Ave",
+   "v": 40000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pine St",
+   "v": 8600
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Pond End School Ln",
+   "v": 18000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Sherwood Ln",
+   "v": 20746
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Other",
+   "ts": "other",
+   "s": "Warren St",
+   "v": 5577
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Wildwood Ln",
+   "v": 8800
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Florence Rd",
+   "v": 140000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Moody St",
+   "v": 51000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Summer St",
+   "v": 10500
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Wadsworth Ave",
+   "v": 4500
+  },
+  {
+   "d": "2026-07-28",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Gilbert St",
+   "v": 22500
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "School St",
+   "v": 2387
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Trapelo Rd",
+   "v": 2058671
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Brown St",
+   "v": 27548
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Myrtle St",
+   "v": 20550
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Pleasant St",
+   "v": 33750
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Villa St",
+   "v": 477747
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Bear Hill Rd",
+   "v": 64000
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Russell St",
+   "v": 11000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Elm St",
+   "v": 13000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Fiske St",
+   "v": 23299
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Kings Way Unit",
+   "v": 17277
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Other",
+   "ts": "other",
+   "s": "Lexington St",
+   "v": null
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Lexington St",
+   "v": 164385
+  },
+  {
+   "d": "2026-07-23",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Lincoln St",
+   "v": 203400
+  }
+ ],
+ "sources": [
+  "Waltham, MA"
+ ],
+ "capped": false,
+ "age_days": 38
+}

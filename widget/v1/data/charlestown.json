@@ -1,0 +1,404 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Charlestown",
+ "slug": "charlestown",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/charlestown",
+ "feed_url": "https://masspermits.com/feed/charlestown.json",
+ "status": "live",
+ "n_total": 181,
+ "n_window": 106,
+ "n_long_window": 181,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 34,
+   "page": "/permits/charlestown-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 21,
+   "page": "/permits/charlestown-plumbing"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 11,
+   "page": "/permits/charlestown-kitchen-bath"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 7,
+   "page": "/permits/charlestown-roofing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 7,
+   "page": "/permits/charlestown-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 5,
+   "page": "/permits/charlestown-renovation-remodel"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 5,
+   "page": "/permits/charlestown-windows-doors-siding"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 4,
+   "page": "/permits/charlestown-deck-porch"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 3,
+   "page": "/permits/charlestown-gas"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 3,
+   "page": "/permits/charlestown-addition"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 2,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 105,
+  "median": 9698,
+  "p25": 3500,
+  "p75": 45000
+ },
+ "n_valued": 105,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Main St",
+   "v": 20000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Holden Ro",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Holden Ro",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Thirteenth St",
+   "v": 48000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Wood St",
+   "v": 7000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Park St",
+   "v": 65000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Lyndeboro St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Monument Sq",
+   "v": 2800
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Bartlett St",
+   "v": 9698
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Bartlett St",
+   "v": 10350
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Russell St",
+   "v": 37248
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Main St",
+   "v": 9000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Harvard St",
+   "v": 98000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mount Vernon St",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Park St",
+   "v": 250000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Cordis St",
+   "v": 2197500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Constellation Wh",
+   "v": 9500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Wood St",
+   "v": 100000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Elm St",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Main St",
+   "v": 1072000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Eden St",
+   "v": 1800
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Pleasant St",
+   "v": 21700
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "First Av",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Cook Street Ct",
+   "v": 46176
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Sullivan St",
+   "v": 14949
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Bartlett St",
+   "v": 4780
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Medford St",
+   "v": 600
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Constellation Wh",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Eighth St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "First Av",
+   "v": 7500
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Medford St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Rutherford Av",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Pleasant St",
+   "v": 3500
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Green St",
+   "v": 28000
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mead St",
+   "v": 500
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Bunker Hill St",
+   "v": 15130
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Warren St",
+   "v": 7500
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rutherford Av",
+   "v": 20000
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Essex St",
+   "v": 8500
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cedar St",
+   "v": 61582
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

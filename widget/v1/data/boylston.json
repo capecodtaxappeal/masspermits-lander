@@ -1,0 +1,386 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Boylston",
+ "slug": "boylston",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/boylston",
+ "feed_url": "https://masspermits.com/feed/boylston.json",
+ "status": "live",
+ "n_total": 342,
+ "n_window": 41,
+ "n_long_window": 147,
+ "as_of": "2026-09-03",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 10,
+   "page": "/permits/boylston-electrical"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 7,
+   "page": "/permits/boylston-windows-doors-siding"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 7,
+   "page": "/permits/boylston-roofing"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 6,
+   "page": "/permits/boylston-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 4,
+   "page": "/permits/boylston-gas"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 4,
+   "page": "/permits/boylston-hvac"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 9,
+  "median": 28000,
+  "p25": 7776,
+  "p75": 54480
+ },
+ "n_valued": 9,
+ "n_zero_valued": 32,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Edgebrook Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Morgan Circle",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Pendell Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Melrose St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ridgefield Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Central St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Shrewsbury St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Linden St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Morgan Circle",
+   "v": 38158
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Cross St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Edgebrook Dr",
+   "v": 111265
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Edgebrook Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Edgebrook Dr",
+   "v": 73805
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Adams St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Nicholas Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Birchwood Dr",
+   "v": 3500
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cross St",
+   "v": 54480
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "School St",
+   "v": null
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Diamond Hill Ave",
+   "v": 7776
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-20",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Shrewsbury St",
+   "v": null
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Adams St",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hillside Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Cross St",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Shrewsbury St",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Shrewsbury St",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Edgebrook Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-17",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Hillside Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-13",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Shrewsbury St",
+   "v": null
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Edgebrook Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cross St",
+   "v": 11750
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Birchwood Dr",
+   "v": 28000
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "School St",
+   "v": null
+  },
+  {
+   "d": "2026-08-11",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "School St",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Central St",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Strawberry Hill Lane",
+   "v": 5500
+  },
+  {
+   "d": "2026-08-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Birchwood Dr",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Boylston, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

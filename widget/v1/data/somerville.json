@@ -1,0 +1,416 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Somerville",
+ "slug": "somerville",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/somerville",
+ "feed_url": "https://masspermits.com/feed/somerville.json",
+ "status": "live",
+ "n_total": 2577,
+ "n_window": 490,
+ "n_long_window": 1311,
+ "as_of": "2026-09-03",
+ "oldest": "2026-03-12",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 132,
+   "page": "/permits/somerville-electrical"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 91,
+   "page": "/permits/somerville-hvac"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 64,
+   "page": "/permits/somerville-plumbing"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 47,
+   "page": "/permits/somerville-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 33,
+   "page": "/permits/somerville-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 30,
+   "page": "/permits/somerville-building"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 25,
+   "page": "/permits/somerville-gas"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 12,
+   "page": "/permits/somerville-kitchen-bath"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 12,
+   "page": "/permits/somerville-deck-porch"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 11,
+   "page": "/permits/somerville-new-construction"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 11,
+   "page": "/permits/somerville-solar"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 10,
+   "page": "/permits/somerville-renovation-remodel"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 5,
+   "page": "/permits/somerville-addition"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 5,
+   "page": "/permits/somerville-demolition"
+  }
+ ],
+ "value": {
+  "n_valued": 364,
+  "median": 14211,
+  "p25": 4348,
+  "p75": 33312
+ },
+ "n_valued": 364,
+ "n_zero_valued": 126,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Mount Vernon St",
+   "v": 20000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Pearl St",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Belmont St",
+   "v": 68383
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mcgrath Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Gorham St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hudson St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Lower Campus Rd",
+   "v": 10672
+  },
+  {
+   "d": "2026-09-03",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Central St",
+   "v": 10519
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Wheeler St",
+   "v": 55000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Bonner Ave",
+   "v": 1886
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Assembly Row",
+   "v": 8000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Properzi Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oak St",
+   "v": 200
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oak St",
+   "v": 200
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oak St",
+   "v": 200
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Franklin Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Bolton St",
+   "v": 30600
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Rush St",
+   "v": 4700
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Pearl St",
+   "v": 42885
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Main St",
+   "v": 12250
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Elston St",
+   "v": 38500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Bolton St",
+   "v": 20400
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Bolton St",
+   "v": 30600
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Bolton St",
+   "v": 20400
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Highland Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Marion St",
+   "v": 265000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Mossland St",
+   "v": 14000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Derby St",
+   "v": 25000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Ten Hills Rd",
+   "v": 16418
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Marshall St",
+   "v": 2800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tower St",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Woodbine St",
+   "v": 22617
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lowell St",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Summit Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Broadway",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hancock St",
+   "v": 1200
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ivaloo St",
+   "v": 31000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Craigie Terr",
+   "v": 850
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cedar St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cooney St",
+   "v": 3500
+  }
+ ],
+ "sources": [
+  "Somerville, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

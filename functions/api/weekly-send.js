@@ -12,6 +12,16 @@
 // triggered sends. OIDC is keyless and pinned to this repo's main branch.
 
 import { verifyGitHubOIDC } from "./_github-oidc.js";
+// ONE definition of "have these exact bytes already gone out", shared with the
+// pre-send gate and the phone board. A second copy of that rule living here is
+// how the sender and the detector came to disagree in the first place.
+// _presend.js is pure at module scope — no R2, no network, no top-level work —
+// so importing it adds no runtime behaviour to this path. It DOES add a
+// load-time dependency: if _presend.js does not parse, this endpoint does not
+// load and nobody gets mail. The guard is `node presend_replay.mjs`, which
+// imports the same module and exits non-zero if it is broken. Run it before any
+// deploy that touches _presend.js.
+import { lastEtagEntry } from "./_presend.js";
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -36,9 +46,12 @@ export async function onRequest(context) {
     //               than usual. SEND IT, with the shortfall stated up front.
     // A degraded run is a smaller truthful file. That is a thing we can deliver.
     let coverage = null;
+    // Hoisted out of the `if (st)` block so the bundle fingerprint this run
+    // built can be recorded in the send log below. Same object, read once.
+    let status = null;
     const st = await env.BUNDLES.get("refresh-status.json");
     if (st) {
-      const status = JSON.parse(await st.text());
+      status = JSON.parse(await st.text());
       const age = Date.now() - Date.parse(status.ran_at || 0);
       const fresh = age < 8 * 86400_000;
       if (!fresh) {
@@ -84,9 +97,22 @@ export async function onRequest(context) {
     const etag = file.etag || file.httpEtag || "";
     const force = new URL(request.url).searchParams.get("force") === "1";
     const priorLog = (await readJsonSafe(env, "feed-send-log.json")) || [];
-    const prior = Array.isArray(priorLog) && priorLog.length ? priorLog[0] : null;
-    if (!force && etag && prior && prior.bundle_etag === etag &&
-        (prior.sent || []).some((x) => x.ok)) {
+    // G2. The old form was `priorLog[0]` plus a `sent.some(ok)` requirement, and
+    // that combination fails in the same direction twice:
+    //   1. a SKIP entry carries `sent: []`, so once a skip is on top of the log
+    //      neither half of the test passes and the guard is disarmed entirely;
+    //   2. any etag-less entry on top has the same effect.
+    // So after one skip, the very next trigger re-sends bytes every subscriber
+    // already holds — the 2026-08-09 duplicate, re-created by its own guard.
+    // Editing weekly-feed.yml fires a send, so that is one careless commit away.
+    //
+    // The right question is not "did the newest log line deliver" but "have
+    // THESE BYTES already been handled". A skip entry bearing this etag is
+    // itself proof they were: a skip is only ever written because they had
+    // already been delivered. So: newest entry that HAS an etag, and a match is
+    // a match whether that entry delivered or skipped.
+    const prior = lastEtagEntry(priorLog);
+    if (!force && etag && prior && prior.bundle_etag === etag) {
       // RECORD the skip. A skip writes no delivery, so if it were silent the
       // watchdog would read "nothing since the due time", call it `missed`, and
       // retry into the same skip forever — reporting a cause that isn't true.
@@ -97,7 +123,12 @@ export async function onRequest(context) {
         const l2 = (await readJsonSafe(env, "feed-send-log.json")) || [];
         l2.unshift({ at: new Date().toISOString(), subscribers: subs.length, sent: [],
                      skipped: "identical bundle already delivered " + prior.at,
-                     bundle_etag: etag, coverage });
+                     bundle_etag: etag, coverage,
+                     // The skip CARRIES THE BASELINE FORWARD. lastEtagEntry() can
+                     // return this entry next time, and if it dropped the
+                     // fingerprint the row-level freshness comparison would go
+                     // blind from the first skip onward and never recover.
+                     ...fingerprintOf(status, file) });
         await env.BUNDLES.put("feed-send-log.json", JSON.stringify(l2.slice(0, 12)));
       } catch (_) { /* never fail on bookkeeping */ }
       return json({ ok: true, skipped: "identical bundle already delivered",
@@ -135,7 +166,7 @@ export async function onRequest(context) {
       const lo = await env.BUNDLES.get("feed-send-log.json");
       const log = lo ? JSON.parse(await lo.text()) : [];
       log.unshift({ at: new Date().toISOString(), subscribers: subs.length, sent, coverage,
-                    bundle_etag: etag });
+                    bundle_etag: etag, ...fingerprintOf(status, file) });
       await env.BUNDLES.put("feed-send-log.json", JSON.stringify(log.slice(0, 12)));
     } catch (_) { /* logging must never fail the send */ }
     return json({ ok: true, subscribers: subs.length, sent });
@@ -199,6 +230,36 @@ async function sendEmail(env, to, name, b64, token, coverage) {
   });
   if (!resp.ok) throw new Error("resend " + resp.status + " " + (await resp.text()).slice(0, 160));
   return true;
+}
+
+// WHAT WAS ACTUALLY DELIVERED, recorded next to the etag that is already
+// written. Without this the send log remembers only that SOME bytes went out,
+// and _presend.js's four `prior.bundle_*` comparisons — the whole row-level
+// freshness check — are unreachable code: they compare against fields nothing
+// has ever written.
+//
+// The baseline has to be what a SUBSCRIBER RECEIVED, not what the builder last
+// produced. The customer's question is "is this different from what I already
+// have", and only the send log knows the answer to that.
+//
+// PRIVACY: hashes, counts, a byte size and a date. No row content, no
+// contractor, no address, no subscriber. feed-send-log.json already carries
+// recipient addresses in `sent[].to`; this adds nothing of that kind, and the
+// phone board's scrub() strips addresses on the way out regardless.
+//
+// Returns {} when the fingerprint is absent — the pre-fingerprint shape, which
+// the gate reports as "unverifiable" in words rather than treating as verified.
+function fingerprintOf(status, file) {
+  const w = status && status.bundle && status.bundle.weekly;
+  if (!w) return {};
+  const out = {};
+  if (w.rowset_sha256) out.bundle_rowset = w.rowset_sha256;
+  if (typeof w.rows === "number") out.bundle_rows = w.rows;
+  if (w.max_issued_date) out.bundle_max_issued = w.max_issued_date;
+  // The size of the object actually mailed, not the size the builder reported.
+  // Those differ precisely in the truncated-upload case worth catching.
+  if (file && typeof file.size === "number") out.bundle_bytes = file.size;
+  return out;
 }
 
 async function readJsonSafe(env, key) {

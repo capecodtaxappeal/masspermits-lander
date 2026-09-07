@@ -113,3 +113,42 @@ jobs:
             echo "::error::weekly delivery verdict=$VERDICT ($DETAIL)"
             exit 1
           fi
+
+      # ── subscriber lifecycle rollup ──────────────────────────────────────
+      # Rolls up the /api/my-leads download log into engagement.json: which
+      # subscribers have never used the link, which used it and stopped, which
+      # are fine. Monday 13:30 UTC is 90 minutes after the send, which is why
+      # the classifier judges COMPLETED cycles only — nobody has had time to
+      # open this morning's yet.
+      #
+      # A SEPARATE STEP, ON PURPOSE. The step above exits 0 early on a healthy
+      # verdict (line 72), so anything appended to its script would never run in
+      # the normal case. And this must not be able to change the job's outcome
+      # in either direction:
+      #   if: always()        -> a failed delivery verdict does not skip it
+      #   continue-on-error   -> a broken rollup cannot fail the job
+      #   || true             -> nor can a non-2xx from curl
+      # The watchdog step's own exit code still stands, so this cannot mask a
+      # `missed` verdict. That is the one thing it must never do.
+      #
+      # SENDS NO EMAIL. The owner digest is only composed and mailed when the
+      # caller passes ?digest=1 AND the rollup found something actionable.
+      # digest=1 is deliberately absent until the metric has run clean for two
+      # cycles — that is what the `warming` state is for. Turning it on is a
+      # one-word edit here and nowhere else.
+      #
+      # The response body is COUNTS ONLY. This repo is public and this log is
+      # world-readable; /api/engagement is built so that no subscriber email,
+      # name or token fragment can appear in what jq prints below.
+      - name: Roll up subscriber lifecycle signals (no email, counts only)
+        if: always()
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          mint() {
+            curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value
+          }
+          curl -fsS -X POST -H "Authorization: Bearer $(mint)" \
+            https://masspermits.com/api/engagement | jq -c . || true
+          echo ""

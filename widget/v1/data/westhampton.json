@@ -1,0 +1,279 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Westhampton",
+ "slug": "westhampton",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/westhampton",
+ "feed_url": "https://masspermits.com/feed/westhampton.json",
+ "status": "live",
+ "n_total": 29,
+ "n_window": 28,
+ "n_long_window": 29,
+ "as_of": "2026-09-03",
+ "oldest": "2026-08-03",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 5,
+   "page": "/permits/westhampton-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 5,
+   "page": "/permits/westhampton-building"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 3,
+   "page": "/permits/westhampton-electrical"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 3,
+   "page": "/permits/westhampton-roofing"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 28,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Laurel Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Chesterfield Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Chesterfield Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Stage Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Turkey Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Northwest Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Northwest Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Easthampton Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Kings Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Burt Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "South Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "Northwest Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Hathaway Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hooker Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Kings Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Stage Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-19",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Chesterfield Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "North Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Kings Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Building",
+   "ts": "building",
+   "s": "Chesterfield Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-12",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Main Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pine Island Lk",
+   "v": null
+  },
+  {
+   "d": "2026-08-07",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Southampton Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-07",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Kings Hwy",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Westhampton, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

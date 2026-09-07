@@ -1,0 +1,422 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Reading",
+ "slug": "reading",
+ "kind": "town",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/reading",
+ "feed_url": "https://masspermits.com/feed/reading.json",
+ "status": "live",
+ "n_total": 223,
+ "n_window": 94,
+ "n_long_window": 223,
+ "as_of": "2026-07-30",
+ "oldest": "2026-06-01",
+ "window_from": "2026-07-01",
+ "window_to": "2026-07-30",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 16,
+   "page": "/permits/reading-roofing"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 16,
+   "page": "/permits/reading-kitchen-bath"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 16,
+   "page": "/permits/reading-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 11,
+   "page": "/permits/reading-building"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 8,
+   "page": "/permits/reading-deck-porch"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 7,
+   "page": "/permits/reading-renovation-remodel"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 6,
+   "page": "/permits/reading-addition"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 3,
+   "page": "/permits/reading-electrical"
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 3,
+   "page": "/permits/reading-pool-spa"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 94,
+  "median": 28708,
+  "p25": 10724,
+  "p75": 118807
+ },
+ "n_valued": 94,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-07-30",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Family Circle",
+   "v": 37000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Martin Road",
+   "v": 475000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Winthrop Avenue",
+   "v": 325000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Juniper Circle",
+   "v": 10632
+  },
+  {
+   "d": "2026-07-29",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Whittier Road",
+   "v": 464700
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Summit Drive",
+   "v": 19890
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Thomas Drive",
+   "v": 88328
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Fire/Sprinkler",
+   "ts": "fire-sprinkler",
+   "s": "Haverhill Street",
+   "v": 3700
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Chute Street",
+   "v": 132800
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Sandra Lane",
+   "v": 15850
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Oak Ridge Road",
+   "v": 375000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Gilmore Avenue",
+   "v": 448450
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Pearl Street",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Woodward Avenue",
+   "v": 27617
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Thomas Drive",
+   "v": 10400
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Canterbury Drive",
+   "v": 1391
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Belmont Street",
+   "v": 32000
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Juniper Circle",
+   "v": 26321
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "Summer Avenue",
+   "v": 8979
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Dana Road",
+   "v": 77000
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Colonial Drive",
+   "v": 3000
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Main Street",
+   "v": 60000
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Washington Street",
+   "v": 4100
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Varney Circle",
+   "v": 189000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Tamarack Road",
+   "v": 60000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Hanscom Avenue",
+   "v": 711340
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Wood End Lane",
+   "v": 2000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Pine Ridge Road",
+   "v": 75000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Estate Lane",
+   "v": 12500
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Middlesex Avenue",
+   "v": 29800
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Haven Street",
+   "v": 15300
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Grand Street",
+   "v": 2050
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Beaver Road",
+   "v": 4831
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "County Road",
+   "v": 111300
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Belmont Street",
+   "v": 30000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Benton Circle",
+   "v": 61500
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Franklin Street",
+   "v": 259500
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Summit Drive",
+   "v": 12000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Summer Avenue",
+   "v": 650000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Walkers Brook Drive",
+   "v": 512212
+  }
+ ],
+ "sources": [
+  "Reading, MA"
+ ],
+ "capped": false,
+ "age_days": 39
+}

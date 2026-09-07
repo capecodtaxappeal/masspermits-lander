@@ -1,0 +1,369 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Mashpee",
+ "slug": "mashpee",
+ "kind": "town",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/mashpee",
+ "feed_url": "https://masspermits.com/feed/mashpee.json",
+ "status": "live",
+ "n_total": 2400,
+ "n_window": 393,
+ "n_long_window": 1272,
+ "as_of": "2026-09-06",
+ "oldest": "2026-03-26",
+ "window_from": "2026-08-08",
+ "window_to": "2026-09-06",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 151,
+   "page": "/permits/mashpee-renovation-remodel"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 82,
+   "page": "/permits/mashpee-gas"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 78,
+   "page": "/permits/mashpee-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 41,
+   "page": "/permits/mashpee-plumbing"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 15,
+   "page": "/permits/mashpee-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 7,
+   "page": "/permits/mashpee-hvac"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 393,
+ "rows": [
+  {
+   "d": "2026-09-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Fir Ct",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Yardarm Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Highwood Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Leather Leaf Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Shore Dr West",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Deans Hollow Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "West Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Deans Hollow Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Old Barnstable Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Starboard Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Leather Leaf Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Masters Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Great Neck Rd, South",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Great Neck Rd, South",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Willow Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rock Landing Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Pine Hill Blvd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Whippoorwill Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Brassie Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Friendship Ct",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Squaws Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Hawthorne St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Pickerel Cove Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Troon Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Grand Vista",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Willowbend Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Pond St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Friendship Ct",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Kim Path",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Shore Dr West",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Great Neck Rd, North",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lowell Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Cambridge Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "The Heights",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Mashie Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Bog River Bend",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hyannis Point Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hyannis Point Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Lowell Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Shellback Way",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Mashpee, MA"
+ ],
+ "capped": true,
+ "age_days": 1
+}

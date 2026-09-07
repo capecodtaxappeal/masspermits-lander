@@ -1,0 +1,434 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Cambridge",
+ "slug": "cambridge",
+ "kind": "town",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/cambridge",
+ "feed_url": "https://masspermits.com/feed/cambridge.json",
+ "status": "live",
+ "n_total": 2776,
+ "n_window": 550,
+ "n_long_window": 2070,
+ "as_of": "2026-09-05",
+ "oldest": "2026-05-11",
+ "window_from": "2026-08-07",
+ "window_to": "2026-09-05",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 172,
+   "page": "/permits/cambridge-electrical"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 93,
+   "page": "/permits/cambridge-hvac"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 59,
+   "page": "/permits/cambridge-gas"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 41,
+   "page": "/permits/cambridge-roofing"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 34,
+   "page": "/permits/cambridge-plumbing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 31,
+   "page": "/permits/cambridge-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 23,
+   "page": "/permits/cambridge-building"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 20,
+   "page": "/permits/cambridge-kitchen-bath"
+  },
+  {
+   "trade": "Asbestos",
+   "slug": "asbestos",
+   "n": 17,
+   "page": "/permits/cambridge-asbestos"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 13,
+   "page": "/permits/cambridge-new-construction"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 12,
+   "page": "/permits/cambridge-fire-sprinkler"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 9,
+   "page": "/permits/cambridge-solar"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 7,
+   "page": "/permits/cambridge-demolition"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 4,
+   "page": "/permits/cambridge-deck-porch"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 3,
+   "page": "/permits/cambridge-renovation-remodel"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 3,
+   "page": "/permits/cambridge-addition"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 399,
+  "median": 10000,
+  "p25": 3300,
+  "p75": 31094
+ },
+ "n_valued": 399,
+ "n_zero_valued": 151,
+ "rows": [
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cushing St",
+   "v": 500
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Kirkland St",
+   "v": 75355
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Ellery St",
+   "v": 20252
+  },
+  {
+   "d": "2026-09-04",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Kinnaird St",
+   "v": 30000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Kinnaird St",
+   "v": 1
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Binney St",
+   "v": 18000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hurlbut St",
+   "v": 1500
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Coolidge Hill Rd",
+   "v": 5000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Grozier Rd",
+   "v": 499
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Dudley St, Unit",
+   "v": 11
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Washington St",
+   "v": 40000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Forest St",
+   "v": 200000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Jackson St",
+   "v": 332
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Upland Rd",
+   "v": 600
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Washington St",
+   "v": 40000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Washington St",
+   "v": 40000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Gold Star Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Cherry St, Unit",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Cherry St, Unit",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Cherry St, Unit",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Cherry St, Unit",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Land Blvd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Jay St",
+   "v": 18000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Western Ave",
+   "v": 38000
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Norumbega St",
+   "v": 39471
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Orrin St",
+   "v": 6975
+  },
+  {
+   "d": "2026-09-03",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Tremont St",
+   "v": 59831
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Garfield St",
+   "v": 6000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Broadway, Unit",
+   "v": 38975
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Pearl St",
+   "v": 37800
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Berkeley Pl",
+   "v": 7300
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Kinnaird St, Unit",
+   "v": 18400
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Harvard St",
+   "v": 21597
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Tremont St",
+   "v": 144500
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Cambridge St, Unit",
+   "v": 96000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Grove St",
+   "v": 1
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hamilton St",
+   "v": 600
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Chauncy St, Unit A",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rindge Ave, Unit",
+   "v": 350
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Jfk St",
+   "v": 2000
+  }
+ ],
+ "sources": [
+  "Cambridge, MA"
+ ],
+ "capped": false,
+ "age_days": 2
+}

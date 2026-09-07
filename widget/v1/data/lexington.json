@@ -1,0 +1,416 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Lexington",
+ "slug": "lexington",
+ "kind": "town",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/lexington",
+ "feed_url": "https://masspermits.com/feed/lexington.json",
+ "status": "live",
+ "n_total": 1225,
+ "n_window": 397,
+ "n_long_window": 1171,
+ "as_of": "2026-08-31",
+ "oldest": "2026-06-01",
+ "window_from": "2026-08-02",
+ "window_to": "2026-08-31",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 130,
+   "page": "/permits/lexington-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 69,
+   "page": "/permits/lexington-plumbing"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 37,
+   "page": "/permits/lexington-roofing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 33,
+   "page": "/permits/lexington-gas"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 31,
+   "page": "/permits/lexington-hvac"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 22,
+   "page": "/permits/lexington-building"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 19,
+   "page": "/permits/lexington-windows-doors-siding"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 16,
+   "page": "/permits/lexington-kitchen-bath"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 11,
+   "page": "/permits/lexington-solar"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 8,
+   "page": "/permits/lexington-new-construction"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 6,
+   "page": "/permits/lexington-demolition"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 5,
+   "page": "/permits/lexington-deck-porch"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 2,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 292,
+  "median": 10928,
+  "p25": 2957,
+  "p75": 32888
+ },
+ "n_valued": 292,
+ "n_zero_valued": 105,
+ "rows": [
+  {
+   "d": "2026-08-31",
+   "t": "Other",
+   "ts": "other",
+   "s": "Massachusetts Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Valleyfield St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Rangeway",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Paul Revere Rd",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Tufts Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Graham Rd",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Turning Mill Rd",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Brookwood Rd",
+   "v": 9000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hayden Ave",
+   "v": 6858
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Slocum Rd",
+   "v": 8745
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Circle Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "School St",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Crescent Rd",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Vine Brook Rd",
+   "v": 50000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Demar Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Grove St",
+   "v": 29200
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Massachusetts Ave",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Stimson Ave",
+   "v": 47952
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Mill Brook Rd",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Bushnell Dr",
+   "v": 10030
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Tucker Ave",
+   "v": 11794
+  },
+  {
+   "d": "2026-08-31",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Augustus Rd",
+   "v": 19959
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Lake St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Bertwell Rd",
+   "v": 27694
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Massachusetts Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Vine St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Wyman Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Saddle Club Rd",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bloomfield St",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Emerald St",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Dewey Rd",
+   "v": 43540
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Stimson Ave",
+   "v": 15984
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Muster Ct",
+   "v": 75000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hayden Ave",
+   "v": 41880
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bedford St",
+   "v": 24000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Wood St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "North St",
+   "v": 20700
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Deering Ave",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Douglas Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Lowell St",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Lexington, MA"
+ ],
+ "capped": false,
+ "age_days": 7
+}

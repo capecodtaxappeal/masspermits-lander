@@ -1,0 +1,304 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Newbury",
+ "slug": "newbury",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/newbury",
+ "feed_url": "https://masspermits.com/feed/newbury.json",
+ "status": "live",
+ "n_total": 29,
+ "n_window": 29,
+ "n_long_window": 29,
+ "as_of": "2026-09-03",
+ "oldest": "2026-08-27",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 5,
+   "page": "/permits/newbury-hvac"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 5,
+   "page": "/permits/newbury-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 5,
+   "page": "/permits/newbury-gas"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 5,
+   "page": "/permits/newbury-electrical"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 3,
+   "page": "/permits/newbury-building"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 29,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Caldwell Farm Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Cypress Hollow",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Southern Boulevard",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Orchard St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Plum Island Bl",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Plum Island Bl",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Plum Island Bl",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Plum Island Bl",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Cypress Hollow",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Adams Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Pearson Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "High Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Oak Tr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "Littles Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Northern Bl",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Old Rowley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Plum Bush Downs",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Marsh Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Forest St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Annapolis Wy",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Northern Bl",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Fatherland Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Caldwell Farm Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Other",
+   "ts": "other",
+   "s": "Scotland Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Newbury Neck Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Birch Ln",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Newbury, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

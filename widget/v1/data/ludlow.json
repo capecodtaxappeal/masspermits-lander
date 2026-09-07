@@ -1,0 +1,363 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Ludlow",
+ "slug": "ludlow",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/ludlow",
+ "feed_url": "https://masspermits.com/feed/ludlow.json",
+ "status": "live",
+ "n_total": 956,
+ "n_window": 173,
+ "n_long_window": 456,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 68,
+   "page": "/permits/ludlow-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 39,
+   "page": "/permits/ludlow-electrical"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 16,
+   "page": "/permits/ludlow-gas"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 14,
+   "page": "/permits/ludlow-plumbing"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 11,
+   "page": "/permits/ludlow-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 4,
+   "page": "/permits/ludlow-hvac"
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 173,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Aldo Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Chapin Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Woodside Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Florida Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lockland Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Lockland Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Northwood Circle",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Blisswood Village Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Rooney Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Miller St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Center Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Randall Road",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lyon Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "Norwood Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Winsor Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Building",
+   "ts": "building",
+   "s": "East Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ridgeview Circle",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Chapin Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Miller St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Greenwich Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Elizabeth Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Overlook Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Booth Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Genovevo Drive",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Letourneau Lane",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Gilbert Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Winsor Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Loopley Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "East Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Alden Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Overlook Drive",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Other",
+   "ts": "other",
+   "s": "Oregon Avenue",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "Whitney Street (Lower)",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Building",
+   "ts": "building",
+   "s": "State Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "East Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Newbury Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Springmeadow Drive",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Newbury Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Berkshire Street",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Elm Street",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Ludlow, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

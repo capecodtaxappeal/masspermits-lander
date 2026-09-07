@@ -1,0 +1,410 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Plymouth",
+ "slug": "plymouth",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/plymouth",
+ "feed_url": "https://masspermits.com/feed/plymouth.json",
+ "status": "live",
+ "n_total": 2468,
+ "n_window": 715,
+ "n_long_window": 2369,
+ "as_of": "2026-08-31",
+ "oldest": "2026-06-01",
+ "window_from": "2026-08-02",
+ "window_to": "2026-08-31",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 183,
+   "page": "/permits/plymouth-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 124,
+   "page": "/permits/plymouth-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 112,
+   "page": "/permits/plymouth-gas"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 57,
+   "page": "/permits/plymouth-deck-porch"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 44,
+   "page": "/permits/plymouth-windows-doors-siding"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 43,
+   "page": "/permits/plymouth-roofing"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 40,
+   "page": "/permits/plymouth-building"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 34,
+   "page": "/permits/plymouth-addition"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 23,
+   "page": "/permits/plymouth-hvac"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 22,
+   "page": "/permits/plymouth-solar"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 17,
+   "page": "/permits/plymouth-kitchen-bath"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 13,
+   "page": "/permits/plymouth-new-construction"
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 3,
+   "page": "/permits/plymouth-pool-spa"
+  }
+ ],
+ "value": {
+  "n_valued": 425,
+  "median": 15000,
+  "p25": 5000,
+  "p75": 30000
+ },
+ "n_valued": 425,
+ "n_zero_valued": 290,
+ "rows": [
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Knapp Terr",
+   "v": 60000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Rocky Hill Rd",
+   "v": 29000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Bartlett Rd",
+   "v": 100000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Western Point Saquish",
+   "v": 12000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Jesse Brook Road",
+   "v": 9750
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Davenport Rd",
+   "v": 6300
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Marscot Way",
+   "v": 3378
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Kathleen Dr",
+   "v": 6609
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Amy Ln",
+   "v": 4200
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Champlain Cir",
+   "v": 12641
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Lunn`S Way",
+   "v": 15500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Owls Nest",
+   "v": 339065
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Owls Nest",
+   "v": 550330
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bourne Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Shallow Pond Ln",
+   "v": 250
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Winthrop Rd",
+   "v": 3400
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Broadleaf",
+   "v": 600
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Kirk Cir",
+   "v": 250
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Broadleaf",
+   "v": 600
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Bradford Terr",
+   "v": 5250
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Indian Hill Park",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Jordan Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Howland Ct",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Mountain Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Cabot Circle",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Reedville Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mariner`S Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mariner`S Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Clipper Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Wayside Path",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Holmes Terr",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mariner`S Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mariner`S Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Howland Ct",
+   "v": null
+  },
+  {
+   "d": "2026-08-29",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Court St",
+   "v": 4000
+  },
+  {
+   "d": "2026-08-29",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Loons Call",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Blossom Dr",
+   "v": 65000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Taylor Ave",
+   "v": 43641
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "White Horse Rd",
+   "v": 6500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Long Pond Rd",
+   "v": 4200
+  }
+ ],
+ "sources": [
+  "Plymouth, MA"
+ ],
+ "capped": false,
+ "age_days": 7
+}

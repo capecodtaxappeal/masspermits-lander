@@ -1,0 +1,193 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Chestnut Hill",
+ "slug": "chestnut-hill",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/chestnut-hill",
+ "feed_url": "https://masspermits.com/feed/chestnut-hill.json",
+ "status": "live",
+ "n_total": 16,
+ "n_window": 15,
+ "n_long_window": 16,
+ "as_of": "2026-09-02",
+ "oldest": "2026-08-03",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 5,
+   "page": "/permits/chestnut-hill-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 15,
+  "median": 2000,
+  "p25": 1000,
+  "p75": 9500
+ },
+ "n_valued": 15,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Thornton Rd",
+   "v": 11000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Thornton Rd",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Crehore Rd",
+   "v": 842
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hackensack Te",
+   "v": 5758
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Thornton Rd",
+   "v": 72340
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Vfw Pw",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-20",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Vfw Pw",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-18",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Vfw Pw",
+   "v": 1
+  },
+  {
+   "d": "2026-08-17",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Vfw Pw",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-16",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hackensack Ct",
+   "v": 1500
+  },
+  {
+   "d": "2026-08-10",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hackensack Ci",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-07",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hackensack Rd",
+   "v": 850
+  },
+  {
+   "d": "2026-08-06",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Hackensack Rd",
+   "v": 18000
+  },
+  {
+   "d": "2026-08-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Vfw Pw",
+   "v": 9000
+  },
+  {
+   "d": "2026-08-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Vfw Pw",
+   "v": 2000
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

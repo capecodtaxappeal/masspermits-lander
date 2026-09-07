@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>Building permits in Manchester-by-the-Sea, MA — MassPermits</title>
+<style>
+:root{
+  --bg:#ffffff; --panel:#f7f9fb; --ink:#10161d; --mut:#54657a; --line:#e3e9ef;
+  --accent:#0b6b61; --accent-ink:#0b6b61; --val:#166534; --warn-bg:#fff8e6;
+  --warn-line:#e8d49a; --warn-ink:#6b4e07; --chip:#eef3f7; --focus:#0b6b61;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1622; --panel:#16212f; --ink:#e8eef5; --mut:#93a7bc; --line:#2a3a4f;
+    --accent:#2dd4bf; --accent-ink:#2dd4bf; --val:#4ade80; --warn-bg:#241f10;
+    --warn-line:#5a4a1c; --warn-ink:#e8cf8a; --chip:#1d2a3a; --focus:#2dd4bf;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1622; --panel:#16212f; --ink:#e8eef5; --mut:#93a7bc; --line:#2a3a4f;
+  --accent:#2dd4bf; --accent-ink:#2dd4bf; --val:#4ade80; --warn-bg:#241f10;
+  --warn-line:#5a4a1c; --warn-ink:#e8cf8a; --chip:#1d2a3a; --focus:#2dd4bf;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:400 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+.mp{border:1px solid var(--line); border-radius:var(--radius); background:var(--bg);
+    padding:14px 16px 12px; max-width:680px}
+.mp a{color:var(--accent-ink); text-decoration:none}
+.mp a:hover,.mp a:focus{text-decoration:underline}
+.mp a:focus-visible,.mp button:focus-visible,.mp [tabindex]:focus-visible{
+  outline:2px solid var(--focus); outline-offset:2px; border-radius:4px}
+.mp h2{margin:0; font-size:16px; line-height:1.3; font-weight:700; letter-spacing:-.01em}
+.mp h2 b{font-weight:800}
+.mp .win{margin:3px 0 0; color:var(--mut); font-size:12.5px}
+.mp .win b{color:var(--ink); font-weight:600}
+
+.stats{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0; padding:0; list-style:none}
+.stats li{flex:1 1 96px; background:var(--panel); border:1px solid var(--line);
+  border-radius:8px; padding:8px 10px; min-width:96px}
+.stats .n{display:block; font-size:19px; font-weight:800; letter-spacing:-.02em;
+  color:var(--accent-ink); font-variant-numeric:tabular-nums}
+.stats .n.mono{color:var(--val)}
+.stats .l{display:block; font-size:10.5px; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--mut); margin-top:1px}
+.stats .sub{display:block; font-size:10.5px; color:var(--mut); margin-top:1px}
+
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin:11px 0 0; padding:0; list-style:none}
+.chips li a,.chips li span{display:inline-block; background:var(--chip); border:1px solid var(--line);
+  color:var(--ink); border-radius:999px; padding:3px 9px; font-size:12px; white-space:nowrap}
+.chips b{font-variant-numeric:tabular-nums; color:var(--mut); font-weight:600; margin-left:4px}
+
+table{width:100%; border-collapse:collapse; margin:12px 0 0; font-size:13px}
+caption{text-align:left; color:var(--mut); font-size:12px; padding-bottom:6px}
+th{text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--mut); font-weight:600; padding:0 8px 6px 0; border-bottom:1px solid var(--line)}
+td{padding:7px 8px 7px 0; border-bottom:1px solid var(--line); vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.v{text-align:right; color:var(--val); font-weight:700; white-space:nowrap;
+  font-variant-numeric:tabular-nums; padding-right:0}
+td.d{color:var(--mut); white-space:nowrap; font-variant-numeric:tabular-nums}
+td.t{white-space:nowrap}
+td.s{color:var(--ink)}
+
+.note{margin:11px 0 0; padding:9px 11px; border:1px solid var(--warn-line);
+  background:var(--warn-bg); color:var(--warn-ink); border-radius:8px; font-size:12.5px}
+.note b{font-weight:700}
+.note a{color:var(--warn-ink); text-decoration:underline}
+
+.foot{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline;
+  margin:12px 0 0; padding-top:10px; border-top:1px solid var(--line); font-size:12px}
+.foot .more{font-weight:700}
+.foot .attr{color:var(--mut); margin:0}
+.foot .attr a{color:var(--mut); text-decoration:underline}
+.sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0}
+.compact .stats,.compact caption{display:none}
+.compact .mp{padding:11px 12px 10px}
+[hidden]{display:none !important}
+@media (max-width:420px){
+  .mp{padding:12px 12px 10px}
+  td.s{word-break:break-word}
+  .stats li{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:no-preference){
+  .mp a{transition:color .12s ease}
+}
+@media print{ .mp{border-color:#999} }
+</style>
+</head>
+<body data-path="/widget/manchester-by-the-sea">
+<section class="mp" aria-labelledby="mp-h">
+<header><h2 id="mp-h">Building permits in <b>Manchester-by-the-Sea</b></h2>
+<p class="win">Not published by MassPermits</p></header>
+<p class="note"><b>We do not have Manchester-by-the-Sea.</b> As surveyed on 6 Sep 2026, the town publishes records in a form that needs substantial work to read reliably, and we have not built it yet. Rather than show you an estimate, we show you nothing.</p>
+<p class="win">Essex County &middot; one of the 351 Massachusetts municipalities. <a href="https://masspermits.com/research/coverage?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">What each source publishes &rarr;</a></p>
+<p class="win">Nearby locations we do publish:</p>
+<ul class="chips" role="list"><li><a href="https://masspermits.com/permits/somerville?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">Somerville</a></li><li><a href="https://masspermits.com/permits/chicopee?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">Chicopee</a></li><li><a href="https://masspermits.com/permits/concord?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">Concord</a></li><li><a href="https://masspermits.com/permits/bellingham?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">Bellingham</a></li><li><a href="https://masspermits.com/permits/ipswich?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">Ipswich</a></li><li><a href="https://masspermits.com/permits/north-reading?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">North Reading</a></li></ul>
+<div class="foot">
+<a class="more" href="mailto:hello@masspermits.com?subject=Manchester-by-the-Sea%20permit%20records" rel="noopener">Know a public source for Manchester-by-the-Sea? Tell us &rarr;</a>
+<p class="attr">Data: <a href="https://masspermits.com/?utm_source=widget&utm_medium=embed&utm_campaign=town-widget&utm_content=manchester-by-the-sea" rel="noopener">MassPermits</a> &middot; public municipal building-permit records &middot; <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license noopener">CC BY-NC 4.0</a></p>
+</div></section>
+<script>
+(function(){
+  "use strict";
+  var P; try{ P = new URLSearchParams(location.search); }catch(e){ P = null; }
+  function q(k,d){ try{ var v=P&&P.get(k); return (v===null||v==="")?d:v; }catch(e){ return d; } }
+  var root=document.documentElement, box=document.querySelector(".mp");
+  if(!box) return;
+
+  /* --- theme: auto | light | dark --------------------------------------- */
+  var th=(q("theme","auto")||"auto").toLowerCase();
+  if(th==="light"||th==="dark") root.setAttribute("data-theme",th);
+  if(q("compact","")) document.body.classList.add("compact");
+
+  /* --- trade filter and row limit ---------------------------------------
+     ONE pass decides what is visible, so the caption, the headline count and
+     the table can never disagree.
+
+     The trade count comes from the chip's data-n, which the BUILD wrote from
+     the whole window. It is never recomputed from the rows on screen: the row
+     list is capped at 40, so a recount would silently understate a busy town —
+     the same class of defect as an asserted comparative nobody evaluates. */
+  var DEFAULT_ROWS = 8, MAX = 25;
+  var trade=(q("trade","")||"").toLowerCase();
+  var lim=parseInt(q("rows",""),10);
+  if(isNaN(lim)||lim<1) lim=DEFAULT_ROWS;
+  lim=Math.min(lim,MAX);
+
+  var tbody=box.querySelector("tbody"), trs=tbody?[].slice.call(tbody.rows):[];
+  var chip=trade?box.querySelector('.chips [data-ts="'+trade.replace(/[^a-z0-9-]/g,"")+'"]'):null;
+  var label=chip?(chip.getAttribute("data-label")||trade):trade;
+  var trueN=chip?parseInt(chip.getAttribute("data-n"),10):NaN;
+
+  var match=[];
+  for(var i=0;i<trs.length;i++){
+    trs[i].hidden=true;
+    if(!trade||trs[i].getAttribute("data-ts")===trade) match.push(trs[i]);
+  }
+  var shown=Math.min(lim,match.length);
+  for(var j=0;j<shown;j++) match[j].hidden=false;
+
+  var table=box.querySelector("table"), cap=box.querySelector("caption"),
+      stats=box.querySelector(".stats"), chips=box.querySelector(".chips"),
+      empty=box.querySelector(".empty");
+
+  if(trade){
+    if(chips) chips.hidden=true;
+    var h2=box.querySelector("h2 .scope");
+    if(h2) h2.textContent=label+" permits";
+    if(!isNaN(trueN)){
+      var n1=box.querySelector('[data-stat="n"]');
+      if(n1) n1.textContent=(box.getAttribute("data-capped")==="1"?"≥":"")+trueN;
+      var l1=box.querySelector('[data-stat="nl"]');
+      if(l1) l1.textContent=label+" permits";
+    }
+    /* trade count and median are different questions: the median published on
+       this page is the ALL-TRADE median for the window. Showing it under a
+       one-trade heading would be a figure relabelled, so it is removed. */
+    var t2=box.querySelector('[data-stat="trades"]'); if(t2&&t2.parentNode) t2.parentNode.hidden=true;
+    var v2=box.querySelector('[data-stat="value"]'); if(v2&&v2.parentNode) v2.parentNode.hidden=true;
+    if(match.length===0){
+      if(table) table.hidden=true;
+      if(stats) stats.hidden=true;
+      if(empty){
+        empty.hidden=false;
+        empty.textContent="No "+label+" permits are recorded in this window. "+
+          "That is what the records show, not a gap in the widget.";
+      }
+    }
+  }
+
+  /* The caption is the page's own statement about what it is showing; it is
+     rewritten from the numbers actually used, never left to drift. */
+  if(cap && match.length){
+    var of=trade?(isNaN(trueN)?match.length:trueN):
+                 (cap.getAttribute("data-total")||match.length);
+    cap.textContent="The "+shown+" most recent of "+of+" "+(trade?label+" ":"")+
+      "permits recorded in "+(box.getAttribute("data-town")||"this location")+
+      " between "+(cap.getAttribute("data-from")||"")+" and "+
+      (cap.getAttribute("data-to")||"")+
+      ". House numbers are removed; contractor and owner are not published.";
+  }
+
+  /* --- stamp outbound links so this channel is measurable ----------------
+     The links are already server-rendered with utm_source=widget; this only
+     adds which SITE the widget is on, when the loader passed it. No page URL,
+     no query string, nothing a visitor typed. */
+  var ref=(q("ref","")||"").slice(0,120);
+  var host="";
+  try{ host=ref?new URL(ref).hostname.replace(/^www\./,""):""; }catch(e){ host=""; }
+  if(host){
+    var as=box.querySelectorAll('a[href^="https://masspermits.com"]');
+    for(var k=0;k<as.length;k++){
+      var u=as[k].getAttribute("href");
+      as[k].setAttribute("href",u+(u.indexOf("?")>-1?"&":"?")+"ref="+encodeURIComponent(host));
+    }
+  }
+
+  /* --- height to the parent ---------------------------------------------- */
+  function h(){
+    var v=Math.ceil(document.documentElement.getBoundingClientRect().height)+2;
+    try{ parent.postMessage({mp:1,h:v},"*"); }catch(e){}
+  }
+  h();
+  if(window.ResizeObserver){ new ResizeObserver(h).observe(document.documentElement); }
+  else { window.addEventListener("load",h,false); setTimeout(h,300); setTimeout(h,1200); }
+
+  /* --- one first-party impression beacon ---------------------------------
+     Same endpoint, same no-cookie no-PII shape as every other page on the site.
+     `s` is left empty on purpose so /api/hit derives the SOURCE from the
+     embedding origin — which tells us which sites this reached, the one number
+     that decides whether this channel is worth continuing. Off with t=0. */
+  if(q("t","1")!=="0"){
+    try{
+      var p=document.body.getAttribute("data-path")||location.pathname;
+      var b="https://masspermits.com/api/hit?p="+encodeURIComponent(p)+
+            "&s=&r="+encodeURIComponent(ref||document.referrer||"");
+      if(navigator.sendBeacon) navigator.sendBeacon(b); else (new Image()).src=b;
+    }catch(e){}
+  }
+})();
+</script>
+</body>
+</html>

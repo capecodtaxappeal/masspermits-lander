@@ -1,0 +1,207 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Barnstable",
+ "slug": "barnstable",
+ "kind": "town",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/barnstable",
+ "feed_url": "https://masspermits.com/feed/barnstable.json",
+ "status": "live",
+ "n_total": 65,
+ "n_window": 17,
+ "n_long_window": 65,
+ "as_of": "2026-07-28",
+ "oldest": "2026-05-04",
+ "window_from": "2026-06-29",
+ "window_to": "2026-07-28",
+ "trades": [
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 5,
+   "page": "/permits/barnstable-kitchen-bath"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 5,
+   "page": "/permits/barnstable-windows-doors-siding"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 3,
+   "page": "/permits/barnstable-roofing"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 17,
+  "median": 32281,
+  "p25": 8586,
+  "p75": 69968
+ },
+ "n_valued": 17,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-07-28",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Scudder'S Lane",
+   "v": 100000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Main St./Rte",
+   "v": 69968
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Crocker Lane",
+   "v": 1
+  },
+  {
+   "d": "2026-07-16",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Aberle Way",
+   "v": 14900
+  },
+  {
+   "d": "2026-07-15",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Acre Hill Road",
+   "v": 3900
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Stonehedge Drive",
+   "v": 49891
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Old Jail Lane",
+   "v": 33370
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Cape Cod Lane",
+   "v": 18392
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Main St./Rte",
+   "v": 70000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Main St./Rte",
+   "v": 5570000
+  },
+  {
+   "d": "2026-07-07",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Samantha Drive",
+   "v": 15866
+  },
+  {
+   "d": "2026-07-07",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Shallow Pond Drive",
+   "v": 3946
+  },
+  {
+   "d": "2026-07-07",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Oakmont Road",
+   "v": 700000
+  },
+  {
+   "d": "2026-06-29",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Bragg'S Lane",
+   "v": 8586
+  },
+  {
+   "d": "2026-06-29",
+   "t": "Building",
+   "ts": "building",
+   "s": "Maushop Ave",
+   "v": 4326
+  },
+  {
+   "d": "2026-06-29",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Stonehedge Drive",
+   "v": 32281
+  },
+  {
+   "d": "2026-06-29",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Iyannough",
+   "v": 43000
+  }
+ ],
+ "sources": [
+  "Barnstable, MA"
+ ],
+ "capped": false,
+ "age_days": 41
+}

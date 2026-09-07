@@ -1,0 +1,363 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Wareham",
+ "slug": "wareham",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/wareham",
+ "feed_url": "https://masspermits.com/feed/wareham.json",
+ "status": "live",
+ "n_total": 1414,
+ "n_window": 177,
+ "n_long_window": 604,
+ "as_of": "2026-08-27",
+ "oldest": "2026-02-01",
+ "window_from": "2026-07-29",
+ "window_to": "2026-08-27",
+ "trades": [
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 56,
+   "page": "/permits/wareham-building"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 50,
+   "page": "/permits/wareham-electrical"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 31,
+   "page": "/permits/wareham-gas"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 27,
+   "page": "/permits/wareham-plumbing"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 5,
+   "page": "/permits/wareham-sign-awning"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 5,
+   "page": "/permits/wareham-hvac"
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 177,
+ "rows": [
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Sippican Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Swifts Bch Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Swifts Bch Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Swifts Bch Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Kendrick Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Cran Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Douglas Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cran Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Edgewater Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hathaway St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rose Pt Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Paper Mill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Swifts Bch Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "Cran Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Building",
+   "ts": "building",
+   "s": "County Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Building",
+   "ts": "building",
+   "s": "Barlow Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cran Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cran Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Crooked River Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Elmwood St",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Stoney Run Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Pine Tree Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Choctaw Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Tinker'S Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Little Harbor Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Fourth St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Great Neck Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Windswept Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Dinah'S Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Swifts Bch Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Cameron St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Windswept Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Barlow Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-22",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Maple Springs Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Saltmarsh Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Fearing Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Rock Marsh Rd, Unit",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Farmer'S Ln",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Wareham, MA"
+ ],
+ "capped": false,
+ "age_days": 11
+}

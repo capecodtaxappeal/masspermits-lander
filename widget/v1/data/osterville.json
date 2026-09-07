@@ -1,0 +1,302 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Osterville",
+ "slug": "osterville",
+ "kind": "village",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/osterville",
+ "feed_url": "https://masspermits.com/feed/osterville.json",
+ "status": "live",
+ "n_total": 95,
+ "n_window": 28,
+ "n_long_window": 95,
+ "as_of": "2026-07-29",
+ "oldest": "2026-05-01",
+ "window_from": "2026-06-30",
+ "window_to": "2026-07-29",
+ "trades": [
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 7,
+   "page": "/permits/osterville-building"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 7,
+   "page": "/permits/osterville-kitchen-bath"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 6,
+   "page": "/permits/osterville-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 3,
+   "page": "/permits/osterville-windows-doors-siding"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 28,
+  "median": 20000,
+  "p25": 8057,
+  "p75": 75250
+ },
+ "n_valued": 28,
+ "n_zero_valued": 0,
+ "rows": [
+  {
+   "d": "2026-07-29",
+   "t": "Building",
+   "ts": "building",
+   "s": "Starboard Lane",
+   "v": 12000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Jason'S Lane",
+   "v": 65000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Sea View Avenue",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Parsley Lane",
+   "v": 14900
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Admiral'S Lane",
+   "v": 106000
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Wianno Avenue",
+   "v": 4900
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street (Ost.)",
+   "v": 3954
+  },
+  {
+   "d": "2026-07-19",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Old Mill Road",
+   "v": 25000
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Scudder Road",
+   "v": 1000
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Captain Alden'S Lane",
+   "v": 24850
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Oldham Road",
+   "v": 65000
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Pool/Spa",
+   "ts": "pool-spa",
+   "s": "Third Avenue (Ost.)",
+   "v": 46500
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Building",
+   "ts": "building",
+   "s": "North Bay Road",
+   "v": 150000
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Main Street (Ost.)",
+   "v": 20000
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Building",
+   "ts": "building",
+   "s": "Crystal Lake Road",
+   "v": 850000
+  },
+  {
+   "d": "2026-07-15",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Wianno Avenue",
+   "v": 188000
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Pond Street",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Robbins Street",
+   "v": 20000
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "King Arthur Drive",
+   "v": 8000
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Building",
+   "ts": "building",
+   "s": "West Bay Road",
+   "v": 200
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Leonard Drive",
+   "v": 561549
+  },
+  {
+   "d": "2026-07-11",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Pond Street",
+   "v": 650000
+  },
+  {
+   "d": "2026-07-11",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Acorn Drive",
+   "v": 37001
+  },
+  {
+   "d": "2026-07-10",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Old Mill Road",
+   "v": 1200
+  },
+  {
+   "d": "2026-07-08",
+   "t": "Building",
+   "ts": "building",
+   "s": "Pond Street",
+   "v": 5000
+  },
+  {
+   "d": "2026-07-08",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Scudder Road",
+   "v": 8076
+  },
+  {
+   "d": "2026-07-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Tansy Circle",
+   "v": 11000
+  },
+  {
+   "d": "2026-06-30",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Tansy Circle",
+   "v": 120000
+  }
+ ],
+ "sources": [
+  "Barnstable, MA"
+ ],
+ "capped": false,
+ "age_days": 40
+}

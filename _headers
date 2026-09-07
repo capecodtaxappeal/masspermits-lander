@@ -1,0 +1,84 @@
+# MassPermits — static-asset headers (Cloudflare Pages).  KB/07 Stage D, D3.
+#
+# READ THIS BEFORE TRUSTING IT: a _headers file DOES NOT apply to Pages
+# Function responses. /leads, /leads/out and /api/* are Functions, so nothing
+# below reaches them — their headers are set in code, in functions/leads.js
+# (sec()) and functions/leads/out.js. This file is defence in depth for the
+# STATIC tree only, and it exists so that a future static file accidentally
+# committed at /leads or /leads/index.html — which Pages would serve in
+# preference to the authenticating Function — is at least not indexable.
+#
+# It is not a substitute for that rule: THERE MUST BE NO STATIC FILE AT /leads.
+# Verified 2026-09-06: no leads.html, no leads/ directory, no _routes.json.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# The portal, if a static asset ever answers here. Both patterns are needed:
+# /leads* would also match the public SEO pages if written loosely, so the
+# route is spelled exactly and then as a subtree.
+/leads
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Referrer-Policy: no-referrer
+  Cache-Control: private, no-store
+  Vary: Cookie
+
+/leads/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Referrer-Policy: no-referrer
+  Cache-Control: private, no-store
+  Vary: Cookie
+
+# The operator dashboard carries only a noindex meta tag today; a header is
+# stronger, since a meta tag is only read if the crawler renders the page.
+/ops
+  X-Robots-Tag: noindex, nofollow
+
+# >>> widget tier (widget_build.py) — do not hand-edit inside this block
+#
+# /widget/v1/embed is a RENDERING FRAGMENT, not a page. Indexing it would mint
+# ~60 near-identical thin URLs — the exact shape the cost tier was de-indexed
+# for (KB/03 section 7). Two independent mechanisms, as there: this header AND a
+# meta robots tag inside embed.html. A half-revert of one still leaves the
+# other.
+#
+# NO X-Frame-Options / frame-ancestors here, deliberately: being framed by
+# anyone is the entire product. The page is a read-only fragment with no
+# credential, no cookie and no form, so there is nothing for a clickjacker to
+# steal. It is also served with a CSP that lets it talk to nothing but its own
+# origin, so a framed copy cannot be repointed at somebody else's data.
+/widget/v1/embed
+  X-Robots-Tag: noindex, follow
+  Content-Security-Policy: default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; img-src data:; base-uri 'none'; form-action 'none'
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+
+/widget/v1/embed.html
+  X-Robots-Tag: noindex, follow
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+
+# The loader is the one file we can never fix on a host page, so it is cached
+# only an hour at the browser: the cost of a slow correction is higher than the
+# cost of a revalidation. It is also why the loader contains no copy and no
+# figures — see the header comment in widget_build.py.
+/widget/v1.js
+  Content-Type: application/javascript; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600, s-maxage=86400
+
+# The payloads are same-origin for the widget itself. CORS is here so the data
+# is directly usable by anyone building their own thing — the DCAT catalog and
+# llms.txt already invite exactly that.
+/widget/v1/data/*
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=900, s-maxage=3600, stale-while-revalidate=86400
+
+/widget/v1/index.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=900, s-maxage=3600, stale-while-revalidate=86400
+
+/widget/v1/evidence.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=900, s-maxage=3600, stale-while-revalidate=86400
+# <<< widget tier

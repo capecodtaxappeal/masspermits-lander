@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MassPermits — Is anything wrong?</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0e1622">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+<!--
+  MassPermits — the one URL. Served at /admin/now (Pages strips .html).
+
+  WHAT IT IS FOR
+  --------------
+  An operator on a phone, with 20 seconds, asking "is anything wrong?". The
+  answer is the first line on the screen and it is a sentence, not a dashboard.
+  Everything below that line exists to say what to do about it.
+
+  Today that question takes four `wrangler r2 object get --remote` calls against
+  a CLI that has served >20 minutes of stale bytes on a hot key, plus the GitHub
+  Actions API, plus Stripe, plus a Gmail search. On 2026-08-03 the answer
+  arrived from a paying customer instead, 34 days before anyone replied to him.
+
+  GATE — three layers, none of which is this file:
+    1. Cloudflare Access, covering masspermits.com/admin* and
+       masspermits.com/api/pipeline*. This page is /admin/now and its data comes
+       from /api/pipeline-now, so BOTH are inside the existing path expressions
+       and no Cloudflare dashboard change is needed. Verify that once (see
+       BUILD_presend.md §7) — an edge gate that silently stopped covering a path
+       is exactly the failure _cf-access.js exists to catch.
+    2. Full Cf-Access-Jwt-Assertion verification in functions/api/_cf-access.js,
+       performed by /api/pipeline-now itself. If Access vanished, this HTML would
+       still serve and would show nothing but a 403. That is intended: the shell
+       is public-harmless, the data is not, and the data is what is verified.
+    3. functions/_middleware.js GUARDED = ["/admin", "/api/pipeline"], a prefix
+       match, so both routes 404 on the permanent <hash>.pages.dev twin. That
+       file is NOT edited to add this page — the prefixes already cover it, and
+       middleware runs in front of /api/stripe-webhook and /api/weekly-send.
+
+  "Signed in as ..." is rendered from the VERIFIED email claim. If that line is
+  missing, the gate is not working. That is its job.
+
+  NO BEACON ON THIS PAGE, DELIBERATELY — same reason as admin/pipeline.html:
+  hit.js writes the pathname into R2 customMetadata and two UNAUTHENTICATED
+  endpoints echo it into a public JSON response. Do not "instrument" this page.
+
+  Every value from the API is written with textContent, never innerHTML.
+-->
+<style>
+  /* admin/pipeline.html's palette, unchanged — the only one in this repo with a
+     vocabulary for "degraded" and "broken". */
+  :root{--bg:#0e1622;--panel:#16212f;--panel2:#1d2a3a;--border:#2a3a4f;
+        --text:#e8eef5;--lead:#c7d3e0;--muted:#8aa0b6;--teal:#2dd4bf;
+        --good:#4ade80;--warn:#fbbf24;--bad:#f87171}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-text-size-adjust:100%}
+  .wrap{max-width:640px;margin:0 auto;padding:18px 16px 56px}
+  header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+         font-size:12.5px;color:var(--muted);margin-bottom:16px}
+  .brand{font-weight:800;color:var(--text);font-size:14px}
+  .brand span{color:var(--teal)}
+
+  /* THE ANSWER. Deliberately the largest thing on the page. */
+  .verdict{border-radius:14px;padding:20px 18px;margin-bottom:8px;
+           border:1px solid var(--border);background:var(--panel)}
+  .verdict .tag{font-size:12px;letter-spacing:.14em;font-weight:800;text-transform:uppercase}
+  .verdict h1{margin:8px 0 0;font-size:23px;line-height:1.3;font-weight:750}
+  .verdict p{margin:10px 0 0;color:var(--lead);font-size:14.5px}
+  .v-good{border-color:#1f5d3a}.v-good .tag{color:var(--good)}
+  .v-warn{border-color:#6b4e12}.v-warn .tag{color:var(--warn)}
+  .v-bad {border-color:#6b2626}.v-bad  .tag{color:var(--bad)}
+
+  ul.rows{list-style:none;margin:16px 0 0;padding:0}
+  ul.rows li{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;
+             background:var(--panel);border:1px solid var(--border);
+             border-radius:12px;margin-bottom:8px}
+  .dot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;margin-top:6px}
+  .d-good{background:var(--good)}.d-warn{background:var(--warn)}
+  .d-bad{background:var(--bad)}.d-unknown{background:var(--muted)}
+  .rl{flex:1 1 auto;min-width:0}
+  .rl b{display:block;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+        color:var(--muted);font-weight:700}
+  .rl .line{font-size:15px;margin-top:3px}
+  .rl .detail{font-size:13px;color:var(--muted);margin-top:5px;
+              overflow-wrap:anywhere}
+
+  details{margin-top:14px;background:var(--panel);border:1px solid var(--border);
+          border-radius:12px;padding:12px 14px}
+  summary{cursor:pointer;font-size:13.5px;color:var(--lead);font-weight:600}
+  details .item{margin-top:11px;font-size:13px}
+  details .item b{display:block;color:var(--text);font-weight:650}
+  details .item span{color:var(--muted)}
+  .gate{margin-top:8px;font-size:13px;color:var(--muted)}
+  .gate li{margin:5px 0}
+  .chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;
+        padding:3px 8px;border-radius:999px;border:1px solid var(--border);
+        color:var(--muted);margin-right:6px}
+  a{color:var(--teal)}
+  .err{background:#2a1414;border:1px solid #6b2626;border-radius:12px;padding:16px;
+       font-size:14px;color:#ffd7d7}
+  @media(max-width:420px){.wrap{padding:14px 12px 48px}.verdict h1{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">Mass<span>Permits</span></div>
+    <div><span id="who"></span> · <span id="when"></span></div>
+  </header>
+
+  <div id="mount" class="verdict"><h1 id="boot">Checking…</h1></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var mount = document.getElementById("mount");
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = String(text);   // never innerHTML
+    return n;
+  }
+
+  function fail(msg) {
+    mount.className = "err";
+    mount.textContent = "";
+    mount.appendChild(el("div", null, msg));
+  }
+
+  function render(d) {
+    document.getElementById("who").textContent =
+      d.signed_in_as ? "signed in as " + d.signed_in_as : "NOT SIGNED IN";
+    document.getElementById("when").textContent = new Date(d.now).toUTCString().slice(5, 22) + " UTC";
+
+    var cls = d.overall === "ALL_CLEAR" ? "v-good" : d.overall === "WATCH" ? "v-warn" : "v-bad";
+    var tag = d.overall === "ALL_CLEAR" ? "Nothing to do"
+            : d.overall === "WATCH" ? "Worth a look" : "Needs you";
+
+    mount.className = "verdict " + cls;
+    mount.textContent = "";
+    mount.appendChild(el("div", "tag", tag));
+    mount.appendChild(el("h1", null, d.headline));
+    if (d.what_to_do) mount.appendChild(el("p", null, d.what_to_do));
+
+    var ul = el("ul", "rows");
+    (d.rows || []).forEach(function (r) {
+      var li = el("li");
+      li.appendChild(el("span", "dot d-" + r.state));
+      var box = el("div", "rl");
+      box.appendChild(el("b", null, r.label));
+      box.appendChild(el("div", "line", r.line));
+      if (r.detail) box.appendChild(el("div", "detail", r.detail));
+      li.appendChild(box);
+      ul.appendChild(li);
+    });
+    mount.parentNode.appendChild(ul);
+
+    // The gate's own reasoning, one level down. The verdict line above is the
+    // answer; this is the working.
+    if (d.gate) {
+      var g = el("details");
+      g.appendChild(el("summary", null, "Pre-send gate — " + d.gate.verdict));
+      var chips = el("div");
+      chips.appendChild(el("span", "chip", d.gate.enforcing ? "ENFORCING" : "REPORTING ONLY"));
+      chips.appendChild(el("span", "chip", d.gate.notice_enabled ? "NOTICE ON" : "NOTICE OFF"));
+      if (d.gate.customer_gets_nothing) chips.appendChild(el("span", "chip", "CUSTOMER GETS NOTHING"));
+      g.appendChild(chips);
+      var list = el("ul", "gate");
+      (d.gate.reasons || []).forEach(function (x) { list.appendChild(el("li", null, x)); });
+      (d.gate.notes || []).forEach(function (x) { list.appendChild(el("li", null, "(" + x + ")")); });
+      g.appendChild(list);
+      if (d.gate.verdict === "HOLD") {
+        g.appendChild(el("div", "gate", "Holding until " + d.gate.hold_deadline +
+          ", then it sends with the data's real date stated. Holding is quiet only because it expires."));
+      }
+      mount.parentNode.appendChild(g);
+    }
+
+    // Stated on purpose. A page with four green dots that stays silent about
+    // what it cannot see is how a green run becomes proof.
+    if (d.not_measured && d.not_measured.length) {
+      var nm = el("details");
+      nm.appendChild(el("summary", null,
+        "What this page cannot see (" + d.not_measured.length + ")"));
+      d.not_measured.forEach(function (x) {
+        var i = el("div", "item");
+        i.appendChild(el("b", null, x.what));
+        i.appendChild(el("span", null, x.why));
+        nm.appendChild(i);
+      });
+      mount.parentNode.appendChild(nm);
+    }
+
+    var more = el("details");
+    more.appendChild(el("summary", null, "Where to look next"));
+    var links = el("div", "item");
+    var a1 = el("a", null, "Ingest board — all 39 sources");
+    a1.href = "/admin/pipeline";
+    links.appendChild(a1);
+    more.appendChild(links);
+    mount.parentNode.appendChild(more);
+  }
+
+  fetch("/api/pipeline-now", { headers: { accept: "application/json" }, cache: "no-store" })
+    .then(function (r) {
+      if (r.status === 403) throw new Error(
+        "Not authorised. Sign in through Cloudflare Access and reload. If you ARE signed in, " +
+        "the Access application no longer covers /api/pipeline* — that is the finding, not a glitch.");
+      if (!r.ok) throw new Error("The status endpoint returned HTTP " + r.status +
+        ". That is itself a fault: this page cannot tell you whether anything is wrong.");
+      return r.json();
+    })
+    .then(render)
+    .catch(function (e) { fail(String(e && e.message || e)); });
+})();
+</script>
+</body>
+</html>

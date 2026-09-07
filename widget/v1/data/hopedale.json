@@ -1,0 +1,369 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Hopedale",
+ "slug": "hopedale",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/hopedale",
+ "feed_url": "https://masspermits.com/feed/hopedale.json",
+ "status": "live",
+ "n_total": 438,
+ "n_window": 70,
+ "n_long_window": 264,
+ "as_of": "2026-09-04",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 31,
+   "page": "/permits/hopedale-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 19,
+   "page": "/permits/hopedale-electrical"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 6,
+   "page": "/permits/hopedale-building"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 4,
+   "page": "/permits/hopedale-plumbing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 3,
+   "page": "/permits/hopedale-hvac"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 70,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Overdale Pkwy",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Charlesgate Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Rockridge Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Plain St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Hopedale St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "South Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mill St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "South Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Kings Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Home Park Av",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rockridge Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Mill St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Laurelwood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Dutcher St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Plain St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Hope St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Dutcher St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Adin St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Park St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Adin St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Lake St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mill St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Jones Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Heron Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Centennial St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mill St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Driftway",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Laurelwood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Hopedale St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Rockridge Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Dana Pk",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Other",
+   "ts": "other",
+   "s": "South Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Mellen St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Greene St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Other",
+   "ts": "other",
+   "s": "Villa Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Other",
+   "ts": "other",
+   "s": "Plain St",
+   "v": null
+  },
+  {
+   "d": "2026-08-21",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Charlesgate Rd",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Hopedale, MA"
+ ],
+ "capped": false,
+ "age_days": 3
+}

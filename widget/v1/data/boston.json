@@ -1,0 +1,434 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Boston",
+ "slug": "boston",
+ "kind": "town",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/boston",
+ "feed_url": "https://masspermits.com/feed/boston.json",
+ "status": "live",
+ "n_total": 1568,
+ "n_window": 821,
+ "n_long_window": 1568,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 358,
+   "page": "/permits/boston-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 129,
+   "page": "/permits/boston-plumbing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 74,
+   "page": "/permits/boston-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 54,
+   "page": "/permits/boston-renovation-remodel"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 34,
+   "page": "/permits/boston-kitchen-bath"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 30,
+   "page": "/permits/boston-roofing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 28,
+   "page": "/permits/boston-gas"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 24,
+   "page": "/permits/boston-windows-doors-siding"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 21,
+   "page": "/permits/boston-fire-sprinkler"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 15,
+   "page": "/permits/boston-demolition"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 15,
+   "page": "/permits/boston-new-construction"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 8,
+   "page": "/permits/boston-sign-awning"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 4,
+   "page": "/permits/boston-addition"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 3,
+   "page": "/permits/boston-deck-porch"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 818,
+  "median": 16754,
+  "p25": 4700,
+  "p75": 70356
+ },
+ "n_valued": 818,
+ "n_zero_valued": 3,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Phillips St",
+   "v": 36870
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Congress St",
+   "v": 254552
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Fruit St",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Buswell St",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Edgerly Pl",
+   "v": 850
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Brookline Av",
+   "v": 9000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Francis St",
+   "v": 80734
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Blossom St",
+   "v": 12000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Fruit St",
+   "v": 12000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Post Office Sq",
+   "v": 70000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Seaport Bl",
+   "v": 120000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Congress St",
+   "v": 130000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Channel Center St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Charles St",
+   "v": 146498
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oliver St",
+   "v": 315
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Boylston St",
+   "v": 20000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Saint James Av",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Boylston St",
+   "v": 35000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Beacon St",
+   "v": 66000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oliver St",
+   "v": 2370
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "State St",
+   "v": 10714
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Washington St",
+   "v": 52000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Congress St",
+   "v": 23000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Washington St",
+   "v": 20000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Seaport Bl",
+   "v": 200000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Blackwood St",
+   "v": 1000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Longfellow Pl",
+   "v": 150000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Brookline Av",
+   "v": 900
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Federal St",
+   "v": 20000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "State St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Commonwealth Av",
+   "v": 65000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Appleton St",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Park Pz",
+   "v": 8500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Boylston St",
+   "v": 16000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Commonwealth Av",
+   "v": 6600
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Bay State Rd",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Columbus Av",
+   "v": 22150
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Willow St",
+   "v": 46637
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Beacon St",
+   "v": 2000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Oliver St",
+   "v": 100000
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

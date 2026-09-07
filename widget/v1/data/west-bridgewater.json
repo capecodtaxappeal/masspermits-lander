@@ -1,0 +1,369 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "West Bridgewater",
+ "slug": "west-bridgewater",
+ "kind": "town",
+ "region": "South Shore & South Coast",
+ "page_url": "https://masspermits.com/permits/west-bridgewater",
+ "feed_url": "https://masspermits.com/feed/west-bridgewater.json",
+ "status": "live",
+ "n_total": 486,
+ "n_window": 91,
+ "n_long_window": 240,
+ "as_of": "2026-09-05",
+ "oldest": "2026-03-11",
+ "window_from": "2026-08-07",
+ "window_to": "2026-09-05",
+ "trades": [
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 38,
+   "page": "/permits/west-bridgewater-renovation-remodel"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 25,
+   "page": "/permits/west-bridgewater-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 10,
+   "page": "/permits/west-bridgewater-plumbing"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 7,
+   "page": "/permits/west-bridgewater-building"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 6,
+   "page": "/permits/west-bridgewater-gas"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 3,
+   "page": "/permits/west-bridgewater-hvac"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 2,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 91,
+ "rows": [
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Spring Street",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Apple Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "South St",
+   "v": null
+  },
+  {
+   "d": "2026-09-05",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Manley St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Walnut St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Walnut St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Spring St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Rising Sun Lane",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Shaw Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Charles St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Building",
+   "ts": "building",
+   "s": "West Center St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pinecrest Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "N Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Pinecrest Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "N Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Harvestwood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "North Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Manley St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "West Center St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Crescent St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Shaw Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Metacomet Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Purchase St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Friendship Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "East St",
+   "v": null
+  },
+  {
+   "d": "2026-08-30",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cross St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Ash St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Crescent St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Sign/Awning",
+   "ts": "sign-awning",
+   "s": "West Center St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "North Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Forest St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "West St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "North Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Elm Terrace",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "United Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Pearl Road",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Metacomet Road",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "River St",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Metacomet Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Metacomet Rd",
+   "v": null
+  }
+ ],
+ "sources": [
+  "West Bridgewater, MA"
+ ],
+ "capped": false,
+ "age_days": 2
+}

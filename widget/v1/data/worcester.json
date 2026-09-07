@@ -1,0 +1,375 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Worcester",
+ "slug": "worcester",
+ "kind": "town",
+ "region": "Central MA",
+ "page_url": "https://masspermits.com/permits/worcester",
+ "feed_url": "https://masspermits.com/feed/worcester.json",
+ "status": "live",
+ "n_total": 6377,
+ "n_window": 1169,
+ "n_long_window": 3442,
+ "as_of": "2026-08-29",
+ "oldest": "2026-03-11",
+ "window_from": "2026-07-31",
+ "window_to": "2026-08-29",
+ "trades": [
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 493,
+   "page": "/permits/worcester-building"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 325,
+   "page": "/permits/worcester-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 167,
+   "page": "/permits/worcester-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 106,
+   "page": "/permits/worcester-gas"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 69,
+   "page": "/permits/worcester-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 6,
+   "page": "/permits/worcester-renovation-remodel"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 1169,
+ "rows": [
+  {
+   "d": "2026-08-29",
+   "t": "Building",
+   "ts": "building",
+   "s": "Grafton St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Meadow Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Ashburnham Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Barnard Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Sherwood Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "New Bond St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Westview Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Yukon Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Lansing Ave West",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Guild Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Park Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Montclair Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Southold Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Purchase St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Orton St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Shore Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Tory Fort Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Weatherstone Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Southbridge St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Crowningshield Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Berwick St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Longmeadow Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Adelle Circuit",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Lilac Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Allston Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Primrose St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Eureka St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Fourth St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Dubiel Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Holland Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Maranda St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Rowena St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Henderson Ave",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Wilbur St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Cataract St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Salisbury St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Danielle'S Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Danielle'S Way",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Plantation St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Northeast Cutoff",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Worcester, MA"
+ ],
+ "capped": false,
+ "age_days": 9
+}

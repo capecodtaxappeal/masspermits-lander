@@ -1,0 +1,410 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Roslindale",
+ "slug": "roslindale",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/roslindale",
+ "feed_url": "https://masspermits.com/feed/roslindale.json",
+ "status": "live",
+ "n_total": 369,
+ "n_window": 187,
+ "n_long_window": 369,
+ "as_of": "2026-09-03",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-05",
+ "window_to": "2026-09-03",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 59,
+   "page": "/permits/roslindale-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 20,
+   "page": "/permits/roslindale-plumbing"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 17,
+   "page": "/permits/roslindale-solar"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 15,
+   "page": "/permits/roslindale-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 14,
+   "page": "/permits/roslindale-windows-doors-siding"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 12,
+   "page": "/permits/roslindale-kitchen-bath"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 11,
+   "page": "/permits/roslindale-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 11,
+   "page": "/permits/roslindale-renovation-remodel"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 5,
+   "page": "/permits/roslindale-gas"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 3,
+   "page": "/permits/roslindale-deck-porch"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 3,
+   "page": "/permits/roslindale-new-construction"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 186,
+  "median": 7935,
+  "p25": 3097,
+  "p75": 23738
+ },
+ "n_valued": 186,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Mendelssohn St",
+   "v": 2500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Cliftondale St",
+   "v": 6000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Annafran St",
+   "v": 45000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Havana St",
+   "v": 82200
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Hautevale St",
+   "v": 97800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Chisholm Rd",
+   "v": 5947
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Ethel St",
+   "v": 10238
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Cerdan Av",
+   "v": 6000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Hilburn St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Hilburn St",
+   "v": 3389
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Metcalf St",
+   "v": 8200
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Washington St",
+   "v": 60000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Hyde Park Av",
+   "v": 13733
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Kittredge St",
+   "v": 60000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Sheldon St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Walter St",
+   "v": 8750
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Beech St",
+   "v": 1500000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Brahms St",
+   "v": 17925
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Weld St",
+   "v": 6271
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Washington St",
+   "v": 4671
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Basto Te",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Allandale St",
+   "v": 150000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Arborough Rd",
+   "v": 6579
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Cerdan Av",
+   "v": 7975
+  },
+  {
+   "d": "2026-09-01",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Deforest St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Deforest St",
+   "v": 5500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Conway St",
+   "v": 957
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Lorraine St",
+   "v": 22105
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Mount Hope St",
+   "v": 8000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Cliffmont St",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Arborough Rd",
+   "v": 40425
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Canterbury St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Florence St",
+   "v": 4500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Selwyn St",
+   "v": 26679
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Wyvern St",
+   "v": 7020
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Brown Av",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Orange St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Denton Te",
+   "v": 4500
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Washington St",
+   "v": 16000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Washington St",
+   "v": 16000
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 4
+}

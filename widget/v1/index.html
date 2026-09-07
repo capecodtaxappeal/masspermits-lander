@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>MassPermits widget v1</title>
+<style>
+:root{
+  --bg:#ffffff; --panel:#f7f9fb; --ink:#10161d; --mut:#54657a; --line:#e3e9ef;
+  --accent:#0b6b61; --accent-ink:#0b6b61; --val:#166534; --warn-bg:#fff8e6;
+  --warn-line:#e8d49a; --warn-ink:#6b4e07; --chip:#eef3f7; --focus:#0b6b61;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1622; --panel:#16212f; --ink:#e8eef5; --mut:#93a7bc; --line:#2a3a4f;
+    --accent:#2dd4bf; --accent-ink:#2dd4bf; --val:#4ade80; --warn-bg:#241f10;
+    --warn-line:#5a4a1c; --warn-ink:#e8cf8a; --chip:#1d2a3a; --focus:#2dd4bf;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1622; --panel:#16212f; --ink:#e8eef5; --mut:#93a7bc; --line:#2a3a4f;
+  --accent:#2dd4bf; --accent-ink:#2dd4bf; --val:#4ade80; --warn-bg:#241f10;
+  --warn-line:#5a4a1c; --warn-ink:#e8cf8a; --chip:#1d2a3a; --focus:#2dd4bf;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:400 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+.mp{border:1px solid var(--line); border-radius:var(--radius); background:var(--bg);
+    padding:14px 16px 12px; max-width:680px}
+.mp a{color:var(--accent-ink); text-decoration:none}
+.mp a:hover,.mp a:focus{text-decoration:underline}
+.mp a:focus-visible,.mp button:focus-visible,.mp [tabindex]:focus-visible{
+  outline:2px solid var(--focus); outline-offset:2px; border-radius:4px}
+.mp h2{margin:0; font-size:16px; line-height:1.3; font-weight:700; letter-spacing:-.01em}
+.mp h2 b{font-weight:800}
+.mp .win{margin:3px 0 0; color:var(--mut); font-size:12.5px}
+.mp .win b{color:var(--ink); font-weight:600}
+
+.stats{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0; padding:0; list-style:none}
+.stats li{flex:1 1 96px; background:var(--panel); border:1px solid var(--line);
+  border-radius:8px; padding:8px 10px; min-width:96px}
+.stats .n{display:block; font-size:19px; font-weight:800; letter-spacing:-.02em;
+  color:var(--accent-ink); font-variant-numeric:tabular-nums}
+.stats .n.mono{color:var(--val)}
+.stats .l{display:block; font-size:10.5px; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--mut); margin-top:1px}
+.stats .sub{display:block; font-size:10.5px; color:var(--mut); margin-top:1px}
+
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin:11px 0 0; padding:0; list-style:none}
+.chips li a,.chips li span{display:inline-block; background:var(--chip); border:1px solid var(--line);
+  color:var(--ink); border-radius:999px; padding:3px 9px; font-size:12px; white-space:nowrap}
+.chips b{font-variant-numeric:tabular-nums; color:var(--mut); font-weight:600; margin-left:4px}
+
+table{width:100%; border-collapse:collapse; margin:12px 0 0; font-size:13px}
+caption{text-align:left; color:var(--mut); font-size:12px; padding-bottom:6px}
+th{text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--mut); font-weight:600; padding:0 8px 6px 0; border-bottom:1px solid var(--line)}
+td{padding:7px 8px 7px 0; border-bottom:1px solid var(--line); vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.v{text-align:right; color:var(--val); font-weight:700; white-space:nowrap;
+  font-variant-numeric:tabular-nums; padding-right:0}
+td.d{color:var(--mut); white-space:nowrap; font-variant-numeric:tabular-nums}
+td.t{white-space:nowrap}
+td.s{color:var(--ink)}
+
+.note{margin:11px 0 0; padding:9px 11px; border:1px solid var(--warn-line);
+  background:var(--warn-bg); color:var(--warn-ink); border-radius:8px; font-size:12.5px}
+.note b{font-weight:700}
+.note a{color:var(--warn-ink); text-decoration:underline}
+
+.foot{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline;
+  margin:12px 0 0; padding-top:10px; border-top:1px solid var(--line); font-size:12px}
+.foot .more{font-weight:700}
+.foot .attr{color:var(--mut); margin:0}
+.foot .attr a{color:var(--mut); text-decoration:underline}
+.sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0}
+.compact .stats,.compact caption{display:none}
+.compact .mp{padding:11px 12px 10px}
+[hidden]{display:none !important}
+@media (max-width:420px){
+  .mp{padding:12px 12px 10px}
+  td.s{word-break:break-word}
+  .stats li{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:no-preference){
+  .mp a{transition:color .12s ease}
+}
+@media print{ .mp{border-color:#999} }
+</style>
+</head>
+<body>
+<section class="mp"><header><h2>MassPermits town widget, version 1</h2><p class="win">A permanent public contract. These URLs must keep working.</p></header><table><tbody><tr><td class="t">Loader</td><td class="s"><code>/widget/v1.js</code></td></tr><tr><td class="t">Renderer</td><td class="s"><code>/widget/v1/t/&lt;slug&gt;.html</code></td></tr><tr><td class="t">Manifest</td><td class="s"><a href="/widget/v1/index.json">/widget/v1/index.json</a></td></tr><tr><td class="t">Payloads</td><td class="s"><code>/widget/v1/data/&lt;slug&gt;.json</code> (CORS open)</td></tr><tr><td class="t">Evidence</td><td class="s"><a href="/widget/v1/evidence.json">/widget/v1/evidence.json</a></td></tr></tbody></table><p class="note">A breaking change gets <code>/widget/v2.js</code>. Version 1 is pasted into pages we cannot edit, so it is never repointed at v2 behaviour.</p><div class="foot"><a class="more" href="/widget/">Builder, gallery and terms &rarr;</a></div></section></body>
+</html>

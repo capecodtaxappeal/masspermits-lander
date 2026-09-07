@@ -1,0 +1,411 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Falmouth",
+ "slug": "falmouth",
+ "kind": "town",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/falmouth",
+ "feed_url": "https://masspermits.com/feed/falmouth.json",
+ "status": "live",
+ "n_total": 2400,
+ "n_window": 713,
+ "n_long_window": 2030,
+ "as_of": "2026-09-04",
+ "oldest": "2026-05-20",
+ "window_from": "2026-08-06",
+ "window_to": "2026-09-04",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 169,
+   "page": "/permits/falmouth-electrical"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 150,
+   "page": "/permits/falmouth-gas"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 103,
+   "page": "/permits/falmouth-renovation-remodel"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 95,
+   "page": "/permits/falmouth-plumbing"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 64,
+   "page": "/permits/falmouth-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 42,
+   "page": "/permits/falmouth-windows-doors-siding"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 21,
+   "page": "/permits/falmouth-building"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 12,
+   "page": "/permits/falmouth-hvac"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 5,
+   "page": "/permits/falmouth-fire-sprinkler"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 5,
+   "page": "/permits/falmouth-kitchen-bath"
+  },
+  {
+   "trade": "Sign/Awning",
+   "slug": "sign-awning",
+   "n": 3,
+   "page": "/permits/falmouth-sign-awning"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 713,
+ "rows": [
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Acapesket Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Palmer Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Boxberry Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Garnet Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Turner Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Other",
+   "ts": "other",
+   "s": "Bay Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Shorewood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Captain Davis Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "West End Ct",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Anchorage Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Kettle Hole Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Oyster Pond Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Sandwich Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Swing Ln",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Rydal Mount Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Whistlers Way",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "North Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Lakeview Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Shore St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Ravenwood Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Ovington Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Carriage Shop Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Teaticket Path",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Geggatt Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Pinehurst Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Priscilla St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Glendon Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Portside Cir",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "North Falmouth Hwy",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Wohelo Dr",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Corte Real Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Happy Hollow Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Davis Neck Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Garnet Ave",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Gifford St",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Oyster Pond Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Other",
+   "ts": "other",
+   "s": "Carriage Shop Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Fresh Pond Farm Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Pinehurst Rd",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Falmouth, MA"
+ ],
+ "capped": true,
+ "age_days": 3
+}

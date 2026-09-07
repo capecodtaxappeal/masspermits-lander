@@ -1,0 +1,187 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "West Barnstable",
+ "slug": "west-barnstable",
+ "kind": "village",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/west-barnstable",
+ "feed_url": "https://masspermits.com/feed/west-barnstable.json",
+ "status": "live",
+ "n_total": 59,
+ "n_window": 15,
+ "n_long_window": 59,
+ "as_of": "2026-07-30",
+ "oldest": "2026-05-05",
+ "window_from": "2026-07-01",
+ "window_to": "2026-07-30",
+ "trades": [
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 5,
+   "page": "/permits/west-barnstable-building"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 3,
+   "page": "/permits/west-barnstable-kitchen-bath"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 3,
+   "page": "/permits/west-barnstable-roofing"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 3,
+   "page": "/permits/west-barnstable-windows-doors-siding"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 14,
+  "median": 8735,
+  "p25": 3409,
+  "p75": 20624
+ },
+ "n_valued": 14,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-07-30",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Saddler Lane",
+   "v": 38000
+  },
+  {
+   "d": "2026-07-30",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Main St./Rte",
+   "v": 4035
+  },
+  {
+   "d": "2026-07-17",
+   "t": "Building",
+   "ts": "building",
+   "s": "Carlson Lane",
+   "v": 6600
+  },
+  {
+   "d": "2026-07-16",
+   "t": "Building",
+   "ts": "building",
+   "s": "Meadow Lane",
+   "v": null
+  },
+  {
+   "d": "2026-07-15",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Cedar Street",
+   "v": 21200
+  },
+  {
+   "d": "2026-07-15",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Button Wood Lane",
+   "v": 18895
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Building",
+   "ts": "building",
+   "s": "Parker Lane",
+   "v": 670000
+  },
+  {
+   "d": "2026-07-10",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Currycomb Circle",
+   "v": 2844
+  },
+  {
+   "d": "2026-07-09",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "North Winds Lane",
+   "v": 14000
+  },
+  {
+   "d": "2026-07-08",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Barnhill Road",
+   "v": 8670
+  },
+  {
+   "d": "2026-07-07",
+   "t": "Building",
+   "ts": "building",
+   "s": "Oak Street (Cent./W.Barn)",
+   "v": 3200
+  },
+  {
+   "d": "2026-07-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Morgan Way",
+   "v": 23000
+  },
+  {
+   "d": "2026-07-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Scorton Hill Road",
+   "v": 8800
+  },
+  {
+   "d": "2026-07-01",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main St./Rte",
+   "v": 1800
+  },
+  {
+   "d": "2026-07-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Ridge Road",
+   "v": 3000
+  }
+ ],
+ "sources": [
+  "Barnstable, MA"
+ ],
+ "capped": false,
+ "age_days": 39
+}

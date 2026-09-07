@@ -1,0 +1,214 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Granby",
+ "slug": "granby",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/granby",
+ "feed_url": "https://masspermits.com/feed/granby.json",
+ "status": "live",
+ "n_total": 17,
+ "n_window": 17,
+ "n_long_window": 17,
+ "as_of": "2026-09-06",
+ "oldest": "2026-08-26",
+ "window_from": "2026-08-08",
+ "window_to": "2026-09-06",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 4,
+   "page": "/permits/granby-roofing"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 3,
+   "page": "/permits/granby-electrical"
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 3,
+   "page": "/permits/granby-building"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 17,
+ "rows": [
+  {
+   "d": "2026-09-06",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "New Ludlow Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Building",
+   "ts": "building",
+   "s": "Ferry Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Amherst St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "East St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Cold Hill",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Pleasant St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Pleasant St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Taylor St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Pleasant St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Other",
+   "ts": "other",
+   "s": "Common St",
+   "v": null
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Carver St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Common St",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Building",
+   "ts": "building",
+   "s": "Pleasant St",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "School St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Building",
+   "ts": "building",
+   "s": "Morgan St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Carver St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Batchelor St",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Granby, MA"
+ ],
+ "capped": false,
+ "age_days": 1
+}

@@ -1,0 +1,304 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Townsend",
+ "slug": "townsend",
+ "kind": "town",
+ "region": "",
+ "page_url": "https://masspermits.com/permits/townsend",
+ "feed_url": "https://masspermits.com/feed/townsend.json",
+ "status": "live",
+ "n_total": 29,
+ "n_window": 29,
+ "n_long_window": 29,
+ "as_of": "2026-09-05",
+ "oldest": "2026-08-24",
+ "window_from": "2026-08-07",
+ "window_to": "2026-09-05",
+ "trades": [
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 7,
+   "page": "/permits/townsend-roofing"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 6,
+   "page": "/permits/townsend-plumbing"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 4,
+   "page": "/permits/townsend-solar"
+  },
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 4,
+   "page": "/permits/townsend-electrical"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 3,
+   "page": "/permits/townsend-hvac"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": null,
+ "n_valued": 0,
+ "n_zero_valued": 29,
+ "rows": [
+  {
+   "d": "2026-09-05",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Turnpike Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "South Row Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Addition",
+   "ts": "addition",
+   "s": "Worcester Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-04",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Tyler Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-03",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Dudley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "West Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Tyler Rd",
+   "v": null
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Ponderosa Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Dogwood Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "New Fitchburg Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Spaulding St",
+   "v": null
+  },
+  {
+   "d": "2026-08-29",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Wallace Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-29",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Wallace Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Chestnut Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Townsend Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Shirley Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Barker Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "West Elm St",
+   "v": null
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Townsend Hill Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Willow Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Willow Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "New Fitchburg Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Mason Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Mason Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Main St",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Virgo Ln",
+   "v": null
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Lunenburg Rd",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Ponderosa Dr",
+   "v": null
+  },
+  {
+   "d": "2026-08-24",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "West Elm St",
+   "v": null
+  }
+ ],
+ "sources": [
+  "Townsend, MA"
+ ],
+ "capped": false,
+ "age_days": 2
+}

@@ -1,0 +1,324 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Truro",
+ "slug": "truro",
+ "kind": "town",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/truro",
+ "feed_url": "https://masspermits.com/feed/truro.json",
+ "status": "live",
+ "n_total": 206,
+ "n_window": 32,
+ "n_long_window": 109,
+ "as_of": "2026-07-30",
+ "oldest": "2026-02-02",
+ "window_from": "2026-07-01",
+ "window_to": "2026-07-30",
+ "trades": [
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 7,
+   "page": "/permits/truro-building"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 6,
+   "page": "/permits/truro-roofing"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 5,
+   "page": "/permits/truro-deck-porch"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 3,
+   "page": "/permits/truro-windows-doors-siding"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 3,
+   "page": "/permits/truro-solar"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 31,
+  "median": 16000,
+  "p25": 3312,
+  "p75": 102000
+ },
+ "n_valued": 31,
+ "n_zero_valued": 1,
+ "rows": [
+  {
+   "d": "2026-07-30",
+   "t": "Building",
+   "ts": "building",
+   "s": "Sandpiper Ave",
+   "v": 1500
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Shore Rd",
+   "v": 25705
+  },
+  {
+   "d": "2026-07-29",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "So Pamet Rd",
+   "v": null
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Bayside Hills Rd",
+   "v": 3624
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Bayberry Rd",
+   "v": 800
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Highland Ave",
+   "v": 23292
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Souzas Way",
+   "v": 19000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Cooper Rd",
+   "v": 29600
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Other",
+   "ts": "other",
+   "s": "Whitmanville Rd",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Whitmanville Rd",
+   "v": 3000
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Shore Rd",
+   "v": 2500
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Parker Dr",
+   "v": 800
+  },
+  {
+   "d": "2026-07-21",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Deer Path",
+   "v": 7200
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Rt",
+   "v": 190323
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Building",
+   "ts": "building",
+   "s": "Manomet Way",
+   "v": 1200
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Highland Ave",
+   "v": 150000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Daniel Ln",
+   "v": 200000
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Kettle Hole Ln",
+   "v": 27818
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Town Hall Rd",
+   "v": 25125000
+  },
+  {
+   "d": "2026-07-15",
+   "t": "Building",
+   "ts": "building",
+   "s": "Town Hall Rd",
+   "v": 500000
+  },
+  {
+   "d": "2026-07-15",
+   "t": "Building",
+   "ts": "building",
+   "s": "Town Hall Rd",
+   "v": 500000
+  },
+  {
+   "d": "2026-07-14",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Toms Hill Rd",
+   "v": 54000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Fishermans Rd",
+   "v": 925060
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Shore Rd",
+   "v": 500000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Shore Rd",
+   "v": 250
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Rt",
+   "v": 10000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Rt",
+   "v": 14800
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Fisher Rd",
+   "v": 16000
+  },
+  {
+   "d": "2026-07-13",
+   "t": "Other",
+   "ts": "other",
+   "s": "Truro Center Rd",
+   "v": 21862
+  },
+  {
+   "d": "2026-07-06",
+   "t": "Other",
+   "ts": "other",
+   "s": "Tryworks Rd",
+   "v": 8300
+  },
+  {
+   "d": "2026-07-06",
+   "t": "Building",
+   "ts": "building",
+   "s": "Shore Rd",
+   "v": 2000
+  },
+  {
+   "d": "2026-07-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Daisy Ln",
+   "v": 10501
+  }
+ ],
+ "sources": [
+  "Truro, MA"
+ ],
+ "capped": false,
+ "age_days": 39
+}

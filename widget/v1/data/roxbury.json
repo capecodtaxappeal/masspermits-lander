@@ -1,0 +1,422 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Roxbury",
+ "slug": "roxbury",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/roxbury",
+ "feed_url": "https://masspermits.com/feed/roxbury.json",
+ "status": "live",
+ "n_total": 461,
+ "n_window": 278,
+ "n_long_window": 461,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 84,
+   "page": "/permits/roxbury-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 36,
+   "page": "/permits/roxbury-plumbing"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 26,
+   "page": "/permits/roxbury-renovation-remodel"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 21,
+   "page": "/permits/roxbury-windows-doors-siding"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 18,
+   "page": "/permits/roxbury-kitchen-bath"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 17,
+   "page": "/permits/roxbury-hvac"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 15,
+   "page": "/permits/roxbury-gas"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 11,
+   "page": "/permits/roxbury-roofing"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 7,
+   "page": "/permits/roxbury-solar"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 5,
+   "page": "/permits/roxbury-deck-porch"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 3,
+   "page": "/permits/roxbury-demolition"
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 3,
+   "page": "/permits/roxbury-new-construction"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 3,
+   "page": "/permits/roxbury-addition"
+  },
+  {
+   "trade": "Fire/Sprinkler",
+   "slug": "fire-sprinkler",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 2,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 274,
+  "median": 7960,
+  "p25": 2525,
+  "p75": 26975
+ },
+ "n_valued": 274,
+ "n_zero_valued": 4,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Akron St",
+   "v": 14600
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Catawba St",
+   "v": 3800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Albany St",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Worcester Sq",
+   "v": 4800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Rutland Sq",
+   "v": 1
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Massachusetts Av",
+   "v": 1
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Massachusetts Av",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Allerton St",
+   "v": 11000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Bartlett St",
+   "v": 464000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Fire/Sprinkler",
+   "ts": "fire-sprinkler",
+   "s": "Tremont St",
+   "v": 323712
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Other",
+   "ts": "other",
+   "s": "Tremont St",
+   "v": 1
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "W Canton St",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Burrell St",
+   "v": 13877
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Warren St",
+   "v": 28000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "E Concord St",
+   "v": 27988
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Dwight St",
+   "v": 29182
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "E Springfield St",
+   "v": 1980
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "W Concord St",
+   "v": 4000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Burrell St",
+   "v": 10602
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Saint George St",
+   "v": 8500
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "E Springfield St",
+   "v": 7921
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Shawmut Av",
+   "v": 102389
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Massachusetts Av",
+   "v": 2500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Shawmut Av",
+   "v": 3000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Pembroke St",
+   "v": 50000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "New Construction",
+   "ts": "new-construction",
+   "s": "Dimock St",
+   "v": 2625
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Worcester St",
+   "v": 10000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Malden St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Crispus Attucks Pl",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Crispus Attucks Pl",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Crispus Attucks Pl",
+   "v": 15000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Worcester St",
+   "v": 2000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Harrison Av",
+   "v": 28000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Blue Hill Av",
+   "v": 15500
+  },
+  {
+   "d": "2026-08-29",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Washington St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Shawmut Av",
+   "v": 100000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Worcester Sq",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Wardman Rd",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Walnut Pk",
+   "v": 600
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "Washington St",
+   "v": 90000
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}

@@ -1,0 +1,392 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "Centerville",
+ "slug": "centerville",
+ "kind": "village",
+ "region": "Cape Cod & Islands",
+ "page_url": "https://masspermits.com/permits/centerville",
+ "feed_url": "https://masspermits.com/feed/centerville.json",
+ "status": "live",
+ "n_total": 212,
+ "n_window": 81,
+ "n_long_window": 209,
+ "as_of": "2026-07-31",
+ "oldest": "2026-05-01",
+ "window_from": "2026-07-02",
+ "window_to": "2026-07-31",
+ "trades": [
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 22,
+   "page": "/permits/centerville-building"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 18,
+   "page": "/permits/centerville-windows-doors-siding"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 17,
+   "page": "/permits/centerville-roofing"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 8,
+   "page": "/permits/centerville-kitchen-bath"
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 5,
+   "page": "/permits/centerville-solar"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 4,
+   "page": "/permits/centerville-deck-porch"
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 4,
+   "page": "/permits/centerville-demolition"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Pool/Spa",
+   "slug": "pool-spa",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 76,
+  "median": 15547,
+  "p25": 9075,
+  "p75": 35473
+ },
+ "n_valued": 76,
+ "n_zero_valued": 5,
+ "rows": [
+  {
+   "d": "2026-07-31",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Falmouth Road/Rte",
+   "v": 62000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Building",
+   "ts": "building",
+   "s": "Prince Hinckley Road",
+   "v": 7000
+  },
+  {
+   "d": "2026-07-29",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Water View Circle",
+   "v": 15191
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Highland Drive",
+   "v": 8000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Cedric Road",
+   "v": 15345
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Padlock Lane",
+   "v": 43000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Stage Coach Road",
+   "v": 30000
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Captain Bellamy Lane",
+   "v": 17500
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Emerson Way",
+   "v": 16900
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Ames Way",
+   "v": 13300
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Shootflying Hill Rd",
+   "v": 9200
+  },
+  {
+   "d": "2026-07-28",
+   "t": "Building",
+   "ts": "building",
+   "s": "Stage Coach Road",
+   "v": null
+  },
+  {
+   "d": "2026-07-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "White Oak Trail",
+   "v": 12100
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Nottingham Drive",
+   "v": 8000
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street (Cent.)",
+   "v": 120000
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Tern Lane",
+   "v": 51841
+  },
+  {
+   "d": "2026-07-24",
+   "t": "Building",
+   "ts": "building",
+   "s": "South Main Street",
+   "v": 7500
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Five Corners Road",
+   "v": 9430
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Babbling Brook Road",
+   "v": 27000
+  },
+  {
+   "d": "2026-07-23",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Nottingham Drive",
+   "v": 12775
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "White Oak Trail",
+   "v": 21794
+  },
+  {
+   "d": "2026-07-22",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Old Stage Road",
+   "v": 1000
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "South Main Street",
+   "v": 150001
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "South Main Street",
+   "v": 150001
+  },
+  {
+   "d": "2026-07-21",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Great Marsh Road",
+   "v": 27900
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Demolition",
+   "ts": "demolition",
+   "s": "Falmouth Road/Rte",
+   "v": 47500
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Guildford Road",
+   "v": 27749
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Fuller Road",
+   "v": 60025
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Rolling Hitch Road",
+   "v": 34585
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Warwick Way",
+   "v": 197062
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Chappaquiddick Road",
+   "v": 23687
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Phinney'S Lane",
+   "v": 35000
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Cap'N Lijah'S Road",
+   "v": 15000
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Holly Point Road",
+   "v": 3569
+  },
+  {
+   "d": "2026-07-20",
+   "t": "Building",
+   "ts": "building",
+   "s": "Main Street (Cent.)",
+   "v": null
+  },
+  {
+   "d": "2026-07-19",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Conners Road",
+   "v": 83664
+  },
+  {
+   "d": "2026-07-19",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Nottingham Drive",
+   "v": 4000
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Building",
+   "ts": "building",
+   "s": "Scudder Bay Circle",
+   "v": 8700
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Stoney Cliff Road",
+   "v": 14451
+  },
+  {
+   "d": "2026-07-18",
+   "t": "Solar",
+   "ts": "solar",
+   "s": "Cap'N Crosby Road",
+   "v": 36892
+  }
+ ],
+ "sources": [
+  "Barnstable, MA"
+ ],
+ "capped": false,
+ "age_days": 38
+}

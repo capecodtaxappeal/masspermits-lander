@@ -1,0 +1,416 @@
+{
+ "schema": "masspermits-widget/1",
+ "built": "2026-09-07",
+ "license": {
+  "name": "CC BY-NC 4.0",
+  "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "attribution": {
+  "required": true,
+  "cite_as": "MassPermits (masspermits.com)",
+  "link": "https://masspermits.com",
+  "text": "Data: MassPermits"
+ },
+ "freshness": {
+  "stale_days": 21,
+  "hard_stale_days": 60
+ },
+ "evidence": "https://masspermits.com/widget/v1/evidence.json",
+ "method": "https://masspermits.com/research/methodology",
+ "docs": "https://masspermits.com/widget/",
+ "town": "South Boston",
+ "slug": "south-boston",
+ "kind": "neighbourhood",
+ "region": "Greater Boston",
+ "page_url": "https://masspermits.com/permits/south-boston",
+ "feed_url": "https://masspermits.com/feed/south-boston.json",
+ "status": "live",
+ "n_total": 248,
+ "n_window": 122,
+ "n_long_window": 248,
+ "as_of": "2026-09-02",
+ "oldest": "2026-07-09",
+ "window_from": "2026-08-04",
+ "window_to": "2026-09-02",
+ "trades": [
+  {
+   "trade": "Electrical",
+   "slug": "electrical",
+   "n": 44,
+   "page": "/permits/south-boston-electrical"
+  },
+  {
+   "trade": "Plumbing",
+   "slug": "plumbing",
+   "n": 22,
+   "page": "/permits/south-boston-plumbing"
+  },
+  {
+   "trade": "Gas",
+   "slug": "gas",
+   "n": 10,
+   "page": "/permits/south-boston-gas"
+  },
+  {
+   "trade": "Windows/Doors/Siding",
+   "slug": "windows-doors-siding",
+   "n": 8,
+   "page": "/permits/south-boston-windows-doors-siding"
+  },
+  {
+   "trade": "Roofing",
+   "slug": "roofing",
+   "n": 8,
+   "page": "/permits/south-boston-roofing"
+  },
+  {
+   "trade": "HVAC",
+   "slug": "hvac",
+   "n": 8,
+   "page": "/permits/south-boston-hvac"
+  },
+  {
+   "trade": "Renovation/Remodel",
+   "slug": "renovation-remodel",
+   "n": 7,
+   "page": "/permits/south-boston-renovation-remodel"
+  },
+  {
+   "trade": "Kitchen/Bath",
+   "slug": "kitchen-bath",
+   "n": 5,
+   "page": "/permits/south-boston-kitchen-bath"
+  },
+  {
+   "trade": "Deck/Porch",
+   "slug": "deck-porch",
+   "n": 3,
+   "page": "/permits/south-boston-deck-porch"
+  },
+  {
+   "trade": "Addition",
+   "slug": "addition",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "New Construction",
+   "slug": "new-construction",
+   "n": 2,
+   "page": null
+  },
+  {
+   "trade": "Building",
+   "slug": "building",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Solar",
+   "slug": "solar",
+   "n": 1,
+   "page": null
+  },
+  {
+   "trade": "Demolition",
+   "slug": "demolition",
+   "n": 1,
+   "page": null
+  }
+ ],
+ "value": {
+  "n_valued": 120,
+  "median": 8000,
+  "p25": 2650,
+  "p75": 28775
+ },
+ "n_valued": 120,
+ "n_zero_valued": 2,
+ "rows": [
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "E Third St",
+   "v": 9800
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "W Eighth St",
+   "v": 6000
+  },
+  {
+   "d": "2026-09-02",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Farragut Rd",
+   "v": 200
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Emerson St",
+   "v": 6000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "I St",
+   "v": 15000
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Woodward St",
+   "v": 2500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Dorchester St",
+   "v": 1250
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Knowlton St",
+   "v": 7500
+  },
+  {
+   "d": "2026-09-01",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "E St",
+   "v": 8500
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "E St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "L St",
+   "v": 6000
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "G St",
+   "v": 7800
+  },
+  {
+   "d": "2026-08-31",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "W Fifth St",
+   "v": 10612
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "E Fifth St",
+   "v": null
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Silver St",
+   "v": 12000
+  },
+  {
+   "d": "2026-08-28",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Emerson St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "E Third St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Gas",
+   "ts": "gas",
+   "s": "Beckler Av",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Roofing",
+   "ts": "roofing",
+   "s": "Gates St",
+   "v": 1
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "L St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "Beckler Av",
+   "v": 25000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Beckler Av",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "A St",
+   "v": 3000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "H St",
+   "v": 4000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "Kitchen/Bath",
+   "ts": "kitchen-bath",
+   "s": "E Fourth St",
+   "v": 35000
+  },
+  {
+   "d": "2026-08-27",
+   "t": "HVAC",
+   "ts": "hvac",
+   "s": "A St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Grimes St",
+   "v": 101118
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Summer St",
+   "v": 50000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "E Second St",
+   "v": 2500
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "W Second St",
+   "v": 1000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Deck/Porch",
+   "ts": "deck-porch",
+   "s": "Marine Rd",
+   "v": 8000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "Old Colony Av",
+   "v": 50000
+  },
+  {
+   "d": "2026-08-26",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "E Sixth St",
+   "v": 1895
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Glover Ct",
+   "v": 1
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Summer St",
+   "v": 60000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Telegraph St",
+   "v": 105950
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Windows/Doors/Siding",
+   "ts": "windows-doors-siding",
+   "s": "Loring St",
+   "v": 5000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Electrical",
+   "ts": "electrical",
+   "s": "Marine Rd",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Plumbing",
+   "ts": "plumbing",
+   "s": "L St",
+   "v": 10000
+  },
+  {
+   "d": "2026-08-25",
+   "t": "Renovation/Remodel",
+   "ts": "renovation-remodel",
+   "s": "Summer St",
+   "v": 367669
+  }
+ ],
+ "sources": [
+  "Boston, MA"
+ ],
+ "capped": false,
+ "age_days": 5
+}
