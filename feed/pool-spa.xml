@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel>
 <title>MassPermits — Pool/Spa permits in Massachusetts</title>
 <link>https://masspermits.com/permits/</link>
-<description>Latest pool/spa building permits across MA. Full leads at masspermits.com.</description><language>en-us</language>
+<description>Latest pool/spa building permits across MA. Full leads at masspermits.com. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.</description><language>en-us</language>
 <atom:link href="https://masspermits.com/feed/pool-spa.xml" rel="self" type="application/rss+xml"/>
 <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+<copyright>MassPermits (masspermits.com) — licensed CC BY-NC 4.0</copyright>
+<atom:link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
+<atom:link rel="describedby" type="application/json" href="https://masspermits.com/catalog.json"/>
+<dc:rights>MassPermits (masspermits.com) — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)</dc:rights>
+<dc:source>Compiled from public municipal building-permit records published by Massachusetts cities and towns.</dc:source>
+<managingEditor>hello@masspermits.com (MassPermits)</managingEditor>
+<docs>https://www.rssboard.org/rss-specification</docs>
+<generator>MassPermits seo_build</generator>
+<ttl>1440</ttl>
+<lastBuildDate>Tue, 01 Sep 2026 00:00:00 GMT</lastBuildDate>
+<item><title>Pool/Spa permit — Main St, West Newbury</title><link>https://masspermits.com/permits/west-newbury</link><description>Pool/Spa building permit issued 2026-09-01 in West Newbury. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">3a22d7d9dc2933a7</guid></item>
+<item><title>Pool/Spa permit — Spruce St, Wakefield ($15,000)</title><link>https://masspermits.com/permits/wakefield-pool-spa</link><description>Pool/Spa building permit issued 2026-08-27 in Wakefield. Project value $15,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">40de94eb4828832b</guid></item>
 <item><title>Pool/Spa permit — Commercial St, Boston ($175,000)</title><link>https://masspermits.com/permits/boston</link><description>Pool/Spa building permit issued 2026-08-19 in Boston. Project value $175,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">cb2225eabed840e1</guid></item>
+<item><title>Pool/Spa permit — Mizzen Ln, Bourne ($1)</title><link>https://masspermits.com/permits/bourne-pool-spa</link><description>Pool/Spa building permit issued 2026-08-19 in Bourne. Project value $1. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">85aba76627c9ebc5</guid></item>
 <item><title>Pool/Spa permit — Grenovin Ln, Plymouth ($16,627)</title><link>https://masspermits.com/permits/plymouth-pool-spa</link><description>Pool/Spa building permit issued 2026-08-17 in Plymouth. Project value $16,627. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">7e06da4184e97193</guid></item>
+<item><title>Pool/Spa permit — Shore Rd, Bourne ($64,525)</title><link>https://masspermits.com/permits/bourne-pool-spa</link><description>Pool/Spa building permit issued 2026-08-14 in Bourne. Project value $64,525. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">7669e75123c03e5b</guid></item>
 <item><title>Pool/Spa permit — Green St, Rockland</title><link>https://masspermits.com/permits/rockland</link><description>Pool/Spa building permit issued 2026-08-13 in Rockland. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">00defcb3c00fe9e3</guid></item>
 <item><title>Pool/Spa permit — Winsor Rd, Sudbury ($8,000)</title><link>https://masspermits.com/permits/sudbury</link><description>Pool/Spa building permit issued 2026-08-12 in Sudbury. Project value $8,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">55235f5764907c15</guid></item>
+<item><title>Pool/Spa permit — Deseret Dr, Bourne ($65,000)</title><link>https://masspermits.com/permits/bourne-pool-spa</link><description>Pool/Spa building permit issued 2026-08-12 in Bourne. Project value $65,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">97c5abecf7c0fea5</guid></item>
 <item><title>Pool/Spa permit — Roanoke Av, Jamaica Plain ($15,000)</title><link>https://masspermits.com/permits/jamaica-plain</link><description>Pool/Spa building permit issued 2026-08-11 in Jamaica Plain. Project value $15,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">38ecc3514796650e</guid></item>
 </channel></rss>

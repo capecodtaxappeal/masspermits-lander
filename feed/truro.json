@@ -1,0 +1,632 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Truro, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/truro.json",
+ "description": "Recent building permits in Truro, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 164,
+ "_window_from": "2026-02-02",
+ "_window_to": "2026-07-30",
+ "items": [
+  {
+   "id": "fd6e17732945bb3b",
+   "url": "https://masspermits.com/permits/truro-building",
+   "title": "Building permit \u2014 Sandpiper Ave, Truro ($1,500)",
+   "content_text": "Building permit in Truro, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Building",
+   "_value": 1500.0
+  },
+  {
+   "id": "56b6caa062c0fb5e",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Shore Rd, Truro ($25,705)",
+   "content_text": "Roofing permit in Truro, MA. Value $25,705. Full lead at masspermits.com.",
+   "date_published": "2026-07-29T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 25705.0
+  },
+  {
+   "id": "ba9da372d6620366",
+   "url": "https://masspermits.com/permits/truro-hvac",
+   "title": "HVAC permit \u2014 So Pamet Rd, Truro",
+   "content_text": "HVAC permit in Truro, MA. Full lead at masspermits.com.",
+   "date_published": "2026-07-29T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "d5e1fddb2115b2e5",
+   "url": "https://masspermits.com/permits/truro-deck-porch",
+   "title": "Deck/Porch permit \u2014 Bayside Hills Rd, Truro ($3,624)",
+   "content_text": "Deck/Porch permit in Truro, MA. Value $3,624. Full lead at masspermits.com.",
+   "date_published": "2026-07-29T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Deck/Porch",
+   "_value": 3624.09
+  },
+  {
+   "id": "3ac356d3fa077d69",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Bayberry Rd, Truro ($800)",
+   "content_text": "Other permit in Truro, MA. Value $800. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 800.0
+  },
+  {
+   "id": "d088762ccd9aaba2",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Highland Ave, Truro ($23,292)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $23,292. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 23292.0
+  },
+  {
+   "id": "5061c8d8745cda77",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Souzas Way, Truro ($19,000)",
+   "content_text": "Roofing permit in Truro, MA. Value $19,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 19000.0
+  },
+  {
+   "id": "9468e2fe95c7d22a",
+   "url": "https://masspermits.com/permits/truro-solar",
+   "title": "Solar permit \u2014 Cooper Rd, Truro ($29,600)",
+   "content_text": "Solar permit in Truro, MA. Value $29,600. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Solar",
+   "_value": 29600.0
+  },
+  {
+   "id": "942250d1a53c82d9",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Whitmanville Rd, Truro ($10,000)",
+   "content_text": "Other permit in Truro, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 10000.0
+  },
+  {
+   "id": "8ed37c1a774746f9",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Whitmanville Rd, Truro ($3,000)",
+   "content_text": "Roofing permit in Truro, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 3000.0
+  },
+  {
+   "id": "0143accd988e00a6",
+   "url": "https://masspermits.com/permits/truro-deck-porch",
+   "title": "Deck/Porch permit \u2014 Shore Rd, Truro ($2,500)",
+   "content_text": "Deck/Porch permit in Truro, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Deck/Porch",
+   "_value": 2500.0
+  },
+  {
+   "id": "d72a08c3a62945a1",
+   "url": "https://masspermits.com/permits/truro-building",
+   "title": "Building permit \u2014 Parker Dr, Truro ($800)",
+   "content_text": "Building permit in Truro, MA. Value $800. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Building",
+   "_value": 800.0
+  },
+  {
+   "id": "da070fd755fa2f7a",
+   "url": "https://masspermits.com/permits/truro",
+   "title": "New Construction permit \u2014 Deer Path, Truro ($7,200)",
+   "content_text": "New Construction permit in Truro, MA. Value $7,200. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "New Construction",
+   "_value": 7200.0
+  },
+  {
+   "id": "edaf8235284853c7",
+   "url": "https://masspermits.com/permits/truro-solar",
+   "title": "Solar permit \u2014 Rt, Truro ($190,323)",
+   "content_text": "Solar permit in Truro, MA. Value $190,323. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Solar",
+   "_value": 190323.0
+  },
+  {
+   "id": "c5edf516ce43cbda",
+   "url": "https://masspermits.com/permits/truro-building",
+   "title": "Building permit \u2014 Manomet Way, Truro ($1,200)",
+   "content_text": "Building permit in Truro, MA. Value $1,200. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Building",
+   "_value": 1200.0
+  },
+  {
+   "id": "3a60d19bcc0f9064",
+   "url": "https://masspermits.com/permits/truro-deck-porch",
+   "title": "Deck/Porch permit \u2014 Highland Ave, Truro ($150,000)",
+   "content_text": "Deck/Porch permit in Truro, MA. Value $150,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Deck/Porch",
+   "_value": 150000.0
+  },
+  {
+   "id": "14a80ca948441313",
+   "url": "https://masspermits.com/permits/truro-hvac",
+   "title": "HVAC permit \u2014 Daniel Ln, Truro ($200,000)",
+   "content_text": "HVAC permit in Truro, MA. Value $200,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "HVAC",
+   "_value": 200000.0
+  },
+  {
+   "id": "bede08c7148f19a9",
+   "url": "https://masspermits.com/permits/truro-solar",
+   "title": "Solar permit \u2014 Kettle Hole Ln, Truro ($27,818)",
+   "content_text": "Solar permit in Truro, MA. Value $27,818. Full lead at masspermits.com.",
+   "date_published": "2026-07-20T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Solar",
+   "_value": 27818.0
+  },
+  {
+   "id": "8c748adf5111ce9f",
+   "url": "https://masspermits.com/permits/truro-building",
+   "title": "Building permit \u2014 Town Hall Rd, Truro ($25,125,000)",
+   "content_text": "Building permit in Truro, MA. Value $25,125,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-20T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Building",
+   "_value": 25125000.0
+  },
+  {
+   "id": "2c9eb0716a088c5d",
+   "url": "https://masspermits.com/permits/truro-deck-porch",
+   "title": "Deck/Porch permit \u2014 Toms Hill Rd, Truro ($54,000)",
+   "content_text": "Deck/Porch permit in Truro, MA. Value $54,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-14T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Deck/Porch",
+   "_value": 54000.0
+  },
+  {
+   "id": "a00a56f7b41794ea",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Fishermans Rd, Truro ($925,060)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $925,060. Full lead at masspermits.com.",
+   "date_published": "2026-07-13T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 925060.5
+  },
+  {
+   "id": "cdfa19953811a497",
+   "url": "https://masspermits.com/permits/truro-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Shore Rd, Truro ($500,000)",
+   "content_text": "Kitchen/Bath permit in Truro, MA. Value $500,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-13T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Kitchen/Bath",
+   "_value": 500000.0
+  },
+  {
+   "id": "d5060a44781c7c10",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Rt, Truro ($10,000)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-13T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 10000.0
+  },
+  {
+   "id": "c95b05b01a2724e1",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Rt, Truro ($14,800)",
+   "content_text": "Roofing permit in Truro, MA. Value $14,800. Full lead at masspermits.com.",
+   "date_published": "2026-07-13T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 14800.0
+  },
+  {
+   "id": "b80cfe246b7884a0",
+   "url": "https://masspermits.com/permits/truro-deck-porch",
+   "title": "Deck/Porch permit \u2014 Fisher Rd, Truro ($16,000)",
+   "content_text": "Deck/Porch permit in Truro, MA. Value $16,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-13T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Deck/Porch",
+   "_value": 16000.0
+  },
+  {
+   "id": "6e6b4c8ae3117fb7",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Truro Center Rd, Truro ($21,862)",
+   "content_text": "Other permit in Truro, MA. Value $21,862. Full lead at masspermits.com.",
+   "date_published": "2026-07-13T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 21862.04
+  },
+  {
+   "id": "e639dbdd8161a888",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Tryworks Rd, Truro ($8,300)",
+   "content_text": "Other permit in Truro, MA. Value $8,300. Full lead at masspermits.com.",
+   "date_published": "2026-07-06T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 8300.0
+  },
+  {
+   "id": "3cca14e0bf2e979d",
+   "url": "https://masspermits.com/permits/truro-building",
+   "title": "Building permit \u2014 Shore Rd, Truro ($2,000)",
+   "content_text": "Building permit in Truro, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-06T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Building",
+   "_value": 2000.0
+  },
+  {
+   "id": "a08475e74af6d5ec",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Daisy Ln, Truro ($10,501)",
+   "content_text": "Roofing permit in Truro, MA. Value $10,501. Full lead at masspermits.com.",
+   "date_published": "2026-07-02T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 10501.0
+  },
+  {
+   "id": "80c6f6a5806d2f30",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Aldrich Rd, Truro ($1,500)",
+   "content_text": "Other permit in Truro, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 1500.0
+  },
+  {
+   "id": "aa1ec6e654672afe",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Heather Ln, Truro ($67,245)",
+   "content_text": "Roofing permit in Truro, MA. Value $67,245. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 67245.0
+  },
+  {
+   "id": "137a48325d86afd0",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Quanset Rd, Truro ($3,100)",
+   "content_text": "Other permit in Truro, MA. Value $3,100. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 3099.82
+  },
+  {
+   "id": "f18410b0900ff128",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Cooper Rd, Truro ($6,000)",
+   "content_text": "Roofing permit in Truro, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 6000.0
+  },
+  {
+   "id": "1a013d2576ac3e44",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Crestview Cir, Truro ($3,000)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3000.0
+  },
+  {
+   "id": "7783e482dc1e66e3",
+   "url": "https://masspermits.com/permits/truro-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Meredith Way, Truro ($231,000)",
+   "content_text": "Kitchen/Bath permit in Truro, MA. Value $231,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Kitchen/Bath",
+   "_value": 231000.0
+  },
+  {
+   "id": "410b03c14fd0152f",
+   "url": "https://masspermits.com/permits/truro-solar",
+   "title": "Solar permit \u2014 Sky View Dr, Truro ($42,861)",
+   "content_text": "Solar permit in Truro, MA. Value $42,861. Full lead at masspermits.com.",
+   "date_published": "2026-06-24T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Solar",
+   "_value": 42861.0
+  },
+  {
+   "id": "3d51d13b65d9f3f1",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Old County Rd, Truro ($8,200)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $8,200. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 8200.0
+  },
+  {
+   "id": "71ee1fadc7983270",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Shore Rd, Truro ($17,049)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $17,049. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 17049.0
+  },
+  {
+   "id": "7334c5fd311420e9",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Morris Ave, Truro ($11,581)",
+   "content_text": "Other permit in Truro, MA. Value $11,581. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 11581.12
+  },
+  {
+   "id": "fba5f91087689bb8",
+   "url": "https://masspermits.com/permits/truro",
+   "title": "Demolition permit \u2014 Bay View Rd, Truro ($92,316)",
+   "content_text": "Demolition permit in Truro, MA. Value $92,316. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Demolition",
+   "_value": 92315.8
+  },
+  {
+   "id": "0605dcbd804751c7",
+   "url": "https://masspermits.com/permits/truro-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Bay View Dr, Truro ($50,688)",
+   "content_text": "Kitchen/Bath permit in Truro, MA. Value $50,688. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Kitchen/Bath",
+   "_value": 50687.92
+  },
+  {
+   "id": "551458d43a23bbdc",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Resolution Rd, Truro ($12,238)",
+   "content_text": "Other permit in Truro, MA. Value $12,238. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 12237.84
+  },
+  {
+   "id": "2cb4a28970c03ceb",
+   "url": "https://masspermits.com/permits/truro-hvac",
+   "title": "HVAC permit \u2014 Shore Rd, Truro ($16,000)",
+   "content_text": "HVAC permit in Truro, MA. Value $16,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "HVAC",
+   "_value": 16000.0
+  },
+  {
+   "id": "c117ad9e799144b0",
+   "url": "https://masspermits.com/permits/truro-solar",
+   "title": "Solar permit \u2014 Overlook Dr, Truro ($34,966)",
+   "content_text": "Solar permit in Truro, MA. Value $34,966. Full lead at masspermits.com.",
+   "date_published": "2026-06-16T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Solar",
+   "_value": 34966.32
+  },
+  {
+   "id": "53fa514b0ccefb61",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Harrier Way, Truro ($7,791)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $7,791. Full lead at masspermits.com.",
+   "date_published": "2026-06-15T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7791.0
+  },
+  {
+   "id": "dfe953b8e2377af1",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Sandpiper Rd, Truro ($740,186)",
+   "content_text": "Roofing permit in Truro, MA. Value $740,186. Full lead at masspermits.com.",
+   "date_published": "2026-06-15T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 740186.0
+  },
+  {
+   "id": "cb000b8f86440567",
+   "url": "https://masspermits.com/permits/truro-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Rt, Truro ($4,500)",
+   "content_text": "Kitchen/Bath permit in Truro, MA. Value $4,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-15T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Kitchen/Bath",
+   "_value": 4500.0
+  },
+  {
+   "id": "66adb8d767761cd6",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Snows Rd, Truro ($200,000)",
+   "content_text": "Roofing permit in Truro, MA. Value $200,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-15T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 200000.0
+  },
+  {
+   "id": "d135e35a94200ad8",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Old County Rd, Truro ($18,000)",
+   "content_text": "Roofing permit in Truro, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-15T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 18000.0
+  },
+  {
+   "id": "fdd7dea77efefb59",
+   "url": "https://masspermits.com/permits/truro-hvac",
+   "title": "HVAC permit \u2014 Great Hollow Rd, Truro ($6,000)",
+   "content_text": "HVAC permit in Truro, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-10T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "HVAC",
+   "_value": 6000.0
+  },
+  {
+   "id": "7b708e3843a6d802",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Fishermans Rd, Truro ($43,337)",
+   "content_text": "Roofing permit in Truro, MA. Value $43,337. Full lead at masspermits.com.",
+   "date_published": "2026-06-10T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 43337.0
+  },
+  {
+   "id": "01acc2d695f5c7e3",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Windigo Ln, Truro ($24,396)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $24,396. Full lead at masspermits.com.",
+   "date_published": "2026-06-09T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 24395.5
+  },
+  {
+   "id": "2b3362507ee80534",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Town Dump Rd, Truro ($75,000)",
+   "content_text": "Other permit in Truro, MA. Value $75,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-09T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 75000.0
+  },
+  {
+   "id": "ac6fd9f03d64256a",
+   "url": "https://masspermits.com/permits/truro-deck-porch",
+   "title": "Deck/Porch permit \u2014 Resolution Rd, Truro ($90,000)",
+   "content_text": "Deck/Porch permit in Truro, MA. Value $90,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-08T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Deck/Porch",
+   "_value": 90000.0
+  },
+  {
+   "id": "372e613bc151af00",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Blackfish Rd, Truro ($6,202)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $6,202. Full lead at masspermits.com.",
+   "date_published": "2026-06-08T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 6202.0
+  },
+  {
+   "id": "be4eaee68f0834a4",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Amanda Ln, Truro ($15,805)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $15,805. Full lead at masspermits.com.",
+   "date_published": "2026-06-08T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 15805.0
+  },
+  {
+   "id": "103587dd1716ce65",
+   "url": "https://masspermits.com/permits/truro-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Chickadee Ln, Truro ($30,000)",
+   "content_text": "Kitchen/Bath permit in Truro, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-03T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Kitchen/Bath",
+   "_value": 30000.0
+  },
+  {
+   "id": "e820e9d0102b0988",
+   "url": "https://masspermits.com/permits/truro-solar",
+   "title": "Solar permit \u2014 Pond Village Ave, Truro ($105,704)",
+   "content_text": "Solar permit in Truro, MA. Value $105,704. Full lead at masspermits.com.",
+   "date_published": "2026-06-03T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Solar",
+   "_value": 105704.4
+  },
+  {
+   "id": "4b996cd34e53dfe7",
+   "url": "https://masspermits.com/permits/truro-other",
+   "title": "Other permit \u2014 Crestview Cir, Truro ($15,000)",
+   "content_text": "Other permit in Truro, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-03T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Other",
+   "_value": 15000.0
+  },
+  {
+   "id": "75ec6e5bf9a89350",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Blackfish Rd, Truro ($650,000)",
+   "content_text": "Roofing permit in Truro, MA. Value $650,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-03T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 650000.0
+  }
+ ]
+}

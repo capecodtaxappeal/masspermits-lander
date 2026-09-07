@@ -1,0 +1,58 @@
+{
+ "@context": "http://www.w3.org/ns/csvw",
+ "url": "mattapan.csv",
+ "dc:title": "MassPermits \u2014 mattapan.csv",
+ "dc:description": "Masked public slice of Massachusetts building-permit records. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+ "dc:source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+ "dc:publisher": {
+  "schema:name": "MassPermits",
+  "schema:url": "https://masspermits.com"
+ },
+ "dc:license": {
+  "@id": "https://creativecommons.org/licenses/by-nc/4.0/"
+ },
+ "dc:rights": "MassPermits (masspermits.com) \u2014 CC BY-NC 4.0",
+ "dcat:landingPage": "https://masspermits.com/permits/",
+ "dc:modified": "2026-09-02",
+ "tableSchema": {
+  "columns": [
+   {
+    "name": "town",
+    "titles": "town",
+    "datatype": "string",
+    "dc:description": "Municipality or Boston neighbourhood the permit was issued in."
+   },
+   {
+    "name": "trade",
+    "titles": "trade",
+    "datatype": "string",
+    "dc:description": "Normalised trade classification assigned by MassPermits."
+   },
+   {
+    "name": "issued_date",
+    "titles": "issued_date",
+    "datatype": "date",
+    "dc:description": "Date the municipality records the permit as issued."
+   },
+   {
+    "name": "street_masked",
+    "titles": "street_masked",
+    "datatype": "string",
+    "dc:description": "Street name only. The house number is removed."
+   },
+   {
+    "name": "valuation",
+    "titles": "valuation",
+    "datatype": "integer",
+    "dc:description": "Declared project value in USD. Empty when the source publishes none."
+   }
+  ],
+  "primaryKey": [
+   "town",
+   "trade",
+   "issued_date",
+   "street_masked"
+  ]
+ },
+ "dc:temporal": "2026-07-09/2026-09-02"
+}

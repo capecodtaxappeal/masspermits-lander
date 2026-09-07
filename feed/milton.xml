@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel>
 <title>MassPermits — building permits in Milton, MA</title>
 <link>https://masspermits.com/permits/</link>
-<description>Latest building permits in Milton, MA. Full leads at masspermits.com.</description><language>en-us</language>
+<description>Latest building permits in Milton, MA. Full leads at masspermits.com. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.</description><language>en-us</language>
 <atom:link href="https://masspermits.com/feed/milton.xml" rel="self" type="application/rss+xml"/>
 <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+<copyright>MassPermits (masspermits.com) — licensed CC BY-NC 4.0</copyright>
+<atom:link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
+<atom:link rel="describedby" type="application/json" href="https://masspermits.com/catalog.json"/>
+<dc:rights>MassPermits (masspermits.com) — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)</dc:rights>
+<dc:source>Compiled from public municipal building-permit records published by Massachusetts cities and towns.</dc:source>
+<managingEditor>hello@masspermits.com (MassPermits)</managingEditor>
+<docs>https://www.rssboard.org/rss-specification</docs>
+<generator>MassPermits seo_build</generator>
+<ttl>1440</ttl>
+<lastBuildDate>Fri, 04 Sep 2026 00:00:00 GMT</lastBuildDate>
 <item><title>Electrical permit — Elm St, Milton</title><link>https://masspermits.com/permits/milton-electrical</link><description>Electrical building permit issued 2026-09-04 in Milton. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">005d18ca302a5fd2</guid></item>
 <item><title>Gas permit — Governors Rd, Milton</title><link>https://masspermits.com/permits/milton-gas</link><description>Gas building permit issued 2026-09-04 in Milton. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">6285039c507fd526</guid></item>
 <item><title>Building permit — Blue Hill Av, Milton</title><link>https://masspermits.com/permits/milton-building</link><description>Building building permit issued 2026-09-03 in Milton. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">f0bc5a32bf4aebf6</guid></item>

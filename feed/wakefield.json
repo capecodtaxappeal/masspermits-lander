@@ -1,0 +1,633 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Wakefield, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/wakefield.json",
+ "description": "Recent building permits in Wakefield, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 64,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-08-31",
+ "items": [
+  {
+   "id": "83b06dd556e9d64d",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Nahant St, Wakefield ($43,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $43,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 43000.0
+  },
+  {
+   "id": "b99683eb883e19c4",
+   "url": "https://masspermits.com/permits/wakefield-demolition",
+   "title": "Demolition permit \u2014 Old Nahant Rd, Wakefield ($26,000)",
+   "content_text": "Demolition permit in Wakefield, MA. Value $26,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Demolition",
+   "_value": 26000.0
+  },
+  {
+   "id": "473354d7878f4f9d",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Humphrey St, Wakefield ($15,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 15000.0
+  },
+  {
+   "id": "bc045aa49fd1c1aa",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Houston St, Wakefield ($6,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 6000.0
+  },
+  {
+   "id": "7886442098362ccc",
+   "url": "https://masspermits.com/permits/wakefield-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Ballister St, Unit, Wakefield ($82,000)",
+   "content_text": "Kitchen/Bath permit in Wakefield, MA. Value $82,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Kitchen/Bath",
+   "_value": 82000.0
+  },
+  {
+   "id": "3cf41be617f3a69b",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Eustis Ave, Wakefield ($11,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 11000.0
+  },
+  {
+   "id": "bbefc01e35a0516a",
+   "url": "https://masspermits.com/permits/wakefield",
+   "title": "New Construction permit \u2014 Lovis Ave, Wakefield ($469,000)",
+   "content_text": "New Construction permit in Wakefield, MA. Value $469,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "New Construction",
+   "_value": 469000.0
+  },
+  {
+   "id": "fbbc0c5a6334b678",
+   "url": "https://masspermits.com/permits/wakefield-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Harrison Ave, Wakefield ($67,000)",
+   "content_text": "Kitchen/Bath permit in Wakefield, MA. Value $67,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Kitchen/Bath",
+   "_value": 67000.0
+  },
+  {
+   "id": "341255dc8bb4c43f",
+   "url": "https://masspermits.com/permits/wakefield-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Richardson Ave, Wakefield ($25,000)",
+   "content_text": "Kitchen/Bath permit in Wakefield, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Kitchen/Bath",
+   "_value": 25000.0
+  },
+  {
+   "id": "40de94eb4828832b",
+   "url": "https://masspermits.com/permits/wakefield-pool-spa",
+   "title": "Pool/Spa permit \u2014 Spruce St, Wakefield ($15,000)",
+   "content_text": "Pool/Spa permit in Wakefield, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Pool/Spa",
+   "_value": 15000.0
+  },
+  {
+   "id": "8bb1d4865a1cbf58",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Converse St, Wakefield ($13,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $13,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 13000.0
+  },
+  {
+   "id": "c29712c57689511e",
+   "url": "https://masspermits.com/permits/wakefield",
+   "title": "Sign/Awning permit \u2014 Main St, Wakefield ($7,000)",
+   "content_text": "Sign/Awning permit in Wakefield, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Sign/Awning",
+   "_value": 7000.0
+  },
+  {
+   "id": "c1ef285f6c813d84",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Main St, Wakefield ($3,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 3000.0
+  },
+  {
+   "id": "06f2c182e76b824d",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Millbrook Ln, Wakefield ($49,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $49,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 49000.0
+  },
+  {
+   "id": "8e6458828bb559d7",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Nahant St, Wakefield ($16,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $16,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 16000.0
+  },
+  {
+   "id": "69647c2ff5415e7e",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Farm St, Wakefield ($5,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 5000.0
+  },
+  {
+   "id": "92696494e5bd1979",
+   "url": "https://masspermits.com/permits/wakefield-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Valley St, Wakefield ($4,000)",
+   "content_text": "Windows/Doors/Siding permit in Wakefield, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4000.0
+  },
+  {
+   "id": "745730809c777a54",
+   "url": "https://masspermits.com/permits/wakefield-addition",
+   "title": "Addition permit \u2014 Highland St, Wakefield ($48,000)",
+   "content_text": "Addition permit in Wakefield, MA. Value $48,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Addition",
+   "_value": 48000.0
+  },
+  {
+   "id": "dc18b41f6112aeee",
+   "url": "https://masspermits.com/permits/wakefield-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Meriam St, Wakefield ($27,000)",
+   "content_text": "Kitchen/Bath permit in Wakefield, MA. Value $27,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Kitchen/Bath",
+   "_value": 27000.0
+  },
+  {
+   "id": "0f5b20cfce03f5db",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Ludlow Ave, Wakefield ($21,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $21,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 21000.0
+  },
+  {
+   "id": "2d48324a1722beda",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Oakledge Rd, Wakefield ($3,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 3000.0
+  },
+  {
+   "id": "4f01f5f6a70b95b6",
+   "url": "https://masspermits.com/permits/wakefield-demolition",
+   "title": "Demolition permit \u2014 Foundry St, Wakefield ($400,000)",
+   "content_text": "Demolition permit in Wakefield, MA. Value $400,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Demolition",
+   "_value": 400000.0
+  },
+  {
+   "id": "f51c68785b1e3699",
+   "url": "https://masspermits.com/permits/wakefield-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Holland Rd, Wakefield ($115,000)",
+   "content_text": "Kitchen/Bath permit in Wakefield, MA. Value $115,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Kitchen/Bath",
+   "_value": 115000.0
+  },
+  {
+   "id": "606a9457b0bc96a1",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Marion Cir, Wakefield ($44,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $44,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 44000.0
+  },
+  {
+   "id": "adc6372d3075e54d",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Richardson Ave, Wakefield ($32,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $32,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 32000.0
+  },
+  {
+   "id": "4ef601ff7984e793",
+   "url": "https://masspermits.com/permits/wakefield",
+   "title": "New Construction permit \u2014 Lakeview Ave, Wakefield ($23,000)",
+   "content_text": "New Construction permit in Wakefield, MA. Value $23,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "New Construction",
+   "_value": 23000.0
+  },
+  {
+   "id": "3be7b9080ffff521",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Greenwood Ave, Wakefield ($22,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $22,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 22000.0
+  },
+  {
+   "id": "9472c245caf004d5",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Princess St, Wakefield ($7,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 7000.0
+  },
+  {
+   "id": "ac80facde0dfd1aa",
+   "url": "https://masspermits.com/permits/wakefield-addition",
+   "title": "Addition permit \u2014 Norway St, Wakefield ($221,000)",
+   "content_text": "Addition permit in Wakefield, MA. Value $221,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Addition",
+   "_value": 221000.0
+  },
+  {
+   "id": "fc627c17feece4ff",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Parker Rd, Wakefield ($26,997)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $26,997. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 26997.0
+  },
+  {
+   "id": "7c920aa76a2a9fb0",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Old Nahant Rd, Wakefield ($16,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $16,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 16000.0
+  },
+  {
+   "id": "62859a8e33bcf8d4",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Herbert St, Wakefield ($11,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 11000.0
+  },
+  {
+   "id": "c4587f460ed9733c",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Parker Rd, Unit, Wakefield ($48,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $48,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 48000.0
+  },
+  {
+   "id": "4534adf890029d93",
+   "url": "https://masspermits.com/permits/wakefield-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Woodcrest Dr, Wakefield ($28,000)",
+   "content_text": "Kitchen/Bath permit in Wakefield, MA. Value $28,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Kitchen/Bath",
+   "_value": 28000.0
+  },
+  {
+   "id": "d1cabebea1472d3d",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Stark Ave, Wakefield ($27,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $27,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 27000.0
+  },
+  {
+   "id": "a6e85a055038659b",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Partridge Ln, Wakefield ($22,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $22,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 22000.0
+  },
+  {
+   "id": "78a9a4e026f0f5b1",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Memory Ln, Wakefield ($21,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $21,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 21000.0
+  },
+  {
+   "id": "66c42bd272f4155c",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Wave Ave, Wakefield ($2,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 2000.0
+  },
+  {
+   "id": "f7220da23a76285a",
+   "url": "https://masspermits.com/permits/wakefield-hvac",
+   "title": "HVAC permit \u2014 Lowell St, Wakefield ($35,000)",
+   "content_text": "HVAC permit in Wakefield, MA. Value $35,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "HVAC",
+   "_value": 35000.0
+  },
+  {
+   "id": "fa129b55573baa26",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Albion St, Wakefield ($24,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $24,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 24000.0
+  },
+  {
+   "id": "0ddb3da925d4e09c",
+   "url": "https://masspermits.com/permits/wakefield-deck-porch",
+   "title": "Deck/Porch permit \u2014 Kendrick Rd, Wakefield ($22,000)",
+   "content_text": "Deck/Porch permit in Wakefield, MA. Value $22,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Deck/Porch",
+   "_value": 22000.0
+  },
+  {
+   "id": "3dcfdd0b250a08fd",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Water St, Wakefield ($6,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 6000.0
+  },
+  {
+   "id": "5bfc19c01f5c435a",
+   "url": "https://masspermits.com/permits/wakefield-addition",
+   "title": "Addition permit \u2014 Walnut St, Wakefield ($79,000)",
+   "content_text": "Addition permit in Wakefield, MA. Value $79,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Addition",
+   "_value": 79000.0
+  },
+  {
+   "id": "48a1da650722e184",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Spaulding St, Wakefield ($29,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $29,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 29000.0
+  },
+  {
+   "id": "43787f782d057c63",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Salem St, Unit, Wakefield ($28,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $28,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 28000.0
+  },
+  {
+   "id": "33b02e7fd76b616a",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Crescent St, Wakefield ($27,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $27,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 27000.0
+  },
+  {
+   "id": "a0c99aa60d47098f",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Chestnut St, Wakefield ($15,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 15000.0
+  },
+  {
+   "id": "fc9731d8755ac4d2",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Lowell St, Wakefield ($34,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $34,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 34000.0
+  },
+  {
+   "id": "1418735a54fe1022",
+   "url": "https://masspermits.com/permits/wakefield-deck-porch",
+   "title": "Deck/Porch permit \u2014 Forest St, Wakefield ($14,000)",
+   "content_text": "Deck/Porch permit in Wakefield, MA. Value $14,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Deck/Porch",
+   "_value": 14000.0
+  },
+  {
+   "id": "841e31522b77adca",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Forrester Rd, Wakefield ($10,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 10000.0
+  },
+  {
+   "id": "ec63aea6f8bcd666",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Cedar St, Wakefield ($4,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 4000.0
+  },
+  {
+   "id": "1630195a08f6a4a1",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Greenwood Ave, Wakefield ($3,998)",
+   "content_text": "Building permit in Wakefield, MA. Value $3,998. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 3998.0
+  },
+  {
+   "id": "d1afe1c87c7ec254",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Hickory Hill Rd, Wakefield ($44,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $44,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 44000.0
+  },
+  {
+   "id": "56f17d245aa9854b",
+   "url": "https://masspermits.com/permits/wakefield-building",
+   "title": "Building permit \u2014 Lovis Ave, Wakefield ($30,000)",
+   "content_text": "Building permit in Wakefield, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Building",
+   "_value": 30000.0
+  },
+  {
+   "id": "eab8fb383d6da3cc",
+   "url": "https://masspermits.com/permits/wakefield-deck-porch",
+   "title": "Deck/Porch permit \u2014 Lawrence St, Wakefield ($13,000)",
+   "content_text": "Deck/Porch permit in Wakefield, MA. Value $13,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Deck/Porch",
+   "_value": 13000.0
+  },
+  {
+   "id": "3d13e2e378af19ce",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Gumwood Ln, Wakefield ($47,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $47,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 47000.0
+  },
+  {
+   "id": "e5751bdb2e7162aa",
+   "url": "https://masspermits.com/permits/wakefield-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Grove St, Wakefield ($38,000)",
+   "content_text": "Kitchen/Bath permit in Wakefield, MA. Value $38,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Kitchen/Bath",
+   "_value": 38000.0
+  },
+  {
+   "id": "31a2dfb1b9964753",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Hopkins St, Wakefield ($14,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $14,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 14000.0
+  },
+  {
+   "id": "bfa5e544f73edb00",
+   "url": "https://masspermits.com/permits/wakefield-deck-porch",
+   "title": "Deck/Porch permit \u2014 Woodbriar Rd, Wakefield ($11,000)",
+   "content_text": "Deck/Porch permit in Wakefield, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Deck/Porch",
+   "_value": 11000.0
+  },
+  {
+   "id": "4d9e1d4b8a08c8aa",
+   "url": "https://masspermits.com/permits/wakefield-roofing",
+   "title": "Roofing permit \u2014 Spruce St, Wakefield ($7,000)",
+   "content_text": "Roofing permit in Wakefield, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Wakefield",
+   "_trade": "Roofing",
+   "_value": 7000.0
+  }
+ ]
+}

@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel>
 <title>MassPermits — building permits in Allston, MA</title>
 <link>https://masspermits.com/permits/</link>
-<description>Latest building permits in Allston, MA. Full leads at masspermits.com.</description><language>en-us</language>
+<description>Latest building permits in Allston, MA. Full leads at masspermits.com. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.</description><language>en-us</language>
 <atom:link href="https://masspermits.com/feed/allston.xml" rel="self" type="application/rss+xml"/>
 <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+<copyright>MassPermits (masspermits.com) — licensed CC BY-NC 4.0</copyright>
+<atom:link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
+<atom:link rel="describedby" type="application/json" href="https://masspermits.com/catalog.json"/>
+<dc:rights>MassPermits (masspermits.com) — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)</dc:rights>
+<dc:source>Compiled from public municipal building-permit records published by Massachusetts cities and towns.</dc:source>
+<managingEditor>hello@masspermits.com (MassPermits)</managingEditor>
+<docs>https://www.rssboard.org/rss-specification</docs>
+<generator>MassPermits seo_build</generator>
+<ttl>1440</ttl>
+<lastBuildDate>Wed, 02 Sep 2026 00:00:00 GMT</lastBuildDate>
 <item><title>Electrical permit — Franklin St, Allston ($4,000)</title><link>https://masspermits.com/permits/allston-electrical</link><description>Electrical building permit issued 2026-09-02 in Allston. Project value $4,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">4155375e5422fa86</guid></item>
 <item><title>Plumbing permit — Everett St, Allston ($15,000)</title><link>https://masspermits.com/permits/allston-plumbing</link><description>Plumbing building permit issued 2026-09-01 in Allston. Project value $15,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">2845fe245c1e34fc</guid></item>
 <item><title>Windows/Doors/Siding permit — Islington Te, Allston ($3,200)</title><link>https://masspermits.com/permits/allston-windows-doors-siding</link><description>Windows/Doors/Siding building permit issued 2026-08-31 in Allston. Project value $3,200. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">97b3cfc68f16beb8</guid></item>
@@ -23,7 +33,7 @@
 <item><title>Electrical permit — Empire St, Allston ($1,500)</title><link>https://masspermits.com/permits/allston-electrical</link><description>Electrical building permit issued 2026-08-20 in Allston. Project value $1,500. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">50776b558315ac5a</guid></item>
 <item><title>Solar permit — Hooker St, Allston ($45,200)</title><link>https://masspermits.com/permits/allston</link><description>Solar building permit issued 2026-08-20 in Allston. Project value $45,200. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">18711ad46a8ca5a2</guid></item>
 <item><title>Other permit — Guilford St, Allston ($2,694)</title><link>https://masspermits.com/permits/allston-other</link><description>Other building permit issued 2026-08-20 in Allston. Project value $2,694. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">0acff0995e563825</guid></item>
-<item><title>New Construction permit — Warren St, Allston ($0)</title><link>https://masspermits.com/permits/allston</link><description>New Construction building permit issued 2026-08-20 in Allston. Project value $0. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">40d5267338c01094</guid></item>
+<item><title>New Construction permit — Warren St, Allston</title><link>https://masspermits.com/permits/allston</link><description>New Construction building permit issued 2026-08-20 in Allston. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">40d5267338c01094</guid></item>
 <item><title>Electrical permit — Western Av, Allston ($20,000)</title><link>https://masspermits.com/permits/allston-electrical</link><description>Electrical building permit issued 2026-08-20 in Allston. Project value $20,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">392e1c6b0937a82c</guid></item>
 <item><title>Electrical permit — Gardner St, Allston ($1,200)</title><link>https://masspermits.com/permits/allston-electrical</link><description>Electrical building permit issued 2026-08-20 in Allston. Project value $1,200. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">1417c3b145f2272b</guid></item>
 <item><title>Electrical permit — Ashford St, Allston ($15,000)</title><link>https://masspermits.com/permits/allston-electrical</link><description>Electrical building permit issued 2026-08-19 in Allston. Project value $15,000. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">2d9469ba62642839</guid></item>

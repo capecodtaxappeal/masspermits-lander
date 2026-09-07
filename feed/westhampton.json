@@ -1,0 +1,249 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Westhampton, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/westhampton.json",
+ "description": "Recent building permits in Westhampton, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 24,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-03",
+ "items": [
+  {
+   "id": "9a972c71c8283050",
+   "url": "https://masspermits.com/permits/westhampton-other",
+   "title": "Other permit \u2014 Main Rd, Westhampton",
+   "content_text": "Other permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "14abd5e856e11ba7",
+   "url": "https://masspermits.com/permits/westhampton-other",
+   "title": "Other permit \u2014 Laurel Hill Rd, Westhampton",
+   "content_text": "Other permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "c45f224a00f9d71a",
+   "url": "https://masspermits.com/permits/westhampton-other",
+   "title": "Other permit \u2014 Chesterfield Rd, Westhampton",
+   "content_text": "Other permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "7333b8651c4fd3dc",
+   "url": "https://masspermits.com/permits/westhampton-other",
+   "title": "Other permit \u2014 Stage Rd, Westhampton",
+   "content_text": "Other permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "0f985593593ac6ed",
+   "url": "https://masspermits.com/permits/westhampton-other",
+   "title": "Other permit \u2014 Turkey Hill Rd, Westhampton",
+   "content_text": "Other permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "bdb90747aba5e6b0",
+   "url": "https://masspermits.com/permits/westhampton-other",
+   "title": "Other permit \u2014 Northwest Rd, Westhampton",
+   "content_text": "Other permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "5e6ac48074ad08f1",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Windows/Doors/Siding permit \u2014 Northwest Rd, Westhampton",
+   "content_text": "Windows/Doors/Siding permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "5f219c566aed9e10",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Building permit \u2014 Easthampton Rd, Westhampton",
+   "content_text": "Building permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Building"
+  },
+  {
+   "id": "6a3b9666d7612b96",
+   "url": "https://masspermits.com/permits/westhampton-other",
+   "title": "Other permit \u2014 Kings Hwy, Westhampton",
+   "content_text": "Other permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "a53036fb5fd4c18d",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Windows/Doors/Siding permit \u2014 Burt Rd, Westhampton",
+   "content_text": "Windows/Doors/Siding permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "004b63a1c319d492",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Windows/Doors/Siding permit \u2014 Main Rd, Westhampton",
+   "content_text": "Windows/Doors/Siding permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "48bf5a6e54fc4bef",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Building permit \u2014 South Rd, Westhampton",
+   "content_text": "Building permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Building"
+  },
+  {
+   "id": "f0ebbc0c47f9c624",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Building permit \u2014 Main Rd, Westhampton",
+   "content_text": "Building permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Building"
+  },
+  {
+   "id": "fa9c313f1e9ab7e3",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Building permit \u2014 Northwest Rd, Westhampton",
+   "content_text": "Building permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Building"
+  },
+  {
+   "id": "0b4a9661f2ea9009",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Demolition permit \u2014 Hathaway Rd, Westhampton",
+   "content_text": "Demolition permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Demolition"
+  },
+  {
+   "id": "5016c718e473c32e",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Electrical permit \u2014 Hooker Rd, Westhampton",
+   "content_text": "Electrical permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "595d4409187fc753",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Roofing permit \u2014 Kings Hwy, Westhampton",
+   "content_text": "Roofing permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "54d31cf6b387d202",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Solar permit \u2014 Stage Rd, Westhampton",
+   "content_text": "Solar permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Solar"
+  },
+  {
+   "id": "e41a13b2b8452423",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Roofing permit \u2014 Chesterfield Rd, Westhampton",
+   "content_text": "Roofing permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "99334930482a8d69",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Windows/Doors/Siding permit \u2014 North Rd, Westhampton",
+   "content_text": "Windows/Doors/Siding permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "a3aaee3dc1dd5683",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Solar permit \u2014 Kings Hwy, Westhampton",
+   "content_text": "Solar permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Solar"
+  },
+  {
+   "id": "5f6311649c29c0cf",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Building permit \u2014 Chesterfield Rd, Westhampton",
+   "content_text": "Building permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Building"
+  },
+  {
+   "id": "b7f3943b9b46bcf2",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Electrical permit \u2014 Main Rd, Westhampton",
+   "content_text": "Electrical permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "740f46c664ff6e8d",
+   "url": "https://masspermits.com/permits/westhampton",
+   "title": "Electrical permit \u2014 Pine Island Lk, Westhampton",
+   "content_text": "Electrical permit in Westhampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Westhampton",
+   "_trade": "Electrical"
+  }
+ ]
+}

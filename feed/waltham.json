@@ -1,0 +1,632 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Waltham, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/waltham.json",
+ "description": "Recent building permits in Waltham, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 665,
+ "_window_from": "2026-02-02",
+ "_window_to": "2026-07-31",
+ "items": [
+  {
+   "id": "737f91d117fd06f3",
+   "url": "https://masspermits.com/permits/waltham-building",
+   "title": "Building permit \u2014 Hillcroft Rd, Waltham ($15,000)",
+   "content_text": "Building permit in Waltham, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-31T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Building",
+   "_value": 15000.0
+  },
+  {
+   "id": "bec7b169c46f1db7",
+   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Ravenswood Rd, Waltham ($8,650)",
+   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $8,650. Full lead at masspermits.com.",
+   "date_published": "2026-07-31T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 8650.0
+  },
+  {
+   "id": "38fe3484c9539f55",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Ravenswood Rd, Waltham ($42,512)",
+   "content_text": "Roofing permit in Waltham, MA. Value $42,512. Full lead at masspermits.com.",
+   "date_published": "2026-07-31T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 42512.29
+  },
+  {
+   "id": "4a8e2683189b4eea",
+   "url": "https://masspermits.com/permits/waltham-addition",
+   "title": "Addition permit \u2014 Worcester Ln, Waltham ($150,000)",
+   "content_text": "Addition permit in Waltham, MA. Value $150,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-31T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Addition",
+   "_value": 150000.0
+  },
+  {
+   "id": "7377f58c850b8e71",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Azalea Rd, Waltham ($16,200)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $16,200. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 16200.0
+  },
+  {
+   "id": "f97511f83943a81a",
+   "url": "https://masspermits.com/permits/waltham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Bennett St, Waltham ($10,000)",
+   "content_text": "Deck/Porch permit in Waltham, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Deck/Porch",
+   "_value": 10000.0
+  },
+  {
+   "id": "3335ec8177cd608b",
+   "url": "https://masspermits.com/permits/waltham-other",
+   "title": "Other permit \u2014 Bennett St, Waltham ($7,183)",
+   "content_text": "Other permit in Waltham, MA. Value $7,183. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Other",
+   "_value": 7182.81
+  },
+  {
+   "id": "287818ecacd8a891",
+   "url": "https://masspermits.com/permits/waltham-solar",
+   "title": "Solar permit \u2014 Cedarcroft Ln, Waltham ($44,167)",
+   "content_text": "Solar permit in Waltham, MA. Value $44,167. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Solar",
+   "_value": 44167.2
+  },
+  {
+   "id": "95cf5a0469eb8f31",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Francis St Unit, Waltham ($37,400)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $37,400. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 37400.0
+  },
+  {
+   "id": "fb707d95c0e26670",
+   "url": "https://masspermits.com/permits/waltham-other",
+   "title": "Other permit \u2014 Galen St, Waltham ($3,079)",
+   "content_text": "Other permit in Waltham, MA. Value $3,079. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Other",
+   "_value": 3079.42
+  },
+  {
+   "id": "84fde5ee6e20bab3",
+   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Gregory St, Waltham ($30,000)",
+   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 30000.0
+  },
+  {
+   "id": "c554c2f1595deb85",
+   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Hardy Pond Rd, Waltham ($12,968)",
+   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $12,968. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 12968.0
+  },
+  {
+   "id": "86ca362901a51f12",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Harland Rd, Waltham ($134,378)",
+   "content_text": "Roofing permit in Waltham, MA. Value $134,378. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 134378.0
+  },
+  {
+   "id": "67bfd07aa361e271",
+   "url": "https://masspermits.com/permits/waltham-solar",
+   "title": "Solar permit \u2014 Lake St, Waltham ($53,247)",
+   "content_text": "Solar permit in Waltham, MA. Value $53,247. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Solar",
+   "_value": 53247.0
+  },
+  {
+   "id": "64c92554197f78cd",
+   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Marlborough Rd, Waltham ($3,475)",
+   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $3,475. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3475.0
+  },
+  {
+   "id": "95c57df62c6c6f7a",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Piedmont Ave, Waltham ($40,000)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $40,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 40000.0
+  },
+  {
+   "id": "ab9c243ea4af47ed",
+   "url": "https://masspermits.com/permits/waltham-electrical",
+   "title": "Electrical permit \u2014 Pine St, Waltham ($8,600)",
+   "content_text": "Electrical permit in Waltham, MA. Value $8,600. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Electrical",
+   "_value": 8600.0
+  },
+  {
+   "id": "cb2337d57b9dfa30",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Pond End School Ln, Waltham ($18,000)",
+   "content_text": "Roofing permit in Waltham, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 18000.0
+  },
+  {
+   "id": "1ef8faa0a919ae78",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Sherwood Ln, Waltham ($20,746)",
+   "content_text": "Roofing permit in Waltham, MA. Value $20,746. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 20746.0
+  },
+  {
+   "id": "2cdb9aa215e06d9c",
+   "url": "https://masspermits.com/permits/waltham-other",
+   "title": "Other permit \u2014 Warren St, Waltham ($5,577)",
+   "content_text": "Other permit in Waltham, MA. Value $5,577. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Other",
+   "_value": 5576.64
+  },
+  {
+   "id": "58ef7d928f3813f1",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Wildwood Ln, Waltham ($8,800)",
+   "content_text": "Roofing permit in Waltham, MA. Value $8,800. Full lead at masspermits.com.",
+   "date_published": "2026-07-30T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 8800.0
+  },
+  {
+   "id": "b0c4794aaea1fb98",
+   "url": "https://masspermits.com/permits/waltham-addition",
+   "title": "Addition permit \u2014 Florence Rd, Waltham ($140,000)",
+   "content_text": "Addition permit in Waltham, MA. Value $140,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-29T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Addition",
+   "_value": 140000.0
+  },
+  {
+   "id": "cb5c23af14160f47",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Moody St, Waltham ($51,000)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $51,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-29T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 51000.0
+  },
+  {
+   "id": "57278f17f1f7d0fe",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Summer St, Waltham ($10,500)",
+   "content_text": "Roofing permit in Waltham, MA. Value $10,500. Full lead at masspermits.com.",
+   "date_published": "2026-07-29T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 10500.0
+  },
+  {
+   "id": "3ab37c20dd01f74f",
+   "url": "https://masspermits.com/permits/waltham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Wadsworth Ave, Waltham ($4,500)",
+   "content_text": "Renovation/Remodel permit in Waltham, MA. Value $4,500. Full lead at masspermits.com.",
+   "date_published": "2026-07-29T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Renovation/Remodel",
+   "_value": 4500.0
+  },
+  {
+   "id": "778c62aee4298b19",
+   "url": "https://masspermits.com/permits/waltham-new-construction",
+   "title": "New Construction permit \u2014 Gilbert St, Waltham ($22,500)",
+   "content_text": "New Construction permit in Waltham, MA. Value $22,500. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "New Construction",
+   "_value": 22500.0
+  },
+  {
+   "id": "158ddf977647c0d1",
+   "url": "https://masspermits.com/permits/waltham-building",
+   "title": "Building permit \u2014 School St, Waltham ($2,387)",
+   "content_text": "Building permit in Waltham, MA. Value $2,387. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Building",
+   "_value": 2387.12
+  },
+  {
+   "id": "9ba58666eeaf4dfc",
+   "url": "https://masspermits.com/permits/waltham-demolition",
+   "title": "Demolition permit \u2014 Trapelo Rd, Waltham ($2,058,671)",
+   "content_text": "Demolition permit in Waltham, MA. Value $2,058,671. Full lead at masspermits.com.",
+   "date_published": "2026-07-28T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Demolition",
+   "_value": 2058671.0
+  },
+  {
+   "id": "820725fa9cb5ae9c",
+   "url": "https://masspermits.com/permits/waltham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Brown St, Waltham ($27,548)",
+   "content_text": "Deck/Porch permit in Waltham, MA. Value $27,548. Full lead at masspermits.com.",
+   "date_published": "2026-07-27T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Deck/Porch",
+   "_value": 27548.0
+  },
+  {
+   "id": "2e2126921c1246a8",
+   "url": "https://masspermits.com/permits/waltham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Myrtle St, Waltham ($20,550)",
+   "content_text": "Deck/Porch permit in Waltham, MA. Value $20,550. Full lead at masspermits.com.",
+   "date_published": "2026-07-27T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Deck/Porch",
+   "_value": 20550.0
+  },
+  {
+   "id": "673739fc6520a3b2",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Pleasant St, Waltham ($33,750)",
+   "content_text": "Roofing permit in Waltham, MA. Value $33,750. Full lead at masspermits.com.",
+   "date_published": "2026-07-27T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 33750.0
+  },
+  {
+   "id": "99fdf56c31a04c9b",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Villa St, Waltham ($477,747)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $477,747. Full lead at masspermits.com.",
+   "date_published": "2026-07-27T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 477747.0
+  },
+  {
+   "id": "6870d3f93c66007a",
+   "url": "https://masspermits.com/permits/waltham-demolition",
+   "title": "Demolition permit \u2014 Bear Hill Rd, Waltham ($64,000)",
+   "content_text": "Demolition permit in Waltham, MA. Value $64,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-24T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Demolition",
+   "_value": 64000.0
+  },
+  {
+   "id": "2a0846eb44df71ad",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Russell St, Waltham ($11,000)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-24T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 11000.0
+  },
+  {
+   "id": "fbc34788bb434bd5",
+   "url": "https://masspermits.com/permits/waltham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Elm St, Waltham ($13,000)",
+   "content_text": "Renovation/Remodel permit in Waltham, MA. Value $13,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Renovation/Remodel",
+   "_value": 13000.0
+  },
+  {
+   "id": "51c48a5012452bc9",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Fiske St, Waltham ($23,299)",
+   "content_text": "Roofing permit in Waltham, MA. Value $23,299. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 23299.0
+  },
+  {
+   "id": "c4108d96fa065c1e",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Kings Way Unit, Waltham ($17,277)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $17,277. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 17277.03
+  },
+  {
+   "id": "9b8a0783368f70ec",
+   "url": "https://masspermits.com/permits/waltham-other",
+   "title": "Other permit \u2014 Lexington St, Waltham",
+   "content_text": "Other permit in Waltham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Other"
+  },
+  {
+   "id": "60523107d69e7c22",
+   "url": "https://masspermits.com/permits/waltham-solar",
+   "title": "Solar permit \u2014 Lexington St, Waltham ($164,385)",
+   "content_text": "Solar permit in Waltham, MA. Value $164,385. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Solar",
+   "_value": 164385.0
+  },
+  {
+   "id": "fca4eb8171a1b96d",
+   "url": "https://masspermits.com/permits/waltham-hvac",
+   "title": "HVAC permit \u2014 Lincoln St, Waltham ($203,400)",
+   "content_text": "HVAC permit in Waltham, MA. Value $203,400. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "HVAC",
+   "_value": 203400.0
+  },
+  {
+   "id": "4406be6dabc74378",
+   "url": "https://masspermits.com/permits/waltham-building",
+   "title": "Building permit \u2014 Lincoln St, Waltham ($82,000)",
+   "content_text": "Building permit in Waltham, MA. Value $82,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Building",
+   "_value": 82000.0
+  },
+  {
+   "id": "5c7773d262e6126f",
+   "url": "https://masspermits.com/permits/waltham-demolition",
+   "title": "Demolition permit \u2014 Moody St, Waltham ($11,000)",
+   "content_text": "Demolition permit in Waltham, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Demolition",
+   "_value": 11000.0
+  },
+  {
+   "id": "e6016c28dfed69f7",
+   "url": "https://masspermits.com/permits/waltham-hvac",
+   "title": "HVAC permit \u2014 Rosewood Dr, Waltham ($250,000)",
+   "content_text": "HVAC permit in Waltham, MA. Value $250,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "HVAC",
+   "_value": 250000.0
+  },
+  {
+   "id": "44fd4d1e42ca43c4",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Russell St, Waltham ($36,925)",
+   "content_text": "Roofing permit in Waltham, MA. Value $36,925. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 36924.73
+  },
+  {
+   "id": "7db05ce1a3120253",
+   "url": "https://masspermits.com/permits/waltham-other",
+   "title": "Other permit \u2014 Wamsutta Ave, Waltham ($4,000)",
+   "content_text": "Other permit in Waltham, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Other",
+   "_value": 4000.0
+  },
+  {
+   "id": "50c81f98c364ef3f",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Wellington St Unit, Waltham ($20,000)",
+   "content_text": "Roofing permit in Waltham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 20000.0
+  },
+  {
+   "id": "7acca0b427e4d67f",
+   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Wight St, Waltham ($8,000)",
+   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-23T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 8000.0
+  },
+  {
+   "id": "fe05343ad85d14db",
+   "url": "https://masspermits.com/permits/waltham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Brewster Rd, Waltham ($26,500)",
+   "content_text": "Deck/Porch permit in Waltham, MA. Value $26,500. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Deck/Porch",
+   "_value": 26500.0
+  },
+  {
+   "id": "f12cec3dd592a9b8",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Crescent St, Waltham ($10,000)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 10000.0
+  },
+  {
+   "id": "176a111d29e04e4e",
+   "url": "https://masspermits.com/permits/waltham-other",
+   "title": "Other permit \u2014 Lyman St, Waltham ($6,000)",
+   "content_text": "Other permit in Waltham, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Other",
+   "_value": 6000.0
+  },
+  {
+   "id": "5c79465df211a45f",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Tomlin St, Waltham ($22,025)",
+   "content_text": "Roofing permit in Waltham, MA. Value $22,025. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 22025.0
+  },
+  {
+   "id": "d016bcc06d03c61b",
+   "url": "https://masspermits.com/permits/waltham-building",
+   "title": "Building permit \u2014 Virginia Rd, Waltham ($2,580)",
+   "content_text": "Building permit in Waltham, MA. Value $2,580. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Building",
+   "_value": 2580.0
+  },
+  {
+   "id": "77641b234faa4aa2",
+   "url": "https://masspermits.com/permits/waltham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Wilbur St, Waltham ($11,652)",
+   "content_text": "Deck/Porch permit in Waltham, MA. Value $11,652. Full lead at masspermits.com.",
+   "date_published": "2026-07-22T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Deck/Porch",
+   "_value": 11652.0
+  },
+  {
+   "id": "cdd9a474a4aea8c8",
+   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Aberdeen Ave, Waltham ($13,000)",
+   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $13,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Kitchen/Bath",
+   "_value": 13000.0
+  },
+  {
+   "id": "0e95eba2b2dbe03a",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Ash St Unit, Waltham ($9,300)",
+   "content_text": "Roofing permit in Waltham, MA. Value $9,300. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 9300.0
+  },
+  {
+   "id": "9a9d9a3836c0d224",
+   "url": "https://masspermits.com/permits/waltham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Hovey Rd, Waltham ($25,000)",
+   "content_text": "Deck/Porch permit in Waltham, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Deck/Porch",
+   "_value": 25000.0
+  },
+  {
+   "id": "bbfd9c6fdadb1a5d",
+   "url": "https://masspermits.com/permits/waltham-roofing",
+   "title": "Roofing permit \u2014 Shirley Rd, Waltham ($14,500)",
+   "content_text": "Roofing permit in Waltham, MA. Value $14,500. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Roofing",
+   "_value": 14500.0
+  },
+  {
+   "id": "eebe36ce79f15053",
+   "url": "https://masspermits.com/permits/waltham-demolition",
+   "title": "Demolition permit \u2014 South St, Waltham ($5,250)",
+   "content_text": "Demolition permit in Waltham, MA. Value $5,250. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Demolition",
+   "_value": 5250.0
+  },
+  {
+   "id": "a9971efdd579fafa",
+   "url": "https://masspermits.com/permits/waltham-demolition",
+   "title": "Demolition permit \u2014 Woerd Ave, Waltham ($26,000)",
+   "content_text": "Demolition permit in Waltham, MA. Value $26,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-21T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Demolition",
+   "_value": 26000.0
+  },
+  {
+   "id": "324ce2c81e7c88ab",
+   "url": "https://masspermits.com/permits/waltham-other",
+   "title": "Other permit \u2014 Adams St, Waltham ($7,000)",
+   "content_text": "Other permit in Waltham, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-07-20T00:00:00Z",
+   "_town": "Waltham",
+   "_trade": "Other",
+   "_value": 7000.0
+  }
+ ]
+}

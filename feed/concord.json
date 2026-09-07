@@ -1,0 +1,573 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Concord, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/concord.json",
+ "description": "Recent building permits in Concord, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 218,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-04",
+ "items": [
+  {
+   "id": "36d700b0327694a1",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Monument St, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "2a241003f01c0589",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 North Branch Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c1156871ee8d3f00",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Baker Avenue Ext, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "3c2ae389219de6db",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Millrun Ln, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "e9e27f5411e1cb61",
+   "url": "https://masspermits.com/permits/concord-hvac",
+   "title": "HVAC permit \u2014 Cottage Ln, Concord",
+   "content_text": "HVAC permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "b4e16656b3fc19cd",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Walden Ter, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b2c60460f9b4bc65",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Crest St, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "bbb0a28ab2f777b2",
+   "url": "https://masspermits.com/permits/concord-gas",
+   "title": "Gas permit \u2014 Main St, Concord",
+   "content_text": "Gas permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Gas"
+  },
+  {
+   "id": "9bd8a17a12c2a287",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Walden St, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "ade9dead7401022e",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Main St, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "61dec9a140399604",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Nashawtuc Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "77a8e2117684fecb",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Caterina Hts, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "56b542837a2956f8",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Thoreau St, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "4f0a044e368ec7f4",
+   "url": "https://masspermits.com/permits/concord-gas",
+   "title": "Gas permit \u2014 Monument St, Concord",
+   "content_text": "Gas permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Gas"
+  },
+  {
+   "id": "7b3e0929eb693048",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Blue Jay Dr, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "fffc9062aebe75ae",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Sullivan Way, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "cda23e61ea9f949a",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Cambridge Tpke, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "ea4f12213f7383a9",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 North Branch Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "ff02982acf38f86b",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Oak Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "695ce485eb0b0b6b",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Laurel St, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "b4e627befbbaca79",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Peter Spring Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "b3070ee5e3cb4c1f",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Musterfield Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "d5b14ffe21f390a4",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Rollingwood Ln, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "232ec4eb476130ed",
+   "url": "https://masspermits.com/permits/concord-gas",
+   "title": "Gas permit \u2014 Silver Hill Rd, Concord",
+   "content_text": "Gas permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Gas"
+  },
+  {
+   "id": "740b74596dbaa530",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Keyes Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "af65256b2a8b77dc",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Laurel St, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "97e24790a8224ac2",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Concord Grn, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "3968ab7eeae512d8",
+   "url": "https://masspermits.com/permits/concord-gas",
+   "title": "Gas permit \u2014 Concord Grn, Concord",
+   "content_text": "Gas permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Gas"
+  },
+  {
+   "id": "9b3ad1ee0a4f5dc0",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Philip Farm Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "dddc1cf25e058f57",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Loring Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "8aa2197dd0bdd42e",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Silver Hill Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "7535343a2ce0c784",
+   "url": "https://masspermits.com/permits/concord-gas",
+   "title": "Gas permit \u2014 Barretts Mill Rd, Concord",
+   "content_text": "Gas permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Gas"
+  },
+  {
+   "id": "2fc915dc23feb2a5",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Willow St, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "a7ebd8a6a9c0f389",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Independence Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "390876f8c3f2d5ff",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Silver Hill Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "0cecb137e1e95c8e",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 West St, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "31e0ec5bd1e0b980",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Virginia Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "bf8bd6518e027a41",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Crescent Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "12e15cfdc62d90c4",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Strawberry Hill Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "10fa8ccd298ae64c",
+   "url": "https://masspermits.com/permits/concord-other",
+   "title": "Other permit \u2014 Deaconess Rd, Concord",
+   "content_text": "Other permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Other"
+  },
+  {
+   "id": "37bb58caaed98fcb",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Riverdale Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "cf4d7e1a708178f2",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Southfield Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "becb4fd4087e11d0",
+   "url": "https://masspermits.com/permits/concord-hvac",
+   "title": "HVAC permit \u2014 Aurora Ln, Concord",
+   "content_text": "HVAC permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "00da0ded32a3691a",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Estabrook Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "969d2f3bf23a2111",
+   "url": "https://masspermits.com/permits/concord-gas",
+   "title": "Gas permit \u2014 Deer Grass Ln, Concord",
+   "content_text": "Gas permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Gas"
+  },
+  {
+   "id": "f1835dbf909a88c6",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Baker Ave, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e11d7e5f55a233e6",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Farmers Cliff Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "2f66e181db51a321",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Pleasant St, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "064d9b2482a7af43",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Old Marlboro Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "bfc1541d26b9d1d7",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Deacon Haynes Rd, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "858b61b1c6878fc9",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Sudbury Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "2ec45fdabb6064eb",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Central St, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "ebe3e5c6f210f0be",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Authors Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "0f63670446b9cab6",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Independence Rd, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "a836b204154483c2",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Main St, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "34e9af82ddd1edf6",
+   "url": "https://masspermits.com/permits/concord-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Bow St, Concord",
+   "content_text": "Renovation/Remodel permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "10aeb0cdc624d7e6",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Philip Farm Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b5c2f2163900f00d",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Chestnut St, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "36e1cf20a9e9c6ad",
+   "url": "https://masspermits.com/permits/concord-plumbing",
+   "title": "Plumbing permit \u2014 Monument St, Concord",
+   "content_text": "Plumbing permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "d346f7baf51b0e4e",
+   "url": "https://masspermits.com/permits/concord-electrical",
+   "title": "Electrical permit \u2014 Lewis Rd, Concord",
+   "content_text": "Electrical permit in Concord, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Concord",
+   "_trade": "Electrical"
+  }
+ ]
+}

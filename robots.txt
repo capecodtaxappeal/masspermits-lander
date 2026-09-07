@@ -1,47 +1,62 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 
 User-agent: GPTBot
 Allow: /
+Disallow: /admin
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /admin
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /admin
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /admin
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /admin
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /admin
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /admin
 
 User-agent: CCBot
 Allow: /
+Disallow: /admin
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin
 
 User-agent: Googlebot
 Allow: /
+Disallow: /admin
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /admin
 
 # AI/LLM context: https://masspermits.com/llms.txt
 Sitemap: https://masspermits.com/sitemap.xml

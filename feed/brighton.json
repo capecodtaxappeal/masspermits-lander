@@ -10,6 +10,21 @@
    "url": "https://masspermits.com"
   }
  ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
  "_window_total": 82,
  "_window_from": "2026-08-10",
  "_window_to": "2026-09-02",
@@ -375,7 +390,7 @@
    "_value": 40000.0
   },
   {
-   "id": "b1edd6495e72b54a",
+   "id": "77e3c6ee05ed56c5",
    "url": "https://masspermits.com/permits/brighton-new-construction",
    "title": "New Construction permit \u2014 Beacon St, Brighton ($4,005)",
    "content_text": "New Construction permit in Brighton, MA. Value $4,005. Full lead at masspermits.com.",
@@ -425,7 +440,7 @@
    "_value": 1800.0
   },
   {
-   "id": "818323f750acf28b",
+   "id": "271d4c247d7db720",
    "url": "https://masspermits.com/permits/brighton-electrical",
    "title": "Electrical permit \u2014 South St, Brighton ($4,000)",
    "content_text": "Electrical permit in Brighton, MA. Value $4,000. Full lead at masspermits.com.",

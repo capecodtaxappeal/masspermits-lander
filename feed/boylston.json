@@ -1,0 +1,328 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Boylston, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/boylston.json",
+ "description": "Recent building permits in Boylston, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 32,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-03",
+ "items": [
+  {
+   "id": "86c14df9b7976131",
+   "url": "https://masspermits.com/permits/boylston-gas",
+   "title": "Gas permit \u2014 Edgebrook Dr, Boylston",
+   "content_text": "Gas permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Gas"
+  },
+  {
+   "id": "dda03d7f7f6c4893",
+   "url": "https://masspermits.com/permits/boylston-plumbing",
+   "title": "Plumbing permit \u2014 Morgan Circle, Boylston",
+   "content_text": "Plumbing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "7db981d26d7a94f8",
+   "url": "https://masspermits.com/permits/boylston-plumbing",
+   "title": "Plumbing permit \u2014 Pendell Cir, Boylston",
+   "content_text": "Plumbing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "60be1764fe12b007",
+   "url": "https://masspermits.com/permits/boylston-plumbing",
+   "title": "Plumbing permit \u2014 Melrose St, Boylston",
+   "content_text": "Plumbing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "1f7d4aa8a04a306e",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 Ridgefield Cir, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "16a212f3323b51dd",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 Central St, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "df82564a82c4e095",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 Shrewsbury St, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b1abd46f508a8456",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 Linden St, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "93170b13dc685c1c",
+   "url": "https://masspermits.com/permits/boylston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Morgan Circle, Boylston ($38,158)",
+   "content_text": "Kitchen/Bath permit in Boylston, MA. Value $38,158. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Kitchen/Bath",
+   "_value": 38158.0
+  },
+  {
+   "id": "2544764a65d57438",
+   "url": "https://masspermits.com/permits/boylston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Cross St, Boylston",
+   "content_text": "Windows/Doors/Siding permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "fab212ef6c013636",
+   "url": "https://masspermits.com/permits/boylston-roofing",
+   "title": "Roofing permit \u2014 Edgebrook Dr, Boylston ($111,265)",
+   "content_text": "Roofing permit in Boylston, MA. Value $111,265. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Roofing",
+   "_value": 111265.0
+  },
+  {
+   "id": "dba942c9b14b99de",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 Main St, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "95fca366f6b16317",
+   "url": "https://masspermits.com/permits/boylston-plumbing",
+   "title": "Plumbing permit \u2014 Main St, Boylston",
+   "content_text": "Plumbing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "35d2f542ce1f97ba",
+   "url": "https://masspermits.com/permits/boylston-roofing",
+   "title": "Roofing permit \u2014 Adams St, Boylston",
+   "content_text": "Roofing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "631a1a4b760f9d61",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 Nicholas Ave, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3f2d7a6ae77700dd",
+   "url": "https://masspermits.com/permits/boylston-deck-porch",
+   "title": "Deck/Porch permit \u2014 Birchwood Dr, Boylston ($3,500)",
+   "content_text": "Deck/Porch permit in Boylston, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Deck/Porch",
+   "_value": 3500.0
+  },
+  {
+   "id": "9a7ea5e8bd6513d6",
+   "url": "https://masspermits.com/permits/boylston-roofing",
+   "title": "Roofing permit \u2014 Cross St, Boylston ($54,480)",
+   "content_text": "Roofing permit in Boylston, MA. Value $54,480. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Roofing",
+   "_value": 54480.0
+  },
+  {
+   "id": "69480d21ee891e54",
+   "url": "https://masspermits.com/permits/boylston-plumbing",
+   "title": "Plumbing permit \u2014 School St, Boylston",
+   "content_text": "Plumbing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "d33b96894f5342da",
+   "url": "https://masspermits.com/permits/boylston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Diamond Hill Ave, Boylston ($7,776)",
+   "content_text": "Windows/Doors/Siding permit in Boylston, MA. Value $7,776. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7776.0
+  },
+  {
+   "id": "b297e6d675a1b888",
+   "url": "https://masspermits.com/permits/boylston-plumbing",
+   "title": "Plumbing permit \u2014 Mill Rd, Boylston",
+   "content_text": "Plumbing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "020c81c357d0611d",
+   "url": "https://masspermits.com/permits/boylston-hvac",
+   "title": "HVAC permit \u2014 Shrewsbury St, Boylston",
+   "content_text": "HVAC permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "feaee9305c3bb992",
+   "url": "https://masspermits.com/permits/boylston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Adams St, Boylston",
+   "content_text": "Windows/Doors/Siding permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "852a35d32a76529b",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 Hillside Ave, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "e242a63a96d61651",
+   "url": "https://masspermits.com/permits/boylston-roofing",
+   "title": "Roofing permit \u2014 Main St, Boylston",
+   "content_text": "Roofing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "80a937dae6aeaf2b",
+   "url": "https://masspermits.com/permits/boylston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Edgebrook Dr, Boylston",
+   "content_text": "Windows/Doors/Siding permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "59a1d4f989c142a1",
+   "url": "https://masspermits.com/permits/boylston-hvac",
+   "title": "HVAC permit \u2014 Hillside Ave, Boylston",
+   "content_text": "HVAC permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "9fc102f82a0a2efc",
+   "url": "https://masspermits.com/permits/boylston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Shrewsbury St, Boylston",
+   "content_text": "Windows/Doors/Siding permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "e8043fa2a062d115",
+   "url": "https://masspermits.com/permits/boylston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Birchwood Dr, Boylston ($28,000)",
+   "content_text": "Windows/Doors/Siding permit in Boylston, MA. Value $28,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 28000.0
+  },
+  {
+   "id": "47c44c33ecfcd171",
+   "url": "https://masspermits.com/permits/boylston-electrical",
+   "title": "Electrical permit \u2014 School St, Boylston",
+   "content_text": "Electrical permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3121339074511b3a",
+   "url": "https://masspermits.com/permits/boylston-roofing",
+   "title": "Roofing permit \u2014 School St, Boylston",
+   "content_text": "Roofing permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "ccf341063cc9c6ec",
+   "url": "https://masspermits.com/permits/boylston-hvac",
+   "title": "HVAC permit \u2014 Central St, Boylston",
+   "content_text": "HVAC permit in Boylston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "ff4c76fef311472b",
+   "url": "https://masspermits.com/permits/boylston",
+   "title": "Demolition permit \u2014 Strawberry Hill Lane, Boylston ($5,500)",
+   "content_text": "Demolition permit in Boylston, MA. Value $5,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Boylston",
+   "_trade": "Demolition",
+   "_value": 5500.0
+  }
+ ]
+}

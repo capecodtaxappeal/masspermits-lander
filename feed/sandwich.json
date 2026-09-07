@@ -10,10 +10,43 @@
    "url": "https://masspermits.com"
   }
  ],
- "_window_total": 236,
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 238,
  "_window_from": "2026-08-08",
  "_window_to": "2026-09-07",
  "items": [
+  {
+   "id": "2dfc5e3457a126c5",
+   "url": "https://masspermits.com/permits/sandwich-gas",
+   "title": "Gas permit \u2014 Pauls Way, Sandwich",
+   "content_text": "Gas permit in Sandwich, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-07T00:00:00Z",
+   "_town": "Sandwich",
+   "_trade": "Gas"
+  },
+  {
+   "id": "cf4f65cbf402a8e1",
+   "url": "https://masspermits.com/permits/sandwich-plumbing",
+   "title": "Plumbing permit \u2014 Pauls Way, Sandwich",
+   "content_text": "Plumbing permit in Sandwich, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-07T00:00:00Z",
+   "_town": "Sandwich",
+   "_trade": "Plumbing"
+  },
   {
    "id": "555242cd7db8d87c",
    "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
@@ -531,24 +564,6 @@
    "id": "cf075a22c0566a7f",
    "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Gully Lane, Sandwich",
-   "content_text": "Renovation/Remodel permit in Sandwich, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Sandwich",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "08a3bced1e246bde",
-   "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Sconset Circle, Sandwich",
-   "content_text": "Renovation/Remodel permit in Sandwich, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Sandwich",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "7bdc9e1967ad46f6",
-   "url": "https://masspermits.com/permits/sandwich-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Open Trail Road, Sandwich",
    "content_text": "Renovation/Remodel permit in Sandwich, MA. Full lead at masspermits.com.",
    "date_published": "2026-08-31T00:00:00Z",
    "_town": "Sandwich",

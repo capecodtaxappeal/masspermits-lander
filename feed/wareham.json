@@ -1,0 +1,573 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Wareham, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/wareham.json",
+ "description": "Recent building permits in Wareham, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 102,
+ "_window_from": "2026-08-09",
+ "_window_to": "2026-08-27",
+ "items": [
+  {
+   "id": "9dfda1ce0cccc19f",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Sippican Rd, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c3693738cad056fb",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Swifts Bch Rd, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "2c915361560f1639",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Kendrick Rd, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "202bb274bb89542c",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Cran Hwy, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "07f08ad4cfd54d0c",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Douglas Ln, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "61c91d5a9e02a6d0",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Cran Hwy, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "4c8caad57246c48b",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Edgewater Dr, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "78ab2b7555b706ae",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Hathaway St, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b124cf9ebc166cbf",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Main St, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f4b38d549a28aeea",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Rose Pt Ave, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "460f3276604045b3",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Paper Mill Rd, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "ed939f793267827b",
+   "url": "https://masspermits.com/permits/wareham-sign-awning",
+   "title": "Sign/Awning permit \u2014 Cran Hwy, Wareham",
+   "content_text": "Sign/Awning permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Sign/Awning"
+  },
+  {
+   "id": "bfb427fefe4ef243",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 County Rd, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "285a95748c9ba74b",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Main St, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "afc5bee8af88e74f",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Barlow Ave, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "af679602e51e00fb",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Crooked River Rd, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "a40227f5146656b2",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Elmwood St, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "0238b317d311143a",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Stoney Run Dr, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "6f0ef88a9953f7b0",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Pine Tree Dr, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "f7e263d1e2cdd8e1",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 Choctaw Dr, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "67c92de2d9284bb3",
+   "url": "https://masspermits.com/permits/wareham-hvac",
+   "title": "HVAC permit \u2014 Tinker'S Ln, Wareham",
+   "content_text": "HVAC permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "4750134837393239",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Little Harbor Rd, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "2581fee94771e736",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Fourth St, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "22fdfce6fac88239",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Great Neck Rd, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "77417688779c4984",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Windswept Rd, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "6d35e12109ccd8e0",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Dinah'S Way, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3ed6d14e4a1261b4",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Swifts Bch Rd, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3fe8dc7c53764641",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Cameron St, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "07c643d4546ced56",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Windswept Rd, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "6481a017d59a7b8a",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Barlow Ave, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "c5a4b840a31fd171",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Maple Springs Rd, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-22T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "45f05af4d711d777",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Saltmarsh Ln, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "b71c63b4ba78dee2",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Fearing Hill Rd, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "bfebdf3ff8f2a6be",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Rock Marsh Rd, Unit, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "7f91951cd1f65e05",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Farmer'S Ln, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "62f87944446bd4d0",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Rickey Ln, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "888675a79dfef0a1",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Shady Ln, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "86ddbcf97e5c859d",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Saltmarsh Ln, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "44fe3fcea82eb30f",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Upland Rd, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "988e5ab8f16430e2",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Eighth St, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "ebd73885398e4a25",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 County Rd, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "43a6a3ff3b661635",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Winslow Ln, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "406291317f7bc15b",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Kendrick Rd, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "03ff37312142a592",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Midway St, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f40649b7e4104a73",
+   "url": "https://masspermits.com/permits/wareham-hvac",
+   "title": "HVAC permit \u2014 Old Onset Rd, Wareham",
+   "content_text": "HVAC permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "d479ebb7040e1845",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Weepecket Ln, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "ecce06e9e8ae8c6f",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Shore Ave, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "c6ddbf2e52042ea8",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Ryder St, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "0f89ee34682450b0",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Winslow Ln, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "7a2131b9d9ba4b52",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Pilgrim Ave, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "6a838359d7fc8d13",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Farmer'S Ln, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "fa8fb72e09d0eb54",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Beechwood Pl, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "083a14d39e8f02c6",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Oak St, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "dad2f5997c894dbf",
+   "url": "https://masspermits.com/permits/wareham-electrical",
+   "title": "Electrical permit \u2014 Indian Neck Rd, Wareham",
+   "content_text": "Electrical permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f4cfec501ad2160f",
+   "url": "https://masspermits.com/permits/wareham-gas",
+   "title": "Gas permit \u2014 W Central Ave, Wareham",
+   "content_text": "Gas permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Gas"
+  },
+  {
+   "id": "fcc71a6efc59514a",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Main Ave, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "9735ed71f383c130",
+   "url": "https://masspermits.com/permits/wareham-plumbing",
+   "title": "Plumbing permit \u2014 Pinehurst Dr, Wareham",
+   "content_text": "Plumbing permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "eb0d4c114b4ee695",
+   "url": "https://masspermits.com/permits/wareham-hvac",
+   "title": "HVAC permit \u2014 Monack Rd, Wareham",
+   "content_text": "HVAC permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "4e23aee5ce460678",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Prospect St, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  },
+  {
+   "id": "419a70e2b674ec24",
+   "url": "https://masspermits.com/permits/wareham-building",
+   "title": "Building permit \u2014 Beach St, Wareham",
+   "content_text": "Building permit in Wareham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Wareham",
+   "_trade": "Building"
+  }
+ ]
+}

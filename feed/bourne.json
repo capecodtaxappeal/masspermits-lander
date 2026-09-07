@@ -1,0 +1,422 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Bourne, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/bourne.json",
+ "description": "Recent building permits in Bourne, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 39,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-08-25",
+ "items": [
+  {
+   "id": "3d3646e9b8fe7ab8",
+   "url": "https://masspermits.com/permits/bourne-building",
+   "title": "Building permit \u2014 Bourne Rotary, Bourne ($30,000)",
+   "content_text": "Building permit in Bourne, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Building",
+   "_value": 30000.0
+  },
+  {
+   "id": "74310d6d228bb6ef",
+   "url": "https://masspermits.com/permits/bourne-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Crump Rd, Bourne ($85,000)",
+   "content_text": "Kitchen/Bath permit in Bourne, MA. Value $85,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Kitchen/Bath",
+   "_value": 85000.0
+  },
+  {
+   "id": "958e80e9097303fa",
+   "url": "https://masspermits.com/permits/bourne-gas",
+   "title": "Gas permit \u2014 Shore Rd, Bourne ($2,500)",
+   "content_text": "Gas permit in Bourne, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Gas",
+   "_value": 2500.0
+  },
+  {
+   "id": "f7cecad1512bd8d9",
+   "url": "https://masspermits.com/permits/bourne-electrical",
+   "title": "Electrical permit \u2014 Winston Ave, Bourne ($2,000)",
+   "content_text": "Electrical permit in Bourne, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Electrical",
+   "_value": 2000.0
+  },
+  {
+   "id": "9be2f3190f9eb5d0",
+   "url": "https://masspermits.com/permits/bourne-hvac",
+   "title": "HVAC permit \u2014 Barlows Landing Rd, Bourne ($5,500)",
+   "content_text": "HVAC permit in Bourne, MA. Value $5,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "HVAC",
+   "_value": 5500.0
+  },
+  {
+   "id": "90a9af1bc0737339",
+   "url": "https://masspermits.com/permits/bourne-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Mariners Ln, Bourne ($12,400)",
+   "content_text": "Kitchen/Bath permit in Bourne, MA. Value $12,400. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Kitchen/Bath",
+   "_value": 12400.0
+  },
+  {
+   "id": "85aba76627c9ebc5",
+   "url": "https://masspermits.com/permits/bourne-pool-spa",
+   "title": "Pool/Spa permit \u2014 Mizzen Ln, Bourne ($1)",
+   "content_text": "Pool/Spa permit in Bourne, MA. Value $1. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Pool/Spa",
+   "_value": 1.0
+  },
+  {
+   "id": "eb0cfa1f9b16babd",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Clipper Rd, Bourne ($42,600)",
+   "content_text": "Roofing permit in Bourne, MA. Value $42,600. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 42600.0
+  },
+  {
+   "id": "6d2ab0c3d3b7fe35",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Colonial Rd, Bourne ($16,035)",
+   "content_text": "Roofing permit in Bourne, MA. Value $16,035. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 16035.0
+  },
+  {
+   "id": "12223159e97ee804",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Worcester Ave, Bourne ($7,500)",
+   "content_text": "Roofing permit in Bourne, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 7500.0
+  },
+  {
+   "id": "d0e9d2bc6d5ad00d",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Squeteague Harbor Rd, Bourne ($215,000)",
+   "content_text": "Roofing permit in Bourne, MA. Value $215,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 215000.0
+  },
+  {
+   "id": "c6b36cb42e682a7a",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Ridgehill Ln, Bourne ($450,000)",
+   "content_text": "Roofing permit in Bourne, MA. Value $450,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 450000.0
+  },
+  {
+   "id": "64b9f48b2abbf261",
+   "url": "https://masspermits.com/permits/bourne-addition",
+   "title": "Addition permit \u2014 Scraggy Neck Rd, Bourne ($500,000)",
+   "content_text": "Addition permit in Bourne, MA. Value $500,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Addition",
+   "_value": 500000.0
+  },
+  {
+   "id": "0a6d092ae4e12b04",
+   "url": "https://masspermits.com/permits/bourne-new-construction",
+   "title": "New Construction permit \u2014 Cedar Point Dr, Bourne ($13,283)",
+   "content_text": "New Construction permit in Bourne, MA. Value $13,283. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "New Construction",
+   "_value": 13282.62
+  },
+  {
+   "id": "763439179aa4230f",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Macarthur Blvd, Bourne ($100,000)",
+   "content_text": "Roofing permit in Bourne, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 100000.0
+  },
+  {
+   "id": "111c34cd0235a6b0",
+   "url": "https://masspermits.com/permits/bourne-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Ships View Terr, Bourne",
+   "content_text": "Windows/Doors/Siding permit in Bourne, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "54614042bcc2d4f0",
+   "url": "https://masspermits.com/permits/bourne-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Williston Rd, Bourne ($30,000)",
+   "content_text": "Kitchen/Bath permit in Bourne, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Kitchen/Bath",
+   "_value": 30000.0
+  },
+  {
+   "id": "7669e75123c03e5b",
+   "url": "https://masspermits.com/permits/bourne-pool-spa",
+   "title": "Pool/Spa permit \u2014 Shore Rd, Bourne ($64,525)",
+   "content_text": "Pool/Spa permit in Bourne, MA. Value $64,525. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Pool/Spa",
+   "_value": 64525.0
+  },
+  {
+   "id": "058b198ab00c8a4b",
+   "url": "https://masspermits.com/permits/bourne-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Chapel Ave, Bourne ($6,337)",
+   "content_text": "Kitchen/Bath permit in Bourne, MA. Value $6,337. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Kitchen/Bath",
+   "_value": 6336.91
+  },
+  {
+   "id": "742d8b36827740f6",
+   "url": "https://masspermits.com/permits/bourne-hvac",
+   "title": "HVAC permit \u2014 Macarthur Blvd, Bourne ($13,231)",
+   "content_text": "HVAC permit in Bourne, MA. Value $13,231. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "HVAC",
+   "_value": 13231.0
+  },
+  {
+   "id": "266030bdc3247802",
+   "url": "https://masspermits.com/permits/bourne-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Pasture Rd, Bourne ($800,798)",
+   "content_text": "Kitchen/Bath permit in Bourne, MA. Value $800,798. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Kitchen/Bath",
+   "_value": 800798.0
+  },
+  {
+   "id": "440aceffe0e1467b",
+   "url": "https://masspermits.com/permits/bourne-solar",
+   "title": "Solar permit \u2014 Circuit Ave, Bourne ($2,000)",
+   "content_text": "Solar permit in Bourne, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Solar",
+   "_value": 2000.0
+  },
+  {
+   "id": "59eba9c68220c933",
+   "url": "https://masspermits.com/permits/bourne-building",
+   "title": "Building permit \u2014 Bournedale Rd, Bourne ($6,589)",
+   "content_text": "Building permit in Bourne, MA. Value $6,589. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Building",
+   "_value": 6589.01
+  },
+  {
+   "id": "57de066ebf55555c",
+   "url": "https://masspermits.com/permits/bourne-building",
+   "title": "Building permit \u2014 Studio Dr, Bourne ($4,682)",
+   "content_text": "Building permit in Bourne, MA. Value $4,682. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Building",
+   "_value": 4682.0
+  },
+  {
+   "id": "5d504b7cec4a448e",
+   "url": "https://masspermits.com/permits/bourne-deck-porch",
+   "title": "Deck/Porch permit \u2014 Old Cataumet Passage, Bourne ($24,500)",
+   "content_text": "Deck/Porch permit in Bourne, MA. Value $24,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Deck/Porch",
+   "_value": 24500.0
+  },
+  {
+   "id": "97c5abecf7c0fea5",
+   "url": "https://masspermits.com/permits/bourne-pool-spa",
+   "title": "Pool/Spa permit \u2014 Deseret Dr, Bourne ($65,000)",
+   "content_text": "Pool/Spa permit in Bourne, MA. Value $65,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Pool/Spa",
+   "_value": 65000.0
+  },
+  {
+   "id": "02f46ee9a13bb793",
+   "url": "https://masspermits.com/permits/bourne-solar",
+   "title": "Solar permit \u2014 Route, Bourne ($120,000)",
+   "content_text": "Solar permit in Bourne, MA. Value $120,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Solar",
+   "_value": 120000.0
+  },
+  {
+   "id": "6bb49a22cfccf46e",
+   "url": "https://masspermits.com/permits/bourne-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Bourne Rotary, Bourne ($82,448)",
+   "content_text": "Windows/Doors/Siding permit in Bourne, MA. Value $82,448. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 82447.8
+  },
+  {
+   "id": "d11fd047488db9f5",
+   "url": "https://masspermits.com/permits/bourne-sign-awning",
+   "title": "Sign/Awning permit \u2014 Holt Rd, Bourne ($500)",
+   "content_text": "Sign/Awning permit in Bourne, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Sign/Awning",
+   "_value": 500.0
+  },
+  {
+   "id": "24e0a3d1c7329c8f",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Andrew Rd, Bourne ($7,923)",
+   "content_text": "Roofing permit in Bourne, MA. Value $7,923. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 7923.0
+  },
+  {
+   "id": "f83b74023f837d6e",
+   "url": "https://masspermits.com/permits/bourne-solar",
+   "title": "Solar permit \u2014 Howard Ave, Bourne ($15,599)",
+   "content_text": "Solar permit in Bourne, MA. Value $15,599. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Solar",
+   "_value": 15598.8
+  },
+  {
+   "id": "9b78477a07527a9a",
+   "url": "https://masspermits.com/permits/bourne-hvac",
+   "title": "HVAC permit \u2014 Old Plymouth Rd, Unit Bldg, Bourne ($1,000)",
+   "content_text": "HVAC permit in Bourne, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "HVAC",
+   "_value": 1000.0
+  },
+  {
+   "id": "ac85b5b55f1fd999",
+   "url": "https://masspermits.com/permits/bourne-building",
+   "title": "Building permit \u2014 Bluff Rd, Bourne ($8,146)",
+   "content_text": "Building permit in Bourne, MA. Value $8,146. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Building",
+   "_value": 8145.84
+  },
+  {
+   "id": "d3f92e30060746e7",
+   "url": "https://masspermits.com/permits/bourne-roofing",
+   "title": "Roofing permit \u2014 Central Blvd, Bourne ($6,350)",
+   "content_text": "Roofing permit in Bourne, MA. Value $6,350. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Roofing",
+   "_value": 6350.0
+  },
+  {
+   "id": "eaa4b2387fee66c8",
+   "url": "https://masspermits.com/permits/bourne-electrical",
+   "title": "Electrical permit \u2014 Bluff Rd, Bourne ($500)",
+   "content_text": "Electrical permit in Bourne, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Electrical",
+   "_value": 500.0
+  },
+  {
+   "id": "e4ce372f3f8df4a0",
+   "url": "https://masspermits.com/permits/bourne-hvac",
+   "title": "HVAC permit \u2014 Pier View Rd, Bourne ($2,500)",
+   "content_text": "HVAC permit in Bourne, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "HVAC",
+   "_value": 2500.0
+  },
+  {
+   "id": "8f11dae759273221",
+   "url": "https://masspermits.com/permits/bourne-electrical",
+   "title": "Electrical permit \u2014 Tory Ln, Bourne ($1,500)",
+   "content_text": "Electrical permit in Bourne, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Electrical",
+   "_value": 1500.0
+  },
+  {
+   "id": "ac765693796e6519",
+   "url": "https://masspermits.com/permits/bourne-electrical",
+   "title": "Electrical permit \u2014 Main St, Bourne ($1,500)",
+   "content_text": "Electrical permit in Bourne, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Electrical",
+   "_value": 1500.0
+  },
+  {
+   "id": "233026fee6f978b6",
+   "url": "https://masspermits.com/permits/bourne-electrical",
+   "title": "Electrical permit \u2014 Bourne Rotary, Bourne ($5,000)",
+   "content_text": "Electrical permit in Bourne, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Bourne",
+   "_trade": "Electrical",
+   "_value": 5000.0
+  }
+ ]
+}

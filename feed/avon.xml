@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel>
 <title>MassPermits — building permits in Avon, MA</title>
 <link>https://masspermits.com/permits/</link>
-<description>Latest building permits in Avon, MA. Full leads at masspermits.com.</description><language>en-us</language>
+<description>Latest building permits in Avon, MA. Full leads at masspermits.com. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.</description><language>en-us</language>
 <atom:link href="https://masspermits.com/feed/avon.xml" rel="self" type="application/rss+xml"/>
 <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+<copyright>MassPermits (masspermits.com) — licensed CC BY-NC 4.0</copyright>
+<atom:link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
+<atom:link rel="describedby" type="application/json" href="https://masspermits.com/catalog.json"/>
+<dc:rights>MassPermits (masspermits.com) — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)</dc:rights>
+<dc:source>Compiled from public municipal building-permit records published by Massachusetts cities and towns.</dc:source>
+<managingEditor>hello@masspermits.com (MassPermits)</managingEditor>
+<docs>https://www.rssboard.org/rss-specification</docs>
+<generator>MassPermits seo_build</generator>
+<ttl>1440</ttl>
+<lastBuildDate>Fri, 04 Sep 2026 00:00:00 GMT</lastBuildDate>
 <item><title>Electrical permit — Oliver St, Avon</title><link>https://masspermits.com/permits/avon-electrical</link><description>Electrical building permit issued 2026-09-04 in Avon. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">5a454b0c7a474d00</guid></item>
 <item><title>Electrical permit — Blanchard St, Avon</title><link>https://masspermits.com/permits/avon-electrical</link><description>Electrical building permit issued 2026-09-04 in Avon. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">e45c16cc44a98c4d</guid></item>
 <item><title>Renovation/Remodel permit — Page St, Avon</title><link>https://masspermits.com/permits/avon-renovation-remodel</link><description>Renovation/Remodel building permit issued 2026-09-04 in Avon. Full lead — exact address, owner and contractor — at masspermits.com.</description><pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">cd1607501a100291</guid></item>
