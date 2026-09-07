@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-06T14:29:00.666497+00:00",
- "corpus_rows": 57322,
+ "corpus_fetched_at": "2026-09-07T14:51:58.444803+00:00",
+ "corpus_rows": 57056,
  "corpus_sources": 39,
- "corpus_first": "2026-03-10",
- "corpus_last": "2026-09-06",
+ "corpus_first": "2026-03-11",
+ "corpus_last": "2026-09-07",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,20 +35,20 @@
   ]
  },
  "stats": {
-  "adu_rows": 224,
+  "adu_rows": 220,
   "adu_towns": 19,
   "eligible_sources": 23,
   "n_sources": 39,
   "garage": 44,
-  "garage_share": 19.6,
-  "conversion": 48,
-  "new_build": 105,
-  "unclassified": 71,
+  "garage_share": 20.0,
+  "conversion": 47,
+  "new_build": 104,
+  "unclassified": 69,
   "garage_conversion": 20,
   "garage_new_build": 18,
   "form_leader": "new construction",
-  "pooled_rate": 60.5,
-  "raw_first": 20,
+  "pooled_rate": 59.7,
+  "raw_first": 16,
   "raw_peak": 54,
   "rate_min": 41.1,
   "rate_max": 85.9,
@@ -56,11 +56,11 @@
   "series": [
    {
     "month": "2026-03",
-    "raw": 20,
-    "base": 2444,
+    "raw": 16,
+    "base": 2270,
     "sources": 13,
     "partial": false,
-    "rate": 81.8
+    "rate": 70.5
    },
    {
     "month": "2026-04",
@@ -105,10 +105,10 @@
    {
     "month": "2026-09",
     "raw": 4,
-    "base": 944,
+    "base": 947,
     "sources": 15,
     "partial": true,
-    "rate": 42.4
+    "rate": 42.2
    }
   ],
   "src_first": 13,
