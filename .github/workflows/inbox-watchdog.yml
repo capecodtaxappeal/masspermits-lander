@@ -88,8 +88,17 @@ jobs:
               "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value
           }
 
-          STATUS=$(curl -fsS -H "Authorization: Bearer $(mint)" \
-            https://masspermits.com/api/inbox-status)
+          # FIRST-RUN GRACE. This job fired 0s after the push that first deployed
+          # /api/inbox-status, before Pages had built it, and failed the job - which
+          # mails the owner. A watchdog that alerts because it is newer than the thing
+          # it watches is noise, and noise on this inbox is the exact failure this job
+          # exists to prevent. A fetch failure is "not installed yet", not "someone
+          # is waiting". Fetch tolerantly; let the verdict logic decide.
+          STATUS=$(curl -sS -H "Authorization: Bearer $(mint)" \
+            https://masspermits.com/api/inbox-status \
+            || echo '{"verdict":"never","alert":false,"detail":"inbox-status unreachable (not deployed yet, or transient)"}')
+          echo "$STATUS" | jq -e . >/dev/null 2>&1 \
+            || STATUS='{"verdict":"never","alert":false,"detail":"inbox-status returned non-JSON"}'
           echo "$STATUS" | jq .
 
           VERDICT=$(echo "$STATUS" | jq -r .verdict)
@@ -107,6 +116,10 @@ jobs:
             exit 0
           fi
 
+          if [ "$VERDICT" = "never" ]; then
+            echo "::warning::inbox watchdog not installed yet (verdict=never) - nothing mailed"
+            exit 0
+          fi
           case "$VERDICT" in
             stale)    HEAD="The inbox watchdog has stopped running" ;;
             never)    HEAD="The inbox watchdog has never run" ;;
