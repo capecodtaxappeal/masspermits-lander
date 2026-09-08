@@ -1,9 +1,9 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-08T13:28:14.728227+00:00",
- "corpus_rows": 66656,
- "corpus_sources": 58,
+ "corpus_fetched_at": "2026-09-08T15:58:59.759053+00:00",
+ "corpus_rows": 66729,
+ "corpus_sources": 59,
  "corpus_first": "2025-12-01",
  "corpus_last": "2026-09-08",
  "method": {
@@ -35,22 +35,22 @@
   ]
  },
  "stats": {
-  "adu_rows": 288,
+  "adu_rows": 290,
   "adu_towns": 28,
-  "eligible_sources": 42,
-  "n_sources": 58,
+  "eligible_sources": 43,
+  "n_sources": 59,
   "garage": 56,
-  "garage_share": 19.4,
+  "garage_share": 19.3,
   "conversion": 58,
-  "new_build": 144,
-  "unclassified": 86,
+  "new_build": 145,
+  "unclassified": 87,
   "garage_conversion": 24,
   "garage_new_build": 22,
   "form_leader": "new construction",
-  "pooled_rate": 62.2,
+  "pooled_rate": 62.5,
   "raw_first": 3,
   "raw_peak": 63,
-  "rate_min": 39.2,
+  "rate_min": 44.9,
   "rate_max": 146.3,
   "n_months": 9,
   "series": [
@@ -89,7 +89,7 @@
    {
     "month": "2026-05",
     "raw": 47,
-    "base": 5834,
+    "base": 5829,
     "sources": 26,
     "partial": false,
     "rate": 80.6
@@ -113,22 +113,22 @@
    {
     "month": "2026-08",
     "raw": 46,
-    "base": 10233,
-    "sources": 37,
+    "base": 10239,
+    "sources": 38,
     "partial": false,
-    "rate": 45.0
+    "rate": 44.9
    },
    {
     "month": "2026-09",
-    "raw": 5,
-    "base": 1277,
-    "sources": 28,
+    "raw": 7,
+    "base": 1319,
+    "sources": 29,
     "partial": true,
-    "rate": 39.2
+    "rate": 53.1
    }
   ],
   "src_first": 1,
-  "src_peak": 37,
+  "src_peak": 38,
   "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
