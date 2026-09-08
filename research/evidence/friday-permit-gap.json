@@ -1,8 +1,8 @@
 {
  "slug": "friday-permit-gap",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-08T15:58:59.759053+00:00",
- "corpus_rows": 66729,
+ "corpus_fetched_at": "2026-09-08T16:08:38.759579+00:00",
+ "corpus_rows": 66736,
  "corpus_sources": 59,
  "corpus_first": "2025-12-01",
  "corpus_last": "2026-09-08",
@@ -43,19 +43,19 @@
   ]
  },
  "stats": {
-  "n_dated": 66729,
+  "n_dated": 66736,
   "n_sources": 59,
   "n_shown": 48,
   "vendor_split": {
    "shared": {
-    "n": 36614,
+    "n": 36618,
     "sources": 29,
     "fri_pct": 12.2,
-    "weekday_mean": 21.5,
+    "weekday_mean": 21.4,
     "ratio": 0.57
    },
    "other": {
-    "n": 30115,
+    "n": 30118,
     "sources": 30,
     "fri_pct": 13.8,
     "weekday_mean": 21.1,
@@ -78,7 +78,7 @@
   "weekend_sources": 34,
   "weekend_pct": 1.8,
   "zero_friday_town": "Hingham, MA",
-  "zero_friday_weekday": 1758,
+  "zero_friday_weekday": 1759,
   "zero_friday_days": 99,
   "zero_friday_from": "2026-03-12",
   "zero_friday_to": "2026-09-08",
@@ -86,7 +86,7 @@
   "lowest": [
    {
     "source": "Hingham, MA",
-    "weekday": 1758,
+    "weekday": 1759,
     "friday": 0,
     "friday_pct": 0.0,
     "issue_days": 99,
@@ -150,7 +150,7 @@
   "table": [
    {
     "source": "Hingham, MA",
-    "weekday": 1758,
+    "weekday": 1759,
     "friday": 0,
     "friday_pct": 0.0,
     "issue_days": 99,
@@ -300,9 +300,9 @@
    },
    {
     "source": "North Reading, MA",
-    "weekday": 1002,
+    "weekday": 1005,
     "friday": 110,
-    "friday_pct": 11.0,
+    "friday_pct": 10.9,
     "issue_days": 123,
     "first": "2026-03-12",
     "last": "2026-09-08",
@@ -463,8 +463,8 @@
     "weekday": 2382,
     "friday": 344,
     "friday_pct": 14.4,
-    "issue_days": 115,
-    "first": "2026-03-26",
+    "issue_days": 114,
+    "first": "2026-03-27",
     "last": "2026-09-08",
     "capped": true
    },

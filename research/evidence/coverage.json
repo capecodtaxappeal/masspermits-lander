@@ -1,8 +1,8 @@
 {
  "slug": "coverage",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-08T15:58:59.759053+00:00",
- "corpus_rows": 66729,
+ "corpus_fetched_at": "2026-09-08T16:08:38.759579+00:00",
+ "corpus_rows": 66736,
  "corpus_sources": 59,
  "corpus_first": "2025-12-01",
  "corpus_last": "2026-09-08",
@@ -19,8 +19,8 @@
  "guards": {},
  "stats": {
   "n_sources": 59,
-  "n_rows": 66729,
-  "fetched_at": "2026-09-08T15:58:59.759053+00:00",
+  "n_rows": 66736,
+  "fetched_at": "2026-09-08T16:08:38.759579+00:00",
   "no_valuation": 40,
   "with_coords": 8,
   "no_freetext": 16,
@@ -116,7 +116,7 @@
    {
     "source": "Mashpee, MA",
     "rows": 2400,
-    "first": "2026-03-26",
+    "first": "2026-03-27",
     "last": "2026-09-08",
     "valued_pct": 0.0,
     "freetext_pct": 0.0,
@@ -155,7 +155,7 @@
    },
    {
     "source": "Hingham, MA",
-    "rows": 1758,
+    "rows": 1759,
     "first": "2026-03-12",
     "last": "2026-09-08",
     "valued_pct": 0.0,
@@ -305,7 +305,7 @@
    },
    {
     "source": "North Reading, MA",
-    "rows": 1002,
+    "rows": 1005,
     "first": "2026-03-12",
     "last": "2026-09-08",
     "valued_pct": 0.0,
@@ -544,10 +544,10 @@
     "capped": false
    },
    {
-    "source": "Townsend, MA",
-    "rows": 26,
-    "first": "2026-08-25",
-    "last": "2026-09-05",
+    "source": "Groveland, MA",
+    "rows": 28,
+    "first": "2026-08-24",
+    "last": "2026-09-08",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
     "coords": false,
@@ -564,19 +564,19 @@
     "capped": false
    },
    {
-    "source": "West Newbury, MA",
+    "source": "Townsend, MA",
     "rows": 24,
-    "first": "2026-08-19",
-    "last": "2026-09-08",
+    "first": "2026-08-25",
+    "last": "2026-09-05",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
     "coords": false,
     "capped": false
    },
    {
-    "source": "Groveland, MA",
-    "rows": 23,
-    "first": "2026-08-24",
+    "source": "West Newbury, MA",
+    "rows": 24,
+    "first": "2026-08-19",
     "last": "2026-09-08",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,

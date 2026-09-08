@@ -314,7 +314,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-26/2026-09-08"
+   "temporal": "2026-03-27/2026-09-08"
   },
   {
    "@type": "dcat:Dataset",
@@ -3594,14 +3594,14 @@
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Townsend, Massachusetts",
-   "description": "Recent building-permit activity in Townsend, MA: trade, issue date, masked street. Compiled from public municipal records. Townsend's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/townsend",
-   "landingPage": "https://masspermits.com/permits/townsend",
+   "title": "Building Permits \u2014 Groveland, Massachusetts",
+   "description": "Recent building-permit activity in Groveland, MA: trade, issue date, masked street. Compiled from public municipal records. Groveland's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/groveland",
+   "landingPage": "https://masspermits.com/permits/groveland",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-05",
+   "modified": "2026-09-08",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -3617,32 +3617,32 @@
     "building permits",
     "construction",
     "massachusetts",
-    "Townsend"
+    "Groveland"
    ],
-   "spatial": "Townsend, Massachusetts",
+   "spatial": "Groveland, Massachusetts",
    "distribution": [
     {
      "@type": "dcat:Distribution",
      "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/townsend.csv",
+     "downloadURL": "https://masspermits.com/feed/groveland.csv",
      "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/townsend.csv-metadata.json",
+     "describedBy": "https://masspermits.com/feed/groveland.csv-metadata.json",
      "describedByType": "application/csvm+json"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/townsend.json",
+     "downloadURL": "https://masspermits.com/feed/groveland.json",
      "format": "JSON Feed"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/townsend.xml",
+     "downloadURL": "https://masspermits.com/feed/groveland.xml",
      "format": "RSS"
     }
    ],
-   "temporal": "2026-08-25/2026-09-05"
+   "temporal": "2026-08-24/2026-09-08"
   },
   {
    "@type": "dcat:Dataset",
@@ -3750,14 +3750,14 @@
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Groveland, Massachusetts",
-   "description": "Recent building-permit activity in Groveland, MA: trade, issue date, masked street. Compiled from public municipal records. Groveland's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/groveland",
-   "landingPage": "https://masspermits.com/permits/groveland",
+   "title": "Building Permits \u2014 Townsend, Massachusetts",
+   "description": "Recent building-permit activity in Townsend, MA: trade, issue date, masked street. Compiled from public municipal records. Townsend's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/townsend",
+   "landingPage": "https://masspermits.com/permits/townsend",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-08",
+   "modified": "2026-09-05",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -3773,32 +3773,32 @@
     "building permits",
     "construction",
     "massachusetts",
-    "Groveland"
+    "Townsend"
    ],
-   "spatial": "Groveland, Massachusetts",
+   "spatial": "Townsend, Massachusetts",
    "distribution": [
     {
      "@type": "dcat:Distribution",
      "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/groveland.csv",
+     "downloadURL": "https://masspermits.com/feed/townsend.csv",
      "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/groveland.csv-metadata.json",
+     "describedBy": "https://masspermits.com/feed/townsend.csv-metadata.json",
      "describedByType": "application/csvm+json"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/groveland.json",
+     "downloadURL": "https://masspermits.com/feed/townsend.json",
      "format": "JSON Feed"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/groveland.xml",
+     "downloadURL": "https://masspermits.com/feed/townsend.xml",
      "format": "RSS"
     }
    ],
-   "temporal": "2026-08-24/2026-09-08"
+   "temporal": "2026-08-25/2026-09-05"
   },
   {
    "@type": "dcat:Dataset",

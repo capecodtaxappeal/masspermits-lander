@@ -1,8 +1,8 @@
 {
  "slug": "permit-sequence",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-08T15:58:59.759053+00:00",
- "corpus_rows": 66729,
+ "corpus_fetched_at": "2026-09-08T16:08:38.759579+00:00",
+ "corpus_rows": 66736,
  "corpus_sources": 59,
  "corpus_first": "2025-12-01",
  "corpus_last": "2026-09-08",
@@ -31,8 +31,8 @@
   ]
  },
  "stats": {
-  "n_addresses": 40805,
-  "multi_trade_addresses": 12373,
+  "n_addresses": 40808,
+  "multi_trade_addresses": 12376,
   "pairs": 15,
   "sequences": 13,
   "co_filed": 2,
@@ -160,28 +160,15 @@
    {
     "first": "Building",
     "then": "Sign/Awning",
-    "n": 51,
+    "n": 50,
     "reverse": 23,
-    "share": 68.9,
-    "median_days": 55,
+    "share": 68.5,
+    "median_days": 56,
     "p25_days": 19,
     "p75_days": 100,
     "co_filed": false,
-    "uncapped_share": 68.8,
+    "uncapped_share": 68.3,
     "capped_share": 70.0
-   },
-   {
-    "first": "Building",
-    "then": "Plumbing",
-    "n": 358,
-    "reverse": 182,
-    "share": 66.3,
-    "median_days": 25,
-    "p25_days": 10,
-    "p75_days": 51,
-    "co_filed": false,
-    "uncapped_share": 66.4,
-    "capped_share": 63.6
    },
    {
     "first": "Renovation/Remodel",
@@ -195,6 +182,19 @@
     "co_filed": false,
     "uncapped_share": 65.9,
     "capped_share": 71.4
+   },
+   {
+    "first": "Building",
+    "then": "Plumbing",
+    "n": 357,
+    "reverse": 182,
+    "share": 66.2,
+    "median_days": 25,
+    "p25_days": 11,
+    "p75_days": 51,
+    "co_filed": false,
+    "uncapped_share": 66.3,
+    "capped_share": 63.6
    },
    {
     "first": "Roofing",
@@ -214,7 +214,7 @@
    {
     "first": "Gas",
     "then": "Plumbing",
-    "n": 2140,
+    "n": 2139,
     "reverse": 410,
     "share": 83.9,
     "median_days": 0,
