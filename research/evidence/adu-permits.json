@@ -1,8 +1,8 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-08T16:08:38.759579+00:00",
- "corpus_rows": 66736,
+ "corpus_fetched_at": "2026-09-08T23:56:05.153637+00:00",
+ "corpus_rows": 67105,
  "corpus_sources": 59,
  "corpus_first": "2025-12-01",
  "corpus_last": "2026-09-08",
@@ -35,22 +35,22 @@
   ]
  },
  "stats": {
-  "adu_rows": 290,
+  "adu_rows": 293,
   "adu_towns": 28,
   "eligible_sources": 43,
   "n_sources": 59,
-  "garage": 56,
-  "garage_share": 19.3,
-  "conversion": 58,
-  "new_build": 145,
-  "unclassified": 87,
+  "garage": 57,
+  "garage_share": 19.5,
+  "conversion": 59,
+  "new_build": 146,
+  "unclassified": 88,
   "garage_conversion": 24,
-  "garage_new_build": 22,
+  "garage_new_build": 23,
   "form_leader": "new construction",
-  "pooled_rate": 62.5,
+  "pooled_rate": 62.8,
   "raw_first": 3,
   "raw_peak": 63,
-  "rate_min": 44.9,
+  "rate_min": 44.7,
   "rate_max": 146.3,
   "n_months": 9,
   "series": [
@@ -89,15 +89,15 @@
    {
     "month": "2026-05",
     "raw": 47,
-    "base": 5829,
+    "base": 5817,
     "sources": 26,
     "partial": false,
-    "rate": 80.6
+    "rate": 80.8
    },
    {
     "month": "2026-06",
     "raw": 63,
-    "base": 8922,
+    "base": 8921,
     "sources": 32,
     "partial": false,
     "rate": 70.6
@@ -105,7 +105,7 @@
    {
     "month": "2026-07",
     "raw": 51,
-    "base": 10925,
+    "base": 10920,
     "sources": 33,
     "partial": false,
     "rate": 46.7
@@ -113,22 +113,22 @@
    {
     "month": "2026-08",
     "raw": 46,
-    "base": 10237,
-    "sources": 38,
+    "base": 10301,
+    "sources": 37,
     "partial": false,
-    "rate": 44.9
+    "rate": 44.7
    },
    {
     "month": "2026-09",
-    "raw": 7,
-    "base": 1325,
-    "sources": 29,
+    "raw": 10,
+    "base": 1571,
+    "sources": 30,
     "partial": true,
-    "rate": 52.8
+    "rate": 63.7
    }
   ],
   "src_first": 1,
-  "src_peak": 38,
+  "src_peak": 37,
   "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
