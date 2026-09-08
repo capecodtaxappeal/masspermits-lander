@@ -8,6 +8,29 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v66 (2026-09-08): A SOURCE CAN ANSWER IN FULL AND STILL BE FROZEN,
+# AND NOTHING COULD SEE IT. source_health.py scored a town on `rows > 0 and no
+# error`. fetch_barnstable builds its URL from a hardcoded "{month}-{year}.pdf"
+# and the town serves HTTP 200 with an HTML page for a month it has not posted,
+# so if the town ever renames the file the fetcher keeps returning a FULL,
+# CORRECT, FROZEN three-month window - 100% of its own baseline, no error - and
+# dead / collapsed / vanished are all blind to it by construction. That is not
+# hypothetical: Reading and Amherst each lost one document to an August format
+# change, still return ~67% of baseline (nowhere near the 0.25 collapse ratio),
+# and are reported healthy right now.
+# Fix: scraper.refresh() emits a per-source NEWEST ISSUE DATE, hosted_refresh
+# carries it into status.json, and source_health scores a cadence-aware
+# staleness rule on it. Thresholds are the structural floor plus slack, measured
+# from Barnstable's own eleven published files (Sep-2025..Jul-2026 lag 2-16 days,
+# median 11): monthly 55d, daily 10d, with per-source overrides for Bourne (six
+# weeks in arrears) and Provincetown (dates every permit the 1st of its month).
+# Barnstable at 39 days today is INSIDE its normal band and stays silent - an
+# alarm that cries wolf on a healthy town trains its only reader to ignore it.
+# Nine tests in test_source_health.py, including that the alert fires exactly
+# once (an earlier cut of this patch flapped stale/recovered every other run,
+# because a frozen source is still `ok` by the rows test) and that an engine
+# older than v66, which sends no `newest`, is never scored stale.
+#
 # engine v65 (2026-09-08): THE PORTAL PAGE WAS NEVER PRODUCED, AND 24 LIVE
 # TOWNS HAD NO REGION. (1) functions/leads.js, upload-bundle.js's allowlist and
 # /api/health were all built for an R2 object latest-weekly.html that nothing
