@@ -84,6 +84,75 @@ export async function onRequestPost(context) {
       return json({ ok: true, flagged: marked, type: event.type });
     }
 
+    // RADAR AND FRAUD SIGNALS — hold, alert, let the owner decide. (Owner
+    // decision, 2026-09-08: "hold it, email you, you decide".)
+    //
+    // BE HONEST ABOUT WHAT THIS CAN AND CANNOT DO. Stripe never sends
+    // checkout.session.completed for a payment Radar BLOCKS, so blocked cards
+    // already deliver nothing. The gap is a payment Radar puts in REVIEW, or
+    // one the bank later calls fraud: those succeed first and are flagged
+    // afterwards, so the first bundle may already have gone out. What this
+    // stops is everything after it — the recurring weekly feed, which is the
+    // part with the value — and it puts the fact in front of the owner the
+    // same minute instead of leaving it in the Stripe dashboard.
+    //
+    // Deactivating rather than merely flagging is deliberate, and is the
+    // OPPOSITE of the invoice.payment_failed policy above. A failed card is
+    // usually an expired card and cutting the customer off is worse than the
+    // problem; an early fraud warning or a chargeback is a third party stating
+    // the charge was not authorised, and shipping a paid product against that
+    // helps nobody. review.closed/approved puts them straight back.
+    if (event.type === "radar.early_fraud_warning.created" ||
+        event.type === "charge.dispute.created" ||
+        event.type === "review.opened") {
+      const o = (event.data && event.data.object) || {};
+      const who = o.customer_email ||
+        (o.customer_details && o.customer_details.email) ||
+        (o.billing_details && o.billing_details.email) || "";
+      const cust = o.customer || null;
+      const label = event.type === "review.opened" ? "Radar put a payment in review"
+        : event.type === "charge.dispute.created" ? "A charge was disputed (chargeback)"
+        : "The bank flagged a charge as fraud";
+      const stopped = await deactivateSubscriber(env, cust,
+        { customer_email: who, customer_details: { email: who } });
+      await flagPaymentIssue(env, cust, who,
+        { radar: event.type, at: new Date().toISOString() });
+      await notifyOwner(env,
+        `HOLD — ${label}: ${who || cust || "unknown customer"}`,
+        `<div style="font-family:sans-serif;max-width:560px">
+         <h2 style="color:#b91c1c">${escapeHtml(label)}</h2>
+         <p><b>${escapeHtml(who || "(no email on the event)")}</b>${
+           cust ? ` &middot; <code>${escapeHtml(cust)}</code>` : ""}</p>
+         <p>Stripe event <code>${escapeHtml(event.type)}</code>${
+           o.reason ? ` &middot; reason <b>${escapeHtml(String(o.reason))}</b>` : ""}.</p>
+         <p>${stopped ? `<b>Weekly feed STOPPED</b> for ${stopped} subscriber record(s).`
+                      : "<b>No subscriber record matched</b>, so nothing was stopped — " +
+                        "this may be a one-time pack buyer, who is not on the feed."}</p>
+         <p style="color:#667;font-size:13px">Nothing further ships to them until you decide.
+         If the payment is legitimate, set <code>active: true</code> on their row in
+         subscribers.json — or, for a review, approving it in Stripe sends review.closed.
+         If a bundle had already been emailed before this event arrived, it is out; this
+         stops everything after it.</p></div>`);
+      return json({ ok: true, held: event.type, stopped });
+    }
+
+    // A review closed as APPROVED is Stripe saying the payment is fine. Undo
+    // the hold rather than leaving a good customer switched off.
+    if (event.type === "review.closed") {
+      const o = (event.data && event.data.object) || {};
+      const who = o.customer_email || "";
+      if ((o.closed_reason || "") === "approved") {
+        await clearPaymentIssue(env, o.customer, who);
+        await notifyOwner(env, `Radar review APPROVED: ${who || o.customer || "customer"}`,
+          `<div style="font-family:sans-serif;max-width:560px">
+           <p>Stripe closed the review as <b>approved</b>; the payment flag is cleared.</p>
+           <p style="color:#667;font-size:13px">If the hold had stopped their weekly feed,
+           set <code>active: true</code> on their row in subscribers.json to resume it.</p>
+           </div>`);
+      }
+      return json({ ok: true, review_closed: o.closed_reason || "unknown" });
+    }
+
     // Payment recovered — clear the flag so a resolved card does not leave a
     // subscriber marked as failing forever.
     if (event.type === "invoice.paid" || event.type === "invoice.payment_succeeded") {
@@ -97,6 +166,25 @@ export async function onRequestPost(context) {
 
     const { email, bundleKey, kind, ref } = decision;
     if (!email) return json({ ok: true, note: "no email on event", type: event.type });
+
+    // A $0 invoice ships ONLY to somebody already on OUR subscriber list. See
+    // the note in decideDelivery: this is what separates a referral month from
+    // the sibling product's cheap events, without the price-ID allowlist we
+    // cannot build until the Stripe ids are read out of the dashboard.
+    if (decision.requireKnownSubscriber) {
+      let known = false;
+      try {
+        const cur = await env.BUNDLES.get("subscribers.json");
+        const list = cur ? JSON.parse(await cur.text()) : [];
+        known = list.some((s) => (s.email || "").toLowerCase() === email.toLowerCase() &&
+                                 s.active !== false);
+      } catch (e) { known = false; }
+      if (!known) {
+        return json({ ok: true, skipped: event.type,
+                      note: "zero-amount invoice for an email that is not an active " +
+                            "MassPermits subscriber — not ours" });
+      }
+    }
 
     const file = await env.BUNDLES.get(bundleKey);
     if (!file) return json({ ok: false, error: `bundle ${bundleKey} not in R2` }, 500);
@@ -168,8 +256,30 @@ function decideDelivery(event) {
     // Only RENEWALS here — the very first subscription invoice is covered by
     // checkout.session.completed, so skip billing_reason=subscription_create.
     if (o.billing_reason !== "subscription_cycle") return null;
-    if ((o.amount_paid || o.total || 0) < MIN_CENTS) return null; // not a MassPermits product
     const email = o.customer_email || (o.customer_address && o.customer_address.email) || "";
+    const paid = o.amount_paid || o.total || 0;
+    if (paid < MIN_CENTS) {
+      // THE REFERRAL PROGRAMME PAID OUT IN COUPONS AND THEN ATE THE MONTH.
+      // creditReferrer() rewards a referral with a 100%-off coupon. Stripe then
+      // renews that subscription with amount_paid = 0, which fell under
+      // MIN_CENTS and returned null — so the customer we had just thanked got
+      // NO leads for the month they earned. Perfectly silent: no error, no log,
+      // and subscribers.json still says active, so nothing anywhere disagreed.
+      //
+      // Widening the floor is NOT the fix; the floor exists to keep the shared
+      // Stripe account's other product ($4.35 IRWatch) out of this one. So a $0
+      // invoice is admitted ONLY for an email that is already an ACTIVE
+      // MassPermits subscriber. An IRWatch customer is by definition not on our
+      // list, so the two stay separated by IDENTITY instead of by price — which
+      // is what the price-ID allowlist would achieve, without needing the
+      // Stripe ids nobody has read out of the dashboard yet.
+      // The caller performs that lookup: decideDelivery has no env.
+      if (paid === 0 && email) {
+        return { email, ref: "", bundleKey: "latest-weekly.zip", kind: "weekly",
+                 requireKnownSubscriber: "zero-amount renewal (100%-off coupon)" };
+      }
+      return null; // not a MassPermits product
+    }
     return { email, ref: "", bundleKey: "latest-weekly.zip", kind: "weekly" };
   }
   return null;
