@@ -1,0 +1,195 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Southampton, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/southampton.json",
+ "description": "Recent building permits in Southampton, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 18,
+ "_window_from": "2026-08-26",
+ "_window_to": "2026-09-08",
+ "items": [
+  {
+   "id": "2d80dc3d9587d92a",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Windows/Doors/Siding permit \u2014 Gilbert Rd, Southampton",
+   "content_text": "Windows/Doors/Siding permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "819846495d1eadd4",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Windows/Doors/Siding permit \u2014 Brickyard Rd, Southampton",
+   "content_text": "Windows/Doors/Siding permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "f044fef84c017325",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Roofing permit \u2014 Freyer Rd, Southampton",
+   "content_text": "Roofing permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "6414be46a317e082",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Roofing permit \u2014 Hillside Meadows Dr, Southampton",
+   "content_text": "Roofing permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "b224020694361558",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Roofing permit \u2014 Glendale Rd, Southampton",
+   "content_text": "Roofing permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "89386f92f3e6df09",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "HVAC permit \u2014 College Hwy, Southampton",
+   "content_text": "HVAC permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "016dbc4634db22ef",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Other permit \u2014 Gil Farm Rd, Southampton",
+   "content_text": "Other permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "7de3912b00e69a1f",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Kitchen/Bath permit \u2014 College Hwy, Southampton",
+   "content_text": "Kitchen/Bath permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "37c668c35d24d636",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "New Construction permit \u2014 Rosalie Ln, Southampton",
+   "content_text": "New Construction permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "New Construction"
+  },
+  {
+   "id": "4f9329c9acbc1ed9",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Windows/Doors/Siding permit \u2014 High St, Southampton",
+   "content_text": "Windows/Doors/Siding permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "0fe454ac9a78bd88",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Electrical permit \u2014 Jeanne Cir, Southampton",
+   "content_text": "Electrical permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "ae62fc487485d245",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Roofing permit \u2014 Pequot Rd, Southampton",
+   "content_text": "Roofing permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "0a145d302d90ee26",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Electrical permit \u2014 Middle Rd, Southampton",
+   "content_text": "Electrical permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "cf17c1869857b51a",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Other permit \u2014 Middle Rd, Southampton",
+   "content_text": "Other permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Other"
+  },
+  {
+   "id": "e894536bf6cd3fba",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Solar permit \u2014 David St, Southampton",
+   "content_text": "Solar permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Solar"
+  },
+  {
+   "id": "25a255f387421ed2",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "HVAC permit \u2014 Middle Rd, Southampton",
+   "content_text": "HVAC permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "2b4efe403fe3f721",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "HVAC permit \u2014 Hawthorne Dr, Southampton",
+   "content_text": "HVAC permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "cd467a54f7daac7a",
+   "url": "https://masspermits.com/permits/southampton",
+   "title": "Electrical permit \u2014 Cold Spring Rd, Southampton",
+   "content_text": "Electrical permit in Southampton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Southampton",
+   "_trade": "Electrical"
+  }
+ ]
+}
