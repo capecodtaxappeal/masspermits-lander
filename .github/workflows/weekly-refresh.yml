@@ -8,6 +8,20 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v65 (2026-09-08): THE PORTAL PAGE WAS NEVER PRODUCED, AND 24 LIVE
+# TOWNS HAD NO REGION. (1) functions/leads.js, upload-bundle.js's allowlist and
+# /api/health were all built for an R2 object latest-weekly.html that nothing
+# wrote: build_bundle.py only ever put the dashboard INSIDE the zip. It now
+# also writes the byte-identical file next to the WEEKLY zip, and the ship step
+# below uploads it on the line after the zip (adjacency is what the portal's
+# drift check relies on). Until this run /leads fell back to the download and
+# health said "portal page not published" on every check. (2) export_lander
+# _REGIONS: every town added since v60 -- Somerville, Waltham, the five
+# PermitLink tenants, ten western towns, Concord, Chicopee, Rehoboth and more
+# -- rolled into NO region, so they were absent from the homepage region
+# filter and from region-keyed packs. All 59 live sources now map to exactly
+# one region; region KEYS are unchanged (they ride into Stripe).
+#
 # engine v64 (2026-09-08): GROVELAND WAS DROPPED BY A CENSUS FUZZY-CITY ANSWER.
 # The 2026-09-08 run shipped 58/59: the state gate rejected Groveland because
 # 2 of 6 geocoded rows came back ZIP 75844 (Grapeland, TEXAS). Reproduced the
@@ -838,6 +852,16 @@ jobs:
             echo "  shipped $2"
           }
           up "$(ls -t data/bundles/MassPermits-*-WEEKLY.zip  | head -1)" latest-weekly.zip  application/zip
+          # The portal page. ADJACENCY IS LOAD-BEARING: functions/leads.js goes
+          # amber when this object's R2 upload time drifts >15 min from the
+          # WEEKLY zip's, so it ships on the line right after it. Guarded so an
+          # engine that predates build_bundle.py writing it (v64 and earlier)
+          # cannot take the monthly and sample uploads down with it.
+          if [ -s data/bundles/latest-weekly.html ]; then
+            up data/bundles/latest-weekly.html latest-weekly.html "text/html; charset=utf-8"               || echo "::warning::latest-weekly.html did not ship - /leads falls back to the download"
+          else
+            echo "::warning::engine wrote no data/bundles/latest-weekly.html - portal page not published this run"
+          fi
           up "$(ls -t data/bundles/MassPermits-*-MONTHLY.zip | head -1)" latest-monthly.zip application/zip
           up "$(ls -t data/bundles/MassPermits-*-SAMPLE.zip  | head -1)" latest-sample.zip  application/zip
 
