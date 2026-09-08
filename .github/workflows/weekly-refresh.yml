@@ -8,6 +8,22 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v64 (2026-09-08): GROVELAND WAS DROPPED BY A CENSUS FUZZY-CITY ANSWER.
+# The 2026-09-08 run shipped 58/59: the state gate rejected Groveland because
+# 2 of 6 geocoded rows came back ZIP 75844 (Grapeland, TEXAS). Reproduced the
+# same day: the Census onelineaddress geocoder, given "111 MAIN ST, Groveland"
+# with no state, fuzzy-matches the CITY and returns Grapeland TX as its single
+# match. The tenant is Massachusetts (18 of 19 distinct addresses -> 01834);
+# the gate counted a non-answer as evidence and a 6-address sample cannot
+# absorb one. Fix, fetch_permitlink.py only: a geocoder match counts ONLY when
+# its city normalises to the tenant's own town; any other city is undecided
+# (census_fuzzy_city in the evidence), never for or against; sample 6 -> 10.
+# The wrong-state case the probe exists for (Medford = Oregon) matches its OWN
+# city in OR and still raises NotMassachusetts -- unit-tested with canned
+# replies (all-OR, 7-OR/3-MA, all-fuzzy, abutting-town) before shipping. All
+# five PermitLink tenants re-run live after the patch: 115 rows, all [MA-OK].
+# Tarball is production v63 + that one file (44 entries, listing identical).
+#
 # engine v62 (2026-09-06): THE FREE SAMPLE LOOKED EMPTY.
 # A prospect opened the free sample, said it contained no permits, and was
 # right about what he saw. The file was fine -- 1,145 rows in the DOM, verified
