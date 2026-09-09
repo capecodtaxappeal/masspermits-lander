@@ -8,6 +8,27 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v69 (2026-09-09): FOUR HELD TOWNS SHIPPED ANYWAY, BECAUSE TAKING A
+# TOWN OFF THE ROSTER IS NOT THE SAME AS NOT CALLING IT.
+# v68 removed Hamilton, Lancaster, Upton, Malden, Needham, Orleans and
+# Williamsburg from CORE_SOURCES after the verify panel blocked them. Four of
+# them shipped in v68's first production run regardless: CORE_SOURCES is the
+# ROSTER the coverage gate divides by, and the calls in refresh() are what
+# actually produce rows. Only the roster had been edited, so fetch_orleans,
+# fetch_needham, fetch_williamsburg and fetch_malden were still invoked and
+# their rows still landed in the bundle.
+# The only symptom was one line in refresh-status.json reading
+# "live 72 of 68 attempted" -- MORE LIVE THAN ATTEMPTED -- and nothing in this
+# system was checking that relation. Williamsburg was among the four, i.e. the
+# town whose headerless document is the reason v68's privacy fix exists.
+# v69 deletes the four calls and adds a ROSTER GATE in refresh(): a source that
+# returns rows while absent from CORE_SOURCES/PERMITEYES_TOWNS now raises,
+# naming the towns. It raises rather than warning because roster and rows
+# disagreeing means intent and behaviour have diverged, and the coverage number
+# customers are shown is computed off one of the two. Fixing a future instance
+# by widening the roster to match the calls is explicitly the wrong move and
+# the error message says so.
+#
 # engine v68 (2026-09-09): A PUBLIC ACTIONS LOG WAS PRINTING PEOPLE'S NAMES,
 # AND SEVEN NEW TOWNS WERE HELD BACK BY THEIR OWN VERIFY PANEL.
 #
