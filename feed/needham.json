@@ -1,0 +1,633 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Needham, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/needham.json",
+ "description": "Recent building permits in Needham, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 901,
+ "_window_from": "2025-07-01",
+ "_window_to": "2026-06-30",
+ "items": [
+  {
+   "id": "f969b41dae5ae6d1",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Broad Meadow Rd, Needham ($517,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $517,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 517000.0
+  },
+  {
+   "id": "093d9cd98b26658c",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Richardson Dr, Needham ($7,000)",
+   "content_text": "Other permit in Needham, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 7000.0
+  },
+  {
+   "id": "fc79724b9ce56dc4",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Green St, Needham ($21,800)",
+   "content_text": "Roofing permit in Needham, MA. Value $21,800. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 21800.0
+  },
+  {
+   "id": "a8a4f6b124cb7221",
+   "url": "https://masspermits.com/permits/needham-pool-spa",
+   "title": "Pool/Spa permit \u2014 Bridle Trail Rd, Needham ($75,000)",
+   "content_text": "Pool/Spa permit in Needham, MA. Value $75,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Pool/Spa",
+   "_value": 75000.0
+  },
+  {
+   "id": "d9e6dd35c5ac7dfd",
+   "url": "https://masspermits.com/permits/needham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Gould St, Unit, Needham ($12,500)",
+   "content_text": "Windows/Doors/Siding permit in Needham, MA. Value $12,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 12500.0
+  },
+  {
+   "id": "bba0e993ae347f34",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Burr Dr, Needham ($259,550)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $259,550. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 259550.0
+  },
+  {
+   "id": "67deadc831abf780",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Southwood Ln, Needham ($82,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $82,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 82000.0
+  },
+  {
+   "id": "ce4201a3b0bbcfcc",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Highland Ter, Needham ($9,406)",
+   "content_text": "Other permit in Needham, MA. Value $9,406. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 9406.0
+  },
+  {
+   "id": "698b2fb5c5667f88",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Bridle Trail Rd, Needham ($99,400)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $99,400. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 99400.0
+  },
+  {
+   "id": "955a89e5e6a3e7a2",
+   "url": "https://masspermits.com/permits/needham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Cynthia Rd, Needham ($20,000)",
+   "content_text": "Deck/Porch permit in Needham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-26T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Deck/Porch",
+   "_value": 20000.0
+  },
+  {
+   "id": "0eee83fd91ac3863",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Bond St, Needham ($6,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-26T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 6000.0
+  },
+  {
+   "id": "3dfbca2e54bd1a87",
+   "url": "https://masspermits.com/permits/needham-pool-spa",
+   "title": "Pool/Spa permit \u2014 Bird St, Needham ($90,000)",
+   "content_text": "Pool/Spa permit in Needham, MA. Value $90,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-26T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Pool/Spa",
+   "_value": 90000.0
+  },
+  {
+   "id": "4c23f0f07de12f6a",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 High St, Needham ($3,679)",
+   "content_text": "Addition permit in Needham, MA. Value $3,679. Full lead at masspermits.com.",
+   "date_published": "2026-06-26T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 3679.0
+  },
+  {
+   "id": "733421ca0611af8a",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Holmes St, Needham ($27,174)",
+   "content_text": "Roofing permit in Needham, MA. Value $27,174. Full lead at masspermits.com.",
+   "date_published": "2026-06-26T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 27174.0
+  },
+  {
+   "id": "4ae48d673e1026a3",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Sutton Rd, Needham ($17,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $17,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-26T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 17000.0
+  },
+  {
+   "id": "56e8d7211bd4985b",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Rybury Hillway, Needham ($24,250)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $24,250. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 24250.0
+  },
+  {
+   "id": "4cabd0b297043c75",
+   "url": "https://masspermits.com/permits/needham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Brewster Dr, Needham ($7,611)",
+   "content_text": "Windows/Doors/Siding permit in Needham, MA. Value $7,611. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7611.0
+  },
+  {
+   "id": "3b7ba64c560251c2",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Great Plain Ave, Needham ($5,687)",
+   "content_text": "Roofing permit in Needham, MA. Value $5,687. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 5687.0
+  },
+  {
+   "id": "8ea59f4f823eaf65",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Newell Ave, Needham ($17,414)",
+   "content_text": "Roofing permit in Needham, MA. Value $17,414. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 17414.0
+  },
+  {
+   "id": "a08a2478070cee1a",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Hillcrest Rd, Needham ($19,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $19,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 19000.0
+  },
+  {
+   "id": "66e6bf2f886e791f",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Stewart Rd, Needham ($19,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $19,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 19000.0
+  },
+  {
+   "id": "8e01b6512be49e9e",
+   "url": "https://masspermits.com/permits/needham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Morton St, Needham ($22,000)",
+   "content_text": "Windows/Doors/Siding permit in Needham, MA. Value $22,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 22000.0
+  },
+  {
+   "id": "fa9879360aaa0ef7",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Livingston Circle, Needham ($10,000)",
+   "content_text": "Other permit in Needham, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 10000.0
+  },
+  {
+   "id": "2e84ce8c20eff448",
+   "url": "https://masspermits.com/permits/needham-plumbing",
+   "title": "Plumbing permit \u2014 Mackintosh Ave, Needham ($23,565)",
+   "content_text": "Plumbing permit in Needham, MA. Value $23,565. Full lead at masspermits.com.",
+   "date_published": "2026-06-25T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Plumbing",
+   "_value": 23565.0
+  },
+  {
+   "id": "664658757eb9c239",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 West St, Needham ($20,000)",
+   "content_text": "Addition permit in Needham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-24T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 20000.0
+  },
+  {
+   "id": "d98ee40b4289b5ce",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Garden St, Needham ($22,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $22,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-24T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 22000.0
+  },
+  {
+   "id": "9a6d954d39f2813d",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Great Plain Ave, Needham ($55,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $55,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-24T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 55000.0
+  },
+  {
+   "id": "f065d1a1a8b74cbc",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Ware Rd, Needham ($24,500)",
+   "content_text": "Roofing permit in Needham, MA. Value $24,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-24T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 24500.0
+  },
+  {
+   "id": "b064d389ccd7845c",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Alfreton Rd, Needham ($13,410)",
+   "content_text": "Roofing permit in Needham, MA. Value $13,410. Full lead at masspermits.com.",
+   "date_published": "2026-06-24T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 13410.0
+  },
+  {
+   "id": "14a8ff807f1e5391",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Nevada Rd, Needham ($27,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $27,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-24T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 27000.0
+  },
+  {
+   "id": "853d99caeff46a9a",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Garden St, Needham ($12,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-23T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 12000.0
+  },
+  {
+   "id": "a127aa7fedac3849",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 South St, Needham ($245,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $245,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-23T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 245000.0
+  },
+  {
+   "id": "911852964cfbbf21",
+   "url": "https://masspermits.com/permits/needham-deck-porch",
+   "title": "Deck/Porch permit \u2014 George Aggott Rd, Needham ($60,000)",
+   "content_text": "Deck/Porch permit in Needham, MA. Value $60,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-23T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Deck/Porch",
+   "_value": 60000.0
+  },
+  {
+   "id": "f3c20aaa98b685ea",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 River Park St, Needham ($16,980)",
+   "content_text": "Roofing permit in Needham, MA. Value $16,980. Full lead at masspermits.com.",
+   "date_published": "2026-06-23T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 16980.0
+  },
+  {
+   "id": "23020039a6fdcd60",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 Hillside Ave, Needham ($55,400)",
+   "content_text": "Addition permit in Needham, MA. Value $55,400. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 55400.0
+  },
+  {
+   "id": "c02b2aee630761d7",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Brewster Dr, Needham ($35,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $35,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 35000.0
+  },
+  {
+   "id": "2d69e3b1fac8b68d",
+   "url": "https://masspermits.com/permits/needham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Cottage Ave, Needham ($12,000)",
+   "content_text": "Windows/Doors/Siding permit in Needham, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 12000.0
+  },
+  {
+   "id": "673afd3ffa1b5b40",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Pine St, Needham ($25,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 25000.0
+  },
+  {
+   "id": "fa011f4783873a70",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 Plymouth Rd, Needham ($10,000)",
+   "content_text": "Addition permit in Needham, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-22T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 10000.0
+  },
+  {
+   "id": "bea4f99ae0372fb5",
+   "url": "https://masspermits.com/permits/needham-plumbing",
+   "title": "Plumbing permit \u2014 Webster St, Needham ($32,000)",
+   "content_text": "Plumbing permit in Needham, MA. Value $32,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-18T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Plumbing",
+   "_value": 32000.0
+  },
+  {
+   "id": "77ddd01a6f9a1e35",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Meredith Cir, Needham ($13,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $13,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-18T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 13000.0
+  },
+  {
+   "id": "2a1b4ad6e70454e6",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 Thornton Rd, Needham ($17,950)",
+   "content_text": "Addition permit in Needham, MA. Value $17,950. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 17950.0
+  },
+  {
+   "id": "0cc23e52a0da3d1f",
+   "url": "https://masspermits.com/permits/needham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Border Rd, Needham ($125,000)",
+   "content_text": "Deck/Porch permit in Needham, MA. Value $125,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Deck/Porch",
+   "_value": 125000.0
+  },
+  {
+   "id": "ce6151786fd1ecbf",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Burnside Rd, Needham ($20,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 20000.0
+  },
+  {
+   "id": "fe1870da3eb32367",
+   "url": "https://masspermits.com/permits/needham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Taylor St, Needham ($16,043)",
+   "content_text": "Windows/Doors/Siding permit in Needham, MA. Value $16,043. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 16043.0
+  },
+  {
+   "id": "0a0c5e33b473785b",
+   "url": "https://masspermits.com/permits/needham-gas",
+   "title": "Gas permit \u2014 Crescent Rd, Needham ($7,000)",
+   "content_text": "Gas permit in Needham, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Gas",
+   "_value": 7000.0
+  },
+  {
+   "id": "cebcd97a99f51c15",
+   "url": "https://masspermits.com/permits/needham-plumbing",
+   "title": "Plumbing permit \u2014 Overlook Rd, Needham ($37,000)",
+   "content_text": "Plumbing permit in Needham, MA. Value $37,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Plumbing",
+   "_value": 37000.0
+  },
+  {
+   "id": "cddcff82c4ec35b2",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Avalon Rd, Needham ($18,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-17T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 18000.0
+  },
+  {
+   "id": "672ee5ff9ee64859",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Morton St, Needham ($3,400)",
+   "content_text": "Other permit in Needham, MA. Value $3,400. Full lead at masspermits.com.",
+   "date_published": "2026-06-16T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 3400.0
+  },
+  {
+   "id": "6b209464b1c3cff3",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Hunnewell St, Needham ($6,000)",
+   "content_text": "Other permit in Needham, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-16T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 6000.0
+  },
+  {
+   "id": "1a0ccfc2d6ce8558",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Country Way, Needham ($34,000)",
+   "content_text": "Other permit in Needham, MA. Value $34,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-16T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 34000.0
+  },
+  {
+   "id": "7b9bfe980dae1932",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Canterbury Ln, Needham ($55,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $55,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-12T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 55000.0
+  },
+  {
+   "id": "c081667035eb7606",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Overlook Rd, Needham ($9,999)",
+   "content_text": "Roofing permit in Needham, MA. Value $9,999. Full lead at masspermits.com.",
+   "date_published": "2026-06-12T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 9999.0
+  },
+  {
+   "id": "c0aea66f2e3c386c",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 Webster St, Needham ($752,000)",
+   "content_text": "Addition permit in Needham, MA. Value $752,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-12T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 752000.0
+  },
+  {
+   "id": "8146236e1251aa1d",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Lawton Rd, Needham ($9,000)",
+   "content_text": "Other permit in Needham, MA. Value $9,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-12T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 9000.0
+  },
+  {
+   "id": "f26a611082894d47",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Forest St, Needham ($56,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $56,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-12T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 56000.0
+  },
+  {
+   "id": "4a632b996278fc7f",
+   "url": "https://masspermits.com/permits/needham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Russell Rd, Needham ($30,000)",
+   "content_text": "Renovation/Remodel permit in Needham, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-12T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Renovation/Remodel",
+   "_value": 30000.0
+  },
+  {
+   "id": "c3dff1373db646ef",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Manning St, Needham ($15,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-12T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 15000.0
+  },
+  {
+   "id": "42a116b877fe87dc",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Ridgeway Ave, Needham ($189,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $189,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-11T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 189000.0
+  },
+  {
+   "id": "6a740298e3b76715",
+   "url": "https://masspermits.com/permits/needham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Howe Rd, Needham ($800,000)",
+   "content_text": "Kitchen/Bath permit in Needham, MA. Value $800,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-11T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Kitchen/Bath",
+   "_value": 800000.0
+  }
+ ]
+}

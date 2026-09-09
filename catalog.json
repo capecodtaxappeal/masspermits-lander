@@ -370,6 +370,58 @@
   },
   {
    "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Pittsfield, Massachusetts",
+   "description": "Recent building-permit activity in Pittsfield, MA: trade, issue date, masked street. Compiled from public municipal records. Pittsfield's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/pittsfield",
+   "landingPage": "https://masspermits.com/permits/pittsfield",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Pittsfield"
+   ],
+   "spatial": "Pittsfield, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/pittsfield.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/pittsfield.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/pittsfield.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/pittsfield.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-03-13/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Taunton, Massachusetts",
    "description": "Recent building-permit activity in Taunton, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/taunton",
@@ -467,6 +519,58 @@
      "@type": "dcat:Distribution",
      "mediaType": "application/rss+xml",
      "downloadURL": "https://masspermits.com/feed/braintree.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-03-13/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Malden, Massachusetts",
+   "description": "Recent building-permit activity in Malden, MA: trade, issue date, masked street. Compiled from public municipal records. Malden's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/malden",
+   "landingPage": "https://masspermits.com/permits/malden",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Malden"
+   ],
+   "spatial": "Malden, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/malden.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/malden.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/malden.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/malden.xml",
      "format": "RSS"
     }
    ],
@@ -786,6 +890,58 @@
   },
   {
    "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Norwood, Massachusetts",
+   "description": "Recent building-permit activity in Norwood, MA: trade, issue date, masked street. Compiled from public municipal records. Norwood's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/norwood",
+   "landingPage": "https://masspermits.com/permits/norwood",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Norwood"
+   ],
+   "spatial": "Norwood, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/norwood.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/norwood.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/norwood.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/norwood.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-03-13/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Concord, Massachusetts",
    "description": "Recent building-permit activity in Concord, MA: trade, issue date, masked street. Compiled from public municipal records. Concord's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/concord",
@@ -1095,6 +1251,58 @@
     }
    ],
    "temporal": "2026-03-13/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Needham, Massachusetts",
+   "description": "Recent building-permit activity in Needham, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/needham",
+   "landingPage": "https://masspermits.com/permits/needham",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-06-30",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Needham"
+   ],
+   "spatial": "Needham, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/needham.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/needham.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/needham.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/needham.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2025-07-01/2026-06-30"
   },
   {
    "@type": "dcat:Dataset",
@@ -1878,6 +2086,110 @@
   },
   {
    "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Duxbury, Massachusetts",
+   "description": "Recent building-permit activity in Duxbury, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/duxbury",
+   "landingPage": "https://masspermits.com/permits/duxbury",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-07-31",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Duxbury"
+   ],
+   "spatial": "Duxbury, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/duxbury.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/duxbury.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/duxbury.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/duxbury.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2025-12-01/2026-07-31"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 North Attleborough, Massachusetts",
+   "description": "Recent building-permit activity in North Attleborough, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/north-attleborough",
+   "landingPage": "https://masspermits.com/permits/north-attleborough",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-06-30",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "North Attleborough"
+   ],
+   "spatial": "North Attleborough, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/north-attleborough.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/north-attleborough.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/north-attleborough.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/north-attleborough.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2025-11-03/2026-06-30"
+  },
+  {
+   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Hanson, Massachusetts",
    "description": "Recent building-permit activity in Hanson, MA: trade, issue date, masked street. Compiled from public municipal records. Hanson's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/hanson",
@@ -1979,6 +2291,110 @@
     }
    ],
    "temporal": "2026-03-13/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Carlisle, Massachusetts",
+   "description": "Recent building-permit activity in Carlisle, MA: trade, issue date, masked street. Compiled from public municipal records. Carlisle's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/carlisle",
+   "landingPage": "https://masspermits.com/permits/carlisle",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Carlisle"
+   ],
+   "spatial": "Carlisle, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/carlisle.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/carlisle.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/carlisle.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/carlisle.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-03-16/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Orleans, Massachusetts",
+   "description": "Recent building-permit activity in Orleans, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/orleans",
+   "landingPage": "https://masspermits.com/permits/orleans",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-08-31",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Orleans"
+   ],
+   "spatial": "Orleans, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/orleans.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/orleans.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/orleans.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/orleans.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2025-12-01/2026-08-31"
   },
   {
    "@type": "dcat:Dataset",
@@ -2343,6 +2759,58 @@
     }
    ],
    "temporal": "2026-07-09/2026-09-03"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Nahant, Massachusetts",
+   "description": "Recent building-permit activity in Nahant, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/nahant",
+   "landingPage": "https://masspermits.com/permits/nahant",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Nahant"
+   ],
+   "spatial": "Nahant, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/nahant.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/nahant.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/nahant.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/nahant.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-03-13/2026-09-08"
   },
   {
    "@type": "dcat:Dataset",
@@ -3542,6 +4010,58 @@
   },
   {
    "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Merrimac, Massachusetts",
+   "description": "Recent building-permit activity in Merrimac, MA: trade, issue date, masked street. Compiled from public municipal records. Merrimac's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/merrimac",
+   "landingPage": "https://masspermits.com/permits/merrimac",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Merrimac"
+   ],
+   "spatial": "Merrimac, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/merrimac.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/merrimac.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/merrimac.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/merrimac.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-08-26/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Westhampton, Massachusetts",
    "description": "Recent building-permit activity in Westhampton, MA: trade, issue date, masked street. Compiled from public municipal records. Westhampton's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/westhampton",
@@ -3591,6 +4111,58 @@
     }
    ],
    "temporal": "2026-08-03/2026-09-03"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Wenham, Massachusetts",
+   "description": "Recent building-permit activity in Wenham, MA: trade, issue date, masked street. Compiled from public municipal records. Wenham's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/wenham",
+   "landingPage": "https://masspermits.com/permits/wenham",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Wenham"
+   ],
+   "spatial": "Wenham, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/wenham.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/wenham.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/wenham.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/wenham.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-08-12/2026-09-08"
   },
   {
    "@type": "dcat:Dataset",
@@ -3698,58 +4270,6 @@
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 West Newbury, Massachusetts",
-   "description": "Recent building-permit activity in West Newbury, MA: trade, issue date, masked street. Compiled from public municipal records. West Newbury's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/west-newbury",
-   "landingPage": "https://masspermits.com/permits/west-newbury",
-   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-   "accessLevel": "public",
-   "modified": "2026-09-08",
-   "publisher": {
-    "@type": "org:Organization",
-    "name": "MassPermits",
-    "identifier": "https://masspermits.com/#org"
-   },
-   "describedBy": "https://masspermits.com/research/methodology",
-   "contactPoint": {
-    "@type": "vcard:Contact",
-    "fn": "MassPermits",
-    "hasEmail": "mailto:hello@masspermits.com"
-   },
-   "keyword": [
-    "building permits",
-    "construction",
-    "massachusetts",
-    "West Newbury"
-   ],
-   "spatial": "West Newbury, Massachusetts",
-   "distribution": [
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/west-newbury.csv",
-     "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/west-newbury.csv-metadata.json",
-     "describedByType": "application/csvm+json"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/west-newbury.json",
-     "format": "JSON Feed"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/west-newbury.xml",
-     "format": "RSS"
-    }
-   ],
-   "temporal": "2026-08-19/2026-09-08"
-  },
-  {
-   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Townsend, Massachusetts",
    "description": "Recent building-permit activity in Townsend, MA: trade, issue date, masked street. Compiled from public municipal records. Townsend's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/townsend",
@@ -3799,6 +4319,162 @@
     }
    ],
    "temporal": "2026-08-25/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Williamsburg, Massachusetts",
+   "description": "Recent building-permit activity in Williamsburg, MA: trade, issue date, masked street and declared project value. Compiled from public municipal records. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/williamsburg",
+   "landingPage": "https://masspermits.com/permits/williamsburg",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-07-31",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Williamsburg"
+   ],
+   "spatial": "Williamsburg, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/williamsburg.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/williamsburg.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/williamsburg.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/williamsburg.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-07-06/2026-07-31"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 West Newbury, Massachusetts",
+   "description": "Recent building-permit activity in West Newbury, MA: trade, issue date, masked street. Compiled from public municipal records. West Newbury's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/west-newbury",
+   "landingPage": "https://masspermits.com/permits/west-newbury",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "West Newbury"
+   ],
+   "spatial": "West Newbury, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/west-newbury.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/west-newbury.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/west-newbury.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/west-newbury.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-08-21/2026-09-08"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Georgetown, Massachusetts",
+   "description": "Recent building-permit activity in Georgetown, MA: trade, issue date, masked street. Compiled from public municipal records. Georgetown's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/georgetown",
+   "landingPage": "https://masspermits.com/permits/georgetown",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-08",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Georgetown"
+   ],
+   "spatial": "Georgetown, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/georgetown.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/georgetown.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/georgetown.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/georgetown.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-08-26/2026-09-08"
   },
   {
    "@type": "dcat:Dataset",
@@ -3903,58 +4579,6 @@
     }
    ],
    "temporal": "2026-08-03/2026-09-02"
-  },
-  {
-   "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Granby, Massachusetts",
-   "description": "Recent building-permit activity in Granby, MA: trade, issue date, masked street. Compiled from public municipal records. Granby's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/granby",
-   "landingPage": "https://masspermits.com/permits/granby",
-   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-   "accessLevel": "public",
-   "modified": "2026-09-08",
-   "publisher": {
-    "@type": "org:Organization",
-    "name": "MassPermits",
-    "identifier": "https://masspermits.com/#org"
-   },
-   "describedBy": "https://masspermits.com/research/methodology",
-   "contactPoint": {
-    "@type": "vcard:Contact",
-    "fn": "MassPermits",
-    "hasEmail": "mailto:hello@masspermits.com"
-   },
-   "keyword": [
-    "building permits",
-    "construction",
-    "massachusetts",
-    "Granby"
-   ],
-   "spatial": "Granby, Massachusetts",
-   "distribution": [
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/granby.csv",
-     "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/granby.csv-metadata.json",
-     "describedByType": "application/csvm+json"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/granby.json",
-     "format": "JSON Feed"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/granby.xml",
-     "format": "RSS"
-    }
-   ],
-   "temporal": "2026-08-31/2026-09-08"
   },
   {
    "@type": "dcat:Dataset",

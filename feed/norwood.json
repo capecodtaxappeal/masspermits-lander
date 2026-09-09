@@ -1,0 +1,573 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Norwood, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/norwood.json",
+ "description": "Recent building permits in Norwood, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 228,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-08",
+ "items": [
+  {
+   "id": "bac69c664864e870",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Morse Street, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "233cdc2ba224e526",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Westover Parkway, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "df35759242a47317",
+   "url": "https://masspermits.com/permits/norwood-roofing",
+   "title": "Roofing permit \u2014 Pleasant St, Norwood",
+   "content_text": "Roofing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "0f8c0730d83499be",
+   "url": "https://masspermits.com/permits/norwood-gas",
+   "title": "Gas permit \u2014 Richland Road, Norwood",
+   "content_text": "Gas permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Gas"
+  },
+  {
+   "id": "4b54c1a7937453a2",
+   "url": "https://masspermits.com/permits/norwood-plumbing",
+   "title": "Plumbing permit \u2014 Hoyle Street, Norwood",
+   "content_text": "Plumbing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "ab98c21325388020",
+   "url": "https://masspermits.com/permits/norwood-other",
+   "title": "Other permit \u2014 Morgan Drive, Norwood",
+   "content_text": "Other permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-07T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Other"
+  },
+  {
+   "id": "e236829650aa384b",
+   "url": "https://masspermits.com/permits/norwood-other",
+   "title": "Other permit \u2014 Pellana Road, Norwood",
+   "content_text": "Other permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Other"
+  },
+  {
+   "id": "1a01a66707b766a4",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Harding Road, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "4cf313eff821d13b",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Shattuck Park Road, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "74b2684852f052eb",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Gardner Road, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "a4e0b62c1649941a",
+   "url": "https://masspermits.com/permits/norwood-plumbing",
+   "title": "Plumbing permit \u2014 Hill Street, Norwood",
+   "content_text": "Plumbing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "598c12ef067be1dd",
+   "url": "https://masspermits.com/permits/norwood-gas",
+   "title": "Gas permit \u2014 Highview Street, Norwood",
+   "content_text": "Gas permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Gas"
+  },
+  {
+   "id": "a233b321468ea946",
+   "url": "https://masspermits.com/permits/norwood-gas",
+   "title": "Gas permit \u2014 Hill Street, Norwood",
+   "content_text": "Gas permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Gas"
+  },
+  {
+   "id": "c4f5dc34ede66302",
+   "url": "https://masspermits.com/permits/norwood-gas",
+   "title": "Gas permit \u2014 Winter Street, Norwood",
+   "content_text": "Gas permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Gas"
+  },
+  {
+   "id": "780c3a17bcdcc272",
+   "url": "https://masspermits.com/permits/norwood-gas",
+   "title": "Gas permit \u2014 Access Road, Norwood",
+   "content_text": "Gas permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Gas"
+  },
+  {
+   "id": "167083b0c9b47140",
+   "url": "https://masspermits.com/permits/norwood-plumbing",
+   "title": "Plumbing permit \u2014 Nahatan Street, Norwood",
+   "content_text": "Plumbing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "c67086f2a6f2a59d",
+   "url": "https://masspermits.com/permits/norwood-plumbing",
+   "title": "Plumbing permit \u2014 Nahatan Cvs, Norwood",
+   "content_text": "Plumbing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "bc6f60ee2c9b5407",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Hampden Drive, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "172fbce629f90438",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Richland Road, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "6a458bbf4e97177e",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Rock Street, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "32487c5e9f8512cc",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Endicott St, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "6390e06a4c26815a",
+   "url": "https://masspermits.com/permits/norwood-fire-sprinkler",
+   "title": "Fire/Sprinkler permit \u2014 Central, Norwood",
+   "content_text": "Fire/Sprinkler permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "f63847dcddc8f7a1",
+   "url": "https://masspermits.com/permits/norwood-fire-sprinkler",
+   "title": "Fire/Sprinkler permit \u2014 Lenox Street, Norwood",
+   "content_text": "Fire/Sprinkler permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "0f95b6498d53ffe4",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Plymouth Drive, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "d88037e263a09545",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Buckminster Drive, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "6b85a51470c9f6e6",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Anne Road, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "d98dd0ec9f5ce7da",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Mill Pond Lane, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b957d75575d7cb4a",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Chatham Road, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "88e7ea92b1b7f78e",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Boston Providence Highway, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "e77b6a32e6f6a2e9",
+   "url": "https://masspermits.com/permits/norwood-roofing",
+   "title": "Roofing permit \u2014 Pleasant Street, Norwood",
+   "content_text": "Roofing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "552f64fae6a15562",
+   "url": "https://masspermits.com/permits/norwood-roofing",
+   "title": "Roofing permit \u2014 Bond Street, Norwood",
+   "content_text": "Roofing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "5f1e6c7b34056db3",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Centennial Drive, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "9ae9ec2e5a5daa69",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Cotter Farm Road, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "70fc4ef533d01abe",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Heather Drive, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "ab2b78a26c25823d",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Juniper Drive, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "4575c29fb0e96648",
+   "url": "https://masspermits.com/permits/norwood-plumbing",
+   "title": "Plumbing permit \u2014 Boston Providence Highway, Norwood",
+   "content_text": "Plumbing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "e731f8a82b4ed396",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Nichols Street, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "aa00d125a3e39ab9",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Greenwich Road, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "657d8e26ca66440b",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Elliot Street, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "8f97b14abc7a6265",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Carnegie Row, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "65ca98fe868459b0",
+   "url": "https://masspermits.com/permits/norwood-plumbing",
+   "title": "Plumbing permit \u2014 Albemarle Road, Norwood",
+   "content_text": "Plumbing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "4afde370364964a0",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Elliot Street, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "eef3c72c40f1f9ee",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Ridgewood Drive, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "3422f2309a1d79bf",
+   "url": "https://masspermits.com/permits/norwood-other",
+   "title": "Other permit \u2014 Mtc East, Norwood",
+   "content_text": "Other permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Other"
+  },
+  {
+   "id": "68f7a8130ebf74a4",
+   "url": "https://masspermits.com/permits/norwood-fire-sprinkler",
+   "title": "Fire/Sprinkler permit \u2014 Boston Providence Highway, Norwood",
+   "content_text": "Fire/Sprinkler permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "5c56e80b6c4e97aa",
+   "url": "https://masspermits.com/permits/norwood-other",
+   "title": "Other permit \u2014 Azalea Drive, Norwood",
+   "content_text": "Other permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Other"
+  },
+  {
+   "id": "ef775467030df785",
+   "url": "https://masspermits.com/permits/norwood-hvac",
+   "title": "HVAC permit \u2014 Spruce Road, Norwood",
+   "content_text": "HVAC permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "84f3e41cfaa437fa",
+   "url": "https://masspermits.com/permits/norwood-other",
+   "title": "Other permit \u2014 Providence Highway, Norwood",
+   "content_text": "Other permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Other"
+  },
+  {
+   "id": "0e047c84b1f7f261",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Everett Avenue, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3fb069996df2804c",
+   "url": "https://masspermits.com/permits/norwood-electrical",
+   "title": "Electrical permit \u2014 Bond Street, Norwood",
+   "content_text": "Electrical permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "13568a88e31c3488",
+   "url": "https://masspermits.com/permits/norwood-gas",
+   "title": "Gas permit \u2014 Jefferson Drive, Norwood",
+   "content_text": "Gas permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Gas"
+  },
+  {
+   "id": "ab97ee22e2523d1d",
+   "url": "https://masspermits.com/permits/norwood-plumbing",
+   "title": "Plumbing permit \u2014 Harding Road, Norwood",
+   "content_text": "Plumbing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "8c16d21c296c62ee",
+   "url": "https://masspermits.com/permits/norwood-fire-sprinkler",
+   "title": "Fire/Sprinkler permit \u2014 Edgewater Drive, Norwood",
+   "content_text": "Fire/Sprinkler permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "4e2b97d87c4a1923",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Hazelwood Drive, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "b47d47282ce1e683",
+   "url": "https://masspermits.com/permits/norwood-roofing",
+   "title": "Roofing permit \u2014 Washington Street, Norwood",
+   "content_text": "Roofing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "3122c8a6a12de055",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Union Street, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "5121be402f29fa3a",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Albemarle Road, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "514520f8404d23ea",
+   "url": "https://masspermits.com/permits/norwood-other",
+   "title": "Other permit \u2014 Spruce Road, Norwood",
+   "content_text": "Other permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Other"
+  },
+  {
+   "id": "b5566f0b4756f962",
+   "url": "https://masspermits.com/permits/norwood-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Norwest Drive, Norwood",
+   "content_text": "Renovation/Remodel permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "94d1f385f0a4c980",
+   "url": "https://masspermits.com/permits/norwood-roofing",
+   "title": "Roofing permit \u2014 Hamilton Circle, Norwood",
+   "content_text": "Roofing permit in Norwood, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Norwood",
+   "_trade": "Roofing"
+  }
+ ]
+}

@@ -1,0 +1,537 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Nahant, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/nahant.json",
+ "description": "Recent building permits in Nahant, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 54,
+ "_window_from": "2026-08-11",
+ "_window_to": "2026-09-08",
+ "items": [
+  {
+   "id": "2d512bd42b6d1452",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Sea View Av, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "58c2b69fb20a8ab0",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Nahant Rd, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "47ca006a8644eec6",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Pleasant St, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "157240e2f5af5d57",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Harmony Ct, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "7619b332bc8c6c9d",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Harmony Ct, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "762717e7de5b953e",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Maple Av, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "aafc8c765ef09196",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Flash Rd, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "51b160ec4339cf4e",
+   "url": "https://masspermits.com/permits/nahant-other",
+   "title": "Other permit \u2014 Spinney Path, Nahant ($4,000)",
+   "content_text": "Other permit in Nahant, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Other",
+   "_value": 4000.0
+  },
+  {
+   "id": "ab0910c0438f57af",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Sea View Av, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "b9cd542c7b108faf",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Harris St, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "33bec1bd08dc8c4f",
+   "url": "https://masspermits.com/permits/nahant-new-construction",
+   "title": "New Construction permit \u2014 Nahant Rd, Nahant ($1,133)",
+   "content_text": "New Construction permit in Nahant, MA. Value $1,133. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "New Construction",
+   "_value": 1133.0
+  },
+  {
+   "id": "01bbcd4afd36ba0d",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Nahant Rd, Nahant ($11,500)",
+   "content_text": "Electrical permit in Nahant, MA. Value $11,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical",
+   "_value": 11500.0
+  },
+  {
+   "id": "bfccd449f0adb72d",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Wharf St, Nahant ($25,200)",
+   "content_text": "Electrical permit in Nahant, MA. Value $25,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical",
+   "_value": 25200.0
+  },
+  {
+   "id": "27c4ef5a6d4ad6a1",
+   "url": "https://masspermits.com/permits/nahant-roofing",
+   "title": "Roofing permit \u2014 Fox Hill Rd, Nahant ($5,000)",
+   "content_text": "Roofing permit in Nahant, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Roofing",
+   "_value": 5000.0
+  },
+  {
+   "id": "8bee964b111e3248",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Forty Steps Ln, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f6503c7ff229d504",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Gardner Rd, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "ad56a95c9db186c9",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Lafayette Tr, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "85dbf2fb1b1af431",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Lafayette Tr, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "006c432d6d7254bb",
+   "url": "https://masspermits.com/permits/nahant-hvac",
+   "title": "HVAC permit \u2014 Lafayette Tr, Nahant",
+   "content_text": "HVAC permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "d1038f235d0aa9d7",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Fox Hill Rd, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "bba15f7f22d3a1ba",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Lodge Rd, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "6bc44e21f4a24ab4",
+   "url": "https://masspermits.com/permits/nahant-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Willow Rd, Nahant ($19,700)",
+   "content_text": "Kitchen/Bath permit in Nahant, MA. Value $19,700. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Kitchen/Bath",
+   "_value": 19700.0
+  },
+  {
+   "id": "b7753582344fae7e",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Willow Rd, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "693297cd6bfe72ac",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Cliff St, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "e75e6292fd9a1e92",
+   "url": "https://masspermits.com/permits/nahant-hvac",
+   "title": "HVAC permit \u2014 Gardner Rd, Nahant ($16,500)",
+   "content_text": "HVAC permit in Nahant, MA. Value $16,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "HVAC",
+   "_value": 16500.0
+  },
+  {
+   "id": "50e826d039171972",
+   "url": "https://masspermits.com/permits/nahant-other",
+   "title": "Other permit \u2014 Chamberlin Cr, Nahant ($15,000)",
+   "content_text": "Other permit in Nahant, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Other",
+   "_value": 15000.0
+  },
+  {
+   "id": "99d27d6d4771c026",
+   "url": "https://masspermits.com/permits/nahant",
+   "title": "Addition permit \u2014 Flash Rd, Nahant ($120,000)",
+   "content_text": "Addition permit in Nahant, MA. Value $120,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Addition",
+   "_value": 120000.0
+  },
+  {
+   "id": "a1bddba595ce4088",
+   "url": "https://masspermits.com/permits/nahant-other",
+   "title": "Other permit \u2014 Bass Point Rd, Nahant ($3,200)",
+   "content_text": "Other permit in Nahant, MA. Value $3,200. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Other",
+   "_value": 3200.0
+  },
+  {
+   "id": "d15c5f7365b24ca3",
+   "url": "https://masspermits.com/permits/nahant-deck-porch",
+   "title": "Deck/Porch permit \u2014 Greystone Rd, Nahant ($31,000)",
+   "content_text": "Deck/Porch permit in Nahant, MA. Value $31,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Deck/Porch",
+   "_value": 31000.0
+  },
+  {
+   "id": "bbc1fbec9459593f",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Fox Hill Rd, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "625e38549821efb2",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Gardner Rd, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "b65044523b97cd08",
+   "url": "https://masspermits.com/permits/nahant-hvac",
+   "title": "HVAC permit \u2014 Cottage St, Nahant",
+   "content_text": "HVAC permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "587a49f7edb6622f",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Castle Rd, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "26f657318ac70746",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Castle Rd, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "0618359188869d65",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Wendell Rd, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "637c594818f3c6db",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Little Nahant Rd, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "4f26922e8b9a231e",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Cliff St, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b5d5f1e8a2e8ec00",
+   "url": "https://masspermits.com/permits/nahant-hvac",
+   "title": "HVAC permit \u2014 Castle Rd, Nahant",
+   "content_text": "HVAC permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "c733b8889303cc99",
+   "url": "https://masspermits.com/permits/nahant-other",
+   "title": "Other permit \u2014 Highland Av, Nahant ($9,030)",
+   "content_text": "Other permit in Nahant, MA. Value $9,030. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Other",
+   "_value": 9030.31
+  },
+  {
+   "id": "e113fcc57642499f",
+   "url": "https://masspermits.com/permits/nahant-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Willow Rd, Nahant ($27,759)",
+   "content_text": "Windows/Doors/Siding permit in Nahant, MA. Value $27,759. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 27759.0
+  },
+  {
+   "id": "151c9e018f5bce4d",
+   "url": "https://masspermits.com/permits/nahant-deck-porch",
+   "title": "Deck/Porch permit \u2014 Highland Rd, Nahant ($5,000)",
+   "content_text": "Deck/Porch permit in Nahant, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Deck/Porch",
+   "_value": 5000.0
+  },
+  {
+   "id": "c0f60912a86cba01",
+   "url": "https://masspermits.com/permits/nahant-roofing",
+   "title": "Roofing permit \u2014 Summer St, Nahant ($7,000)",
+   "content_text": "Roofing permit in Nahant, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Roofing",
+   "_value": 7000.0
+  },
+  {
+   "id": "9d5e614d334e3ea6",
+   "url": "https://masspermits.com/permits/nahant-roofing",
+   "title": "Roofing permit \u2014 Nahant Rd, Nahant ($20,500)",
+   "content_text": "Roofing permit in Nahant, MA. Value $20,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Roofing",
+   "_value": 20500.0
+  },
+  {
+   "id": "ad06ea4e7ffad823",
+   "url": "https://masspermits.com/permits/nahant",
+   "title": "Fire/Sprinkler permit \u2014 Wilson Rd, Nahant ($7,500)",
+   "content_text": "Fire/Sprinkler permit in Nahant, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Fire/Sprinkler",
+   "_value": 7500.0
+  },
+  {
+   "id": "4a6b349d5afd9e61",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Fox Hill Rd, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "57b12e4578d6ac77",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Little Nahant Rd, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "7242993f8b79e9ec",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Central St, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "11d5f102d184fd5b",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Wendell Rd, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "ebfd17e1015a27ab",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Wendell Rd, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "175c2233c7f0efe3",
+   "url": "https://masspermits.com/permits/nahant-new-construction",
+   "title": "New Construction permit \u2014 Summer St, Nahant ($2,000)",
+   "content_text": "New Construction permit in Nahant, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "New Construction",
+   "_value": 2000.0
+  },
+  {
+   "id": "4c0bd6a76954ea1b",
+   "url": "https://masspermits.com/permits/nahant-plumbing",
+   "title": "Plumbing permit \u2014 Bay View Av, Nahant",
+   "content_text": "Plumbing permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "dbef6ce6cd3d0d3d",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Bay View Av, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "a69e484c0a573724",
+   "url": "https://masspermits.com/permits/nahant-gas",
+   "title": "Gas permit \u2014 Wilson Rd, Nahant",
+   "content_text": "Gas permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Gas"
+  },
+  {
+   "id": "a28a80a6eca3f851",
+   "url": "https://masspermits.com/permits/nahant-electrical",
+   "title": "Electrical permit \u2014 Wilson Rd, Nahant",
+   "content_text": "Electrical permit in Nahant, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Nahant",
+   "_trade": "Electrical"
+  }
+ ]
+}
