@@ -1,4 +1,6 @@
 town,trade,issued_date,street_masked,valuation
+Rockland,Electrical,2026-09-09,Summer St,
+Easton,Renovation/Remodel,2026-09-09,Depot Street,
 Braintree,HVAC,2026-09-08,Pond Street,
 Braintree,Gas,2026-09-08,Liberty Street,
 Braintree,Gas,2026-09-08,Middle Street,
@@ -165,17 +167,17 @@ Stoughton,Building,2026-09-08,Monk St,
 Stoughton,Electrical,2026-09-08,Sumner St,
 Stoughton,Plumbing,2026-09-08,Sumner St,
 Stoughton,Building,2026-09-08,School St,
+Easton,Renovation/Remodel,2026-09-08,Standley Road,
+Easton,Renovation/Remodel,2026-09-08,Bay Road,
+Easton,Renovation/Remodel,2026-09-08,Tony Drive,
+Easton,Gas,2026-09-08,Walden Drive,
+Easton,Gas,2026-09-08,Highland Street,
 Easton,Plumbing,2026-09-08,Mechanic Street,
 Easton,Plumbing,2026-09-08,Highland Street,
 Easton,Plumbing,2026-09-08,Washington Street,
 Easton,Electrical,2026-09-08,Purchase,
 Easton,Renovation/Remodel,2026-09-08,Randall Street,
 Easton,Electrical,2026-09-08,Avery Way,
-Easton,Renovation/Remodel,2026-09-08,Standley Road,
-Easton,Renovation/Remodel,2026-09-08,Bay Road,
-Easton,Renovation/Remodel,2026-09-08,Tony Drive,
-Easton,Gas,2026-09-08,Walden Drive,
-Easton,Gas,2026-09-08,Highland Street,
 Bridgewater,Gas,2026-09-08,Fieldcrest Dr,
 Bridgewater,Plumbing,2026-09-08,Broad St,
 Bridgewater,Renovation/Remodel,2026-09-08,Austin St,
@@ -1166,8 +1168,8 @@ Boston,Electrical,2026-09-02,Phillips St,36870.0
 Mattapan,Solar,2026-09-02,W Selden St,13763.4
 Roxbury,HVAC,2026-09-02,Albany St,15000.0
 Boston,Renovation/Remodel,2026-09-02,Congress St,254552.0
-Dorchester,HVAC,2026-09-02,Fuller St,1500.0
 Dorchester,HVAC,2026-09-02,Fuller St,2500.0
+Dorchester,HVAC,2026-09-02,Fuller St,1500.0
 Boston,Electrical,2026-09-02,Fruit St,15000.0
 Boston,HVAC,2026-09-02,Buswell St,15000.0
 Boston,Electrical,2026-09-02,Edgerly Pl,850.0
@@ -1180,8 +1182,8 @@ Boston,Electrical,2026-09-02,Fruit St,12000.0
 Boston,Plumbing,2026-09-02,Post Office Sq,70000.0
 Dorchester,Renovation/Remodel,2026-09-02,Dorchester Av,7264.0
 Hyde Park,Renovation/Remodel,2026-09-02,W Milton St,300000.0
-Chestnut Hill,Plumbing,2026-09-02,Thornton Rd,11000.0
 Chestnut Hill,HVAC,2026-09-02,Thornton Rd,1000.0
+Chestnut Hill,Plumbing,2026-09-02,Thornton Rd,11000.0
 Jamaica Plain,HVAC,2026-09-02,Neillian Cr,4000.0
 Jamaica Plain,Plumbing,2026-09-02,Neillian Cr,15000.0
 Roslindale,Solar,2026-09-02,Annafran St,45000.0
@@ -1236,8 +1238,8 @@ Boston,Plumbing,2026-09-02,Washington St,20000.0
 Roxbury,Roofing,2026-09-02,Rutland Sq,1.0
 Roxbury,Renovation/Remodel,2026-09-02,Massachusetts Av,1.0
 Boston,Plumbing,2026-09-02,Seaport Bl,200000.0
-Hyde Park,Plumbing,2026-09-02,Windham Rd,2000.0
 Boston,Gas,2026-09-02,Blackwood St,1000.0
+Hyde Park,Plumbing,2026-09-02,Windham Rd,2000.0
 Dorchester,Electrical,2026-09-02,Larchmont St,2200.0
 South Boston,Electrical,2026-09-02,W Eighth St,6000.0
 Roxbury,Renovation/Remodel,2026-09-02,Massachusetts Av,10000.0
@@ -1294,12 +1296,12 @@ Brighton,Other,2026-09-02,Hunnewell Av,9500.0
 Dorchester,Electrical,2026-09-02,Blue Hill Av,450.0
 Dorchester,Electrical,2026-09-02,Blue Hill Av,1500.0
 Boston,Roofing,2026-09-02,Symphony Rd,34271.0
-Brighton,Electrical,2026-09-02,Litchfield St,4000.0
 Allston,Electrical,2026-09-02,Franklin St,4000.0
+Brighton,Electrical,2026-09-02,Litchfield St,4000.0
 Brighton,HVAC,2026-09-02,Kenrick St,12943.07
 West Roxbury,Electrical,2026-09-02,New Haven St,2000.0
-Hyde Park,Windows/Doors/Siding,2026-09-02,Sherrin St,9897.0
 Roslindale,Electrical,2026-09-02,Sheldon St,4000.0
+Hyde Park,Windows/Doors/Siding,2026-09-02,Sherrin St,9897.0
 Brighton,Roofing,2026-09-02,S Hobart St,9710.0
 West Roxbury,Roofing,2026-09-02,Hollywood Rd,16900.0
 Boston,Electrical,2026-09-02,State St,3500.0
@@ -1809,8 +1811,8 @@ Roxbury,Electrical,2026-09-01,Massachusetts Av,2500.0
 West Roxbury,HVAC,2026-09-01,Stimson St,17847.75
 West Roxbury,Demolition,2026-09-01,Birchwood St,32668.96
 West Roxbury,Windows/Doors/Siding,2026-09-01,Broadlawn Pk,3749.0
-East Boston,Windows/Doors/Siding,2026-09-01,Lexington St,34300.0
 Roslindale,Other,2026-09-01,Arborough Rd,6578.86
+East Boston,Windows/Doors/Siding,2026-09-01,Lexington St,34300.0
 Roslindale,Windows/Doors/Siding,2026-09-01,Cerdan Av,7975.0
 Boston,Plumbing,2026-09-01,Dalton St,10000.0
 Roxbury,Plumbing,2026-09-01,Shawmut Av,3000.0
@@ -1837,8 +1839,8 @@ Charlestown,Electrical,2026-09-01,Monument Sq,2800.0
 Roslindale,Other,2026-09-01,Conway St,957.0
 Boston,Plumbing,2026-09-01,Beacon St,10000.0
 Brighton,Windows/Doors/Siding,2026-09-01,Kirkwood Rd,15000.0
-East Boston,Plumbing,2026-09-01,Saratoga St,500.0
 East Boston,Gas,2026-09-01,Saratoga St,500.0
+East Boston,Plumbing,2026-09-01,Saratoga St,500.0
 Roxbury,Demolition,2026-09-01,Pembroke St,50000.0
 Boston,Plumbing,2026-09-01,Pinckney St,6000.0
 Roslindale,Electrical,2026-09-01,Lorraine St,22105.0
@@ -1860,8 +1862,8 @@ Boston,Electrical,2026-09-01,Friend St,3000.0
 Roxbury,New Construction,2026-09-01,Dimock St,2625.0
 Roxbury,Plumbing,2026-09-01,Worcester St,10000.0
 Boston,Renovation/Remodel,2026-09-01,North St,49500.0
-Mission Hill,Renovation/Remodel,2026-09-01,Tremont St,232844.0
 Boston,Kitchen/Bath,2026-09-01,Marlborough St,861105.23
+Mission Hill,Renovation/Remodel,2026-09-01,Tremont St,232844.0
 Roxbury,Electrical,2026-09-01,Malden St,10000.0
 Boston,Roofing,2026-09-01,Atlantic Av,50000.0
 Dorchester,Deck/Porch,2026-09-01,Page St,56004.71
@@ -1997,5 +1999,3 @@ Milton,Electrical,2026-09-01,Gulliver St,
 Milton,Renovation/Remodel,2026-09-01,St Agatha Rd,
 Milton,Renovation/Remodel,2026-09-01,Grafton Av,
 Milton,Renovation/Remodel,2026-09-01,Meagher Av,
-Milton,Renovation/Remodel,2026-09-01,Pagoda St,
-Stoughton,Building,2026-09-01,Central St,
