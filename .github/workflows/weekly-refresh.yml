@@ -8,6 +8,33 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v67 (2026-09-08): THE TWO TOWNS v66's ALARM WAS BUILT FOR, FIXED.
+# v66 gave every source a newest-permit date and the very first run named six
+# stale towns. Four were publication lag and were correctly left alone
+# (Barnstable, Provincetown, Truro, Waltham - the towns simply have not posted
+# August). Two were genuinely broken since 2026-07-30, both reporting HEALTHY
+# on row count the whole time because the per-document skip kept the other
+# months flowing:
+#   Reading  - the town swapped the underlying report. Sheet renamed, 15 cols
+#              to 13, "Project Cost" and "Work Description" reworded into prose
+#              sentences, and the DBA column DELETED. Three required fields
+#              stopped resolving. _header_index is now a 3-tier matcher (exact,
+#              normalised, prefix) and `dba` is no longer required, since the
+#              town no longer publishes a business-name column at all - Reading
+#              leads carry no contractor from August on, which is a coverage
+#              fact, not a bug. Tolerant matching without a guard is a leak
+#              waiting for the next rename, so _HDR_DENY now refuses any column
+#              named owner/applicant/email/phone/contact for every field at
+#              every tier: the new August export carries "Applicant Email" and
+#              "Owner Name", and "Date Submitted" sits next to the issue date.
+#              223 -> 313 rows, newest 2026-07-30 -> 2026-08-31, and the 223
+#              pre-existing rows are byte-identical dicts (0 changed, 0 lost).
+#   Amherst  - same month, different cause: the town exported August through a
+#              different PDF pipeline. Same 13-column report, new text layout.
+#              215 -> 331 rows, newest -> 2026-08-31.
+# Both re-run independently before shipping: 0 emails and 0 phone numbers in any
+# emitted field, every row carries an address, MA proven by zip on both.
+#
 # engine v66 (2026-09-08): A SOURCE CAN ANSWER IN FULL AND STILL BE FROZEN,
 # AND NOTHING COULD SEE IT. source_health.py scored a town on `rows > 0 and no
 # error`. fetch_barnstable builds its URL from a hardcoded "{month}-{year}.pdf"
