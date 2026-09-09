@@ -8,6 +8,53 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v68 (2026-09-09): A PUBLIC ACTIONS LOG WAS PRINTING PEOPLE'S NAMES,
+# AND SEVEN NEW TOWNS WERE HELD BACK BY THEIR OWN VERIFY PANEL.
+#
+# THE PRIVACY FIX IS THE REASON THIS SHIPS TODAY. fetch_common.read_pdf_table
+# ended its "no mappable header row" ColumnMapError with
+# `First rows seen: {first_rows[:2]}` -- the RAW cell text of the first two
+# data rows of the permit table. harvest() hands a skipped document's error
+# straight to warn(), warn() prints `::warning::<msg>`, and this workflow runs
+# `hosted_refresh.py 2>&1 | tee run.log` inside capecodtaxappeal/masspermits-
+# lander, whose Actions logs are world-readable because the repo is PUBLIC
+# (api.github.com: visibility "public"). So every header break published an
+# identified applicant's name, their unit-level street address, their parcel
+# id and the fee they paid, to anyone, with no account.
+# In production it was LATENT, not fired: all four live PDF towns (Bourne,
+# Provincetown, Truro, Wakefield) were re-run 2026-09-09 and parse cleanly.
+# It would have fired on EVERY run the moment Williamsburg shipped, because
+# that town is split out of Northampton's permanently-headerless August file.
+# The message now carries CELL-LENGTH SHAPES only -- e.g. [[16,21,8,9],...] --
+# which is what a human needs to see "the layout changed", and names nobody.
+#
+# TOWNS: attempted sources 59 -> 68. Added, each measured live twice:
+#   Wenham, Pittsfield, North Attleborough, Duxbury, Norwood  (batch 6, clean)
+#   Georgetown, Merrimac   PermitLink guest page -- the registry called both
+#                          blocked, against the ACCOUNT-HOLDER entry point,
+#                          the identical error that hid Newbury, Groveland and
+#                          West Newbury. Measured 20 and 29 rows, both MA-OK.
+#   Nahant, Carlisle       PatriotPermitPro tenants, 319 and 482 rows. The
+#                          registry called both blocked. Carlisle's CivicPlus
+#                          PDFs are 167 days stale and publish no issue date
+#                          at all, while this vendor serves it live today.
+#
+# SEVEN TOWNS WERE BUILT, VERIFIED, AND DELIBERATELY NOT WIRED, because the
+# adversarial panel re-ran each builder's own claims and broke them:
+#   Hamilton   no Status gate; a CANCELED or DENIED permit carries a number
+#              and a date, passes all three drops, and is sold as a live lead.
+#   Upton      run twice live: 88 rows, then 95. A detail POST answering 200
+#   Lancaster  with non-JSON loses the row unretried and unrecorded; the guard
+#              tolerates 10 silent losses and is structurally unable to see
+#              past the paging floor. Six lost rows were re-fetched by hand and
+#              every one was a real issued permit.
+#   Needham    33.1% of parsed blocks lose an entire line of the description.
+#   Brookline  its one date column is not the issue date (Taunton class).
+#   Malden     reads a parcel column it does not need.
+#   Williamsburg see the privacy note above.
+# Six more (Topsfield, Westborough, Amesbury, Northampton, Wellesley,
+# Westfield) were rejected outright. Detail in KB/05.
+#
 # engine v67 (2026-09-08): THE TWO TOWNS v66's ALARM WAS BUILT FOR, FIXED.
 # v66 gave every source a newest-permit date and the very first run named six
 # stale towns. Four were publication lag and were correctly left alone
