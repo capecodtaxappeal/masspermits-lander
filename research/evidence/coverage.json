@@ -1,8 +1,8 @@
 {
  "slug": "coverage",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-09T12:42:46.142877+00:00",
- "corpus_rows": 75209,
+ "corpus_fetched_at": "2026-09-09T13:48:01.701804+00:00",
+ "corpus_rows": 75270,
  "corpus_sources": 73,
  "corpus_first": "2025-11-03",
  "corpus_last": "2026-09-09",
@@ -19,12 +19,12 @@
  "guards": {},
  "stats": {
   "n_sources": 73,
-  "n_rows": 75209,
-  "fetched_at": "2026-09-09T12:42:46.142877+00:00",
+  "n_rows": 75270,
+  "fetched_at": "2026-09-09T13:48:01.701804+00:00",
   "no_valuation": 51,
   "with_coords": 8,
   "no_freetext": 22,
-  "capped_sources": 4,
+  "capped_sources": 3,
   "row_cap": 2400,
   "monthly": [
    "Amherst, MA",
@@ -96,6 +96,16 @@
     "capped": false
    },
    {
+    "source": "Pittsfield, MA",
+    "rows": 2401,
+    "first": "2026-03-13",
+    "last": "2026-09-09",
+    "valued_pct": 0.0,
+    "freetext_pct": 0.0,
+    "coords": false,
+    "capped": false
+   },
+   {
     "source": "Attleboro, MA",
     "rows": 2400,
     "first": "2026-03-18",
@@ -126,18 +136,8 @@
     "capped": true
    },
    {
-    "source": "Pittsfield, MA",
-    "rows": 2400,
-    "first": "2026-03-13",
-    "last": "2026-09-09",
-    "valued_pct": 0.0,
-    "freetext_pct": 0.0,
-    "coords": false,
-    "capped": true
-   },
-   {
     "source": "Taunton, MA",
-    "rows": 2064,
+    "rows": 2065,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 92.7,
@@ -147,9 +147,9 @@
    },
    {
     "source": "Braintree, MA",
-    "rows": 2045,
+    "rows": 2053,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 96.3,
     "coords": false,
@@ -167,7 +167,7 @@
    },
    {
     "source": "Hingham, MA",
-    "rows": 1766,
+    "rows": 1773,
     "first": "2026-03-16",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -177,7 +177,7 @@
    },
    {
     "source": "Chicopee, MA",
-    "rows": 1755,
+    "rows": 1757,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -187,9 +187,9 @@
    },
    {
     "source": "Stoughton, MA",
-    "rows": 1729,
+    "rows": 1730,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 2.7,
     "coords": false,
@@ -197,7 +197,7 @@
    },
    {
     "source": "Sandwich, MA",
-    "rows": 1712,
+    "rows": 1715,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -217,7 +217,7 @@
    },
    {
     "source": "Concord, MA",
-    "rows": 1500,
+    "rows": 1501,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -257,7 +257,7 @@
    },
    {
     "source": "Randolph, MA",
-    "rows": 1384,
+    "rows": 1386,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -267,7 +267,7 @@
    },
    {
     "source": "Bridgewater, MA",
-    "rows": 1341,
+    "rows": 1345,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -277,9 +277,9 @@
    },
    {
     "source": "Foxborough, MA",
-    "rows": 1270,
+    "rows": 1275,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 98.4,
     "freetext_pct": 1.7,
     "coords": false,
@@ -297,7 +297,7 @@
    },
    {
     "source": "Bellingham, MA",
-    "rows": 1188,
+    "rows": 1189,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -307,7 +307,7 @@
    },
    {
     "source": "Mansfield, MA",
-    "rows": 1176,
+    "rows": 1178,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -317,11 +317,11 @@
    },
    {
     "source": "Ipswich, MA",
-    "rows": 1013,
+    "rows": 1016,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
-    "freetext_pct": 9.5,
+    "freetext_pct": 9.4,
     "coords": false,
     "capped": false
    },
@@ -337,9 +337,9 @@
    },
    {
     "source": "Fairhaven, MA",
-    "rows": 995,
+    "rows": 997,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 1.4,
     "coords": false,
@@ -357,9 +357,9 @@
    },
    {
     "source": "Ludlow, MA",
-    "rows": 956,
+    "rows": 958,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 0.0,
     "coords": false,
@@ -397,9 +397,9 @@
    },
    {
     "source": "Cohasset, MA",
-    "rows": 740,
+    "rows": 747,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 0.0,
     "coords": false,
@@ -407,9 +407,9 @@
    },
    {
     "source": "Rehoboth, MA",
-    "rows": 710,
+    "rows": 712,
     "first": "2026-03-16",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 0.0,
     "coords": false,
@@ -467,7 +467,7 @@
    },
    {
     "source": "Hanson, MA",
-    "rows": 497,
+    "rows": 498,
     "first": "2026-03-13",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -487,11 +487,11 @@
    },
    {
     "source": "Carlisle, MA",
-    "rows": 480,
+    "rows": 481,
     "first": "2026-03-16",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
-    "freetext_pct": 93.3,
+    "freetext_pct": 93.6,
     "coords": false,
     "capped": false
    },
@@ -547,10 +547,10 @@
    },
    {
     "source": "Nahant, MA",
-    "rows": 316,
+    "rows": 317,
     "first": "2026-03-13",
     "last": "2026-09-09",
-    "valued_pct": 44.9,
+    "valued_pct": 45.1,
     "freetext_pct": 100.0,
     "coords": false,
     "capped": false
@@ -617,9 +617,9 @@
    },
    {
     "source": "Otis, MA",
-    "rows": 169,
+    "rows": 171,
     "first": "2026-03-13",
-    "last": "2026-09-08",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
     "coords": false,
@@ -676,9 +676,9 @@
     "capped": false
    },
    {
-    "source": "Groveland, MA",
-    "rows": 25,
-    "first": "2026-08-26",
+    "source": "Newbury, MA",
+    "rows": 26,
+    "first": "2026-08-27",
     "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
@@ -686,10 +686,10 @@
     "capped": false
    },
    {
-    "source": "Newbury, MA",
+    "source": "Groveland, MA",
     "rows": 25,
-    "first": "2026-08-27",
-    "last": "2026-09-08",
+    "first": "2026-08-26",
+    "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
     "coords": false,
@@ -707,7 +707,7 @@
    },
    {
     "source": "Townsend, MA",
-    "rows": 22,
+    "rows": 21,
     "first": "2026-08-25",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -717,7 +717,7 @@
    },
    {
     "source": "Georgetown, MA",
-    "rows": 21,
+    "rows": 20,
     "first": "2026-08-26",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -726,8 +726,18 @@
     "capped": false
    },
    {
+    "source": "Hadley, MA",
+    "rows": 20,
+    "first": "2026-09-01",
+    "last": "2026-09-09",
+    "valued_pct": 0.0,
+    "freetext_pct": 100.0,
+    "coords": true,
+    "capped": false
+   },
+   {
     "source": "West Newbury, MA",
-    "rows": 21,
+    "rows": 19,
     "first": "2026-08-21",
     "last": "2026-09-09",
     "valued_pct": 0.0,
@@ -736,9 +746,9 @@
     "capped": false
    },
    {
-    "source": "Hadley, MA",
-    "rows": 19,
-    "first": "2026-09-01",
+    "source": "Granby, MA",
+    "rows": 17,
+    "first": "2026-08-31",
     "last": "2026-09-09",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
@@ -753,16 +763,6 @@
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
     "coords": false,
-    "capped": false
-   },
-   {
-    "source": "Granby, MA",
-    "rows": 13,
-    "first": "2026-08-31",
-    "last": "2026-09-08",
-    "valued_pct": 0.0,
-    "freetext_pct": 100.0,
-    "coords": true,
     "capped": false
    },
    {
