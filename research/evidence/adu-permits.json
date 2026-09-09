@@ -1,10 +1,10 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-09T03:53:01.937457+00:00",
- "corpus_rows": 76527,
- "corpus_sources": 72,
- "corpus_first": "2025-07-01",
+ "corpus_fetched_at": "2026-09-09T04:21:28.745363+00:00",
+ "corpus_rows": 72825,
+ "corpus_sources": 68,
+ "corpus_first": "2025-11-03",
  "corpus_last": "2026-09-09",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
@@ -35,108 +35,108 @@
   ]
  },
  "stats": {
-  "adu_rows": 315,
-  "adu_towns": 33,
-  "eligible_sources": 55,
-  "n_sources": 72,
-  "garage": 63,
-  "garage_share": 20.0,
-  "conversion": 63,
-  "new_build": 153,
-  "unclassified": 99,
-  "garage_conversion": 26,
+  "adu_rows": 298,
+  "adu_towns": 31,
+  "eligible_sources": 51,
+  "n_sources": 68,
+  "garage": 61,
+  "garage_share": 20.5,
+  "conversion": 59,
+  "new_build": 150,
+  "unclassified": 89,
+  "garage_conversion": 25,
   "garage_new_build": 25,
   "form_leader": "new construction",
-  "pooled_rate": 59.0,
+  "pooled_rate": 59.4,
   "raw_first": 4,
-  "raw_peak": 65,
-  "rate_min": 42.6,
-  "rate_max": 82.5,
+  "raw_peak": 64,
+  "rate_min": 42.2,
+  "rate_max": 124.2,
   "n_months": 10,
   "series": [
    {
     "month": "2025-12",
     "raw": 4,
-    "base": 485,
-    "sources": 5,
+    "base": 322,
+    "sources": 3,
     "partial": false,
-    "rate": 82.5
+    "rate": 124.2
    },
    {
     "month": "2026-01",
-    "raw": 3,
-    "base": 391,
-    "sources": 5,
+    "raw": 2,
+    "base": 255,
+    "sources": 3,
     "partial": false,
-    "rate": 76.7
+    "rate": 78.4
    },
    {
     "month": "2026-02",
-    "raw": 4,
-    "base": 610,
-    "sources": 8,
+    "raw": 3,
+    "base": 514,
+    "sources": 6,
     "partial": false,
-    "rate": 65.6
+    "rate": 58.4
    },
    {
     "month": "2026-03",
     "raw": 30,
-    "base": 3941,
-    "sources": 31,
+    "base": 3515,
+    "sources": 28,
     "partial": false,
-    "rate": 76.1
+    "rate": 85.3
    },
    {
     "month": "2026-04",
-    "raw": 44,
-    "base": 6225,
-    "sources": 31,
+    "raw": 40,
+    "base": 5740,
+    "sources": 28,
     "partial": false,
-    "rate": 70.7
+    "rate": 69.7
    },
    {
     "month": "2026-05",
-    "raw": 49,
-    "base": 6762,
-    "sources": 34,
+    "raw": 47,
+    "base": 6273,
+    "sources": 31,
     "partial": false,
-    "rate": 72.5
+    "rate": 74.9
    },
    {
     "month": "2026-06",
-    "raw": 65,
-    "base": 10043,
-    "sources": 40,
+    "raw": 64,
+    "base": 9535,
+    "sources": 37,
     "partial": false,
-    "rate": 64.7
+    "rate": 67.1
    },
    {
     "month": "2026-07",
-    "raw": 54,
-    "base": 11822,
-    "sources": 40,
+    "raw": 51,
+    "base": 11412,
+    "sources": 37,
     "partial": false,
-    "rate": 45.7
+    "rate": 44.7
    },
    {
     "month": "2026-08",
-    "raw": 48,
-    "base": 11256,
-    "sources": 47,
+    "raw": 46,
+    "base": 10899,
+    "sources": 45,
     "partial": false,
-    "rate": 42.6
+    "rate": 42.2
    },
    {
     "month": "2026-09",
     "raw": 11,
-    "base": 1814,
-    "sources": 37,
+    "base": 1737,
+    "sources": 36,
     "partial": true,
-    "rate": 60.6
+    "rate": 63.3
    }
   ],
-  "src_first": 5,
-  "src_peak": 47,
+  "src_first": 3,
+  "src_peak": 45,
   "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
@@ -154,11 +154,9 @@
    "Hanson, MA",
    "Hingham, MA",
    "Lexington, MA",
-   "Malden, MA",
    "Mansfield, MA",
    "Milton, MA",
    "Nahant, MA",
-   "Needham, MA",
    "Plymouth, MA",
    "Provincetown, MA",
    "Randolph, MA",

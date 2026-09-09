@@ -1,8 +1,8 @@
 {
  "@context": "http://www.w3.org/ns/csvw",
  "url": "malden.csv",
- "dc:title": "MassPermits \u2014 malden.csv",
- "dc:description": "Masked public slice of Massachusetts building-permit records. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only. This source publishes no project value: the valuation column is empty on every row.",
+ "dc:title": "MassPermits \u2014 malden.csv (coverage ended)",
+ "dc:description": "MassPermits no longer receives building-permit records for Malden, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-08. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
  "dc:source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
  "dc:publisher": {
   "schema:name": "MassPermits",
@@ -12,7 +12,6 @@
   "@id": "https://creativecommons.org/licenses/by-nc/4.0/"
  },
  "dc:rights": "MassPermits (masspermits.com) \u2014 CC BY-NC 4.0",
- "dcat:landingPage": "https://masspermits.com/permits/",
  "dc:modified": "2026-09-08",
  "tableSchema": {
   "columns": [
@@ -46,13 +45,6 @@
     "datatype": "integer",
     "dc:description": "Declared project value in USD. Empty when the source publishes none."
    }
-  ],
-  "primaryKey": [
-   "town",
-   "trade",
-   "issued_date",
-   "street_masked"
   ]
- },
- "dc:temporal": "2026-03-13/2026-09-08"
+ }
 }

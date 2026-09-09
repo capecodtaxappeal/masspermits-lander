@@ -1,10 +1,10 @@
 {
  "slug": "coverage",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-09T03:53:01.937457+00:00",
- "corpus_rows": 76527,
- "corpus_sources": 72,
- "corpus_first": "2025-07-01",
+ "corpus_fetched_at": "2026-09-09T04:21:28.745363+00:00",
+ "corpus_rows": 72825,
+ "corpus_sources": 68,
+ "corpus_first": "2025-11-03",
  "corpus_last": "2026-09-09",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
@@ -18,10 +18,10 @@
  },
  "guards": {},
  "stats": {
-  "n_sources": 72,
-  "n_rows": 76527,
-  "fetched_at": "2026-09-09T03:53:01.937457+00:00",
-  "no_valuation": 47,
+  "n_sources": 68,
+  "n_rows": 72825,
+  "fetched_at": "2026-09-09T04:21:28.745363+00:00",
+  "no_valuation": 46,
   "with_coords": 8,
   "no_freetext": 17,
   "capped_sources": 3,
@@ -33,9 +33,7 @@
    "Chatham, MA",
    "Duxbury, MA",
    "Lexington, MA",
-   "Needham, MA",
    "North Attleborough, MA",
-   "Orleans, MA",
    "Plymouth, MA",
    "Provincetown, MA",
    "Reading, MA",
@@ -43,8 +41,7 @@
    "Truro, MA",
    "Wakefield, MA",
    "Waltham, MA",
-   "Wareham, MA",
-   "Williamsburg, MA"
+   "Wareham, MA"
   ],
   "errors": [],
   "table": [
@@ -155,16 +152,6 @@
     "last": "2026-09-08",
     "valued_pct": 0.0,
     "freetext_pct": 96.3,
-    "coords": false,
-    "capped": false
-   },
-   {
-    "source": "Malden, MA",
-    "rows": 1905,
-    "first": "2026-03-13",
-    "last": "2026-09-08",
-    "valued_pct": 0.0,
-    "freetext_pct": 100.0,
     "coords": false,
     "capped": false
    },
@@ -285,16 +272,6 @@
     "last": "2026-09-08",
     "valued_pct": 0.0,
     "freetext_pct": 0.0,
-    "coords": false,
-    "capped": false
-   },
-   {
-    "source": "Needham, MA",
-    "rows": 1300,
-    "first": "2025-07-01",
-    "last": "2026-06-30",
-    "valued_pct": 99.5,
-    "freetext_pct": 100.0,
     "coords": false,
     "capped": false
    },
@@ -499,16 +476,6 @@
     "capped": false
    },
    {
-    "source": "Orleans, MA",
-    "rows": 476,
-    "first": "2025-12-01",
-    "last": "2026-08-31",
-    "valued_pct": 70.4,
-    "freetext_pct": 100.0,
-    "coords": false,
-    "capped": false
-   },
-   {
     "source": "Hopedale, MA",
     "rows": 440,
     "first": "2026-03-16",
@@ -684,16 +651,6 @@
     "first": "2026-08-25",
     "last": "2026-09-08",
     "valued_pct": 0.0,
-    "freetext_pct": 100.0,
-    "coords": false,
-    "capped": false
-   },
-   {
-    "source": "Williamsburg, MA",
-    "rows": 21,
-    "first": "2026-07-06",
-    "last": "2026-07-31",
-    "valued_pct": 71.4,
     "freetext_pct": 100.0,
     "coords": false,
     "capped": false

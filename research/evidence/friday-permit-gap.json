@@ -1,10 +1,10 @@
 {
  "slug": "friday-permit-gap",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-09T03:53:01.937457+00:00",
- "corpus_rows": 76527,
- "corpus_sources": 72,
- "corpus_first": "2025-07-01",
+ "corpus_fetched_at": "2026-09-09T04:21:28.745363+00:00",
+ "corpus_rows": 72825,
+ "corpus_sources": 68,
+ "corpus_first": "2025-11-03",
  "corpus_last": "2026-09-09",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
@@ -43,9 +43,9 @@
   ]
  },
  "stats": {
-  "n_dated": 76527,
-  "n_sources": 72,
-  "n_shown": 57,
+  "n_dated": 72825,
+  "n_sources": 68,
+  "n_shown": 54,
   "vendor_split": {
    "shared": {
     "n": 36572,
@@ -55,28 +55,28 @@
     "ratio": 0.57
    },
    "other": {
-    "n": 39955,
-    "sources": 43,
-    "fri_pct": 13.5,
-    "weekday_mean": 21.1,
-    "ratio": 0.64
+    "n": 36253,
+    "sources": 39,
+    "fri_pct": 13.8,
+    "weekday_mean": 21.2,
+    "ratio": 0.65
    },
-   "other_below_avg": 26,
-   "other_shown": 28
+   "other_below_avg": 24,
+   "other_shown": 25
   },
   "capped_sources": 3,
   "row_cap": 2400,
   "zero_friday_capped": false,
   "mon_pct": 21.2,
-  "tue_pct": 22.9,
+  "tue_pct": 22.8,
   "wed_pct": 21.0,
-  "thu_pct": 20.1,
-  "fri_pct": 12.9,
+  "thu_pct": 20.3,
+  "fri_pct": 13.0,
   "sat_pct": 0.8,
-  "sun_pct": 1.1,
-  "weekend_rows": 1461,
-  "weekend_sources": 39,
-  "weekend_pct": 1.9,
+  "sun_pct": 0.9,
+  "weekend_rows": 1244,
+  "weekend_sources": 38,
+  "weekend_pct": 1.7,
   "zero_friday_town": "Hingham, MA",
   "zero_friday_weekday": 1763,
   "zero_friday_days": 98,
@@ -127,16 +127,6 @@
     "capped": false
    },
    {
-    "source": "Orleans, MA",
-    "weekday": 476,
-    "friday": 104,
-    "friday_pct": 21.8,
-    "issue_days": 133,
-    "first": "2025-12-01",
-    "last": "2026-08-31",
-    "capped": false
-   },
-   {
     "source": "Waltham, MA",
     "weekday": 944,
     "friday": 183,
@@ -144,6 +134,16 @@
     "issue_days": 123,
     "first": "2026-02-02",
     "last": "2026-07-31",
+    "capped": false
+   },
+   {
+    "source": "Norwood, MA",
+    "weekday": 1542,
+    "friday": 293,
+    "friday_pct": 19.0,
+    "issue_days": 123,
+    "first": "2026-03-13",
+    "last": "2026-09-08",
     "capped": false
    }
   ],
@@ -176,16 +176,6 @@
     "issue_days": 73,
     "first": "2026-02-02",
     "last": "2026-07-30",
-    "capped": false
-   },
-   {
-    "source": "Malden, MA",
-    "weekday": 1688,
-    "friday": 30,
-    "friday_pct": 1.8,
-    "issue_days": 109,
-    "first": "2026-03-13",
-    "last": "2026-09-08",
     "capped": false
    },
    {
@@ -669,16 +659,6 @@
     "capped": false
    },
    {
-    "source": "Needham, MA",
-    "weekday": 1300,
-    "friday": 246,
-    "friday_pct": 18.9,
-    "issue_days": 241,
-    "first": "2025-07-01",
-    "last": "2026-06-30",
-    "capped": false
-   },
-   {
     "source": "Norwood, MA",
     "weekday": 1542,
     "friday": 293,
@@ -696,16 +676,6 @@
     "issue_days": 123,
     "first": "2026-02-02",
     "last": "2026-07-31",
-    "capped": false
-   },
-   {
-    "source": "Orleans, MA",
-    "weekday": 476,
-    "friday": 104,
-    "friday_pct": 21.8,
-    "issue_days": 133,
-    "first": "2025-12-01",
-    "last": "2026-08-31",
     "capped": false
    },
    {

@@ -2,7 +2,7 @@
 
 > MassPermits turns Massachusetts building-permit records into ready-to-work leads for contractors.
 > Each lead includes the property address, owner, contractor, project type and project value, organized
-> by trade and town. Coverage: 89 towns and neighbourhoods across Cape Cod & Islands, Greater Boston, South Shore & South Coast, MetroWest & 495, North Shore & Merrimack, Central MA and Western MA (76527+ recent permits), drawn from 72 municipal permit sources.
+> by trade and town. Coverage: 85 towns and neighbourhoods across Cape Cod & Islands, Greater Boston, South Shore & South Coast, MetroWest & 495, North Shore & Merrimack, Central MA and Western MA (72825+ recent permits), drawn from 68 municipal permit sources.
 > Massachusetts has 351 municipalities: this is a partial, named subset, itemised source by source
 > at https://masspermits.com/research/coverage.
 
@@ -32,8 +32,8 @@
 - Building permits in Pittsfield, MA: https://masspermits.com/permits/pittsfield
 - Building permits in Taunton, MA: https://masspermits.com/permits/taunton
 - Building permits in Braintree, MA: https://masspermits.com/permits/braintree
-- Building permits in Malden, MA: https://masspermits.com/permits/malden
 - Building permits in Bourne, MA: https://masspermits.com/permits/bourne
+- Building permits in Hingham, MA: https://masspermits.com/permits/hingham
 
 ## Leads by trade (Massachusetts)
 - Roofing leads: https://masspermits.com/roofing-leads-massachusetts
@@ -73,5 +73,5 @@
 - Corrections and analyses we killed: https://masspermits.com/research/corrections
 - Figures behind each research page, as JSON: https://masspermits.com/research/evidence/<slug>.json
 - Data as of: 2026-09-09 (newest permit in the corpus behind this build; not the build date).
-- Scope of this snapshot: 76527 permits, drawn from 72 municipal permit sources, across 89 towns and neighbourhoods. Massachusetts has 351 municipalities; we do not cover most of them, and https://masspermits.com/research/coverage says exactly which and what each one omits.
+- Scope of this snapshot: 72825 permits, drawn from 68 municipal permit sources, across 85 towns and neighbourhoods. Massachusetts has 351 municipalities; we do not cover most of them, and https://masspermits.com/research/coverage says exactly which and what each one omits.
 - Suggested form: MassPermits. "<page title>". Updated <dateModified from the page's JSON-LD>. <page URL>.
