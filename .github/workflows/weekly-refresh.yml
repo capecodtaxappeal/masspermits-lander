@@ -8,6 +8,45 @@ name: MassPermits weekly data refresh
 # No local machine involved; no secrets exist anywhere in this repo (OIDC only).
 # Failures self-report to R2 refresh-status.json (Actions logs need admin auth).
 
+# engine v70 (2026-09-09): +5 BERKSHIRE TOWNS ON A SHARED PERMITEYES TENANT.
+# Great Barrington 617, Lee 426, Lenox 552, Stockbridge 367, New Marlborough 150
+# = 2,112 rows. The registry had all five as blocked; they sit on the SAME
+# anonymous publicview.php endpoint the other 29 PermitEyes towns already use,
+# just laid out as /berkshire/<slug> instead of /<slug>/. Attempted 68 -> 73.
+#
+# THE RISK WAS NEVER THE 5 NEW TOWNS, IT WAS THE 29 INCUMBENTS, so the proof is
+# the interesting part. The OLD fetch_permiteyes ran live behind a RECORDING
+# opener capturing every request and response byte; the NEW code then ran
+# against a REPLAYING opener that REFUSED any request not matching the recorded
+# sequence. That falsifies both "it issues identical requests" and "given
+# identical bytes it produces an identical list", and is immune to a town
+# publishing mid-test. Serialized ROW LISTS were compared, not counts:
+# 11,496 rows / 7.4 MB across rockland, hingham, braintree, taunton, ipswich,
+# otis, mashpee, bellingham — byte-identical, 56/56 requests matched in order.
+# An adversarial pass repeated it on 17 DIFFERENT incumbents (zero overlap) and
+# agreed. Three towns were also re-fetched live and diffed.
+#
+# A DEFECT FOUND ON THE WAY, worth more than the towns: _normalize_permiteyes
+# resolves its column map from scraper's OWN module-level PE_LAYOUT. A candidate
+# holding a separate merged copy fetched 2,400 correct Great Barrington rows and
+# normalised every one to None — a whole town silently reading zero from a
+# fetcher that looked healthy (46s, 8 pages, 0 kept). Only the fail-closed
+# geocode guard made it visible. Same family as v69's roster-vs-calls bug, one
+# level down: the dict and the function that reads it must be the SAME object.
+#
+# Every new PE_LAYOUT key is optional and defaults to what the current code
+# hard-codes, so a town declaring none of them takes the identical path. Only
+# shared_tenant towns use the fetch_common transport (robots honoured,
+# CLOSED_HOSTS refused, host delay, 429/5xx-only retry) plus a 5s per-page
+# pace — strictly gentler than the legacy path, never faster. permiteyes.com
+# publishes Disallow: / and was never contacted; permiteyes.us serves no
+# robots.txt (HTTP 404).
+#
+# Lee is the thin one and is recorded as such: its MA proof was 17/18 against a
+# 0.90 floor because one address geocodes to Lee, MAINE. It was improved without
+# excluding the outlier. It is fail-closed — a bad sample drops the town rather
+# than shipping unproven rows.
+#
 # engine v69 (2026-09-09): FOUR HELD TOWNS SHIPPED ANYWAY, BECAUSE TAKING A
 # TOWN OFF THE ROSTER IS NOT THE SAME AS NOT CALLING IT.
 # v68 removed Hamilton, Lancaster, Upton, Malden, Needham, Orleans and
