@@ -1,0 +1,222 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in New Marlborough, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/new-marlborough.json",
+ "description": "Recent building permits in New Marlborough, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 21,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-08",
+ "items": [
+  {
+   "id": "8d803faecc09efe5",
+   "url": "https://masspermits.com/permits/new-marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Mill River Gt Barrington Rd, New Marlborough",
+   "content_text": "Renovation/Remodel permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "57ddbe96c1a45031",
+   "url": "https://masspermits.com/permits/new-marlborough-electrical",
+   "title": "Electrical permit \u2014 Cross To Canaan Valley Rd, New Marlborough",
+   "content_text": "Electrical permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "38e5a6120eb96c9b",
+   "url": "https://masspermits.com/permits/new-marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Sisson Hill Rd, New Marlborough",
+   "content_text": "Renovation/Remodel permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "9dec9cec0ba5f4bb",
+   "url": "https://masspermits.com/permits/new-marlborough-other",
+   "title": "Other permit \u2014 Mill River Gt Barrington Rd, New Marlborough",
+   "content_text": "Other permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Other"
+  },
+  {
+   "id": "a45377e41205d130",
+   "url": "https://masspermits.com/permits/new-marlborough-gas",
+   "title": "Gas permit \u2014 Hillside Av, New Marlborough",
+   "content_text": "Gas permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Gas"
+  },
+  {
+   "id": "ffe0c1601761b00c",
+   "url": "https://masspermits.com/permits/new-marlborough-electrical",
+   "title": "Electrical permit \u2014 Mill River Gt Barrington Rd, New Marlborough",
+   "content_text": "Electrical permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "a33384747aac6038",
+   "url": "https://masspermits.com/permits/new-marlborough-gas",
+   "title": "Gas permit \u2014 New Marlborough Hill Road, New Marlborough",
+   "content_text": "Gas permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Gas"
+  },
+  {
+   "id": "2ad1f4de6a8ad058",
+   "url": "https://masspermits.com/permits/new-marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Knight Rd, New Marlborough",
+   "content_text": "Renovation/Remodel permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "b955c67a54210028",
+   "url": "https://masspermits.com/permits/new-marlborough-electrical",
+   "title": "Electrical permit \u2014 Farm View Drive, New Marlborough",
+   "content_text": "Electrical permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "5999737612ceb64c",
+   "url": "https://masspermits.com/permits/new-marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Harts-New Marlborough Rd, New Marlborough",
+   "content_text": "Renovation/Remodel permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "924774f10dee2331",
+   "url": "https://masspermits.com/permits/new-marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Norfolk Rd, New Marlborough",
+   "content_text": "Renovation/Remodel permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "8a53c5fd4081f56f",
+   "url": "https://masspermits.com/permits/new-marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Farm View Drive, New Marlborough",
+   "content_text": "Renovation/Remodel permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "d904e27f229bfb9a",
+   "url": "https://masspermits.com/permits/new-marlborough-plumbing",
+   "title": "Plumbing permit \u2014 Brewer Hill Rd, New Marlborough",
+   "content_text": "Plumbing permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "e880a597484bf300",
+   "url": "https://masspermits.com/permits/new-marlborough-electrical",
+   "title": "Electrical permit \u2014 New Marlborough Southfield Rd, New Marlborough",
+   "content_text": "Electrical permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "88df000b86181de0",
+   "url": "https://masspermits.com/permits/new-marlborough",
+   "title": "Sign/Awning permit \u2014 Harts-New Marlborough Rd, New Marlborough",
+   "content_text": "Sign/Awning permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Sign/Awning"
+  },
+  {
+   "id": "af1d5b82080969da",
+   "url": "https://masspermits.com/permits/new-marlborough-electrical",
+   "title": "Electrical permit \u2014 Bock Wy, New Marlborough",
+   "content_text": "Electrical permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "fa79d3a388dbf025",
+   "url": "https://masspermits.com/permits/new-marlborough-other",
+   "title": "Other permit \u2014 Clayton Mill River Rd, New Marlborough",
+   "content_text": "Other permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Other"
+  },
+  {
+   "id": "7fc7aa4e3099bf79",
+   "url": "https://masspermits.com/permits/new-marlborough-gas",
+   "title": "Gas permit \u2014 Bock Wy, New Marlborough",
+   "content_text": "Gas permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Gas"
+  },
+  {
+   "id": "80a9a3254e30c690",
+   "url": "https://masspermits.com/permits/new-marlborough-gas",
+   "title": "Gas permit \u2014 Harts-New Marlborough Rd, New Marlborough",
+   "content_text": "Gas permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Gas"
+  },
+  {
+   "id": "e66f99edf04a4fdd",
+   "url": "https://masspermits.com/permits/new-marlborough-electrical",
+   "title": "Electrical permit \u2014 New Marlboro Hill Rd, New Marlborough",
+   "content_text": "Electrical permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "1a8ae7c72ebb5a44",
+   "url": "https://masspermits.com/permits/new-marlborough-electrical",
+   "title": "Electrical permit \u2014 Brewer Branch Rd, New Marlborough",
+   "content_text": "Electrical permit in New Marlborough, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "New Marlborough",
+   "_trade": "Electrical"
+  }
+ ]
+}

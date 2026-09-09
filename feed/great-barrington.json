@@ -1,0 +1,573 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Great Barrington, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/great-barrington.json",
+ "description": "Recent building permits in Great Barrington, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 73,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-08",
+ "items": [
+  {
+   "id": "cf883a611cd223f9",
+   "url": "https://masspermits.com/permits/great-barrington-other",
+   "title": "Other permit \u2014 Egremont Plain Rd, Great Barrington",
+   "content_text": "Other permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Other"
+  },
+  {
+   "id": "ce6edd5cfa3ca707",
+   "url": "https://masspermits.com/permits/great-barrington-other",
+   "title": "Other permit \u2014 South Egremont Rd, Great Barrington",
+   "content_text": "Other permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Other"
+  },
+  {
+   "id": "c4fe5143391fb9c8",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Monument Valley Rd, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "9f7e67b0998e16a3",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Long Pond Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "2f72f89fb2085106",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 Woodland Hill Rd, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  },
+  {
+   "id": "c61952fcb8f40980",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 North Plain Rd, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "e0a88721f1a987e0",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 Park Street, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "d20bf967d35095fe",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 North Plain Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "0ae961c137da466c",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 Highland Dr, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "c1ec599463433908",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Main St, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "8b60d162dd619489",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Lake View Rd, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "7cc801356ed1d161",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 Park St North, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "4a53319885fb52a4",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 East St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "b53c142c92047b70",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Dresser Ave, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "4e4f20f3fa6a82fa",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Everett St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "c52adf9230b1768c",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 East St, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "9feaf9ddaa7929a9",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Welcome St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "180667285f47b545",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Stockbridge Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "c3437e53a317f6fa",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 Bernard Gibbons Dr, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  },
+  {
+   "id": "fdfdfdf07eb599a8",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Castle St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "497a606203a0e804",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Rosseter St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e670f30dbbe260e7",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 State Rd, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  },
+  {
+   "id": "678cf5e1f5ecbe9d",
+   "url": "https://masspermits.com/permits/great-barrington-plumbing",
+   "title": "Plumbing permit \u2014 Prospect St North, Great Barrington",
+   "content_text": "Plumbing permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "ed5fef5c30be6924",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 State Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "c945e6af3ce38daa",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Division St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "8b5e8b978c6bb199",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Stockbridge Rd, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "aed0a460d058bbd5",
+   "url": "https://masspermits.com/permits/great-barrington-other",
+   "title": "Other permit \u2014 Cooper Rd, Great Barrington",
+   "content_text": "Other permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Other"
+  },
+  {
+   "id": "baf48c005f035739",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Blue Hill Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "f589c1368dd1c30a",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 North Plain Rd, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "d3c49ba259bb7bd8",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 Monument Valley Rd, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  },
+  {
+   "id": "4e9c4ce37fcef9ee",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 Stockbridge Rd, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  },
+  {
+   "id": "ed143ad09c056627",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 High St, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "4ea731fbe9267a97",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Magnolia St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "22bccdd1cd044bfa",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Berkshire Heights Rd, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c63700336ca0d73d",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Monterey Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "dd798e37510edd95",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 Monument Valley Rd, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "9bc080781116b48a",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 West Ave, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  },
+  {
+   "id": "d78a5f0248e4ac82",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Lake Mansfield Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "f3f3b3c4824be3d6",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Old Stockbridge Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "95da174338f519f8",
+   "url": "https://masspermits.com/permits/great-barrington-plumbing",
+   "title": "Plumbing permit \u2014 Main St, Great Barrington",
+   "content_text": "Plumbing permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "def8c96696166094",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Maple Ave, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "a6e38cd86372e9ab",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Taconic Ave, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "80d3f5ce5aa5ec26",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Christian Hill Rd, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "07ffcad26f00789a",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Blue Hill Rd, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "08ae69f2333f270b",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 West Sheffield Rd, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "f07f432d65854492",
+   "url": "https://masspermits.com/permits/great-barrington-sign-awning",
+   "title": "Sign/Awning permit \u2014 Main St, Great Barrington",
+   "content_text": "Sign/Awning permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Sign/Awning"
+  },
+  {
+   "id": "0b31cd678447dae1",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Abbey Hill, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "756fc754f2ba8572",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 Commonwealth Ave, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "580b6468544237b5",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Lewis Ave, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "b3d1138a98b9e7be",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 Castle St, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  },
+  {
+   "id": "bd5c1d389e949379",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Park St North, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "b600a741a4a1d088",
+   "url": "https://masspermits.com/permits/great-barrington-other",
+   "title": "Other permit \u2014 Hurlburt Rd, Great Barrington",
+   "content_text": "Other permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Other"
+  },
+  {
+   "id": "a8819d885f3c2d03",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Kirk St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "080705030e88e8ae",
+   "url": "https://masspermits.com/permits/great-barrington-electrical",
+   "title": "Electrical permit \u2014 Depot St, Great Barrington",
+   "content_text": "Electrical permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "14390474f8c5f55a",
+   "url": "https://masspermits.com/permits/great-barrington-gas",
+   "title": "Gas permit \u2014 West Sheffield Rd, Great Barrington",
+   "content_text": "Gas permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "068313454b0512d3",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Mechanic St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "bc99693b4401990b",
+   "url": "https://masspermits.com/permits/great-barrington-plumbing",
+   "title": "Plumbing permit \u2014 Long Pond Rd, Great Barrington",
+   "content_text": "Plumbing permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "e72242f47ed914a2",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Front St, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "2b700da0732869c9",
+   "url": "https://masspermits.com/permits/great-barrington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Button Down Ln, Great Barrington",
+   "content_text": "Renovation/Remodel permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "760f0dc9e0307cb7",
+   "url": "https://masspermits.com/permits/great-barrington-building",
+   "title": "Building permit \u2014 Main St, Great Barrington",
+   "content_text": "Building permit in Great Barrington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Great Barrington",
+   "_trade": "Building"
+  }
+ ]
+}

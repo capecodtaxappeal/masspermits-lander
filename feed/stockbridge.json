@@ -1,0 +1,420 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Stockbridge, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/stockbridge.json",
+ "description": "Recent building permits in Stockbridge, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 43,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-08",
+ "items": [
+  {
+   "id": "812516e74826aa2e",
+   "url": "https://masspermits.com/permits/stockbridge-plumbing",
+   "title": "Plumbing permit \u2014 West Stockbridge Rd, Stockbridge",
+   "content_text": "Plumbing permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "6557cb48a8167136",
+   "url": "https://masspermits.com/permits/stockbridge-plumbing",
+   "title": "Plumbing permit \u2014 Main St, Stockbridge",
+   "content_text": "Plumbing permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "8a3b7669ae63344a",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 West Stockbridge Rd, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "402029aa67de50b4",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Lake Dr, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "563474f6c58c0d7b",
+   "url": "https://masspermits.com/permits/stockbridge-plumbing",
+   "title": "Plumbing permit \u2014 Lake Dr, Stockbridge",
+   "content_text": "Plumbing permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "948eafe7406a0a2b",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Glendale Middle Rd, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "e94cf362353a8144",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 East Main St, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "2d179c2fbd1e9c47",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Lake Dr, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f83ed8ae624039ea",
+   "url": "https://masspermits.com/permits/stockbridge-building",
+   "title": "Building permit \u2014 Hawthorne Rd, Stockbridge",
+   "content_text": "Building permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Building"
+  },
+  {
+   "id": "49e43b2a617fc771",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Glendale Rd, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "9417b1f14132d5c8",
+   "url": "https://masspermits.com/permits/stockbridge-building",
+   "title": "Building permit \u2014 Main St, Stockbridge",
+   "content_text": "Building permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Building"
+  },
+  {
+   "id": "ac4cbc28d474d1ef",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Sergeant St, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "5c4f0b30bbbc877b",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Mahkeenac Rd, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "374d291aed3f1462",
+   "url": "https://masspermits.com/permits/stockbridge-building",
+   "title": "Building permit \u2014 Ice Glen Rd, Stockbridge",
+   "content_text": "Building permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Building"
+  },
+  {
+   "id": "4c9abbd249ef686a",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Lakeview Dr, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "7c253365928476f2",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Old Colonial Rd, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e823895c39b2c74a",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Hawthorne Rd, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "0d3f0aed1ed00a6e",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Stone Hill Rd, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "be5c7b858586f193",
+   "url": "https://masspermits.com/permits/stockbridge-building",
+   "title": "Building permit \u2014 Glendale Middle Rd, Stockbridge",
+   "content_text": "Building permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Building"
+  },
+  {
+   "id": "4758b834532b377c",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Interlaken Crossrd, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "1305b8e1eedcd7a6",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Cherry Hill Rd, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c0c96d130c24dab4",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Pine St, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "96efbedd09bd0b8d",
+   "url": "https://masspermits.com/permits/stockbridge-other",
+   "title": "Other permit \u2014 Cherry Hill Rd, Stockbridge",
+   "content_text": "Other permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Other"
+  },
+  {
+   "id": "4b16dda439aa91bb",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 East St, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "40861731e90e8242",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Glendale Rd, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-25T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "f19a2edc15bc5fd4",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Interlaken Rd, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "f93079353d9bf6da",
+   "url": "https://masspermits.com/permits/stockbridge-other",
+   "title": "Other permit \u2014 Hill Rd, Stockbridge",
+   "content_text": "Other permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Other"
+  },
+  {
+   "id": "b1b4d9988b83f53b",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Glendale Middle Rd, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "d4fc9f04b45dd97c",
+   "url": "https://masspermits.com/permits/stockbridge-plumbing",
+   "title": "Plumbing permit \u2014 Interlaken Rd, Stockbridge",
+   "content_text": "Plumbing permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "6395c46dcc88d319",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Stone Ridge Rd, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "fc1ee6c3dc78398a",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Church St, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-20T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "762c6f537871d07c",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Hawthorn Rd W P Condo, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "36e5e58a3b441be0",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Main St, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "fe9cf7fb5f14273d",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Interlaken Rd, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "0648056d017c3e9d",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Main St, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "3aa8d960a21a8100",
+   "url": "https://masspermits.com/permits/stockbridge-plumbing",
+   "title": "Plumbing permit \u2014 Stone Ridge Rd, Stockbridge",
+   "content_text": "Plumbing permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "e12f60e75ff6155f",
+   "url": "https://masspermits.com/permits/stockbridge",
+   "title": "HVAC permit \u2014 Hawthorne Rd W P Condo, Stockbridge",
+   "content_text": "HVAC permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "b2d6c845cf973a8a",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Cherry Hill Rd, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "dca694ac26d959af",
+   "url": "https://masspermits.com/permits/stockbridge-other",
+   "title": "Other permit \u2014 Glendale Rd, Stockbridge",
+   "content_text": "Other permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Other"
+  },
+  {
+   "id": "88b18c3661a8a8c8",
+   "url": "https://masspermits.com/permits/stockbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Dugway Rd, Stockbridge",
+   "content_text": "Renovation/Remodel permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "4af619e4b7dfa396",
+   "url": "https://masspermits.com/permits/stockbridge-gas",
+   "title": "Gas permit \u2014 Elm St, Stockbridge",
+   "content_text": "Gas permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "6593ef5a96788b65",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Church St, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "394587d531f1745d",
+   "url": "https://masspermits.com/permits/stockbridge-electrical",
+   "title": "Electrical permit \u2014 Dugway Rd, Stockbridge",
+   "content_text": "Electrical permit in Stockbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-10T00:00:00Z",
+   "_town": "Stockbridge",
+   "_trade": "Electrical"
+  }
+ ]
+}

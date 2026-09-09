@@ -1,0 +1,573 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Lee, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/lee.json",
+ "description": "Recent building permits in Lee, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 64,
+ "_window_from": "2026-08-10",
+ "_window_to": "2026-09-08",
+ "items": [
+  {
+   "id": "c999a4ec8945721d",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Spring St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "2af0513f57e5453d",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Summer St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "641626025968a5e9",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Pleasant St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "91f69b2cb5c7edf5",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Columbia St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "22991dd7531c6523",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 West Rd, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "a25dfac0699181b6",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Cape St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "5a928144a2c3dfa1",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Fernside Rd, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "64256f85fe0c1792",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Richmond Ave, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "dfd168d1ee4fe8bc",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Main St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "c47ccf1790c7dcd0",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Woodland Rd, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "ed779c5167b7c7da",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Fairview St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "5dab9166242f5e05",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Consolati Way, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "7809aa961fa6f60a",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Greylock St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "9c8db50f64268e5c",
+   "url": "https://masspermits.com/permits/lee-sign-awning",
+   "title": "Sign/Awning permit \u2014 Park St, Lee",
+   "content_text": "Sign/Awning permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-02T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Sign/Awning"
+  },
+  {
+   "id": "fc5e8f472aa7c4dc",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Golden Hill Rd, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "117166272b4a2b6f",
+   "url": "https://masspermits.com/permits/lee-other",
+   "title": "Other permit \u2014 Railroad St, Lee",
+   "content_text": "Other permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Other"
+  },
+  {
+   "id": "bf1a4922be7aaf1f",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Summer St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "ddf434a915b834a5",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Pine Ridge Dr, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "77c995db086067a3",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Pine St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "982f0eb45269e349",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Center St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "6e21c1039c65d777",
+   "url": "https://masspermits.com/permits/lee-plumbing",
+   "title": "Plumbing permit \u2014 Tamarack Ave, Lee",
+   "content_text": "Plumbing permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "b802103f0cfbcbae",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Stockbridge Rd, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "46e63554041034ff",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Tamarack Ave, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "59330b3fc43b49be",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Pleasant St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "f9d9ad193451b058",
+   "url": "https://masspermits.com/permits/lee-plumbing",
+   "title": "Plumbing permit \u2014 Fox Run, Lee",
+   "content_text": "Plumbing permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "598be1fcc44191e6",
+   "url": "https://masspermits.com/permits/lee-gas",
+   "title": "Gas permit \u2014 Summer St, Lee",
+   "content_text": "Gas permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "6b3c19474d7c5e48",
+   "url": "https://masspermits.com/permits/lee-gas",
+   "title": "Gas permit \u2014 Leisure Lee Rd, Lee",
+   "content_text": "Gas permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "c9ed719a8bb43d50",
+   "url": "https://masspermits.com/permits/lee-gas",
+   "title": "Gas permit \u2014 West Center St, Lee",
+   "content_text": "Gas permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "6347a68ed9219cd7",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Davis St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "660eab3ea349c116",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Marble St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e55cb75d4f245330",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 David Ave, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "db5623b188cc68bd",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Tyringham Rd, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "88373b0af86ef68f",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Cape St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e7dade48072485be",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Lois St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "1e5c07e6388313bc",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Lois St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "ac23cef7a2428240",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Laurel St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e4737aa621af6391",
+   "url": "https://masspermits.com/permits/lee-sign-awning",
+   "title": "Sign/Awning permit \u2014 Water St, Lee",
+   "content_text": "Sign/Awning permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-26T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Sign/Awning"
+  },
+  {
+   "id": "944fb893d790d28c",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 West Rd, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "b5dd7e3c2fecc2d6",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Mallard Lane, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "66d1a7db0cd7a18e",
+   "url": "https://masspermits.com/permits/lee-other",
+   "title": "Other permit \u2014 East St, Lee",
+   "content_text": "Other permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Other"
+  },
+  {
+   "id": "7b61ec195feb1f5f",
+   "url": "https://masspermits.com/permits/lee-other",
+   "title": "Other permit \u2014 Greylock St, Lee",
+   "content_text": "Other permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Other"
+  },
+  {
+   "id": "85345909c4ac29b2",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Park St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-24T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "15a4bbea8d0a202e",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Marble St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-23T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f580080daa7cc254",
+   "url": "https://masspermits.com/permits/lee-gas",
+   "title": "Gas permit \u2014 Cone Ave, Lee",
+   "content_text": "Gas permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "a4f8ca8f87748ad1",
+   "url": "https://masspermits.com/permits/lee-gas",
+   "title": "Gas permit \u2014 Stockbridge Terrace, Lee",
+   "content_text": "Gas permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "7ecbf039b28f3e67",
+   "url": "https://masspermits.com/permits/lee-gas",
+   "title": "Gas permit \u2014 Golden Hill Rd, Lee",
+   "content_text": "Gas permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "b0486f121eabd8bb",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Stockbridge Rd, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "000c1ea9c1978730",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Spring St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-21T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c5fa66ed11b58ea6",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Laurel St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "b7572e5b808d3d19",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Laurel St - Building A, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-19T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "56537bc76879d28f",
+   "url": "https://masspermits.com/permits/lee-gas",
+   "title": "Gas permit \u2014 Woodland Rd, Lee",
+   "content_text": "Gas permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-18T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "00ae86e208e72058",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Willow St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-17T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "2e41236454768fa2",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Orchard St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-14T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "6384fe5dc2e437e7",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Olive St, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "4b640d7bd26c330a",
+   "url": "https://masspermits.com/permits/lee-electrical",
+   "title": "Electrical permit \u2014 Pine Ridge Dr, Lee",
+   "content_text": "Electrical permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-13T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "e4f6de06e0891ad4",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Old Pleasant St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "27cc1d541c0fc045",
+   "url": "https://masspermits.com/permits/lee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 East St, Lee",
+   "content_text": "Renovation/Remodel permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "44e0daed86b91e08",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Franklin St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-12T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "aadce766b26eee33",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Summer, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  },
+  {
+   "id": "8c6f6353fedb96f3",
+   "url": "https://masspermits.com/permits/lee-building",
+   "title": "Building permit \u2014 Housatonic St, Lee",
+   "content_text": "Building permit in Lee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-11T00:00:00Z",
+   "_town": "Lee",
+   "_trade": "Building"
+  }
+ ]
+}
