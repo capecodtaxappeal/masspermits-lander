@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-09T13:48:01.701804+00:00",
- "corpus_rows": 75270,
+ "corpus_fetched_at": "2026-09-10T13:47:18.325573+00:00",
+ "corpus_rows": 75581,
  "corpus_sources": 73,
  "corpus_first": "2025-11-03",
- "corpus_last": "2026-09-09",
+ "corpus_last": "2026-09-10",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,22 +35,22 @@
   ]
  },
  "stats": {
-  "adu_rows": 298,
-  "adu_towns": 31,
+  "adu_rows": 300,
+  "adu_towns": 32,
   "eligible_sources": 51,
   "n_sources": 73,
   "garage": 60,
-  "garage_share": 20.1,
+  "garage_share": 20.0,
   "conversion": 58,
-  "new_build": 151,
-  "unclassified": 89,
+  "new_build": 152,
+  "unclassified": 90,
   "garage_conversion": 24,
   "garage_new_build": 25,
   "form_leader": "new construction",
-  "pooled_rate": 59.0,
+  "pooled_rate": 59.2,
   "raw_first": 4,
   "raw_peak": 64,
-  "rate_min": 41.8,
+  "rate_min": 42.5,
   "rate_max": 124.2,
   "n_months": 10,
   "series": [
@@ -81,10 +81,10 @@
    {
     "month": "2026-03",
     "raw": 30,
-    "base": 3515,
+    "base": 3395,
     "sources": 28,
     "partial": false,
-    "rate": 85.3
+    "rate": 88.4
    },
    {
     "month": "2026-04",
@@ -97,10 +97,10 @@
    {
     "month": "2026-05",
     "raw": 46,
-    "base": 6257,
+    "base": 6206,
     "sources": 31,
     "partial": false,
-    "rate": 73.5
+    "rate": 74.1
    },
    {
     "month": "2026-06",
@@ -120,23 +120,23 @@
    },
    {
     "month": "2026-08",
-    "raw": 46,
-    "base": 11007,
-    "sources": 44,
+    "raw": 47,
+    "base": 11053,
+    "sources": 43,
     "partial": false,
-    "rate": 41.8
+    "rate": 42.5
    },
    {
     "month": "2026-09",
-    "raw": 12,
-    "base": 1928,
+    "raw": 13,
+    "base": 2229,
     "sources": 36,
     "partial": true,
-    "rate": 62.2
+    "rate": 58.3
    }
   ],
   "src_first": 3,
-  "src_peak": 44,
+  "src_peak": 43,
   "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
@@ -163,6 +163,7 @@
    "Reading, MA",
    "Rockland, MA",
    "Somerville, MA",
+   "Southampton, MA",
    "Taunton, MA",
    "Townsend, MA",
    "Truro, MA",
