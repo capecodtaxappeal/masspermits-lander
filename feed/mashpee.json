@@ -25,12 +25,12 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 340,
- "_window_from": "2026-08-12",
+ "_window_total": 338,
+ "_window_from": "2026-08-13",
  "_window_to": "2026-09-11",
  "items": [
   {
-   "id": "048676de7ca2aba6",
+   "id": "52d8e7fccb732bf9",
    "url": "https://masspermits.com/permits/mashpee-gas",
    "title": "Gas permit \u2014 Hyannis Point Rd, Mashpee",
    "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
@@ -39,16 +39,115 @@
    "_trade": "Gas"
   },
   {
-   "id": "9540abeb79d938bf",
-   "url": "https://masspermits.com/permits/mashpee-plumbing",
-   "title": "Plumbing permit \u2014 Hyannis Point Rd, Mashpee",
-   "content_text": "Plumbing permit in Mashpee, MA. Full lead at masspermits.com.",
+   "id": "e81ef844d5250dbc",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 Sewall Dr, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-11T00:00:00Z",
    "_town": "Mashpee",
-   "_trade": "Plumbing"
+   "_trade": "Electrical"
   },
   {
-   "id": "22c4b02d2b33c61d",
+   "id": "b3f3fdfe4e42d42c",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 The Heights, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "8b73eaa0cb74ed7c",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 Glenneagle Dr, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3d50b36893a31723",
+   "url": "https://masspermits.com/permits/mashpee-gas",
+   "title": "Gas permit \u2014 Sandview Ter, Mashpee",
+   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "855fbc697413c90e",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 Summersea Rd, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "7d03a7491134b500",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Monomoscoy Rd, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "2d6d36251e65b1c2",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 North Glen Dr, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "bf73edaa0d7ab4cc",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 River Hill Rd, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e37ab8e92bf41d6f",
+   "url": "https://masspermits.com/permits/mashpee-gas",
+   "title": "Gas permit \u2014 Lowell Rd, Mashpee",
+   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "4555a77fe32edf56",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Brassie Way, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "5a259a9a1ffa83ac",
+   "url": "https://masspermits.com/permits/mashpee-gas",
+   "title": "Gas permit \u2014 Summersea Rd, Mashpee",
+   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "6341234965b37c7b",
+   "url": "https://masspermits.com/permits/mashpee-gas",
+   "title": "Gas permit \u2014 Glenneagle Dr, Mashpee",
+   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "5bec8df7c2077a46",
    "url": "https://masspermits.com/permits/mashpee-gas",
    "title": "Gas permit \u2014 Sand Dollar Ln, Mashpee",
    "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
@@ -57,7 +156,16 @@
    "_trade": "Gas"
   },
   {
-   "id": "12bc3aeb0708d9a4",
+   "id": "ace637147190e6f3",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 North Glen Dr, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "bb97350f75517de7",
    "url": "https://masspermits.com/permits/mashpee-gas",
    "title": "Gas permit \u2014 Metacomet Rd, Mashpee",
    "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
@@ -66,20 +174,83 @@
    "_trade": "Gas"
   },
   {
-   "id": "c59f5834c9ef9094",
+   "id": "57537cab4d05308c",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Carleton Dr, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "8c072c4d133854d7",
+   "url": "https://masspermits.com/permits/mashpee-gas",
+   "title": "Gas permit \u2014 Barnacle Ln, Mashpee",
+   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "88bb1f4b760ac942",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Wilsons Grv, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "7c6447b01af585ec",
    "url": "https://masspermits.com/permits/mashpee-plumbing",
-   "title": "Plumbing permit \u2014 Cayuga Ave, Mashpee",
+   "title": "Plumbing permit \u2014 Rainbow Ln, Mashpee",
    "content_text": "Plumbing permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
+   "date_published": "2026-09-11T00:00:00Z",
    "_town": "Mashpee",
    "_trade": "Plumbing"
   },
   {
-   "id": "0d33bacc717ab007",
+   "id": "7b076040b0894266",
+   "url": "https://masspermits.com/permits/mashpee-plumbing",
+   "title": "Plumbing permit \u2014 Hyannis Point Rd, Mashpee",
+   "content_text": "Plumbing permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "6b86e6a6ffac97a1",
    "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 North Way, Mashpee",
+   "title": "Renovation/Remodel permit \u2014 Claulise Ln, Mashpee",
    "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "3c8d9edd034589ff",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Shellback Way, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "f5704e15a97ddb44",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 Grand Vista, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b2818bf76885b782",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Great Neck Rd, North, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
    "_town": "Mashpee",
    "_trade": "Renovation/Remodel"
   },
@@ -111,6 +282,24 @@
    "_trade": "Other"
   },
   {
+   "id": "4d376dd360e5a868",
+   "url": "https://masspermits.com/permits/mashpee-gas",
+   "title": "Gas permit \u2014 Deerfoot Cir, Mashpee",
+   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Gas"
+  },
+  {
+   "id": "88dc349ddaddf7ea",
+   "url": "https://masspermits.com/permits/mashpee-other",
+   "title": "Other permit \u2014 Jobs Fishing Rd, Mashpee",
+   "content_text": "Other permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Other"
+  },
+  {
    "id": "265db83477caba4c",
    "url": "https://masspermits.com/permits/mashpee-plumbing",
    "title": "Plumbing permit \u2014 Northwest Lndg, Mashpee",
@@ -129,15 +318,6 @@
    "_trade": "Other"
   },
   {
-   "id": "88dc349ddaddf7ea",
-   "url": "https://masspermits.com/permits/mashpee-other",
-   "title": "Other permit \u2014 Jobs Fishing Rd, Mashpee",
-   "content_text": "Other permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Other"
-  },
-  {
    "id": "ae95b4f3836d88e3",
    "url": "https://masspermits.com/permits/mashpee-other",
    "title": "Other permit \u2014 Benefit Street, Mashpee",
@@ -145,33 +325,6 @@
    "date_published": "2026-09-10T00:00:00Z",
    "_town": "Mashpee",
    "_trade": "Other"
-  },
-  {
-   "id": "d12737a4bb4be665",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 The Heights, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "4d376dd360e5a868",
-   "url": "https://masspermits.com/permits/mashpee-gas",
-   "title": "Gas permit \u2014 Deerfoot Cir, Mashpee",
-   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Gas"
-  },
-  {
-   "id": "46df1c5534610dd2",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Claulise Ln, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
   },
   {
    "id": "52fec2db854d424c",
@@ -190,6 +343,33 @@
    "date_published": "2026-09-10T00:00:00Z",
    "_town": "Mashpee",
    "_trade": "Electrical"
+  },
+  {
+   "id": "46df1c5534610dd2",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 Claulise Ln, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c59f5834c9ef9094",
+   "url": "https://masspermits.com/permits/mashpee-plumbing",
+   "title": "Plumbing permit \u2014 Cayuga Ave, Mashpee",
+   "content_text": "Plumbing permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "0d33bacc717ab007",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 North Way, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
   },
   {
    "id": "384a43f691f9767f",
@@ -237,15 +417,6 @@
    "_trade": "Electrical"
   },
   {
-   "id": "09c254eb884f8e4f",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Claulise Ln, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
    "id": "3bb8177e816b45f0",
    "url": "https://masspermits.com/permits/mashpee-electrical",
    "title": "Electrical permit \u2014 Amos Landing Rd, Mashpee",
@@ -258,15 +429,6 @@
    "id": "204e9a3087e7e55b",
    "url": "https://masspermits.com/permits/mashpee-electrical",
    "title": "Electrical permit \u2014 Yardarm Dr, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "0a0c7dad2c6fd250",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Cottage Ln, Mashpee",
    "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-10T00:00:00Z",
    "_town": "Mashpee",
@@ -300,9 +462,27 @@
    "_trade": "Renovation/Remodel"
   },
   {
+   "id": "0a0c7dad2c6fd250",
+   "url": "https://masspermits.com/permits/mashpee-electrical",
+   "title": "Electrical permit \u2014 Cottage Ln, Mashpee",
+   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Electrical"
+  },
+  {
    "id": "5050fc2c77eb11c3",
    "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Jeep Pl, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "fd0cd350362fa653",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Ashumet Ave, Mashpee",
    "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-10T00:00:00Z",
    "_town": "Mashpee",
@@ -327,15 +507,6 @@
    "_trade": "Renovation/Remodel"
   },
   {
-   "id": "fd0cd350362fa653",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Ashumet Ave, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
    "id": "df76b7c8515f07dc",
    "url": "https://masspermits.com/permits/mashpee-other",
    "title": "Other permit \u2014 Lowell Rd, Mashpee",
@@ -354,9 +525,9 @@
    "_trade": "Renovation/Remodel"
   },
   {
-   "id": "0121c97cd780e7cc",
+   "id": "7210946d6d19c166",
    "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Blue Fin, Mashpee",
+   "title": "Renovation/Remodel permit \u2014 Flat Pond Cir, Mashpee",
    "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-09T00:00:00Z",
    "_town": "Mashpee",
@@ -372,6 +543,15 @@
    "_trade": "Plumbing"
   },
   {
+   "id": "0121c97cd780e7cc",
+   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Blue Fin, Mashpee",
+   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-09T00:00:00Z",
+   "_town": "Mashpee",
+   "_trade": "Renovation/Remodel"
+  },
+  {
    "id": "10fba19fe8feebf3",
    "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Strawberry Ln, Mashpee",
@@ -381,189 +561,9 @@
    "_trade": "Renovation/Remodel"
   },
   {
-   "id": "7210946d6d19c166",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Flat Pond Cir, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
    "id": "59f7cc6810e970a4",
    "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Four Seasons Dr, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "833d6d926e9cd6ea",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Summersea Rd, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "0608c86720a70369",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Polaris Dr, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "22074e090e1deedc",
-   "url": "https://masspermits.com/permits/mashpee-other",
-   "title": "Other permit \u2014 Rainbow Ln, Mashpee",
-   "content_text": "Other permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Other"
-  },
-  {
-   "id": "72580df9c913ce1f",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Falmouth Rd, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "45cb1e3b7a484b15",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Ashumet Ave, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "aecef22a84dbe66b",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Main St, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "393eab355b2c8b8f",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Pleasant Park Dr, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "003290424ea17cd5",
-   "url": "https://masspermits.com/permits/mashpee-gas",
-   "title": "Gas permit \u2014 Pine Hill Blvd, Mashpee",
-   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Gas"
-  },
-  {
-   "id": "7cf1af3cc6c8fbd1",
-   "url": "https://masspermits.com/permits/mashpee-gas",
-   "title": "Gas permit \u2014 Polaris Dr, Mashpee",
-   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Gas"
-  },
-  {
-   "id": "2d1fa5f90d82ed74",
-   "url": "https://masspermits.com/permits/mashpee-gas",
-   "title": "Gas permit \u2014 Azalea Ln, Mashpee",
-   "content_text": "Gas permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Gas"
-  },
-  {
-   "id": "bd8a4ef5d7c4a940",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Old Barnstable Rd, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "0e6ce56f11528c74",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Starboard Dr, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "136c14a70404d184",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 West Way, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "828b6fb27d2a38b9",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Willow Cir, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "2b18cc2510441c7d",
-   "url": "https://masspermits.com/permits/mashpee-plumbing",
-   "title": "Plumbing permit \u2014 Lowell Rd, Mashpee",
-   "content_text": "Plumbing permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "4b1d074af9d06068",
-   "url": "https://masspermits.com/permits/mashpee-electrical",
-   "title": "Electrical permit \u2014 Kim Path, Mashpee",
-   "content_text": "Electrical permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "4102e8491f32f23d",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Bog River Bend, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "1500a10f24d205de",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Santuit Pond Way, Mashpee",
-   "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Mashpee",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "8125e81ce5c4a244",
-   "url": "https://masspermits.com/permits/mashpee-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Periwinkle Lane, Mashpee",
    "content_text": "Renovation/Remodel permit in Mashpee, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-09T00:00:00Z",
    "_town": "Mashpee",

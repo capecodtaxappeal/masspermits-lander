@@ -54,7 +54,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-04"
+   "temporal": "2026-03-16/2026-09-04"
   },
   {
    "@type": "dcat:Dataset",
@@ -106,7 +106,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-05-14/2026-09-11"
+   "temporal": "2026-05-15/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -158,7 +158,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-10"
+   "temporal": "2026-03-17/2026-09-10"
   },
   {
    "@type": "dcat:Dataset",
@@ -262,7 +262,59 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-11"
+   "temporal": "2026-03-16/2026-09-11"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Attleboro, Massachusetts",
+   "description": "Recent building-permit activity in Attleboro, MA: trade, issue date, masked street. Compiled from public municipal records. Attleboro's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/attleboro",
+   "landingPage": "https://masspermits.com/permits/attleboro",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-12",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Attleboro"
+   ],
+   "spatial": "Attleboro, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/attleboro.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/attleboro.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/attleboro.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/attleboro.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-03-25/2026-09-12"
   },
   {
    "@type": "dcat:Dataset",
@@ -314,7 +366,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-05-26/2026-09-11"
+   "temporal": "2026-05-27/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -366,59 +418,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-30/2026-09-11"
-  },
-  {
-   "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Attleboro, Massachusetts",
-   "description": "Recent building-permit activity in Attleboro, MA: trade, issue date, masked street. Compiled from public municipal records. Attleboro's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/attleboro",
-   "landingPage": "https://masspermits.com/permits/attleboro",
-   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-   "accessLevel": "public",
-   "modified": "2026-09-11",
-   "publisher": {
-    "@type": "org:Organization",
-    "name": "MassPermits",
-    "identifier": "https://masspermits.com/#org"
-   },
-   "describedBy": "https://masspermits.com/research/methodology",
-   "contactPoint": {
-    "@type": "vcard:Contact",
-    "fn": "MassPermits",
-    "hasEmail": "mailto:hello@masspermits.com"
-   },
-   "keyword": [
-    "building permits",
-    "construction",
-    "massachusetts",
-    "Attleboro"
-   ],
-   "spatial": "Attleboro, Massachusetts",
-   "distribution": [
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/attleboro.csv",
-     "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/attleboro.csv-metadata.json",
-     "describedByType": "application/csvm+json"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/attleboro.json",
-     "format": "JSON Feed"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/attleboro.xml",
-     "format": "RSS"
-    }
-   ],
-   "temporal": "2026-03-24/2026-09-11"
+   "temporal": "2026-03-31/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -689,7 +689,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-11",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -730,7 +730,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-11"
+   "temporal": "2026-03-16/2026-09-12"
   },
   {
    "@type": "dcat:Dataset",
@@ -782,7 +782,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-11"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -949,7 +949,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-11",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -990,7 +990,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-11"
+   "temporal": "2026-03-16/2026-09-12"
   },
   {
    "@type": "dcat:Dataset",
@@ -1001,7 +1001,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -1042,7 +1042,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -1313,7 +1313,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -1354,7 +1354,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -1469,7 +1469,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -1510,7 +1510,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -1521,7 +1521,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -1562,7 +1562,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -1781,7 +1781,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -1822,7 +1822,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-10"
+   "temporal": "2026-03-16/2026-09-12"
   },
   {
    "@type": "dcat:Dataset",
@@ -1833,7 +1833,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -1874,7 +1874,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -1885,7 +1885,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-09",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -1926,7 +1926,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-09"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -2041,7 +2041,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -2082,7 +2082,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-16/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -2197,7 +2197,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -2238,7 +2238,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -2249,7 +2249,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -2290,7 +2290,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-10"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -2498,7 +2498,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-10"
+   "temporal": "2026-03-16/2026-09-10"
   },
   {
    "@type": "dcat:Dataset",
@@ -2550,7 +2550,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-03-15/2026-09-11"
+   "temporal": "2026-03-16/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -4121,7 +4121,7 @@
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -4162,7 +4162,7 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-08-17/2026-09-10"
+   "temporal": "2026-08-18/2026-09-12"
   },
   {
    "@type": "dcat:Dataset",
@@ -4215,6 +4215,58 @@
     }
    ],
    "temporal": "2026-09-02/2026-09-10"
+  },
+  {
+   "@type": "dcat:Dataset",
+   "title": "Building Permits \u2014 Groveland, Massachusetts",
+   "description": "Recent building-permit activity in Groveland, MA: trade, issue date, masked street. Compiled from public municipal records. Groveland's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/groveland",
+   "landingPage": "https://masspermits.com/permits/groveland",
+   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+   "accessLevel": "public",
+   "modified": "2026-09-11",
+   "publisher": {
+    "@type": "org:Organization",
+    "name": "MassPermits",
+    "identifier": "https://masspermits.com/#org"
+   },
+   "describedBy": "https://masspermits.com/research/methodology",
+   "contactPoint": {
+    "@type": "vcard:Contact",
+    "fn": "MassPermits",
+    "hasEmail": "mailto:hello@masspermits.com"
+   },
+   "keyword": [
+    "building permits",
+    "construction",
+    "massachusetts",
+    "Groveland"
+   ],
+   "spatial": "Groveland, Massachusetts",
+   "distribution": [
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "text/csv",
+     "downloadURL": "https://masspermits.com/feed/groveland.csv",
+     "format": "CSV",
+     "describedBy": "https://masspermits.com/feed/groveland.csv-metadata.json",
+     "describedByType": "application/csvm+json"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/json",
+     "downloadURL": "https://masspermits.com/feed/groveland.json",
+     "format": "JSON Feed"
+    },
+    {
+     "@type": "dcat:Distribution",
+     "mediaType": "application/rss+xml",
+     "downloadURL": "https://masspermits.com/feed/groveland.xml",
+     "format": "RSS"
+    }
+   ],
+   "temporal": "2026-08-26/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -4322,14 +4374,14 @@
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Groveland, Massachusetts",
-   "description": "Recent building-permit activity in Groveland, MA: trade, issue date, masked street. Compiled from public municipal records. Groveland's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/groveland",
-   "landingPage": "https://masspermits.com/permits/groveland",
+   "title": "Building Permits \u2014 Hadley, Massachusetts",
+   "description": "Recent building-permit activity in Hadley, MA: trade, issue date, masked street. Compiled from public municipal records. Hadley's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/hadley",
+   "landingPage": "https://masspermits.com/permits/hadley",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -4345,32 +4397,32 @@
     "building permits",
     "construction",
     "massachusetts",
-    "Groveland"
+    "Hadley"
    ],
-   "spatial": "Groveland, Massachusetts",
+   "spatial": "Hadley, Massachusetts",
    "distribution": [
     {
      "@type": "dcat:Distribution",
      "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/groveland.csv",
+     "downloadURL": "https://masspermits.com/feed/hadley.csv",
      "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/groveland.csv-metadata.json",
+     "describedBy": "https://masspermits.com/feed/hadley.csv-metadata.json",
      "describedByType": "application/csvm+json"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/groveland.json",
+     "downloadURL": "https://masspermits.com/feed/hadley.json",
      "format": "JSON Feed"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/groveland.xml",
+     "downloadURL": "https://masspermits.com/feed/hadley.xml",
      "format": "RSS"
     }
    ],
-   "temporal": "2026-08-26/2026-09-10"
+   "temporal": "2026-09-01/2026-09-12"
   },
   {
    "@type": "dcat:Dataset",
@@ -4478,58 +4530,6 @@
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Townsend, Massachusetts",
-   "description": "Recent building-permit activity in Townsend, MA: trade, issue date, masked street. Compiled from public municipal records. Townsend's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/townsend",
-   "landingPage": "https://masspermits.com/permits/townsend",
-   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-   "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-   "accessLevel": "public",
-   "modified": "2026-09-11",
-   "publisher": {
-    "@type": "org:Organization",
-    "name": "MassPermits",
-    "identifier": "https://masspermits.com/#org"
-   },
-   "describedBy": "https://masspermits.com/research/methodology",
-   "contactPoint": {
-    "@type": "vcard:Contact",
-    "fn": "MassPermits",
-    "hasEmail": "mailto:hello@masspermits.com"
-   },
-   "keyword": [
-    "building permits",
-    "construction",
-    "massachusetts",
-    "Townsend"
-   ],
-   "spatial": "Townsend, Massachusetts",
-   "distribution": [
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/townsend.csv",
-     "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/townsend.csv-metadata.json",
-     "describedByType": "application/csvm+json"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/townsend.json",
-     "format": "JSON Feed"
-    },
-    {
-     "@type": "dcat:Distribution",
-     "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/townsend.xml",
-     "format": "RSS"
-    }
-   ],
-   "temporal": "2026-08-27/2026-09-11"
-  },
-  {
-   "@type": "dcat:Dataset",
    "title": "Building Permits \u2014 Stow, Massachusetts",
    "description": "Recent building-permit activity in Stow, MA: trade, issue date, masked street. Compiled from public municipal records. Stow's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
    "identifier": "https://masspermits.com/permits/stow",
@@ -4630,18 +4630,18 @@
      "format": "RSS"
     }
    ],
-   "temporal": "2026-09-01/2026-09-10"
+   "temporal": "2026-09-02/2026-09-10"
   },
   {
    "@type": "dcat:Dataset",
-   "title": "Building Permits \u2014 Hadley, Massachusetts",
-   "description": "Recent building-permit activity in Hadley, MA: trade, issue date, masked street. Compiled from public municipal records. Hadley's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
-   "identifier": "https://masspermits.com/permits/hadley",
-   "landingPage": "https://masspermits.com/permits/hadley",
+   "title": "Building Permits \u2014 Townsend, Massachusetts",
+   "description": "Recent building-permit activity in Townsend, MA: trade, issue date, masked street. Compiled from public municipal records. Townsend's source publishes no project value, so the valuation column is empty on every row. Street numbers, owner and contractor are withheld.",
+   "identifier": "https://masspermits.com/permits/townsend",
+   "landingPage": "https://masspermits.com/permits/townsend",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "rights": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
    "accessLevel": "public",
-   "modified": "2026-09-10",
+   "modified": "2026-09-11",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -4657,32 +4657,32 @@
     "building permits",
     "construction",
     "massachusetts",
-    "Hadley"
+    "Townsend"
    ],
-   "spatial": "Hadley, Massachusetts",
+   "spatial": "Townsend, Massachusetts",
    "distribution": [
     {
      "@type": "dcat:Distribution",
      "mediaType": "text/csv",
-     "downloadURL": "https://masspermits.com/feed/hadley.csv",
+     "downloadURL": "https://masspermits.com/feed/townsend.csv",
      "format": "CSV",
-     "describedBy": "https://masspermits.com/feed/hadley.csv-metadata.json",
+     "describedBy": "https://masspermits.com/feed/townsend.csv-metadata.json",
      "describedByType": "application/csvm+json"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/json",
-     "downloadURL": "https://masspermits.com/feed/hadley.json",
+     "downloadURL": "https://masspermits.com/feed/townsend.json",
      "format": "JSON Feed"
     },
     {
      "@type": "dcat:Distribution",
      "mediaType": "application/rss+xml",
-     "downloadURL": "https://masspermits.com/feed/hadley.xml",
+     "downloadURL": "https://masspermits.com/feed/townsend.xml",
      "format": "RSS"
     }
    ],
-   "temporal": "2026-09-01/2026-09-10"
+   "temporal": "2026-09-02/2026-09-11"
   },
   {
    "@type": "dcat:Dataset",
@@ -4744,7 +4744,7 @@
    "landingPage": "https://masspermits.com/research/friday-permit-gap",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "accessLevel": "public",
-   "modified": "2026-09-11",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -4781,7 +4781,7 @@
    "landingPage": "https://masspermits.com/research/adu-permits",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "accessLevel": "public",
-   "modified": "2026-09-11",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -4818,7 +4818,7 @@
    "landingPage": "https://masspermits.com/research/coverage",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "accessLevel": "public",
-   "modified": "2026-09-11",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
@@ -4855,7 +4855,7 @@
    "landingPage": "https://masspermits.com/research/coverage",
    "license": "https://creativecommons.org/licenses/by-nc/4.0/",
    "accessLevel": "public",
-   "modified": "2026-09-11",
+   "modified": "2026-09-12",
    "publisher": {
     "@type": "org:Organization",
     "name": "MassPermits",
