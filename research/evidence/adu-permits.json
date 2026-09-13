@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-12T13:05:59.832617+00:00",
- "corpus_rows": 75939,
+ "corpus_fetched_at": "2026-09-13T14:07:13.388271+00:00",
+ "corpus_rows": 75529,
  "corpus_sources": 73,
  "corpus_first": "2025-12-01",
- "corpus_last": "2026-09-12",
+ "corpus_last": "2026-09-13",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,22 +35,22 @@
   ]
  },
  "stats": {
-  "adu_rows": 303,
+  "adu_rows": 300,
   "adu_towns": 32,
   "eligible_sources": 51,
   "n_sources": 73,
-  "garage": 61,
-  "garage_share": 20.1,
+  "garage": 60,
+  "garage_share": 20.0,
   "conversion": 59,
-  "new_build": 153,
-  "unclassified": 91,
+  "new_build": 151,
+  "unclassified": 90,
   "garage_conversion": 25,
-  "garage_new_build": 25,
+  "garage_new_build": 24,
   "form_leader": "new construction",
-  "pooled_rate": 59.5,
+  "pooled_rate": 59.2,
   "raw_first": 4,
   "raw_peak": 63,
-  "rate_min": 42.3,
+  "rate_min": 42.4,
   "rate_max": 124.2,
   "n_months": 10,
   "series": [
@@ -80,11 +80,11 @@
    },
    {
     "month": "2026-03",
-    "raw": 30,
-    "base": 3361,
+    "raw": 27,
+    "base": 3143,
     "sources": 28,
     "partial": false,
-    "rate": 89.3
+    "rate": 85.9
    },
    {
     "month": "2026-04",
@@ -97,10 +97,10 @@
    {
     "month": "2026-05",
     "raw": 46,
-    "base": 6077,
+    "base": 6046,
     "sources": 31,
     "partial": false,
-    "rate": 75.7
+    "rate": 76.1
    },
    {
     "month": "2026-06",
@@ -121,18 +121,18 @@
    {
     "month": "2026-08",
     "raw": 47,
-    "base": 11100,
+    "base": 11090,
     "sources": 41,
     "partial": false,
-    "rate": 42.3
+    "rate": 42.4
    },
    {
     "month": "2026-09",
     "raw": 17,
-    "base": 2572,
+    "base": 2579,
     "sources": 36,
     "partial": true,
-    "rate": 66.1
+    "rate": 65.9
    }
   ],
   "src_first": 3,
