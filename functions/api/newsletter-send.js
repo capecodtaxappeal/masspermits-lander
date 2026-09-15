@@ -44,6 +44,42 @@ export async function onRequest(context) {
     } while (cursor);
     if (!readers.length) return json({ ok: true, note: "no confirmed readers yet" });
 
+    // ---- SUPPRESS PAYING SUBSCRIBERS -------------------------------------
+    // This digest sells the $99/mo Weekly Feed. Until now it had no idea who
+    // already bought it, so it pitched the product to people who owned it.
+    // That is not hypothetical: two of four paying customers complained about
+    // exactly this, on 2026-07-21 and again after the 2026-09-07 send, one of
+    // them eleven days after paying.
+    //
+    // FAILS CLOSED on purpose. If subscribers.json cannot be read or parsed we
+    // abort rather than send, because we cannot prove we are not mailing a
+    // customer. A missed marketing week costs little; pitching a paying
+    // customer their own subscription has now cost goodwill twice. The abort
+    // returns an explicit error so a silent non-send is never mistaken for a
+    // clean run.
+    let payers;
+    try {
+      const so = await env.BUNDLES.get("subscribers.json");
+      if (!so) return json({ ok: false, error: "subscribers.json missing — digest aborted rather than risk mailing a paying customer" }, 500);
+      const subs = JSON.parse(await so.text());
+      if (!Array.isArray(subs)) throw new Error("subscribers.json is not an array");
+      payers = new Set(
+        subs.filter(s => s && s.email && s.active === true)
+            .map(s => String(s.email).trim().toLowerCase())
+      );
+    } catch (e) {
+      return json({ ok: false, error: "subscribers.json unreadable (" + String(e && e.message || e).slice(0, 80) + ") — digest aborted rather than risk mailing a paying customer" }, 500);
+    }
+
+    const before = readers.length;
+    const kept = readers.filter(r => !payers.has(String(r.email).trim().toLowerCase()));
+    const suppressed = before - kept.length;
+    readers.length = 0;
+    readers.push(...kept);
+    if (!readers.length) {
+      return json({ ok: true, note: "every confirmed reader is a paying subscriber — nothing to send", suppressed });
+    }
+
     // digest content from our own public feed
     const feedResp = await fetch("https://masspermits.com/feed/permits.json");
     if (!feedResp.ok) return json({ ok: false, error: "feed fetch " + feedResp.status }, 500);
@@ -87,6 +123,7 @@ export async function onRequest(context) {
       }
     }
     return json({ ok: true, readers: readers.length, sent: sent.length,
+      suppressed_paying: suppressed,
       failed: sent.filter(s => !s.ok).length });
   } catch (e) {
     return json({ ok: false, error: String(e && e.message || e) }, 500);
