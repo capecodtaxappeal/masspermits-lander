@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-15T14:37:48.003110+00:00",
- "corpus_rows": 75741,
+ "corpus_fetched_at": "2026-09-16T14:23:56.612356+00:00",
+ "corpus_rows": 75740,
  "corpus_sources": 73,
  "corpus_first": "2025-12-01",
- "corpus_last": "2026-09-15",
+ "corpus_last": "2026-09-16",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -42,15 +42,15 @@
   "garage": 62,
   "garage_share": 20.5,
   "conversion": 60,
-  "new_build": 154,
-  "unclassified": 89,
+  "new_build": 155,
+  "unclassified": 88,
   "garage_conversion": 26,
   "garage_new_build": 24,
   "form_leader": "new construction",
   "pooled_rate": 59.6,
   "raw_first": 4,
   "raw_peak": 63,
-  "rate_min": 42.3,
+  "rate_min": 42.4,
   "rate_max": 124.2,
   "n_months": 10,
   "series": [
@@ -80,11 +80,11 @@
    },
    {
     "month": "2026-03",
-    "raw": 24,
-    "base": 2728,
+    "raw": 23,
+    "base": 2498,
     "sources": 27,
     "partial": false,
-    "rate": 88.0
+    "rate": 92.1
    },
    {
     "month": "2026-04",
@@ -97,10 +97,10 @@
    {
     "month": "2026-05",
     "raw": 46,
-    "base": 5979,
+    "base": 5894,
     "sources": 31,
     "partial": false,
-    "rate": 76.9
+    "rate": 78.0
    },
    {
     "month": "2026-06",
@@ -113,30 +113,30 @@
    {
     "month": "2026-07",
     "raw": 51,
-    "base": 11411,
+    "base": 10420,
     "sources": 37,
     "partial": false,
-    "rate": 44.7
+    "rate": 48.9
    },
    {
     "month": "2026-08",
     "raw": 47,
-    "base": 11101,
-    "sources": 41,
+    "base": 11095,
+    "sources": 39,
     "partial": false,
-    "rate": 42.3
+    "rate": 42.4
    },
    {
     "month": "2026-09",
-    "raw": 23,
-    "base": 3278,
+    "raw": 24,
+    "base": 4570,
     "sources": 36,
     "partial": true,
-    "rate": 70.2
+    "rate": 52.5
    }
   ],
   "src_first": 3,
-  "src_peak": 41,
+  "src_peak": 39,
   "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
@@ -164,11 +164,11 @@
    "Rockland, MA",
    "Somerville, MA",
    "Taunton, MA",
-   "Townsend, MA",
    "Truro, MA",
    "Wakefield, MA",
    "Waltham, MA",
    "West Bridgewater, MA",
+   "West Newbury, MA",
    "Worcester, MA"
   ]
  }

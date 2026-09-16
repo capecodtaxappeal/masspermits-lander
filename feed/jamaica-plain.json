@@ -25,10 +25,580 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 70,
- "_window_from": "2026-08-16",
- "_window_to": "2026-09-03",
+ "_window_total": 116,
+ "_window_from": "2026-08-17",
+ "_window_to": "2026-09-14",
  "items": [
+  {
+   "id": "8f145d8ac7e2f0c1",
+   "url": "https://masspermits.com/permits/jamaica-plain-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Centre St, Jamaica Plain ($28,179)",
+   "content_text": "Kitchen/Bath permit in Jamaica Plain, MA. Value $28,179. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Kitchen/Bath",
+   "_value": 28179.0
+  },
+  {
+   "id": "4da4a65816381fa4",
+   "url": "https://masspermits.com/permits/jamaica-plain-solar",
+   "title": "Solar permit \u2014 Wachusett St, Jamaica Plain ($1,378,000)",
+   "content_text": "Solar permit in Jamaica Plain, MA. Value $1,378,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Solar",
+   "_value": 1378000.0
+  },
+  {
+   "id": "2b2ead5d71ae746f",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Brookside Av, Jamaica Plain ($4,000)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 4000.0
+  },
+  {
+   "id": "2181b8ae1e9c6c3f",
+   "url": "https://masspermits.com/permits/jamaica-plain-deck-porch",
+   "title": "Deck/Porch permit \u2014 Perkins St, Jamaica Plain ($51,715)",
+   "content_text": "Deck/Porch permit in Jamaica Plain, MA. Value $51,715. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Deck/Porch",
+   "_value": 51715.0
+  },
+  {
+   "id": "6ca9e2f390a8a010",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Roanoke Av, Jamaica Plain ($4,500)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $4,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 4500.0
+  },
+  {
+   "id": "bdda5d4c49cb0527",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Halifax St, Jamaica Plain ($11,000)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 11000.0
+  },
+  {
+   "id": "846fec2576c74be0",
+   "url": "https://masspermits.com/permits/jamaica-plain-solar",
+   "title": "Solar permit \u2014 Halifax St, Jamaica Plain ($36,164)",
+   "content_text": "Solar permit in Jamaica Plain, MA. Value $36,164. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Solar",
+   "_value": 36163.73
+  },
+  {
+   "id": "ab9fc3332cb8c577",
+   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Perkins St, Jamaica Plain ($10,013)",
+   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $10,013. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 10012.9
+  },
+  {
+   "id": "ee6c67d4b96266a3",
+   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
+   "title": "HVAC permit \u2014 Centre St, Jamaica Plain ($1,710)",
+   "content_text": "HVAC permit in Jamaica Plain, MA. Value $1,710. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "HVAC",
+   "_value": 1710.0
+  },
+  {
+   "id": "763252906ff667c5",
+   "url": "https://masspermits.com/permits/jamaica-plain-deck-porch",
+   "title": "Deck/Porch permit \u2014 Goodrich Rd, Jamaica Plain ($38,000)",
+   "content_text": "Deck/Porch permit in Jamaica Plain, MA. Value $38,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Deck/Porch",
+   "_value": 38000.0
+  },
+  {
+   "id": "2c42f579486ad0d8",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Westchester Rd, Jamaica Plain ($20,000)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 20000.0
+  },
+  {
+   "id": "c447dd49f73c7063",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Carlford Rd, Jamaica Plain ($1,200)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $1,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 1200.0
+  },
+  {
+   "id": "41c7c642632ef367",
+   "url": "https://masspermits.com/permits/jamaica-plain-other",
+   "title": "Other permit \u2014 Carlford Rd, Jamaica Plain ($9,245)",
+   "content_text": "Other permit in Jamaica Plain, MA. Value $9,245. Full lead at masspermits.com.",
+   "date_published": "2026-09-13T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Other",
+   "_value": 9245.14
+  },
+  {
+   "id": "33b5a6ba47b41d8c",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Bynner St, Jamaica Plain ($550)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $550. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 550.0
+  },
+  {
+   "id": "67872e1e6814c2b3",
+   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Centre St, Jamaica Plain ($73,920)",
+   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $73,920. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Renovation/Remodel",
+   "_value": 73920.0
+  },
+  {
+   "id": "ea2fb54edb5ee00e",
+   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
+   "title": "Plumbing permit \u2014 Centre St, Jamaica Plain ($5,000)",
+   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Plumbing",
+   "_value": 5000.0
+  },
+  {
+   "id": "9bae93f6f68ccf4c",
+   "url": "https://masspermits.com/permits/jamaica-plain-gas",
+   "title": "Gas permit \u2014 Haverford St, Jamaica Plain ($200)",
+   "content_text": "Gas permit in Jamaica Plain, MA. Value $200. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Gas",
+   "_value": 200.0
+  },
+  {
+   "id": "744019ea4989b8fc",
+   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Slocum Rd, Jamaica Plain ($33,500)",
+   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $33,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 33500.0
+  },
+  {
+   "id": "817d47249accea78",
+   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
+   "title": "HVAC permit \u2014 Amory St, Jamaica Plain ($6,000)",
+   "content_text": "HVAC permit in Jamaica Plain, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "HVAC",
+   "_value": 6000.0
+  },
+  {
+   "id": "f8b39edf83e08325",
+   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
+   "title": "Plumbing permit \u2014 Pond St, Jamaica Plain ($3,790)",
+   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $3,790. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Plumbing",
+   "_value": 3790.0
+  },
+  {
+   "id": "02a1faf41d911fb6",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Seaverns Av, Jamaica Plain ($8,724)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $8,724. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 8723.5
+  },
+  {
+   "id": "46488dcc9fc686c2",
+   "url": "https://masspermits.com/permits/jamaica-plain-other",
+   "title": "Other permit \u2014 Montebello Rd, Jamaica Plain ($6,224)",
+   "content_text": "Other permit in Jamaica Plain, MA. Value $6,224. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Other",
+   "_value": 6224.41
+  },
+  {
+   "id": "2519732a12ebcdf0",
+   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
+   "title": "Roofing permit \u2014 Newbern St, Jamaica Plain ($11,397)",
+   "content_text": "Roofing permit in Jamaica Plain, MA. Value $11,397. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Roofing",
+   "_value": 11396.92
+  },
+  {
+   "id": "13443443ca1965aa",
+   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Bismarck St, Jamaica Plain ($314,172)",
+   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $314,172. Full lead at masspermits.com.",
+   "date_published": "2026-09-09T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Renovation/Remodel",
+   "_value": 314172.0
+  },
+  {
+   "id": "70bac758475a956d",
+   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
+   "title": "Roofing permit \u2014 Rockview St, Jamaica Plain ($13,500)",
+   "content_text": "Roofing permit in Jamaica Plain, MA. Value $13,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-09T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Roofing",
+   "_value": 13500.0
+  },
+  {
+   "id": "75e3233f79110936",
+   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Robinwood Av, Jamaica Plain ($5,080)",
+   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $5,080. Full lead at masspermits.com.",
+   "date_published": "2026-09-09T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5080.0
+  },
+  {
+   "id": "ccae4a8994a104b7",
+   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
+   "title": "HVAC permit \u2014 Williams St, Jamaica Plain ($12,000)",
+   "content_text": "HVAC permit in Jamaica Plain, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-09T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "HVAC",
+   "_value": 12000.0
+  },
+  {
+   "id": "f425dad7f51a2716",
+   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
+   "title": "Roofing permit \u2014 Green St, Jamaica Plain ($28,000)",
+   "content_text": "Roofing permit in Jamaica Plain, MA. Value $28,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-09T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Roofing",
+   "_value": 28000.0
+  },
+  {
+   "id": "c9aebdaeb0de5370",
+   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
+   "title": "Roofing permit \u2014 Brookley Rd, Jamaica Plain ($29,899)",
+   "content_text": "Roofing permit in Jamaica Plain, MA. Value $29,899. Full lead at masspermits.com.",
+   "date_published": "2026-09-09T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Roofing",
+   "_value": 29899.0
+  },
+  {
+   "id": "8874feac82471798",
+   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
+   "title": "HVAC permit \u2014 Tower St, Jamaica Plain ($14,500)",
+   "content_text": "HVAC permit in Jamaica Plain, MA. Value $14,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "HVAC",
+   "_value": 14500.0
+  },
+  {
+   "id": "e5ab02684c6ccbfd",
+   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
+   "title": "Plumbing permit \u2014 Wenham St, Jamaica Plain ($15,000)",
+   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Plumbing",
+   "_value": 15000.0
+  },
+  {
+   "id": "c640e4f3f4dbb6a9",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Wachusett St, Jamaica Plain ($21,336)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $21,336. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 21336.0
+  },
+  {
+   "id": "ec1cd945a5456fcc",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Alveston St, Jamaica Plain ($12,000)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 12000.0
+  },
+  {
+   "id": "4120d9a39e4cc589",
+   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Wyman St, Jamaica Plain ($35,000)",
+   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $35,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Renovation/Remodel",
+   "_value": 35000.0
+  },
+  {
+   "id": "67ca7c1d6d2626a2",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Perkins St, Jamaica Plain ($4,200)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $4,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 4200.0
+  },
+  {
+   "id": "ac34693b4bec177b",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Wenham St, Jamaica Plain ($9,500)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $9,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-08T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 9500.0
+  },
+  {
+   "id": "1b250226bcfd5fbb",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Forest Hills St, Jamaica Plain ($5,000)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-06T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 5000.0
+  },
+  {
+   "id": "28ae338b0e28ff90",
+   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Rockwood St, Jamaica Plain ($1,000)",
+   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Renovation/Remodel",
+   "_value": 1000.0
+  },
+  {
+   "id": "019bb399f309a82b",
+   "url": "https://masspermits.com/permits/jamaica-plain-gas",
+   "title": "Gas permit \u2014 Centre St, Jamaica Plain ($1,000)",
+   "content_text": "Gas permit in Jamaica Plain, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Gas",
+   "_value": 1000.0
+  },
+  {
+   "id": "81df7355c530dc48",
+   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
+   "title": "Roofing permit \u2014 Moraine St, Jamaica Plain ($29,920)",
+   "content_text": "Roofing permit in Jamaica Plain, MA. Value $29,920. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Roofing",
+   "_value": 29920.0
+  },
+  {
+   "id": "1adaf96a7c7670a5",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Lamartine St, Jamaica Plain ($990)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $990. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 989.55
+  },
+  {
+   "id": "214dfe7725bc38ff",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Franklin Park Rd, Jamaica Plain ($600)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $600. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 600.0
+  },
+  {
+   "id": "fd4775885d14934b",
+   "url": "https://masspermits.com/permits/jamaica-plain-other",
+   "title": "Other permit \u2014 Goldsmith St, Jamaica Plain ($2,814)",
+   "content_text": "Other permit in Jamaica Plain, MA. Value $2,814. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Other",
+   "_value": 2813.76
+  },
+  {
+   "id": "810df126bfb049ce",
+   "url": "https://masspermits.com/permits/jamaica-plain-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Perkins St, Jamaica Plain ($100,000)",
+   "content_text": "Kitchen/Bath permit in Jamaica Plain, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Kitchen/Bath",
+   "_value": 100000.0
+  },
+  {
+   "id": "15ffd4a3befb2b9b",
+   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
+   "title": "Roofing permit \u2014 Parkton Rd, Jamaica Plain ($42,000)",
+   "content_text": "Roofing permit in Jamaica Plain, MA. Value $42,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-04T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Roofing",
+   "_value": 42000.0
+  },
+  {
+   "id": "2b065108cb09d180",
+   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
+   "title": "Roofing permit \u2014 Boylston St, Jamaica Plain ($50,996)",
+   "content_text": "Roofing permit in Jamaica Plain, MA. Value $50,996. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Roofing",
+   "_value": 50996.0
+  },
+  {
+   "id": "774d0c25accf0545",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Moss Hill Rd, Jamaica Plain ($5,700)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $5,700. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 5700.0
+  },
+  {
+   "id": "d3d3b69c1d7beaaf",
+   "url": "https://masspermits.com/permits/jamaica-plain",
+   "title": "Building permit \u2014 Walden St, Jamaica Plain ($3,100)",
+   "content_text": "Building permit in Jamaica Plain, MA. Value $3,100. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Building",
+   "_value": 3100.0
+  },
+  {
+   "id": "73968ccb40d748fe",
+   "url": "https://masspermits.com/permits/jamaica-plain-deck-porch",
+   "title": "Deck/Porch permit \u2014 Sheridan St, Jamaica Plain ($52,291)",
+   "content_text": "Deck/Porch permit in Jamaica Plain, MA. Value $52,291. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Deck/Porch",
+   "_value": 52290.54
+  },
+  {
+   "id": "a59df59e2b40500f",
+   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
+   "title": "HVAC permit \u2014 Louder'S Ln, Jamaica Plain ($16,995)",
+   "content_text": "HVAC permit in Jamaica Plain, MA. Value $16,995. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "HVAC",
+   "_value": 16995.0
+  },
+  {
+   "id": "ffea7cacff0c2cf6",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Hyde Park Av, Jamaica Plain ($5,948)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $5,948. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 5948.18
+  },
+  {
+   "id": "5138ec197993278b",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Roseway St, Jamaica Plain ($2,135)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $2,135. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 2135.05
+  },
+  {
+   "id": "863dc43004d39797",
+   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
+   "title": "Plumbing permit \u2014 John A. Andrew St, Jamaica Plain ($35,000)",
+   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $35,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Plumbing",
+   "_value": 35000.0
+  },
+  {
+   "id": "926c528ca3fd67df",
+   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
+   "title": "HVAC permit \u2014 John A. Andrew St, Jamaica Plain ($3,000)",
+   "content_text": "HVAC permit in Jamaica Plain, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "HVAC",
+   "_value": 3000.0
+  },
+  {
+   "id": "d4c81a5b46f6159d",
+   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
+   "title": "HVAC permit \u2014 Wenham St, Jamaica Plain ($5,000)",
+   "content_text": "HVAC permit in Jamaica Plain, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "HVAC",
+   "_value": 5000.0
+  },
+  {
+   "id": "0be44fd9169e7ae0",
+   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
+   "title": "Electrical permit \u2014 Asticou Rd, Jamaica Plain ($32,000)",
+   "content_text": "Electrical permit in Jamaica Plain, MA. Value $32,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Electrical",
+   "_value": 32000.0
+  },
+  {
+   "id": "3c0b9fb4822f175b",
+   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
+   "title": "Plumbing permit \u2014 Williams St, Jamaica Plain ($15,000)",
+   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Jamaica Plain",
+   "_trade": "Plumbing",
+   "_value": 15000.0
+  },
   {
    "id": "672f3764bd7d0bfb",
    "url": "https://masspermits.com/permits/jamaica-plain-hvac",
@@ -58,575 +628,6 @@
    "_town": "Jamaica Plain",
    "_trade": "Roofing",
    "_value": 162185.0
-  },
-  {
-   "id": "8c094cb91e8287ca",
-   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
-   "title": "HVAC permit \u2014 Neillian Cr, Jamaica Plain ($4,000)",
-   "content_text": "HVAC permit in Jamaica Plain, MA. Value $4,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "HVAC",
-   "_value": 4000.0
-  },
-  {
-   "id": "e3122a89dc89a460",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Neillian Cr, Jamaica Plain ($15,000)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $15,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 15000.0
-  },
-  {
-   "id": "321fe656bbe25ed3",
-   "url": "https://masspermits.com/permits/jamaica-plain-other",
-   "title": "Other permit \u2014 Centre St, Jamaica Plain ($6,056)",
-   "content_text": "Other permit in Jamaica Plain, MA. Value $6,056. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Other",
-   "_value": 6055.61
-  },
-  {
-   "id": "d20ed21011bf9d8c",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Germania St, Jamaica Plain ($30,000)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $30,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 30000.0
-  },
-  {
-   "id": "b1f3aa2bb6337055",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Bismarck St, Jamaica Plain ($10,000)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $10,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 10000.0
-  },
-  {
-   "id": "4e00359ea10ad7ab",
-   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
-   "title": "HVAC permit \u2014 Westchester Rd, Jamaica Plain ($800)",
-   "content_text": "HVAC permit in Jamaica Plain, MA. Value $800. Full lead at masspermits.com.",
-   "date_published": "2026-09-02T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "HVAC",
-   "_value": 800.0
-  },
-  {
-   "id": "bc61ccb0f84f8e4a",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Wyman St, Jamaica Plain ($50,000)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $50,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 50000.0
-  },
-  {
-   "id": "5e7d1cf8ed33bd27",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Barbara St, Jamaica Plain ($65,000)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $65,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 65000.0
-  },
-  {
-   "id": "a35cbd4935d708a4",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Slocum Rd, Jamaica Plain ($6,048)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $6,048. Full lead at masspermits.com.",
-   "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 6048.0
-  },
-  {
-   "id": "65959a0b9ceff0ff",
-   "url": "https://masspermits.com/permits/jamaica-plain-gas",
-   "title": "Gas permit \u2014 South St, Jamaica Plain ($1,500)",
-   "content_text": "Gas permit in Jamaica Plain, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-01T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Gas",
-   "_value": 1500.0
-  },
-  {
-   "id": "029922077b827ca8",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Carolina Av, Jamaica Plain ($47,571)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $47,571. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 47571.0
-  },
-  {
-   "id": "4ca69f50f7a738bc",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Pond St, Jamaica Plain ($500)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $500. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 500.0
-  },
-  {
-   "id": "a8646b8d489fe8de",
-   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
-   "title": "HVAC permit \u2014 Forbes St, Jamaica Plain ($5,000)",
-   "content_text": "HVAC permit in Jamaica Plain, MA. Value $5,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "HVAC",
-   "_value": 5000.0
-  },
-  {
-   "id": "a2113e23dbc8bb6e",
-   "url": "https://masspermits.com/permits/jamaica-plain-hvac",
-   "title": "HVAC permit \u2014 Chilcott Pl, Jamaica Plain ($9,200)",
-   "content_text": "HVAC permit in Jamaica Plain, MA. Value $9,200. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "HVAC",
-   "_value": 9200.0
-  },
-  {
-   "id": "ceea1b600a8cee80",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Round Hill St, Jamaica Plain ($14,500)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $14,500. Full lead at masspermits.com.",
-   "date_published": "2026-08-31T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 14500.0
-  },
-  {
-   "id": "75b6d8274f5ff31e",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Ackley Pl, Jamaica Plain ($2,000)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $2,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-29T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 2000.0
-  },
-  {
-   "id": "0630905e15ec77df",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Chestnut Av, Jamaica Plain ($1,500)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-08-28T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 1500.0
-  },
-  {
-   "id": "b2574896ae86cd0c",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Hampstead Rd, Jamaica Plain ($500)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $500. Full lead at masspermits.com.",
-   "date_published": "2026-08-28T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 500.0
-  },
-  {
-   "id": "08d87e2635b11d4c",
-   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 South St, Jamaica Plain ($450)",
-   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $450. Full lead at masspermits.com.",
-   "date_published": "2026-08-28T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Renovation/Remodel",
-   "_value": 450.0
-  },
-  {
-   "id": "b0c98802f5811527",
-   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Germania St, Jamaica Plain ($1)",
-   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $1. Full lead at masspermits.com.",
-   "date_published": "2026-08-27T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Renovation/Remodel",
-   "_value": 1.0
-  },
-  {
-   "id": "74cab4cda4ff61af",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Rockview St, Jamaica Plain ($27,498)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $27,498. Full lead at masspermits.com.",
-   "date_published": "2026-08-27T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 27498.0
-  },
-  {
-   "id": "cbf8cd39e006eb44",
-   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Centre St, Jamaica Plain",
-   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Full lead at masspermits.com.",
-   "date_published": "2026-08-27T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "170e4983bf7a7d35",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Chilcott Pl, Jamaica Plain ($6,000)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $6,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-27T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 6000.0
-  },
-  {
-   "id": "c8a3d1ef2729f778",
-   "url": "https://masspermits.com/permits/jamaica-plain-kitchen-bath",
-   "title": "Kitchen/Bath permit \u2014 Chestnut Av, Jamaica Plain ($72,300)",
-   "content_text": "Kitchen/Bath permit in Jamaica Plain, MA. Value $72,300. Full lead at masspermits.com.",
-   "date_published": "2026-08-26T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Kitchen/Bath",
-   "_value": 72300.0
-  },
-  {
-   "id": "09e2a974c351c33e",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Westchester Rd, Jamaica Plain ($11,200)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $11,200. Full lead at masspermits.com.",
-   "date_published": "2026-08-26T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 11200.0
-  },
-  {
-   "id": "02a179be6c0d492f",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Eliot St, Jamaica Plain ($2,500)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $2,500. Full lead at masspermits.com.",
-   "date_published": "2026-08-26T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 2500.0
-  },
-  {
-   "id": "4d35f7276d5a56f1",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Forest Hills St, Jamaica Plain ($1,500)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-08-25T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 1500.0
-  },
-  {
-   "id": "ae0a161c8c9f1430",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Perkins St, Jamaica Plain ($26,806)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $26,806. Full lead at masspermits.com.",
-   "date_published": "2026-08-25T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 26806.09
-  },
-  {
-   "id": "91631372b36d0c43",
-   "url": "https://masspermits.com/permits/jamaica-plain-other",
-   "title": "Other permit \u2014 Hampstead Rd, Jamaica Plain ($4,044)",
-   "content_text": "Other permit in Jamaica Plain, MA. Value $4,044. Full lead at masspermits.com.",
-   "date_published": "2026-08-25T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Other",
-   "_value": 4044.0
-  },
-  {
-   "id": "18db711b803451ef",
-   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Parkton Rd, Jamaica Plain ($55,000)",
-   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $55,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Renovation/Remodel",
-   "_value": 55000.0
-  },
-  {
-   "id": "ce3eed6582006fa0",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Bourne St, Jamaica Plain ($31,965)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $31,965. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 31964.54
-  },
-  {
-   "id": "6446a96b09cd7f49",
-   "url": "https://masspermits.com/permits/jamaica-plain-other",
-   "title": "Other permit \u2014 Adelaide Te, Jamaica Plain ($21,497)",
-   "content_text": "Other permit in Jamaica Plain, MA. Value $21,497. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Other",
-   "_value": 21496.54
-  },
-  {
-   "id": "a273e13e4bee3dc6",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Walnut Av, Jamaica Plain ($115,000)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $115,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 115000.0
-  },
-  {
-   "id": "03e334165c1e5e42",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Saint John St, Jamaica Plain ($28,231)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $28,231. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 28231.0
-  },
-  {
-   "id": "506eaca6e03d66ba",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Glade Av, Jamaica Plain ($8,425)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $8,425. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 8425.0
-  },
-  {
-   "id": "772e8610532c5ce1",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Wenham St, Jamaica Plain ($8,000)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $8,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 8000.0
-  },
-  {
-   "id": "c79f0dbee43443fa",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Wayburn Rd, Jamaica Plain ($9,830)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $9,830. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 9830.0
-  },
-  {
-   "id": "843ad75248449192",
-   "url": "https://masspermits.com/permits/jamaica-plain-deck-porch",
-   "title": "Deck/Porch permit \u2014 Day St, Jamaica Plain ($89,630)",
-   "content_text": "Deck/Porch permit in Jamaica Plain, MA. Value $89,630. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Deck/Porch",
-   "_value": 89630.0
-  },
-  {
-   "id": "e112944aafa0c2eb",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Amory St, Jamaica Plain ($5,000)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $5,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 5000.0
-  },
-  {
-   "id": "62ba10b84b821c96",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Parkton Rd, Jamaica Plain ($36,800)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $36,800. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 36800.0
-  },
-  {
-   "id": "b2096e1070e39bc9",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Zamora St, Jamaica Plain ($3,500)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $3,500. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 3500.0
-  },
-  {
-   "id": "fa19f145414a7717",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 School St, Jamaica Plain ($5,000)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $5,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-24T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 5000.0
-  },
-  {
-   "id": "06e02cbf0d6d2076",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Thomas St, Jamaica Plain ($12,000)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $12,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-21T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 12000.0
-  },
-  {
-   "id": "b892f8e794c98d7e",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Centre St, Jamaica Plain ($2,500)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $2,500. Full lead at masspermits.com.",
-   "date_published": "2026-08-21T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 2500.0
-  },
-  {
-   "id": "95051a3ffddcbfee",
-   "url": "https://masspermits.com/permits/jamaica-plain-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Slocum Rd, Jamaica Plain ($22,765)",
-   "content_text": "Renovation/Remodel permit in Jamaica Plain, MA. Value $22,765. Full lead at masspermits.com.",
-   "date_published": "2026-08-21T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Renovation/Remodel",
-   "_value": 22765.0
-  },
-  {
-   "id": "4371ee8dbc4f94a5",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Grovenor Rd, Jamaica Plain ($937)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $937. Full lead at masspermits.com.",
-   "date_published": "2026-08-21T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 937.0
-  },
-  {
-   "id": "b67045666ed05046",
-   "url": "https://masspermits.com/permits/jamaica-plain-kitchen-bath",
-   "title": "Kitchen/Bath permit \u2014 Gay Head St, Jamaica Plain ($50,000)",
-   "content_text": "Kitchen/Bath permit in Jamaica Plain, MA. Value $50,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-21T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Kitchen/Bath",
-   "_value": 50000.0
-  },
-  {
-   "id": "3291fddc16e36ccc",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Wenham St, Jamaica Plain ($25,000)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $25,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-21T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 25000.0
-  },
-  {
-   "id": "2a1eef5ce14a6ef2",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Blanvon Rd, Jamaica Plain ($4,000)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $4,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-20T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 4000.0
-  },
-  {
-   "id": "5001bff58d3d8cd3",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 School St, Jamaica Plain ($14,800)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $14,800. Full lead at masspermits.com.",
-   "date_published": "2026-08-20T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 14800.0
-  },
-  {
-   "id": "ba75c8e175d9ab87",
-   "url": "https://masspermits.com/permits/jamaica-plain-roofing",
-   "title": "Roofing permit \u2014 Adelaide St, Jamaica Plain ($18,250)",
-   "content_text": "Roofing permit in Jamaica Plain, MA. Value $18,250. Full lead at masspermits.com.",
-   "date_published": "2026-08-20T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Roofing",
-   "_value": 18250.0
-  },
-  {
-   "id": "04bc7eda69e901b5",
-   "url": "https://masspermits.com/permits/jamaica-plain-kitchen-bath",
-   "title": "Kitchen/Bath permit \u2014 S Huntington Av, Jamaica Plain ($77,000)",
-   "content_text": "Kitchen/Bath permit in Jamaica Plain, MA. Value $77,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-19T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Kitchen/Bath",
-   "_value": 77000.0
-  },
-  {
-   "id": "42aeac555c4921cf",
-   "url": "https://masspermits.com/permits/jamaica-plain-plumbing",
-   "title": "Plumbing permit \u2014 Tower St, Jamaica Plain ($3,200)",
-   "content_text": "Plumbing permit in Jamaica Plain, MA. Value $3,200. Full lead at masspermits.com.",
-   "date_published": "2026-08-19T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Plumbing",
-   "_value": 3200.0
-  },
-  {
-   "id": "7926ca96614889d2",
-   "url": "https://masspermits.com/permits/jamaica-plain-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Lamartine St, Jamaica Plain ($28,275)",
-   "content_text": "Windows/Doors/Siding permit in Jamaica Plain, MA. Value $28,275. Full lead at masspermits.com.",
-   "date_published": "2026-08-19T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 28275.0
-  },
-  {
-   "id": "bce4e88db215b1d8",
-   "url": "https://masspermits.com/permits/jamaica-plain-solar",
-   "title": "Solar permit \u2014 Alveston St, Jamaica Plain ($7,038)",
-   "content_text": "Solar permit in Jamaica Plain, MA. Value $7,038. Full lead at masspermits.com.",
-   "date_published": "2026-08-19T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Solar",
-   "_value": 7038.0
-  },
-  {
-   "id": "568f1ab93e7a90f9",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Rambler Rd, Jamaica Plain ($1,000)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $1,000. Full lead at masspermits.com.",
-   "date_published": "2026-08-19T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 1000.0
-  },
-  {
-   "id": "f4ad69b97dda8c00",
-   "url": "https://masspermits.com/permits/jamaica-plain-electrical",
-   "title": "Electrical permit \u2014 Saint Joseph St, Jamaica Plain ($1,200)",
-   "content_text": "Electrical permit in Jamaica Plain, MA. Value $1,200. Full lead at masspermits.com.",
-   "date_published": "2026-08-19T00:00:00Z",
-   "_town": "Jamaica Plain",
-   "_trade": "Electrical",
-   "_value": 1200.0
   }
  ]
 }
