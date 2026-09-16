@@ -301,7 +301,23 @@ async function addSubscriber(env, email, event) {
       let changed = false;
       if (existing.active === false) { existing.active = true; delete existing.cancelled; changed = true; }
       if (!existing.token) { existing.token = crypto.randomUUID().replace(/-/g, ""); changed = true; }
-      if (!existing.customer && o.customer) { existing.customer = o.customer; changed = true; }
+      // REPLACE the Stripe customer id, do not merely backfill a missing one.
+      //
+      // A re-subscription after a cancellation arrives as a NEW Stripe customer
+      // id for the SAME email. The old form only filled the field when it was
+      // absent, so the row went on naming the DEAD customer. When Stripe later
+      // cancelled that dead customer, deactivateSubscriber matched this row by
+      // its stale id and switched off someone who was paying under the new one.
+      // That is exactly what happened on 2026-08-31: a subscriber who had
+      // re-subscribed on 08-18 was dropped from the 08-31, 09-07 and 09-14
+      // sends while still being billed, and nothing in the system disagreed.
+      //
+      // The newest completed checkout is the most recent truth about which
+      // Stripe customer this email pays as, so it wins.
+      if (o.customer && existing.customer !== o.customer) {
+        existing.customer = o.customer;
+        changed = true;
+      }
       if (changed) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
       return existing.token || "";
     }
@@ -336,6 +352,28 @@ async function addSubscriber(env, email, event) {
 // forever, unpaid, with nothing in the system aware of it.
 //
 // Email is the other identifier Stripe gives us, so use both.
+//
+// BUT email is the WEAKER identifier. It names a PERSON, and one person can have
+// several Stripe billing identities over time. The customer id names the actual
+// paying relationship. So when we hold BOTH and they disagree, the id wins and we
+// must NOT revoke: that is a cancellation for a customer this row no longer is.
+//
+// Without that rule, fixing the stale-id bug in addSubscriber is not enough on its
+// own. The dead customer's cancellation still carries the email, still matches, and
+// still switches off a live payer. Both halves are required.
+//
+// Returns: true to revoke, "superseded" for an id conflict on our email (never
+// revoke, worth telling the owner about), false for no match.
+function matchesForRevoke(s, customerId, byEmail) {
+  const rowId = String((s && s.customer) || "");
+  const emailHit = !!(byEmail && String((s && s.email) || "").toLowerCase() === byEmail);
+  // Both sides carry an id: the id is the whole answer.
+  if (customerId && rowId) return rowId === customerId ? true : (emailHit ? "superseded" : false);
+  // Either side is missing an id, so fall back to email exactly as before. This
+  // is what protects the 2026-06-26 style record that carries no customer field.
+  return emailHit;
+}
+
 async function deactivateSubscriber(env, customerId, evObj) {
   const byEmail = ((evObj && (evObj.customer_email ||
     (evObj.customer_details && evObj.customer_details.email))) || "").toLowerCase();
@@ -345,9 +383,10 @@ async function deactivateSubscriber(env, customerId, evObj) {
     if (!cur) return 0;
     const list = JSON.parse(await cur.text());
     let n = 0;
+    let superseded = 0;
     for (const s of list) {
-      const hit = (customerId && s.customer === customerId) ||
-                  (byEmail && (s.email || "").toLowerCase() === byEmail);
+      const hit = matchesForRevoke(s, customerId, byEmail);
+      if (hit === "superseded") { superseded++; continue; }
       if (hit && s.active !== false) {
         s.active = false;
         s.cancelled = new Date().toISOString().slice(0, 10);
@@ -355,6 +394,15 @@ async function deactivateSubscriber(env, customerId, evObj) {
       }
     }
     if (n) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
+    // An ignored cancellation is the signal that someone re-subscribed under a new
+    // Stripe customer. It is not an error, but it is the exact condition that used
+    // to cut a paying customer off in silence, so say so out loud.
+    if (superseded) {
+      try {
+        console.log(JSON.stringify({ evt: "cancellation_superseded", customerId,
+          rows: superseded, note: "row holds a different Stripe customer id; not revoked" }));
+      } catch (_) { /* logging must never break the webhook */ }
+    }
     return n;
   } catch (e) {
     return 0;
