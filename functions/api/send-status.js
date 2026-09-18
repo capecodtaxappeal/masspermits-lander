@@ -72,6 +72,52 @@ export async function onRequest(context) {
   const logAge = hours(best && best.at);
   const failed = best ? (best.sent || []).filter((s) => !s.ok) : [];
 
+  // ---- ROSTER GAP: the check that did not exist -------------------------
+  // Every verdict below judges the SEND. None of them asks who should have been
+  // in it. So a roster that silently loses a paying subscriber produces a
+  // smaller, perfectly clean "ok" week after week, and nothing disagrees.
+  //
+  // That is not hypothetical. A subscriber who re-subscribed on 2026-08-18 was
+  // dropped from the roster by a cancellation belonging to his OLD Stripe
+  // customer, and missed 08-31, 09-07 and 09-14 while being billed $99/month.
+  // Every one of those runs reported ok, truthfully, because everyone the run
+  // knew about did receive the file. The gap was found by hand, three weeks on.
+  //
+  // Compare the ACTIVE roster against who the run actually delivered to.
+  //
+  // BE CLEAR ABOUT WHAT THIS DOES NOT CATCH. It is keyed on our own roster, so it
+  // catches a SEND that skipped somebody on the list. It does NOT catch a ROSTER
+  // that lost somebody, which is what actually happened on 08-31: the tile row
+  // was already active:false, so roster and send agreed perfectly and this check
+  // would have stayed silent. Verified by replaying that run against both the
+  // real roster and the correct one.
+  //
+  // So this closes the narrower hole (a send that drops a rostered subscriber,
+  // e.g. a per-recipient failure that never reaches the `failed` array). The
+  // wider hole still needs a Stripe-to-roster reconciliation, because Stripe is
+  // the only record that cannot be wrong about who is paying.
+  //
+  // Domain only in the output: this JSON is printed into a GitHub Actions log.
+  let rosterGap = [];
+  try {
+    const so = await env.BUNDLES.get("subscribers.json");
+    if (so) {
+      const subs = JSON.parse(await so.text());
+      if (Array.isArray(subs)) {
+        const served = new Set(((best && best.sent) || [])
+          .filter((s) => s && s.ok)
+          .map((s) => String((s && s.to) || "").trim().toLowerCase()));
+        rosterGap = subs
+          .filter((s) => s && s.email && s.active === true)
+          .map((s) => String(s.email).trim().toLowerCase())
+          .filter((e) => !served.has(e))
+          .map((e) => "…@" + e.split("@").pop());
+      }
+    }
+  } catch (_) {
+    /* a roster read failure must never break the watchdog itself */
+  }
+
   const graceOver = now >= dueAt + GRACE_HOURS * 3600_000;
   // A SKIPPED run is not a delivery. weekly-send skips when the bundle is
   // byte-identical to the one already sent — which also means the data refresh
@@ -136,11 +182,28 @@ export async function onRequest(context) {
     retry_safe = false; // retrying weekly-send cannot republish the portal page
   }
 
+  // A roster gap outranks a clean delivery, for the same reason the portal branch
+  // exists: the run succeeded at what it attempted, and that is precisely what
+  // makes the gap invisible. retry_safe stays FALSE — re-running weekly-send
+  // would only mail the same people again, because the missing subscriber is
+  // missing from the list the sender reads, not from the send.
+  if (verdict === "ok" && rosterGap.length) {
+    verdict = "roster_gap";
+    detail = `delivered to ${(best.sent || []).filter((s) => s && s.ok).length} subscriber(s), ` +
+             `but ${rosterGap.length} ACTIVE subscriber(s) were not in the run at all ` +
+             `(${rosterGap.join(", ")}) — they are being billed and received nothing. ` +
+             "Retrying will not fix this: check subscribers.json against Stripe.";
+    retry_safe = false;
+  }
+
   return json({
     verdict, detail, retry_safe, due_at: dueIso,
     last_attempt_at: (attempt && attempt.at) || null,
     last_log_at: ((best || newest) || {}).at || null,
     last_subscribers: best ? (best.sent || []).length : 0,
+    // Active subscribers who were not in the run at all. Domain-masked, because
+    // this body is printed into a GitHub Actions log.
+    roster_gap: rosterGap,
     last_failed: failed.map((f) => ({ to: f.to, error: f.error || "" })),
     last_coverage: ((best || newest) || {}).coverage || null,
     portal,

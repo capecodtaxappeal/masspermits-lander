@@ -222,8 +222,12 @@ async function renderPortal(context, token, sub) {
           " publish their permits <b>monthly</b>, so their new rows arrive in a batch early " +
           "each month rather than weekly. Every row shows its issue date.</p>"
         : "") +
+      // Disclosure stays, unprompted refund offer goes. See the matching change
+      // in weekly-send.js: this box rendered on every page load while coverage
+      // disclosure was on, so it offered every subscriber their money back
+      // without anyone deciding to. Standing rule from 2026-09-15.
       "<p>Everything on this page is real and current. If a reduced feed is not worth your " +
-      "subscription in the meantime, reply to your last email and we will refund you — no argument.</p>");
+      "subscription in the meantime, reply to your last email and tell me.</p>");
   }
 
   // ---- GREY (§2.5, otherwise) ----

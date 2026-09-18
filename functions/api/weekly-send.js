@@ -204,7 +204,13 @@ async function sendEmail(env, to, name, b64, token, coverage) {
       : "") +
     '<p style="margin:0;color:#5c4300;font-size:14px">Everything in the attached file is real and current. ' +
     'We are rebuilding the missing towns from their own municipal sources and will tell you as they come back. ' +
-    'If a reduced feed is not worth your subscription in the meantime, reply and we will refund you — no argument.</p></div>'
+    // The coverage shortfall is disclosed because hiding it would be dishonest.
+    // The unprompted REFUND offer is a separate thing and it is removed: it went
+    // to every subscriber on every disclosing send, putting money on the table
+    // that nobody had asked for. Standing rule, set 2026-09-15: refunds are not
+    // raised unless the customer raises them. The invitation to reply stays, so
+    // anyone unhappy still has an obvious way to say so.
+    'If a reduced feed is not worth your subscription in the meantime, reply and tell me.</p></div>'
   ) : "";
   const html =
     '<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;color:#0e1622">' +

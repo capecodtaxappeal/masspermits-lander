@@ -30,7 +30,33 @@ export async function onRequest(context) {
     prefix: "prospects/", limit: 1000, include: ["customMetadata"],
   });
   const now = Date.now();
-  let sent2 = 0, sent3 = 0, errors = 0;
+  let sent2 = 0, sent3 = 0, errors = 0, suppressed = 0;
+
+  // ---- SUPPRESS PAYING SUBSCRIBERS -------------------------------------
+  // Both nurture emails sell the $99/mo Weekly Feed. A prospect who has since
+  // BOUGHT is still sitting in prospects/ with their old stage, so without this
+  // they get pitched the thing they already own. That has happened twice on the
+  // newsletter side and generated a complaint both times, once from a customer
+  // eleven days after paying. newsletter-send.js was fixed on 2026-09-16; this
+  // sender reads a different list and was missed.
+  //
+  // FAILS CLOSED, same as newsletter-send.js. If subscribers.json cannot be read
+  // we send nothing rather than risk mailing a customer. A skipped nurture day
+  // costs almost nothing; pitching a paying customer their own subscription is
+  // the thing we are trying to stop.
+  let payers;
+  try {
+    const so = await env.BUNDLES.get("subscribers.json");
+    if (!so) return json({ ok: false, error: "subscribers.json missing — nurture aborted rather than risk mailing a paying customer" }, 500);
+    const subs = JSON.parse(await so.text());
+    if (!Array.isArray(subs)) throw new Error("subscribers.json is not an array");
+    payers = new Set(
+      subs.filter((s) => s && s.email && s.active === true)
+          .map((s) => String(s.email).trim().toLowerCase())
+    );
+  } catch (e) {
+    return json({ ok: false, error: "subscribers.json unreadable (" + String((e && e.message) || e).slice(0, 80) + ") — nurture aborted rather than risk mailing a paying customer" }, 500);
+  }
 
   for (const obj of listing.objects) {
     if (sent2 + sent3 >= MAX_SENDS_PER_RUN) break;
@@ -39,6 +65,7 @@ export async function onRequest(context) {
       const stage = m.stage || "";
       if (stage !== "1" && stage !== "2") continue;
       const email = decodeURIComponent(obj.key.slice("prospects/".length));
+      if (payers.has(String(email).trim().toLowerCase())) { suppressed++; continue; }
       const p = { email, trade: m.trade || "", ts: m.ts || "", last: m.last || m.ts || "" };
       const age = now - Date.parse(p.ts || 0);
       const sinceLast = now - Date.parse(p.last || 0);
@@ -64,7 +91,8 @@ export async function onRequest(context) {
     }
   }
   return json({ ok: true, prospects: listing.objects.length,
-                sent_followup1: sent2, sent_followup2: sent3, errors });
+                sent_followup1: sent2, sent_followup2: sent3,
+                suppressed_paying: suppressed, errors });
 }
 
 function email2(p) {
