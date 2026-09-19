@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Georgetown, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Georgetown, MA",
+ "home_page_url": "https://masspermits.com/permits/georgetown",
  "feed_url": "https://masspermits.com/feed/georgetown.json",
- "description": "Recent building permits in Georgetown, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Georgetown, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-17. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,185 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-09-17",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 18,
- "_window_from": "2026-09-08",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-09-17",
- "items": [
-  {
-   "id": "c21029b03113695e",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 Parish Rd, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "7726ab2e3f1c075d",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "Gas permit \u2014 Jewett St, Georgetown",
-   "content_text": "Gas permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Gas"
-  },
-  {
-   "id": "a33297df68894711",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "HVAC permit \u2014 Horsemint Cr, Georgetown",
-   "content_text": "HVAC permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "485ee0625458e2b6",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 Boardman St, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "fa2c90251678cbc8",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 Andover St, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "fbc5ab24a3d079ca",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 Bradford Loop, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "3214acc9a01e48aa",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 W Main St, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "a1158f3db77c08f6",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "HVAC permit \u2014 Jewett St, Georgetown",
-   "content_text": "HVAC permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "e2a6a192994291bf",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 Molloy Rd, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "9917f01fa78cfa57",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "Plumbing permit \u2014 Hillside Dr, Georgetown",
-   "content_text": "Plumbing permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "45a77d74b85dde2a",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "Gas permit \u2014 Nelson Av, Georgetown",
-   "content_text": "Gas permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Gas"
-  },
-  {
-   "id": "487858d6d803a99c",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 Amburg St, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "4de16cb36a8140f6",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "Plumbing permit \u2014 Jackman St, Georgetown",
-   "content_text": "Plumbing permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "b9de8e8bfbe08218",
-   "url": "https://masspermits.com/permits/georgetown-electrical",
-   "title": "Electrical permit \u2014 North St, Georgetown",
-   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-14T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "7fbca79a5004db47",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "Gas permit \u2014 Marions Wy, Georgetown",
-   "content_text": "Gas permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Gas"
-  },
-  {
-   "id": "a3bbb37f9f066682",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "Kitchen/Bath permit \u2014 Prospect St, Georgetown",
-   "content_text": "Kitchen/Bath permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Kitchen/Bath"
-  },
-  {
-   "id": "cfd61a758de4ae66",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "Plumbing permit \u2014 Bailey Ln, Georgetown",
-   "content_text": "Plumbing permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "1763217f94c370a7",
-   "url": "https://masspermits.com/permits/georgetown",
-   "title": "HVAC permit \u2014 Larkspur Cr, Georgetown",
-   "content_text": "HVAC permit in Georgetown, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-08T00:00:00Z",
-   "_town": "Georgetown",
-   "_trade": "HVAC"
-  }
- ]
+ "items": []
 }
