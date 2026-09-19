@@ -53,3 +53,18 @@ refresh-status.json
 # customer's usage history, and it gets pulled into this directory by the same
 # `wrangler r2 object get --file` habit as the objects above.
 engagement.json
+
+# THE ENGINE. PermitPulse ships to R2 as engine.tar.gz and NEVER via git - that is
+# the whole point of the two-repo split, and the tarball is the scraping moat.
+# Reading it is normally done with
+#   npx wrangler r2 object get masspermits-bundles/engine.tar.gz --file engine.tar.gz --remote
+# run FROM THIS DIRECTORY, which drops the private engine into a PUBLIC repo whose own
+# DEPLOY.md:20, DEPLOY.md:62 and AUTODELIVERY_SETUP.md:73 all say `git add -A`. On
+# 2026-09-19 an 859,545-byte engine.tar.gz was found sitting here untracked AND
+# unignored. Same hole as the subscriber objects above, same fix, no history rewrite
+# needed because it has never been committed. Ignoring it changes nothing about the
+# deployed site: Pages never reads the engine, the refresh job fetches it from R2
+# through /api/get-engine.
+engine.tar.gz
+engine/
+engine-*/
