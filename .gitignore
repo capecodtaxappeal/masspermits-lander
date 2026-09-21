@@ -68,3 +68,11 @@ engagement.json
 engine.tar.gz
 engine/
 engine-*/
+
+# actionability.json. 179KB of per-lead SELL / THIN / DO NOT SELL verdicts, 283 of them
+# DO NOT SELL, read by /leads/account for signed-in subscribers only. It was found on
+# 2026-09-20 sitting UNTRACKED AND UNIGNORED in this PUBLIC repo (api.github.com returns
+# HTTP 200 unauthenticated), whose own DEPLOY.md:20, DEPLOY.md:62 and
+# AUTODELIVERY_SETUP.md:73 all instruct `git add -A`. Same hole the engine lines above
+# close, still open for this file. Never committed, so no history rewrite is needed.
+actionability.json
