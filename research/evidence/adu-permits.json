@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-20T13:48:31.813802+00:00",
- "corpus_rows": 74343,
- "corpus_sources": 69,
+ "corpus_fetched_at": "2026-09-21T15:58:50.447754+00:00",
+ "corpus_rows": 73597,
+ "corpus_sources": 68,
  "corpus_first": "2025-12-01",
- "corpus_last": "2026-09-20",
+ "corpus_last": "2026-09-21",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,108 +35,108 @@
   ]
  },
  "stats": {
-  "adu_rows": 285,
-  "adu_towns": 29,
-  "eligible_sources": 47,
-  "n_sources": 69,
-  "garage": 61,
-  "garage_share": 21.4,
-  "conversion": 57,
-  "new_build": 145,
-  "unclassified": 83,
-  "garage_conversion": 26,
-  "garage_new_build": 23,
+  "adu_rows": 275,
+  "adu_towns": 28,
+  "eligible_sources": 46,
+  "n_sources": 68,
+  "garage": 56,
+  "garage_share": 20.4,
+  "conversion": 54,
+  "new_build": 137,
+  "unclassified": 84,
+  "garage_conversion": 25,
+  "garage_new_build": 19,
   "form_leader": "new construction",
-  "pooled_rate": 57.8,
-  "raw_first": 4,
+  "pooled_rate": 56.5,
+  "raw_first": 3,
   "raw_peak": 61,
-  "rate_min": 42.7,
-  "rate_max": 124.2,
+  "rate_min": 41.8,
+  "rate_max": 114.1,
   "n_months": 10,
   "series": [
    {
     "month": "2025-12",
-    "raw": 4,
-    "base": 322,
-    "sources": 3,
+    "raw": 3,
+    "base": 263,
+    "sources": 2,
     "partial": false,
-    "rate": 124.2
+    "rate": 114.1
    },
    {
     "month": "2026-01",
     "raw": 2,
-    "base": 255,
-    "sources": 3,
+    "base": 217,
+    "sources": 2,
     "partial": false,
-    "rate": 78.4
+    "rate": 92.2
    },
    {
     "month": "2026-02",
-    "raw": 3,
-    "base": 403,
-    "sources": 4,
+    "raw": 2,
+    "base": 365,
+    "sources": 3,
     "partial": false,
-    "rate": 74.4
+    "rate": 54.8
    },
    {
     "month": "2026-03",
-    "raw": 13,
-    "base": 1905,
-    "sources": 25,
+    "raw": 8,
+    "base": 1613,
+    "sources": 24,
     "partial": false,
-    "rate": 68.2
+    "rate": 49.6
    },
    {
     "month": "2026-04",
     "raw": 36,
-    "base": 5445,
-    "sources": 26,
+    "base": 5362,
+    "sources": 25,
     "partial": false,
-    "rate": 66.1
+    "rate": 67.1
    },
    {
     "month": "2026-05",
-    "raw": 44,
-    "base": 5485,
-    "sources": 28,
+    "raw": 39,
+    "base": 5089,
+    "sources": 26,
     "partial": false,
-    "rate": 80.2
+    "rate": 76.6
    },
    {
     "month": "2026-06",
     "raw": 61,
-    "base": 9171,
-    "sources": 35,
+    "base": 9077,
+    "sources": 34,
     "partial": false,
-    "rate": 66.5
+    "rate": 67.2
    },
    {
     "month": "2026-07",
     "raw": 46,
-    "base": 9662,
-    "sources": 35,
+    "base": 9575,
+    "sources": 34,
     "partial": false,
-    "rate": 47.6
+    "rate": 48.0
    },
    {
     "month": "2026-08",
     "raw": 47,
-    "base": 10996,
-    "sources": 37,
+    "base": 11236,
+    "sources": 36,
     "partial": false,
-    "rate": 42.7
+    "rate": 41.8
    },
    {
     "month": "2026-09",
-    "raw": 29,
-    "base": 5695,
+    "raw": 31,
+    "base": 5850,
     "sources": 34,
     "partial": true,
-    "rate": 50.9
+    "rate": 53.0
    }
   ],
-  "src_first": 3,
-  "src_peak": 37,
+  "src_first": 2,
+  "src_peak": 36,
   "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
@@ -148,7 +148,6 @@
    "Cambridge, MA",
    "Carlisle, MA",
    "Concord, MA",
-   "Duxbury, MA",
    "Easthampton, MA",
    "Falmouth, MA",
    "Hanson, MA",
