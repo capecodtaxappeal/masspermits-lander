@@ -148,10 +148,10 @@
     <div class="loc">Massachusetts building-permit leads</div>
   </div>
 
-  <div style="background:rgba(45,212,191,.10);border:1px solid var(--teal);border-radius:10px;padding:10px 16px;text-align:center;font-size:14px;margin-top:6px">
+  <a id="buy-banner" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit;background:rgba(45,212,191,.10);border:1px solid var(--teal);border-radius:10px;padding:10px 16px;text-align:center;font-size:14px;margin-top:6px">
     🚀 <b style="color:var(--teal)">Founders' rate:</b> first month of the Weekly Feed for
-    <b>$49</b> — use code <b style="letter-spacing:.04em">FOUNDERS49</b> at checkout.
-  </div>
+    <b>$49</b>. Applied automatically at checkout. <b style="color:var(--teal)">Start now &rarr;</b>
+  </a>
 
   <div class="hero">
     <h1>Every <span class="hl" id="h-trade">contractor</span> lead in <span id="h-area">Massachusetts</span>,<br>the week the permit is filed.</h1>
@@ -160,7 +160,7 @@
       <select id="sel-trade" aria-label="Trade"></select>
       <select id="sel-area" aria-label="Area"></select>
     </div>
-    <a class="cta" href="#get">Get the weekly feed &rarr;</a>
+    <a class="cta" id="buy-hero" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" target="_blank" rel="noopener">Start the Monday feed — $99/mo &rarr;</a>
     <span class="subcta">New permits in your trade, every Monday. Cancel anytime — free sample first.</span>
     <!-- EXISTING SUBSCRIBERS HAD NO ROUTE HOME. Until 2026-09-06 this page
          contained ZERO occurrences of "already a subscriber", "my leads",
@@ -208,12 +208,12 @@
       <div style="color:var(--good);font-weight:700;font-size:14px;margin-top:2px">&asymp; $23/week for every fresh permit in your trade.</div>
       <div id="feed-math" style="color:var(--muted);font-style:italic;font-size:13px;margin:2px 0 12px">Less than one job. One closed lead pays for the year.</div>
       <div class="d">A fresh batch every week, automatically — the permit holder, address, and project value for every new <span id="p-trade3">trade</span> permit in <span id="p-area3">your area</span>. You reach owners before your competitors even see the permit.</div>
-      <a class="cta buy-feed" id="buy-feed" href="#sample" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
-      <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 — code <span style="letter-spacing:.04em">FOUNDERS49</span> at checkout</div>
+      <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
+      <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49, applied automatically</div>
       <div style="color:var(--muted);font-size:12px;margin-top:7px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
     </div>
     <div style="text-align:center;margin-top:14px">
-      <a href="#sample" class="buy-pack" id="buy-pack" style="color:var(--muted);font-size:13.5px;text-decoration:underline">Just need one batch? Grab a single $49 pack &rarr;</a>
+      <a href="https://buy.stripe.com/5kQ7sK7aQ1u7dxQ0p94gg00" target="_blank" rel="noopener" class="buy-pack" id="buy-pack" style="color:var(--muted);font-size:13.5px;text-decoration:underline">Just need one batch? Grab a single $49 pack &rarr;</a>
     </div>
     <div style="max-width:560px;margin:20px auto 0;padding:14px 18px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:var(--muted);font-size:13px;line-height:1.55">
       <b style="color:var(--text)">The MassPermits promise:</b> Start the weekly feed and if your first month's leads don't return more than they cost, email me for a full refund — no forms, no back-and-forth. Cancel anytime in one click; any leads already sent are yours to keep. Every lead is a real, verifiable public permit. <span style="color:var(--text)">— Pat, founder</span>
@@ -230,7 +230,7 @@
          to the download. -->
     <p>Drop your email for a free sample file — around a thousand recent Massachusetts permits across 45 towns, filterable by trade and town, opens in any browser.</p>
     <form id="signup-form">
-      <input type="email" id="email" placeholder="you@yourcompany.com" required>
+      <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" required>
       <button class="cta sm" type="submit">Send my free sample</button>
     </form>
     <div class="ok" id="signup-ok" style="display:none">&#10003; Got it! Your free sample is ready —
@@ -355,7 +355,7 @@ const WEB3FORMS_KEY = "640c8bca-d620-496e-8db6-da6fbdef1bf5";
 // Stripe Payment Links. Paste the buy.stripe.com/... URLs here when created.
 // Until set, the Buy buttons fall back to the free-sample form (fails-soft).
 const STRIPE_LINK_PACK = "https://buy.stripe.com/5kQ7sK7aQ1u7dxQ0p94gg00";   // $49 one-time  "MassPermits Lead Pack"
-const STRIPE_LINK_FEED = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01";   // $99/mo        "MassPermits Weekly Feed"
+const STRIPE_LINK_FEED = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026";   // $99/mo        "MassPermits Weekly Feed"
 // ─────────────────────────────────────────────────────────────────────────────
 
 const $ = id => document.getElementById(id);
@@ -462,9 +462,11 @@ function wireBuyButtons(){
   // the post-sample "keep them coming" CTA also deep-links to the $99 feed checkout
   const sc = $("sample-feed-cta");
   if(sc){ if(feedUrl){ sc.href = feedUrl; sc.target = "_blank"; } else sc.href = "#get"; }
+  // hero and banner already carry a live href in the served HTML; only enrich them
+  ["buy-hero","buy-banner"].forEach(function(id){ var e = $(id); if(e && feedUrl) e.href = feedUrl; });
   const live = !!(packUrl || feedUrl);
   $("buy-note").textContent = live
-    ? "Secure checkout via Stripe. Your trade & area are passed with the order."
+    ? "Secure checkout via Stripe."
     : "Checkout opening soon — grab a free sample below in the meantime.";
 }
 
