@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Hadley, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Hadley, MA",
+ "home_page_url": "https://masspermits.com/permits/hadley",
  "feed_url": "https://masspermits.com/feed/hadley.json",
- "description": "Recent building permits in Hadley, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Hadley, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-22. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,158 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-09-22",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 15,
- "_window_from": "2026-09-15",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-09-22",
- "items": [
-  {
-   "id": "09c73485a686b387",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Pool/Spa permit \u2014 Neely Lane, Hadley",
-   "content_text": "Pool/Spa permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Pool/Spa"
-  },
-  {
-   "id": "b6e12693d8542434",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Windows/Doors/Siding permit \u2014 Kosior Dr, Hadley",
-   "content_text": "Windows/Doors/Siding permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "38b1fcd1750d5403",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Windows/Doors/Siding permit \u2014 Birch Meadow Dr, Hadley",
-   "content_text": "Windows/Doors/Siding permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "b3bce820a11a7cc5",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "HVAC permit \u2014 Knightly Rd, Hadley",
-   "content_text": "HVAC permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "95fe9ef41d2168cc",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Deck/Porch permit \u2014 Norwottuck Dr, Hadley",
-   "content_text": "Deck/Porch permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Deck/Porch"
-  },
-  {
-   "id": "189bc9aa000c3da8",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Building permit \u2014 Mt Warner Rd, Hadley",
-   "content_text": "Building permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Building"
-  },
-  {
-   "id": "e437268ebcc72431",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Windows/Doors/Siding permit \u2014 Bay Rd, Hadley",
-   "content_text": "Windows/Doors/Siding permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "999eefc5cc9ea619",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Building permit \u2014 River Dr, Hadley",
-   "content_text": "Building permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-17T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Building"
-  },
-  {
-   "id": "b60079fd371c8a3a",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "HVAC permit \u2014 East St, Hadley",
-   "content_text": "HVAC permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-16T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "24dec5bc960d8acf",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Solar permit \u2014 West St, Hadley",
-   "content_text": "Solar permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-16T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Solar"
-  },
-  {
-   "id": "76ac20bd947e9e12",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Renovation/Remodel permit \u2014 Russell St, Hadley",
-   "content_text": "Renovation/Remodel permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-16T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "d219a4b713ec5cf9",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Electrical permit \u2014 Moody Bridge Rd, Hadley",
-   "content_text": "Electrical permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "2975b425f7b08108",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Plumbing permit \u2014 Russell St, Hadley",
-   "content_text": "Plumbing permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "33b246a3f160c933",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Plumbing permit \u2014 Stockwell Rd, Hadley",
-   "content_text": "Plumbing permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "9ffe3791656e428a",
-   "url": "https://masspermits.com/permits/hadley",
-   "title": "Plumbing permit \u2014 Colony Dr, Hadley",
-   "content_text": "Plumbing permit in Hadley, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-15T00:00:00Z",
-   "_town": "Hadley",
-   "_trade": "Plumbing"
-  }
- ]
+ "items": []
 }

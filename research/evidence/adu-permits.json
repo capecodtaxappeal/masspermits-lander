@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-22T14:20:42.711099+00:00",
- "corpus_rows": 74485,
+ "corpus_fetched_at": "2026-09-23T14:35:06.997264+00:00",
+ "corpus_rows": 75099,
  "corpus_sources": 70,
  "corpus_first": "2025-12-01",
- "corpus_last": "2026-09-22",
+ "corpus_last": "2026-09-23",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,22 +35,22 @@
   ]
  },
  "stats": {
-  "adu_rows": 282,
+  "adu_rows": 289,
   "adu_towns": 29,
   "eligible_sources": 48,
   "n_sources": 70,
-  "garage": 59,
-  "garage_share": 20.9,
-  "conversion": 55,
-  "new_build": 143,
-  "unclassified": 84,
+  "garage": 61,
+  "garage_share": 21.1,
+  "conversion": 56,
+  "new_build": 147,
+  "unclassified": 86,
   "garage_conversion": 26,
-  "garage_new_build": 21,
+  "garage_new_build": 23,
   "form_leader": "new construction",
-  "pooled_rate": 56.9,
+  "pooled_rate": 57.6,
   "raw_first": 4,
   "raw_peak": 61,
-  "rate_min": 42.5,
+  "rate_min": 42.2,
   "rate_max": 124.2,
   "n_months": 10,
   "series": [
@@ -80,63 +80,63 @@
    },
    {
     "month": "2026-03",
-    "raw": 11,
-    "base": 1491,
+    "raw": 12,
+    "base": 1373,
     "sources": 25,
     "partial": false,
-    "rate": 73.8
+    "rate": 87.4
    },
    {
     "month": "2026-04",
-    "raw": 36,
-    "base": 5445,
-    "sources": 26,
+    "raw": 37,
+    "base": 5545,
+    "sources": 27,
     "partial": false,
-    "rate": 66.1
+    "rate": 66.7
    },
    {
     "month": "2026-05",
-    "raw": 39,
-    "base": 5150,
-    "sources": 27,
+    "raw": 40,
+    "base": 5249,
+    "sources": 28,
     "partial": false,
-    "rate": 75.7
+    "rate": 76.2
    },
    {
     "month": "2026-06",
     "raw": 61,
-    "base": 9127,
-    "sources": 35,
+    "base": 9164,
+    "sources": 36,
     "partial": false,
-    "rate": 66.8
+    "rate": 66.6
    },
    {
     "month": "2026-07",
-    "raw": 46,
-    "base": 9657,
-    "sources": 35,
+    "raw": 49,
+    "base": 9610,
+    "sources": 36,
     "partial": false,
-    "rate": 47.6
+    "rate": 51.0
    },
    {
     "month": "2026-08",
     "raw": 48,
-    "base": 11284,
-    "sources": 37,
+    "base": 11368,
+    "sources": 38,
     "partial": false,
-    "rate": 42.5
+    "rate": 42.2
    },
    {
     "month": "2026-09",
-    "raw": 32,
-    "base": 6419,
-    "sources": 35,
+    "raw": 33,
+    "base": 6844,
+    "sources": 34,
     "partial": true,
-    "rate": 49.9
+    "rate": 48.2
    }
   ],
   "src_first": 3,
-  "src_peak": 37,
+  "src_peak": 38,
   "partial_month": "2026-09",
   "town_list": [
    "Amherst, MA",
@@ -165,8 +165,8 @@
    "Somerville, MA",
    "Taunton, MA",
    "Truro, MA",
+   "Wakefield, MA",
    "West Bridgewater, MA",
-   "West Newbury, MA",
    "Worcester, MA"
   ]
  }
