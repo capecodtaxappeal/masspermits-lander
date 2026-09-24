@@ -1,10 +1,24 @@
 town,trade,issued_date,street_masked,valuation
+Roslindale,Gas,2026-09-23,Florence St,6000.0
+Roslindale,Electrical,2026-09-22,Poplar St,60000.0
+Roslindale,Deck/Porch,2026-09-22,Orange St,32800.0
+Roslindale,Kitchen/Bath,2026-09-22,Iona St,66500.0
+Roslindale,Other,2026-09-22,Ravenna Rd,21795.0
+Roslindale,Gas,2026-09-22,Beech St,1000.0
+Roslindale,HVAC,2026-09-22,Ainsworth St,72000.0
+Roslindale,Electrical,2026-09-22,Fresno St,1285.0
+Roslindale,Other,2026-09-22,Poplar St,11200.0
+Roslindale,Other,2026-09-22,Roslindale Av,13748.9
+Roslindale,Renovation/Remodel,2026-09-22,Robert St,538977.0
+Roslindale,Solar,2026-09-22,Metcalf St,63507.0
+Roslindale,Roofing,2026-09-22,Bradwood St,78500.0
 Roslindale,Renovation/Remodel,2026-09-22,Granfield Av,150000.0
 Roslindale,Electrical,2026-09-22,Denton Te,2000.0
 Roslindale,Other,2026-09-22,Centre St,
 Roslindale,Renovation/Remodel,2026-09-21,Knoll St,12900.0
 Roslindale,Electrical,2026-09-21,Newburg St,63000.0
 Roslindale,Roofing,2026-09-21,West Roxbury Pw,11220.0
+Roslindale,Building,2026-09-21,Washington St,1000.0
 Roslindale,Gas,2026-09-21,Hadwin Wy,200.0
 Roslindale,HVAC,2026-09-21,Denton Te,3050.0
 Roslindale,HVAC,2026-09-21,Crestview Rd,2644.0
@@ -65,8 +79,8 @@ Roslindale,Electrical,2026-09-09,Organ Park St,6500.0
 Roslindale,Plumbing,2026-09-09,Florence St,200000.0
 Roslindale,Deck/Porch,2026-09-09,Archdale Rd,36000.0
 Roslindale,HVAC,2026-09-09,Hyde Park Av,1500.0
-Roslindale,Electrical,2026-09-09,Rosemere Ct,35000.0
 Roslindale,Electrical,2026-09-09,Rosemere Ct,3500.0
+Roslindale,Electrical,2026-09-09,Rosemere Ct,35000.0
 Roslindale,Electrical,2026-09-09,Beech St,55.0
 Roslindale,Gas,2026-09-08,South St,500.0
 Roslindale,Roofing,2026-09-08,Washington St,4500.0
@@ -178,12 +192,12 @@ Roslindale,Solar,2026-08-24,Sycamore St,62100.0
 Roslindale,Solar,2026-08-24,Havana St,82200.0
 Roslindale,Solar,2026-08-24,Annafran St,45000.0
 Roslindale,Electrical,2026-08-24,Dale St,1500.0
-Roslindale,Electrical,2026-08-24,Granada Av,2000.0
-Roslindale,Electrical,2026-08-24,Paine St,2000.0
 Roslindale,Electrical,2026-08-24,Chisholm Rd,1500.0
 Roslindale,Electrical,2026-08-24,Beech St,2000.0
-Roslindale,Electrical,2026-08-24,Heathcote St,2000.0
+Roslindale,Electrical,2026-08-24,Granada Av,2000.0
+Roslindale,Electrical,2026-08-24,Paine St,2000.0
 Roslindale,Electrical,2026-08-24,Halliday St,2000.0
+Roslindale,Electrical,2026-08-24,Heathcote St,2000.0
 Roslindale,Solar,2026-08-24,Hautevale St,97800.0
 Roslindale,Electrical,2026-08-24,Orange St,6000.0
 Roslindale,HVAC,2026-08-21,Glencliff Rd,24000.0
@@ -202,8 +216,8 @@ Roslindale,HVAC,2026-08-20,Denton Te,500.0
 Roslindale,Plumbing,2026-08-20,Marion St,10000.0
 Roslindale,Solar,2026-08-20,Destefano Rd,499.0
 Roslindale,Electrical,2026-08-20,Amherst St,56000.0
-Roslindale,Electrical,2026-08-19,Ada St,11000.0
 Roslindale,Electrical,2026-08-19,Ada St,250.0
+Roslindale,Electrical,2026-08-19,Ada St,11000.0
 Roslindale,Electrical,2026-08-19,Ada St,150.0
 Roslindale,Kitchen/Bath,2026-08-19,Organ Park St,96915.0
 Roslindale,Electrical,2026-08-19,Washington St,13500.0
@@ -274,8 +288,8 @@ Roslindale,Electrical,2026-08-06,Neponset Av,3500.0
 Roslindale,Kitchen/Bath,2026-08-05,Allandale St,8500.0
 Roslindale,Deck/Porch,2026-08-05,South St,9884.25
 Roslindale,Kitchen/Bath,2026-08-05,Delano Ct,41052.0
-Roslindale,Kitchen/Bath,2026-08-05,Beech St,100000.0
 Roslindale,Kitchen/Bath,2026-08-05,Havey St,40000.0
+Roslindale,Kitchen/Bath,2026-08-05,Beech St,100000.0
 Roslindale,Electrical,2026-08-05,Doncaster St,1500.0
 Roslindale,Plumbing,2026-08-05,Kittredge St,20000.0
 Roslindale,Plumbing,2026-08-04,Cornell St,1500.0
@@ -287,8 +301,8 @@ Roslindale,Demolition,2026-08-04,Roslindale Av,13500.0
 Roslindale,Electrical,2026-08-04,Cornell St,10000.0
 Roslindale,Roofing,2026-08-04,Hyde Park Av,13500.0
 Roslindale,Plumbing,2026-08-04,Bateman St,650.0
-Roslindale,Plumbing,2026-08-04,Kittredge St,850.0
 Roslindale,Plumbing,2026-08-04,Kittredge St,650.0
+Roslindale,Plumbing,2026-08-04,Kittredge St,850.0
 Roslindale,Plumbing,2026-08-04,Gretter Rd,650.0
 Roslindale,Other,2026-08-04,Cedrus Av,23000.0
 Roslindale,Other,2026-08-04,Glencliff Rd,4000.0
@@ -331,9 +345,3 @@ Roslindale,Other,2026-07-29,Hyde Park Av,3939.6
 Roslindale,Other,2026-07-29,Hyde Park Av,4411.84
 Roslindale,Electrical,2026-07-29,Washington St,18000.0
 Roslindale,Electrical,2026-07-28,Walter St,4000.0
-Roslindale,HVAC,2026-07-27,Denton Te,5850.0
-Roslindale,HVAC,2026-07-27,Buchanan Rd,1500.0
-Roslindale,Electrical,2026-07-27,Seymour St,1200.0
-Roslindale,Renovation/Remodel,2026-07-27,Glencliff Rd,1.0
-Roslindale,Electrical,2026-07-27,Sycamore St,10000.0
-Roslindale,Electrical,2026-07-27,Newburg St,15000.0

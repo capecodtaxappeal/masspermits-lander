@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Groveland, MA",
- "home_page_url": "https://masspermits.com/permits/groveland",
+ "title": "MassPermits \u2014 building permits in Groveland, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/groveland.json",
- "description": "MassPermits no longer receives building-permit records for Groveland, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-21. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Groveland, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,212 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-21",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-09-21",
- "items": []
+ "_window_total": 21,
+ "_window_from": "2026-09-10",
+ "_window_to": "2026-09-22",
+ "items": [
+  {
+   "id": "23e98ce3cf4bf4c0",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Kitchen/Bath permit \u2014 Center St, Groveland",
+   "content_text": "Kitchen/Bath permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "e6065a34defec874",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Windows/Doors/Siding permit \u2014 School St, Groveland",
+   "content_text": "Windows/Doors/Siding permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "98f3ba8532cc1fb6",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Windows/Doors/Siding permit \u2014 Seven Star Rd, Groveland",
+   "content_text": "Windows/Doors/Siding permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "c8a375f2fe67d040",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Roofing permit \u2014 Stonebridge Rd, Groveland",
+   "content_text": "Roofing permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "9e6dc937555f931d",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Windows/Doors/Siding permit \u2014 Hales Ct, Groveland",
+   "content_text": "Windows/Doors/Siding permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "f01ec643450bb2ab",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "HVAC permit \u2014 Main St, Groveland",
+   "content_text": "HVAC permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "73e6ae1478f41e64",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Roofing permit \u2014 Washington St, Groveland",
+   "content_text": "Roofing permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "cca1d87817a560ec",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Building permit \u2014 King St, Groveland",
+   "content_text": "Building permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Building"
+  },
+  {
+   "id": "af207032b065fc22",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Roofing permit \u2014 Cranton Av, Groveland",
+   "content_text": "Roofing permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "2aa69797771624e1",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Plumbing permit \u2014 Center St, Groveland",
+   "content_text": "Plumbing permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "28ff642cf4d3a1ac",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "HVAC permit \u2014 Center St, Groveland",
+   "content_text": "HVAC permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "5615405c5d358365",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "HVAC permit \u2014 Washington St, Groveland",
+   "content_text": "HVAC permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "c851bfade06bca9f",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Windows/Doors/Siding permit \u2014 Main St, Groveland",
+   "content_text": "Windows/Doors/Siding permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "fa2baed6769a6aee",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Windows/Doors/Siding permit \u2014 Ashcroft Cr, Groveland",
+   "content_text": "Windows/Doors/Siding permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "425bd6205360cc1b",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Kitchen/Bath permit \u2014 Baldwin Tr, Groveland",
+   "content_text": "Kitchen/Bath permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "0eab7face5355f5f",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Electrical permit \u2014 Pond St, Groveland",
+   "content_text": "Electrical permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-15T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "21c758769930fbe1",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Electrical permit \u2014 Main St, Groveland",
+   "content_text": "Electrical permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-15T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "73c5657b9ecb1801",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Building permit \u2014 Gardner St, Groveland",
+   "content_text": "Building permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Building"
+  },
+  {
+   "id": "cab38cd700776c37",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Building permit \u2014 Union St, Groveland",
+   "content_text": "Building permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-14T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Building"
+  },
+  {
+   "id": "f0c2d5dccd652e08",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "Electrical permit \u2014 Evergreen Ln, Groveland",
+   "content_text": "Electrical permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "2fe94e7158ed43c4",
+   "url": "https://masspermits.com/permits/groveland",
+   "title": "HVAC permit \u2014 Pond St, Groveland",
+   "content_text": "HVAC permit in Groveland, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Groveland",
+   "_trade": "HVAC"
+  }
+ ]
 }
