@@ -14,6 +14,7 @@
 // production. A result is a line in an email to the owner.
 
 import { evaluate, windowStart, lastEtagEntry } from "./_presend.js";
+import { classifySub, subCustomerId, subCustomerEmail, ENTITLED_STATUSES, siteEndpoints } from "./_reconcile.js";
 
 const HOUR = 3600_000;
 const DAY = 24 * HOUR;
@@ -105,10 +106,11 @@ export function composeDigest(results, ctx = {}) {
   };
   const sec = (title, rows) => (rows.length
     ? `<h3>${esc(title)}</h3><ul>` + rows.map((r) => `<li>${esc(line(r))}</li>`).join("") + "</ul>" : "");
-  const acked = sorted.filter((r) => r.acked);
-  const live = sorted.filter((r) => !r.acked);
+  // A folded result's line was merged into its buyer's one line (foldByBuyer).
+  const acked = sorted.filter((r) => r.acked && !r.folded);
+  const live = sorted.filter((r) => !r.acked && !r.folded);
   const listed = rosterOk ? live.filter((r) => r.result === "PASS" && r.detail_private.length) : [];
-  const passed = [...new Set(live.filter((r) => r.result === "PASS").map((r) => r.id))];
+  const passed = [...new Set(sorted.filter((r) => !r.acked && r.result === "PASS").map((r) => r.id))];
   let html = `<div style="font-family:Arial,sans-serif"><p><b>${esc(verdict)}</b></p>` +
     `<p>MassPermits dress rehearsal, mode ${esc(ctx.mode || "?")}, date ${esc(ctx.date || "?")}. ` +
     "Report only: nothing was sent to any customer and nothing in production was changed.</p>";
@@ -573,20 +575,25 @@ export function mondayWindow(sendLog, date, mode, now) {
 // ctx: {roster, sendLog, sendLogOk, date, mode, now, stripe, priceIds,
 //       mapped, funnel}
 // stripe: null, or {keyed, readable, reason, subs}. "With the key" means the
-// key is set AND the subscriptions read came back readable. mapped: results
-// already mapped through RECONCILE_MAP (R3a); C7's NO-GO comes only from
-// those and from the M rule, never from reconcile()'s own verdict.
+// key is set AND the subscriptions read came back readable. mapped: the C7
+// results of mapReconcile() (RECONCILE_MAP); C7's NO-GO comes only from those
+// and from the M rule, never from reconcile()'s own verdict.
 export function checkC7(ctx) {
   const { roster, sendLog, sendLogOk, date, mode, now, stripe, funnel } = ctx;
   if (!roster.ok) return [res("C7", "NO-GO", "roster_unreadable")];
-  const out = (ctx.mapped || []).slice();
+  const out = [];
+  const finish = () => {
+    const all = dedupeResults([...out, ...(ctx.mapped || []).filter((r) => r.id === "C7")]);
+    if (!all.some((r) => r.result !== "PASS")) all.push(pass("C7"));
+    return foldByBuyer(all);
+  };
   const keyed = !!(stripe && stripe.keyed && stripe.readable);
   if (!keyed) {
     out.push(res("C7", "BLIND", stripe && stripe.keyed ? "C7.stripe_unreadable" : "C7.no_key"));
   }
-  if (!sendLogOk) { out.push(res("C7", "BLIND", "C7.send_log_unreadable")); return out; }
+  if (!sendLogOk) { out.push(res("C7", "BLIND", "C7.send_log_unreadable")); return finish(); }
   const w = mondayWindow(sendLog, date, mode, now);
-  if (!w || w.T == null) { out.push(res("C7", "BLIND", "C7.no_recent_send")); return out; }
+  if (!w || w.T == null) { out.push(res("C7", "BLIND", "C7.no_recent_send")); return finish(); }
   const sets = judgeSets({ rows: roster.rows, entries: w.entries, T: w.T, monday: w.monday,
     keyed, S: keyed ? entitledSubs(stripe, ctx.priceIds) : [] });
   for (const n of sets.newRows) {
@@ -619,8 +626,42 @@ export function checkC7(ctx) {
       out.push(res("C7", "WARN", "C7.confirm_cancellation", { lines: ["confirm it was a real cancellation"] }));
     }
   }
-  if (!out.some((r) => r.result !== "PASS")) out.push(pass("C7"));
-  return out;
+  return finish();
+}
+
+// Identical (result, code, buyers) results collapse to the first one.
+function dedupeResults(list) {
+  const seen = new Set();
+  return list.filter((r) => {
+    const k = `${r.id}|${r.result}|${r.code}|${r.buyer_numbers.join(",")}`;
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+}
+// One digest line per buyer, most severe code first: when one buyer carries
+// several non-PASS results, the most severe keeps a merged line and the rest
+// are marked folded (their codes still count; composeDigest skips their line).
+export function foldByBuyer(list) {
+  const per = new Map();
+  for (const r of list) {
+    if (r.result === "PASS" || r.buyer_numbers.length !== 1) continue;
+    const b = r.buyer_numbers[0];
+    if (!per.has(b)) per.set(b, []);
+    per.get(b).push(r);
+  }
+  const replaced = new Map();
+  for (const [b, rs] of per) {
+    if (rs.length < 2) continue;
+    const sorted = rs.slice().sort((x, y) => (SEVERITY[y.result] - SEVERITY[x.result]) || x.code.localeCompare(y.code));
+    const strip = (l) => l.replace(new RegExp(`^buyer ${b}: `), "");
+    const details = [...new Set(sorted.flatMap((r) => r.detail_private.map(strip)))];
+    const head = { ...sorted[0], detail_private: [`buyer ${b}: ${sorted.map((r) => r.code).join(", ")}` +
+      (details.length ? "; " + details.join("; ") : "")] };
+    replaced.set(sorted[0], head);
+    for (const r of sorted.slice(1)) replaced.set(r, { ...r, folded: true, detail_private: [] });
+  }
+  return list.map((r) => replaced.get(r) || r);
 }
 
 // The set arithmetic shared by C7 and mon-post. entries: the send-log entries
@@ -851,8 +892,15 @@ export function checkMonPost(ctx) {
         : "sent bundle is not the one mon-pre judged"] }));
   }
   if (ctx.linksPersisted > 0) out.push(res(id, "NO-GO", "mon_post.beacon_persisted"));
+  // Step 2 through RECONCILE_MAP: on the Monday after a cancellation the
+  // tripwire fires and the buyer is listed "Cancelled", never NO-GO. Only the
+  // C7 results that list or alarm are carried (a BLIND no-key is C7's, not
+  // mon-post's), re-labelled mon_post with their C7 codes.
+  for (const r of ctx.mapped || []) {
+    if (r.id === "C7" && r.result !== "BLIND") out.push({ ...r, id });
+  }
   if (!out.some((r) => r.result !== "PASS")) out.push(pass(id));
-  return out;
+  return foldByBuyer(dedupeResults(out));
 }
 
 // ── when does a run mail the owner (C18) ────────────────────────────────────
@@ -873,5 +921,270 @@ export function shouldMail({ mode, verdict, results, prev, sunday }) {
   return false;
 }
 
+// ── Stripe events stripe-webhook.js acts on ────────────────────────────────
+// The 9 types stripe-webhook.js compares event.type with (:41, :59, :105-107,
+// :141, :158, :243). The runner's c8.events_mirror proves this list still
+// equals the literals in the shipped file.
+export const HANDLED_EVENTS = Object.freeze([
+  "customer.subscription.deleted",
+  "invoice.payment_failed",
+  "radar.early_fraud_warning.created",
+  "charge.dispute.created",
+  "review.opened",
+  "review.closed",
+  "invoice.paid",
+  "invoice.payment_succeeded",
+  "checkout.session.completed",
+]);
+
+// ── RECONCILE_MAP: reconcile() finding type -> result ──────────────────────
+// Two columns: `key` (STRIPE_READ_KEY set AND the subscriptions read came back
+// readable) and `nokey` (no key, or Stripe unreadable). A column is one of:
+//   {id, result, code, line}   one result; line names the buyer as {b}
+//   {none: true}               no result (a notice the rehearsal does not act on)
+//   {not_produced: true}       reconcile() cannot produce it in this column; if it
+//                              ever does, it is BLIND C7.unmapped, never PASS
+//   {special: "cancellation"}  recipient_dropped_between_runs (see mapReconcile)
+//   {bySeverity: {...}}        chosen by the finding's severity
+//   {bySubject: {...}}         chosen by the finding's subject (read_failed)
+//   {byReason: {...}}          chosen by the finding's reason ("*" = any other)
+//   {attach: code, line}       a digest line under that code's lines
+// Only type, severity, subject, reason and ref are read from a finding; its
+// subject, detail and ref never leave the Function.
+const M = (id, result, code, line = "") => Object.freeze({ id, result, code, line });
+const NONE = Object.freeze({ none: true });
+const NOT_PRODUCED = Object.freeze({ not_produced: true });
+const DUP_ROWS = Object.freeze({ bySeverity: Object.freeze({
+  red: M("C7", "NO-GO", "C7.duplicate_active_rows", "buyer {b}: more than one ACTIVE roster row on one email"),
+  amber: M("C7", "WARN", "C7.duplicate_rows_latent", "buyer {b}: inactive duplicate rows on the same email"),
+}) });
+const READ_FAILED = Object.freeze({ bySubject: Object.freeze({
+  roster: NONE, // not reached: readRoster failed first and reconcile() was not called
+  send_log: M("C7", "BLIND", "C7.send_log_unreadable"),
+  stripe_subscriptions: Object.freeze({ byReason: Object.freeze({
+    "no-key": M("C7", "BLIND", "C7.no_key"),
+    "*": M("C7", "BLIND", "C7.stripe_unreadable"),
+  }) }),
+  stripe_webhook_endpoints: M("C8", "BLIND", "C8.endpoints_unreadable"),
+}) });
+export const RECONCILE_MAP = Object.freeze({
+  recipient_dropped_between_runs: { key: { special: "cancellation" }, nokey: { special: "cancellation" } },
+  payer_inactive_on_roster: { key: M("C7", "NO-GO", "C7.paid_not_served", "buyer {b}: in S, not in R"), nokey: NOT_PRODUCED },
+  payer_missing_from_roster: { key: M("C7", "NO-GO", "C7.paid_no_row", "a MassPermits payer in S has no roster row"), nokey: NOT_PRODUCED },
+  unclassified_payer_missing_from_roster: { key: M("C7", "NO-GO", "C7.unknown_payer_no_row",
+    "a payer on a price in no allowlist has no roster row"), nokey: NOT_PRODUCED },
+  roster_active_no_live_subscription: { key: M("C7", "NO-GO", "C7.served_not_paid", "buyer {b}: in R, not in S"), nokey: NOT_PRODUCED },
+  // C8 (a) facts: they come from the webhook-endpoint read, which does not
+  // depend on the subscriptions read, so both columns carry them.
+  no_enabled_webhook_endpoint_for_site: { key: M("C8", "NO-GO", "C8.no_endpoint"), nokey: M("C8", "NO-GO", "C8.no_endpoint") },
+  churn_event_not_subscribed: { key: M("C8", "NO-GO", "C8.events_missing"), nokey: M("C8", "NO-GO", "C8.events_missing") },
+  webhook_endpoint_path_ambiguous: { key: M("C8", "BLIND", "C8.endpoint_ambiguous"), nokey: M("C8", "BLIND", "C8.endpoint_ambiguous") },
+  customer_id_conflict: { key: M("C7", "NO-GO", "C7.customer_id_conflict", "buyer {b}: paying under a different Stripe customer id"),
+    nokey: NOT_PRODUCED },
+  duplicate_roster_rows_same_email: { key: DUP_ROWS, nokey: DUP_ROWS },
+  one_customer_id_on_several_emails: { key: M("C7", "WARN", "C7.shared_customer_id", "buyer {b}: one customer id on several emails"),
+    nokey: M("C7", "WARN", "C7.shared_customer_id", "buyer {b}: one customer id on several emails") },
+  active_row_without_customer_id: { key: M("C7", "NO-GO", "C7.row_without_customer_id", "buyer {b}: active row without a Stripe customer id"),
+    nokey: M("C7", "NO-GO", "C7.row_without_customer_id", "buyer {b}: active row without a Stripe customer id") },
+  duplicate_stripe_customers_same_email: { key: M("C7", "WARN", "C7.duplicate_stripe_customers",
+    "buyer {b}: several Stripe customers entitled on one email"), nokey: NOT_PRODUCED },
+  entitled_subscription_unknown_price: { key: M("C7", "NO-GO", "C7.unknown_price",
+    "an entitled subscription is on a price in no allowlist"), nokey: NOT_PRODUCED },
+  product_allowlist_unconfigured: { key: M("C7", "BLIND", "C7.allowlist_unset"), nokey: NOT_PRODUCED },
+  read_failed: { key: READ_FAILED, nokey: READ_FAILED },
+  degraded_read: { key: M("C7", "WARN", "C7.degraded_read"), nokey: NOT_PRODUCED },
+  invariant_broken: { key: M("C7", "BLIND", "C7.invariant"), nokey: M("C7", "BLIND", "C7.invariant") },
+  // notices
+  dropped_but_still_active: { key: NONE, nokey: NONE }, // the M rule judges that row
+  stripe_returned_nothing: { key: Object.freeze({ attach: "C7.served_not_paid", line: "check that STRIPE_READ_KEY is a live-mode key" }),
+    nokey: NOT_PRODUCED },
+  unverifiable_no_id: { key: M("C7", "WARN", "C7.row_unverifiable", "buyer {b}: no customer id and no customer emails to match"),
+    nokey: NOT_PRODUCED },
+  below_floor_unrostered: { key: NONE, nokey: NOT_PRODUCED },
+  matched_by_email_only: { key: NONE, nokey: NOT_PRODUCED },
+  trialing_and_served: { key: NONE, nokey: NOT_PRODUCED },
+  pause_collection: { key: NONE, nokey: NOT_PRODUCED },
+  cancel_at_period_end: { key: NONE, nokey: NOT_PRODUCED },
+});
+Object.values(RECONCILE_MAP).forEach(Object.freeze);
+
+const ownKey = (o, k) => o !== null && typeof o === "object" && Object.prototype.hasOwnProperty.call(o, k);
+// Resolve one column entry against one finding to a leaf.
+function resolveColumn(col, f) {
+  let c = col;
+  for (let depth = 0; depth < 4 && c; depth++) {
+    if (c.bySeverity) c = ownKey(c.bySeverity, f.severity) ? c.bySeverity[f.severity] : null;
+    else if (c.bySubject) c = ownKey(c.bySubject, f.subject) ? c.bySubject[f.subject] : null;
+    else if (c.byReason) c = ownKey(c.byReason, f.reason) ? c.byReason[f.reason] : c.byReason["*"];
+    else return c;
+  }
+  return c || null;
+}
+
+// mapReconcile(recon, ctx) -> results (ids C7 and C8). The ONLY reader of
+// reconcile()'s output in the rehearsal: it walks recon.conditions[*].findings
+// and recon.notices and reads recon.local_tripwire.prev_at, nothing else.
+// ctx: {rows (the roster array passed to reconcile), stripeResult, products, keyed}
+export function mapReconcile(recon, ctx) {
+  const rows = Array.isArray(ctx.rows) ? ctx.rows : [];
+  const keyed = ctx.keyed === true;
+  const found = [];
+  const conds = recon && recon.conditions && typeof recon.conditions === "object" ? recon.conditions : {};
+  for (const k of Object.keys(conds)) {
+    const list = conds[k] && Array.isArray(conds[k].findings) ? conds[k].findings : [];
+    for (const f of list) found.push(f);
+  }
+  for (const n of recon && Array.isArray(recon.notices) ? recon.notices : []) found.push(n);
+  const prevAt = recon && recon.local_tripwire ? Date.parse(recon.local_tripwire.prev_at || "") : NaN;
+  const out = [];
+  const attach = [];
+  for (const f of found) {
+    if (!f || typeof f !== "object") continue;
+    const ref = f.ref && typeof f.ref === "object" ? f.ref : {};
+    const rowIdx = Number.isInteger(ref.row) && ref.row >= 0 && ref.row < rows.length ? ref.row : null;
+    const buyer = rowIdx === null ? null : rowIdx + 1;
+    const entry = typeof f.type === "string" && ownKey(RECONCILE_MAP, f.type) ? RECONCILE_MAP[f.type] : null;
+    if (!entry) { out.push(res("C7", "BLIND", "C7.unmapped", { lines: ["a reconcile finding type the rehearsal does not know"] })); continue; }
+    const leaf = resolveColumn(keyed ? entry.key : entry.nokey, f);
+    if (!leaf || leaf.not_produced) {
+      out.push(res("C7", "BLIND", "C7.unmapped", { lines: ["a reconcile finding the rehearsal did not expect in this column"] }));
+      continue;
+    }
+    if (leaf.none) continue;
+    if (leaf.attach) { attach.push(leaf); continue; }
+    if (leaf.special === "cancellation") {
+      out.push(cancellation(rows, rowIdx, prevAt, keyed, ctx));
+      continue;
+    }
+    const line = leaf.line ? (buyer ? leaf.line.replace("{b}", String(buyer)) : leaf.line.replace(/^buyer \{b\}: /, "a row: ")) : "";
+    out.push(res(leaf.id, leaf.result, leaf.code, { buyers: buyer ? [buyer] : [], lines: line ? [line] : [] }));
+  }
+  for (const a of attach) {
+    const host = out.find((r) => r.code === a.attach);
+    if (host) host.detail_private.push(a.line);
+  }
+  return out;
+}
+
+// recipient_dropped_between_runs: a recipient of the second-newest send is
+// missing from the newest one and their row is not active. It fires for every
+// legitimate cancellation for the week after the next Monday, so it is
+// "Cancelled" (listed, never counted) when the row was switched off with a
+// `cancelled` date on or after that earlier send and, with the key, Stripe
+// shows no live MassPermits-or-unclassified subscription for them.
+function cancellation(rows, rowIdx, prevAt, keyed, ctx) {
+  const row = rowIdx === null ? null : rows[rowIdx];
+  const buyer = rowIdx === null ? null : rowIdx + 1;
+  const prevDay = Number.isFinite(prevAt) ? isoDay(prevAt) : null;
+  const cancelled = row && typeof row.cancelled === "string" && /^\d{4}-\d{2}-\d{2}/.test(row.cancelled)
+    ? row.cancelled.slice(0, 10) : null;
+  const three = !!(row && row.active === false && cancelled && prevDay && cancelled >= prevDay);
+  const nogo = () => res("C7", "NO-GO", "C7.dropped_recipient", { buyers: buyer ? [buyer] : [],
+    lines: [buyer ? `buyer ${buyer}: in the earlier send, not in the newest, and not a confirmed cancellation`
+      : "a recipient of the earlier send has no roster row"] });
+  if (!three) return nogo();
+  const when = cancelled.slice(5);
+  if (!keyed) {
+    return pass("C7", "C7.cancelled_unconfirmed", { buyers: [buyer],
+      lines: [`Cancelled: buyer ${buyer} (${when}); not confirmed in Stripe (no key)`] });
+  }
+  const sr = ctx.stripeResult || {};
+  const live = (Array.isArray(sr.subs) ? sr.subs : []).some((s) => s && ENTITLED_STATUSES.has(String(s.status)) &&
+    classifySub(s, ctx.products).kind !== "other" &&
+    ((row.customer && subCustomerId(s) === String(row.customer)) ||
+     (subCustomerEmail(s) && lc(subCustomerEmail(s)) === lc(row.email))));
+  if (live) return nogo();
+  return pass("C7", "C7.cancelled", { buyers: [buyer],
+    lines: [`Cancelled: buyer ${buyer} (${when}); Stripe shows no live subscription`] });
+}
+
+// ── C8: Stripe configuration the webhook depends on ───────────────────────
+// ctx: {keyed (STRIPE_READ_KEY set), webhookResult, prices, promos, links,
+//       siteHost, priceIds, productIds (MassPermits allowlists), facts,
+//       dropped, mapped (C8 results of mapReconcile)}
+export function checkC8(ctx) {
+  if (!ctx.keyed) return [res("C8", "BLIND", "C8.no_key")];
+  const out = [];
+  // (a) the endpoint at the webhook path subscribes to every handled event
+  const eb = factsBlind(ctx, ["c8.events_mirror"]);
+  if (eb) out.push(res("C8", "BLIND", eb));
+  else if (fact(ctx.facts, "c8.events_mirror") !== "ok") {
+    out.push(res("C8", "BLIND", "C8.event_list_drift", { lines: ["event list drift"] }));
+  } else if (!ctx.webhookResult || !ctx.webhookResult.readable) {
+    out.push(res("C8", "BLIND", "C8.endpoints_unreadable"));
+  } else {
+    const site = siteEndpoints(ctx.webhookResult, ctx.siteHost);
+    if (!site.exact.length && site.other.length) out.push(res("C8", "BLIND", "C8.endpoint_ambiguous"));
+    else if (!site.exact.length) out.push(res("C8", "NO-GO", "C8.no_endpoint", { lines: ["no enabled webhook endpoint for the site"] }));
+    else if (!site.events.has("*")) {
+      const missing = HANDLED_EVENTS.filter((e) => !site.events.has(e));
+      if (missing.length) {
+        out.push(res("C8", "NO-GO", "C8.events_missing", { lines: ["the endpoint does not subscribe to " + missing.join(", ")] }));
+      }
+    }
+  }
+  const own = new Set(out.map((r) => r.code));
+  for (const r of ctx.mapped || []) if (r.id === "C8" && !own.has(r.code)) { out.push(r); own.add(r.code); }
+
+  // (b)-(d) need the price list, the floor and the allowlist
+  const pr = ctx.prices;
+  const massIds = new Set(ctx.priceIds || []);
+  const massProducts = new Set(ctx.productIds || []);
+  const minB = factsBlind(ctx, ["c8.min_cents"]);
+  const min = minB ? -1 : fact(ctx.facts, "c8.min_cents");
+  if (!pr || !pr.readable) out.push(res("C8", "BLIND", "C8.prices_unreadable"));
+  else if (!massIds.size && !massProducts.size) out.push(res("C8", "BLIND", "C8.allowlist_unset"));
+  else {
+    const items = pr.items.filter((p) => p && p.active !== false);
+    const isMass = (p) => massIds.has(p.id) || massProducts.has(p.product);
+    const mass = items.filter(isMass);
+    if (min < 0) out.push(res("C8", "BLIND", minB === "schema" ? "schema" : "C8.min_cents_unknown"));
+    else {
+      // (b) every MassPermits price, and its net after each promotion code
+      // that applies to it, is at or above the webhook's floor
+      const below = [];
+      for (const p of mass) {
+        if (typeof p.unit_amount === "number" && p.unit_amount > 0 && p.unit_amount < min) {
+          below.push(`a MassPermits price of ${p.unit_amount}c is under the ${min}c floor`);
+        }
+      }
+      const po = ctx.promos;
+      if (!po || !po.readable) out.push(res("C8", "BLIND", "C8.promos_unreadable"));
+      else {
+        let unknown = 0;
+        for (const c of po.items.filter((x) => x && x.active !== false)) {
+          if (!c.discount || !c.scope) { unknown++; continue; }
+          for (const p of mass) {
+            if (!(typeof p.unit_amount === "number" && p.unit_amount > 0)) continue;
+            if (!c.scope.all && !(c.scope.products || []).includes(p.product)) continue;
+            let net = null;
+            if (typeof c.discount.percent_off === "number") net = Math.round(p.unit_amount * (100 - c.discount.percent_off) / 100);
+            else if (typeof c.discount.amount_off === "number" && (!c.discount.currency || c.discount.currency === p.currency)) {
+              net = p.unit_amount - c.discount.amount_off;
+            }
+            if (net !== null && net < min) below.push(`a ${p.unit_amount}c MassPermits price nets ${Math.max(net, 0)}c with an active promotion code (floor ${min}c)`);
+          }
+        }
+        if (unknown) out.push(res("C8", "WARN", "C8.promo_scope_unknown",
+          { lines: [`${unknown} active promotion code(s) whose discount or scope could not be read`] }));
+      }
+      if (below.length) out.push(res("C8", "NO-GO", "C8.below_floor", { lines: [...new Set(below)] }));
+      // (c) a sibling price the webhook's floor would treat as MassPermits
+      const sib = items.filter((p) => !isMass(p) && typeof p.unit_amount === "number" && p.unit_amount >= min);
+      if (sib.length) out.push(res("C8", "WARN", "C8.sibling_over_floor",
+        { lines: [`${sib.length} active non-MassPermits price(s) at or above the ${min}c floor`] }));
+    }
+    // (d) a live Payment Link sells a MassPermits price
+    const ln = ctx.links;
+    if (!ln || !ln.readable) out.push(res("C8", "BLIND", "C8.links_unreadable"));
+    else {
+      const massPriceIds = new Set(mass.map((p) => p.id).concat([...massIds]));
+      const live = ln.items.some((l) => l && l.active !== false && Array.isArray(l.prices) && l.prices.some((x) => massPriceIds.has(x)));
+      if (!live) out.push(res("C8", "WARN", "C8.no_live_link"));
+    }
+  }
+  return out.length ? out : [pass("C8")];
+}
+
 // Checks built so far (the digest lists the rest as "not built").
-export const NOT_BUILT = ["C8", "C10", "C11", "C12", "C13", "C15", "C16", "C19", "C20", "C21", "C22"];
+export const NOT_BUILT = ["C10", "C11", "C12", "C13", "C15", "C16", "C19", "C20", "C21", "C22"];

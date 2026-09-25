@@ -32,10 +32,14 @@ import { renderWeekly } from "./_rehearsal_mail.js";
 import { onRequestGet as myLeadsGet } from "./my-leads.js";
 import { onRequestGet as leadsGet } from "../leads.js";
 import {
+  listStripeSubscriptions, listStripeWebhookEndpoints, listStripePrices, listStripePromotionCodes,
+  listStripePaymentLinks, reconcile, STRIPE_API_VERSION,
+} from "./_reconcile.js";
+import {
   validateRunnerFacts, runLevelWait, shouldSkip, applyAcks, verdictOf, nogoCodes, composeDigest,
-  shouldMail, checkC0, checkC1, checkC2, checkC3, checkC4, checkC5, checkC6, checkC7, checkC9,
-  checkC14, checkC17, checkC18, checkMonPre, checkMonPost, res, isoDay, dateMs, FACTS_MAX_BYTES,
-  NOT_BUILT,
+  shouldMail, checkC0, checkC1, checkC2, checkC3, checkC4, checkC5, checkC6, checkC7, checkC8, checkC9,
+  checkC14, checkC17, checkC18, checkMonPre, checkMonPost, mapReconcile, res, isoDay, dateMs,
+  FACTS_MAX_BYTES, NOT_BUILT,
 } from "./_rehearsal.js";
 
 const DAY = 86400_000;
@@ -157,7 +161,7 @@ const norm = (s) => String(s).trim().toLowerCase();
 const ATTEMPTS = new Set(["pending", "sent", "failed"]);
 export function outbound(env, roster, log) {
   // Stripe: GET to the API origin, nothing else. Passed as fetchImpl to every
-  // _reconcile.js reader (R3a).
+  // _reconcile.js reader.
   async function stripeGet(url, init = {}) {
     let u;
     try { u = new URL(typeof url === "string" ? url : String(url)); } catch { throw new Error("outbound_blocked"); }
@@ -356,6 +360,42 @@ async function links(env, rw, roster, params) {
   return { more: more && params.page < MAX_PAGE, persisted };
 }
 
+// ── Stripe reads and reconcile() (C7 keyed half, C8, mon-post step 2) ──────
+// Every read goes through out.stripeGet (GET to the Stripe API origin only).
+// Without a key each reader returns unreadable "no-key" and makes no call.
+// reconcile() runs whenever the roster is readable, key or not: without Stripe
+// it still runs its tripwire and roster-only identity scan. Its return value
+// is bound ONLY to `recon` and read ONLY by mapReconcile().
+const csv = (v) => String(v || "").split(",").map((s) => s.trim()).filter(Boolean);
+async function stripeSide(env, out, roster, sendLog, sendLogOk, now, withC8) {
+  const key = typeof env.STRIPE_READ_KEY === "string" ? env.STRIPE_READ_KEY : "";
+  const opts = { key, apiVersion: STRIPE_API_VERSION, fetchImpl: out.stripeGet };
+  const stripeResult = await listStripeSubscriptions({ ...opts, expandCustomer: env.STRIPE_NO_EXPAND !== "1" });
+  const webhookResult = await listStripeWebhookEndpoints(opts);
+  const c8reads = withC8 ? {
+    prices: await listStripePrices(opts),
+    promos: await listStripePromotionCodes(opts),
+    links: await listStripePaymentLinks(opts),
+  } : {};
+  const products = { masspermits_prices: csv(env.MASSPERMITS_PRICE_IDS), other_prices: csv(env.OTHER_PRICE_IDS),
+    masspermits: csv(env.MASSPERMITS_PRODUCT_IDS), other: csv(env.OTHER_PRODUCT_IDS) };
+  const siteHost = env.SITE_HOST || "masspermits.com";
+  const keyed = !!key && stripeResult.readable === true;
+  let mapped = [];
+  if (roster.ok) {
+    const recon = await reconcile({ roster: roster.rows, rosterReadable: true, sendLog: sendLogOk ? sendLog : [],
+      sendLogReadable: sendLogOk, stripeResult, webhookResult, products, siteHost, now });
+    mapped = mapReconcile(recon, { rows: roster.rows, stripeResult, products, keyed });
+  }
+  return {
+    stripe: { keyed: !!key, readable: stripeResult.readable === true, reason: stripeResult.reason || null,
+      subs: stripeResult.readable ? stripeResult.subs : [] },
+    c8: { keyed: !!key, webhookResult, siteHost, priceIds: products.masspermits_prices,
+      productIds: products.masspermits, ...c8reads },
+    priceIds: products.masspermits_prices, mapped,
+  };
+}
+
 // ── part=core: every check, the verdict, the one mail ──────────────────────
 async function core(ctx) {
   const { env, rw, params, facts, dropped, roster, log, out, now, base, upsert } = ctx;
@@ -371,10 +411,11 @@ async function core(ctx) {
     readJsonSafe(rw, "rehearsal-ack.json"),
     readJsonSafe(rw, "funnel-metrics.json"),
   ]);
-  // Stripe reads arrive with _reconcile.js in R3a. Until then C7's keyed half
-  // is BLIND: no key, or a key whose reader is not built.
-  const stripe = { keyed: !!env.STRIPE_READ_KEY, readable: false, reason: "not-built", subs: [] };
-  const priceIds = String(env.MASSPERMITS_PRICE_IDS || "").split(",").map((s) => s.trim()).filter(Boolean);
+  // C7 and C8 run in sat, sun and dry; mon-post needs reconcile() for step 2;
+  // mon-pre reads nothing from Stripe.
+  const sx = mode === "mon-pre" ? { stripe: null, c8: null, priceIds: [], mapped: [] }
+    : await stripeSide(env, out, roster, sendLog, sendLogOk, now, mode !== "mon-post");
+  const { stripe, priceIds, mapped } = sx;
   const coverage = inp.status && ((inp.status.coverage && inp.status.coverage.disclose) || inp.status.degraded)
     ? (inp.status.coverage || { note: "reduced coverage" }) : null;
   const c = { facts, dropped, mode, date, now, status: inp.status, heads, inp, sendLog, sendLogOk, roster,
@@ -389,14 +430,14 @@ async function core(ctx) {
   let results = [];
   let sunday = null;
   if (mode === "mon-post") {
-    results.push(...checkMonPost({ ...c, monPre: monPreRecs, linksPersisted }));
+    results.push(...checkMonPost({ ...c, monPre: monPreRecs, linksPersisted, mapped }));
   } else {
     const store = await readJsonSafe(rw, `rehearsal/links-${run}.json`);
     const c0 = checkC0(c);
     results.push(...c0, ...checkC1(c), ...checkC2(c), ...checkC3(c), ...checkC4(c));
     if (mode !== "mon-pre") results.push(...checkC5(c));
     results.push(...checkC6({ roster, store }));
-    if (mode !== "mon-pre") results.push(...checkC7(c));
+    if (mode !== "mon-pre") results.push(...checkC7({ ...c, mapped }), ...checkC8({ ...sx.c8, facts, dropped, mapped }));
     results.push(...checkC9(c));
     if (mode !== "mon-pre") results.push(...checkC14(c));
     results.push(...checkC17(c));

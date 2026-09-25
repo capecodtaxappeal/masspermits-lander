@@ -1,7 +1,8 @@
 // Drills: one fault fixture per incident, each with a negative twin, and the
-// false-alarm drills F1-F12 (F13 is R3a). Every Function drill runs the whole
+// false-alarm drills F1-F12 (F13 and the R3a halves are drilled in
+// rehearsal_r3a_drills.test.mjs). Every Function drill runs the whole
 // rehearsal.js (temp copy, stubbed verifier) the way the caller drives it;
-// C7's keyed half (Stripe reads arrive in R3a) is drilled through the pure
+// C7's keyed half is also drilled here through the pure
 // functions with synthetic Stripe subscriptions.
 //
 //   node functions/api/rehearsal_drills.test.mjs
@@ -196,9 +197,9 @@ const C5_TWIN = ["PASS", "WARN"];
 }
 { // I-20 / I-21: the sample scan (the runner counts; the Function judges the counts)
   const f = await fx({ ...SAT, facts: K.facts({ "c14.house_numbers": 2, "c14.owner_cue": 1 }) });
-  judge("I-20", "C14", f, base.sat, { code: "C14.house_numbers", note: "runner scan (unzip) is R3a" });
+  judge("I-20", "C14", f, base.sat, { code: "C14.house_numbers", note: "runner scan: runner.test.mjs" });
   table[table.length - 1][3] = "P";
-  judge("I-21", "C14", f, base.sat, { code: "C14.owner_cue", note: "runner scan (unzip) is R3a" });
+  judge("I-21", "C14", f, base.sat, { code: "C14.owner_cue", note: "runner scan: runner.test.mjs" });
   table[table.length - 1][3] = "P";
 }
 { // I-22 today's shipped copy at 2026-10-04 (reduced coverage disclosed) -> C5 NO-GO
@@ -218,9 +219,9 @@ const C5_TWIN = ["PASS", "WARN"];
   const f = await fx({ ...SAT, worldOpts: { status: st } });
   judge("I-24", "C2", f, base.sat, { code: "C2.drift", note: "reported, nothing re-run" });
 }
-{ // I-28 "you both get a month" -> C5 (C8 Radar events and C7 unknown price are R3a)
+{ // I-28 "you both get a month" -> C5 (C8 Radar events and C7 unknown price: rehearsal_r3a_drills)
   const f = await fx({ ...SAT, facts: K.facts({ "purchase.month_line": true }) });
-  judge("I-28", "C5", f, base.sat, { code: "C5.purchase_copy", twinOk: C5_TWIN, note: "C8 and C7.unknown_price halves are R3a" });
+  judge("I-28", "C5", f, base.sat, { code: "C5.purchase_copy", twinOk: C5_TWIN, note: "C8 and C7.unknown_price halves: rehearsal_r3a_drills" });
   table[table.length - 1][3] = "P";
 }
 { // I-29 no Sunday record; a WAIT-only Sunday; inbox never; inbox backlog
@@ -242,9 +243,9 @@ const C5_TWIN = ["PASS", "WARN"];
   check("I-31: the shipped copy has no /leads link -> WARN C5.no_leads_link", ok);
   row("I-31", "C5", "WARN C5.no_leads_link; twin n/a (shipped copy)", "P", "C19 not built");
 }
-for (const [id, chk] of [["I-02", "C8"], ["I-04", "C8"], ["I-13", "C8"], ["I-16", "C7 keyed (S vs R, reconcile)"],
-  ["I-03", "C15"], ["I-07", "C15"], ["I-30", "C15"], ["I-06 seed", "C20"], ["I-08", "C16"], ["I-17", "C10"], ["I-25", "C11"],
-  ["I-26", "C10,C12"], ["I-27", "C13"]]) row(id, chk, "not built", "not built", /C8|keyed/.test(chk) ? "R3a" : "R2b/R3b");
+// I-02, I-04, I-13, I-16 and F13 are drilled in rehearsal_r3a_drills.test.mjs.
+for (const [id, chk] of [["I-03", "C15"], ["I-07", "C15"], ["I-30", "C15"], ["I-06 seed", "C20"], ["I-08", "C16"],
+  ["I-17", "C10"], ["I-25", "C11"], ["I-26", "C10,C12"], ["I-27", "C13"]]) row(id, chk, "not built", "not built", "R2b/R3b");
 
 // ════════════════════════════════════════════════════════════════════════════
 // false-alarm drills
@@ -253,7 +254,7 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
 { // F1 Tuesday 13:05Z mon-post backstop after a healthy Monday, Tuesday's refresh done 12:51Z
   const b = base.monpost;
   F("F1", b.v === "GO" && b.mails.length === 0 && b.rec.date === "2026-10-05",
-    "mon-post: date Monday, PASS, no mail", "date resolution itself is mode.mjs (R3a)");
+    "mon-post: date Monday, PASS, no mail", "runner side: rehearsal_r3a_drills");
 }
 { // F2 Tuesday backstop when Monday's mon-post already has a non-WAIT record
   const mp = monPost({ records: [{ date: "2026-10-05", mode: "mon-post", part: "core", trigger: "sched", run: "600", verdict: "GO", at: "2026-10-05T21:00:00Z" }] });
@@ -303,12 +304,12 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
 { // F7 F pushed 2 min ago, no check-run anywhere -> C0 check-level WAIT, verdict unaffected
   const r = await fx({ ...SAT, facts: K.facts({ "c0.fn_state": "missing", "c0.fn_age_min": 2, "c0.head_state": "missing" }) });
   F("F7", r.worst("C0") === "WAIT" && r.has("C0.deploy_pending") && r.v === base.sat.v,
-    "C0 deploy pending: check-level WAIT, verdict unchanged", "runner re-poll is R3a");
+    "C0 deploy pending: check-level WAIT, verdict unchanged", "runner side: rehearsal_r3a_drills");
   table[table.length - 1][3] = "P";
 }
 { // F8 F 3 days old with success, HEAD bot commit 20 s old with no check-run -> C0 PASS
   const r = await fx({ ...SAT, facts: K.facts({ "c0.fn_state": "success", "c0.fn_age_min": 4320, "c0.head_state": "missing" }) });
-  F("F8", r.worst("C0") === "PASS", "C0 with a fresh bot HEAD: PASS", "runner side is R3a");
+  F("F8", r.worst("C0") === "PASS", "C0 with a fresh bot HEAD: PASS", "runner side: rehearsal_r3a_drills");
   table[table.length - 1][3] = "P";
 }
 { // F9 mon-post while weekly-feed is in_progress -> WAIT; the Tuesday backstop is not blocked
@@ -341,7 +342,7 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
   const r = await fx({ ...SAT, subs, log });
   F("F11 no key", r.v !== "NO-GO" && r.mails.length === 0 && r.worst("C7") === "BLIND",
     "new buyer, no key: C7 BLIND no_key, no alarm mail");
-  // with the key (pure C7: Stripe reads arrive in R3a)
+  // with the key (pure C7; the same checks through the Stripe reads are in rehearsal_r3a_drills)
   const stripe = (subsArr) => ({ keyed: true, readable: true, subs: subsArr });
   const sub = (i, created, status = "active") => ({ id: "sub_TEST" + i, status, customer: "cus_TEST" + i, created,
     items: { data: [{ price: { id: "price_TEST_MP" } }] } });
@@ -390,7 +391,6 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
   const r = await fx({ ...SAT, subs, log });
   F("F12 no key", r.v !== "NO-GO" && r.mails.length === 0, "cancelled since Monday through the Function (no key): no alarm");
 }
-row("F13", "C7 via reconcile()", "not built", "not built", "R3a");
 
 // ════════════════════════════════════════════════════════════════════════════
 // across every drill: mail lock, write set, leaks

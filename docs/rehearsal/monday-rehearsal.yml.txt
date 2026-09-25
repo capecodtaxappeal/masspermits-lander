@@ -1,0 +1,133 @@
+name: MassPermits monday rehearsal
+# MassPermits Monday Dress Rehearsal (REPORT-ONLY). Delivered as a .txt file:
+# the owner copies it to .github/workflows/monday-rehearsal.yml by hand.
+#
+# On Saturday and Sunday it runs Monday's delivery motions without emailing a
+# customer and tells the owner GO or NO-GO; on Monday it checks before and
+# after the real send. It fixes nothing, retries nothing, and starts no other
+# workflow.
+#
+# Two jobs:
+#   runner  read-only GitHub token (contents, actions, checks: read), no
+#           id-token. Checks out main (never the triggering head), resolves
+#           the mode, and gathers the runner facts: enums and integers only.
+#   caller  id-token only, no checkout, no action. Mints a fresh OIDC token
+#           per POST and calls the one rehearsal Function URL. Prints only
+#           {ok, verdict, codes, error}: nothing that shows the roster size.
+#
+# The workflow_run trigger matches by workflow NAME. mode.mjs therefore runs a
+# source guard first (path, head repository, head branch and event must be
+# main's weekly-refresh.yml) and resolves anything else to idle, which skips
+# the caller.
+
+on:
+  workflow_run:
+    workflows: ["MassPermits weekly data refresh"]
+    types: [completed]
+  schedule:
+    - cron: "0 20 * * 6"    # sat backstop
+    - cron: "0 20 * * 0"    # sun backstop
+    - cron: "0 10 * * 1"    # mon-pre backstop
+    - cron: "30 20 * * 1"   # mon-post
+    - cron: "0 13 * * 2"    # mon-post Tuesday backstop (judges Monday)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry | sat | sun | mon-pre | mon-post"
+        required: true
+        default: dry
+        type: choice
+        options: [dry, sat, sun, mon-pre, mon-post]
+
+permissions: {}
+
+concurrency:
+  group: monday-rehearsal
+  cancel-in-progress: false
+
+jobs:
+  runner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      actions: read
+      checks: read
+    outputs:
+      mode: ${{ steps.mode.outputs.mode }}
+      date: ${{ steps.mode.outputs.date }}
+      trigger: ${{ steps.mode.outputs.trigger }}
+      parts: ${{ steps.mode.outputs.parts }}
+      facts: ${{ steps.facts.outputs.facts }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Resolve mode, date and trigger
+        id: mode
+        run: node scripts/rehearsal/mode.mjs
+      - name: C14 sample scan (counts only)
+        if: steps.mode.outputs.mode != 'idle'
+        run: node scripts/rehearsal/c14.mjs > "$RUNNER_TEMP/c14.json"
+      - name: Mirror step (mail and inbox drift, purchase render, webhook facts)
+        if: steps.mode.outputs.mode != 'idle'
+        run: node scripts/rehearsal/mirror.mjs > "$RUNNER_TEMP/mirror.json"
+      - name: Runner facts
+        id: facts
+        if: steps.mode.outputs.mode != 'idle'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODE: ${{ steps.mode.outputs.mode }}
+          DATE: ${{ steps.mode.outputs.date }}
+        run: node scripts/rehearsal/facts.mjs "$RUNNER_TEMP/c14.json" "$RUNNER_TEMP/mirror.json"
+
+  caller:
+    needs: runner
+    if: needs.runner.outputs.mode != 'idle'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      id-token: write
+    env:
+      MODE: ${{ needs.runner.outputs.mode }}
+      DATE: ${{ needs.runner.outputs.date }}
+      TRIGGER: ${{ needs.runner.outputs.trigger }}
+      PARTS: ${{ needs.runner.outputs.parts }}
+      FACTS: ${{ needs.runner.outputs.facts }}
+    steps:
+      - name: Call the rehearsal Function
+        run: |
+          set -euo pipefail   # never turn on shell tracing; never make curl verbose or trace it
+          RUN="$GITHUB_RUN_ID"
+          case "$MODE" in sat|sun|mon-pre|mon-post|dry) ;; *) echo "bad mode"; exit 1;; esac
+          [[ "$DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || { echo "bad date"; exit 1; }
+          [[ "$TRIGGER" =~ ^([0-9]{1,20}|sched|dispatch)$ ]] || { echo "bad trigger"; exit 1; }
+          [[ "$RUN" =~ ^[0-9]{1,20}$ ]] || { echo "bad run"; exit 1; }
+          [ "${#FACTS}" -le 4096 ] || { echo "facts too large"; exit 1; }
+          printf '%s' "$FACTS" | jq -e 'type == "object" and .v == 1' >/dev/null || { echo "bad facts"; exit 1; }
+          mint() { curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+                   "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value; }
+          for PART in $PARTS; do
+            case "$PART" in links|seed|core) ;; *) echo "bad part"; exit 1;; esac
+            PAGE=0
+            while :; do
+              OIDC=$(mint)                 # a fresh token per POST: they last about 5 minutes
+              echo "::add-mask::$OIDC"     # immediately, before anything else
+              curl -sS -o resp.json -X POST -H "Authorization: Bearer $OIDC" \
+                -H "content-type: application/json" --data-binary "$FACTS" \
+                "https://masspermits.com/api/rehearsal?mode=$MODE&part=$PART&page=$PAGE&date=$DATE&trigger=$TRIGGER&run=$RUN"
+              unset OIDC
+              # print nothing that shows the roster size: no counts, no line per links page
+              if [ "$PART" = core ]; then
+                jq -c '{ok, verdict, codes, error}' resp.json
+              elif [ "$(jq -r '.ok == true' resp.json)" != true ]; then
+                jq -c '{ok, error}' resp.json
+              fi
+              if [ "$PART" = links ] && [ "$(jq -r '.more == true' resp.json)" = true ] && [ "$PAGE" -lt 24 ]
+              then PAGE=$((PAGE+1)); else break; fi
+            done
+          done

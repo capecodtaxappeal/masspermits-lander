@@ -52,7 +52,7 @@ export async function loadRehearsal() {
   const api = join(root, "functions", "api");
   mkdirSync(api, { recursive: true });
   writeFileSync(join(root, "package.json"), JSON.stringify({ type: "module" }));
-  for (const f of ["rehearsal.js", "_rehearsal.js", "_rehearsal_mail.js", "_ro_bucket.js", "_presend.js"]) {
+  for (const f of ["rehearsal.js", "_rehearsal.js", "_rehearsal_mail.js", "_ro_bucket.js", "_presend.js", "_reconcile.js"]) {
     copyFileSync(join(API_DIR, f), join(api, f));
   }
   copyFileSync(join(API_DIR, "my-leads.js"), join(api, "my-leads.real.js"));
@@ -86,7 +86,7 @@ export async function loadRehearsal() {
     setVerdict(v) { globalThis[OIDC] = v; },
     byteIdentical() {
       const same = (a, b) => readFileSync(a, "utf8") === readFileSync(b, "utf8");
-      return ["rehearsal.js", "_rehearsal.js", "_rehearsal_mail.js", "_ro_bucket.js", "_presend.js"]
+      return ["rehearsal.js", "_rehearsal.js", "_rehearsal_mail.js", "_ro_bucket.js", "_presend.js", "_reconcile.js"]
         .every((f) => same(join(api, f), join(API_DIR, f))) &&
         same(join(api, "my-leads.real.js"), join(API_DIR, "my-leads.js")) &&
         same(join(root, "functions", "leads.real.js"), join(REPO, "functions", "leads.js"));

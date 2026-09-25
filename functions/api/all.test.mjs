@@ -1,4 +1,5 @@
-// Runs every rehearsal-era test, each in its own Node process (so a fetch stub,
+// Runs every rehearsal-era test (functions/api/*.test.mjs and
+// scripts/rehearsal/*.test.mjs), each in its own Node process (so a fetch stub,
 // a JWKS cache or a module cache in one file can never leak into another), and
 // prints per-file pass counts.
 //
@@ -19,6 +20,9 @@ const files = readdirSync(here)
   .filter((f) => f.endsWith(".test.mjs") && f !== self)
   .sort()
   .map((f) => join(here, f));
+// The runner job's tests (R3a) live next to the runner scripts.
+const runnerDir = join(repo, "scripts", "rehearsal");
+files.push(...readdirSync(runnerDir).filter((f) => f.endsWith(".test.mjs")).sort().map((f) => join(runnerDir, f)));
 // The pre-send gate replay (taken unchanged from claude/seed-rehearsal-inputs).
 // Never with --live.
 files.push(join(repo, "scripts", "rehearsal", "presend_replay.mjs"));
