@@ -185,7 +185,9 @@ export function outbound(env, roster, log) {
     const kind = owners.includes(t) ? "owner" : seeds.includes(t) ? "seed" : null;
     if (!kind) throw new Error("refused");
     if (kind === "seed" && !roster.ok) throw new Error("refused");
-    if (roster.ok && roster.rows.some((r) => r && typeof r.email === "string" && norm(r.email) === t)) {
+    // Every roster row, active or not, whatever type its email field has.
+    const rowEmails = (r) => (r && r.email != null ? (Array.isArray(r.email) ? r.email : [r.email]) : []);
+    if (roster.ok && roster.rows.some((r) => rowEmails(r).some((e) => e != null && norm(e) === t))) {
       throw new Error("refused");
     }
     return { t, kind };
@@ -313,7 +315,9 @@ const synthetic = (extra) => ({ "user-agent": UA, "x-mp-synthetic": "1", ...extr
 async function links(env, rw, roster, params) {
   const key = `rehearsal/links-${params.run}.json`;
   const prev = await readJsonSafe(rw, key);
-  const store = prev && prev.pages && prev.date === params.date && prev.mode === params.mode
+  // Page 0 always starts a fresh store: a re-run of the same workflow run keeps
+  // its run id, and pages from the earlier attempt must not be judged.
+  const store = params.page > 0 && prev && prev.pages && prev.date === params.date && prev.mode === params.mode
     ? prev : { date: params.date, mode: params.mode, pages: {} };
   if (!roster.ok) {
     store.pages[params.page] = { rows: [], more: false };

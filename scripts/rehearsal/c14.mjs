@@ -140,7 +140,7 @@ export async function c14Facts(fetchSample = getSample) {
   if (!r || r.status !== 200 || !r.bytes) return blind;
   let files;
   try { files = unzip(r.bytes); } catch { return blind; }
-  return { fetched: true, ...scan(files) };
+  try { return { fetched: true, ...scan(files) }; } catch { return blind; }
 }
 
 export async function main() {

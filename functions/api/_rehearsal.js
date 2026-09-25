@@ -23,8 +23,10 @@ const MIN = 60_000;
 export const RESULTS = ["PASS", "WARN", "WAIT", "NO-GO", "BLIND"];
 const SEVERITY = { "NO-GO": 4, BLIND: 3, WAIT: 2, WARN: 1, PASS: 0 };
 
-// The checks whose BLIND result makes the verdict "GO, blind on N".
-export const BLIND_COUNTS = new Set(["C1", "C2", "C3", "C6", "C7"]);
+// The checks whose BLIND result makes the verdict "GO, blind on N". mon_post
+// is mon-post's whole judgement (R4: a mon-post that could not read the send
+// log, or the Actions facts, must not read as a plain GO).
+export const BLIND_COUNTS = new Set(["C1", "C2", "C3", "C6", "C7", "mon_post"]);
 
 // ── results ─────────────────────────────────────────────────────────────────
 export function res(id, result, code, extra = {}) {
@@ -495,7 +497,11 @@ export function checkC6(ctx) {
   if (!store || !store.pages) return [res("C6", "BLIND", "C6.not_run")];
   if (store.too_many) return [res("C6", "BLIND", "C6.too_many")];
   const keys = Object.keys(store.pages).map(Number).sort((a, b) => a - b);
-  if (!keys.length || keys.some((k, i) => k !== i) || store.pages[keys[keys.length - 1]].more !== false) {
+  // Contiguous from 0, every page but the last says more:true, the last says
+  // more:false (R4: a page left over from an earlier attempt of the same run
+  // can never complete a chain).
+  if (!keys.length || keys.some((k, i) => k !== i) ||
+      keys.some((k, i) => store.pages[k].more !== (i < keys.length - 1))) {
     return [res("C6", "BLIND", "C6.incomplete")];
   }
   const groups = new Map();
@@ -915,7 +921,7 @@ export function shouldMail({ mode, verdict, results, prev, sunday }) {
   }
   if (mode === "mon-pre") return worseThanSunday(verdict, results, sunday);
   if (mode === "mon-post") {
-    return verdict === "NO-GO" || results.some((r) =>
+    return verdict === "NO-GO" || verdict.startsWith("GO, blind") || results.some((r) =>
       r.code === "mon_post.no_mon_pre" || r.code === "mon_post.etag_unjudged");
   }
   return false;
