@@ -125,6 +125,7 @@ export function composeDigest(results, ctx = {}) {
     sec("Listed", listed) +
     (passed.length ? `<p>Passed: ${esc(passed.join(", "))}</p>` : "") +
     (ctx.notBuilt && ctx.notBuilt.length ? `<p>Not built yet: ${esc(ctx.notBuilt.join(", "))}</p>` : "") +
+    (ctx.ciOnly && ctx.ciOnly.length ? `<p>Checked in CI, not per run: ${esc(ctx.ciOnly.join(", "))}</p>` : "") +
     "</div>";
   const subject = `${verdict} | MassPermits rehearsal ${ctx.mode || ""} ${ctx.date || ""}`.trim();
   return { subject: subject.replace(/—/g, "-"), html: html.replace(/—/g, "-") };
@@ -1192,5 +1193,319 @@ export function checkC8(ctx) {
   return out.length ? out : [pass("C8")];
 }
 
-// Checks built so far (the digest lists the rest as "not built").
-export const NOT_BUILT = ["C10", "C11", "C12", "C13", "C15", "C16", "C19", "C20", "C21", "C22"];
+// ════════════════════════════════════════════════════════════════════════════
+// Extended checks (R2b): C10-C13, C15, C19, C20, C21. None of them is in
+// BLIND_COUNTS: an Extended check that cannot judge is listed as Blind but
+// never changes GO into "GO, blind on N".
+// ════════════════════════════════════════════════════════════════════════════
+const isObj = (o) => o !== null && typeof o === "object" && !Array.isArray(o);
+// A source key as it may appear in a code or a digest line: lower case,
+// ", MA" dropped, only [a-z0-9-], at most 40 characters. Town names are public;
+// anything else in a key is flattened away.
+export const townKey = (k) => lc(k).replace(/,\s*ma$/, "").replace(/[^a-z0-9]+/g, "-")
+  .replace(/^-+|-+$/g, "").slice(0, 40) || "unnamed";
+const DAY_RE = /^\d{4}-\d{2}-\d{2}/;
+const dayOf = (v) => (typeof v === "string" && DAY_RE.test(v) ? dateMs(v.slice(0, 10)) : NaN);
+
+// ── C10: every source is fresh for its cadence ─────────────────────────────
+// Source of these numbers: the PermitPulse engine (its source registry and
+// cadence table, scraper.py / hosted_refresh.py), which is not in this public
+// repository. Boston publishes daily and is held to 4 days; every other
+// source is judged by the cadence refresh-status.json gives it in
+// status.cadence (absent means daily). SOURCE_MAX_DAYS holds the per-source
+// overrides; add a row here when the engine gives a source its own limit.
+export const CADENCE_MAX_DAYS = Object.freeze({ daily: 10, monthly: 55, quarterly: 130 });
+export const SOURCE_MAX_DAYS = Object.freeze({ boston: 4 });
+// status.source_newest = {"<source>": "YYYY-MM-DD"}: the newest permit date
+// each source returned. Absent: BLIND, never PASS.
+export function checkC10(ctx) {
+  const { status, date } = ctx;
+  if (!status) return [res("C10", "BLIND", "C10.status_unreadable")];
+  const newest = status.source_newest;
+  if (!isObj(newest) || !Object.keys(newest).length) {
+    return [res("C10", "BLIND", "C10.no_newest", { lines: ["refresh-status.json has no source_newest"] })];
+  }
+  const cadence = isObj(status.cadence) ? status.cadence : {};
+  const d0 = dateMs(date);
+  const out = [];
+  const seen = new Set();
+  for (const k of Object.keys(newest).sort()) {
+    const town = townKey(k);
+    seen.add(town);
+    let max = SOURCE_MAX_DAYS[town];
+    let why = "its own limit";
+    if (max === undefined) {
+      const cad = typeof cadence[k] === "string" ? lc(cadence[k]) : "daily";
+      max = CADENCE_MAX_DAYS[cad];
+      why = cad;
+      if (max === undefined) {
+        out.push(res("C10", "WARN", "C10.cadence_unknown", { lines: [`${town}: cadence not known`] }));
+        continue;
+      }
+    }
+    const t = dayOf(newest[k]);
+    if (!Number.isFinite(t)) {
+      out.push(res("C10", "NO-GO", `C10.source_stale:${town}`, { lines: [`${town}: no newest date`] }));
+      continue;
+    }
+    const age = Math.floor((d0 - t) / DAY);
+    if (age > max) {
+      out.push(res("C10", "NO-GO", `C10.source_stale:${town}`,
+        { lines: [`${town}: newest ${isoDay(t)}, ${age} days old (limit ${max}, ${why})`] }));
+    }
+  }
+  // A source with its own limit must be reported at all.
+  for (const town of Object.keys(SOURCE_MAX_DAYS)) {
+    if (!seen.has(town)) out.push(res("C10", "NO-GO", `C10.source_stale:${town}`,
+      { lines: [`${town}: missing from source_newest`] }));
+  }
+  return out.length ? out : [pass("C10")];
+}
+
+// ── C11: no monthly source lost part of its window ─────────────────────────
+// status.window_loss = {"<source>": int}, one entry per monthly source (the
+// rows a monthly publisher's trailing window dropped). Reader only: absent
+// is BLIND.
+function monthlySources(status) {
+  const cov = isObj(status.coverage) ? status.coverage : {};
+  if (Array.isArray(cov.monthly_sources) && cov.monthly_sources.length) return cov.monthly_sources.map(String);
+  const cad = isObj(status.cadence) ? status.cadence : {};
+  return Object.keys(cad).filter((k) => lc(cad[k]) === "monthly");
+}
+export function checkC11(ctx) {
+  const { status } = ctx;
+  if (!status) return [res("C11", "BLIND", "C11.status_unreadable")];
+  const wl = status.window_loss;
+  if (!isObj(wl)) return [res("C11", "BLIND", "C11.no_window_loss", { lines: ["refresh-status.json has no window_loss"] })];
+  const by = new Map(Object.entries(wl).map(([k, v]) => [townKey(k), v]));
+  const monthly = monthlySources(status);
+  const towns = [...new Set((monthly.length ? monthly : Object.keys(wl)).map(townKey))].sort();
+  const lost = [], absent = [];
+  for (const t of towns) {
+    const v = by.get(t);
+    if (!Number.isInteger(v) || v < 0) absent.push(t);
+    else if (v > 0) lost.push(`${t} lost ${v}`);
+  }
+  const out = [];
+  if (lost.length) out.push(res("C11", "NO-GO", "C11.window_loss", { lines: lost }));
+  if (absent.length) out.push(res("C11", "BLIND", "C11.source_absent", { lines: absent.map((t) => `${t}: no window_loss`) }));
+  return out.length ? out : [pass("C11")];
+}
+
+// ── C12: live sources not down by more than 3 ──────────────────────────────
+// Baseline: coverage.live_sources of last Monday's delivered log entry (the
+// send log carries coverage only when it was disclosed), else the previous
+// rehearsal record's live_sources (ctx.prevLive).
+const LOST_LIST_MAX = 20;
+export function lostTowns(status) {
+  const sh = isObj(status.source_health) ? status.source_health : {};
+  const names = [...Object.keys(isObj(status.errors) ? status.errors : {}),
+    ...["dead", "vanished", "collapsed"].flatMap((k) => (Array.isArray(sh[k]) ? sh[k] : []))];
+  return [...new Set(names.map(townKey))].sort().slice(0, LOST_LIST_MAX);
+}
+export function checkC12(ctx) {
+  const { status, sendLog, sendLogOk, date, mode, now, prevLive } = ctx;
+  if (!status) return [res("C12", "BLIND", "C12.status_unreadable")];
+  const live = isObj(status.coverage) ? status.coverage.live_sources : undefined;
+  if (!Number.isInteger(live)) return [res("C12", "BLIND", "C12.no_live_sources")];
+  let ref = null, from = "";
+  if (sendLogOk) {
+    const w = mondayWindow(sendLog, date, mode, now);
+    if (w && w.T != null) {
+      const e = w.entries.find((x) => Date.parse(x.at) === w.T);
+      const cl = e && isObj(e.coverage) ? e.coverage.live_sources : undefined;
+      if (Number.isInteger(cl)) { ref = cl; from = `Monday ${mmdd(w.monday)}`; }
+    }
+  }
+  if (ref === null && Number.isInteger(prevLive)) { ref = prevLive; from = "the previous rehearsal"; }
+  if (ref === null) return [res("C12", "BLIND", "C12.no_baseline")];
+  if (live < ref - 3) {
+    const lost = lostTowns(status);
+    return [res("C12", "NO-GO", "C12.sources_down", { counts: { live, ref },
+      lines: [`live ${live} against ${ref} (${from})`].concat(lost.length ? [`lost: ${lost.join(", ")}`] : []) })];
+  }
+  return [pass("C12", "C12.ok", { counts: { live, ref } })];
+}
+
+// ── C13: the contracts step ran, cleanly ────────────────────────────────────
+// status.contracts = {ran, paid_blocks, live, attempted, dead_status_rows}.
+export function checkC13(ctx) {
+  const { status } = ctx;
+  if (!status) return [res("C13", "BLIND", "C13.status_unreadable")];
+  const c = status.contracts;
+  if (!isObj(c)) return [res("C13", "BLIND", "C13.no_contracts", { lines: ["refresh-status.json has no contracts"] })];
+  const out = [];
+  if (c.ran !== true) out.push(res("C13", "NO-GO", "C13.contracts_not_run"));
+  const INTS = ["paid_blocks", "live", "attempted", "dead_status_rows"];
+  const missing = INTS.filter((k) => !Number.isInteger(c[k]));
+  if (c.ran === true && missing.length) out.push(res("C13", "BLIND", "C13.fields_absent", { lines: [`absent: ${missing.join(", ")}`] }));
+  if (Number.isInteger(c.paid_blocks) && c.paid_blocks > 0) {
+    out.push(res("C13", "NO-GO", "C13.paid_blocks", { lines: [`${c.paid_blocks} paid block(s)`] }));
+  }
+  if (Number.isInteger(c.live) && Number.isInteger(c.attempted) && c.live > c.attempted) {
+    out.push(res("C13", "NO-GO", "C13.live_over_attempted", { lines: [`live ${c.live} > attempted ${c.attempted}`] }));
+  }
+  if (Number.isInteger(c.dead_status_rows) && c.dead_status_rows > 0) {
+    out.push(res("C13", "NO-GO", "C13.dead_status_rows", { lines: [`${c.dead_status_rows} dead-status row(s)`] }));
+  }
+  return out.length ? out : [pass("C13")];
+}
+
+// ── C15 (in-Function half): no roster email or token prefix in the pages ───
+// pages = {"/index.html": {ok:true, text} | {ok:false, code}, "/offer.html": ...},
+// read by rehearsal.js through readAsset() (the one env.ASSETS call). A token
+// prefix is its first 8 hex, the length the access logs keep (leads.js:451,
+// my-leads.js:137), matched only where no hex digit precedes it.
+export const C15_PAGES = ["/index.html", "/offer.html"];
+const rowEmails = (r) => (r && r.email != null ? (Array.isArray(r.email) ? r.email : [r.email]) : [])
+  .filter((e) => e != null).map(lc).filter((e) => e.includes("@"));
+export function checkC15(ctx) {
+  const { roster, pages } = ctx;
+  if (!roster.ok) return [res("C15", "NO-GO", "roster_unreadable")];
+  const out = [];
+  const groups = new Map();
+  const add = (code, buyer, line) => {
+    if (!groups.has(code)) groups.set(code, { buyers: new Set(), lines: [] });
+    const g = groups.get(code);
+    g.buyers.add(buyer);
+    g.lines.push(line);
+  };
+  for (const path of C15_PAGES) {
+    const name = path.slice(1);
+    const p = pages && pages[path];
+    if (!p || p.ok !== true || typeof p.text !== "string") {
+      const code = p && /^[a-z_]{1,20}$/.test(p.code || "") ? p.code : "unreadable";
+      out.push(res("C15", "BLIND", `C15.page_${code}`, { lines: [`${name} could not be read`] }));
+      continue;
+    }
+    const text = p.text.toLowerCase().replace(/&#0*64;|&#x0*40;|%40/g, "@");
+    roster.rows.forEach((r, i) => {
+      const buyer = i + 1;
+      if (rowEmails(r).some((e) => text.includes(e))) add("C15.email_in_page", buyer, `buyer ${buyer}: address in ${name}`);
+      const t = r && typeof r.token === "string" ? r.token.toLowerCase() : "";
+      if (/^[0-9a-f]{8}/.test(t) && new RegExp(`(?<![0-9a-f])${t.slice(0, 8)}`).test(text)) {
+        add("C15.token_in_page", buyer, `buyer ${buyer}: token prefix in ${name}`);
+      }
+    });
+  }
+  for (const [code, g] of groups) out.push(res("C15", "NO-GO", code, { buyers: [...g.buyers], lines: g.lines }));
+  return out.length ? out : [pass("C15")];
+}
+
+// ── C19: every buyer opened something ──────────────────────────────────────
+// A buyer passes with a dl/ or portal-access/ event carrying their token's
+// first 8 hex inside a 72 h window: after last Monday's first delivery (or
+// that Monday's 00:00Z when the log shows none), or after their purchase
+// (00:00Z of `since` to 72 h after the end of that day; only for a purchase
+// in the last 14 days, or one after that Monday). A window still open with no
+// event is not judged yet. List metadata only: rehearsal.js lists the day
+// prefixes c19Plan() names and passes {t, tok} per event, never a body.
+const H72 = 72 * HOUR;
+export const C19_MAX_DAYS = 24;
+export function c19Plan(ctx) {
+  const { roster, sendLog, sendLogOk, date, mode, now } = ctx;
+  const w = sendLogOk ? mondayWindow(sendLog, date, mode, now) : null;
+  const mon = w && w.T != null ? w.T : mondayOf(dateMs(date));
+  const buyers = [];
+  const days = new Set();
+  const addDays = (a, b) => { for (let t = dateMs(isoDay(a)); t <= Math.min(b, now); t += DAY) days.add(isoDay(t)); };
+  (roster.ok ? roster.rows : []).forEach((r, i) => {
+    if (!r || !r.email || r.active === false) return;
+    const tok = typeof r.token === "string" && /^[0-9a-f]{32}$/.test(r.token) ? r.token.slice(0, 8) : null;
+    if (!tok) return; // C5 and C6 report a missing token
+    const s = dayOf(r.since);
+    const wins = [];
+    if (!(Number.isFinite(s) && s > mon)) wins.push([mon, mon + H72]);
+    if (Number.isFinite(s) && (s > mon || s >= now - 14 * DAY)) wins.push([s, s + DAY + H72]);
+    for (const [a, b] of wins) addDays(a, b);
+    buyers.push({ buyer: i + 1, tok, wins });
+  });
+  const list = [...days].sort();
+  return { buyers, days: list.slice(-C19_MAX_DAYS), truncated: list.length > C19_MAX_DAYS, monday: mon };
+}
+export function checkC19(ctx) {
+  const { roster, plan, events, now } = ctx;
+  if (!roster.ok) return [res("C19", "NO-GO", "roster_unreadable")];
+  if (!plan) return [res("C19", "BLIND", "C19.not_run")];
+  if (plan.truncated) return [res("C19", "BLIND", "C19.too_many_days")];
+  if (!Array.isArray(events)) return [res("C19", "BLIND", "C19.list_failed")];
+  const no = [], pending = [];
+  for (const b of plan.buyers) {
+    const mine = events.filter((e) => e.tok === b.tok);
+    if (b.wins.some(([a, z]) => mine.some((e) => e.t >= a && e.t <= z))) continue;
+    if (b.wins.some(([, z]) => z > now)) pending.push(b.buyer);
+    else no.push(b.buyer);
+  }
+  const out = [];
+  if (no.length) out.push(res("C19", "WARN", "C19.no_open", { buyers: no,
+    lines: [`no download or portal visit within 72 h: buyers ${no.join(", ")}`] }));
+  if (pending.length) out.push(pass("C19", "C19.pending", { buyers: pending,
+    lines: [`window still open: buyers ${pending.join(", ")}`] }));
+  return out.some((r) => r.result !== "PASS") ? out : [pass("C19"), ...out];
+}
+
+// ── C20: the seed send (sun, part=seed) and where it landed ────────────────
+// seedCode: the code the seed part recorded for this date (sun only).
+// report: {date, placement, has_attachment} from rehearsal/seed-<sunday>.json
+// (written by rehearsal-seed.js), or null. rendered: dry's render-only check.
+export const SEED_NAME = "Rehearsal";
+export const SEED_TOKEN = "REHEARSAL-LINK-DISABLED";
+export const seedSubject = (subject, date) => `${subject} (preview ${date.slice(5, 7)}${date.slice(8, 10)})`;
+const SEED_CODES = {
+  "C20.sent": "PASS", "C20.already_sent": "PASS", "C20.mail_off": "PASS",
+  "C20.no_seeds": "BLIND", "C20.no_bundle": "WARN",
+  "C20.seed_send_failed": "WARN", "C20.seed_capped": "WARN",
+  "C20.seed_is_roster": "NO-GO", "C20.seed_refused": "NO-GO", roster_unreadable: "NO-GO",
+};
+// A seed record with one of these codes blocks every later seed send that date.
+export const SEED_ATTEMPTED = new Set(["C20.sent", "C20.seed_send_failed", "C20.seed_capped", "C20.already_sent"]);
+export function checkC20(ctx) {
+  const { mode, seedCode, report, rendered } = ctx;
+  const out = [];
+  if (mode === "dry") {
+    out.push(rendered ? pass("C20", "C20.render_ok", { lines: ["seed email rendered, not sent (dry)"] })
+      : res("C20", "BLIND", "C20.render_failed"));
+  }
+  if (mode === "sun") {
+    if (!seedCode) out.push(res("C20", "BLIND", "C20.not_run"));
+    else {
+      const result = SEED_CODES[seedCode] || "BLIND";
+      out.push(res("C20", result, SEED_CODES[seedCode] ? seedCode : "C20.unknown",
+        seedCode === "C20.mail_off" ? { lines: ["seed mail off (REHEARSAL_MAIL unset)"] } : {}));
+    }
+  }
+  if (!report) out.push(res("C20", "BLIND", "C20.no_report"));
+  else {
+    const when = `preview ${report.date.slice(5)}`;
+    if (report.placement === "spam") out.push(res("C20", "WARN", "C20.seed_spam", { lines: [`${when} landed in spam`] }));
+    else if (report.placement === "missing") out.push(res("C20", "WARN", "C20.seed_missing", { lines: [`${when} did not arrive`] }));
+    else if (report.placement === "inbox") {
+      if (report.has_attachment !== true) out.push(res("C20", "WARN", "C20.seed_no_attachment", { lines: [`${when} arrived without the zip`] }));
+      else out.push(pass("C20", "C20.inbox", { lines: [`${when} landed in the inbox with the zip`] }));
+    } else out.push(res("C20", "BLIND", "C20.bad_report"));
+  }
+  return out.some((r) => r.result !== "PASS") ? out : [pass("C20"), ...out];
+}
+// The report is valid only in exactly the shape rehearsal-seed.js writes.
+export function seedReport(o, date) {
+  if (!isObj(o) || !["inbox", "spam", "missing"].includes(o.placement) || typeof o.has_attachment !== "boolean") return null;
+  return { date, placement: o.placement, has_attachment: o.has_attachment };
+}
+// The Sundays whose report a run reads, newest first: the Sunday on or before
+// `date`, then the one before it.
+export function reportSundays(date) {
+  const d0 = dateMs(date);
+  const sun = d0 - new Date(d0).getUTCDay() * DAY;
+  return [isoDay(sun), isoDay(sun - 7 * DAY)];
+}
+
+// ── C21: the owner's attestation ────────────────────────────────────────────
+export function checkC21(ctx) {
+  return ctx.attested ? [pass("C21", "C21.attested")] : [res("C21", "WARN", "C21.unattested")];
+}
+
+// Checks not built yet (the digest lists them). C16 is judged in CI, not per
+// run: functions/api/rehearsal_c16.test.mjs runs the shipped newsletter-send.js
+// and nurture.js against a synthetic payer.
+export const NOT_BUILT = ["C22"];
+export const CI_ONLY = ["C16"];

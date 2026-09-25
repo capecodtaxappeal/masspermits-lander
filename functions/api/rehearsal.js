@@ -3,8 +3,8 @@
 // On Saturday and Sunday it runs Monday's delivery motions WITHOUT emailing a
 // customer and tells the owner GO or NO-GO; on Monday it checks before and
 // after the real send. REPORT-ONLY: it fixes nothing, retries nothing and
-// sends nothing to anyone but the owner (and, from R2b, the owner's seed
-// inboxes). The only writes it can persist are under rehearsal/.
+// sends nothing to anyone but the owner and the owner's seed inboxes (C20,
+// Sunday's part=seed). The only writes it can persist are under rehearsal/.
 //
 // Order of work, and why:
 //   1. AUTH FIRST. verifyGitHubOIDC always returns an object, so the test is
@@ -24,6 +24,8 @@
 // API origin only) and sendInternal (the recipient lock, the daily cap and the
 // fail-closed attempt record) hold the only two network calls in the files
 // this build adds. Nothing here can reach the site itself or the GitHub API.
+// The one other outside read is readAsset(): the Pages static-asset binding,
+// in-process, for exactly /index.html and /offer.html (C15).
 
 import { verifyGitHubOIDC } from "./_github-oidc.js";
 import { roBucket } from "./_ro_bucket.js";
@@ -39,7 +41,9 @@ import {
   validateRunnerFacts, runLevelWait, shouldSkip, applyAcks, verdictOf, nogoCodes, composeDigest,
   shouldMail, checkC0, checkC1, checkC2, checkC3, checkC4, checkC5, checkC6, checkC7, checkC8, checkC9,
   checkC14, checkC17, checkC18, checkMonPre, checkMonPost, mapReconcile, res, isoDay, dateMs,
-  FACTS_MAX_BYTES, NOT_BUILT,
+  checkC10, checkC11, checkC12, checkC13, checkC15, c19Plan, checkC19, checkC20, checkC21,
+  seedReport, reportSundays, seedSubject, SEED_NAME, SEED_TOKEN, SEED_ATTEMPTED, C15_PAGES,
+  FACTS_MAX_BYTES, NOT_BUILT, CI_ONLY,
 } from "./_rehearsal.js";
 
 const DAY = 86400_000;
@@ -283,12 +287,112 @@ async function handle(request, env) {
     return reply(200, { ok: true, more: r.more });
   }
   if (params.part === "seed") {
-    // C20 is built in R2b. Until then the seed part records that and stops.
-    upsert({ ...base, verdict: null, code: "C20.not_built" });
+    const r = await seed(env, rw, roster, params, out, data);
+    upsert({ ...base, verdict: null, code: r.code });
     await log.save().catch(() => {});
-    return reply(200, { ok: true });
+    return reply(200, { ok: true, codes: r.own });
   }
   return core({ env, rw, params, facts, dropped, roster, log, out, now, base, upsert });
+}
+
+// ── the coverage object weekly-send.js would disclose (weekly-send.js:70-71) ─
+const coverageOf = (status) => (status && ((status.coverage && status.coverage.disclose) || status.degraded)
+  ? (status.coverage || { note: "reduced coverage" }) : null);
+
+// ── part=seed: C20, Sunday only ─────────────────────────────────────────────
+// Once per date: a seed record for this date that ATTEMPTED a send (sent,
+// failed or capped) blocks every later run, so a failure is never retried.
+// Refused outright, before any send, if the roster cannot be read or any seed
+// equals a roster email (active or not, trimmed and lower-cased on both
+// sides). Each seed then goes through sendInternal, whose lock and daily cap
+// apply again.
+const norm1 = (s) => String(s).trim().toLowerCase();
+function base64(buf) {
+  const bytes = new Uint8Array(buf);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+async function seed(env, rw, roster, params, out, data) {
+  const own = [];
+  if (params.mode !== "sun") return { code: "C20.not_sun", own };
+  const seeds = typeof env.REHEARSAL_SEEDS === "string"
+    ? env.REHEARSAL_SEEDS.split(",").map(norm1).filter(Boolean).slice(0, 3) : [];
+  if (!seeds.length) return { code: "C20.no_seeds", own };
+  if (!roster.ok) return { code: "roster_unreadable", own };
+  const rowEmails = (r) => (r && r.email != null ? (Array.isArray(r.email) ? r.email : [r.email]) : []);
+  const onRoster = new Set(roster.rows.flatMap(rowEmails).filter((e) => e != null).map(norm1));
+  if (seeds.some((s) => onRoster.has(s))) return { code: "C20.seed_is_roster", own };
+  if (data.records.some((r) => r.part === "seed" && r.date === params.date && SEED_ATTEMPTED.has(r.code))) {
+    return { code: "C20.already_sent", own };
+  }
+  let zip = null;
+  try { zip = await rw.get("latest-weekly.zip"); } catch { zip = null; }
+  if (!zip) return { code: "C20.no_bundle", own };
+  const status = await readJsonSafe(rw, "refresh-status.json");
+  const m = renderWeekly({ name: SEED_NAME, token: SEED_TOKEN, coverage: coverageOf(status), date: params.date });
+  const attachments = [{ filename: m.attachmentName, content: base64(await zip.arrayBuffer()) }];
+  const results = [];
+  for (const s of seeds) {
+    const r = await out.sendInternal(s, seedSubject(m.subject, params.date), m.html, attachments);
+    results.push(r.result);
+    if (r.writeFailed || r.result === "capped") own.push("C18.mail_capped");
+    if (r.result === "failed") own.push("C18.mail_failed");
+    if (r.result === "refused") own.push("C18.mail_refused");
+  }
+  const code = results.includes("refused") ? "C20.seed_refused"
+    : results.includes("failed") ? "C20.seed_send_failed"
+    : results.includes("capped") ? "C20.seed_capped"
+    : results.every((x) => x === "off") ? "C20.mail_off" : "C20.sent";
+  return { code, own: [...new Set(own)].sort() };
+}
+
+// ── C15: the two public pages, through the static-asset binding ────────────
+// THE ONE env.ASSETS call. The path must be one of the two literals; anything
+// else throws before the binding is touched.
+export async function readAsset(env, path) {
+  if (path !== "/index.html" && path !== "/offer.html") throw new Error("asset_blocked");
+  return env.ASSETS.fetch(new Request(new URL(path, "https://masspermits.com")));
+}
+const PAGE_MAX = 2 * 1024 * 1024;
+async function c15Pages(env) {
+  const pages = {};
+  for (const path of C15_PAGES) {
+    try {
+      const r = await readAsset(env, path);
+      if (r.status >= 300 && r.status < 400) { pages[path] = { ok: false, code: "redirect" }; continue; }
+      if (r.status !== 200) { pages[path] = { ok: false, code: "status" }; continue; }
+      pages[path] = { ok: true, text: (await r.text()).slice(0, PAGE_MAX) };
+    } catch { pages[path] = { ok: false, code: "unreadable" }; }
+  }
+  return pages;
+}
+
+// ── C19: dl/ and portal-access/ events, list metadata only ─────────────────
+// Keys are "<prefix><YYYY-MM-DD>/<epoch-ms>-<8 hex>" (my-leads.js:133,
+// leads.js:448). No object body is read. null when a list fails.
+const EVENT_KEY = /^(dl|portal-access)\/\d{4}-\d{2}-\d{2}\/(\d{10,16})-/;
+async function c19Events(rw, days) {
+  const events = [];
+  try {
+    for (const day of days) {
+      for (const prefix of ["dl/", "portal-access/"]) {
+        let cursor;
+        for (let page = 0; page < 10; page++) {
+          const l = await rw.list({ prefix: prefix + day + "/", limit: 1000, cursor, include: ["customMetadata"] });
+          for (const o of (l && l.objects) || []) {
+            const m = EVENT_KEY.exec(o.key || "");
+            const md = o.customMetadata || {};
+            const tok = prefix === "dl/" ? md.t : md.tok;
+            if (m && typeof tok === "string") events.push({ t: Number(m[2]), tok: tok.slice(0, 8) });
+          }
+          if (!l || !l.truncated || !l.cursor) break;
+          cursor = l.cursor;
+        }
+      }
+    }
+  } catch { return null; }
+  return events;
 }
 
 // ── part=links: C6, in-process ──────────────────────────────────────────────
@@ -420,8 +524,7 @@ async function core(ctx) {
   const sx = mode === "mon-pre" ? { stripe: null, c8: null, priceIds: [], mapped: [] }
     : await stripeSide(env, out, roster, sendLog, sendLogOk, now, mode !== "mon-post");
   const { stripe, priceIds, mapped } = sx;
-  const coverage = inp.status && ((inp.status.coverage && inp.status.coverage.disclose) || inp.status.degraded)
-    ? (inp.status.coverage || { note: "reduced coverage" }) : null;
+  const coverage = coverageOf(inp.status);
   const c = { facts, dropped, mode, date, now, status: inp.status, heads, inp, sendLog, sendLogOk, roster,
     inboxState, stripe, priceIds, funnel, coverage, weeklySize: inp.weekly ? inp.weekly.size : undefined,
     render: renderWeekly };
@@ -445,6 +548,7 @@ async function core(ctx) {
     results.push(...checkC9(c));
     if (mode !== "mon-pre") results.push(...checkC14(c));
     results.push(...checkC17(c));
+    if (mode !== "mon-pre") results.push(...await extended(env, rw, c, data, run));
     if (mode === "mon-pre") {
       const sunDate = isoDay(dateMs(date) - DAY);
       sunday = await readJsonSafe(rw, `rehearsal/${sunDate}.json`);
@@ -475,7 +579,8 @@ async function core(ctx) {
   let mail = "none";
   const own = [];
   if (shouldMail({ mode, verdict, results, prev, sunday })) {
-    const d = composeDigest(results, { verdict, mode, date, rosterReadable: roster.ok, notBuilt: NOT_BUILT });
+    const d = composeDigest(results, { verdict, mode, date, rosterReadable: roster.ok, notBuilt: NOT_BUILT,
+      ciOnly: CI_ONLY });
     const counted = (v) => (typeof v === "string" && v.trim() ? v : null);
     const to = counted(env.REHEARSAL_TO) || counted(env.OWNER_EMAIL) || undefined;
     const r = await out.sendInternal(to, d.subject, d.html);
@@ -494,7 +599,9 @@ async function core(ctx) {
   }
   const findings = [...new Set(results.filter((r) => r.result !== "PASS")
     .map((r) => `${r.result} ${r.code}${r.acked ? " acked" : ""}`))];
-  const rec = { ...base, verdict, code: codes[0] || null, mail, checks, findings };
+  const live = inp.status && inp.status.coverage && inp.status.coverage.live_sources;
+  const rec = { ...base, verdict, code: codes[0] || null, mail, checks, findings,
+    live_sources: Number.isInteger(live) ? live : null };
   if (mode === "mon-pre") {
     rec.bundle_etag = (inp.weekly && inp.weekly.etag) || null;
     rec.rowset_sha256 = (inp.status && inp.status.bundle && inp.status.bundle.weekly &&
@@ -513,4 +620,34 @@ async function core(ctx) {
   }
   await log.save().catch(() => {});
   return reply(200, { ok: true, verdict, more: false, codes });
+}
+
+// ── the Extended checks of sat, sun and dry (R2b) ───────────────────────────
+async function extended(env, rw, c, data, run) {
+  const { roster, date, mode } = c;
+  const prev = data.records.find((r) => r.part === "core" && r.run !== run && r.date <= date &&
+    Number.isInteger(r.live_sources));
+  const out = [...checkC10(c), ...checkC11(c), ...checkC12({ ...c, prevLive: prev ? prev.live_sources : null }),
+    ...checkC13(c)];
+  out.push(...checkC15({ roster, pages: await c15Pages(env) }));
+  const plan = roster.ok ? c19Plan(c) : null;
+  const events = plan && !plan.truncated ? await c19Events(rw, plan.days) : null;
+  out.push(...checkC19({ roster, plan, events, now: c.now }));
+  const seedRec = data.records.find((r) => r.part === "seed" && r.date === date && typeof r.code === "string");
+  let report = null;
+  for (const d of reportSundays(date)) {
+    report = seedReport(await readJsonSafe(rw, `rehearsal/seed-${d}.json`), d);
+    if (report) break;
+  }
+  let rendered = false;
+  if (mode === "dry") {
+    try {
+      const m = renderWeekly({ name: SEED_NAME, token: SEED_TOKEN, coverage: c.coverage, date });
+      rendered = typeof m.html === "string" && m.html.length > 0 && seedSubject(m.subject, date).endsWith(")");
+    } catch { rendered = false; }
+  }
+  out.push(...checkC20({ mode, seedCode: seedRec ? seedRec.code : null, report, rendered }));
+  const a = env.REHEARSAL_R20_DONE;
+  out.push(...checkC21({ attested: typeof a === "string" && a.trim() !== "" && a.trim() !== "0" }));
+  return out;
 }

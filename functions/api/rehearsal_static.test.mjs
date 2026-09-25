@@ -6,7 +6,8 @@
 // Scope: every file this branch adds or changes relative to origin/main (plus
 // untracked files). Covers acceptance 4 (route grep), 8 (paths), 14
 // (no-dispatch grep), 15 (imports, harness assignments, no onRequest export in
-// functions/ tests) and the parts of 18 that apply before rehearsal.js exists.
+// functions/ tests) and the file-level parts of 18 (R2b: exactly one member
+// .fetch(, the env.ASSETS call inside readAsset()).
 // *.test.mjs files are exempt from the content greps, as the rules say.
 
 import { readFileSync, existsSync } from "node:fs";
@@ -42,7 +43,8 @@ const NEVER = ["functions/api/stripe-webhook.js", "functions/api/weekly-send.js"
   "functions/api/_notice.js", "functions/api/inbox-status.js", "functions/api/funnel.js",
   "functions/leads.js", "functions/_middleware.js"];
 const FN_ALLOW = new Set(["functions/api/_ro_bucket.js", "functions/api/_rehearsal.js",
-  "functions/api/_rehearsal_mail.js", "functions/api/_reconcile.js", "functions/api/rehearsal.js"]);
+  "functions/api/_rehearsal_mail.js", "functions/api/_reconcile.js", "functions/api/rehearsal.js",
+  "functions/api/rehearsal-seed.js"]);
 check("no changed path under .github/", !changed.some((p) => p.startsWith(".github/")));
 const touchedNever = changed.filter((p) => NEVER.includes(p));
 check("none of the NEVER-edit files changed", touchedNever.length === 0, touchedNever.join(","));
@@ -92,11 +94,14 @@ for (const p of fnTests) {
 const IMPORT_ALLOW = new Set(["./_presend.js", "./_github-oidc.js", "./_ro_bucket.js", "./_rehearsal.js",
   "./_rehearsal_mail.js", "./_reconcile.js", "./my-leads.js", "../leads.js"]);
 const fnNonTest = nonTest.filter((p) => p.startsWith("functions/"));
+// rehearsal-seed.js (R2b) may import ./_ro_bucket.js only.
+const SEED_IMPORT_ALLOW = new Set(["./_ro_bucket.js"]);
 for (const p of fnNonTest) {
   const s = read(p);
   const specs = [...s.matchAll(/^\s*(?:import|export)\b[^;]*?\bfrom\s*["']([^"']+)["']/gm)].map((m) => m[1])
     .concat([...s.matchAll(/^\s*import\s*["']([^"']+)["']/gm)].map((m) => m[1]));
-  const bad = specs.filter((x) => !IMPORT_ALLOW.has(x));
+  const allow = p === "functions/api/rehearsal-seed.js" ? SEED_IMPORT_ALLOW : IMPORT_ALLOW;
+  const bad = specs.filter((x) => !allow.has(x));
   check(`imports inside the allowlist: ${p}`, bad.length === 0, bad.join(","));
   check(`no dynamic import(): ${p}`, !/\bimport\s*\(/.test(s));
 }
@@ -113,7 +118,35 @@ const hasRehearsal = existsSync(join(repo, "functions/api/rehearsal.js"));
 const free = fnSrc.reduce((n, s) => n + count(FREE_FETCH, s), 0);
 check(`free fetch( calls in added functions/ files: ${hasRehearsal ? "exactly 2" : "0 before rehearsal.js exists"}`,
   free === (hasRehearsal ? 2 : 0), free);
-check("no .fetch( member call before R2b", fnSrc.reduce((n, s) => n + count(MEMBER_FETCH, s), 0) === 0);
+// (a') R2b: the regex \.fetch\s*\( matches exactly once across the added
+// non-test functions/ files, on env.ASSETS inside readAsset() in rehearsal.js.
+const member = fnNonTest.flatMap((p) => read(p).split("\n").map((l, i) => ({ p, i, l })))
+  .filter((x) => /\.fetch\s*\(/.test(x.l));
+check("(a') exactly one .fetch( member call across added functions/ files", member.length === 1,
+  member.map((x) => `${x.p}:${x.i + 1}`).join(","));
+check("(a') ... it is the env.ASSETS call in rehearsal.js, verbatim",
+  member.length === 1 && member[0].p === "functions/api/rehearsal.js" &&
+  member[0].l.trim() === 'return env.ASSETS.fetch(new Request(new URL(path, "https://masspermits.com")));');
+if (existsSync(join(repo, "functions/api/rehearsal.js"))) {
+  const src = read("functions/api/rehearsal.js");
+  const m = src.match(/export async function readAsset\(env, path\) \{\n([\s\S]*?)\n\}/);
+  check("(a') ... inside readAsset(env, path), after the literal-path guard", !!m &&
+    /^  if \(path !== "\/index\.html" && path !== "\/offer\.html"\) throw /.test(m[1]) &&
+    m[1].includes("env.ASSETS.fetch("));
+  const code = src.split("\n").filter((l) => !/^\s*\/\//.test(l)).join("\n");
+  check("(a') ASSETS appears in no other code line of rehearsal.js", (code.match(/ASSETS/g) || []).length === 1);
+}
+if (existsSync(join(repo, "functions/api/rehearsal-seed.js"))) {
+  const s = read("functions/api/rehearsal-seed.js");
+  check("rehearsal-seed.js: no fetch of any kind", !/fetch/.test(s));
+  check("rehearsal-seed.js: no api.resend.com, no env.ASSETS", !s.includes("api.resend.com") && !s.includes("ASSETS"));
+  check("rehearsal-seed.js: every write goes through roBucket with allowPrefix rehearsal/",
+    /roBucket\(env\.BUNDLES, \{ allowPrefix: "rehearsal\/" \}\)/.test(s) && (s.match(/BUNDLES/g) || []).length === 1);
+  const handlers = [...s.matchAll(/^export\s+(?:async\s+)?function\s+(\w+)/gm)]
+    .map((m) => m[1])
+    .filter((n) => n.startsWith("onRequest"));
+  check("rehearsal-seed.js: its only handler is onRequestPost", handlers.join() === "onRequestPost", handlers.join());
+}
 for (const p of fnNonTest) {
   const s = read(p);
   const hits = [/typeof fetch/, /globalThis\.fetch/, /self\.fetch/, /[=:?(,]\s*fetch(?![A-Za-z0-9_$])/]

@@ -128,14 +128,12 @@ const C5_TWIN = ["PASS", "WARN"];
 { // I-06 (second half) a subscriber since before the send with no entry -> mon-post
   const subs = K.roster(3);
   const f = await fx(monPost({ subs, recipients: [subs[0].email, subs[2].email] }));
-  judge("I-06", "mon_post", f, base.monpost, { code: "mon_post.missed", note: "seed placement half (C20) not built" });
-  table[table.length - 1][3] = "P";
+  judge("I-06", "mon_post", f, base.monpost, { code: "mon_post.missed", note: "seed placement half (C20): rehearsal_r2b" });
 }
-{ // I-09 live 23 of 70 -> C3 (disclosure), C12 not built
+{ // I-09 live 23 of 70 -> C3 (disclosure); the C12 half is in rehearsal_r2b.test.mjs
   const st = K.status(SAT.refreshAt, { coverage: { live_sources: 23, expected_sources: 70, disclose: true } });
   const f = await fx({ ...SAT, worldOpts: { status: st } });
-  judge("I-09", "C3", f, base.sat, { code: "C3.disclosure", note: "C12 not built" });
-  table[table.length - 1][3] = "P";
+  judge("I-09", "C3", f, base.sat, { code: "C3.disclosure", note: "C12 half: rehearsal_r2b" });
 }
 { // I-10 ok:false + old bundle + no refresh today, as a sat backstop run
   const now = at("2026-10-04T02:00:00Z");
@@ -235,14 +233,16 @@ const C5_TWIN = ["PASS", "WARN"];
   judge("I-29 inbox backlog", "C17", backlog, base.sat, { code: "C17.inbox_backlog" });
   check("I-29: backlog is NO-GO and never ackable", backlog.v === "NO-GO" && !R.isAckable("C17.inbox_backlog"));
 }
-{ // I-31 no /leads link -> C5 WARN; zero portal events is C19 (not built)
+{ // I-31 no /leads link -> C5 WARN; zero portal events is C19 (rehearsal_r2b.test.mjs)
   const ok = base.sat.has("C5.no_leads_link");
   check("I-31: the shipped copy has no /leads link -> WARN C5.no_leads_link", ok);
-  row("I-31", "C5", "WARN C5.no_leads_link; twin n/a (shipped copy)", "P", "C19 not built");
+  row("I-31", "C5", "WARN C5.no_leads_link; twin n/a (shipped copy)", "Y", "C19 half: rehearsal_r2b");
 }
 // I-02, I-04, I-13, I-16 and F13 are drilled in rehearsal_r3a_drills.test.mjs.
-for (const [id, chk] of [["I-03", "C15"], ["I-07", "C15"], ["I-30", "C15"], ["I-06 seed", "C20"], ["I-08", "C16"],
-  ["I-17", "C10"], ["I-25", "C11"], ["I-26", "C10,C12"], ["I-27", "C13"]]) row(id, chk, "not built", "not built", "R2b/R3b");
+// R2b's drills (I-06 seed, I-08, I-09 C12, I-17, I-25, I-26, I-27, I-30, I-31 C19)
+// are in rehearsal_r2b.test.mjs and rehearsal_c16.test.mjs. C15's runner half
+// is R3b.
+for (const [id, chk] of [["I-03", "C15"], ["I-07", "C15"]]) row(id, chk, "not built", "not built", "runner half is R3b");
 
 // ════════════════════════════════════════════════════════════════════════════
 // false-alarm drills
