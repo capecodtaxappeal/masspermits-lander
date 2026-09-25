@@ -198,9 +198,7 @@ const C5_TWIN = ["PASS", "WARN"];
 { // I-20 / I-21: the sample scan (the runner counts; the Function judges the counts)
   const f = await fx({ ...SAT, facts: K.facts({ "c14.house_numbers": 2, "c14.owner_cue": 1 }) });
   judge("I-20", "C14", f, base.sat, { code: "C14.house_numbers", note: "runner scan: runner.test.mjs" });
-  table[table.length - 1][3] = "P";
   judge("I-21", "C14", f, base.sat, { code: "C14.owner_cue", note: "runner scan: runner.test.mjs" });
-  table[table.length - 1][3] = "P";
 }
 { // I-22 today's shipped copy at 2026-10-04 (reduced coverage disclosed) -> C5 NO-GO
   const st = K.status(SUN.refreshAt, { coverage: { live_sources: 39, expected_sources: 140, disclose: true,
@@ -222,7 +220,6 @@ const C5_TWIN = ["PASS", "WARN"];
 { // I-28 "you both get a month" -> C5 (C8 Radar events and C7 unknown price: rehearsal_r3a_drills)
   const f = await fx({ ...SAT, facts: K.facts({ "purchase.month_line": true }) });
   judge("I-28", "C5", f, base.sat, { code: "C5.purchase_copy", twinOk: C5_TWIN, note: "C8 and C7.unknown_price halves: rehearsal_r3a_drills" });
-  table[table.length - 1][3] = "P";
 }
 { // I-29 no Sunday record; a WAIT-only Sunday; inbox never; inbox backlog
   const none = await fx({ ...MONPRE, worldOpts: {} });
@@ -305,12 +302,10 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
   const r = await fx({ ...SAT, facts: K.facts({ "c0.fn_state": "missing", "c0.fn_age_min": 2, "c0.head_state": "missing" }) });
   F("F7", r.worst("C0") === "WAIT" && r.has("C0.deploy_pending") && r.v === base.sat.v,
     "C0 deploy pending: check-level WAIT, verdict unchanged", "runner side: rehearsal_r3a_drills");
-  table[table.length - 1][3] = "P";
 }
 { // F8 F 3 days old with success, HEAD bot commit 20 s old with no check-run -> C0 PASS
   const r = await fx({ ...SAT, facts: K.facts({ "c0.fn_state": "success", "c0.fn_age_min": 4320, "c0.head_state": "missing" }) });
   F("F8", r.worst("C0") === "PASS", "C0 with a fresh bot HEAD: PASS", "runner side: rehearsal_r3a_drills");
-  table[table.length - 1][3] = "P";
 }
 { // F9 mon-post while weekly-feed is in_progress -> WAIT; the Tuesday backstop is not blocked
   const mp = monPost({ now: at("2026-10-05T14:05:00Z"),
