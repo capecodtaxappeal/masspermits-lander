@@ -14,7 +14,7 @@
 // production. A result is a line in an email to the owner.
 
 import { evaluate, windowStart, lastEtagEntry } from "./_presend.js";
-import { classifySub, subCustomerId, subCustomerEmail, ENTITLED_STATUSES, siteEndpoints } from "./_reconcile.js";
+import { classifySub, subCustomerId, subCustomerEmail, ENTITLED_STATUSES, siteEndpoints, periodEnd } from "./_reconcile.js";
 
 const HOUR = 3600_000;
 const DAY = 24 * HOUR;
@@ -139,6 +139,7 @@ const INT = { t: "int" };
 const BOOL = { t: "bool" };
 const ARR4 = { t: "arr", len: 4 };
 const RUNS = E("none", "queued", "in_progress", "completed");
+const DNS = E("same", "changed", "missing", "unset", "error");
 export const RUNNER_SCHEMA = Object.freeze({
   v: { t: "const", value: 1 },
   api: E("ok", "rate_limited", "forbidden", "error"),
@@ -163,12 +164,17 @@ export const RUNNER_SCHEMA = Object.freeze({
   mirror: E("ok", "drift", "error"),
   "purchase.render": E("ok", "error"), "purchase.link_first": BOOL, "purchase.month_line": BOOL,
   "c8.min_cents": INT, "c8.events_mirror": E("ok", "drift", "error"),
+  // R3b: C15's runner half and C22's DNS baseline.
+  "c15.feed_log_emails": INT, "c15.secrets": INT, "c15.workflow_tokens": INT,
+  "c15.private_files": INT, "c15.ignore_missing": INT, "c15.route_home": BOOL,
+  "c22.dmarc": DNS, "c22.spf": DNS, "c22.dkim": DNS, "c22.mx": DNS,
 });
 export const FACTS_MAX_BYTES = 4096;
 // Facts that come from the GitHub Actions API; with api !== "ok" the checks
 // that need them are BLIND.
 const ACTIONS_PREFIXES = ["refresh.", "send.", "c0.", "c9.mon_", "c9.push_", "c9.monday_",
-  "c9.refresh_late_min", "c17.refresh_ok_age_h", "c17.watchdog_", "c17.rehearsal_prev_h"];
+  "c9.refresh_late_min", "c17.refresh_ok_age_h", "c17.watchdog_", "c17.rehearsal_prev_h",
+  "c15.feed_log_emails"];
 const isActionsFact = (k) => ACTIONS_PREFIXES.some((p) => k.startsWith(p));
 
 const isInt = (v) => Number.isInteger(v) && v >= -1 && v <= 100000;
@@ -1504,8 +1510,124 @@ export function checkC21(ctx) {
   return ctx.attested ? [pass("C21", "C21.attested")] : [res("C21", "WARN", "C21.unattested")];
 }
 
-// Checks not built yet (the digest lists them). C16 is judged in CI, not per
-// run: functions/api/rehearsal_c16.test.mjs runs the shipped newsletter-send.js
-// and nurture.js against a synthetic payer.
-export const NOT_BUILT = ["C22"];
+// ════════════════════════════════════════════════════════════════════════════
+// R3b: C15's runner half, C22 and renewals. Like every Extended check, none
+// of them is in BLIND_COUNTS.
+// ════════════════════════════════════════════════════════════════════════════
+
+// ── C15 (runner half): the checkout of main and this week's feed logs ──────
+// From the runner facts c15.* (scripts/rehearsal/c15.mjs and facts.mjs):
+// counts and one boolean, never a path, a line or a value.
+export function checkC15Runner(ctx) {
+  const { facts } = ctx;
+  const out = [];
+  const scan = ["c15.secrets", "c15.workflow_tokens", "c15.private_files", "c15.ignore_missing", "c15.route_home"];
+  const why = factsBlind(ctx, scan);
+  if (why) out.push(res("C15", "BLIND", `C15.${why}`, { lines: ["the runner's repository scan is missing"] }));
+  else if (fact(facts, "c15.secrets") === -1) out.push(res("C15", "BLIND", "C15.scan_failed"));
+  else {
+    const n = (k) => fact(facts, k);
+    if (n("c15.secrets") > 0) out.push(res("C15", "NO-GO", "C15.secret_in_repo",
+      { lines: [`${n("c15.secrets")} credential-shaped string(s) in the checkout of main`] }));
+    if (n("c15.workflow_tokens") > 0) out.push(res("C15", "NO-GO", "C15.token_in_workflow",
+      { lines: [`${n("c15.workflow_tokens")} hard-coded token(s) in .github/workflows`] }));
+    if (n("c15.private_files") > 0) out.push(res("C15", "NO-GO", "C15.private_file_in_repo",
+      { lines: [`${n("c15.private_files")} file(s) named like a subscriber object, bundle or the engine in the checkout of main`] }));
+    if (n("c15.ignore_missing") > 0) out.push(res("C15", "WARN", "C15.ignore_rules",
+      { lines: [`${n("c15.ignore_missing")} required .gitignore line(s) missing`] }));
+    if (n("c15.route_home") !== true) out.push(res("C15", "WARN", "C15.no_route_home",
+      { lines: ["index.html no longer tells an existing subscriber where their leads are"] }));
+  }
+  const fw = factsBlind(ctx, ["c15.feed_log_emails"]);
+  const fl = fact(facts, "c15.feed_log_emails");
+  if (fw) out.push(res("C15", "BLIND", `C15.feed_log_${fw}`));
+  else if (fl === -1) out.push(res("C15", "BLIND", "C15.feed_log_unread",
+    { lines: ["this week's weekly-feed.yml logs could not be read"] }));
+  else if (fl > 0) out.push(res("C15", "NO-GO", "C15.feed_log_emails",
+    { lines: [`${fl} email-shaped string(s) in this week's public weekly-feed.yml logs`] }));
+  return out.length ? out : [pass("C15", "C15.runner_ok")];
+}
+
+// ── C22: the DNS baseline ───────────────────────────────────────────────────
+// c22.<record> from scripts/rehearsal/c22.mjs: same | changed | missing |
+// unset | error. A change is reported, never judged: WARN.
+export const DNS_RECORDS = { dmarc: "DMARC", spf: "SPF", dkim: "DKIM", mx: "MX" };
+export function checkC22(ctx) {
+  const out = [];
+  const unset = [];
+  for (const [k, label] of Object.entries(DNS_RECORDS)) {
+    const key = `c22.${k}`;
+    const why = factsBlind(ctx, [key]);
+    const v = fact(ctx.facts, key);
+    if (why) out.push(res("C22", "BLIND", `C22.${why}`, { lines: [`${label}: no runner fact`] }));
+    else if (v === "changed") out.push(res("C22", "WARN", `C22.${k}_changed`, { lines: [`${label} record differs from docs/rehearsal/dns-baseline.json`] }));
+    else if (v === "missing") out.push(res("C22", "WARN", `C22.${k}_missing`, { lines: [`${label} record not found in DNS`] }));
+    else if (v === "error") out.push(res("C22", "BLIND", `C22.${k}_error`, { lines: [`${label}: lookup or baseline entry failed`] }));
+    else if (v === "unset") unset.push(label);
+  }
+  if (unset.length) out.push(res("C22", "BLIND", "C22.baseline_unset",
+    { lines: [`baseline not filled in for ${unset.join(", ")} (docs/rehearsal/dns-baseline.json)`] }));
+  // A schema problem is one line, not four.
+  const seen = new Set();
+  const list = out.filter((r) => (r.code === "C22.schema" || r.code === "C22.actions_api"
+    ? (seen.has(r.code) ? false : (seen.add(r.code), true)) : true));
+  return list.length ? list : [pass("C22")];
+}
+
+// ── renewals: what Stripe will do in the next 8 days ────────────────────────
+// Keyed only. For each entitled MassPermits subscription (C7's S): the renewal
+// date is the EARLIEST items.data[].current_period_end (periodEnd() in
+// _reconcile.js). The Subscription object has no current_period_end on the
+// pinned API version; it is never read here. Listed, never counted:
+// renewals and cancel_at_period_end endings inside 8 days, and past_due
+// buyers the webhook has flagged payment_failing. WARN: a past_due buyer whose
+// row has NO payment_failing flag (invoice.payment_failed was not processed:
+// the webhook half of I-13). BLIND: an entitled subscription with no item
+// period end.
+export const RENEWAL_DAYS = 8;
+export function checkRenewals(ctx) {
+  const { roster, stripe, priceIds, now } = ctx;
+  if (!roster.ok) return [res("renewals", "NO-GO", "roster_unreadable")];
+  if (!stripe || !stripe.keyed) return [res("renewals", "BLIND", "renewals.no_key")];
+  if (!stripe.readable) return [res("renewals", "BLIND", "renewals.stripe_unreadable")];
+  if (!priceIds || !priceIds.length) return [res("renewals", "BLIND", "renewals.allowlist_unset")];
+  const S = entitledSubs(stripe, priceIds);
+  const buyerOf = (sub) => {
+    const i = roster.rows.findIndex((r) => r && r.email && subsForRow([sub], r).length);
+    return i < 0 ? null : { buyer: i + 1, row: roster.rows[i] };
+  };
+  const out = [];
+  const unreadable = [];
+  const horizon = now + RENEWAL_DAYS * DAY;
+  for (const sub of S) {
+    const b = buyerOf(sub);
+    const who = b ? `buyer ${b.buyer}` : "a subscription with no roster row";
+    const extra = b ? { buyers: [b.buyer] } : {};
+    const end = periodEnd(sub);
+    if (sub.status === "past_due") {
+      const flag = b && typeof b.row.payment_failing === "string" && DAY_RE.test(b.row.payment_failing)
+        ? b.row.payment_failing.slice(0, 10) : null;
+      if (flag) out.push(pass("renewals", "renewals.past_due", { ...extra,
+        lines: [`${who}: past_due, payment_failing since ${flag.slice(5)}`] }));
+      else out.push(res("renewals", "WARN", "renewals.past_due_unflagged", { ...extra,
+        lines: [`${who}: past_due in Stripe, but the row has no payment_failing (was invoice.payment_failed processed?)`] }));
+    }
+    if (end === null) { unreadable.push(who); continue; }
+    const t = end * 1000;
+    if (t < now || t > horizon) continue;
+    if (sub.cancel_at_period_end === true) {
+      out.push(pass("renewals", "renewals.ending", { ...extra, lines: [`${who}: ends ${mmdd(t)} (cancel at period end)`] }));
+    } else {
+      out.push(pass("renewals", "renewals.due", { ...extra, lines: [`${who}: renews ${mmdd(t)}`] }));
+    }
+  }
+  if (unreadable.length) out.push(res("renewals", "BLIND", "renewals.period_unreadable",
+    { lines: [`no items.data[].current_period_end: ${unreadable.join(", ")}`] }));
+  return out.some((r) => r.result !== "PASS") ? out : [pass("renewals"), ...out];
+}
+
+// Checks not built yet (the digest lists them): none since R3b. C16 is judged
+// in CI, not per run: functions/api/rehearsal_c16.test.mjs runs the shipped
+// newsletter-send.js and nurture.js against a synthetic payer.
+export const NOT_BUILT = [];
 export const CI_ONLY = ["C16"];

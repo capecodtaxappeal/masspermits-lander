@@ -1,0 +1,19 @@
+{
+  "_readme": [
+    "C22 DNS baseline for the monday rehearsal. Every value below is a PLACEHOLDER: nothing here was looked up.",
+    "The runner (scripts/rehearsal/c22.mjs) reads this file from main, looks up each record once per run and reports only an enum per record: same, changed, missing, unset or error. No record value is printed or sent anywhere.",
+    "While a record still holds PLACEHOLDER (in its name or any value) it is 'unset' and C22 is Blind for it. Blind on C22 never changes the verdict.",
+    "To fill it in, on your own machine: dig +short TXT _dmarc.masspermits.com, dig +short TXT masspermits.com (keep only the line starting v=spf1), dig +short TXT <selector>._domainkey.masspermits.com, dig +short MX masspermits.com.",
+    "Confirm each record NAME in the Resend dashboard (Domains) first: if Resend sends from a subdomain (for example send.masspermits.com), its SPF and MX records live on that subdomain, and the DKIM selector is the one Resend shows.",
+    "Paste each TXT value as one string with the quotes and chunk breaks removed. Write MX values as 'priority host', for example '10 mx.example.net'. Every name must be masspermits.com or end in .masspermits.com; any other name is an error.",
+    "Values are compared after normalising: DMARC tags trimmed and lower-cased, SPF lower-cased with single spaces, DKIM with all whitespace removed, MX host lower-cased without the trailing dot.",
+    "These records are public DNS data. Still, keep this file to the four records below: the repo and the site root are public."
+  ],
+  "domain": "masspermits.com",
+  "records": {
+    "dmarc": { "name": "_dmarc.masspermits.com", "type": "TXT", "prefix": "v=DMARC1", "values": ["PLACEHOLDER"] },
+    "spf": { "name": "masspermits.com", "type": "TXT", "prefix": "v=spf1", "values": ["PLACEHOLDER"] },
+    "dkim": { "name": "PLACEHOLDER._domainkey.masspermits.com", "type": "TXT", "prefix": "", "values": ["PLACEHOLDER"] },
+    "mx": { "name": "masspermits.com", "type": "MX", "values": ["PLACEHOLDER"] }
+  }
+}

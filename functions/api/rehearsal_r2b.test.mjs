@@ -233,8 +233,8 @@ function judge(id, chk, fault, twin, code, note = "") {
   check("C15: a redirect is BLIND C15.page_redirect (never followed)",
     redirect.has("C15.page_redirect") && redirect.A.calls.length === 2);
 }
-row("I-03", "C15", "not built", "not built", "runner half (workflow secret scan) is R3b");
-row("I-07", "C15", "not built", "not built", "runner half (route-home link) is R3b");
+row("I-03", "C15", "see rehearsal_r3b", "Y", "runner half (workflow secret scan) built in R3b");
+row("I-07", "C15", "see rehearsal_r3b", "Y", "runner half (route-home link) built in R3b");
 { // I-31 zero portal events -> C19 (the C5 half is in rehearsal_drills.test.mjs)
   const f = await fx({ ...SAT, mode: "sat", noEvents: true });
   judge("I-31", "C19", f, satOk, "C19.no_open", "C5 half: rehearsal_drills");

@@ -42,6 +42,7 @@ import {
   shouldMail, checkC0, checkC1, checkC2, checkC3, checkC4, checkC5, checkC6, checkC7, checkC8, checkC9,
   checkC14, checkC17, checkC18, checkMonPre, checkMonPost, mapReconcile, res, isoDay, dateMs,
   checkC10, checkC11, checkC12, checkC13, checkC15, c19Plan, checkC19, checkC20, checkC21,
+  checkC15Runner, checkC22, checkRenewals,
   seedReport, reportSundays, seedSubject, SEED_NAME, SEED_TOKEN, SEED_ATTEMPTED, C15_PAGES,
   FACTS_MAX_BYTES, NOT_BUILT, CI_ONLY,
 } from "./_rehearsal.js";
@@ -622,14 +623,14 @@ async function core(ctx) {
   return reply(200, { ok: true, verdict, more: false, codes });
 }
 
-// ── the Extended checks of sat, sun and dry (R2b) ───────────────────────────
+// ── the Extended checks of sat, sun and dry (R2b, R3b) ──────────────────────
 async function extended(env, rw, c, data, run) {
   const { roster, date, mode } = c;
   const prev = data.records.find((r) => r.part === "core" && r.run !== run && r.date <= date &&
     Number.isInteger(r.live_sources));
   const out = [...checkC10(c), ...checkC11(c), ...checkC12({ ...c, prevLive: prev ? prev.live_sources : null }),
     ...checkC13(c)];
-  out.push(...checkC15({ roster, pages: await c15Pages(env) }));
+  out.push(...checkC15({ roster, pages: await c15Pages(env) }), ...checkC15Runner(c));
   const plan = roster.ok ? c19Plan(c) : null;
   const events = plan && !plan.truncated ? await c19Events(rw, plan.days) : null;
   out.push(...checkC19({ roster, plan, events, now: c.now }));
@@ -649,5 +650,7 @@ async function extended(env, rw, c, data, run) {
   out.push(...checkC20({ mode, seedCode: seedRec ? seedRec.code : null, report, rendered }));
   const a = env.REHEARSAL_R20_DONE;
   out.push(...checkC21({ attested: typeof a === "string" && a.trim() !== "" && a.trim() !== "0" }));
+  // R3b: the DNS baseline, and what Stripe does in the next 8 days.
+  out.push(...checkC22(c), ...checkRenewals({ roster, stripe: c.stripe, priceIds: c.priceIds, now: c.now }));
   return out;
 }

@@ -124,7 +124,10 @@ export function stripeSub(i, o = {}) {
     customer: o.expand === false ? "cus_TEST" + i
       : { id: o.customer || "cus_TEST" + i, object: "customer", email: o.email || `buyer${i}.testperson@example.com` },
     cancel_at_period_end: false, pause_collection: null,
+    // The billing period lives on the ITEM on the pinned API version (the
+    // Subscription object has no current_period_end). Default: 2026-11-20.
     items: { object: "list", data: [{ id: "si_TEST" + i, quantity: 1,
+      current_period_end: o.periodEnd === undefined ? 1795132800 : o.periodEnd,
       price: { id: o.price || MP_PRICE, product: o.product || MP_PRODUCT, unit_amount: o.cents ?? 9900 } }] },
   };
 }

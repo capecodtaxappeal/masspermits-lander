@@ -79,9 +79,13 @@ process.env.GH_TOKEN = "gh-test-token";
     .map((f) => [f, readFileSync(join(here, f), "utf8")]);
   const fetchers = src.filter(([, s]) => /fetch\s*\(/.test(s)).map(([f]) => f);
   check("10 no runner file but http.mjs contains \"fetch(\"", fetchers.join() === "http.mjs", fetchers.join());
-  check("10 http.mjs holds exactly two fetch( calls, both method GET",
-    (src.find(([f]) => f === "http.mjs")[1].match(/fetch\s*\(/g) || []).length === 2 &&
-    (src.find(([f]) => f === "http.mjs")[1].match(/method: "GET"/g) || []).length === 2);
+  // R3b adds ghJobLog: two more fetch( calls, both GET (the API request and
+  // the one redirect target). r3b_runner.test.mjs tests them.
+  const httpSrc = src.find(([f]) => f === "http.mjs")[1];
+  const logFn = httpSrc.slice(httpSrc.indexOf("export async function ghJobLog"));
+  check("10 http.mjs holds exactly four fetch( calls, all method GET: ghGet, getSample and two in ghJobLog",
+    (httpSrc.match(/fetch\s*\(/g) || []).length === 4 && (httpSrc.match(/method: "GET"/g) || []).length === 4 &&
+    (logFn.match(/fetch\s*\(/g) || []).length === 2);
   const mods = src.flatMap(([f, s]) => [...s.matchAll(/^\s*import\b[^;]*?\bfrom\s*["']([^"']+)["']/gm)].map((m) => [f, m[1]]));
   const badMods = mods.filter(([, m]) => !m.startsWith("node:") && !m.startsWith("./") && !m.startsWith("../../functions/api/"));
   check("runner scripts import only Node built-ins, each other and functions/api modules", badMods.length === 0,
@@ -221,9 +225,12 @@ async function factsFor(date, nowIso, o = {}) {
 const MIRROR_FACTS = { mirror: "ok", purchase: { render: "ok", link_first: true, month_line: false },
   c8: { min_cents: 500, events_mirror: "ok" }, c17: { inbox_mirror: "ok" } };
 const C14_FACTS = { c14: { fetched: true, house_numbers: 0, contractor_echo: 0, owner_cue: 0, email_like: 0, hex32: 0 } };
+// R3b: the C15 scan and C22 step outputs (their own tests: r3b_runner.test.mjs).
+const C15_FACTS = { c15: { secrets: 0, workflow_tokens: 0, private_files: 0, ignore_missing: 0, route_home: true } };
+const C22_FACTS = { c22: { dmarc: "same", spf: "same", dkim: "same", mx: "same" } };
 {
   const { facts, paths, sleeps } = await factsFor("2026-10-03", "2026-10-03T20:30:00Z");
-  const line = Fa.finalize(Fa.merge(facts, C14_FACTS, MIRROR_FACTS));
+  const line = Fa.finalize(Fa.merge(facts, C14_FACTS, MIRROR_FACTS, C15_FACTS, C22_FACTS));
   const v = validateRunnerFacts(JSON.parse(line));
   const keys = Object.keys(RUNNER_SCHEMA);
   const absent = keys.filter((k) => fact(v.facts, k) === undefined);

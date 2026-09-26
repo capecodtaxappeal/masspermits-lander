@@ -178,6 +178,8 @@ export function facts(over = {}) {
     mirror: "ok",
     purchase: { render: "ok", link_first: true, month_line: false },
     c8: { min_cents: 500, events_mirror: "ok" },
+    c15: { feed_log_emails: 0, secrets: 0, workflow_tokens: 0, private_files: 0, ignore_missing: 0, route_home: true },
+    c22: { dmarc: "same", spf: "same", dkim: "same", mx: "same" },
   };
   for (const [k, v] of Object.entries(over)) {
     const path = k.split(".");

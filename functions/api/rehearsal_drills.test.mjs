@@ -205,10 +205,10 @@ const C5_TWIN = ["PASS", "WARN"];
   judge("I-22", "C5", f, base.sun, { code: "C5.stale_date", twinOk: C5_TWIN });
   check("I-22: the copy's \"upstream provider\" is NO-GO C5.vendor_words", f.has("C5.vendor_words"));
 }
-{ // I-23 no text/plain -> C5 WARN (DMARC half is C22, not built)
+{ // I-23 no text/plain -> C5 WARN (the DMARC half is C22: rehearsal_r3b.test.mjs)
   const ok = base.sat.has("C5.style_no_text_part") && base.sat.worst("C5") === "WARN";
   check("I-23: the shipped sender has no text/plain part -> WARN C5.style_no_text_part", ok);
-  row("I-23", "C5", "WARN C5.style_no_text_part; twin n/a (the shipped sender never sends text/plain)", "P", "C22 not built");
+  row("I-23", "C5", "WARN C5.style_no_text_part; twin n/a (the shipped sender never sends text/plain)", "P", "C22 half (DMARC changed): rehearsal_r3b, Y");
 }
 { // I-24 ran_at 24 h older than the zip -> C2
   const st = K.status(SAT.refreshAt - 24 * HOUR);
@@ -241,8 +241,8 @@ const C5_TWIN = ["PASS", "WARN"];
 // I-02, I-04, I-13, I-16 and F13 are drilled in rehearsal_r3a_drills.test.mjs.
 // R2b's drills (I-06 seed, I-08, I-09 C12, I-17, I-25, I-26, I-27, I-30, I-31 C19)
 // are in rehearsal_r2b.test.mjs and rehearsal_c16.test.mjs. C15's runner half
-// is R3b.
-for (const [id, chk] of [["I-03", "C15"], ["I-07", "C15"]]) row(id, chk, "not built", "not built", "runner half is R3b");
+// (I-03, I-07) is in rehearsal_r3b.test.mjs and scripts/rehearsal/r3b_runner.test.mjs.
+for (const [id, chk] of [["I-03", "C15"], ["I-07", "C15"]]) row(id, chk, "see rehearsal_r3b", "Y", "runner half built in R3b");
 
 // ════════════════════════════════════════════════════════════════════════════
 // false-alarm drills

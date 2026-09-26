@@ -26,12 +26,19 @@
 //     (or 7 days before DATE), and the distinct commits that triggered them.
 //   c17.watchdog_mon / _tue: send-watchdog.yml ran on the most recent Tuesday
 //     strictly before DATE, and on the Monday before that Tuesday.
+//   c15.feed_log_emails (R3b; sat, sun and dry only): email-shaped strings in
+//     the job logs of this week's weekly-feed.yml runs (created from 00:00Z of
+//     the Monday on or before DATE), GitHub's own noreply addresses excepted.
+//     weekly-feed.yml prints the weekly-send response, which lists every
+//     recipient, into a log anyone can read on a public repo. The logs are
+//     read through ghJobLog() in http.mjs, kept in memory and never printed;
+//     only the count leaves. -1 when any log could not be read.
 
 import { readFileSync, readdirSync, appendFileSync } from "node:fs";
 import { join, resolve as resolvePath, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateRunnerFacts, FACTS_MAX_BYTES } from "../../functions/api/_rehearsal.js";
-import { ghGet } from "./http.mjs";
+import { ghGet, ghJobLog } from "./http.mjs";
 
 const MIN = 60_000;
 const HOUR = 60 * MIN;
@@ -47,6 +54,18 @@ export const REPOLL_TIMES = 5;
 const MAX_RUN_PAGES = 5;
 const MAX_FN_COMMITS = 20;
 const SENSITIVE = ["weekly-feed.yml", "send-watchdog.yml", "weekly-refresh.yml"];
+const MAX_LOG_JOBS = 10;
+const EXTENDED_MODES = ["sat", "sun", "dry"];
+// An email-shaped string. GitHub's own bot identities (users.noreply.github.com)
+// are not customer data and are not counted.
+const EMAIL_RE = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g;
+export function countEmails(text) {
+  let n = 0;
+  for (const m of String(text).matchAll(EMAIL_RE)) {
+    if (!/@users\.noreply\.github\.com$/i.test(m[0])) n++;
+  }
+  return n;
+}
 
 const dateMs = (d) => Date.parse(d + "T00:00:00Z");
 const isoDay = (ms) => new Date(ms).toISOString().slice(0, 10);
@@ -151,6 +170,7 @@ export async function collect(opts) {
     return steps;
   }
 
+  const log = opts.log || null;
   const facts = { v: 1 };
   const [refreshRuns, sendRuns, watchdogRuns, rehearsalRuns] = [
     await runsOf(WORKFLOWS.refresh), await runsOf(WORKFLOWS.send),
@@ -256,6 +276,11 @@ export async function collect(opts) {
     rehearsal_prev_h: prev ? clampInt((now() - Date.parse(prev.created_at)) / HOUR) : -1,
   };
 
+  // ── c15.feed_log_emails (sat, sun, dry) ─────────────────────────────────
+  if (EXTENDED_MODES.includes(opts.mode)) {
+    facts.c15 = { feed_log_emails: await feedLogEmails({ gh, log, sendRuns, d0, now }) };
+  }
+
   // ── c0.*: the deploy of F, the newest main commit touching functions/ ──
   facts.c0 = await c0Facts({ gh, now, sleep });
   facts.api = api;
@@ -318,6 +343,36 @@ export async function c0Facts({ gh, now, sleep }) {
   return out;
 }
 
+// C15 runner half: the email-shaped strings in this week's weekly-feed.yml job
+// logs. The week starts at 00:00Z of the Monday on or before DATE. Its reads
+// go straight to gh(), not get(): a failed log read makes this fact -1 and
+// leaves `api` (the refresh/send/c9/c17 facts) alone.
+async function feedLogEmails({ gh, log, sendRuns, d0, now }) {
+  if (typeof log !== "function") return -1;
+  const monday = d0 - ((new Date(d0).getUTCDay() + 6) % 7) * DAY;
+  const runs = sendRuns.filter((r) => { const t = Date.parse(r.created_at); return t >= monday && t <= now(); });
+  const ids = [];
+  for (const r of runs) {
+    if (!/^[0-9]{1,20}$/.test(String(r.id))) return -1;
+    const res = await gh(`actions/runs/${r.id}/jobs?per_page=100`);
+    const j = res && res.ok ? res.json : null;
+    if (!j || !Array.isArray(j.jobs)) return -1;
+    for (const job of j.jobs) {
+      if (!job || !/^[0-9]{1,20}$/.test(String(job.id))) return -1;
+      ids.push(String(job.id));
+    }
+  }
+  if (ids.length > MAX_LOG_JOBS) return -1;
+  let n = 0;
+  for (const id of ids) {
+    let r;
+    try { r = await log(id); } catch { return -1; }
+    if (!r || r.ok !== true || typeof r.text !== "string") return -1;
+    n += countEmails(r.text);
+  }
+  return clampInt(n);
+}
+
 // Merge extra fact objects (C14, mirror) into facts, deep by one level.
 export function merge(facts, ...extras) {
   const out = JSON.parse(JSON.stringify(facts));
@@ -344,8 +399,8 @@ export function finalize(facts) {
 export async function main(env = process.env, argv = process.argv.slice(2), deps = {}) {
   const gh = deps.gh || ghGet;
   const readJson = (p) => { try { return JSON.parse(readFileSync(p, "utf8")); } catch { return null; } };
-  const facts = await collect({ gh, date: env.DATE, mode: env.MODE, repository: env.GITHUB_REPOSITORY,
-    runId: env.GITHUB_RUN_ID, now: deps.now, sleep: deps.sleep });
+  const facts = await collect({ gh, log: deps.log || ghJobLog, date: env.DATE, mode: env.MODE,
+    repository: env.GITHUB_REPOSITORY, runId: env.GITHUB_RUN_ID, now: deps.now, sleep: deps.sleep });
   const line = finalize(merge(facts, ...argv.map(readJson)));
   if (env.GITHUB_OUTPUT) appendFileSync(env.GITHUB_OUTPUT, `facts=${line}\n`);
   console.log(line);

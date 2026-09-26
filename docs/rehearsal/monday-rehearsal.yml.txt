@@ -11,6 +11,10 @@ name: MassPermits monday rehearsal
 #   runner  read-only GitHub token (contents, actions, checks: read), no
 #           id-token. Checks out main (never the triggering head), resolves
 #           the mode, and gathers the runner facts: enums and integers only.
+#           Its reads: the GitHub API (GET), the public sample, this week's
+#           weekly-feed job logs (C15: the API's redirect is followed only to
+#           GitHub's log host, without the token; counts only) and four DNS
+#           lookups for the C22 baseline.
 #   caller  id-token only, no checkout, no action. Mints a fresh OIDC token
 #           per POST and calls the one rehearsal Function URL. Prints only
 #           {ok, verdict, codes, error}: nothing that shows the roster size.
@@ -76,6 +80,12 @@ jobs:
       - name: Mirror step (mail and inbox drift, purchase render, webhook facts)
         if: steps.mode.outputs.mode != 'idle'
         run: node scripts/rehearsal/mirror.mjs > "$RUNNER_TEMP/mirror.json"
+      - name: C15 repository scan (counts only)
+        if: steps.mode.outputs.mode != 'idle'
+        run: node scripts/rehearsal/c15.mjs > "$RUNNER_TEMP/c15.json"
+      - name: C22 DNS baseline (one enum per record)
+        if: steps.mode.outputs.mode != 'idle'
+        run: node scripts/rehearsal/c22.mjs > "$RUNNER_TEMP/c22.json"
       - name: Runner facts
         id: facts
         if: steps.mode.outputs.mode != 'idle'
@@ -83,7 +93,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           MODE: ${{ steps.mode.outputs.mode }}
           DATE: ${{ steps.mode.outputs.date }}
-        run: node scripts/rehearsal/facts.mjs "$RUNNER_TEMP/c14.json" "$RUNNER_TEMP/mirror.json"
+        run: node scripts/rehearsal/facts.mjs "$RUNNER_TEMP/c14.json" "$RUNNER_TEMP/mirror.json" "$RUNNER_TEMP/c15.json" "$RUNNER_TEMP/c22.json"
 
   caller:
     needs: runner

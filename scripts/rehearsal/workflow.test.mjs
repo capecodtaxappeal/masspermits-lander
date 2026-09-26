@@ -118,8 +118,8 @@ const script = runBlocks(caller)[0] || "";
   check("12 the dispatch mode input never appears in the workflow text (it reaches mode.mjs through the event file)",
     !/inputs\.mode|github\.event\.inputs/.test(mon));
   check("12 runner outputs: mode, date, trigger, parts, facts", Object.keys(runner.outputs).sort().join() === "date,facts,mode,parts,trigger");
-  check("12 runner steps run mode.mjs, then (unless idle) c14.mjs, mirror.mjs and facts.mjs",
-    runBlocks(runner).map((r) => (r.match(/scripts\/rehearsal\/(\w+)\.mjs/) || [])[1]).join() === "mode,c14,mirror,facts" &&
+  check("12 runner steps run mode.mjs, then (unless idle) c14.mjs, mirror.mjs, c15.mjs, c22.mjs (R3b) and facts.mjs",
+    runBlocks(runner).map((r) => (r.match(/scripts\/rehearsal\/(\w+)\.mjs/) || [])[1]).join() === "mode,c14,mirror,c15,c22,facts" &&
     runner.steps.filter((s) => s.run && !s.run.includes("mode.mjs")).every((s) => s.if === "steps.mode.outputs.mode != 'idle'"));
 }
 
