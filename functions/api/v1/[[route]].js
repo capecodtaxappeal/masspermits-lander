@@ -224,7 +224,7 @@ function terms(cube) {
       + "for research and reporting.",
       "7. Fair use. " + RATE.perMinute + " requests/minute. If you need the whole dataset, "
       + "download " + cube.evidence + " once rather than paginating; that is what it is for.",
-      "8. Row-level data. Permit-level records, including owner and contractor identity, "
+      "8. Row-level data. Permit-level records, with full addresses and contractor names where the town lists them, "
       + "are a commercial product and are not available through this API at any price tier. "
       + "See " + SITE + ".",
     ],

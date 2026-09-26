@@ -4,7 +4,7 @@
 // prefix, own R2 object per address — same race-free pattern as prospects/) and
 // instantly email a masked CSV of last week's permits for THEIR town, built from
 // our own public /feed/permits.json. Free sample stays masked (street name only);
-// the paid Radar unmasks name + exact address. Same abuse hardening as
+// the paid Radar adds the full address and permit name. Same abuse hardening as
 // request-sample.js: honeypot, per-IP brake, daily cap, never re-emails.
 
 const DAILY_CAP = 40;
@@ -101,10 +101,10 @@ async function sendTownSample(env, to, town) {
   const escH = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
     <h2 style="color:#0e7c6b">Your ${escH(scope)} permit sample 🏡</h2>
-    <p>Attached: ${rows.length} recent building permits${scope === town ? ` in <b>${escH(town)}</b>` : ""} —
-    date, project type, declared value, and street (this free sample masks house numbers and homeowner names).</p>
-    <p><b>The paid Radar unmasks everything:</b> homeowner name + exact address for every permit in your
-    farm towns, delivered every Monday. That's your door-knock list and postcard file, current to the week.</p>
+    <p>Attached: ${rows.length} recent building permits${scope === town ? ` in <b>${escH(town)}</b>` : ""}, with
+    date, project type, declared value, and street. This free sample leaves out house numbers and names.</p>
+    <p><b>The paid Radar adds the full street address,</b> plus the name on the permit where the town published
+    one (not always the owner). It arrives every Monday. That's your door-knock list and postcard file.</p>
     <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:18px 0;text-align:center">
       <p style="margin:0 0 10px;font-weight:600">Farm Town Permit Radar — $49/mo, no contract</p>
       <a href="${RADAR_LINK}" style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start your free 7-day trial →</a>

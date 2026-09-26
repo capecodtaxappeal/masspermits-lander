@@ -97,8 +97,8 @@ export async function onRequestGet(context) {
       // sender excludes un="1", so a stale flag would silently mute this reader
       customMetadata: { ...meta, c: "1", un: "0" },
     });
-    return page("You're in ✅", "Every Monday morning: fresh Massachusetts permit activity — towns, trades and " +
-      "notable projects. Want full leads (address + owner) now? <a style='color:#2dd4bf' " +
+    return page("You're in ✅", "Every Monday morning: fresh Massachusetts permit activity, with towns, trades and " +
+      "notable projects. The paid weekly file has the full street address and the name on the permit where the town published one. <a style='color:#2dd4bf' " +
       "href='https://masspermits.com'>Grab a free sample →</a>");
   }
   // unsubscribe

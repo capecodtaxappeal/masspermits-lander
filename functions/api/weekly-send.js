@@ -193,9 +193,9 @@ async function sendEmail(env, to, name, b64, token, coverage) {
     '<div style="background:#fff8e1;border:1px solid #f0b429;border-radius:10px;padding:14px 16px;margin:0 0 18px">' +
     '<p style="margin:0 0 8px;font-weight:700;color:#8a5a00">Reduced coverage this week — please read</p>' +
     `<p style="margin:0 0 8px;color:#5c4300;font-size:14px">This file covers <b>${coverage.live_sources || "fewer"} of ` +
-    `${coverage.expected_sources || "our usual"}</b> town sources. On 1 August our largest upstream provider closed ` +
-    'public access to its permit records. We are rebuilding town by town from municipal sources — ' +
-    'Worcester, Cambridge, Lexington and Chatham are back as of 11 August.</p>' +
+    `${coverage.expected_sources || "our usual"}</b> town sources. On 1 August a large group of towns ` +
+    'dropped out of our coverage. ' +
+    'We have been adding towns since then.</p>' +
     (coverage.monthly_sources && coverage.monthly_sources.length
       ? '<p style="margin:0 0 8px;color:#5c4300;font-size:14px">Note: ' +
         coverage.monthly_sources.map((m) => m.replace(", MA", "")).join(", ") +

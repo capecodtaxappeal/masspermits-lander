@@ -191,14 +191,14 @@ async function sendDigest(env, reader, d) {
     ? `${n}recent building permits in ${esc(townName)}`.replace(/^recent/, "Recent")
     : `${n}recent building permits across Massachusetts`.replace(/^recent/, "Recent");
   const window = d.oldest && d.newest ? ` Filed between ${d.oldest} and ${d.newest}.` : "";
-  // "homeowner" was wrong on the statewide branch: it sits directly above a
-  // Biggest-projects table sorted by valuation, which structurally selects the
-  // LEAST residential rows in the set. "Property owner" is true of both.
+  // No owner claim on either branch: the paid file has no owner field. It has
+  // the full street address and, where the town published one, the name on the
+  // permit. The feed carries no status, so no "approved" claim either.
   const intro = townName
-    ? `The latest permit activity in ${esc(townName)} — each one a property owner cleared to spend.${window}
-       Full detail (exact address + owner) at <a href="https://masspermits.com/permits/${slug(townName)}" style="color:#0e7c6b">masspermits.com</a>.`
-    : `Where the work is being approved — every permit below is a
-       property owner cleared to spend.${window} Full leads (exact address + owner) at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.`;
+    ? `The latest permit activity in ${esc(townName)}.${window}
+       Full street addresses are in the paid weekly file at <a href="https://masspermits.com/permits/${slug(townName)}" style="color:#0e7c6b">masspermits.com</a>.`
+    : `The latest permit activity across Massachusetts.${window}
+       Full street addresses are in the paid weekly file at <a href="https://masspermits.com" style="color:#0e7c6b">masspermits.com</a>.`;
 
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:580px;margin:0 auto;color:#0e1622">
     <p style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#0e7c6b;font-weight:700;margin:0 0 4px">${kicker}</p>
@@ -213,7 +213,7 @@ async function sendDigest(env, reader, d) {
     ${bigRows ? `<h3 style="margin:18px 0 6px;font-size:15px">Biggest projects</h3>
     <table style="width:100%;border-collapse:collapse;font-size:14px">${bigRows}</table>` : ""}
     <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:20px 0;text-align:center">
-      <p style="margin:0 0 10px;font-weight:600">Work these leads while they're fresh — full address &amp; owner, every Monday.</p>
+      <p style="margin:0 0 10px;font-weight:600">Get the full street address, and the name on the permit where the town published one, every Monday.</p>
       <a href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start the Weekly Feed — $99/mo →</a>
       <p style="margin:10px 0 0;font-size:12px;color:#667">or grab a <a href="https://masspermits.com" style="color:#0e7c6b">free sample</a> first</p>
     </div>
