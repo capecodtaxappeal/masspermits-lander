@@ -15,7 +15,14 @@ const FUNCTION_FILES = [
   "functions/api/_owner_gate.js", "functions/api/_mission_r2.js", "functions/api/_mission_stripe.js",
   "functions/api/_mission_data.js", "functions/admin/api/mission.js",
 ];
-const ALLOWED = (p) => FUNCTION_FILES.includes(p) ||
+// P2 (FILE RULES): the editor route, the static page files, the one _headers
+// block (checked line by line in page.test.mjs), the demo and its assembler.
+const EDITOR = "functions/admin/api/mission-outreach.js";
+const PAGE_FILES = ["admin/mission.html", "admin/mission-app.js", "admin/mission-render.js", "admin/mission-view.js",
+  "admin/mission-app.css", "admin/mission-towns.json"];
+const P2_OTHER = ["_headers", "docs/mission/demo.html", "test/mission/_demo.mjs"];
+const ROUTE_FILES = [...FUNCTION_FILES, EDITOR];
+const ALLOWED = (p) => ROUTE_FILES.includes(p) || PAGE_FILES.includes(p) || P2_OTHER.includes(p) ||
   /^test\/mission\/[A-Za-z0-9_-]+\.test\.mjs$/.test(p) || p === "test/mission/_harness.mjs";
 const NEVER_EDIT = [
   "functions/api/stripe-webhook.js", "functions/api/weekly-send.js", "functions/api/my-leads.js",
@@ -52,7 +59,8 @@ test("P1-14 the diff from main lists only allowed paths", () => {
   for (const p of NEVER_EDIT) assert.ok(!changed.includes(p), p);
   assert.ok(!changed.some((p) => p.startsWith(".github/")));
   assert.ok(!changed.some((p) => /(^|\/)(package(-lock)?\.json|wrangler\.toml|_routes\.json)$|node_modules/.test(p)));
-  for (const f of FUNCTION_FILES) assert.ok(changed.includes(f), "missing " + f);
+  for (const f of [...ROUTE_FILES, ...PAGE_FILES]) assert.ok(changed.includes(f), "missing " + f);
+  assert.ok(!changed.some((p) => p.startsWith("docs/") && p !== "docs/mission/demo.html"), "nothing else under docs/");
 });
 
 test("P1-14 exports: helpers export no onRequest*; the route exports onRequestGet only", () => {
@@ -60,11 +68,12 @@ test("P1-14 exports: helpers export no onRequest*; the route exports onRequestGe
     assert.ok(!Object.keys(mod).some((k) => k.startsWith("onRequest")));
   }
   assert.deepEqual(Object.keys(m.mission), ["onRequestGet"]);
+  assert.deepEqual(Object.keys(m.outreach), ["onRequestPost"]);
 });
 
 test("P1-14 import allowlist; no node:, no dynamic import, no fetch reassignment", () => {
   const names = ["_cf-access.js", "_presend.js", "_owner_gate.js", "_mission_r2.js", "_mission_stripe.js", "_mission_data.js"];
-  for (const f of FUNCTION_FILES) {
+  for (const f of ROUTE_FILES) {
     const src = read(f);
     const prefix = f.startsWith("functions/admin/api/") ? "../../api/" : "./";
     const specs = [...src.matchAll(/^\s*(?:import|export)\b[^;]*?\bfrom\s*["']([^"']+)["']/gms)].map((x) => x[1]);
@@ -77,7 +86,7 @@ test("P1-14 import allowlist; no node:, no dynamic import, no fetch reassignment
 });
 
 test("P1-14 outbound: exactly one fetch call, inside stripeGet()", () => {
-  const counts = (re) => FUNCTION_FILES.reduce((a, f) => a + (read(f).match(re) || []).length, 0);
+  const counts = (re) => ROUTE_FILES.reduce((a, f) => a + (read(f).match(re) || []).length, 0);
   assert.equal(counts(/(?<![A-Za-z0-9_$.])fetch\s*\(/g), 1);
   assert.equal(counts(/\.fetch\s*\(/g), 0);
   assert.equal(counts(/typeof fetch|globalThis\.fetch|self\.fetch/g), 0);
@@ -97,6 +106,15 @@ test("P1-14 writes: no put, delete or multipart in any P1 file", () => {
     }
   }
   assert.deepEqual(Object.keys(m.r2.readView(new H.FakeR2())).sort(), ["get", "head", "list"]);
+});
+
+test("P2-8 writes: \".put(\" exactly once across the route files, in mission-outreach.js; no delete or multipart", () => {
+  const all = ROUTE_FILES.map((f) => [f, read(f)]);
+  const puts = all.flatMap(([f, src]) => (src.match(/\.put\(/g) || []).map(() => f));
+  assert.deepEqual(puts, [EDITOR]);
+  for (const [f, src] of all) {
+    for (const re of [/\.delete\(/, /createMultipartUpload/, /resumeMultipartUpload/]) assert.ok(!re.test(src), f + " " + re);
+  }
 });
 
 test("P1-14 route strings never appear in non-test added files", () => {
@@ -125,7 +143,9 @@ test("P1-14 no real email address in any added file", () => {
 });
 
 test("P1-14 node --check on each new non-test file", () => {
-  for (const f of FUNCTION_FILES) execFileSync(process.execPath, ["--check", path.join(H.REPO, f)]);
+  for (const f of [...ROUTE_FILES, "admin/mission-app.js", "admin/mission-render.js", "admin/mission-view.js"]) {
+    execFileSync(process.execPath, ["--check", path.join(H.REPO, f)]);
+  }
 });
 
 // ── budgets ────────────────────────────────────────────────────────────────

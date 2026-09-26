@@ -23,6 +23,9 @@ export const SHIPPED = [
   "functions/api/_mission_stripe.js",
   "functions/api/_mission_data.js",
   "functions/admin/api/mission.js",
+  "functions/admin/api/mission-outreach.js",
+  "admin/mission-view.js",
+  "admin/mission-render.js",
 ];
 const IMPORTED = ["functions/api/_cf-access.js", "functions/api/_presend.js"];
 
@@ -52,6 +55,9 @@ export async function load() {
     stripe: await imp("functions/api/_mission_stripe.js"),
     data: await imp("functions/api/_mission_data.js"),
     presend: await imp("functions/api/_presend.js"),
+    outreach: await imp("functions/admin/api/mission-outreach.js"),
+    view: await imp("admin/mission-view.js"),
+    render: await imp("admin/mission-render.js"),
   };
   return loaded;
 }
@@ -156,7 +162,17 @@ export class FakeR2 {
       delimitedPrefixes: [],
     };
   }
-  async put(key, value) { this.ops.push({ op: "put", key }); this.set(key, String(value)); return {}; }
+  // Honours onlyIf.etagMatches like R2: a mismatch writes nothing and returns null.
+  async put(key, value, opts = {}) {
+    this.ops.push({ op: "put", key, opts });
+    const want = opts && opts.onlyIf && opts.onlyIf.etagMatches;
+    if (want !== undefined) {
+      const cur = this.objects.get(key);
+      if (!cur || cur.etag !== want) return null;
+    }
+    this.set(key, String(value));
+    return { key };
+  }
   async delete(key) { this.ops.push({ op: "delete", key }); this.objects.delete(key); }
 }
 
@@ -588,4 +604,90 @@ export function lineIds(body, severity) {
 
 export function tileOf(body, id) {
   return body.tiles.find((t) => t.id === id);
+}
+
+// ── a minimal fake DOM (no dependency) ──────────────────────────────────────
+// Enough for mission-render.js and the demo boot: elements, text nodes,
+// attributes, classList-free class attribute, hidden, listeners, focus.
+// innerHTML, outerHTML and insertAdjacentHTML THROW, so any use fails a test.
+export function fakeDom() {
+  const doc = { activeElement: null, listeners: {} };
+  class FNode {
+    constructor(tag, ns) {
+      this.tagName = tag ? tag.toUpperCase() : "#text";
+      this.localName = tag || "#text";
+      this.namespaceURI = ns || null;
+      this.attrs = new Map();
+      this.childNodes = [];
+      this.parentNode = null;
+      this.listeners = {};
+      this._text = "";
+      this.ownerDocument = doc;
+    }
+    get children() { return this.childNodes.filter((c) => c.tagName !== "#text"); }
+    get textContent() {
+      return this.tagName === "#text" ? this._text : this.childNodes.map((c) => c.textContent).join("");
+    }
+    set textContent(v) {
+      if (this.tagName === "#text") { this._text = String(v); return; }
+      this.childNodes.forEach((c) => { c.parentNode = null; });
+      this.childNodes = [];
+      if (v !== "" && v !== null && v !== undefined) this.appendChild(doc.createTextNode(String(v)));
+    }
+    get innerHTML() { throw new Error("innerHTML used"); }
+    set innerHTML(_) { throw new Error("innerHTML used"); }
+    get outerHTML() { throw new Error("outerHTML used"); }
+    set outerHTML(_) { throw new Error("outerHTML used"); }
+    insertAdjacentHTML() { throw new Error("insertAdjacentHTML used"); }
+    get hidden() { return this.attrs.has("hidden"); }
+    set hidden(v) { if (v) this.attrs.set("hidden", ""); else this.attrs.delete("hidden"); }
+    get id() { return this.getAttribute("id") || ""; }
+    get className() { return this.getAttribute("class") || ""; }
+    setAttribute(k, v) {
+      const name = String(k).toLowerCase();
+      if (name === "style" || name.startsWith("on")) throw new Error("forbidden attribute " + name);
+      this.attrs.set(String(k), String(v));
+    }
+    getAttribute(k) { return this.attrs.has(k) ? this.attrs.get(k) : null; }
+    hasAttribute(k) { return this.attrs.has(k); }
+    removeAttribute(k) { this.attrs.delete(k); }
+    appendChild(n) {
+      if (n.tagName === "#fragment") { for (const c of [...n.childNodes]) this.appendChild(c); return n; }
+      if (n.parentNode) n.parentNode.removeChild(n);
+      n.parentNode = this;
+      this.childNodes.push(n);
+      return n;
+    }
+    append(...ns) { for (const n of ns) this.appendChild(typeof n === "string" ? doc.createTextNode(n) : n); }
+    removeChild(n) { this.childNodes = this.childNodes.filter((c) => c !== n); n.parentNode = null; return n; }
+    remove() { if (this.parentNode) this.parentNode.removeChild(this); }
+    replaceChildren(...ns) {
+      this.childNodes.forEach((c) => { c.parentNode = null; });
+      this.childNodes = [];
+      this.append(...ns);
+    }
+    addEventListener(t, fn) { (this.listeners[t] = this.listeners[t] || []).push(fn); }
+    removeEventListener(t, fn) { this.listeners[t] = (this.listeners[t] || []).filter((f) => f !== fn); }
+    dispatch(t, ev = {}) {
+      const e = { type: t, target: this, preventDefault() {}, stopPropagation() {}, ...ev };
+      for (let n = this; n; n = n.parentNode) for (const fn of n.listeners[t] || []) fn(e);
+      return e;
+    }
+    click() { return this.dispatch("click"); }
+    focus() { doc.activeElement = this; }
+    walk(fn) { fn(this); for (const c of this.childNodes) c.walk(fn); }
+    findAll(pred) { const out = []; this.walk((n) => { if (n.tagName !== "#text" && pred(n)) out.push(n); }); return out; }
+    byRole(r) { return this.findAll((n) => n.getAttribute("data-role") === r); }
+  }
+  doc.createElement = (t) => new FNode(t, "http://www.w3.org/1999/xhtml");
+  doc.createElementNS = (ns, t) => new FNode(t, ns);
+  doc.createTextNode = (s) => { const n = new FNode(null); n._text = String(s); return n; };
+  doc.createDocumentFragment = () => { const n = new FNode("#fragment"); n.tagName = "#fragment"; return n; };
+  doc.documentElement = new FNode("html");
+  doc.head = doc.documentElement.appendChild(new FNode("head"));
+  doc.body = doc.documentElement.appendChild(new FNode("body"));
+  doc.getElementById = (id) => doc.documentElement.findAll((n) => n.getAttribute("id") === id)[0] || null;
+  doc.addEventListener = (t, fn) => { (doc.listeners[t] = doc.listeners[t] || []).push(fn); };
+  doc.visibilityState = "visible";
+  return doc;
 }
