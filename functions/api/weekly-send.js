@@ -157,11 +157,13 @@ export async function onRequest(context) {
         sent.push({ to: s.email, ok: false, error: String(e && e.message || e).slice(0, 120) });
       }
     }
-    // Persist per-recipient results to R2. The Actions log that shows this
-    // response needs repo-admin auth — when a paying subscriber said "I never
-    // get my emails" (Silvestre, 2026-07-20), there was NO readable record of
+    // Persist per-recipient results to R2 (private). When a paying subscriber
+    // said "I never get my emails" (2026-07-20), there was NO readable record of
     // whether their sends were ever attempted or how they failed. Same
     // black-box pattern as refresh-status.json. Keeps the last 12 sends.
+    // The full per-recipient detail lives ONLY here. This repo is PUBLIC, so
+    // the Actions log that prints this endpoint's response (weekly-feed.yml,
+    // send-watchdog.yml's retry) is readable by any signed-in GitHub user.
     try {
       const lo = await env.BUNDLES.get("feed-send-log.json");
       const log = lo ? JSON.parse(await lo.text()) : [];
@@ -169,7 +171,11 @@ export async function onRequest(context) {
                     bundle_etag: etag, ...fingerprintOf(status, file) });
       await env.BUNDLES.put("feed-send-log.json", JSON.stringify(log.slice(0, 12)));
     } catch (_) { /* logging must never fail the send */ }
-    return json({ ok: true, subscribers: subs.length, sent });
+    // COUNTS + DOMAIN ONLY in the response: it is printed into a public log.
+    const bad = sent.filter((s) => !s.ok);
+    return json({ ok: true, subscribers: subs.length,
+                  delivered: sent.length - bad.length, failed: bad.length,
+                  failed_domains: bad.map((s) => "…@" + String(s.to || "").split("@").pop()) });
   } catch (e) {
     return json({ ok: false, error: String(e && e.message || e) }, 500);
   }

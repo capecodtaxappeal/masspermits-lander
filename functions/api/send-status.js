@@ -204,7 +204,14 @@ export async function onRequest(context) {
     // Active subscribers who were not in the run at all. Domain-masked, because
     // this body is printed into a GitHub Actions log.
     roster_gap: rosterGap,
-    last_failed: failed.map((f) => ({ to: f.to, error: f.error || "" })),
+    // Domain-masked for the same reason as roster_gap: send-watchdog.yml prints
+    // this body with `jq .` into a PUBLIC Actions log. Full addresses stay in
+    // feed-send-log.json (private R2). The provider's error text can quote the
+    // address back, so any address-shaped string in it is masked too.
+    last_failed: failed.map((f) => ({
+      to: "…@" + String((f && f.to) || "").split("@").pop(),
+      error: String((f && f.error) || "").replace(/[^\s"'<>(),;:@]+@/g, "…@"),
+    })),
     last_coverage: ((best || newest) || {}).coverage || null,
     portal,
   });
