@@ -11,12 +11,17 @@ const NOW = H.T("2026-09-30T18:00:00Z");
 const git = (...a) => execFileSync("git", a, { cwd: H.REPO, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
 
 // P2 may extend this list with its page files (FILE RULES), never with anything else.
-const FUNCTION_FILES = [
+const P1_FILES = [
   "functions/api/_owner_gate.js", "functions/api/_mission_r2.js", "functions/api/_mission_stripe.js",
   "functions/api/_mission_data.js", "functions/admin/api/mission.js",
 ];
-const ALLOWED = (p) => FUNCTION_FILES.includes(p) ||
-  /^test\/mission\/[A-Za-z0-9_-]+\.test\.mjs$/.test(p) || p === "test/mission/_harness.mjs";
+const FUNCTION_FILES = [...P1_FILES, "functions/admin/api/mission-outreach.js"];
+// P2: the static page files, the one _headers block, and (design branches only) the demo.
+const PAGE_FILES = ["admin/mission.html", "admin/mission-app.js", "admin/mission-render.js",
+  "admin/mission-view.js", "admin/mission-app.css", "admin/mission-towns.json"];
+const ALLOWED = (p) => FUNCTION_FILES.includes(p) || PAGE_FILES.includes(p) || p === "_headers" ||
+  p === "docs/mission/demo.html" ||
+  /^test\/mission\/[A-Za-z0-9_-]+\.test\.mjs$/.test(p) || ["test/mission/_harness.mjs", "test/mission/_demo.mjs"].includes(p);
 const NEVER_EDIT = [
   "functions/api/stripe-webhook.js", "functions/api/weekly-send.js", "functions/api/my-leads.js",
   "functions/api/send-status.js", "functions/api/_presend.js", "functions/api/_github-oidc.js",
@@ -52,7 +57,8 @@ test("P1-14 the diff from main lists only allowed paths", () => {
   for (const p of NEVER_EDIT) assert.ok(!changed.includes(p), p);
   assert.ok(!changed.some((p) => p.startsWith(".github/")));
   assert.ok(!changed.some((p) => /(^|\/)(package(-lock)?\.json|wrangler\.toml|_routes\.json)$|node_modules/.test(p)));
-  for (const f of FUNCTION_FILES) assert.ok(changed.includes(f), "missing " + f);
+  for (const f of [...FUNCTION_FILES, ...PAGE_FILES]) assert.ok(changed.includes(f), "missing " + f);
+  assert.ok(!changed.some((p) => p.startsWith("docs/") && p !== "docs/mission/demo.html"), "nothing else under docs/");
 });
 
 test("P1-14 exports: helpers export no onRequest*; the route exports onRequestGet only", () => {
@@ -60,6 +66,7 @@ test("P1-14 exports: helpers export no onRequest*; the route exports onRequestGe
     assert.ok(!Object.keys(mod).some((k) => k.startsWith("onRequest")));
   }
   assert.deepEqual(Object.keys(m.mission), ["onRequestGet"]);
+  assert.deepEqual(Object.keys(m.outreach), ["onRequestPost"]);
 });
 
 test("P1-14 import allowlist; no node:, no dynamic import, no fetch reassignment", () => {
@@ -90,13 +97,60 @@ test("P1-14 outbound: exactly one fetch call, inside stripeGet()", () => {
 });
 
 test("P1-14 writes: no put, delete or multipart in any P1 file", () => {
-  for (const f of FUNCTION_FILES) {
+  for (const f of P1_FILES) {
     const src = read(f);
     for (const re of [/\.put\(/, /\.delete\(/, /createMultipartUpload/, /resumeMultipartUpload/]) {
       assert.ok(!re.test(src), f + " " + re);
     }
   }
   assert.deepEqual(Object.keys(m.r2.readView(new H.FakeR2())).sort(), ["get", "head", "list"]);
+});
+
+test("P2-8 writes: \".put(\" exactly once, in mission-outreach.js; no delete or multipart anywhere", () => {
+  const puts = FUNCTION_FILES.map((f) => [f, (read(f).match(/\.put\(/g) || []).length]);
+  assert.deepEqual(puts.filter(([, n]) => n > 0), [["functions/admin/api/mission-outreach.js", 1]]);
+  for (const f of [...FUNCTION_FILES, ...PAGE_FILES.filter((p) => p.endsWith(".js"))]) {
+    for (const re of [/\.delete\(/, /createMultipartUpload/, /resumeMultipartUpload/]) assert.ok(!re.test(read(f)), f + " " + re);
+  }
+});
+
+test("P2-5 _headers: exactly the one /admin/mission block, outside the widget block", () => {
+  let base;
+  for (const ref of ["origin/main", "main"]) {
+    try { base = git("merge-base", ref, "HEAD").trim(); break; } catch (_) { /* next */ }
+  }
+  const before = git("show", base + ":_headers").split("\n");
+  const after = read("_headers").split("\n");
+  const BLOCK = [
+    "/admin/mission",
+    "  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+    "  X-Frame-Options: DENY",
+    "  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet",
+    "  Referrer-Policy: no-referrer",
+    "  Cache-Control: private, no-store",
+  ];
+  const at = after.indexOf(BLOCK[0]);
+  assert.ok(at >= 0);
+  assert.deepEqual(after.slice(at, at + BLOCK.length), BLOCK);
+  // removing the block (and one blank line after it) gives back the old file exactly
+  const rest = after.slice(0, at).concat(after.slice(at + BLOCK.length + (after[at + BLOCK.length] === "" ? 1 : 0)));
+  assert.deepEqual(rest, before);
+  const open = after.findIndex((l) => l.startsWith("# >>> widget tier"));
+  const close = after.findIndex((l) => l.startsWith("# <<< widget tier"));
+  assert.ok(open >= 0 && close > open);
+  assert.ok(at < open || at > close, "outside the widget block");
+  assert.equal(after.filter((l) => l === "/admin/mission").length, 1);
+});
+
+test("P2-12 branch hygiene: the diff from claude/mission-control lists only P2 paths", () => {
+  let base = null;
+  try { base = git("merge-base", "origin/claude/mission-control", "HEAD").trim(); } catch (_) { base = null; }
+  if (!base) return; // no ref in this checkout (the main-branch diff above still holds)
+  const files = git("diff", "--name-only", base).split("\n").filter(Boolean);
+  const P2_OK = (p) => PAGE_FILES.includes(p) || p === "_headers" || p === "docs/mission/demo.html" ||
+    p === "functions/admin/api/mission-outreach.js" || p.startsWith("test/mission/");
+  assert.deepEqual(files.filter((p) => !P2_OK(p)), []);
+  for (const f of P1_FILES) assert.ok(!files.includes(f), "P1 file changed: " + f);
 });
 
 test("P1-14 route strings never appear in non-test added files", () => {

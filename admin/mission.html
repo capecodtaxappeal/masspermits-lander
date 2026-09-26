@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Mission Control</title>
+<link rel="stylesheet" href="/admin/mission-app.css">
+<script type="module" src="/admin/mission-app.js"></script>
+</head>
+<body>
+<!-- mission shell: start -->
+<div class="mc" id="mc">
+<svg id="mc-svg-ns" class="mc-ns" aria-hidden="true" focusable="false"></svg>
+<div id="mc-root" class="mc-root"></div>
+<section id="mc-setup" class="mc-setup" hidden>
+<h2 class="mc-h2">Setup needed</h2>
+<p>This page is not configured yet, so it shows nothing. Three steps, all in Cloudflare:</p>
+<ol>
+<li>A Zero Trust Access self-hosted application that covers masspermits.com/admin and masspermits.com/admin/*, allowing only the owner's login.</li>
+<li>Three Pages variables, Production only: CF_ACCESS_TEAM_DOMAIN, CF_ACCESS_AUD and ADMIN_ALLOWED_EMAILS.</li>
+<li>Redeploy production so the variables take effect.</li>
+</ol>
+</section>
+</div>
+<!-- mission shell: end -->
+</body>
+</html>

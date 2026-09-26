@@ -35,6 +35,13 @@
 /ops
   X-Robots-Tag: noindex, nofollow
 
+/admin/mission
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+  X-Frame-Options: DENY
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Referrer-Policy: no-referrer
+  Cache-Control: private, no-store
+
 # >>> widget tier (widget_build.py) — do not hand-edit inside this block
 #
 # /widget/v1/embed is a RENDERING FRAGMENT, not a page. Indexing it would mint

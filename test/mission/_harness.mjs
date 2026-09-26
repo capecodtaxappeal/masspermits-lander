@@ -23,14 +23,17 @@ export const SHIPPED = [
   "functions/api/_mission_stripe.js",
   "functions/api/_mission_data.js",
   "functions/admin/api/mission.js",
+  "functions/admin/api/mission-outreach.js",
 ];
+// Page modules (P2): pure ES modules, copied the same way and imported from the copy.
+export const PAGE = ["admin/mission-view.js", "admin/mission-render.js"];
 const IMPORTED = ["functions/api/_cf-access.js", "functions/api/_presend.js"];
 
 let tmpDir = null;
 export function tempCopy() {
   if (tmpDir) return tmpDir;
   tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "mission-test-"));
-  for (const rel of [...IMPORTED, ...SHIPPED]) {
+  for (const rel of [...IMPORTED, ...SHIPPED, ...PAGE]) {
     const dst = path.join(tmpDir, rel);
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.copyFileSync(path.join(REPO, rel), dst);
@@ -47,6 +50,9 @@ export async function load() {
   const imp = (rel) => import(pathToFileURL(path.join(dir, rel)).href);
   loaded = {
     mission: await imp("functions/admin/api/mission.js"),
+    outreach: await imp("functions/admin/api/mission-outreach.js"),
+    view: await imp("admin/mission-view.js"),
+    render: await imp("admin/mission-render.js"),
     gate: await imp("functions/api/_owner_gate.js"),
     r2: await imp("functions/api/_mission_r2.js"),
     stripe: await imp("functions/api/_mission_stripe.js"),
@@ -156,7 +162,15 @@ export class FakeR2 {
       delimitedPrefixes: [],
     };
   }
-  async put(key, value) { this.ops.push({ op: "put", key }); this.set(key, String(value)); return {}; }
+  async put(key, value, opts = {}) {
+    this.ops.push({ op: "put", key, opts });
+    this._check("put", key);
+    const cur = this.objects.get(key);
+    const want = opts && opts.onlyIf && opts.onlyIf.etagMatches;
+    if (want !== undefined && (!cur || cur.etag !== String(want).replace(/"/g, ""))) return null;
+    this.set(key, String(value), { uploaded: Date.now() });
+    return this._meta(key, this.objects.get(key));
+  }
   async delete(key) { this.ops.push({ op: "delete", key }); this.objects.delete(key); }
 }
 
@@ -252,9 +266,9 @@ export const PRICE_B = "price_TESTradaryearly";
 export const PRICE_OTHER = "price_TESTotherproduct";
 export const liveKey = () => "rk_" + "live_" + "T".repeat(24);
 
-const FIRST = ["Avery", "Blake", "Casey", "Drew", "Emery", "Finley", "Harper", "Jordan", "Kendall", "Logan",
+export const FIRST = ["Avery", "Blake", "Casey", "Drew", "Emery", "Finley", "Harper", "Jordan", "Kendall", "Logan",
   "Morgan", "Parker", "Quinn", "Reese", "Riley", "Rowan", "Sawyer", "Skyler", "Taylor", "Wren", "Ellis", "Jules"];
-const LAST = ["Testwood", "Fakerly", "Samplesen", "Mockford", "Placeholt"];
+export const LAST = ["Testwood", "Fakerly", "Samplesen", "Mockford", "Placeholt"];
 
 export function rosterRows(n, now, over = {}) {
   const rows = [];
@@ -588,4 +602,194 @@ export function lineIds(body, severity) {
 
 export function tileOf(body, id) {
   return body.tiles.find((t) => t.id === id);
+}
+
+// ── a minimal fake DOM (P2) ─────────────────────────────────────────────────
+// Just enough for mission-render.js and the demo boot. No dependency. The
+// markup sinks (innerHTML, outerHTML, insertAdjacentHTML) THROW, so a page
+// file that reached for one would fail its tests.
+export const XHTML_NS = "http://www.w3.org/1999/xhtml";
+export const SVG_NS = "http://www.w3.org/2000/svg";
+
+class FakeNode {
+  constructor(doc) { this.ownerDocument = doc; this.parentNode = null; this.childNodes = []; this.listeners = {}; }
+  get firstChild() { return this.childNodes[0] || null; }
+  get children() { return this.childNodes.filter((n) => n.nodeType === 1); }
+  appendChild(c) {
+    if (c.parentNode) c.parentNode.removeChild(c);
+    c.parentNode = this;
+    this.childNodes.push(c);
+    return c;
+  }
+  insertBefore(c, ref) {
+    if (!ref) return this.appendChild(c);
+    if (c.parentNode) c.parentNode.removeChild(c);
+    const i = this.childNodes.indexOf(ref);
+    if (i < 0) throw new Error("insertBefore: not a child");
+    c.parentNode = this;
+    this.childNodes.splice(i, 0, c);
+    return c;
+  }
+  removeChild(c) {
+    const i = this.childNodes.indexOf(c);
+    if (i < 0) throw new Error("removeChild: not a child");
+    this.childNodes.splice(i, 1);
+    c.parentNode = null;
+    return c;
+  }
+  get textContent() { return this.childNodes.map((n) => n.textContent).join(""); }
+  set textContent(v) {
+    for (const c of this.childNodes) c.parentNode = null;
+    this.childNodes = [];
+    const s = String(v);
+    if (s) this.appendChild(new FakeText(this.ownerDocument || this, s));
+  }
+  addEventListener(type, fn) { (this.listeners[type] = this.listeners[type] || []).push(fn); }
+  removeEventListener(type, fn) {
+    const l = this.listeners[type] || [];
+    const i = l.indexOf(fn);
+    if (i >= 0) l.splice(i, 1);
+  }
+  // Dispatch with bubbling to the document.
+  dispatch(type, extra = {}) {
+    const ev = { type, target: this, defaultPrevented: false, ...extra };
+    ev.preventDefault = () => { ev.defaultPrevented = true; };
+    for (let n = this; n; n = n.parentNode) for (const f of (n.listeners[type] || []).slice()) f(ev);
+    return ev;
+  }
+  get innerHTML() { throw new Error("innerHTML is forbidden"); }
+  set innerHTML(_) { throw new Error("innerHTML is forbidden"); }
+  get outerHTML() { throw new Error("outerHTML is forbidden"); }
+  set outerHTML(_) { throw new Error("outerHTML is forbidden"); }
+  insertAdjacentHTML() { throw new Error("insertAdjacentHTML is forbidden"); }
+}
+
+class FakeText extends FakeNode {
+  constructor(doc, data) { super(doc); this.nodeType = 3; this.data = data; }
+  get textContent() { return this.data; }
+  set textContent(v) { this.data = String(v); }
+}
+
+class FakeElement extends FakeNode {
+  constructor(doc, tag, ns) {
+    super(doc);
+    this.nodeType = 1;
+    this.localName = ns === SVG_NS ? tag : tag.toLowerCase();
+    this.tagName = ns === SVG_NS ? tag : tag.toUpperCase();
+    this.namespaceURI = ns;
+    this.attributes = new Map();
+  }
+  setAttribute(k, v) {
+    const key = String(k);
+    if (/^on/i.test(key) || key.toLowerCase() === "style") throw new Error("forbidden attribute " + key);
+    this.attributes.set(key, String(v));
+  }
+  getAttribute(k) { return this.attributes.has(k) ? this.attributes.get(k) : null; }
+  hasAttribute(k) { return this.attributes.has(k); }
+  removeAttribute(k) { this.attributes.delete(k); }
+  get hidden() { return this.attributes.has("hidden"); }
+  set hidden(v) { if (v) this.attributes.set("hidden", ""); else this.attributes.delete("hidden"); }
+  get id() { return this.getAttribute("id") || ""; }
+  get className() { return this.getAttribute("class") || ""; }
+  focus() { this.ownerDocument.activeElement = this; }
+  blur() { if (this.ownerDocument.activeElement === this) this.ownerDocument.activeElement = null; }
+  click() { return this.dispatch("click"); }
+}
+
+class FakeDocument extends FakeNode {
+  constructor() {
+    super(null);
+    this.nodeType = 9;
+    this.activeElement = null;
+    this.visibilityState = "visible";
+    this.documentElement = this.appendChild(new FakeElement(this, "html", XHTML_NS));
+    this.head = this.documentElement.appendChild(new FakeElement(this, "head", XHTML_NS));
+    this.body = this.documentElement.appendChild(new FakeElement(this, "body", XHTML_NS));
+  }
+  createElement(tag) { return new FakeElement(this, String(tag), XHTML_NS); }
+  createElementNS(ns, tag) { return new FakeElement(this, String(tag), ns); }
+  createTextNode(s) { return new FakeText(this, String(s)); }
+  getElementById(id) { return find(this, (n) => n.getAttribute("id") === id)[0] || null; }
+}
+
+export function fakeDocument() {
+  return new FakeDocument();
+}
+
+// Depth-first list of elements under node matching pred.
+export function find(node, pred) {
+  const out = [];
+  const walk = (n) => {
+    for (const c of n.childNodes) {
+      if (c.nodeType === 1) {
+        if (pred(c)) out.push(c);
+        walk(c);
+      }
+    }
+  };
+  walk(node);
+  return out;
+}
+
+export const byAttr = (node, name, value) =>
+  find(node, (n) => n.hasAttribute(name) && (value === undefined || n.getAttribute(name) === value));
+export const hasClass = (n, c) => (" " + (n.getAttribute("class") || "") + " ").includes(" " + c + " ");
+
+// A tiny HTML reader for our own static markup (mission.html's shell and the
+// demo file): tags, quoted attributes, comments, doctype, raw <script>/<style>
+// text and the five basic entities. Not a general HTML parser.
+const VOID = new Set(["meta", "link", "br", "img", "input", "hr", "source"]);
+const decode = (s) => s.replace(/&(amp|lt|gt|quot|#39);/g, (_, e) => ({ amp: "&", lt: "<", gt: ">", quot: '"', "#39": "'" }[e]));
+
+export function parseInto(doc, html) {
+  let i = 0;
+  let cur = null; // filled from <html>/<head>/<body> as they appear
+  const stack = [];
+  const top = () => stack[stack.length - 1] || doc.body;
+  const text = (s) => { if (s) top().appendChild(new FakeText(doc, decode(s))); };
+  while (i < html.length) {
+    const lt = html.indexOf("<", i);
+    if (lt < 0) { text(html.slice(i)); break; }
+    text(html.slice(i, lt));
+    if (html.startsWith("<!--", lt)) { i = html.indexOf("-->", lt) + 3; continue; }
+    if (html.startsWith("<!", lt)) { i = html.indexOf(">", lt) + 1; continue; }
+    const gt = html.indexOf(">", lt);
+    const raw = html.slice(lt + 1, gt);
+    i = gt + 1;
+    if (raw.startsWith("/")) {
+      const name = raw.slice(1).trim().toLowerCase();
+      for (let k = stack.length - 1; k >= 0; k--) {
+        if (stack[k].localName.toLowerCase() === name) { stack.length = k; break; }
+      }
+      continue;
+    }
+    const m = /^([A-Za-z][A-Za-z0-9-]*)([\s\S]*)$/.exec(raw);
+    const name = m[1];
+    const lower = name.toLowerCase();
+    const attrs = [];
+    const re = /([^\s=/]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+)))?/g;
+    let a;
+    while ((a = re.exec(m[2]))) attrs.push([a[1], decode(a[2] ?? a[3] ?? a[4] ?? "")]);
+    let e;
+    if (lower === "html") e = doc.documentElement;
+    else if (lower === "head") e = doc.head;
+    else if (lower === "body") e = doc.body;
+    else {
+      const parentNs = top().namespaceURI;
+      e = new FakeElement(doc, name, lower === "svg" || parentNs === SVG_NS ? SVG_NS : XHTML_NS);
+      top().appendChild(e);
+    }
+    for (const [k, v] of attrs) e.attributes.set(k, v);
+    if (lower === "script" || lower === "style") {
+      const end = html.toLowerCase().indexOf("</" + lower, i);
+      if (end > i) e.appendChild(new FakeText(doc, html.slice(i, end)));
+      i = html.indexOf(">", end) + 1;
+      continue;
+    }
+    if (VOID.has(lower) || raw.trimEnd().endsWith("/")) continue;
+    if (lower === "html") { stack.length = 0; stack.push(e); continue; }
+    stack.push(e);
+    cur = e;
+  }
+  return cur;
 }
