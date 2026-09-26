@@ -34,6 +34,11 @@ export const REFRESH_DUE_HOUR_UTC = 9;
 export const REFRESH_GREY_H = 8;
 // Same limit as _presend.js max_status_age_h: older means not running at all.
 export const REFRESH_MAX_AGE_H = 36;
+// A run time or a send more than this far ahead of the edge's clock is a bad
+// clock, not a run: counted as one, a 2099 ran_at would hold the refresh tile
+// green, and a 2099 log entry would count as every future Monday's delivery.
+// An hour covers any real skew between a runner and the edge.
+export const FUTURE_SKEW_MS = HOUR;
 // Monday sends have logged 15:20-18:46 UTC; the hold hour comes from the
 // presend policy (20:00 UTC by default), never from here.
 const SEND_WINDOW_TEXT = "recent sends 15:20-18:46 UTC";
@@ -219,7 +224,7 @@ export function maskEmail(v) {
 
 export function cleanName(v) {
   const s = String(v === null || v === undefined ? "" : v)
-    .replace(/[\u0000-\u001F\u007F-\u009F​-‏‪-‮⁦-⁩]/g, "")
+    .replace(/[\u0000-\u001F\u007F-\u009F\u061C​-‏‪-‮⁦-⁩]/g, "")
     .replace(/\s+/g, " ")
     .trim();
   const cut = Array.from(s).slice(0, NAME_MAX).join("").trim();
@@ -266,21 +271,23 @@ export function privacyWalk(payload) {
     return out;
   };
   const seen = new WeakSet();
-  const walk = (v) => {
+  const walk = (v, top) => {
     if (typeof v === "string") return scrub(v);
     if (!v || typeof v !== "object") return v;
     if (seen.has(v)) return null;
     seen.add(v);
-    if (Array.isArray(v)) return v.map(walk);
+    if (Array.isArray(v)) return v.map((x) => walk(x, false));
     const out = {};
     for (const [k, x] of Object.entries(v)) {
-      // signed_in_as is the owner's own verified Access email, not customer data.
-      if (k === "signed_in_as") { out[k] = x; continue; }
-      out[scrub(k)] = walk(x);
+      // signed_in_as is the owner's own verified Access email, not customer
+      // data. Exempt only as the payload's own top-level member: a member of
+      // that name anywhere deeper is walked like every other value.
+      if (top && k === "signed_in_as") { out[k] = x; continue; }
+      out[scrub(k)] = walk(x, false);
     }
     return out;
   };
-  const out = walk(payload);
+  const out = walk(payload, true);
   return { payload: out, redactions: count };
 }
 
@@ -339,7 +346,7 @@ export function refreshState(inp) {
   }
   // 1. missing, or no usable ran_at
   const ranAt = status ? ms(status.ran_at) : NaN;
-  if (!status || !Number.isFinite(ranAt)) return out("red", "missing");
+  if (!status || !Number.isFinite(ranAt) || ranAt > now + FUTURE_SKEW_MS) return out("red", "missing");
   // 2. too old
   if (now - ranAt > REFRESH_MAX_AGE_H * HOUR) return out("red", "too_old", { ranAt });
   // 3. the latest run failed (the state weekly-send.js refuses to send on)
@@ -367,6 +374,11 @@ function activeRows(rows) {
   return (Array.isArray(rows) ? rows : []).filter((s) => isObj(s) && s.email && s.active !== false);
 }
 
+// Log entries that are not from the future (FUTURE_SKEW_MS).
+function pastEntries(log, now) {
+  return (Array.isArray(log) ? log : []).filter((e) => !(isObj(e) && ms(e.at) > now + FUTURE_SKEW_MS));
+}
+
 function delivered(entry) {
   return !!entry && Array.isArray(entry.sent) && entry.sent.some((s) => s && s.ok);
 }
@@ -378,7 +390,7 @@ export function mondayReach(inp) {
   const due = dueAt(now, p);
   const hold = holdDeadline(due, p);
   const mondayDate = day(due);
-  const log = Array.isArray(inp.log) ? inp.log : [];
+  const log = pastEntries(inp.log, now);
   const entries = log.filter((e) => isObj(e) && Number.isFinite(ms(e.at)) && ms(e.at) >= due);
 
   const okCount = new Map();
@@ -569,14 +581,21 @@ export function parseOutreach(text, size) {
     if (OUTREACH_STATES.has(v.outreach)) t.outreach = v.outreach;
     if (dateOnly(v.since)) t.since = dateOnly(v.since);
     if (typeof v.locked === "boolean") t.locked = v.locked;
-    if (typeof v.note === "string") {
-      t.note = v.note.slice(0, NOTE_MAX)
-        .replace(EMAIL_RE, "[redacted]")
-        .replace(/\+?\d[\d\s().-]{6,}\d/g, "[redacted]");
-    }
+    if (typeof v.note === "string") t.note = cleanNote(v.note);
     towns[key] = t;
   }
   return { state: "present", towns, ignored };
+}
+
+// Redact first, then cut: cutting first can split an address or a number
+// so the pattern no longer matches and a fragment survives. The scan is
+// bounded (NOTE_SCAN chars) so a long note cannot make the patterns slow.
+const NOTE_SCAN = 4 * NOTE_MAX;
+function cleanNote(v) {
+  const s = v.slice(0, NOTE_SCAN)
+    .replace(/\S*@\S*/g, "[redacted]")
+    .replace(/\+?\d[\d\s().-]{6,}\d/g, "[redacted]");
+  return Array.from(s).slice(0, NOTE_MAX).join("").replace(/@/g, " ");
 }
 
 // ── MAP ─────────────────────────────────────────────────────────────────────
@@ -855,9 +874,17 @@ export function tiles(ctx, inp) {
     no_result: "a send started and never recorded a result",
     nothing: "nothing delivered by " + String(m.hold_hour).padStart(2, "0") + ":00 UTC",
   }[m.rule];
-  out.push(m.state === "grey"
-    ? greyTile("monday", "pending", mSub, "r2")
-    : tile("monday", m.state, m.delivered, mSub, "r2", m.best_at));
+  // gather() turns a read that throws, or a body that does not parse, into
+  // null, which reads as "nothing sent". The route records which of the two
+  // send files failed that way; then the tile cannot say pending or red.
+  const g0 = ctx.g || {};
+  if (g0.log_state === "unreadable" || (g0.attempt_state === "unreadable" && !m.delivered)) {
+    out.push(greyTile("monday", "unavailable", "the send log could not be read", "r2"));
+  } else {
+    out.push(m.state === "grey"
+      ? greyTile("monday", "pending", mSub, "r2")
+      : tile("monday", m.state, m.delivered, mSub, "r2", m.best_at));
+  }
 
   // refresh
   const rf = ctx.refresh;
@@ -937,7 +964,7 @@ function signupCounts(lists, now) {
   for (const m of L.prospects.items) {
     if (!recent(m)) continue;
     prospects++; bump(m);
-    const tr = m && typeof m.trade === "string" && m.trade ? neutral(cleanName(m.trade)).toLowerCase().slice(0, 30) : "unknown";
+    const tr = m && typeof m.trade === "string" && m.trade ? neutral(cleanName(m.trade).toLowerCase()).slice(0, 30) : "unknown";
     trades[tr] = (trades[tr] || 0) + 1;
   }
   for (const m of L.agents.items) if (recent(m)) { agents++; bump(m); }
@@ -977,7 +1004,7 @@ function mondayClause(ctx) {
   const d = new Date(now);
   if (d.getUTCDay() !== 1) return "";
   d.setUTCHours(p.send_hour, 0, 0, 0);
-  const best = bestSince(ctx.g.log, d.getTime());
+  const best = bestSince(pastEntries(ctx.g.log, now), d.getTime());
   return delivered(best) ? "" : " Monday's email will not send while this is the latest run.";
 }
 
@@ -1302,8 +1329,11 @@ export function buildMain(inp) {
       t8: null, plan: null, status: null, since: null, date: null, amount_cents: null, currency: null,
       stripe_url: null };
   };
+  const mondayTile = tileList.find((t) => t.id === "monday");
+  const mondayUnread = !!mondayTile && mondayTile.state === "grey" && mondayTile.grey === "unavailable";
   const monday = {
-    state: m.state, rule: m.rule, due: iso(m.due), hold: iso(m.hold), monday_date: m.monday_date,
+    state: mondayUnread ? "grey" : m.state, rule: mondayUnread ? "unreadable" : m.rule,
+    due: iso(m.due), hold: iso(m.hold), monday_date: m.monday_date,
     best_at: m.best_at, delivered: m.delivered, expected: m.expected,
     missing: m.missing.map((r) => customerRow(r, null)),
     failed: m.failed.map(personRow),

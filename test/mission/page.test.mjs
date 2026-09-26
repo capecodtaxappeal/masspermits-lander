@@ -149,7 +149,12 @@ test("P2-11 system fonts only: no font file, no @font-face, no @import, no url("
 // P2-12 as it stands after P3: the P2 work (merged from design C) and the P3
 // polish changed only page files, the editor, _headers and test/mission/
 // files since the P1 tip, no P1 non-test file, and nothing under docs/.
+// From P4 on, a review may fix a P1 file (with a regression test that fails
+// first), so "no P1 non-test file changed" is checked from the P1 tip to the
+// P3 tip, the end of the P2/P3 work; the path and docs/ checks still run on
+// the working tree.
 const P1_TIP = "714bc2c85bfe04f4b27736a2afd32a60eceaa18b";
+const P3_TIP = "fc186fade1c4374fc4036f711a2f85a65b14bc11";
 test("P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ files changed; nothing under docs/", () => {
   let tip;
   try { tip = git("rev-parse", "--verify", "--quiet", P1_TIP + "^{commit}").trim(); } catch (_) { tip = null; }
@@ -161,7 +166,11 @@ test("P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ fil
   const ok = (p) => ALL.includes(p) || p === "_headers" || p === "functions/admin/api/mission-outreach.js" ||
     /^test\/mission\/[A-Za-z0-9_-]+\.(test\.)?mjs$/.test(p) || mainOnly.includes(p);
   assert.deepEqual(changed.filter((p) => !ok(p)), []);
+  let p3;
+  try { p3 = git("rev-parse", "--verify", "--quiet", P3_TIP + "^{commit}").trim(); } catch (_) { p3 = null; }
+  assert.ok(p3, "the P3 tip commit is not in this clone");
+  const p2p3 = git("diff", "--name-only", tip, p3).split("\n").filter(Boolean);
   for (const p1 of ["functions/api/_owner_gate.js", "functions/api/_mission_r2.js", "functions/api/_mission_stripe.js",
-    "functions/api/_mission_data.js", "functions/admin/api/mission.js"]) assert.ok(!changed.includes(p1), p1 + " changed");
+    "functions/api/_mission_data.js", "functions/admin/api/mission.js"]) assert.ok(!p2p3.includes(p1), p1 + " changed in P2/P3");
   assert.deepEqual(changed.filter((p) => p.startsWith("docs/") && !mainOnly.includes(p)), []);
 });

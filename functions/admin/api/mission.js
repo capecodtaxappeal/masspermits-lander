@@ -79,6 +79,39 @@ async function metaOf(ro, prefix) {
   }
 }
 
+// gather() (the unedited _presend.js) returns null both for an object that is
+// absent and for one whose read throws or whose body does not parse. For the
+// two send files that difference decides between "nothing was sent" and
+// "could not read", so gather() gets this view: same reads, same counter, and
+// a note of which watched key could not be read. No extra R2 op.
+function watched(ro, keys) {
+  const bad = new Set();
+  const view = {
+    async get(key, options) {
+      if (!keys.includes(key)) return ro.get(key, options);
+      let o;
+      try {
+        o = await ro.get(key, options);
+      } catch (e) {
+        bad.add(key);
+        throw e;
+      }
+      if (!o) return o;
+      let text;
+      try {
+        text = await o.text();
+        JSON.parse(text);
+      } catch (_) {
+        bad.add(key);
+      }
+      return { uploaded: o.uploaded, size: o.size, text: async () => text };
+    },
+    head: (key) => ro.head(key),
+    list: (options) => ro.list(options),
+  };
+  return { view, state: (key) => (bad.has(key) ? "unreadable" : "ok") };
+}
+
 function lastEtag(log) {
   if (!Array.isArray(log)) return "";
   for (const e of log) if (e && typeof e.bundle_etag === "string" && e.bundle_etag) return e.bundle_etag;
@@ -86,7 +119,8 @@ function lastEtag(log) {
 }
 
 async function mainView(env, ro, auth, now) {
-  const renv = { ...env, BUNDLES: ro };
+  const sendFiles = watched(ro, ["feed-send-log.json", "last-send-attempt.json"]);
+  const renv = { ...env, BUNDLES: sendFiles.view };
   const [g, statusHead, htmlHead, roster, funnel, deliveries, engagement, outreachHead, probeHead,
     sourceHealth, prospects, agents, newsletter, stripe] = await Promise.all([
     gather(renv, { hash: false }),
@@ -117,6 +151,8 @@ async function mainView(env, ro, auth, now) {
     status: g ? g.status : null,
     log: g ? g.log : null,
     attempt: g ? g.attempt : null,
+    log_state: sendFiles.state("feed-send-log.json"),
+    attempt_state: sendFiles.state("last-send-attempt.json"),
     weekly: g && g.weekly ? { uploaded: g.weekly.uploaded, size: g.weekly.size } : null,
     monthly: g && g.monthly ? { uploaded: g.monthly.uploaded, size: g.monthly.size } : null,
   };

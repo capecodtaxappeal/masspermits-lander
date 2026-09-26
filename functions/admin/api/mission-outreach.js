@@ -83,6 +83,11 @@ export async function onRequestPost(context) {
   try {
     const obj = await readView(env.BUNDLES).get(KEY);
     if (!obj) return json({ error: "not_seeded" }, 409);
+    // The put is conditional on this etag. Without one, onlyIf would be empty
+    // and the write unconditional, so a concurrent change could be lost.
+    const etag = typeof obj.etag === "string" && obj.etag ? obj.etag
+      : typeof obj.httpEtag === "string" ? obj.httpEtag.replace(/"/g, "") : "";
+    if (!etag) return json({ error: "changed" }, 409);
     if (typeof obj.size === "number" && obj.size > OBJECT_MAX) return json({ error: "unreadable" }, 409);
     let doc;
     try { doc = JSON.parse(await obj.text()); } catch (_) { doc = null; }
@@ -111,7 +116,7 @@ export async function onRequestPost(context) {
 
     const { put } = writerFor(env.BUNDLES);
     const done = await put(KEY, text, {
-      onlyIf: { etagMatches: obj.etag },
+      onlyIf: { etagMatches: etag },
       httpMetadata: { contentType: "application/json" },
     });
     if (!done) return json({ error: "changed" }, 409);

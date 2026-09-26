@@ -28,6 +28,10 @@ const CANONICAL_HOST = "masspermits.com";
 // Clock skew allowed on nbf and iat. Access issues tokens from the same edge
 // that proxies the request, so a minute is generous.
 const FUTURE_SKEW_S = 60;
+// An address is compared only in printable ASCII. toLowerCase() folds some
+// non-ASCII letters onto ASCII ones (U+212A KELVIN SIGN becomes "k"), so a
+// claim that is not plain ASCII could otherwise equal an allowlisted address.
+const ASCII_EMAIL = /^[\x21-\x7E]+$/;
 
 // The fixed set of reasons a response may carry. Anything else is reported
 // as "verify-error", so no exception text can reach a response body.
@@ -59,7 +63,7 @@ export async function verifyOwner(request, env) {
     const team = trimmed(env && env.CF_ACCESS_TEAM_DOMAIN);
     const aud = trimmed(env && env.CF_ACCESS_AUD);
     const allow = trimmed(env && env.ADMIN_ALLOWED_EMAILS).split(",")
-      .map((s) => s.trim().toLowerCase()).filter(Boolean);
+      .map((s) => s.trim()).filter((s) => ASCII_EMAIL.test(s)).map((s) => s.toLowerCase());
     if (!team || !aud || !allow.length) return fail(403, "not-configured");
 
     // 2. header only
@@ -92,7 +96,9 @@ export async function verifyOwner(request, env) {
     }
 
     // 5. the allowlist
-    const email = p.email.trim().toLowerCase();
+    const raw = p.email.trim();
+    if (!ASCII_EMAIL.test(raw)) return fail(403, "not-owner");
+    const email = raw.toLowerCase();
     if (!allow.includes(email)) return fail(403, "not-owner");
     return { ok: true, email };
   } catch (_) {

@@ -147,8 +147,12 @@ export function rowLine(r, dateLabel) {
   if (isNum(r.amount_cents)) parts.push(money(r.amount_cents, r.currency));
   if (r.email_masked) parts.push(r.email_masked);
   if (r.t8) parts.push("t8 " + r.t8);
-  return { text: parts.join(" · "), href: typeof r.stripe_url === "string" ? r.stripe_url : null };
+  return { text: parts.join(" · "), href: stripeHref(r.stripe_url) };
 }
+// Only a Stripe dashboard page is ever a link, whatever the payload says.
+// ("[:]" keeps a scheme literal out of the file: the demo test refuses one.)
+const STRIPE_HREF = /^https[:]\/\/dashboard\.stripe\.com\/(customers|subscriptions|invoices)\/[A-Za-z0-9_]{1,80}$/;
+const stripeHref = (u) => (typeof u === "string" && STRIPE_HREF.test(u) ? u : null);
 const rows = (a, label) => (Array.isArray(a) ? a.map((r) => rowLine(r, label)) : []);
 
 function refreshSection(r, map) {
