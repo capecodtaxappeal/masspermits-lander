@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Orleans, MA",
- "home_page_url": "https://masspermits.com/permits/orleans",
+ "title": "MassPermits \u2014 building permits in Orleans, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/orleans.json",
- "description": "MassPermits no longer receives building-permit records for Orleans, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-08-31. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Orleans, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,62 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-08-31",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
+ "_window_total": 4,
+ "_window_from": "2026-08-28",
  "_window_to": "2026-08-31",
- "items": []
+ "items": [
+  {
+   "id": "d802ff6265a56561",
+   "url": "https://masspermits.com/permits/orleans-building",
+   "title": "Building permit \u2014 Tonset Rd, Orleans ($8,200)",
+   "content_text": "Building permit in Orleans, MA. Value $8,200. Full lead at masspermits.com.",
+   "date_published": "2026-08-31T00:00:00Z",
+   "_town": "Orleans",
+   "_trade": "Building",
+   "_value": 8200.0
+  },
+  {
+   "id": "de7a2f6c461fe0f2",
+   "url": "https://masspermits.com/permits/orleans-building",
+   "title": "Building permit \u2014 Breezy Wy, Orleans ($2,000)",
+   "content_text": "Building permit in Orleans, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Orleans",
+   "_trade": "Building",
+   "_value": 2000.0
+  },
+  {
+   "id": "d232b84c903fb427",
+   "url": "https://masspermits.com/permits/orleans-building",
+   "title": "Building permit \u2014 Deer Run, Orleans ($1,517,000)",
+   "content_text": "Building permit in Orleans, MA. Value $1,517,000. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Orleans",
+   "_trade": "Building",
+   "_value": 1517000.0
+  },
+  {
+   "id": "4869cd5160e746c4",
+   "url": "https://masspermits.com/permits/orleans-hvac",
+   "title": "HVAC permit \u2014 Nauset Farms Wy, Orleans",
+   "content_text": "HVAC permit in Orleans, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-28T00:00:00Z",
+   "_town": "Orleans",
+   "_trade": "HVAC"
+  }
+ ]
 }

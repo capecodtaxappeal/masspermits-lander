@@ -1,10 +1,10 @@
 {
  "slug": "coverage",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-09-26T14:04:48.592801+00:00",
- "corpus_rows": 75540,
- "corpus_sources": 71,
- "corpus_first": "2025-12-01",
+ "corpus_fetched_at": "2026-09-26T14:39:05.884822+00:00",
+ "corpus_rows": 80428,
+ "corpus_sources": 77,
+ "corpus_first": "2025-07-01",
  "corpus_last": "2026-09-26",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
@@ -18,34 +18,36 @@
  },
  "guards": {},
  "stats": {
-  "n_sources": 71,
-  "n_rows": 75540,
-  "fetched_at": "2026-09-26T14:04:48.592801+00:00",
-  "no_valuation": 50,
+  "n_sources": 77,
+  "n_rows": 80428,
+  "fetched_at": "2026-09-26T14:39:05.884822+00:00",
+  "no_valuation": 52,
   "with_coords": 8,
-  "no_freetext": 22,
+  "no_freetext": 21,
   "capped_sources": 3,
   "row_cap": 2400,
   "monthly": [
    "Amherst, MA",
    "Barnstable, MA",
+   "Barre, MA",
    "Bourne, MA",
    "Chatham, MA",
    "Duxbury, MA",
    "Lexington, MA",
+   "Lowell, MA",
+   "Needham, MA",
    "North Attleborough, MA",
+   "Orleans, MA",
    "Plymouth, MA",
    "Provincetown, MA",
    "Reading, MA",
    "Sudbury, MA",
    "Truro, MA",
    "Wakefield, MA",
+   "Waltham, MA",
    "Wareham, MA"
   ],
-  "errors": [
-   "Townsend, MA",
-   "Waltham, MA"
-  ],
+  "errors": [],
   "table": [
    {
     "source": "Worcester, MA",
@@ -65,6 +67,16 @@
     "valued_pct": 99.3,
     "freetext_pct": 100.0,
     "coords": true,
+    "capped": false
+   },
+   {
+    "source": "Lowell, MA",
+    "rows": 3332,
+    "first": "2026-01-02",
+    "last": "2026-06-30",
+    "valued_pct": 94.3,
+    "freetext_pct": 99.5,
+    "coords": false,
     "capped": false
    },
    {
@@ -158,22 +170,22 @@
     "capped": false
    },
    {
+    "source": "Chicopee, MA",
+    "rows": 1808,
+    "first": "2026-03-30",
+    "last": "2026-09-26",
+    "valued_pct": 0.0,
+    "freetext_pct": 0.0,
+    "coords": false,
+    "capped": false
+   },
+   {
     "source": "Hingham, MA",
     "rows": 1808,
     "first": "2026-03-30",
     "last": "2026-09-24",
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
-    "coords": false,
-    "capped": false
-   },
-   {
-    "source": "Chicopee, MA",
-    "rows": 1806,
-    "first": "2026-03-30",
-    "last": "2026-09-25",
-    "valued_pct": 0.0,
-    "freetext_pct": 0.0,
     "coords": false,
     "capped": false
    },
@@ -268,22 +280,22 @@
     "capped": false
    },
    {
-    "source": "Bridgewater, MA",
-    "rows": 1371,
-    "first": "2026-03-30",
-    "last": "2026-09-24",
-    "valued_pct": 0.0,
-    "freetext_pct": 0.0,
-    "coords": false,
-    "capped": false
-   },
-   {
     "source": "Foxborough, MA",
     "rows": 1343,
     "first": "2026-03-30",
     "last": "2026-09-25",
     "valued_pct": 97.8,
     "freetext_pct": 1.6,
+    "coords": false,
+    "capped": false
+   },
+   {
+    "source": "Needham, MA",
+    "rows": 1300,
+    "first": "2025-07-01",
+    "last": "2026-06-30",
+    "valued_pct": 99.5,
+    "freetext_pct": 100.0,
     "coords": false,
     "capped": false
    },
@@ -364,6 +376,16 @@
     "last": "2026-09-25",
     "valued_pct": 0.0,
     "freetext_pct": 0.0,
+    "coords": false,
+    "capped": false
+   },
+   {
+    "source": "Waltham, MA",
+    "rows": 944,
+    "first": "2026-02-02",
+    "last": "2026-07-31",
+    "valued_pct": 94.1,
+    "freetext_pct": 100.0,
     "coords": false,
     "capped": false
    },
@@ -488,6 +510,16 @@
     "capped": false
    },
    {
+    "source": "Orleans, MA",
+    "rows": 473,
+    "first": "2025-12-01",
+    "last": "2026-08-31",
+    "valued_pct": 70.8,
+    "freetext_pct": 100.0,
+    "coords": false,
+    "capped": false
+   },
+   {
     "source": "Hopedale, MA",
     "rows": 457,
     "first": "2026-03-30",
@@ -608,6 +640,16 @@
     "capped": false
    },
    {
+    "source": "Barre, MA",
+    "rows": 176,
+    "first": "2026-01-08",
+    "last": "2026-09-24",
+    "valued_pct": 0.0,
+    "freetext_pct": 100.0,
+    "coords": false,
+    "capped": false
+   },
+   {
     "source": "Otis, MA",
     "rows": 172,
     "first": "2026-04-03",
@@ -639,7 +681,7 @@
    },
    {
     "source": "Wenham, MA",
-    "rows": 35,
+    "rows": 34,
     "first": "2026-09-03",
     "last": "2026-09-24",
     "valued_pct": 0.0,
@@ -698,6 +740,16 @@
     "capped": false
    },
    {
+    "source": "Hamilton, MA",
+    "rows": 22,
+    "first": "2026-09-16",
+    "last": "2026-09-25",
+    "valued_pct": 0.0,
+    "freetext_pct": 100.0,
+    "coords": false,
+    "capped": false
+   },
+   {
     "source": "Newbury, MA",
     "rows": 21,
     "first": "2026-09-16",
@@ -735,6 +787,16 @@
     "valued_pct": 0.0,
     "freetext_pct": 100.0,
     "coords": true,
+    "capped": false
+   },
+   {
+    "source": "Townsend, MA",
+    "rows": 11,
+    "first": "2026-09-21",
+    "last": "2026-09-25",
+    "valued_pct": 0.0,
+    "freetext_pct": 100.0,
+    "coords": false,
     "capped": false
    },
    {

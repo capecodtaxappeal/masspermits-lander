@@ -1,0 +1,213 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Hamilton, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/hamilton.json",
+ "description": "Recent building permits in Hamilton, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 20,
+ "_window_from": "2026-09-16",
+ "_window_to": "2026-09-25",
+ "items": [
+  {
+   "id": "7a4aebc1342d4a3e",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Gas permit \u2014 Cutler Rd, Hamilton",
+   "content_text": "Gas permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Gas"
+  },
+  {
+   "id": "e9cfc0b5b46c8dac",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Gas permit \u2014 Village Ln, Hamilton",
+   "content_text": "Gas permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Gas"
+  },
+  {
+   "id": "0408bca1d0883c72",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Gas permit \u2014 Farrington Ln, Hamilton",
+   "content_text": "Gas permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Gas"
+  },
+  {
+   "id": "53fe4ad982d7712c",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Electrical permit \u2014 Tally Ho Dr, Hamilton",
+   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "7700fbe22870e897",
+   "url": "https://masspermits.com/permits/hamilton-plumbing",
+   "title": "Plumbing permit \u2014 Chebacco Rd, Hamilton",
+   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "2c005c658bed75e1",
+   "url": "https://masspermits.com/permits/hamilton-plumbing",
+   "title": "Plumbing permit \u2014 Martel Rd, Hamilton",
+   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "f305f16a094ed494",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "HVAC permit \u2014 Spring Av, Hamilton",
+   "content_text": "HVAC permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "a7796bfe61041410",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Windows/Doors/Siding permit \u2014 Railroad Av, Hamilton",
+   "content_text": "Windows/Doors/Siding permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "8404a1f77c0fdc22",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "HVAC permit \u2014 Rust St, Hamilton",
+   "content_text": "HVAC permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "b0db5cbacf9f792a",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Electrical permit \u2014 Appaloosa Ln, Hamilton",
+   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "58c9936f5598966d",
+   "url": "https://masspermits.com/permits/hamilton-plumbing",
+   "title": "Plumbing permit \u2014 Forest St, Hamilton",
+   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "6947a19cc93dd4cb",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Roofing permit \u2014 Moynihan Rd, Hamilton",
+   "content_text": "Roofing permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "c7f59c38ba545530",
+   "url": "https://masspermits.com/permits/hamilton-plumbing",
+   "title": "Plumbing permit \u2014 Bay Rd, Hamilton",
+   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "5ba9eb812413a7f7",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "HVAC permit \u2014 Essex St, Hamilton",
+   "content_text": "HVAC permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "a75692a782001296",
+   "url": "https://masspermits.com/permits/hamilton-plumbing",
+   "title": "Plumbing permit \u2014 Home St, Hamilton",
+   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "a9d4b9057cfdbbc6",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Gas permit \u2014 Bay Rd, Hamilton",
+   "content_text": "Gas permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Gas"
+  },
+  {
+   "id": "b08dc4e5be6c5365",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Roofing permit \u2014 Union St, Hamilton",
+   "content_text": "Roofing permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "932b214bfbd67c9e",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Electrical permit \u2014 Honeysuckle Rd, Hamilton",
+   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "cce553ed99123524",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "HVAC permit \u2014 Bay Rd, Hamilton",
+   "content_text": "HVAC permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "11ef08d08f843974",
+   "url": "https://masspermits.com/permits/hamilton",
+   "title": "Building permit \u2014 Essex St, Hamilton",
+   "content_text": "Building permit in Hamilton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Hamilton",
+   "_trade": "Building"
+  }
+ ]
+}

@@ -1,0 +1,631 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Lowell, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/lowell.json",
+ "description": "Recent building permits in Lowell, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 1898,
+ "_window_from": "2026-01-02",
+ "_window_to": "2026-06-30",
+ "items": [
+  {
+   "id": "2e0a1cbe2e7c3733",
+   "url": "https://masspermits.com/permits/lowell-other",
+   "title": "Other permit \u2014 Dublin St, Lowell",
+   "content_text": "Other permit in Lowell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Other"
+  },
+  {
+   "id": "231e89ace3c16aef",
+   "url": "https://masspermits.com/permits/lowell-demolition",
+   "title": "Demolition permit \u2014 Osgood St, Lowell ($25,000)",
+   "content_text": "Demolition permit in Lowell, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Demolition",
+   "_value": 25000.0
+  },
+  {
+   "id": "56775872e2eb4cb4",
+   "url": "https://masspermits.com/permits/lowell-plumbing",
+   "title": "Plumbing permit \u2014 Willard St, Lowell ($100)",
+   "content_text": "Plumbing permit in Lowell, MA. Value $100. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Plumbing",
+   "_value": 100.0
+  },
+  {
+   "id": "01f7229f048d8f9a",
+   "url": "https://masspermits.com/permits/lowell-plumbing",
+   "title": "Plumbing permit \u2014 Blodgett St, Lowell ($1,500)",
+   "content_text": "Plumbing permit in Lowell, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Plumbing",
+   "_value": 1500.0
+  },
+  {
+   "id": "d322aa9d5c524725",
+   "url": "https://masspermits.com/permits/lowell-plumbing",
+   "title": "Plumbing permit \u2014 Wedge St, Lowell ($2,000)",
+   "content_text": "Plumbing permit in Lowell, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Plumbing",
+   "_value": 2000.0
+  },
+  {
+   "id": "d753c3fb17ccba93",
+   "url": "https://masspermits.com/permits/lowell-plumbing",
+   "title": "Plumbing permit \u2014 Avery St, Lowell ($5,000)",
+   "content_text": "Plumbing permit in Lowell, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Plumbing",
+   "_value": 5000.0
+  },
+  {
+   "id": "575a8b91b238c0be",
+   "url": "https://masspermits.com/permits/lowell-plumbing",
+   "title": "Plumbing permit \u2014 Pentucket Ave, Lowell ($10,000)",
+   "content_text": "Plumbing permit in Lowell, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Plumbing",
+   "_value": 10000.0
+  },
+  {
+   "id": "99021651e79d777a",
+   "url": "https://masspermits.com/permits/lowell-plumbing",
+   "title": "Plumbing permit \u2014 Rogers St, Lowell ($50,000)",
+   "content_text": "Plumbing permit in Lowell, MA. Value $50,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Plumbing",
+   "_value": 50000.0
+  },
+  {
+   "id": "57c75bfc0ba5ca0d",
+   "url": "https://masspermits.com/permits/lowell-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Victoria St, Lowell ($60,000)",
+   "content_text": "Windows/Doors/Siding permit in Lowell, MA. Value $60,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 60000.0
+  },
+  {
+   "id": "f8dff40be457c39b",
+   "url": "https://masspermits.com/permits/lowell-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Princeton Blvd, Lowell ($20,000)",
+   "content_text": "Kitchen/Bath permit in Lowell, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Kitchen/Bath",
+   "_value": 20000.0
+  },
+  {
+   "id": "2dff11bf356b61c7",
+   "url": "https://masspermits.com/permits/lowell-deck-porch",
+   "title": "Deck/Porch permit \u2014 Carly Way, Lowell ($14,000)",
+   "content_text": "Deck/Porch permit in Lowell, MA. Value $14,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Deck/Porch",
+   "_value": 14000.0
+  },
+  {
+   "id": "0d81c634197819a1",
+   "url": "https://masspermits.com/permits/lowell-demolition",
+   "title": "Demolition permit \u2014 Gates St, Lowell ($8,900)",
+   "content_text": "Demolition permit in Lowell, MA. Value $8,900. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Demolition",
+   "_value": 8900.0
+  },
+  {
+   "id": "7d81e60c8e90fdb5",
+   "url": "https://masspermits.com/permits/lowell-roofing",
+   "title": "Roofing permit \u2014 Circle Rd, Lowell ($14,245)",
+   "content_text": "Roofing permit in Lowell, MA. Value $14,245. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Roofing",
+   "_value": 14245.0
+  },
+  {
+   "id": "5a63dffcf92d87a6",
+   "url": "https://masspermits.com/permits/lowell-deck-porch",
+   "title": "Deck/Porch permit \u2014 Pine St, Lowell ($6,500)",
+   "content_text": "Deck/Porch permit in Lowell, MA. Value $6,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Deck/Porch",
+   "_value": 6500.0
+  },
+  {
+   "id": "e8fac9d887801478",
+   "url": "https://masspermits.com/permits/lowell-other",
+   "title": "Other permit \u2014 Myrtle St, Lowell ($7,700)",
+   "content_text": "Other permit in Lowell, MA. Value $7,700. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Other",
+   "_value": 7700.0
+  },
+  {
+   "id": "d545f4455156a688",
+   "url": "https://masspermits.com/permits/lowell-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Fruit St, Lowell ($45,536)",
+   "content_text": "Windows/Doors/Siding permit in Lowell, MA. Value $45,536. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 45536.0
+  },
+  {
+   "id": "5f473caa5a2df2b9",
+   "url": "https://masspermits.com/permits/lowell-roofing",
+   "title": "Roofing permit \u2014 Totman St, Lowell ($7,500)",
+   "content_text": "Roofing permit in Lowell, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Roofing",
+   "_value": 7500.0
+  },
+  {
+   "id": "341bbc688a16cba6",
+   "url": "https://masspermits.com/permits/lowell-hvac",
+   "title": "HVAC permit \u2014 Wentworth Ave, Lowell ($6,000)",
+   "content_text": "HVAC permit in Lowell, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "HVAC",
+   "_value": 6000.0
+  },
+  {
+   "id": "91d36aac04ac1bf6",
+   "url": "https://masspermits.com/permits/lowell-other",
+   "title": "Other permit \u2014 Bunker Hill St, Lowell ($9,000)",
+   "content_text": "Other permit in Lowell, MA. Value $9,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Other",
+   "_value": 9000.0
+  },
+  {
+   "id": "019d98ba2693dce8",
+   "url": "https://masspermits.com/permits/lowell-other",
+   "title": "Other permit \u2014 Llewellyn St, Lowell ($7,700)",
+   "content_text": "Other permit in Lowell, MA. Value $7,700. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Other",
+   "_value": 7700.0
+  },
+  {
+   "id": "466ce22acfbefd43",
+   "url": "https://masspermits.com/permits/lowell-solar",
+   "title": "Solar permit \u2014 Lisa Ln, Lowell ($110,100)",
+   "content_text": "Solar permit in Lowell, MA. Value $110,100. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Solar",
+   "_value": 110100.0
+  },
+  {
+   "id": "bdacc2e63337e510",
+   "url": "https://masspermits.com/permits/lowell-solar",
+   "title": "Solar permit \u2014 Sprague Ave, Lowell ($38,054)",
+   "content_text": "Solar permit in Lowell, MA. Value $38,054. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Solar",
+   "_value": 38054.0
+  },
+  {
+   "id": "d5e78fc32eaa3b2f",
+   "url": "https://masspermits.com/permits/lowell-solar",
+   "title": "Solar permit \u2014 Meadowcroft St, Lowell",
+   "content_text": "Solar permit in Lowell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Solar"
+  },
+  {
+   "id": "bf3eee923eaba3d9",
+   "url": "https://masspermits.com/permits/lowell-gas",
+   "title": "Gas permit \u2014 Wentworth Ave, Lowell ($7,000)",
+   "content_text": "Gas permit in Lowell, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Gas",
+   "_value": 7000.0
+  },
+  {
+   "id": "1882340a3bf6cde1",
+   "url": "https://masspermits.com/permits/lowell-hvac",
+   "title": "HVAC permit \u2014 Blodgett St, Lowell ($1,500)",
+   "content_text": "HVAC permit in Lowell, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "HVAC",
+   "_value": 1500.0
+  },
+  {
+   "id": "b14d5778865180cc",
+   "url": "https://masspermits.com/permits/lowell-gas",
+   "title": "Gas permit \u2014 Ware St, Lowell ($150)",
+   "content_text": "Gas permit in Lowell, MA. Value $150. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Gas",
+   "_value": 150.0
+  },
+  {
+   "id": "7bc539a8d25c4d19",
+   "url": "https://masspermits.com/permits/lowell-gas",
+   "title": "Gas permit \u2014 Pentucket Ave, Lowell ($1,500)",
+   "content_text": "Gas permit in Lowell, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Gas",
+   "_value": 1500.0
+  },
+  {
+   "id": "92c339e26e124eee",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Mt Washington St, Lowell ($5,300)",
+   "content_text": "Electrical permit in Lowell, MA. Value $5,300. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 5300.0
+  },
+  {
+   "id": "853ba22471c432d2",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Merrimack St, Lowell ($750)",
+   "content_text": "Electrical permit in Lowell, MA. Value $750. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 750.0
+  },
+  {
+   "id": "5d0d228fa575a3eb",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Rutland St, Lowell ($1,200)",
+   "content_text": "Electrical permit in Lowell, MA. Value $1,200. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 1200.0
+  },
+  {
+   "id": "295a8a901745b401",
+   "url": "https://masspermits.com/permits/lowell-hvac",
+   "title": "HVAC permit \u2014 Monadnock Ave, Lowell ($3,500)",
+   "content_text": "HVAC permit in Lowell, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "HVAC",
+   "_value": 3500.0
+  },
+  {
+   "id": "08a9e4bdee0c4184",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Rindo Park Dr, Lowell ($2,000)",
+   "content_text": "Electrical permit in Lowell, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 2000.0
+  },
+  {
+   "id": "fa6ed746cced9377",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Caddell Ave Adu, Lowell ($9,000)",
+   "content_text": "Electrical permit in Lowell, MA. Value $9,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 9000.0
+  },
+  {
+   "id": "cce669dc0893fc15",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Caddell Ave, Lowell ($9,000)",
+   "content_text": "Electrical permit in Lowell, MA. Value $9,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 9000.0
+  },
+  {
+   "id": "935ee677a59dbb36",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Gates St, Lowell ($1,800)",
+   "content_text": "Electrical permit in Lowell, MA. Value $1,800. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 1800.0
+  },
+  {
+   "id": "3300dd5ebd8432c3",
+   "url": "https://masspermits.com/permits/lowell-hvac",
+   "title": "HVAC permit \u2014 Whitney Ave, Lowell ($23,900)",
+   "content_text": "HVAC permit in Lowell, MA. Value $23,900. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "HVAC",
+   "_value": 23900.0
+  },
+  {
+   "id": "6a276445e799ab01",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Twiss St, Lowell ($25,000)",
+   "content_text": "Electrical permit in Lowell, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 25000.0
+  },
+  {
+   "id": "172f4340358b5112",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Hazeltine St, Lowell ($2,300)",
+   "content_text": "Electrical permit in Lowell, MA. Value $2,300. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 2300.0
+  },
+  {
+   "id": "c865b3d5966be736",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Thompsons Ct, Lowell ($2,300)",
+   "content_text": "Electrical permit in Lowell, MA. Value $2,300. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 2300.0
+  },
+  {
+   "id": "a774bb98b04b69b8",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Delaware Ave, Lowell ($400)",
+   "content_text": "Electrical permit in Lowell, MA. Value $400. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 400.0
+  },
+  {
+   "id": "e8dc7df6356e5d6d",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Dancause Rd, Lowell ($17,000)",
+   "content_text": "Electrical permit in Lowell, MA. Value $17,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 17000.0
+  },
+  {
+   "id": "7c59ac0e9da4c7b8",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Wentworth Ave, Lowell ($7,000)",
+   "content_text": "Electrical permit in Lowell, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 7000.0
+  },
+  {
+   "id": "5bbbf072df81b206",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Florence Rd, Lowell ($6,000)",
+   "content_text": "Electrical permit in Lowell, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 6000.0
+  },
+  {
+   "id": "0fe06dc484482c82",
+   "url": "https://masspermits.com/permits/lowell-hvac",
+   "title": "HVAC permit \u2014 Lilley Ave, Lowell ($1,500)",
+   "content_text": "HVAC permit in Lowell, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "HVAC",
+   "_value": 1500.0
+  },
+  {
+   "id": "860116e75c6c2e87",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Freda Ln, Lowell ($1,200)",
+   "content_text": "Electrical permit in Lowell, MA. Value $1,200. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 1200.0
+  },
+  {
+   "id": "5fb56f92009f3013",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Totman St, Lowell ($1,200)",
+   "content_text": "Electrical permit in Lowell, MA. Value $1,200. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 1200.0
+  },
+  {
+   "id": "0f1118e5f19eabfd",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Forest St, Lowell ($1,200)",
+   "content_text": "Electrical permit in Lowell, MA. Value $1,200. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 1200.0
+  },
+  {
+   "id": "23bf5c6d701332a1",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 W Adams St, Lowell ($28,992)",
+   "content_text": "Electrical permit in Lowell, MA. Value $28,992. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 28992.0
+  },
+  {
+   "id": "73926411d8d4d052",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 Solomont Way, Lowell ($31,627)",
+   "content_text": "Electrical permit in Lowell, MA. Value $31,627. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 31627.0
+  },
+  {
+   "id": "2b02f120eaee3553",
+   "url": "https://masspermits.com/permits/lowell-electrical",
+   "title": "Electrical permit \u2014 As Defined On App/Permit, Lowell ($6,500)",
+   "content_text": "Electrical permit in Lowell, MA. Value $6,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Electrical",
+   "_value": 6500.0
+  },
+  {
+   "id": "31e5304bbe8cc670",
+   "url": "https://masspermits.com/permits/lowell-other",
+   "title": "Other permit \u2014 Middlesex St, Lowell ($4,200)",
+   "content_text": "Other permit in Lowell, MA. Value $4,200. Full lead at masspermits.com.",
+   "date_published": "2026-06-30T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Other",
+   "_value": 4200.0
+  },
+  {
+   "id": "618c4a9d851ba7de",
+   "url": "https://masspermits.com/permits/lowell-plumbing",
+   "title": "Plumbing permit \u2014 Walker St, Lowell ($25,000)",
+   "content_text": "Plumbing permit in Lowell, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Plumbing",
+   "_value": 25000.0
+  },
+  {
+   "id": "3eb9ebddfb08b503",
+   "url": "https://masspermits.com/permits/lowell-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Rindo Park Dr, Lowell ($9,400)",
+   "content_text": "Kitchen/Bath permit in Lowell, MA. Value $9,400. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Kitchen/Bath",
+   "_value": 9400.0
+  },
+  {
+   "id": "23faa30c26d418fb",
+   "url": "https://masspermits.com/permits/lowell-other",
+   "title": "Other permit \u2014 Westview Rd, Lowell ($22,985)",
+   "content_text": "Other permit in Lowell, MA. Value $22,985. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Other",
+   "_value": 22985.0
+  },
+  {
+   "id": "ff0c659648a8cd42",
+   "url": "https://masspermits.com/permits/lowell-solar",
+   "title": "Solar permit \u2014 Freda Ln, Lowell ($14,137)",
+   "content_text": "Solar permit in Lowell, MA. Value $14,137. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Solar",
+   "_value": 14137.0
+  },
+  {
+   "id": "4b2fd24f73837173",
+   "url": "https://masspermits.com/permits/lowell-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 S Whipple St, Lowell ($1,500)",
+   "content_text": "Windows/Doors/Siding permit in Lowell, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 1500.0
+  },
+  {
+   "id": "8235d826fbe620dd",
+   "url": "https://masspermits.com/permits/lowell-deck-porch",
+   "title": "Deck/Porch permit \u2014 Thornton Ave, Lowell ($9,327)",
+   "content_text": "Deck/Porch permit in Lowell, MA. Value $9,327. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Deck/Porch",
+   "_value": 9327.0
+  },
+  {
+   "id": "961775ec42bb55bd",
+   "url": "https://masspermits.com/permits/lowell-demolition",
+   "title": "Demolition permit \u2014 Wamesit Ct, Lowell ($3,000)",
+   "content_text": "Demolition permit in Lowell, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Demolition",
+   "_value": 3000.0
+  },
+  {
+   "id": "cf913a2563d1b3c8",
+   "url": "https://masspermits.com/permits/lowell-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 High St, Lowell ($26,414)",
+   "content_text": "Windows/Doors/Siding permit in Lowell, MA. Value $26,414. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 26414.0
+  },
+  {
+   "id": "120efe0e50b244ef",
+   "url": "https://masspermits.com/permits/lowell-roofing",
+   "title": "Roofing permit \u2014 Pentucket Ave, Lowell ($15,000)",
+   "content_text": "Roofing permit in Lowell, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-06-29T00:00:00Z",
+   "_town": "Lowell",
+   "_trade": "Roofing",
+   "_value": 15000.0
+  }
+ ]
+}

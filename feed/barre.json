@@ -1,0 +1,303 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Barre, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/barre.json",
+ "description": "Recent building permits in Barre, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 30,
+ "_window_from": "2026-08-27",
+ "_window_to": "2026-09-24",
+ "items": [
+  {
+   "id": "f6e5bf822d06601e",
+   "url": "https://masspermits.com/permits/barre-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Varney Lane, Barre",
+   "content_text": "Windows/Doors/Siding permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "4ad219e6af8a6e34",
+   "url": "https://masspermits.com/permits/barre-solar",
+   "title": "Solar permit \u2014 Worcester Rd, Barre",
+   "content_text": "Solar permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Solar"
+  },
+  {
+   "id": "bdb066ac4ff36f02",
+   "url": "https://masspermits.com/permits/barre",
+   "title": "Deck/Porch permit \u2014 Farrington Rd, Barre",
+   "content_text": "Deck/Porch permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Deck/Porch"
+  },
+  {
+   "id": "2920f1b8fa83a600",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Britton Rd West, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "f2782aa90aa29590",
+   "url": "https://masspermits.com/permits/barre-roofing",
+   "title": "Roofing permit \u2014 Everett Rd, Barre",
+   "content_text": "Roofing permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "86b045cf5a3b5e59",
+   "url": "https://masspermits.com/permits/barre-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Old Coldbrook Rd, Barre",
+   "content_text": "Kitchen/Bath permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "0bc1d8de2c315718",
+   "url": "https://masspermits.com/permits/barre-roofing",
+   "title": "Roofing permit \u2014 Loring Rd, Barre",
+   "content_text": "Roofing permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "78ea1e783b3aa8c8",
+   "url": "https://masspermits.com/permits/barre-roofing",
+   "title": "Roofing permit \u2014 Valley Rd, Barre",
+   "content_text": "Roofing permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "3c81ffce5d13cb44",
+   "url": "https://masspermits.com/permits/barre-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Phillipston Rd, Barre",
+   "content_text": "Kitchen/Bath permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "a77307110642008a",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Valley Rd, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "5e252d61bfb7b165",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Worcester Rd, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "318fd2f63df30779",
+   "url": "https://masspermits.com/permits/barre-solar",
+   "title": "Solar permit \u2014 Old Coldbrook Rd, Barre",
+   "content_text": "Solar permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Solar"
+  },
+  {
+   "id": "1efbfce2d47b3afd",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Farrington Rd, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "f9a65e6fb3d9a4a3",
+   "url": "https://masspermits.com/permits/barre-solar",
+   "title": "Solar permit \u2014 Root Rd, Barre",
+   "content_text": "Solar permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Solar"
+  },
+  {
+   "id": "a5ddafae9f078cb1",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Common Street, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "e4cdaaa875bc98d0",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Peach Street, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-10T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "c17d214b664cf21f",
+   "url": "https://masspermits.com/permits/barre-roofing",
+   "title": "Roofing permit \u2014 School St No, Barre",
+   "content_text": "Roofing permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "5de756b1dc64ab9d",
+   "url": "https://masspermits.com/permits/barre-other",
+   "title": "Other permit \u2014 School St No, Barre",
+   "content_text": "Other permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Other"
+  },
+  {
+   "id": "5015bccaa91e31c6",
+   "url": "https://masspermits.com/permits/barre",
+   "title": "Deck/Porch permit \u2014 Valley Rd, Barre",
+   "content_text": "Deck/Porch permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Deck/Porch"
+  },
+  {
+   "id": "f330046e6c358bde",
+   "url": "https://masspermits.com/permits/barre-roofing",
+   "title": "Roofing permit \u2014 James St, Barre",
+   "content_text": "Roofing permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "1f556c5a2aae4e9a",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Everett Rd, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "ffc3bb1043471abf",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Phillipston Rd, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  },
+  {
+   "id": "450c86d3ba87f205",
+   "url": "https://masspermits.com/permits/barre-roofing",
+   "title": "Roofing permit \u2014 Adams Street, Barre",
+   "content_text": "Roofing permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "d7ac7da11b9a2bff",
+   "url": "https://masspermits.com/permits/barre-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Wheelwright Rd, Barre",
+   "content_text": "Windows/Doors/Siding permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "e0311a10a2839e40",
+   "url": "https://masspermits.com/permits/barre-roofing",
+   "title": "Roofing permit \u2014 Worcester Rd, Barre",
+   "content_text": "Roofing permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "602e3dcb1a90126d",
+   "url": "https://masspermits.com/permits/barre-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Old Stage Rd, Barre",
+   "content_text": "Windows/Doors/Siding permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "329282cffb05bb81",
+   "url": "https://masspermits.com/permits/barre-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 School St No, Barre",
+   "content_text": "Windows/Doors/Siding permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "dd9d0e4ab77cb904",
+   "url": "https://masspermits.com/permits/barre-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Sheldon Rd, Barre",
+   "content_text": "Windows/Doors/Siding permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "4709b6e96ac3ae23",
+   "url": "https://masspermits.com/permits/barre-solar",
+   "title": "Solar permit \u2014 Wheelwright Rd, Barre",
+   "content_text": "Solar permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-03T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Solar"
+  },
+  {
+   "id": "6b4c29c51367ffc4",
+   "url": "https://masspermits.com/permits/barre-building",
+   "title": "Building permit \u2014 Woods Rd, Barre",
+   "content_text": "Building permit in Barre, MA. Full lead at masspermits.com.",
+   "date_published": "2026-08-27T00:00:00Z",
+   "_town": "Barre",
+   "_trade": "Building"
+  }
+ ]
+}
