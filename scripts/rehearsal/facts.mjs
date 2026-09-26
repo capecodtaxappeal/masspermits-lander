@@ -111,7 +111,7 @@ function readWorkflowDir(root) {
   const dir = join(root, ".github", "workflows");
   try {
     return readdirSync(dir).filter((f) => /\.ya?ml$/.test(f)).sort()
-      .map((file) => ({ file, text: readFileSync(join(dir, file), "utf8") }));
+      .map((file) => ({ file, text: readFileSync(join(dir, file), "utf8").replace(/\r\n/g, "\n") }));
   } catch { return []; }
 }
 
@@ -122,7 +122,7 @@ export async function collect(opts) {
   const { gh, date, repository } = opts;
   const now = opts.now || (() => Date.now());
   const sleep = opts.sleep || ((ms) => new Promise((r) => setTimeout(r, ms)));
-  const readText = opts.readText || ((p) => { try { return readFileSync(join(REPO_ROOT, p), "utf8"); } catch { return null; } });
+  const readText = opts.readText || ((p) => { try { return readFileSync(join(REPO_ROOT, p), "utf8").replace(/\r\n/g, "\n"); } catch { return null; } });
   const workflowFiles = opts.workflowFiles || readWorkflowDir(REPO_ROOT);
   const runId = String(opts.runId || "");
   const d0 = dateMs(date);

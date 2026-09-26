@@ -23,22 +23,31 @@ import { createHmac, generateKeyPairSync, createSign, randomUUID } from "node:cr
 export const REPO = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 export const API_DIR = join(REPO, "functions", "api");
 
+// A text file with CRLF line endings turned into LF, so a regex, a line rule,
+// split("\n") or a YAML parse reads the same on a Windows checkout
+// (core.autocrlf=true). Byte-for-byte copy checks keep readFileSync.
+export const readText = (p) => readFileSync(p, "utf8").replace(/\r\n/g, "\n");
+
 // ── tiny assertion runner ───────────────────────────────────────────────────
 // Every test file prints one "RESULT <file> pass=<n> fail=<m>" line at the end;
-// functions/api/all.test.mjs reads it for the per-file counts.
+// functions/api/all.test.mjs reads it for the per-file counts. skip(name,
+// reason) prints a SKIP line; only when something was skipped does the RESULT
+// line end in " skip=<k>" (mirror.mjs runTest reads the line without it). A
+// skip never changes the exit code.
 export function makeRunner(fileLabel) {
-  let pass = 0, fail = 0;
+  let pass = 0, fail = 0, skipped = 0;
   const check = (name, cond, detail) => {
     if (cond) { pass++; console.log("  ok    " + name); }
     else { fail++; console.log("  FAIL  " + name + (detail !== undefined ? "   (" + detail + ")" : "")); }
     return !!cond;
   };
+  const skip = (name, reason) => { skipped++; console.log("  SKIP  " + name + "   (" + reason + ")"); };
   const done = () => {
-    console.log(`RESULT ${fileLabel} pass=${pass} fail=${fail}`);
+    console.log(`RESULT ${fileLabel} pass=${pass} fail=${fail}` + (skipped ? ` skip=${skipped}` : ""));
     process.exitCode = fail ? 1 : 0;
-    return { pass, fail };
+    return { pass, fail, skipped };
   };
-  return { check, done, get counts() { return { pass, fail }; } };
+  return { check, skip, done, get counts() { return { pass, fail, skipped }; } };
 }
 
 // ── in-memory R2 ────────────────────────────────────────────────────────────

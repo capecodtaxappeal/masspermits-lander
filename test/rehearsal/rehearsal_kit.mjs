@@ -6,7 +6,9 @@
 // dir, byte for byte, and replaces ONLY _github-oidc.js with a stub whose
 // verdict the test sets. my-leads.js and leads.js are copied byte for byte
 // too, under a thin spy wrapper that records the context each handler is
-// given (headers, and whether its bucket is the no-options roBucket).
+// given (headers, env keys, and whether its bucket is the no-options roBucket).
+// loadRehearsal({mutate}) runs mutate(file, text) over each copied module and
+// writes what it returns (a mutation proof); without it every copy is exact.
 // Acceptance 17 does not use this loader: it imports the shipped rehearsal.js
 // with the REAL verifier.
 //
@@ -47,13 +49,14 @@ export function installClock() {
 // ── the loader ──────────────────────────────────────────────────────────────
 const SPY = Symbol.for("masspermits.rehearsal.test.handlerSpy");
 const OIDC = Symbol.for("masspermits.rehearsal.test.oidcVerdict");
-export async function loadRehearsal() {
+export async function loadRehearsal({ mutate } = {}) {
   const root = mkdtempSync(join(tmpdir(), "mp-rehearsal-"));
   const api = join(root, "functions", "api");
   mkdirSync(api, { recursive: true });
   writeFileSync(join(root, "package.json"), JSON.stringify({ type: "module" }));
   for (const f of ["rehearsal.js", "_rehearsal.js", "_rehearsal_mail.js", "_ro_bucket.js", "_presend.js", "_reconcile.js"]) {
-    copyFileSync(join(API_DIR, f), join(api, f));
+    if (mutate) writeFileSync(join(api, f), mutate(f, readFileSync(join(API_DIR, f), "utf8")));
+    else copyFileSync(join(API_DIR, f), join(api, f));
   }
   copyFileSync(join(API_DIR, "my-leads.js"), join(api, "my-leads.real.js"));
   copyFileSync(join(REPO, "functions", "leads.js"), join(root, "functions", "leads.real.js"));
@@ -69,7 +72,9 @@ export async function loadRehearsal() {
     "    authorization: context.request.headers.has(\"authorization\"),\n" +
     "    headers: [...context.request.headers.keys()].sort(),\n" +
     "    roBucket: Object.prototype.hasOwnProperty.call(b, \"captured\"),\n" +
-    "    ownMethods: Object.keys(b).sort(), probe });\n" +
+    "    ownMethods: Object.keys(b).sort(), probe,\n" +
+    "    probePersisted: b.captured ? b.captured[b.captured.length - 1].persisted : null,\n" +
+    "    envKeys: Object.keys(context.env).sort(), env: context.env });\n" +
     "  return r;\n}\n";
   writeFileSync(join(api, "my-leads.js"), spy("./my-leads.real.js", "my-leads"));
   writeFileSync(join(root, "functions", "leads.js"), spy("./leads.real.js", "leads"));

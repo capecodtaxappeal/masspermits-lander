@@ -8,10 +8,9 @@
 // Every network call goes to the throwing fetch stub. The Resend URL below is
 // a fixture route: a call to it is recorded, never sent.
 
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import {
-  API_DIR, makeRunner, makeFetchStub, resendFixture, HTMLRewriterStub, makeOidcKit, fakeR2,
+  API_DIR, makeRunner, makeFetchStub, resendFixture, HTMLRewriterStub, makeOidcKit, fakeR2, readText,
 } from "../../test/rehearsal/harness.mjs";
 import * as K from "../../test/rehearsal/rehearsal_kit.mjs";
 
@@ -261,7 +260,7 @@ const lockEnv = { REHEARSAL_MAIL: "1", REHEARSAL_TO: " Owner@Example.com ", REHE
 // 18. outbound structure and the run-time lock
 // ════════════════════════════════════════════════════════════════════════════
 {
-  const src = readFileSync(join(API_DIR, "rehearsal.js"), "utf8");
+  const src = readText(join(API_DIR, "rehearsal.js"));
   const start = src.indexOf("export function outbound(");
   const end = src.indexOf("return { stripeGet, sendInternal };", start);
   const body = src.slice(start, end);

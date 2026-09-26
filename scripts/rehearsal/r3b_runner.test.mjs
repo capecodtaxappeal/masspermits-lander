@@ -10,13 +10,13 @@
 // GmailApp, UrlFetchApp, PropertiesService and ScriptApp objects.
 // Every address below is synthetic (@example.com).
 
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, symlinkSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, symlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promises as dnsp } from "node:dns";
 import vm from "node:vm";
-import { makeRunner, makeFetchStub, fakeR2 } from "../../test/rehearsal/harness.mjs";
+import { makeRunner, makeFetchStub, fakeR2, readText } from "../../test/rehearsal/harness.mjs";
 import * as G from "../../test/rehearsal/r3a_fixtures.mjs";
 import { RUNNER_SCHEMA, validateRunnerFacts, fact } from "../../functions/api/_rehearsal.js";
 import * as H from "./http.mjs";
@@ -368,7 +368,7 @@ check("no real DNS query was made in this file", realDns === 0);
 // ════════════════════════════════════════════════════════════════════════════
 // docs/rehearsal/seed-reporter.gs in node:vm with fake Google services
 // ════════════════════════════════════════════════════════════════════════════
-const GS = readFileSync(join(REPO_ROOT, "docs", "rehearsal", "seed-reporter.gs"), "utf8");
+const GS = readText(join(REPO_ROOT, "docs", "rehearsal", "seed-reporter.gs"));
 function gas({ now, inbox = [], spam = [], token = "t".repeat(40), props = {} }) {
   const posts = [], searches = [], logs = [], triggers = [];
   const store = { ...(token ? { REHEARSAL_SEED_TOKEN: token } : {}), ...props };

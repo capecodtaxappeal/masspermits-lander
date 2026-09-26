@@ -10,11 +10,11 @@
 // .fetch(, the env.ASSETS call inside readAsset()).
 // *.test.mjs files are exempt from the content greps, as the rules say.
 
-import { readFileSync, existsSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
-import { makeRunner } from "../../test/rehearsal/harness.mjs";
+import { makeRunner, readText } from "../../test/rehearsal/harness.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, "..", "..");
@@ -55,7 +55,7 @@ check("this branch only ADDS files (no shipped file modified)", otherChanged.len
 
 const nonTest = changed.filter((p) => !p.endsWith(".test.mjs") && existsSync(join(repo, p)) &&
   /^(functions\/|scripts\/rehearsal\/|docs\/rehearsal\/|test\/rehearsal\/)/.test(p));
-const read = (p) => readFileSync(join(repo, p), "utf8");
+const read = (p) => readText(join(repo, p));
 
 // ── 4. route grep ───────────────────────────────────────────────────────────
 const LIST = "weekly-send|mail-owner|newsletter-send|newsletter|nurture|lifecycle-send|request-sample|agent-sample|upload-bundle|funnel|hit";

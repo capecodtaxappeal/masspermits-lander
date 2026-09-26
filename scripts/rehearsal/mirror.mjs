@@ -42,7 +42,7 @@ export function runTest(rel, root = REPO_ROOT) {
 // c8 facts from stripe-webhook.js read as text.
 export function c8Facts(path = join(REPO_ROOT, "functions", "api", "stripe-webhook.js")) {
   let src;
-  try { src = readFileSync(path, "utf8"); } catch { return { min_cents: -1, events_mirror: "error" }; }
+  try { src = readFileSync(path, "utf8").replace(/\r\n/g, "\n"); } catch { return { min_cents: -1, events_mirror: "error" }; }
   const mins = [...src.matchAll(/^\s*const MIN_CENTS = (\d+);\s*$/gm)];
   const n = mins.length === 1 ? Number(mins[0][1]) : -1;
   const lits = new Set([...src.matchAll(/event\.type\s*===\s*(["'])([^"'\n]+)\1/g)].map((m) => m[2]));

@@ -315,8 +315,11 @@ async function runnerFacts(date, nowIso, o = {}) {
   const { body, sleeps } = await runnerFacts("2026-10-03", now, { runs: [G.refreshRun(at("2026-10-03T13:25:00Z"))],
     commits: [G.commit(G.sha("d"), at(now) - 2 * MIN, ["functions/api/x.js"])], checkRuns: {} });
   const r = await fx({ ...SAT, facts: body });
+  // Cleanup ITEM 1: this fixture gathers no c15.* or c22.* facts, and missing
+  // runner facts now count, so the verdict is C7 (no key) plus C15 and C22
+  // (was: r.v === noKey.v, "GO, blind on 1"). The C0 WAIT still adds nothing.
   F("F7 runner", sleeps === 5 && body.c0.fn_state === "missing" && body.c0.fn_age_min === 7 && r.worst("C0") === "WAIT" &&
-    r.has("C0.deploy_pending") && r.v === noKey.v, "runner re-polls 5x, C0 check-level WAIT, verdict unchanged", `${sleeps} ${r.v}`);
+    r.has("C0.deploy_pending") && r.v === "GO, blind on 3", "runner re-polls 5x, C0 check-level WAIT, verdict unchanged", `${sleeps} ${r.v}`);
 }
 { // F8: F 3 days old with success, HEAD bot commit 20 s old with no check-run -> C0 PASS
   const now = "2026-10-03T20:30:00Z";

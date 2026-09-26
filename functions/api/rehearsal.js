@@ -400,7 +400,9 @@ async function c19Events(rw, days) {
 async function callHandler(handler, env, request) {
   const ro = roBucket(env.BUNDLES);
   const pending = [];
-  const context = { request, env: { ...env, BUNDLES: ro }, waitUntil: (p) => { pending.push(p); } };
+  // The handlers get BUNDLES only (my-leads.js and leads.js read nothing else):
+  // no mail key, no Stripe key, no ASSETS.
+  const context = { request, env: { BUNDLES: ro }, waitUntil: (p) => { pending.push(p); } };
   let r;
   try {
     r = await handler(context);

@@ -11,9 +11,8 @@
 // finding type is mapped, both columns; nothing reads reconcile()'s verdict).
 // The global fetch is a stub that throws on anything it does not know.
 
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { makeRunner, makeFetchStub, API_DIR } from "../../test/rehearsal/harness.mjs";
+import { makeRunner, makeFetchStub, API_DIR, readText } from "../../test/rehearsal/harness.mjs";
 import * as F from "../../test/rehearsal/r3a_fixtures.mjs";
 import * as K from "../../test/rehearsal/rehearsal_kit.mjs";
 import * as X from "./_reconcile.js";
@@ -53,7 +52,7 @@ async function rec(o = {}) {
   }
   check("18(e) the readers without fetchImpl (or key) made 0 fetch calls, even with a global fetch installed",
     stub.calls.length === before, stub.calls.length - before);
-  const src = readFileSync(join(API_DIR, "_reconcile.js"), "utf8");
+  const src = readText(join(API_DIR, "_reconcile.js"));
   check("_reconcile.js never falls back to the global fetch", !/typeof fetch|globalThis\.fetch|[=:?(,]\s*fetch(?![A-Za-z0-9_$])/.test(src));
   check("_reconcile.js has 0 free fetch( calls", (src.match(/(?<![A-Za-z0-9_$.])fetch\s*\(/g) || []).length === 0);
 }
@@ -215,7 +214,7 @@ acct = F.healthyStripe();
 
 // ── 19: every finding type is mapped, both columns ─────────────────────────
 {
-  const src = readFileSync(join(API_DIR, "_reconcile.js"), "utf8").split("\n").map((l) => l.replace(/\/\/.*$/, "")).join("\n");
+  const src = readText(join(API_DIR, "_reconcile.js")).split("\n").map((l) => l.replace(/\/\/.*$/, "")).join("\n");
   const lits = [...new Set([...src.matchAll(/\btype:\s*"([a-z_]+)"/g)].map((m) => m[1]))].sort();
   const nonLiteral = [...src.matchAll(/\btype:\s*([^"\s][^,\n]*)/g)].map((m) => m[1]);
   check("19 every `type:` in _reconcile.js is a string literal", nonLiteral.length === 0, nonLiteral.join(" | "));
@@ -238,7 +237,7 @@ acct = F.healthyStripe();
     .every((s) => s in R.RECONCILE_MAP.read_failed.key.bySubject));
   // nothing reads reconcile()'s verdict, condition_verdicts, alarms or counts
   const added = ["functions/api/rehearsal.js", "functions/api/_rehearsal.js", "functions/api/_rehearsal_mail.js",
-    "functions/api/_ro_bucket.js"].map((p) => [p, readFileSync(join(API_DIR, "..", "..", p), "utf8")]);
+    "functions/api/_ro_bucket.js"].map((p) => [p, readText(join(API_DIR, "..", "..", p))]);
   for (const [p, s] of added) {
     check(`19 ${p}: 0 matches for recon.(verdict|condition_verdicts|alarms|counts)`,
       !/\brecon\.(verdict|condition_verdicts|alarms|counts)\b/.test(s) && !/\brecon\s*\[/.test(s));

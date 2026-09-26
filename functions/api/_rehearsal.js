@@ -27,6 +27,10 @@ const SEVERITY = { "NO-GO": 4, BLIND: 3, WAIT: 2, WARN: 1, PASS: 0 };
 // is mon-post's whole judgement (R4: a mon-post that could not read the send
 // log, or the Actions facts, must not read as a plain GO).
 export const BLIND_COUNTS = new Set(["C1", "C2", "C3", "C6", "C7", "mon_post"]);
+// A BLIND that factsBlind fed (a runner fact absent, dropped, or unusable
+// because api is not "ok") also counts, whatever its check id. Marked at each
+// call site that turns a factsBlind code into a BLIND, never parsed from text.
+export const blindFromFacts = (r) => Object.assign(r, { facts_blind: true });
 
 // ── results ─────────────────────────────────────────────────────────────────
 export function res(id, result, code, extra = {}) {
@@ -73,7 +77,7 @@ export function verdictOf(results, runWait) {
   if (runWait) return "WAIT";
   if (results.some((r) => r.result === "NO-GO" && !r.acked)) return "NO-GO";
   const blind = new Set(results.filter((r) => r.result === "BLIND" && !r.acked &&
-    BLIND_COUNTS.has(r.id)).map((r) => r.id));
+    (BLIND_COUNTS.has(r.id) || r.facts_blind === true)).map((r) => r.id));
   if (blind.size) return `GO, blind on ${blind.size}`;
   return "GO";
 }
@@ -284,7 +288,7 @@ export function shouldSkip(records, p) {
 // ── C0: the deploy of F, the newest main commit touching functions/ ────────
 export function checkC0(ctx) {
   const b = factsBlind(ctx, ["c0.fn_state", "c0.fn_age_min"]);
-  if (b) return [res("C0", "BLIND", b === "schema" ? "schema" : "C0.actions_api")];
+  if (b) return [blindFromFacts(res("C0", "BLIND", b === "schema" ? "schema" : "C0.actions_api"))];
   const out = [];
   const st = fact(ctx.facts, "c0.fn_state");
   const age = fact(ctx.facts, "c0.fn_age_min");
@@ -302,7 +306,7 @@ export function checkC1(ctx) {
   const { status } = ctx;
   const out = [];
   const b = factsBlind(ctx, ["refresh.state", "refresh.conclusion", "refresh.ship_step"]);
-  if (b) out.push(res("C1", "BLIND", b === "schema" ? "schema" : "C1.actions_api"));
+  if (b) out.push(blindFromFacts(res("C1", "BLIND", b === "schema" ? "schema" : "C1.actions_api")));
   else {
     const rs = fact(ctx.facts, "refresh.state");
     if (rs === "queued" || rs === "in_progress") {
@@ -444,7 +448,7 @@ export function checkC5(ctx) {
   const out = [];
   // purchase email (runner facts)
   const pb = factsBlind(ctx, ["purchase.render", "purchase.link_first", "purchase.month_line", "mirror"]);
-  if (pb) out.push(res("C5", "BLIND", pb));
+  if (pb) out.push(blindFromFacts(res("C5", "BLIND", pb)));
   else if (fact(facts, "mirror") !== "ok") out.push(res("C5", "BLIND", "C5.mirror_drift", { lines: ["mirror drift"] }));
   else if (fact(facts, "purchase.render") !== "ok") out.push(res("C5", "BLIND", "C5.purchase_render"));
   else if (fact(facts, "purchase.link_first") !== true || fact(facts, "purchase.month_line") === true) {
@@ -732,7 +736,7 @@ export function checkC9(ctx) {
   }
   const b = factsBlind(ctx, ["c9.guard1_present", "c9.mon_send_start", "c9.push_commits", "c9.push_runs",
     "c9.monday_sensitive", "c9.refresh_late_min"]);
-  if (b) { out.push(res("C9", "BLIND", b === "schema" ? "schema" : "C9.actions_api")); return out; }
+  if (b) { out.push(blindFromFacts(res("C9", "BLIND", b === "schema" ? "schema" : "C9.actions_api"))); return out; }
   const starts = fact(facts, "c9.mon_send_start").filter((x) => x >= 0).sort((a, b2) => a - b2);
   const due = 12 * 60;
   const predicted = starts.length ? starts[Math.floor((starts.length - 1) / 2)] : null;
@@ -759,7 +763,7 @@ export function checkC14(ctx) {
   const keys = ["c14.fetched", "c14.house_numbers", "c14.contractor_echo", "c14.owner_cue",
     "c14.email_like", "c14.hex32"];
   const b = factsBlind(ctx, keys);
-  if (b) return [res("C14", "BLIND", b)];
+  if (b) return [blindFromFacts(res("C14", "BLIND", b))];
   if (fact(ctx.facts, "c14.fetched") !== true) return [res("C14", "BLIND", "C14.not_fetched")];
   const out = keys.slice(1).filter((k) => fact(ctx.facts, k) !== 0)
     .map((k) => res("C14", "NO-GO", "C14." + k.slice(4)));
@@ -771,7 +775,7 @@ export function checkC17(ctx) {
   const { facts, inboxState, now } = ctx;
   const out = [];
   const b = factsBlind(ctx, ["c17.refresh_ok_age_h", "c17.watchdog_mon", "c17.watchdog_tue", "c17.rehearsal_prev_h"]);
-  if (b) out.push(res("C17", "BLIND", b === "schema" ? "schema" : "C17.actions_api"));
+  if (b) out.push(blindFromFacts(res("C17", "BLIND", b === "schema" ? "schema" : "C17.actions_api")));
   else {
     const age = fact(facts, "c17.refresh_ok_age_h");
     if (age < 0 || age >= 30) out.push(res("C17", "WARN", "C17.refresh_old"));
@@ -781,7 +785,8 @@ export function checkC17(ctx) {
     if (fact(facts, "c17.rehearsal_prev_h") < 0) out.push(res("C17", "WARN", "C17.rehearsal_prev_missing"));
   }
   if (fact(facts, "c17.inbox_mirror") !== "ok") {
-    out.push(res("C17", "BLIND", "C17.inbox_mirror", { lines: ["inbox mirror drift"] }));
+    const mb = res("C17", "BLIND", "C17.inbox_mirror", { lines: ["inbox mirror drift"] });
+    out.push(factsBlind(ctx, ["c17.inbox_mirror"]) ? blindFromFacts(mb) : mb);
   } else {
     const v = inboxVerdict(inboxState, now);
     if (v === "backlog") out.push(res("C17", "NO-GO", "C17.inbox_backlog"));
@@ -815,7 +820,7 @@ export function checkMonPre(ctx) {
     }
   }
   const b = factsBlind(ctx, ["send.state", "send.started_min", "refresh.shipped_min", "refresh.runs"]);
-  if (b) { out.push(res("mon_pre", "BLIND", b === "schema" ? "schema" : "mon_pre.actions_api")); return out; }
+  if (b) { out.push(blindFromFacts(res("mon_pre", "BLIND", b === "schema" ? "schema" : "mon_pre.actions_api"))); return out; }
   const ss = fact(facts, "send.state");
   let ordering = false;
   if (ss === "in_progress" || ss === "completed") {
@@ -886,7 +891,7 @@ export function checkMonPost(ctx) {
     { buyers: x.buyer ? [x.buyer] : [], lines: [x.buyer ? `buyer ${x.buyer}: delivered, not active` : "a recipient has no roster row"] }));
   // ordering: a Monday refresh shipped before the first ok delivery
   const b = factsBlind(ctx, ["refresh.shipped_min"]);
-  if (b) out.push(res(id, "BLIND", b === "schema" ? "schema" : "mon_post.actions_api"));
+  if (b) out.push(blindFromFacts(res(id, "BLIND", b === "schema" ? "schema" : "mon_post.actions_api")));
   else {
     const tMin = Math.floor((T - monday) / MIN);
     if (!fact(facts, "refresh.shipped_min").some((m) => m >= 0 && m <= tMin)) {
@@ -1120,7 +1125,7 @@ export function checkC8(ctx) {
   const out = [];
   // (a) the endpoint at the webhook path subscribes to every handled event
   const eb = factsBlind(ctx, ["c8.events_mirror"]);
-  if (eb) out.push(res("C8", "BLIND", eb));
+  if (eb) out.push(blindFromFacts(res("C8", "BLIND", eb)));
   else if (fact(ctx.facts, "c8.events_mirror") !== "ok") {
     out.push(res("C8", "BLIND", "C8.event_list_drift", { lines: ["event list drift"] }));
   } else if (!ctx.webhookResult || !ctx.webhookResult.readable) {
@@ -1151,8 +1156,10 @@ export function checkC8(ctx) {
     const items = pr.items.filter((p) => p && p.active !== false);
     const isMass = (p) => massIds.has(p.id) || massProducts.has(p.product);
     const mass = items.filter(isMass);
-    if (min < 0) out.push(res("C8", "BLIND", minB === "schema" ? "schema" : "C8.min_cents_unknown"));
-    else {
+    if (min < 0) {
+      const mb = res("C8", "BLIND", minB === "schema" ? "schema" : "C8.min_cents_unknown");
+      out.push(minB ? blindFromFacts(mb) : mb);
+    } else {
       // (b) every MassPermits price, and its net after each promotion code
       // that applies to it, is at or above the webhook's floor
       const below = [];
@@ -1523,7 +1530,7 @@ export function checkC15Runner(ctx) {
   const out = [];
   const scan = ["c15.secrets", "c15.workflow_tokens", "c15.private_files", "c15.ignore_missing", "c15.route_home"];
   const why = factsBlind(ctx, scan);
-  if (why) out.push(res("C15", "BLIND", `C15.${why}`, { lines: ["the runner's repository scan is missing"] }));
+  if (why) out.push(blindFromFacts(res("C15", "BLIND", `C15.${why}`, { lines: ["the runner's repository scan is missing"] })));
   else if (fact(facts, "c15.secrets") === -1) out.push(res("C15", "BLIND", "C15.scan_failed"));
   else {
     const n = (k) => fact(facts, k);
@@ -1540,7 +1547,7 @@ export function checkC15Runner(ctx) {
   }
   const fw = factsBlind(ctx, ["c15.feed_log_emails"]);
   const fl = fact(facts, "c15.feed_log_emails");
-  if (fw) out.push(res("C15", "BLIND", `C15.feed_log_${fw}`));
+  if (fw) out.push(blindFromFacts(res("C15", "BLIND", `C15.feed_log_${fw}`)));
   else if (fl === -1) out.push(res("C15", "BLIND", "C15.feed_log_unread",
     { lines: ["this week's weekly-feed.yml logs could not be read"] }));
   else if (fl > 0) out.push(res("C15", "NO-GO", "C15.feed_log_emails",
@@ -1559,7 +1566,7 @@ export function checkC22(ctx) {
     const key = `c22.${k}`;
     const why = factsBlind(ctx, [key]);
     const v = fact(ctx.facts, key);
-    if (why) out.push(res("C22", "BLIND", `C22.${why}`, { lines: [`${label}: no runner fact`] }));
+    if (why) out.push(blindFromFacts(res("C22", "BLIND", `C22.${why}`, { lines: [`${label}: no runner fact`] })));
     else if (v === "changed") out.push(res("C22", "WARN", `C22.${k}_changed`, { lines: [`${label} record differs from docs/rehearsal/dns-baseline.json`] }));
     else if (v === "missing") out.push(res("C22", "WARN", `C22.${k}_missing`, { lines: [`${label} record not found in DNS`] }));
     else if (v === "error") out.push(res("C22", "BLIND", `C22.${k}_error`, { lines: [`${label}: lookup or baseline entry failed`] }));

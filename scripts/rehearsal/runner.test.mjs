@@ -17,7 +17,7 @@ import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { deflateRawSync, crc32 } from "node:zlib";
-import { makeRunner, makeFetchStub, API_DIR, REPO } from "../../test/rehearsal/harness.mjs";
+import { makeRunner, makeFetchStub, API_DIR, REPO, readText } from "../../test/rehearsal/harness.mjs";
 import * as G from "../../test/rehearsal/r3a_fixtures.mjs";
 import { RUNNER_SCHEMA, validateRunnerFacts, fact } from "../../functions/api/_rehearsal.js";
 import * as H from "./http.mjs";
@@ -76,7 +76,7 @@ process.env.GH_TOKEN = "gh-test-token";
     stub.calls.at(-1).url === "https://masspermits.com/api/sample" && !("authorization" in stub.calls.at(-1).headers));
   sampleBytes = null;
   const src = readdirSync(here).filter((f) => f.endsWith(".mjs") && !f.endsWith(".test.mjs"))
-    .map((f) => [f, readFileSync(join(here, f), "utf8")]);
+    .map((f) => [f, readText(join(here, f))]);
   const fetchers = src.filter(([, s]) => /fetch\s*\(/.test(s)).map(([f]) => f);
   check("10 no runner file but http.mjs contains \"fetch(\"", fetchers.join() === "http.mjs", fetchers.join());
   // R3b adds ghJobLog: two more fetch( calls, both GET (the API request and
@@ -167,7 +167,7 @@ process.env.GH_TOKEN = "gh-test-token";
   writeFileSync(join(dir, "out"), "");
   const r = await capture(Mo.main)({ GITHUB_EVENT_NAME: "workflow_run", GITHUB_EVENT_PATH: join(dir, "event.json"),
     GITHUB_REPOSITORY: G.REPO, GITHUB_OUTPUT: join(dir, "out") }, at("2026-10-04T10:15:00Z"));
-  const out = readFileSync(join(dir, "out"), "utf8");
+  const out = readText(join(dir, "out"));
   check("mode.mjs main(): GITHUB_OUTPUT gets mode, date, trigger, parts, idle_reason",
     r.mode === "sun" && /^mode=sun$/m.test(out) && /^date=2026-10-04$/m.test(out) && /^trigger=42$/m.test(out) &&
     /^parts=links seed core$/m.test(out) && /^idle_reason=$/m.test(out), out);
@@ -356,7 +356,7 @@ const C22_FACTS = { c22: { dmarc: "same", spf: "same", dkim: "same", mx: "same" 
   const pw = Fa.pushWorkflows(PUSH_FILES);
   check("pushWorkflows: block push:, inline [push, ...]; not a comment, not workflow_dispatch only", pw.join() === "other.yml,weekly-refresh.yml", pw.join());
   const real = Fa.pushWorkflows(readdirSync(join(REPO, ".github", "workflows")).filter((f) => f.endsWith(".yml"))
-    .map((f) => ({ file: f, text: readFileSync(join(REPO, ".github", "workflows", f), "utf8") })));
+    .map((f) => ({ file: f, text: readText(join(REPO, ".github", "workflows", f)) })));
   check("pushWorkflows on this repo's workflows includes weekly-refresh.yml", real.includes("weekly-refresh.yml"), real.join());
 }
 { // facts.mjs main(): one line on stdout and in GITHUB_OUTPUT
@@ -457,7 +457,7 @@ const clean = [["MassPermits-sample.csv", CSV_HEAD +
   check("c8 facts from the shipped stripe-webhook.js: min_cents 500, events_mirror ok",
     shipped.min_cents === 500 && shipped.events_mirror === "ok", JSON.stringify(shipped));
   const dir = mkdtempSync(join(tmpdir(), "mp-c8-"));
-  const src = readFileSync(join(API_DIR, "stripe-webhook.js"), "utf8");
+  const src = readText(join(API_DIR, "stripe-webhook.js"));
   const put = (name, s) => { writeFileSync(join(dir, name), s); return join(dir, name); };
   const m1000 = Mi.c8Facts(put("a.js", src.replace("const MIN_CENTS = 500;", "const MIN_CENTS = 1000;")));
   check("I-04 runner: MIN_CENTS mutated to 1000 in a temp copy -> c8.min_cents 1000", m1000.min_cents === 1000);

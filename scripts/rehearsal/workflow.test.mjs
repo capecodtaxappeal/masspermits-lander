@@ -13,18 +13,19 @@
 // byte; only curl is replaced (test/rehearsal/fake-curl.mjs, no network), and
 // the responses it hands back are recorded from real in-process runs of
 // rehearsal.js. Injected mode, part, date, trigger and run values must stop
-// the script before any request.
+// the script before any request. Without jq (looked up as the script would)
+// those caller checks are SKIP locally and one FAIL when CI is set.
 
-import { readFileSync, writeFileSync, mkdtempSync, chmodSync, existsSync } from "node:fs";
+import { writeFileSync, mkdtempSync, chmodSync, existsSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
-import { makeRunner, makeFetchStub, resendFixture, HTMLRewriterStub, REPO } from "../../test/rehearsal/harness.mjs";
+import { makeRunner, makeFetchStub, resendFixture, HTMLRewriterStub, REPO, readText } from "../../test/rehearsal/harness.mjs";
 import * as K from "../../test/rehearsal/rehearsal_kit.mjs";
 import { parseYaml } from "../../test/rehearsal/yaml.mjs";
 
-const { check, done } = makeRunner("workflow.test.mjs");
-const read = (p) => readFileSync(join(REPO, p), "utf8");
+const { check, skip, done } = makeRunner("workflow.test.mjs");
+const read = (p) => readText(join(REPO, p));
 const MON = "docs/rehearsal/monday-rehearsal.yml.txt";
 const PRT = "docs/rehearsal/pr-tests.yml.txt";
 const mon = read(MON);
@@ -168,6 +169,8 @@ async function record(n) {
   for (const r of x.responses) table[`${r.part}:${r.page}`] = r.json;
   return { table, pages: x.responses.filter((r) => r.part === "links").length };
 }
+// The caller script's PATH: a bin/ holding only the stand-in curl, then ours.
+const callerPath = (bin) => bin + ":" + process.env.PATH;
 function runCaller(table, envOver = {}) {
   const dir = mkdtempSync(join(tmpdir(), "mp-caller-"));
   writeFileSync(join(dir, "responses.json"), JSON.stringify(table));
@@ -176,15 +179,26 @@ function runCaller(table, envOver = {}) {
   execFileSync("mkdir", ["-p", bin]);
   writeFileSync(join(bin, "curl"), `#!/usr/bin/env bash\nexec "${process.execPath}" "${join(REPO, "test", "rehearsal", "fake-curl.mjs")}" "$@"\n`);
   chmodSync(join(bin, "curl"), 0o755);
-  const env = { PATH: bin + ":" + process.env.PATH, HOME: dir, FAKE_CURL_DIR: dir,
+  const env = { PATH: callerPath(bin), HOME: dir, FAKE_CURL_DIR: dir,
     MODE: "sat", DATE: "2026-10-03", TRIGGER: "sched", PARTS: "links core", FACTS: JSON.stringify(K.facts()),
     GITHUB_RUN_ID: "123456", ACTIONS_ID_TOKEN_REQUEST_URL: "https://token.invalid/req?api-version=1",
     ACTIONS_ID_TOKEN_REQUEST_TOKEN: "req-token-not-real", ...envOver };
   const r = spawnSync("bash", ["-c", script], { cwd: dir, env, encoding: "utf8", timeout: 60_000 });
-  const calls = readFileSync(join(dir, "calls.jsonl"), "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l));
+  const calls = readText(join(dir, "calls.jsonl")).split("\n").filter(Boolean).map((l) => JSON.parse(l));
   return { status: r.status, stdout: r.stdout, stderr: r.stderr, calls };
 }
-{
+// jq, looked up the way the script will: command -v in bash, on its PATH.
+const jqBin = join(mkdtempSync(join(tmpdir(), "mp-jq-")), "bin");
+execFileSync("mkdir", ["-p", jqBin]);
+const hasJq = spawnSync("bash", ["-c", "command -v jq"], { env: { PATH: callerPath(jqBin) }, encoding: "utf8" }).status === 0;
+const inCI = !!process.env.CI && process.env.CI !== "false";
+if (!hasJq && inCI) check("jq missing in CI", false, "the caller script needs jq");
+else if (!hasJq) {
+  const why = "jq is not installed; the caller script did not run (CI always runs it)";
+  skip("7 the caller script against recorded responses (3 vs 30 subscribers, printed lines, leak)", why);
+  skip("11/12 the caller's POSTs, mints, masking, URL and body", why);
+  skip("11 injected mode, date, trigger, run, parts and facts stop the script before any request", why);
+} else {
   const r3 = await record(3), r30 = await record(30);
   check("7 the recorded runs are real: 30 subscribers take more links pages than 3", r30.pages > r3.pages, `${r3.pages} vs ${r30.pages}`);
   const a = runCaller(r3.table), b = runCaller(r30.table);
