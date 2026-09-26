@@ -45,7 +45,7 @@ Pages → your project → **Custom domains** → add `masspermits.com`. Cloudfl
 ### 4. Wire the two integrations (edit `index.html`, top of `<script>`)
 ```js
 const WEB3FORMS_KEY = "";   // <- paste your Web3Forms key (free, web3forms.com) → free-sample emails go to you
-const STRIPE_LINK   = "";   // <- paste your $49 Stripe Payment Link → Buy button uses it
+const STRIPE_LINK   = "";   // <- paste your Weekly Feed ($99/mo) Stripe Payment Link → Buy button uses it
 ```
 Also set the footer `[YOUR EMAIL]` to a real address.
 Commit + push → live in ~30s. (Until set: Buy routes to the free-sample form, and the form fails-soft so the page never looks broken.)

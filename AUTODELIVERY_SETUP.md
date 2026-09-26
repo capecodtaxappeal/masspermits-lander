@@ -56,7 +56,7 @@ python publish_bundles.py     # upload the 3 bundles to R2  (needs `npx wrangler
 
 ## TEST IT (do this once everything's set)
 1. `python weekly_refresh.py` then `python publish_bundles.py` (uploads bundles to R2).
-2. Stripe → your $49 Payment Link → buy with a REAL card (you can refund after).
+2. Stripe → your Weekly Feed Payment Link → buy with a REAL card (you can refund after).
 3. Within ~30s the bundle email should arrive. Check Stripe webhook logs (Developers → Webhooks → your endpoint → recent deliveries) for `200 OK`.
 4. Refund yourself in Stripe.
 

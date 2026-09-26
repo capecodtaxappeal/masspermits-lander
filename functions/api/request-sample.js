@@ -100,8 +100,8 @@ async function sendSample(env, to, trade) {
       <p style="margin:10px 0 0;font-size:12px;color:#667">Cancel anytime · full refund if month one doesn't pay for itself</p>
     </div>
     <p style="color:#667">This batch goes stale in a week: permits are a flow, not a list.
-    The $99/mo feed unlocks every name &amp; address, fresh weekly; a single $49 pack is one
-    week only. Any questions, just reply. A real person reads these.</p>`);
+    The $99/mo Weekly Feed unlocks every full address, plus the name on the permit where the
+    town lists one, fresh every Monday. Any questions, just reply. A real person reads these.</p>`);
   await send(env, to, "Your MassPermits sample file: " + t, html);
 }
 

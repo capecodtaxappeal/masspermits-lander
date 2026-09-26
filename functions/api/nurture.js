@@ -106,8 +106,9 @@ function email2(p) {
     competitor's active job count and value. Know your market before you bid.</p>
     <p><b>3. Everyone: catch builds early.</b> Demolition &amp; site permits flag
     projects that will need trades in weeks, not months.</p>
-    <p>Your free sample shows the volume; the full packs unlock the names and
-    addresses: <a href="https://masspermits.com">masspermits.com</a></p>`);
+    <p>Your free sample shows the volume; the Weekly Feed unlocks the full addresses
+    and the name on the permit where the town lists one, every Monday:
+    <a href="https://masspermits.com">masspermits.com</a></p>`);
 }
 
 function email3(p) {
@@ -119,7 +120,7 @@ function email3(p) {
     <p style="margin:16px 0">
       <a href="https://masspermits.com" style="background:#14b8a6;color:#04201c;font-weight:700;padding:12px 22px;border-radius:8px;text-decoration:none">
       Get the full data</a></p>
-    <p><b>$49</b> one-time lead pack &nbsp;·&nbsp; <b>$99/mo</b> weekly feed (cancel anytime)</p>
+    <p><b>$99/mo</b> Weekly Feed, cancel anytime</p>
     <p style="color:#667">On the fence? Reply with what you'd need it to do. A real
     person answers, and honest feedback genuinely shapes this thing.</p>`);
 }

@@ -1,16 +1,18 @@
-// MassPermits — agent free-town-sample (Farm Town Permit Radar funnel).
+// MassPermits — agent free-town-sample (sells the Weekly Feed; the Radar was retired 2026-09-26).
 //
 // The /agents form POSTs {email, town}: we store the prospect (agent-prospects/
 // prefix, own R2 object per address — same race-free pattern as prospects/) and
 // instantly email a masked CSV of last week's permits for THEIR town, built from
 // our own public /feed/permits.json. Free sample stays masked (street name only);
-// the paid Radar adds the full address and permit name. Same abuse hardening as
+// the paid Weekly Feed adds the full address and permit name. Same abuse hardening as
 // request-sample.js: honeypot, per-IP brake, daily cap, never re-emails.
 
 const DAILY_CAP = 40;
 const IP_CAP = 5;
 const ipCounts = new Map();
-const RADAR_LINK = "https://buy.stripe.com/8x2bJ0gLqc8L79sefZ4gg02";
+// Weekly Feed only. The Radar link (8x2bJ0g...) and the Lead Pack were retired
+// 2026-09-26; do not reintroduce either here.
+const FEED_LINK = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01";
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -58,7 +60,7 @@ export async function onRequestPost(context) {
 const OWNER_EMAIL = "patrick@masspermits.com";
 
 // Heads-up to the owner on every new sample request — the prospect already got
-// their CSV + trial link automatically; this is for personal follow-up.
+// their CSV + Weekly Feed link automatically; this is for personal follow-up.
 async function notifyOwner(env, email, town) {
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const resp = await fetch("https://api.resend.com/emails", {
@@ -68,7 +70,7 @@ async function notifyOwner(env, email, town) {
       from: env.FROM_EMAIL, to: [OWNER_EMAIL],
       subject: `Agent sample request: ${town}`,
       html: `<p><b>${esc(email)}</b> requested the free <b>${esc(town)}</b> sample on /agents.</p>
-        <p>They already received the masked town CSV + trial link automatically.
+        <p>They already received the masked town CSV + Weekly Feed link automatically.
         Reply to them from your inbox if you want to follow up personally.</p>`,
     }),
   });
@@ -103,12 +105,12 @@ async function sendTownSample(env, to, town) {
     <h2 style="color:#0e7c6b">Your ${escH(scope)} permit sample 🏡</h2>
     <p>Attached: ${rows.length} recent building permits${scope === town ? ` in <b>${escH(town)}</b>` : ""}, with
     date, project type, declared value, and street. This free sample leaves out house numbers and names.</p>
-    <p><b>The paid Radar adds the full street address,</b> plus the name on the permit where the town published
+    <p><b>The paid Weekly Feed adds the full street address,</b> plus the name on the permit where the town published
     one (not always the owner). It arrives every Monday. That's your door-knock list and postcard file.</p>
     <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:18px 0;text-align:center">
-      <p style="margin:0 0 10px;font-weight:600">Farm Town Permit Radar: $49/mo, no contract</p>
-      <a href="${RADAR_LINK}" style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start your free 7-day trial →</a>
-      <p style="margin:10px 0 0;font-size:12px;color:#667">Cancel anytime · SmartZip charges $396 setup + a 12-month contract for AI guesses. This is the actual permit record.</p>
+      <p style="margin:0 0 10px;font-weight:600">MassPermits Weekly Feed: $99/mo, cancel anytime</p>
+      <a href="${FEED_LINK}" style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start the Weekly Feed →</a>
+      <p style="margin:10px 0 0;font-size:12px;color:#667">No contract. Every Monday: full address, project type, declared value where the town reports one, and the name on the permit where the town lists one.</p>
     </div>
     <p style="color:#667;font-size:13px">Also useful: this week's <a href="https://masspermits.com/report/" style="color:#0e7c6b">MA Building Activity Report</a>
     and the live <a href="https://masspermits.com/permits/${slug}" style="color:#0e7c6b">${escH(town)} permit page</a>.
@@ -121,7 +123,7 @@ async function sendTownSample(env, to, town) {
     headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       from: env.FROM_EMAIL, to: [to],
-      subject: `Your ${scope === town ? town : "MA"} permit sample from Farm Town Permit Radar`,
+      subject: `Your ${scope === town ? town : "MA"} permit sample from MassPermits`,
       html,
       attachments: [{ filename: `MassPermits-${slug || "ma"}-sample.csv`, content: b64 }],
     }),
