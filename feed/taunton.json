@@ -25,10 +25,20 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 295,
- "_window_from": "2026-08-26",
+ "_window_total": 286,
+ "_window_from": "2026-08-27",
  "_window_to": "2026-09-25",
  "items": [
+  {
+   "id": "1415bdf9d63172df",
+   "url": "https://masspermits.com/permits/taunton-plumbing",
+   "title": "Plumbing permit \u2014 Cohannet Street, Taunton ($10,000)",
+   "content_text": "Plumbing permit in Taunton, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Plumbing",
+   "_value": 10000.0
+  },
   {
    "id": "7e0ae6b128998935",
    "url": "https://masspermits.com/permits/taunton-electrical",
@@ -50,14 +60,14 @@
    "_value": 2000.0
   },
   {
-   "id": "51d3d633eef6a888",
-   "url": "https://masspermits.com/permits/taunton-plumbing",
-   "title": "Plumbing permit \u2014 Cohannet Street, Taunton ($2,200)",
-   "content_text": "Plumbing permit in Taunton, MA. Value $2,200. Full lead at masspermits.com.",
+   "id": "d66b2d3112bc68ba",
+   "url": "https://masspermits.com/permits/taunton-electrical",
+   "title": "Electrical permit \u2014 Weir Street, Taunton ($18,000)",
+   "content_text": "Electrical permit in Taunton, MA. Value $18,000. Full lead at masspermits.com.",
    "date_published": "2026-09-24T00:00:00Z",
    "_town": "Taunton",
-   "_trade": "Plumbing",
-   "_value": 2200.0
+   "_trade": "Electrical",
+   "_value": 18000.0
   },
   {
    "id": "18651a8b0493775d",
@@ -98,16 +108,6 @@
    "_town": "Taunton",
    "_trade": "Gas",
    "_value": 10000.0
-  },
-  {
-   "id": "d66b2d3112bc68ba",
-   "url": "https://masspermits.com/permits/taunton-electrical",
-   "title": "Electrical permit \u2014 Weir Street, Taunton ($18,000)",
-   "content_text": "Electrical permit in Taunton, MA. Value $18,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-24T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Electrical",
-   "_value": 18000.0
   },
   {
    "id": "8525a21b4e82b511",
@@ -200,56 +200,6 @@
    "_value": 3003.0
   },
   {
-   "id": "48b080aecde31103",
-   "url": "https://masspermits.com/permits/taunton-gas",
-   "title": "Gas permit \u2014 Crossover Lane, Taunton ($250)",
-   "content_text": "Gas permit in Taunton, MA. Value $250. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Gas",
-   "_value": 250.0
-  },
-  {
-   "id": "1c0f80b22e1a8dc5",
-   "url": "https://masspermits.com/permits/taunton-electrical",
-   "title": "Electrical permit \u2014 Lothrop Street, Taunton ($7,000)",
-   "content_text": "Electrical permit in Taunton, MA. Value $7,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Electrical",
-   "_value": 7000.0
-  },
-  {
-   "id": "f21cc72c9f30f0bc",
-   "url": "https://masspermits.com/permits/taunton-plumbing",
-   "title": "Plumbing permit \u2014 Joel Harvey Way, Taunton ($4,500)",
-   "content_text": "Plumbing permit in Taunton, MA. Value $4,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Plumbing",
-   "_value": 4500.0
-  },
-  {
-   "id": "af94e8f9dbd925a6",
-   "url": "https://masspermits.com/permits/taunton-gas",
-   "title": "Gas permit \u2014 Jackson Street, Taunton ($800)",
-   "content_text": "Gas permit in Taunton, MA. Value $800. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Gas",
-   "_value": 800.0
-  },
-  {
-   "id": "55e25e973f1e7fb3",
-   "url": "https://masspermits.com/permits/taunton-gas",
-   "title": "Gas permit \u2014 Joel Harvey Way, Taunton ($1,500)",
-   "content_text": "Gas permit in Taunton, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Gas",
-   "_value": 1500.0
-  },
-  {
    "id": "31daa66039e491d5",
    "url": "https://masspermits.com/permits/taunton-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Andrea Lane, Taunton ($8,500)",
@@ -289,6 +239,46 @@
    "_value": 6800.0
   },
   {
+   "id": "55e25e973f1e7fb3",
+   "url": "https://masspermits.com/permits/taunton-gas",
+   "title": "Gas permit \u2014 Joel Harvey Way, Taunton ($1,500)",
+   "content_text": "Gas permit in Taunton, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Gas",
+   "_value": 1500.0
+  },
+  {
+   "id": "a63429e1798bdb29",
+   "url": "https://masspermits.com/permits/taunton-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Hodges Street, Taunton ($44,345)",
+   "content_text": "Renovation/Remodel permit in Taunton, MA. Value $44,345. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Renovation/Remodel",
+   "_value": 44345.0
+  },
+  {
+   "id": "b0fe1f1dcf268083",
+   "url": "https://masspermits.com/permits/taunton-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Field Street, Taunton ($4,000)",
+   "content_text": "Renovation/Remodel permit in Taunton, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Renovation/Remodel",
+   "_value": 4000.0
+  },
+  {
+   "id": "c120d3cdf05e5db6",
+   "url": "https://masspermits.com/permits/taunton-plumbing",
+   "title": "Plumbing permit \u2014 Tremont Street, Taunton ($4,997)",
+   "content_text": "Plumbing permit in Taunton, MA. Value $4,997. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Plumbing",
+   "_value": 4997.0
+  },
+  {
    "id": "c5475946b35dd45a",
    "url": "https://masspermits.com/permits/taunton-building",
    "title": "Building permit \u2014 Washington Street, Taunton ($359,047)",
@@ -297,6 +287,16 @@
    "_town": "Taunton",
    "_trade": "Building",
    "_value": 359047.0
+  },
+  {
+   "id": "2c35781316103306",
+   "url": "https://masspermits.com/permits/taunton-electrical",
+   "title": "Electrical permit \u2014 Lothrop Street, Taunton ($5,000)",
+   "content_text": "Electrical permit in Taunton, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Electrical",
+   "_value": 5000.0
   },
   {
    "id": "12c0261786f61dfb",
@@ -347,34 +347,53 @@
    "_value": 7971.0
   },
   {
-   "id": "c120d3cdf05e5db6",
+   "id": "48b080aecde31103",
+   "url": "https://masspermits.com/permits/taunton-gas",
+   "title": "Gas permit \u2014 Crossover Lane, Taunton ($250)",
+   "content_text": "Gas permit in Taunton, MA. Value $250. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Gas",
+   "_value": 250.0
+  },
+  {
+   "id": "f21cc72c9f30f0bc",
    "url": "https://masspermits.com/permits/taunton-plumbing",
-   "title": "Plumbing permit \u2014 Tremont Street, Taunton ($4,997)",
-   "content_text": "Plumbing permit in Taunton, MA. Value $4,997. Full lead at masspermits.com.",
+   "title": "Plumbing permit \u2014 Joel Harvey Way, Taunton ($4,500)",
+   "content_text": "Plumbing permit in Taunton, MA. Value $4,500. Full lead at masspermits.com.",
    "date_published": "2026-09-23T00:00:00Z",
    "_town": "Taunton",
    "_trade": "Plumbing",
-   "_value": 4997.0
+   "_value": 4500.0
   },
   {
-   "id": "a63429e1798bdb29",
-   "url": "https://masspermits.com/permits/taunton-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Hodges Street, Taunton ($44,345)",
-   "content_text": "Renovation/Remodel permit in Taunton, MA. Value $44,345. Full lead at masspermits.com.",
+   "id": "af94e8f9dbd925a6",
+   "url": "https://masspermits.com/permits/taunton-gas",
+   "title": "Gas permit \u2014 Jackson Street, Taunton ($800)",
+   "content_text": "Gas permit in Taunton, MA. Value $800. Full lead at masspermits.com.",
    "date_published": "2026-09-23T00:00:00Z",
    "_town": "Taunton",
-   "_trade": "Renovation/Remodel",
-   "_value": 44345.0
+   "_trade": "Gas",
+   "_value": 800.0
   },
   {
-   "id": "b0fe1f1dcf268083",
+   "id": "b320613bdabea5e8",
+   "url": "https://masspermits.com/permits/taunton-electrical",
+   "title": "Electrical permit \u2014 Oak Street, Taunton",
+   "content_text": "Electrical permit in Taunton, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "2cfd7163f189de17",
    "url": "https://masspermits.com/permits/taunton-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Field Street, Taunton ($4,000)",
-   "content_text": "Renovation/Remodel permit in Taunton, MA. Value $4,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
+   "title": "Renovation/Remodel permit \u2014 Sherborne Street, Taunton ($22,300)",
+   "content_text": "Renovation/Remodel permit in Taunton, MA. Value $22,300. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
    "_town": "Taunton",
    "_trade": "Renovation/Remodel",
-   "_value": 4000.0
+   "_value": 22300.0
   },
   {
    "id": "32887f26a5dc4d13",
@@ -385,6 +404,26 @@
    "_town": "Taunton",
    "_trade": "Gas",
    "_value": 2400.0
+  },
+  {
+   "id": "c3b71dd3259d0e4b",
+   "url": "https://masspermits.com/permits/taunton-plumbing",
+   "title": "Plumbing permit \u2014 Checkerberry Lane, Taunton ($1,890)",
+   "content_text": "Plumbing permit in Taunton, MA. Value $1,890. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Plumbing",
+   "_value": 1890.0
+  },
+  {
+   "id": "23c55dd0d91d3bfd",
+   "url": "https://masspermits.com/permits/taunton-gas",
+   "title": "Gas permit \u2014 East Water Street, Taunton ($400)",
+   "content_text": "Gas permit in Taunton, MA. Value $400. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Taunton",
+   "_trade": "Gas",
+   "_value": 400.0
   },
   {
    "id": "522e8052c2521097",
@@ -455,45 +494,6 @@
    "_town": "Taunton",
    "_trade": "Renovation/Remodel",
    "_value": 64652.0
-  },
-  {
-   "id": "c3b71dd3259d0e4b",
-   "url": "https://masspermits.com/permits/taunton-plumbing",
-   "title": "Plumbing permit \u2014 Checkerberry Lane, Taunton ($1,890)",
-   "content_text": "Plumbing permit in Taunton, MA. Value $1,890. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Plumbing",
-   "_value": 1890.0
-  },
-  {
-   "id": "23c55dd0d91d3bfd",
-   "url": "https://masspermits.com/permits/taunton-gas",
-   "title": "Gas permit \u2014 East Water Street, Taunton ($400)",
-   "content_text": "Gas permit in Taunton, MA. Value $400. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Gas",
-   "_value": 400.0
-  },
-  {
-   "id": "b320613bdabea5e8",
-   "url": "https://masspermits.com/permits/taunton-electrical",
-   "title": "Electrical permit \u2014 Oak Street, Taunton",
-   "content_text": "Electrical permit in Taunton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "2cfd7163f189de17",
-   "url": "https://masspermits.com/permits/taunton-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Sherborne Street, Taunton ($22,300)",
-   "content_text": "Renovation/Remodel permit in Taunton, MA. Value $22,300. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "Taunton",
-   "_trade": "Renovation/Remodel",
-   "_value": 22300.0
   },
   {
    "id": "e5336a92cd01b4c2",
