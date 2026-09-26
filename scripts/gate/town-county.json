@@ -1,0 +1,465 @@
+{
+ "note": "Town to county, for exactly the towns in research/evidence/coverage.json (table and errors) plus the names in aliases.json. Every row is unconfirmed until the owner confirms it. Used only by rule G4.",
+ "towns": [
+  {
+   "town": "Worcester",
+   "county": "Worcester",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Boston",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Cambridge",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Somerville",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Pittsfield",
+   "county": "Berkshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Plymouth",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Attleboro",
+   "county": "Bristol",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Falmouth",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Mashpee",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Taunton",
+   "county": "Bristol",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Braintree",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Hingham",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Chicopee",
+   "county": "Hampden",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Bourne",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Stoughton",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Sandwich",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Norwood",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Concord",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Milton",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Randolph",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Easton",
+   "county": "Bristol",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Wareham",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Bridgewater",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Foxborough",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Bellingham",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Lexington",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Mansfield",
+   "county": "Bristol",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Ipswich",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "North Reading",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Fairhaven",
+   "county": "Bristol",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Easthampton",
+   "county": "Hampshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Ludlow",
+   "county": "Hampden",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Barnstable",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Rockland",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Cohasset",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Rehoboth",
+   "county": "Bristol",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Great Barrington",
+   "county": "Berkshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Duxbury",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Lenox",
+   "county": "Berkshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "North Attleborough",
+   "county": "Bristol",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Wakefield",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Hanson",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Carlisle",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "West Bridgewater",
+   "county": "Plymouth",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Hopedale",
+   "county": "Worcester",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Lee",
+   "county": "Berkshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Stockbridge",
+   "county": "Berkshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Boylston",
+   "county": "Worcester",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Amherst",
+   "county": "Hampshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Nahant",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Reading",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Sudbury",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Avon",
+   "county": "Norfolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Chatham",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Provincetown",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Truro",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Otis",
+   "county": "Berkshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "New Marlborough",
+   "county": "Berkshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Colrain",
+   "county": "Franklin",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Wenham",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Merrimac",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Westhampton",
+   "county": "Hampshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "West Newbury",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Southampton",
+   "county": "Hampshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Georgetown",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Hadley",
+   "county": "Hampshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Groveland",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Newbury",
+   "county": "Essex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Granby",
+   "county": "Hampshire",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Sunderland",
+   "county": "Franklin",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Stow",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Townsend",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Waltham",
+   "county": "Middlesex",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Allston",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Brighton",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Charlestown",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Dorchester",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "East Boston",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Hyde Park",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Jamaica Plain",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Mattapan",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Mission Hill",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Roslindale",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Roxbury",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "South Boston",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "West Roxbury",
+   "county": "Suffolk",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Centerville",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Cotuit",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Hyannis",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Marstons Mills",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "Osterville",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  },
+  {
+   "town": "West Barnstable",
+   "county": "Barnstable",
+   "status": "owner confirms"
+  }
+ ]
+}
