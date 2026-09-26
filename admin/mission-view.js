@@ -32,10 +32,19 @@ export const TEXT = {
   cannotRead: "Could not read the data. Reload; if it stays, check /admin/pipeline.",
   mapFailed: "The map could not load. Reload.",
   loading: "Loading",
+  mapLoading: "Loading the map.",
   demoSaved: "Demo: nothing is saved",
   notReported: "not reported",
   noCustomers: "No customers yet.",
 };
+// Tile labels for the loading state only, before any payload has arrived;
+// once the default view answers, every label comes from it.
+const LOADING_LABELS = ["Paying customers", "Revenue, 30 days", "Renewals, 14 days", "Failed payments",
+  "Monday email", "Data refresh", "Sales, 7 days", "Signups, 7 days"];
+// Map codes that carry a hatch as well as a colour: the smallest simulated
+// colour-vision difference between any two map colours is reported by the
+// colour test, and a pair under 10 (CIEDE2000) must involve one of these.
+export const HATCHED = ["dead"];
 const TZ = "America/New_York";
 // Own keys only: a payload code such as "__proto__" must never find a sentence.
 const own = (o, k) => (typeof k === "string" && Object.prototype.hasOwnProperty.call(o, k) ? o[k] : undefined);
@@ -69,6 +78,7 @@ export function when(s) {
   if (!isNum(t)) return TEXT.notReported;
   return new Date(t).toLocaleString("en-US", { timeZone: TZ, month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) + " ET";
 }
+export const staleNote = (at) => "Not updated. Showing data from " + when(at) + ".";
 export function dateline(now) {
   return isNum(now) ? new Date(now).toLocaleDateString("en-US", { timeZone: TZ, weekday: "long", month: "long", day: "numeric", year: "numeric" }) : "";
 }
@@ -89,16 +99,24 @@ export const mapOk = (map, towns) => !!(map && map.status === 200 && map.json &&
   towns && towns.status === 200 && towns.json && towns.json.towns);
 
 // ── tiles ──────────────────────────────────────────────────────────────────
+// A number shows only beside OK / WATCH / ACT, or beside UNVERIFIED (its one
+// measured-count exception). Any other state, grey kind or tile id is
+// UNAVAILABLE with no figure.
 export function tileView(t) {
-  const s = stateOf(t.state, t.grey);
+  const known = TILE_ORDER.includes(t.id);
+  const s = known ? stateOf(t.state, t.grey) : { word: "UNAVAILABLE", cls: "s-grey" };
+  const counted = known && (own(WORD, t.state) || (t.state === "grey" && t.grey === "unverified"));
   let value;
-  if (t.state === "grey" && t.grey !== "unverified") value = "—";
+  if (!counted) value = "—";
   else if (!isNum(t.value)) value = TEXT.notReported;
   else value = t.id === "revenue" ? money(t.value) : count(t.value);
-  if (!TILE_ORDER.includes(t.id)) s.word = "UNAVAILABLE", s.cls = "s-grey";
-  return { id: String(t.id), label: String(t.label || t.id), value, word: s.word, cls: s.cls,
+  const label = String(t.label || t.id);
+  return { id: String(t.id), label, value, word: s.word, cls: s.cls,
+    name: label + ": " + (value === "—" ? "no figure" : value) + ", " + s.word,
     sub: typeof t.sub === "string" ? t.sub : "", asOf: t.as_of ? when(t.as_of) : "" };
 }
+export const loadingTiles = () => TILE_ORDER.map((id, i) => ({ id, label: LOADING_LABELS[i], value: TEXT.loading,
+  word: "", cls: "s-wait", name: LOADING_LABELS[i] + ": " + TEXT.loading, sub: "", asOf: "" }));
 export function tilesView(tiles) {
   const at = (t) => { const i = TILE_ORDER.indexOf(t.id); return i < 0 ? 99 : i; };
   return tiles.slice().sort((a, b) => at(a) - at(b)).map(tileView);
@@ -169,8 +187,8 @@ function mondaySection(m, t) {
   ] };
 }
 
-function outreachSection(map, setup) {
-  if (!map) return { paras: [TEXT.mapFailed], lists: [] };
+function outreachSection(map, setup, mapState) {
+  if (!map) return { paras: [mapState === "pending" ? TEXT.mapLoading : TEXT.mapFailed], lists: [] };
   const c = map.counts || {};
   let planned = 0;
   for (const k in map.towns || {}) if (map.towns[k].planned) planned++;
@@ -182,7 +200,8 @@ function outreachSection(map, setup) {
   return { paras: p, lists: [{ title: "Ignored (not on the map)", items: (map.outreach_ignored || []).map((t) => ({ text: t })) }] };
 }
 
-export function sectionsView(main, map) {
+// mapState: "ok" | "pending" (still loading) | "failed"
+export function sectionsView(main, map, mapState) {
   const d = main.detail || {};
   const cu = d.customers || {};
   const en = d.engagement;
@@ -227,7 +246,7 @@ export function sectionsView(main, map) {
     { id: "monday", title: "Monday delivery", ...mondaySection(d.monday, (main.tiles || []).find((t) => t.id === "monday")) },
     { id: "refresh", title: "Data refresh", ...refreshSection(d.refresh, map) },
     { id: "sales", title: "Sales and signups", ...ss },
-    { id: "outreach", title: "Outreach", ...outreachSection(map, d.setup) },
+    { id: "outreach", title: "Outreach", ...outreachSection(map, d.setup, mapState) },
     { id: "unseen", title: "What this page cannot see", paras: [], lists: [{ title: "", items: (d.not_measured || []).map((x) => ({ text: x.what + ". " + x.why })) }] },
     { id: "setup", title: "Setup", ...setup },
   ];

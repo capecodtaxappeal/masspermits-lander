@@ -1,18 +1,21 @@
-// P2-10: the offline demo, docs/mission/demo.html.
-// Payloads come from the REAL route (functions/admin/api/mission.js, both
-// views) run through the harness on synthetic worlds at fixed clocks.
-// Written only by: MISSION_DEMO_WRITE=1 node --test test/mission/demo.test.mjs
-// Otherwise a fresh build must equal the committed file byte for byte.
+// P2-10 / P3-2: the offline demo. Since P3 nothing is committed: every run
+// builds it into the OS temp directory and checks that build. Payloads come
+// from the REAL route (functions/admin/api/mission.js, both views) run
+// through the harness on synthetic worlds at fixed clocks.
+// A copy for the owner's final look, written only by:
+//   MISSION_DEMO_OUT=/path/outside/the/repo/demo.html node --test test/mission/demo.test.mjs
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import vm from "node:vm";
 import * as H from "./_harness.mjs";
 import { buildDemo, sha256, DEMO_NOTE, DEMO_TITLE, SCENARIO_NAMES } from "./_demo.mjs";
 
 const VARIANT = "C";
-const DEMO = path.join(H.REPO, "docs/mission/demo.html");
+const COMMITTED = path.join(H.REPO, "docs/mission/demo.html");
+const DEMO = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "mission-demo-")), "demo.html");
 const { m, stub, get } = await H.setup();
 const { T, DAY } = H;
 const read = (p) => fs.readFileSync(path.join(H.REPO, p), "utf8");
@@ -107,13 +110,15 @@ const files = {
   render: read("admin/mission-render.js"), towns: read("admin/mission-towns.json"),
 };
 const fresh = buildDemo({ variant: VARIANT, files, scenarios: built });
-if (process.env.MISSION_DEMO_WRITE === "1") {
-  fs.mkdirSync(path.dirname(DEMO), { recursive: true });
-  fs.writeFileSync(DEMO, fresh);
+fs.writeFileSync(DEMO, fresh);
+const file = fs.readFileSync(DEMO, "utf8");
+const outside_repo = (p) => { const r = path.relative(H.REPO, path.resolve(p)); return r.startsWith("..") || path.isAbsolute(r); };
+if (process.env.MISSION_DEMO_OUT) {
+  if (!outside_repo(process.env.MISSION_DEMO_OUT)) throw new Error("MISSION_DEMO_OUT must be outside the repo");
+  fs.writeFileSync(process.env.MISSION_DEMO_OUT, fresh);
 }
-const file = fs.existsSync(DEMO) ? fs.readFileSync(DEMO, "utf8") : "";
 
-// ── pieces of the committed file ────────────────────────────────────────────
+// ── pieces of the temp-directory build ──────────────────────────────────────
 const JSON_RE = /<script type="application\/json" id="([a-z-]+)">([\s\S]*?)<\/script>/g;
 const jsonBlocks = [...file.matchAll(JSON_RE)].map((x) => ({ id: x[1], text: x[2] }));
 const outside = file.replace(JSON_RE, "");
@@ -121,9 +126,13 @@ const inlineScripts = [...outside.matchAll(/<script>([\s\S]*?)<\/script>/g)].map
 const styles = [...outside.matchAll(/<style>([\s\S]*?)<\/style>/g)].map((x) => x[1]);
 const scenarios = () => JSON.parse(jsonBlocks.find((b) => b.id === "demo-scenarios").text);
 
-test("P2-10 (a) the committed demo equals a fresh build byte for byte", () => {
-  assert.ok(file, "docs/mission/demo.html is missing: run MISSION_DEMO_WRITE=1 node --test test/mission/demo.test.mjs");
-  assert.ok(file === fresh, "docs/mission/demo.html is stale: rebuild it with MISSION_DEMO_WRITE=1");
+test("P3-2 no committed demo: the build lives in the OS temp directory; MISSION_DEMO_OUT only outside the repo", () => {
+  assert.ok(!fs.existsSync(COMMITTED), "docs/mission/demo.html must not exist from P3 on");
+  assert.ok(!fs.existsSync(path.join(H.REPO, "docs/mission")), "nothing under docs/mission");
+  assert.ok(outside_repo(DEMO) && DEMO.startsWith(os.tmpdir()), DEMO);
+  assert.ok(file === fresh);
+  assert.equal(outside_repo(path.join(H.REPO, "x.html")), false);
+  assert.equal(outside_repo(path.join(os.tmpdir(), "x.html")), true);
 });
 
 test("P2-10 the five scenarios are what the prompt describes", () => {
@@ -159,7 +168,9 @@ test("P2-10 (b) one file: no src, link, iframe, object or embed; no network URL 
   assert.ok(!/<[a-z]+[^>]*\ssrc\s*=/i.test(outside), "src attribute");
   assert.ok(!/<(link|iframe|object|embed)\b/i.test(outside), "external element");
   for (const h of outside.matchAll(/\shref\s*=\s*"([^"]*)"/gi)) assert.equal(h[1], "#");
-  for (const u of outside.matchAll(/url\(\s*['"]?([^'")]*)/gi)) assert.ok(u[1].startsWith("data:"), "css url " + u[1]);
+  for (const u of styles.join("\n").matchAll(/url\(\s*['"]?([^'")]*)/gi)) assert.ok(u[1].startsWith("data:"), "css url " + u[1]);
+  // outside the CSS, url( appears only as the map hatch's same-document fragment reference
+  for (const u of outside.matchAll(/url\(\s*['"]?([^'")]*)/gi)) assert.ok(u[1].startsWith("data:") || u[1] === "#mc-hatch", "url " + u[1]);
   assert.ok(!/https?:/i.test(outside), "http(s): outside the embedded JSON");
   const geo = JSON.parse(read("admin/mission-towns.json"));
   for (const b of jsonBlocks) {
@@ -251,7 +262,8 @@ test("P2-10 (f) the demo boot renders all five scenarios on the fake DOM, as mis
     const first = root.byPart("need-text")[0];
     if (urgent.length) assert.equal(first.textContent.trim(), urgent[0].text);
     else assert.equal(first, undefined);
-    const paths = root.all((n) => n.localName === "path");
+    // one <path data-town> per town (the dead-town hatch overlays carry no data-town)
+    const paths = root.all((n) => n.localName === "path" && n.getAttribute("data-town") !== null);
     if (i === 3) {
       assert.equal(paths.length, 0, "scenario 4 has no map colours");
       assert.ok(root.byPart("map-failed")[0].isShown());

@@ -18,10 +18,11 @@ const P1_FILES = [
 const FUNCTION_FILES = [...P1_FILES, "functions/admin/api/mission-outreach.js"];
 const PAGE_FILES = ["admin/mission.html", "admin/mission-app.js", "admin/mission-render.js", "admin/mission-view.js",
   "admin/mission-app.css", "admin/mission-towns.json"];
-// docs/mission/demo.html exists only on the three design branches (DEMO).
-const ALLOWED = (p) => FUNCTION_FILES.includes(p) || PAGE_FILES.includes(p) || p === "_headers" ||
-  p === "docs/mission/demo.html" || p === "test/mission/_demo.mjs" ||
-  /^test\/mission\/[A-Za-z0-9_-]+\.test\.mjs$/.test(p) || p === "test/mission/_harness.mjs";
+// Nothing under docs/ ever reaches main (P3 deleted the demo; every file is a
+// public URL). docs/mission/demo.html existed only on the design branches.
+const ALLOWED = (p) => !p.startsWith("docs/") && (FUNCTION_FILES.includes(p) || PAGE_FILES.includes(p) || p === "_headers" ||
+  p === "test/mission/_demo.mjs" ||
+  /^test\/mission\/[A-Za-z0-9_-]+\.test\.mjs$/.test(p) || p === "test/mission/_harness.mjs");
 const NEVER_EDIT = [
   "functions/api/stripe-webhook.js", "functions/api/weekly-send.js", "functions/api/my-leads.js",
   "functions/api/send-status.js", "functions/api/_presend.js", "functions/api/_github-oidc.js",
@@ -58,7 +59,13 @@ test("P1-14 the diff from main lists only allowed paths", () => {
   assert.ok(!changed.some((p) => p.startsWith(".github/")));
   assert.ok(!changed.some((p) => /(^|\/)(package(-lock)?\.json|wrangler\.toml|_routes\.json)$|node_modules/.test(p)));
   for (const f of [...FUNCTION_FILES, ...PAGE_FILES]) assert.ok(changed.includes(f), "missing " + f);
-  assert.deepEqual(changed.filter((p) => p.startsWith("docs/")), ["docs/mission/demo.html"]);
+  assert.deepEqual(changed.filter((p) => p.startsWith("docs/")), []);
+});
+
+test("P3-2 the structure test refuses any path under docs/", () => {
+  for (const p of ["docs/mission/demo.html", "docs/x.md", "docs/mission/SPEC.md"]) assert.equal(ALLOWED(p), false, p);
+  assert.equal(ALLOWED("admin/mission.html"), true);
+  assert.deepEqual(git("ls-files", "docs/mission").split("\n").filter(Boolean), []);
 });
 
 test("P1-14 exports: helpers export no onRequest*; the route exports onRequestGet only", () => {

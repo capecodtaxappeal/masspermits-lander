@@ -1,10 +1,13 @@
 // Mission Control: DOM building only. No request, no storage, no timer: the
 // clock and every action come in through opts, so the offline demo runs this
 // file unchanged. Every value goes in with textContent or setAttribute.
+// Each render builds the page body off-document and attaches it in one step;
+// the headline's live region is one node kept across renders, so a screen
+// reader hears it change on Refresh.
 
 import {
-  TEXT, screenOf, mapOk, tilesView, headlineView, needsView, sectionsView, legendView, mapLabel,
-  listGroups, townSheet, codeOf, dateline, when, OUTREACH_CHOICES,
+  TEXT, screenOf, mapOk, tilesView, loadingTiles, headlineView, needsView, sectionsView, legendView, mapLabel,
+  listGroups, townSheet, codeOf, dateline, when, staleNote, HATCHED, OUTREACH_CHOICES,
 } from "./mission-view.js";
 
 function el(tag, cls, text) {
@@ -34,40 +37,59 @@ function link(text, href, o) {
   return a;
 }
 
-function masthead(app, main, o) {
-  const h = add(el("header", "masthead"), el("h1", "title", "Mission Control"));
+// header, main (live headline + content) and footer, built once per root.
+const shells = new WeakMap();
+function shell(app) {
+  let s = shells.get(app);
+  if (s && s.header.parentNode === app) return s;
+  const header = el("header", "masthead");
+  const live = el("div", "headline");
+  live.setAttribute("role", "status");
+  live.setAttribute("aria-live", "polite");
+  const kicker = el("span", "kicker");
+  const lede = part(el("p", "lede"), "headline-text");
+  const content = el("div", "content");
+  const main = add(el("main", "body"), add(live, kicker, lede), content);
+  s = { header, live, kicker, lede, content, foot: el("footer", "foot") };
+  app.replaceChildren(header, main, s.foot);
+  shells.set(app, s);
+  return s;
+}
+// Changes the live region only when its words change, so an unchanged
+// headline is not announced again.
+function say(s, cls, word, text) {
+  s.live.setAttribute("class", "headline " + cls);
+  if (s.kicker.textContent !== word) s.kicker.textContent = word;
+  if (s.lede.textContent !== text) s.lede.textContent = text;
+}
+
+function masthead(h, main, o) {
   const line = add(el("div", "dateline"), el("span", "date", dateline(o.now)));
   add(line, button("Refresh", "refresh", () => o.onRefresh && o.onRefresh()));
-  add(h, line);
+  h.replaceChildren(el("h1", "title", "Mission Control"), line);
   if (main && main.signed_in_as) add(h, part(el("p", "signed", "Signed in as " + main.signed_in_as), "signed-in"));
-  add(app, h);
 }
 
-function headline(parent, hv) {
-  const box = el("div", "headline " + hv.cls);
-  box.setAttribute("role", "status");
-  box.setAttribute("aria-live", "polite");
-  add(box, el("span", "kicker", hv.word), part(el("p", "lede", hv.text), "headline-text"));
-  add(parent, box);
-}
-
-function glance(parent, tiles) {
+function glance(parent, tiles, loading) {
   const sec = add(el("section", "glance"), el("h2", "", "At a glance"));
   const ul = el("ul", "tiles");
   const notes = el("dl", "notes");
   for (const t of tiles) {
     const li = el("li", "tile " + t.cls);
     li.setAttribute("data-tile", t.id);
-    li.setAttribute("aria-label", t.label + ": " + t.value + ", " + t.word);
+    li.setAttribute("aria-label", t.name);
     const w = add(part(el("span", "word"), "word-box"), el("span", "mark"), part(el("span", "w", t.word), "word"));
     add(ul, add(li, el("span", "label", t.label), add(el("span", "fig"), el("span", "value", t.value), w)));
     add(notes, el("dt", "", t.label), el("dd", "", t.sub + (t.asOf ? " (as of " + t.asOf + ")" : "")));
   }
-  const fine = add(el("details", "fine"), add(el("summary"), el("span", "", "How these were counted")), notes);
-  add(parent, add(sec, ul, fine));
+  add(sec, ul);
+  if (!loading) add(sec, add(el("details", "fine"), add(el("summary"), el("span", "", "How these were counted")), notes));
+  add(parent, sec);
 }
 
+// No needs-you line at all: no section, only the clear headline.
 function needs(parent, nv) {
+  if (!nv.urgent.length && !nv.known.length) return;
   const sec = add(el("section", "needs"), el("h2", "", "Needs you"));
   if (nv.urgent.length) {
     const ol = el("ol", "urgent");
@@ -129,11 +151,38 @@ function sheetFor(app, main, map, o) {
   };
 }
 
-function mapFigure(parent, main, data, o, ns) {
+// A hatch for the codes in HATCHED, drawn over their fill: a non-colour cue.
+function hatchLayer(svg, ns, geo, map, keys) {
+  const defs = document.createElementNS(ns, "defs");
+  const pat = document.createElementNS(ns, "pattern");
+  for (const [k, v] of [["id", "mc-hatch"], ["patternUnits", "userSpaceOnUse"], ["width", "40"], ["height", "40"],
+    ["patternTransform", "rotate(45)"]]) pat.setAttribute(k, v);
+  const line = document.createElementNS(ns, "path");
+  line.setAttribute("d", "M0 0V40");
+  line.setAttribute("class", "hatch-line");
+  pat.appendChild(line);
+  defs.appendChild(pat);
+  svg.appendChild(defs);
+  const g = document.createElementNS(ns, "g");
+  g.setAttribute("class", "hatches");
+  for (const k of keys) {
+    if (!HATCHED.includes(codeOf(map.towns[k]))) continue;
+    const p = document.createElementNS(ns, "path");
+    p.setAttribute("d", geo.towns[k].d);
+    p.setAttribute("fill-rule", "evenodd");
+    p.setAttribute("fill", "url(#mc-hatch)");
+    p.setAttribute("class", "hatch");
+    g.appendChild(p);
+  }
+  return g;
+}
+
+function mapFigure(parent, main, data, o, ns, mapState) {
   const sec = add(el("section", "map"), el("h2", "", "The map"));
   add(parent, sec);
-  if (!mapOk(data.map, data.towns)) {
-    add(sec, part(el("p", "map-failed", TEXT.mapFailed), "map-failed"));
+  if (mapState !== "ok") {
+    const pending = mapState === "pending";
+    add(sec, part(el("p", pending ? "map-wait" : "map-failed", pending ? TEXT.mapLoading : TEXT.mapFailed), pending ? "map-wait" : "map-failed"));
     return;
   }
   const map = data.map.json, geo = data.towns.json;
@@ -156,12 +205,16 @@ function mapFigure(parent, main, data, o, ns) {
     g.appendChild(p);
   }
   svg.appendChild(g);
+  svg.appendChild(hatchLayer(svg, ns, geo, map, keys));
   svg.addEventListener("click", (e) => {
     const k = e.target && e.target.getAttribute && e.target.getAttribute("data-town");
     if (k) open(k);
   });
   const legend = el("ul", "legend");
-  for (const l of legendView(map)) add(legend, add(el("li", "", ""), el("span", "sw " + l.cls), el("span", "lt", l.text), el("span", "lc", String(l.count))));
+  for (const l of legendView(map)) {
+    add(legend, add(el("li", "", ""), el("span", "sw " + l.cls + (HATCHED.includes(l.code) ? " hatched" : "")),
+      el("span", "lt", l.text), el("span", "lc", String(l.count))));
+  }
   const cap = add(el("figcaption"), el("p", "cap", "The 351 towns by source status" +
     (map.as_of && map.as_of.source_health ? ", as of " + when(map.as_of.source_health) : "") + ". Tap a town for its facts."),
   legend, el("p", "attr", TEXT.attribution));
@@ -173,13 +226,13 @@ function mapFigure(parent, main, data, o, ns) {
     const on = listBox.hidden;
     listBox.hidden = !on;
     toggle.setAttribute("aria-pressed", on ? "true" : "false");
-    toggle.textContent = on ? "Show the map" : "Show as list";
     fig.hidden = on;
     if (on && !listBox.firstChild) {
       for (const grp of listGroups(map, keys)) {
         const ul = el("ul", "towns-in");
         for (const k of grp.towns) add(ul, add(el("li"), button(k, "town", () => open(k))));
-        add(listBox, add(el("details", "grp"), add(el("summary"), el("span", "sw " + grp.cls), el("span", "", grp.text + " (" + grp.count + ")")), ul));
+        const sw = el("span", "sw " + grp.cls + (HATCHED.includes(grp.code) ? " hatched" : ""));
+        add(listBox, add(el("details", "grp"), add(el("summary"), sw, el("span", "", grp.text + " (" + grp.count + ")")), ul));
       }
     }
   });
@@ -187,9 +240,9 @@ function mapFigure(parent, main, data, o, ns) {
   add(sec, toggle, listBox);
 }
 
-function sections(parent, main, map, o) {
+function sections(parent, main, map, o, mapState) {
   const wrap = add(el("div", "sections"));
-  for (const s of sectionsView(main, map)) {
+  for (const s of sectionsView(main, map, mapState)) {
     const d = el("details", "sec");
     d.setAttribute("data-section", s.id);
     add(d, add(el("summary"), el("h2", "", s.title)));
@@ -211,33 +264,43 @@ function sections(parent, main, map, o) {
   add(parent, wrap);
 }
 
-function footer(app, o) {
-  add(app, add(el("footer", "foot"), link("Pipeline", "/admin/pipeline", o), el("span", "", " · "), link("Now", "/admin/now", o)));
+function footer(f, o) {
+  f.replaceChildren(link("Pipeline", "/admin/pipeline", o), el("span", "", " · "), link("Now", "/admin/now", o));
 }
 
-// render(root, {main, map, towns}, {now, onRefresh, onEdit, inert})
-// main/map/towns: {status, json} or null while loading.
+// render(root, {main, map, towns}, {now, onRefresh, onEdit, inert, stale})
+// main/map/towns: {status, json}, or null while that request is in flight.
+// stale: the time of the render being kept after a refresh failed.
 export function render(root, data, o) {
   const find = (id) => document.getElementById(id);
   const app = find("app"), setup = find("setup-needed"), ns = find("svg-ns").namespaceURI;
   const scr = screenOf(data.main);
   setup.hidden = scr !== "setup";
-  app.replaceChildren();
   root.setAttribute("data-screen", scr);
-  if (scr === "setup") return;
-  const main = scr === "ok" ? data.main.json : null;
-  masthead(app, main, o);
-  const body = el("main", "body");
-  add(app, body);
-  if (scr !== "ok") {
-    add(body, part(el("p", "notice", scr === "loading" ? TEXT.loading : scr === "not-owner" ? TEXT.notOwner : TEXT.cannotRead), "notice"));
-    footer(app, o);
+  if (scr === "setup") {
+    app.replaceChildren();
+    shells.delete(app);
     return;
   }
-  headline(body, headlineView(main.headline));
-  glance(body, tilesView(main.tiles));
-  mapFigure(body, main, data, o, ns);
-  needs(body, needsView(main.needs_you || []));
-  sections(body, main, mapOk(data.map, data.towns) ? data.map.json : null, o);
-  footer(app, o);
+  const s = shell(app);
+  const main = scr === "ok" ? data.main.json : null;
+  masthead(s.header, main, o);
+  footer(s.foot, o);
+  const next = el("div");
+  if (scr === "loading") {
+    say(s, "h-wait", "", TEXT.loading);
+    glance(next, loadingTiles(), true);
+  } else if (scr !== "ok") {
+    say(s, "h-error", "", scr === "not-owner" ? TEXT.notOwner : TEXT.cannotRead);
+  } else {
+    const hv = headlineView(main.headline);
+    say(s, hv.cls, hv.word, hv.text);
+    if (o.stale) add(next, part(el("p", "stale", staleNote(o.stale)), "stale"));
+    const mapState = mapOk(data.map, data.towns) ? "ok" : !data.map || !data.towns ? "pending" : "failed";
+    glance(next, tilesView(main.tiles));
+    mapFigure(next, main, data, o, ns, mapState);
+    needs(next, needsView(main.needs_you || []));
+    sections(next, main, mapState === "ok" ? data.map.json : null, o, mapState);
+  }
+  s.content.replaceChildren(...next.childNodes);
 }

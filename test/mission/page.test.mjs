@@ -11,7 +11,6 @@ const read = (p) => fs.readFileSync(path.join(H.REPO, p), "utf8");
 const git = (...a) => execFileSync("git", a, { cwd: H.REPO, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
 const PAGE = ["admin/mission.html", "admin/mission-app.js", "admin/mission-render.js", "admin/mission-view.js", "admin/mission-app.css"];
 const ALL = [...PAGE, "admin/mission-towns.json"];
-const BASE = "origin/claude/mission-control";
 
 test("P2-2 admin/mission-towns.json is the seed geometry byte for byte: SHA-256 and 351 towns", () => {
   const buf = fs.readFileSync(path.join(H.REPO, "admin/mission-towns.json"));
@@ -76,7 +75,8 @@ test("P2-3 only mission-app.js makes a request", () => {
 });
 
 test("P2-5 _headers gains exactly the /admin/mission block, outside the widget block", () => {
-  const before = git("show", BASE + ":_headers");
+  // against main (not the design base, which carries the block itself from P3 on)
+  const before = git("show", git("merge-base", "origin/main", "HEAD").trim() + ":_headers");
   const now = read("_headers");
   const block = [
     "/admin/mission",
@@ -146,17 +146,22 @@ test("P2-11 system fonts only: no font file, no @font-face, no @import, no url("
   assert.ok(css.includes("ui-serif, Georgia"), "the serif system stack of direction C");
 });
 
-test("P2-12 branch hygiene: only P2 files, test/mission/ files and the demo differ from claude/mission-control", () => {
-  let base;
-  try { base = git("merge-base", BASE, "HEAD").trim(); } catch (_) { base = null; }
-  assert.ok(base, "no " + BASE + " ref to compare against");
-  const tracked = git("diff", "--name-only", base).split("\n").filter(Boolean);
+// P2-12 as it stands after P3: the P2 work (merged from design C) and the P3
+// polish changed only page files, the editor, _headers and test/mission/
+// files since the P1 tip, no P1 non-test file, and nothing under docs/.
+const P1_TIP = "714bc2c85bfe04f4b27736a2afd32a60eceaa18b";
+test("P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ files changed; nothing under docs/", () => {
+  let tip;
+  try { tip = git("rev-parse", "--verify", "--quiet", P1_TIP + "^{commit}").trim(); } catch (_) { tip = null; }
+  assert.ok(tip, "the P1 tip commit is not in this clone");
+  const tracked = git("diff", "--name-only", tip).split("\n").filter(Boolean);
   const untracked = git("ls-files", "--others", "--exclude-standard").split("\n").filter(Boolean);
   const changed = [...new Set([...tracked, ...untracked])].sort();
+  const mainOnly = git("diff", "--name-only", tip, git("merge-base", "origin/main", "HEAD").trim()).split("\n").filter(Boolean);
   const ok = (p) => ALL.includes(p) || p === "_headers" || p === "functions/admin/api/mission-outreach.js" ||
-    p === "docs/mission/demo.html" || /^test\/mission\/[A-Za-z0-9_-]+\.(test\.)?mjs$/.test(p);
+    /^test\/mission\/[A-Za-z0-9_-]+\.(test\.)?mjs$/.test(p) || mainOnly.includes(p);
   assert.deepEqual(changed.filter((p) => !ok(p)), []);
   for (const p1 of ["functions/api/_owner_gate.js", "functions/api/_mission_r2.js", "functions/api/_mission_stripe.js",
     "functions/api/_mission_data.js", "functions/admin/api/mission.js"]) assert.ok(!changed.includes(p1), p1 + " changed");
-  assert.deepEqual(changed.filter((p) => p.startsWith("docs/")), ["docs/mission/demo.html"]);
+  assert.deepEqual(changed.filter((p) => p.startsWith("docs/") && !mainOnly.includes(p)), []);
 });
