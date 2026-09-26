@@ -56,11 +56,11 @@ export async function onRequest(context) {
       const fresh = age < 8 * 86400_000;
       if (!fresh) {
         return json({ ok: false, error: "data refresh is stale (last: " +
-          (status.ran_at || "never") + ") — send aborted so this fails visibly" }, 500);
+          (status.ran_at || "never") + "), send aborted so this fails visibly" }, 500);
       }
       if (status.ok === false && !status.degraded) {
         return json({ ok: false, error: "last refresh FAILED (" +
-          (status.error || "unknown") + ") — send aborted so this fails visibly" }, 500);
+          (status.error || "unknown") + "), send aborted so this fails visibly" }, 500);
       }
       // Disclosure is keyed on coverage.disclose, NOT on `degraded`. After the
       // source rebuild a scrape can be perfectly healthy against what we now
@@ -190,14 +190,14 @@ async function sendEmail(env, to, name, b64, token, coverage) {
     ? '<p style="margin:18px 0"><a href="https://masspermits.com/api/my-leads?t=' + token + '" ' +
       'style="background:#0e7c6b;color:#fff;font-weight:700;padding:11px 20px;border-radius:8px;' +
       'text-decoration:none;display:inline-block">Download this week\'s leads &rarr;</a></p>' +
-      '<p style="color:#667;font-size:12.5px">Attachment not showing? Use the button above — same file, ' +
+      '<p style="color:#667;font-size:12.5px">Attachment not showing? Use the button above. Same file, ' +
       'straight from masspermits.com. Add leads@masspermits.com to your contacts so it always reaches your inbox.</p>'
     : "";
   // Stated ABOVE the file, not buried under it. A subscriber should learn what
   // is missing from us, in the same email — not by counting rows themselves.
   const note = coverage ? (
     '<div style="background:#fff8e1;border:1px solid #f0b429;border-radius:10px;padding:14px 16px;margin:0 0 18px">' +
-    '<p style="margin:0 0 8px;font-weight:700;color:#8a5a00">Reduced coverage this week — please read</p>' +
+    '<p style="margin:0 0 8px;font-weight:700;color:#8a5a00">Reduced coverage this week: please read</p>' +
     `<p style="margin:0 0 8px;color:#5c4300;font-size:14px">This file covers <b>${coverage.live_sources || "fewer"} of ` +
     `${coverage.expected_sources || "our usual"}</b> town sources. On 1 August a large group of towns ` +
     'dropped out of our coverage. ' +
@@ -223,18 +223,18 @@ async function sendEmail(env, to, name, b64, token, coverage) {
     '<h2 style="color:#0e7c6b">This week\'s MassPermits leads 📋</h2>' +
     note +
     `<p>Hi${first}, your building-permit leads for the week are attached.</p>` +
-    '<p><b>Open MassPermits-Leads.html</b> in any browser — interactive dashboard: live charts, ' +
+    '<p><b>Open MassPermits-Leads.html</b> in any browser. It is an interactive dashboard: live charts, ' +
     'filter by trade &amp; town, look up any contractor\'s active jobs, and click any permit for the ' +
     'full record. CSVs included too.</p>' +
     dl +
     '<p style="color:#667;font-size:13px">Sourced from public municipal building-permit records. ' +
-    'Just reply with any questions.<br>— MassPermits · masspermits.com</p></div>';
+    'Just reply with any questions.<br>MassPermits · masspermits.com</p></div>';
   const resp = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       from: env.FROM_EMAIL, to: [to],
-      subject: coverage ? "Your weekly MassPermits leads — reduced coverage, please read"
+      subject: coverage ? "Your weekly MassPermits leads: reduced coverage, please read"
                         : "Your weekly MassPermits leads",
       html,
       attachments: [{ filename: `MassPermits-weekly-${d}.zip`, content: b64 }],

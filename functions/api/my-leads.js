@@ -77,7 +77,7 @@ export async function onRequestGet(context) {
     const so = await env.BUNDLES.get("subscribers.json");
     if (so) subs = JSON.parse(await so.text());
   } catch (_) {
-    return new Response("Temporarily unavailable — please try the emailed attachment.", { status: 503 });
+    return new Response("Temporarily unavailable. Please try the emailed attachment.", { status: 503 });
   }
 
   const sub = (subs || []).find((s) => s && s.token === token && s.active !== false);
@@ -108,7 +108,7 @@ export async function onRequestGet(context) {
     // in the system can see this: no send failed, no log recorded it, and the
     // customer just saw a 404 where the thing they pay for should have been.
     wait(logEvent(env, request, { r: "no_file", t: token.slice(0, 8), k: want }));
-    return new Response("This week's file isn't ready yet — check back shortly.", { status: 404 });
+    return new Response("This week's file isn't ready yet. Check back shortly.", { status: 404 });
   }
 
   const d = new Date().toISOString().slice(0, 10);

@@ -516,7 +516,7 @@ export function buildDigest(result, subs) {
     return `<li style="margin:0 0 10px"><b>${who}</b><br>
       <span style="color:#445;font-size:13px">${bits.join(" &middot; ")}</span><br>
       <span style="font-size:13px">Do: <b>${esc(r.action)}</b>${
-        r.blame === "us" ? ' &mdash; <b style="color:#b45309">this one is ours, not theirs</b>' : ""
+        r.blame === "us" ? ' (<b style="color:#b45309">this one is ours, not theirs</b>)' : ""
       }</span></li>`;
   };
 
@@ -528,7 +528,7 @@ export function buildDigest(result, subs) {
        about customers.</p>` : "";
 
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:620px;color:#0e1622">
-    <h2 style="color:#0e7c6b">Subscriber lifecycle &mdash; week of ${esc(result.due_at.slice(0, 10))}</h2>
+    <h2 style="color:#0e7c6b">Subscriber lifecycle, week of ${esc(result.due_at.slice(0, 10))}</h2>
     ${head}
     <p style="color:#445;font-size:14px">${result.rows.length} subscriber(s).
     ${STATES.filter((s) => result.counts[s]).map((s) => `${result.counts[s]} ${esc(s)}`).join(", ") || "none classified"}.</p>
@@ -539,7 +539,7 @@ export function buildDigest(result, subs) {
     <p style="color:#667;font-size:12.5px;margin-top:22px">
     With ${result.rows.length} subscriber(s) this is a per-customer tripwire, not a statistic.
     Do not quote a percentage, a rate or a trend from it until there are 15 active subscribers.
-    <br>A <b>never-downloaded</b> row means "never used the link" &mdash; the Monday email also
+    <br>A <b>never-downloaded</b> row means "never used the link". The Monday email also
     carries the ZIP as an attachment, so an attachment-only user records zero downloads and
     looks dead. Ask before concluding.</p></div>`;
 

@@ -106,14 +106,14 @@ async function sendTownSample(env, to, town) {
     <p><b>The paid Radar adds the full street address,</b> plus the name on the permit where the town published
     one (not always the owner). It arrives every Monday. That's your door-knock list and postcard file.</p>
     <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:18px 0;text-align:center">
-      <p style="margin:0 0 10px;font-weight:600">Farm Town Permit Radar — $49/mo, no contract</p>
+      <p style="margin:0 0 10px;font-weight:600">Farm Town Permit Radar: $49/mo, no contract</p>
       <a href="${RADAR_LINK}" style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start your free 7-day trial →</a>
       <p style="margin:10px 0 0;font-size:12px;color:#667">Cancel anytime · SmartZip charges $396 setup + a 12-month contract for AI guesses. This is the actual permit record.</p>
     </div>
     <p style="color:#667;font-size:13px">Also useful: this week's <a href="https://masspermits.com/report/" style="color:#0e7c6b">MA Building Activity Report</a>
     and the live <a href="https://masspermits.com/permits/${slug}" style="color:#0e7c6b">${escH(town)} permit page</a>.
-    Questions? Just reply — a real person reads these.</p>
-    <p style="color:#9aa;font-size:12px">— MassPermits · masspermits.com · public municipal permit records<br>
+    Questions? Just reply. A real person reads these.</p>
+    <p style="color:#9aa;font-size:12px">MassPermits · masspermits.com · public municipal permit records<br>
     Don't want these emails? Reply "stop" and you're out.</p></div>`;
 
   const resp = await fetch("https://api.resend.com/emails", {
@@ -121,7 +121,7 @@ async function sendTownSample(env, to, town) {
     headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       from: env.FROM_EMAIL, to: [to],
-      subject: `Your ${scope === town ? town : "MA"} permit sample — Farm Town Permit Radar`,
+      subject: `Your ${scope === town ? town : "MA"} permit sample from Farm Town Permit Radar`,
       html,
       attachments: [{ filename: `MassPermits-${slug || "ma"}-sample.csv`, content: b64 }],
     }),

@@ -180,7 +180,7 @@ function index(cube) {
     ],
     bulk: {
       description: "Every answer this API gives is a slice of one public file. If you want "
-        + "all of it, take the file — it is smaller than paginating for it.",
+        + "all of it, take the file: it is smaller than paginating for it.",
       url: cube.evidence,
       schema: cube.schema,
     },
@@ -210,7 +210,7 @@ function terms(cube) {
       + "the `as_of` date together: the figure is only true as of that date.",
       "3. Caveats travel with the figures. Each response carries a `caveats` array whose "
       + "entries are emitted by computed conditions, not written in advance. If you "
-      + "republish a number, republish the caveats attached to it — in particular "
+      + "republish a number, republish the caveats attached to it, in particular "
       + "`row_cap` and `not_a_census`, which change what the number means.",
       "4. Coverage. This is a collection, not a census. "
       + cube.corpus.sources_returning_rows + " municipal sources of "
@@ -481,7 +481,7 @@ function valueBands(cube, p) {
   if (p.town !== undefined && p.region !== undefined) {
     bail(problem(400, "Contradictory grain",
       "town and region are alternative geographies. Value statistics are stored at a fixed "
-      + "set of grains and are computed exactly at each — they are never summed out of "
+      + "set of grains and are computed exactly at each. They are never summed out of "
       + "smaller cells, because summing cells that were individually suppressed undercounts "
       + "silently.",
       { code: "bad-grain", grains: cube.value_grains }));
@@ -521,7 +521,7 @@ function valueBands(cube, p) {
     caveats.push({
       code: "sparse_valuation",
       message: "Only some municipalities in scope publish a declared value at all. The "
-        + "distribution below describes the permits that carry one — it is not a sample of "
+        + "distribution below describes the permits that carry one. It is not a sample of "
         + "all permits in scope, and the towns that publish no value are absent entirely.",
       sources_in_scope: scopeSources.size,
       sources_publishing_value: valuedSources,
@@ -567,7 +567,7 @@ function valueBands(cube, p) {
     permits_in_scope: inScope,
     valued_share_of_scope: inScope ? round4(n / inScope) : null,
     definition: VALUE_DEF,
-    percentile_convention: "value at index floor(q * n) of the sorted values — the same "
+    percentile_convention: "value at index floor(q * n) of the sorted values, the same "
       + "convention the site's cost pages use, so the two agree when built from one corpus",
   }, { caveats, coverage: coverageBlock(cube, scopeSources.size) });
 }
@@ -673,7 +673,7 @@ function openapi(cube) {
           description:
             "Counts are bucketed by ISO week (named by the Monday). `from`/`to` widen to the "
             + "weeks they intersect and the effective window is returned.\n\n"
-            + "When a `trade` filter is set, each group also carries `share_within_source` — "
+            + "When a `trade` filter is set, each group also carries `share_within_source`, "
             + "that trade's share of the group's own permits. **That share is the comparable "
             + "figure.** Raw counts differ between towns mostly because publication differs, "
             + "so ranking towns by `permits` measures this pipeline rather than Massachusetts.",

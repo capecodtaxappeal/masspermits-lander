@@ -11,7 +11,7 @@ export async function onRequestGet(context) {
   const { env } = context;
   try {
     const file = await env.BUNDLES.get("latest-sample.zip");
-    if (!file) return new Response("Sample not available yet — email hello@masspermits.com.", { status: 404 });
+    if (!file) return new Response("Sample not available yet. Email hello@masspermits.com.", { status: 404 });
     return new Response(file.body, {
       headers: {
         "Content-Type": "application/zip",

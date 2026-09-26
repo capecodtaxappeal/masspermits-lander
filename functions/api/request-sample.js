@@ -78,7 +78,7 @@ async function notifyOwner(env, email, trade, area) {
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   await send(env, OWNER_EMAIL, `Free-sample request: ${trade || "Building"} / ${area || "all"}`,
     wrap(`<p><b>${esc(email)}</b> requested a free sample on masspermits.com.</p>
-      <p>Trade: <b>${esc(trade || "—")}</b> &nbsp; Area: <b>${esc(area || "—")}</b></p>
+      <p>Trade: <b>${esc(trade || "(none)")}</b> &nbsp; Area: <b>${esc(area || "(none)")}</b></p>
       <p>They already got the masked sample + are in the nurture drip. Reply from your
       inbox if you want to follow up personally.</p>`));
 }
@@ -87,28 +87,28 @@ async function sendSample(env, to, trade) {
   const t = trade && trade !== "all" && trade !== "Other" ? trade : "your trade";
   const html = wrap(`
     <h2 style="color:#0e7c6b">Your MassPermits sample file 📋</h2>
-    <p>Around a thousand recent Massachusetts building permits, ~45 towns and every trade —
-    open it and filter to ${t}. (The $99/mo feed is the fresh weekly cut, unmasked; this
+    <p>Around a thousand recent Massachusetts building permits, ~45 towns and every trade.
+    Open it and filter to ${t}. (The $99/mo feed is the fresh weekly cut, unmasked; this
     sample is so you can judge the format and the data quality first.)</p>
     <p style="margin:16px 0"><a href="https://masspermits.com/api/sample"
       style="color:#0e7c6b;font-weight:700;font-size:15px">↓ Download the free sample</a>
-      &nbsp;— open MassPermits-Leads.html in any browser (names &amp; street numbers masked in the free one).</p>
+      &nbsp;Open MassPermits-Leads.html in any browser (names &amp; street numbers masked in the free one).</p>
     <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:18px 0;text-align:center">
       <p style="margin:0 0 10px;font-weight:600;color:#0e1622">Want it fresh every Monday, automatically?</p>
       <a href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01"
-        style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start the Weekly Feed — $99/mo →</a>
+        style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start the Weekly Feed: $99/mo →</a>
       <p style="margin:10px 0 0;font-size:12px;color:#667">Cancel anytime · full refund if month one doesn't pay for itself</p>
     </div>
-    <p style="color:#667">This batch goes stale in a week — permits are a flow, not a list.
+    <p style="color:#667">This batch goes stale in a week: permits are a flow, not a list.
     The $99/mo feed unlocks every name &amp; address, fresh weekly; a single $49 pack is one
-    week only. Any questions, just reply — a real person reads these.</p>`);
-  await send(env, to, "Your MassPermits sample file — " + t, html);
+    week only. Any questions, just reply. A real person reads these.</p>`);
+  await send(env, to, "Your MassPermits sample file: " + t, html);
 }
 
 function wrap(inner) {
   return `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
     ${inner}
-    <p style="color:#9aa;font-size:12px;margin-top:26px">— MassPermits · masspermits.com · public municipal permit records<br>
+    <p style="color:#9aa;font-size:12px;margin-top:26px">MassPermits · masspermits.com · public municipal permit records<br>
     Don't want these emails? Just reply "stop" and you're out.</p></div>`;
 }
 

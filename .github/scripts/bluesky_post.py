@@ -53,10 +53,10 @@ def build_post():
     link_text = f"masspermits.com/permits/{slug}"
     url = f"https://masspermits.com/permits/{slug}"
     text = (f"\U0001F3D7️ {count} recent building permits in {town}, MA "
-            f"({trade} & more) — each one a homeowner just approved to spend on "
+            f"({trade} & more), each one a homeowner just approved to spend on "
             f"their property, the earliest lead a contractor can get. Full list: ")
     if len(text) + len(link_text) > 295:  # Bluesky ~300-char limit
-        text = f"\U0001F3D7️ {count} recent building permits in {town}, MA — fresh contractor leads: "
+        text = f"\U0001F3D7️ {count} recent building permits in {town}, MA. Fresh contractor leads: "
     return text, link_text, url, town, count
 
 

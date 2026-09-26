@@ -77,7 +77,7 @@ export async function onRequestPost(context) {
                  .toISOString().slice(0, 10)}`
              : ", no further automatic retry scheduled"}.</p>
          <p>Subscriber record ${marked ? "flagged <code>payment_failing</code>" :
-           "<b>NOT FOUND</b> — no record matched this customer id or email, so nothing was flagged"}.</p>
+           "<b>NOT FOUND</b>: no record matched this customer id or email, so nothing was flagged"}.</p>
          <p style="color:#667;font-size:13px">They are still receiving the weekly feed. That is
          deliberate: one decline is usually an expired card. If Stripe gives up it will send
          customer.subscription.deleted and they are deactivated automatically.</p></div>`);
@@ -118,7 +118,7 @@ export async function onRequestPost(context) {
       await flagPaymentIssue(env, cust, who,
         { radar: event.type, at: new Date().toISOString() });
       await notifyOwner(env,
-        `HOLD — ${label}: ${who || cust || "unknown customer"}`,
+        `HOLD (${label}): ${who || cust || "unknown customer"}`,
         `<div style="font-family:sans-serif;max-width:560px">
          <h2 style="color:#b91c1c">${escapeHtml(label)}</h2>
          <p><b>${escapeHtml(who || "(no email on the event)")}</b>${
@@ -126,11 +126,11 @@ export async function onRequestPost(context) {
          <p>Stripe event <code>${escapeHtml(event.type)}</code>${
            o.reason ? ` &middot; reason <b>${escapeHtml(String(o.reason))}</b>` : ""}.</p>
          <p>${stopped ? `<b>Weekly feed STOPPED</b> for ${stopped} subscriber record(s).`
-                      : "<b>No subscriber record matched</b>, so nothing was stopped — " +
-                        "this may be a one-time pack buyer, who is not on the feed."}</p>
+                      : "<b>No subscriber record matched</b>, so nothing was stopped. " +
+                        "This may be a one-time pack buyer, who is not on the feed."}</p>
          <p style="color:#667;font-size:13px">Nothing further ships to them until you decide.
          If the payment is legitimate, set <code>active: true</code> on their row in
-         subscribers.json — or, for a review, approving it in Stripe sends review.closed.
+         subscribers.json. For a review, approving it in Stripe sends review.closed.
          If a bundle had already been emailed before this event arrived, it is out; this
          stops everything after it.</p></div>`);
       return json({ ok: true, held: event.type, stopped });
@@ -182,7 +182,7 @@ export async function onRequestPost(context) {
       if (!known) {
         return json({ ok: true, skipped: event.type,
                       note: "zero-amount invoice for an email that is not an active " +
-                            "MassPermits subscriber — not ours" });
+                            "MassPermits subscriber, so not ours" });
       }
     }
 
@@ -520,7 +520,7 @@ async function sendEmail(env, to, kind, ref, bytes, filename, myCode, dlToken) {
                 text-decoration:none;font-weight:700;display:inline-block">
          Download your leads &rarr;</a></p>
        <p style="color:#667;font-size:13px;margin:-6px 0 0">Private link tied to your
-       subscription — keep it, it always serves the current file. Use it if the
+       subscription. Keep it: it always serves the current file. Use it if the
        attachment below is missing or your mail system stripped it.</p>`
     : `<p style="color:#667;font-size:13px">If the attachment did not arrive, just reply to
        this email and I will send you a direct download link.</p>`;
@@ -531,7 +531,7 @@ async function sendEmail(env, to, kind, ref, bytes, filename, myCode, dlToken) {
       <div style="background:#f2fbf8;border:1px solid #b9e8dc;border-radius:10px;padding:14px 16px;margin:18px 0">
         <p style="margin:0 0 6px;font-weight:700;color:#0e7c6b">Give a month, get a month 🤝</p>
         <p style="margin:0;font-size:14px;color:#334">Know another contractor who'd use these leads?
-        Send them your link — when they subscribe, you both get a month of the weekly feed free:</p>
+        Send them your link. When they subscribe, you both get a month of the weekly feed free:</p>
         <p style="margin:8px 0 0"><a href="https://masspermits.com/r/${myCode}"
           style="color:#0e7c6b;font-weight:700">masspermits.com/r/${myCode}</a></p>
       </div>` : "";
@@ -541,11 +541,11 @@ async function sendEmail(env, to, kind, ref, bytes, filename, myCode, dlToken) {
       <p>Thanks for your order. Here is ${human} building-permit lead bundle.</p>
       ${dl}
       ${refLine}
-      <p>Unzip it, then <b>open <code>MassPermits-Leads.html</code></b> in any browser — it's a full interactive dashboard: live charts, search &amp; filter by trade &amp; town, sort by project value, look up any contractor's active jobs, and click any permit for the complete record. The CSVs are included too (one master + one per trade).</p>
+      <p>Unzip it, then <b>open <code>MassPermits-Leads.html</code></b> in any browser. It's a full interactive dashboard: live charts, search &amp; filter by trade &amp; town, sort by project value, look up any contractor's active jobs, and click any permit for the complete record. The CSVs are included too (one master + one per trade).</p>
       ${shareBlock}
       <p style="color:#667;font-size:13px">Sourced from public municipal building-permit records.<br>
       Questions? Just reply to this email.</p>
-      <p style="color:#9aa;font-size:12px">— MassPermits · masspermits.com</p>
+      <p style="color:#9aa;font-size:12px">MassPermits · masspermits.com</p>
     </div>`;
   const b64 = base64(bytes);
   const resp = await fetch("https://api.resend.com/emails", {

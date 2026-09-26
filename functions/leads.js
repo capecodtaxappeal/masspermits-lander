@@ -77,7 +77,7 @@ export async function onRequestGet(context) {
     if (t) return redirect("/api/my-leads?t=" + t); // straight to the ZIP
     return page(503, "The leads portal is paused",
       "<p>" + esc(kill.message || "We have paused this page for maintenance.") + "</p>" +
-      "<p>Your leads are unaffected — use the <b>Download your leads</b> button in your " +
+      "<p>Your leads are unaffected. Use the <b>Download your leads</b> button in your " +
       "latest MassPermits email, which always serves the current file.</p>");
   }
 
@@ -182,7 +182,7 @@ async function renderPortal(context, token, sub) {
     logAccess(context, token, "red");
     return page(200, "This week's data has not refreshed",
       "<p>" + (red.days === null
-        ? "We cannot confirm how old this data is — the refresh record is missing."
+        ? "We cannot confirm how old this data is: the refresh record is missing."
         : "This data is <b>" + red.days + " days old</b> and we have not been able to refresh it.") +
       " <b>Do not work from this page.</b> Reply to your last email and we will sort it out.</p>" +
       "<p class=\"mp-dim\">Your rows are hidden deliberately. Stale permit records look " +
@@ -202,7 +202,7 @@ async function renderPortal(context, token, sub) {
   if (Number.isFinite(tHtml) && Number.isFinite(tZip) && Math.abs(tHtml - tZip) > DRIFT_MS) {
     notes.push("<p><b>This page and your download may disagree.</b> They were published " +
       minutesApart(tHtml, tZip) + " apart, so they did not come from the same run. " +
-      "<b>The download is authoritative</b> — use the button in your email.</p>");
+      "<b>The download is authoritative</b>. Use the button in your email.</p>");
   }
   const cov = status && status.coverage ? status.coverage : null;
   if ((cov && cov.disclose) || (status && status.degraded)) {
@@ -212,7 +212,7 @@ async function renderPortal(context, token, sub) {
     // not just lose a feature, it deletes the disclosure. Honesty regression,
     // not a UX one. The refund offer is carried across verbatim in substance.
     notes.push(
-      "<p><b>Reduced coverage — please read.</b> This file covers <b>" +
+      "<p><b>Reduced coverage: please read.</b> This file covers <b>" +
       esc(num(cov && cov.live_sources, "fewer")) + " of " +
       esc(num(cov && cov.expected_sources, "our usual")) +
       "</b> town sources. On 1 August our largest upstream provider closed public " +
@@ -419,10 +419,10 @@ async function inactivePage(env, hadCookie) {
     : "";
   return page(403, "Your MassPermits subscription has ended",
     headline +
-    "<p>Your leads are still being collected every week — they are just not yours to " +
+    "<p>Your leads are still being collected every week. They are just not yours to " +
     "open right now.</p>" +
     "<p><a class=\"mp-cta\" href=\"" + RESUB + "\">Resubscribe &rarr;</a></p>" +
-    "<p class=\"mp-dim\">If you think this is wrong — you paid and this still says ended — " +
+    "<p class=\"mp-dim\">If you think this is wrong (you paid and this still says ended), " +
     "reply to your last email and we will fix it the same day.</p>",
     hadCookie ? { "Set-Cookie": clearCookie() } : null);
 }
@@ -502,7 +502,7 @@ function redirect(location) {
 // my-leads.js verbatim, including the pointer at the emailed attachment.
 function unavailable() {
   return page(503, "Temporarily unavailable",
-    "<p>Temporarily unavailable — please try the emailed attachment.</p>" +
+    "<p>Temporarily unavailable. Please try the emailed attachment.</p>" +
     "<p class=\"mp-dim\">This is a problem on our side, not with your subscription. " +
     "The <b>Download your leads</b> button in your email is unaffected.</p>");
 }

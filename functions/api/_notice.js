@@ -116,7 +116,7 @@ export function nothingThisWeek({ first_name = "", reason_code = "", eta = "" } 
     'the week. No argument.</p>' +
     '<p>We would rather tell you than send you last week\'s permits with a new date on them.</p>' +
     '<p style="color:#667;font-size:13px">Just reply with any questions.<br>' +
-    '&mdash; MassPermits &middot; masspermits.com</p></div>';
+    'MassPermits &middot; masspermits.com</p></div>';
 
   return { subject: "No MassPermits file this week, and why", html };
 }

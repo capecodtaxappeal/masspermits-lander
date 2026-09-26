@@ -203,12 +203,12 @@ export async function onRequestGet(context) {
               `${h1(-zipAhead)} h before its status: the bundle upload did not land`);
   }
   if (Number.isFinite(tZip) && now - tZip > STALE_MS) {
-    bad.push(`latest-weekly.zip is ${Math.floor((now - tZip) / 86400_000)} days old — ` +
+    bad.push(`latest-weekly.zip is ${Math.floor((now - tZip) / 86400_000)} days old: ` +
              "the download customers are emailed is stale");
   }
   if (portalState === "stale") bad.push("the portal page is stale and is hiding customers' rows");
   if (portalState === "drift") warn.push(`portal page and download published ${drift} min apart`);
-  if (portalState === "not_published") warn.push("portal page not published — /leads falls back to the download");
+  if (portalState === "not_published") warn.push("portal page not published, so /leads falls back to the download");
   if (refresh.degraded) warn.push("the refresh reported itself degraded");
   if (coverage.disclose) {
     warn.push(`reduced coverage disclosed to customers: ${coverage.live_sources} of ` +

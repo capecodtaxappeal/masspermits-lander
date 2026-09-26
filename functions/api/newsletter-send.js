@@ -23,9 +23,9 @@ export async function onRequest(context) {
     const st = await env.BUNDLES.get("refresh-status.json");
     if (st) {
       const status = JSON.parse(await st.text());
-      if (status.ok === false) return json({ ok: false, error: "last refresh FAILED — digest aborted" }, 500);
+      if (status.ok === false) return json({ ok: false, error: "last refresh FAILED: digest aborted" }, 500);
       const age = Date.now() - Date.parse(status.ran_at || 0);
-      if (!(age < 8 * 86400_000)) return json({ ok: false, error: "data stale — digest aborted" }, 500);
+      if (!(age < 8 * 86400_000)) return json({ ok: false, error: "data stale: digest aborted" }, 500);
     }
 
     // confirmed readers (metadata only)
@@ -60,7 +60,7 @@ export async function onRequest(context) {
     let payers;
     try {
       const so = await env.BUNDLES.get("subscribers.json");
-      if (!so) return json({ ok: false, error: "subscribers.json missing — digest aborted rather than risk mailing a paying customer" }, 500);
+      if (!so) return json({ ok: false, error: "subscribers.json missing: digest aborted rather than risk mailing a paying customer" }, 500);
       const subs = JSON.parse(await so.text());
       if (!Array.isArray(subs)) throw new Error("subscribers.json is not an array");
       payers = new Set(
@@ -68,7 +68,7 @@ export async function onRequest(context) {
             .map(s => String(s.email).trim().toLowerCase())
       );
     } catch (e) {
-      return json({ ok: false, error: "subscribers.json unreadable (" + String(e && e.message || e).slice(0, 80) + ") — digest aborted rather than risk mailing a paying customer" }, 500);
+      return json({ ok: false, error: "subscribers.json unreadable (" + String(e && e.message || e).slice(0, 80) + "): digest aborted rather than risk mailing a paying customer" }, 500);
     }
 
     const before = readers.length;
@@ -77,7 +77,7 @@ export async function onRequest(context) {
     readers.length = 0;
     readers.push(...kept);
     if (!readers.length) {
-      return json({ ok: true, note: "every confirmed reader is a paying subscriber — nothing to send", suppressed });
+      return json({ ok: true, note: "every confirmed reader is a paying subscriber, so there is nothing to send", suppressed });
     }
 
     // digest content from our own public feed
@@ -162,7 +162,7 @@ function buildDigest(items, meta) {
 }
 
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const money = v => { try { return "$" + Number(v).toLocaleString("en-US", { maximumFractionDigits: 0 }); } catch { return "—"; } };
+const money = v => { try { return "$" + Number(v).toLocaleString("en-US", { maximumFractionDigits: 0 }); } catch { return "n/a"; } };
 const slug = s => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 function b64url(s) { return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
 
@@ -173,7 +173,7 @@ async function sendDigest(env, reader, d) {
     `<tr><td style="padding:6px 8px;border-bottom:1px solid #eee"><a href="https://masspermits.com/permits/${slug(t)}" style="color:#0e7c6b;text-decoration:none;font-weight:600">${esc(t)}</a></td>
      <td style="padding:6px 8px;border-bottom:1px solid #eee;text-align:right;font-weight:700">${n}</td></tr>`).join("");
   const bigRows = d.biggest.map(b =>
-    `<tr><td style="padding:6px 8px;border-bottom:1px solid #eee">${esc((b.title || "").replace(/ — .*$/, ""))} — ${esc(b._town)}</td>
+    `<tr><td style="padding:6px 8px;border-bottom:1px solid #eee">${esc((b.title || "").replace(/ — .*$/, ""))} in ${esc(b._town)}</td>
      <td style="padding:6px 8px;border-bottom:1px solid #eee;text-align:right;color:#0a7d47;font-weight:700">${money(b._value)}</td></tr>`).join("");
   const tradeChips = d.topTrades.map(([t, n]) =>
     `<span style="display:inline-block;background:#eef7f4;border:1px solid #cfe9e2;border-radius:14px;padding:3px 10px;margin:2px;font-size:12px;color:#0e7c6b">${esc(t)} · ${n}</span>`).join(" ");
@@ -214,11 +214,11 @@ async function sendDigest(env, reader, d) {
     <table style="width:100%;border-collapse:collapse;font-size:14px">${bigRows}</table>` : ""}
     <div style="background:#e9fbf6;border:1px solid #14b8a6;border-radius:10px;padding:16px;margin:20px 0;text-align:center">
       <p style="margin:0 0 10px;font-weight:600">Get the full street address, and the name on the permit where the town published one, every Monday.</p>
-      <a href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start the Weekly Feed — $99/mo →</a>
+      <a href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="background:#14b8a6;color:#04201c;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block">Start the Weekly Feed: $99/mo →</a>
       <p style="margin:10px 0 0;font-size:12px;color:#667">or grab a <a href="https://masspermits.com" style="color:#0e7c6b">free sample</a> first</p>
     </div>
-    <p style="color:#9aa;font-size:12px;margin-top:22px">— MassPermits · masspermits.com · compiled from public municipal permit records<br>
-    <a href="${unsub}" style="color:#9aa">Unsubscribe</a> — one click, no questions.</p></div>`;
+    <p style="color:#9aa;font-size:12px;margin-top:22px">MassPermits · masspermits.com · compiled from public municipal permit records<br>
+    <a href="${unsub}" style="color:#9aa">Unsubscribe</a>: one click, no questions.</p></div>`;
 
   const resp = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -228,8 +228,8 @@ async function sendDigest(env, reader, d) {
       // most towns tie at the 3-per-town cap, so naming a winner is a coin flip
       // dressed as a fact (and the genuinely busiest town goes unnamed).
       subject: townName
-        ? `${townName} permits — ${d.unknownTotal ? "latest filings" : d.total + " recent filings"}`
-        : `MA permit activity — ${d.unknownTotal ? "the latest filings" : d.total + " recent filings"}${d.ranked && d.topTowns[0] ? ", top town " + d.topTowns[0][0] : ""}`,
+        ? `${townName} permits: ${d.unknownTotal ? "latest filings" : d.total + " recent filings"}`
+        : `MA permit activity: ${d.unknownTotal ? "the latest filings" : d.total + " recent filings"}${d.ranked && d.topTowns[0] ? ", top town " + d.topTowns[0][0] : ""}`,
       html,
       headers: { "List-Unsubscribe": `<${unsub}>` } }),
   });

@@ -129,13 +129,13 @@ async function sendConfirm(env, to, tok) {
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
     <h2 style="color:#0e7c6b">Confirm your weekly MA permits digest 📋</h2>
     <p>One click and you'll get a Monday-morning roundup of recent Massachusetts permit
-    activity — where building is picking up, which trades are filing, and the biggest
+    activity: where building is picking up, which trades are filing, and the biggest
     recent projects. (Municipal records post on their own schedule, so each issue covers
     the latest activity we have, not a strict seven days.)</p>
     <p style="margin:20px 0;text-align:center"><a href="${link}"
-      style="background:#14b8a6;color:#04201c;font-weight:700;padding:12px 26px;border-radius:8px;text-decoration:none;display:inline-block">Confirm — send me the digest →</a></p>
+      style="background:#14b8a6;color:#04201c;font-weight:700;padding:12px 26px;border-radius:8px;text-decoration:none;display:inline-block">Confirm: send me the digest →</a></p>
     <p style="color:#667;font-size:13px">Didn't sign up at masspermits.com? Ignore this and nothing will ever arrive.</p>
-    <p style="color:#9aa;font-size:12px">— MassPermits · masspermits.com · public municipal permit records</p></div>`;
+    <p style="color:#9aa;font-size:12px">MassPermits · masspermits.com · public municipal permit records</p></div>`;
   const resp = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },

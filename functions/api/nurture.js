@@ -47,7 +47,7 @@ export async function onRequest(context) {
   let payers;
   try {
     const so = await env.BUNDLES.get("subscribers.json");
-    if (!so) return json({ ok: false, error: "subscribers.json missing — nurture aborted rather than risk mailing a paying customer" }, 500);
+    if (!so) return json({ ok: false, error: "subscribers.json missing: nurture aborted rather than risk mailing a paying customer" }, 500);
     const subs = JSON.parse(await so.text());
     if (!Array.isArray(subs)) throw new Error("subscribers.json is not an array");
     payers = new Set(
@@ -55,7 +55,7 @@ export async function onRequest(context) {
           .map((s) => String(s.email).trim().toLowerCase())
     );
   } catch (e) {
-    return json({ ok: false, error: "subscribers.json unreadable (" + String((e && e.message) || e).slice(0, 80) + ") — nurture aborted rather than risk mailing a paying customer" }, 500);
+    return json({ ok: false, error: "subscribers.json unreadable (" + String((e && e.message) || e).slice(0, 80) + "): nurture aborted rather than risk mailing a paying customer" }, 500);
   }
 
   for (const obj of listing.objects) {
@@ -99,12 +99,12 @@ function email2(p) {
   const t = p.trade && p.trade !== "all" && p.trade !== "Other" ? p.trade : "your trade";
   return wrap(`
     <h2 style="color:#0e7c6b">3 ways contractors turn permit data into jobs</h2>
-    <p><b>1. Subs — a warm pipeline.</b> When a GC pulls a permit for a big job,
+    <p><b>1. Subs: a warm pipeline.</b> When a GC pulls a permit for a big job,
     reach out before they lock in their usual crew. Filter to ${t}, sort by newest,
     call the freshest first.</p>
-    <p><b>2. GCs — market intel.</b> The <b>"By contractor"</b> view shows every
+    <p><b>2. GCs: market intel.</b> The <b>"By contractor"</b> view shows every
     competitor's active job count and value. Know your market before you bid.</p>
-    <p><b>3. Everyone — catch builds early.</b> Demolition &amp; site permits flag
+    <p><b>3. Everyone: catch builds early.</b> Demolition &amp; site permits flag
     projects that will need trades in weeks, not months.</p>
     <p>Your free sample shows the volume; the full packs unlock the names and
     addresses: <a href="https://masspermits.com">masspermits.com</a></p>`);
@@ -113,21 +113,21 @@ function email2(p) {
 function email3(p) {
   return wrap(`
     <h2 style="color:#0e7c6b">Fresh leads every Monday, automatically</h2>
-    <p>Every Monday morning we pull the newest building permits across Massachusetts
-    — Boston, Cape Cod, the South Shore — and our subscribers get the full,
-    unmasked batch in their inbox before the week starts.</p>
+    <p>Every Monday morning the newest building permits across Massachusetts
+    (Boston, Cape Cod, the South Shore) go out to our subscribers as the full,
+    unmasked batch, in their inbox before the week starts.</p>
     <p style="margin:16px 0">
       <a href="https://masspermits.com" style="background:#14b8a6;color:#04201c;font-weight:700;padding:12px 22px;border-radius:8px;text-decoration:none">
       Get the full data</a></p>
     <p><b>$49</b> one-time lead pack &nbsp;·&nbsp; <b>$99/mo</b> weekly feed (cancel anytime)</p>
-    <p style="color:#667">On the fence? Reply with what you'd need it to do — a real
+    <p style="color:#667">On the fence? Reply with what you'd need it to do. A real
     person answers, and honest feedback genuinely shapes this thing.</p>`);
 }
 
 function wrap(inner) {
   return `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
     ${inner}
-    <p style="color:#9aa;font-size:12px;margin-top:26px">— MassPermits · masspermits.com · public municipal permit records<br>
+    <p style="color:#9aa;font-size:12px;margin-top:26px">MassPermits · masspermits.com · public municipal permit records<br>
     You're getting this because you requested our free sample. Reply "stop" to opt out.</p></div>`;
 }
 

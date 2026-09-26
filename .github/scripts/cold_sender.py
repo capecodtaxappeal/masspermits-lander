@@ -1,4 +1,4 @@
-"""MassPermits — unattended cold-outreach sender (runs hourly on GitHub Actions).
+"""MassPermits: unattended cold-outreach sender (runs hourly on GitHub Actions).
 
 Sends 2-3 pre-written, pre-reviewed outreach emails per run from the owner's
 Gmail (SMTP + app password), weekdays 9am-6pm ET, ramping 15/day -> 25/day
@@ -6,17 +6,19 @@ Gmail (SMTP + app password), weekdays 9am-6pm ET, ramping 15/day -> 25/day
 public repo); state is checkpointed after EVERY send so retries can never
 double-send. Recipient addresses are never printed (public Actions logs).
 
-DORMANT until the repo secret GMAIL_APP_PASSWORD exists — without it this
+DORMANT until the repo secret GMAIL_APP_PASSWORD exists. Without it this
 exits 0 with a notice, so the pipeline deploys safely ahead of arming.
 
 Guards: kill switch (cold-state.paused), suppression list, per-day caps,
-per-run cap, dedupe against the sent log, and Sent-folder copies via Gmail.
+per-run cap, dedupe against the sent log, Sent-folder copies via Gmail, and a
+send-time dash guard (em/en dashes never reach a recipient; see _undash).
 """
 from __future__ import annotations
 
 import json
 import os
 import random
+import re
 import smtplib
 import ssl
 import subprocess
@@ -31,7 +33,7 @@ BASE = "https://masspermits.com"
 AUDIENCE = "masspermits-cron"
 # Provider-agnostic SMTP: host/port/user set in the workflow env (non-secret),
 # the app password is the one repo SECRET (SMTP_PASSWORD). Defaults target Zoho
-# (patrick@masspermits.com) — override SMTP_HOST/SMTP_USER for Gmail/Workspace.
+# (patrick@masspermits.com); override SMTP_HOST/SMTP_USER for Gmail/Workspace.
 SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.zoho.com")
 SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER = os.environ.get("SMTP_USER", "patrick@masspermits.com")
@@ -43,6 +45,52 @@ RAMP_DAILY = 15   # first 7 days from ramp_start
 STEADY_DAILY = 25
 HARD_CAP = 30
 PER_RUN = 3
+
+# ---- SEND-TIME DASH GUARD (standing rule, Patrick 2026-09-15 / 2026-09-26) ----
+# No em dash (U+2014) or en dash (U+2013), nor their HTML entities or JS-style
+# escapes, ever reaches a recipient, whatever the queue generator wrote. Each is
+# replaced with punctuation that reads naturally: ", " mid-sentence, a plain
+# hyphen inside a numeric range (9-5), nothing at the start of a line or next to
+# existing punctuation. It CANNOT raise: any internal error returns the text
+# unchanged, so a guard fault never blocks a send and never touches the
+# dedupe/checkpoint path. Only a count is ever logged, never the text.
+try:
+    _DASH_RE = re.compile(
+        r"[ \t]*(?:\u2014|\u2013|&[mn]dash;|&#0*821[12];|&#[xX]0*201[34];"
+        r"|\\u201[34])[ \t]*")
+except Exception:  # noqa: BLE001
+    _DASH_RE = None
+_PUNCT = ",.;:!?)"
+
+
+def _dash_repl(m) -> str:
+    s = m.string
+    prev = s[m.start() - 1] if m.start() > 0 else ""
+    nxt = s[m.end()] if m.end() < len(s) else ""
+    if prev.isdigit() and nxt.isdigit():
+        return "-"                            # 9-5 / 2025-2026 style ranges
+    if prev in ("", "\n", "\r", "("):
+        return ""                             # dash opening a line or a parenthesis
+    if nxt in ("", "\n", "\r"):
+        return "," if prev.isalnum() else ""  # dash ending a line
+    if prev in _PUNCT or prev in "\"'":
+        return "" if nxt in _PUNCT else " "   # "word, [dash] next" -> "word, next"
+    if nxt in _PUNCT:
+        return ""                             # "word [dash]." -> "word."
+    return ", "                               # "Hi Sam [dash] I track" -> "Hi Sam, I track"
+
+
+def _undash(text):
+    """Return (text_without_dashes, n_replaced). Never raises."""
+    try:
+        if _DASH_RE is None or not isinstance(text, str) or not text:
+            return text, 0
+        out, n = _DASH_RE.subn(_dash_repl, text)
+        if n:
+            out = re.sub(r",(?:[ \t]*,)+", ",", out)   # never leave ", ," artifacts
+        return out, n
+    except Exception:  # noqa: BLE001
+        return text, 0
 
 
 def oidc() -> str:
@@ -80,7 +128,7 @@ def put_state(state: dict) -> None:
 
 def main() -> None:
     if not SMTP_PASS:
-        print("DORMANT: SMTP_PASSWORD secret not set — no sends. "
+        print("DORMANT: SMTP_PASSWORD secret not set, no sends. "
               "Add it in repo Settings -> Secrets to arm the pipeline.")
         return
 
@@ -92,7 +140,7 @@ def main() -> None:
         msg = EmailMessage()
         msg["From"] = formataddr((FROM_NAME, SMTP_USER))
         msg["To"] = test_to
-        msg["Subject"] = "MassPermits outreach pipeline — SMTP test OK"
+        msg["Subject"] = "MassPermits outreach pipeline: SMTP test OK"
         msg.set_content("This is the cold-outreach pipeline verifying its SMTP login.\n"
                         "If you're reading this, sending works. Real sends run weekdays "
                         "9am-6pm ET at the configured ramp. No cold emails were sent.")
@@ -105,7 +153,7 @@ def main() -> None:
 
     state = get_json("cold-state.json")
     if state.get("paused"):
-        print("PAUSED via cold-state.json — no sends.")
+        print("PAUSED via cold-state.json, no sends.")
         return
 
     queue = get_json("cold-queue.json")
@@ -121,7 +169,7 @@ def main() -> None:
     daily_cap = min(HARD_CAP, RAMP_DAILY if ramp_days < 7 else STEADY_DAILY)
     budget = min(PER_RUN, daily_cap - sent_today)
     if budget <= 0:
-        print(f"Daily cap reached ({sent_today}/{daily_cap}) — no sends this run.")
+        print(f"Daily cap reached ({sent_today}/{daily_cap}), no sends this run.")
         return
 
     due = [e for e in queue
@@ -129,7 +177,7 @@ def main() -> None:
     print(f"reads OK · queue={len(queue)} suppression={len(suppression)} sent_ever={len(sent_ever)} "
           f"· daily_cap={daily_cap} sent_today={sent_today} budget={budget} · due={len(due)}", flush=True)
     if not due:
-        print("Queue drained — nothing left to send. 🎉")
+        print("Queue drained, nothing left to send. 🎉")
         return
 
     if not DRYRUN:
@@ -137,22 +185,28 @@ def main() -> None:
 
     ctx = ssl.create_default_context()
     sent_n = 0
+    dash_n = dash_msgs = 0   # dash-guard telemetry: counts only
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=60) as smtp:
         smtp.starttls(context=ctx)
         smtp.login(SMTP_USER, SMTP_PASS)
         if DRYRUN:
-            print("SMTP login OK — DRYRUN complete, no sends, no state written.", flush=True)
+            print("SMTP login OK. DRYRUN complete, no sends, no state written.", flush=True)
             return
         for e in due:
             msg = EmailMessage()
             msg["From"] = formataddr((FROM_NAME, SMTP_USER))
             msg["To"] = e["to"]
-            msg["Subject"] = e["subject"]
-            msg.set_content(e["body"])
+            subject, n_s = _undash(e["subject"])
+            body, n_b = _undash(e["body"])
+            if n_s or n_b:
+                dash_n += n_s + n_b
+                dash_msgs += 1
+            msg["Subject"] = subject
+            msg.set_content(body)
             try:
                 smtp.send_message(msg)
             except smtplib.SMTPRecipientsRefused:
-                # bad address — record as handled so we never retry it, send nothing
+                # bad address: record as handled so we never retry it, send nothing
                 state.setdefault("log", []).append(
                     {"ts": datetime.now(timezone.utc).isoformat(), "to": e["to"],
                      "batch": e.get("batch", ""), "status": "refused"})
@@ -162,12 +216,13 @@ def main() -> None:
                 {"ts": datetime.now(timezone.utc).isoformat(), "to": e["to"],
                  "batch": e.get("batch", ""), "status": "sent"})
             state.setdefault("sent_by_day", {})[today] = sent_today + sent_n + 1
-            put_state(state)  # checkpoint AFTER each send — a crash can never double-send
+            put_state(state)  # checkpoint AFTER each send, so a crash can never double-send
             sent_n += 1
             if sent_n < len(due):
                 time.sleep(random.randint(45, 150))
 
-    # counts only — recipient addresses never appear in (public) Actions logs
+    # counts only; recipient addresses never appear in (public) Actions logs
+    print(f"dash-guard: replaced {dash_n} dash(es) in {dash_msgs} email(s) this run.")
     print(f"Sent {sent_n} email(s). Today: {sent_today + sent_n}/{daily_cap}. "
           f"Queue remaining: {len([e for e in queue if e['to'].lower() not in sent_ever]) - sent_n}.")
 
@@ -177,6 +232,6 @@ if __name__ == "__main__":
         main()
     except Exception:  # noqa: BLE001
         import traceback
-        # full traceback to stdout (shipped to R2 as cold-log.txt) — no addresses in errors
+        # full traceback to stdout (shipped to R2 as cold-log.txt); no addresses in errors
         traceback.print_exc()
         sys.exit(1)
