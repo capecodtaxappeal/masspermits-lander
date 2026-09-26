@@ -179,11 +179,19 @@ test("P1-14 budget: Stripe calls <= 6 without paging and <= 15 with", async () =
   await get(w, { env: e });
   budget.stripe_no_paging = stub.stripeCalls().length;
   assert.ok(stub.stripeCalls().length <= 6);
-  stub.stripe = H.stripeFake(H.stripeData(w.roster, NOW), { pageSize: 1, alwaysMore: () => true });
+  // every list long enough to still have more after 3 pages
+  const nowS = Math.floor(NOW / 1000);
+  const many = H.stripeData(w.roster, NOW, {
+    openInvoices: [1, 2, 3, 4].map((i) => ({ id: "in_TESTopen000" + i, customer: w.roster[i].customer, status: "open",
+      amount_due: 4900, currency: "usd", created: nowS - 86400, attempt_count: 0, lines: { data: [{ price: { id: H.PRICE_A } }] } })),
+    webhooks: [1, 2, 3, 4].map((i) => ({ id: "we_TEST00000" + i, status: "enabled", enabled_events: ["*"] })),
+  });
+  many.sessions.push(...many.sessions.map((c, i) => ({ ...c, id: c.id + "x" + i })));
+  stub.stripe = H.stripeFake(many, { pageSize: 1, alwaysMore: () => true });
   stub.reset();
   const res = await get(w, { env: e });
   budget.stripe_paging = stub.stripeCalls().length;
-  assert.ok(stub.stripeCalls().length <= 15, "stripe calls " + stub.stripeCalls().length);
+  assert.equal(stub.stripeCalls().length, 15, "worst case is 5 lists x 3 pages");
   assert.ok(H.lineIds(res.body, "known").includes("stripe_partial"));
   // a JWKS fetch on a cold isolate plus the worst Stripe case stays under 45 subrequests with R2
   assert.ok(1 + 15 + 25 <= 45);

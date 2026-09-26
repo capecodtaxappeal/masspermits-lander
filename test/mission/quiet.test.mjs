@@ -140,7 +140,6 @@ test("M4 the old dead source re-alerted an hour ago -> still clear (alerted_at i
   w.shSources[k] = { ...w.shSources[k], alerted_at: new Date(Q1 - H.HOUR).toISOString(), alert_kind: "dead" };
   w.save();
   const res = await get(w);
-  record("M4 headline", CLEAR, res.body.headline.text);
   assertQuiet(res, w, "M4");
 });
 
@@ -150,7 +149,6 @@ test("M5 the 403 source's last_good one day ago -> still clear (blocked is known
   w.shSources[k] = { ...w.shSources[k], last_good: new Date(Q1 - DAY).toISOString() };
   w.save();
   const res = await get(w);
-  record("M5 headline", CLEAR, res.body.headline.text);
   assertQuiet(res, w, "M5");
 });
 
