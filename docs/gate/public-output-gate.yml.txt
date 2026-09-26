@@ -1,0 +1,57 @@
+# MassPermits public output gate. WARN-ONLY: it lints the built public site on
+# main against research/evidence/coverage.json and data.json and uploads a
+# report. It never fails a build, never blocks a deploy, never writes the repo,
+# and runs only on its weekly schedule or by hand, never on code events.
+#
+# Why this is a .txt file: this project may not add anything under .github/.
+# The owner installs it by hand: copy this file to
+# .github/workflows/public-output-gate.yml on main.
+name: MassPermits public output gate
+
+on:
+  schedule:
+    - cron: "0 18 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run the gate (warn-only)
+        id: gate
+        continue-on-error: true
+        run: |
+          node scripts/gate/gate.mjs --root "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/gate/gate.md" --json "$RUNNER_TEMP/gate/gate.json" > "$RUNNER_TEMP/gate-stdout.txt"
+          cat "$RUNNER_TEMP/gate-stdout.txt"
+
+      - name: Counts to the job summary
+        if: always()
+        run: |
+          echo "## Public output gate (warn-only)" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/gate-stdout.txt" >> "$GITHUB_STEP_SUMMARY" || echo "gate produced no counts" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-output-gate
+          path: |
+            ${{ runner.temp }}/gate/gate.md
+            ${{ runner.temp }}/gate/gate.json
+          retention-days: 30
+          if-no-files-found: warn
