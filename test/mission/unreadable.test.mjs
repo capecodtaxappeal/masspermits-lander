@@ -103,6 +103,7 @@ test("P1-11 the binding itself missing -> 503 unavailable after auth, no excepti
 test("P1-11 outreach head throws -> outreach unreadable amber line", async () => {
   const w = await H.healthyWorld(NOW);
   w.r2.fail.add("head:admin/outreach.json");
+  w.r2.fail.add("get:admin/outreach.json"); // P4-COR: the default view now reads it (COR-4)
   const res = await get(w);
   assert.equal(res.body.detail.setup.outreach, "unreadable");
   assert.ok(H.lineIds(res.body, "amber").includes("outreach_unreadable"));

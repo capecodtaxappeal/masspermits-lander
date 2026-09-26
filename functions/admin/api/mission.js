@@ -61,6 +61,23 @@ async function jsonOf(ro, key) {
   }
 }
 
+// admin/outreach.json, read (not only headed) so that a present object that
+// does not parse, or whose towns is not an object, is "unreadable" and raises
+// its needs-you line (OUTREACH). One get in place of a head: same op count.
+// Only its state, upload time and size leave here; the map view shows its facts.
+async function outreachOf(ro) {
+  try {
+    const o = await ro.get("admin/outreach.json");
+    if (!o) return { state: "absent", uploaded: null, size: null };
+    const size = typeof o.size === "number" ? o.size : null;
+    const text = size !== null && size > 64 * 1024 ? null : await o.text();
+    const state = parseOutreach(text, size).state === "present" ? "present" : "unreadable";
+    return { state, uploaded: isoOf(o.uploaded), size };
+  } catch (_) {
+    return { state: "unreadable", uploaded: null, size: null };
+  }
+}
+
 // Keys under these prefixes are email addresses: only customMetadata leaves here.
 async function metaOf(ro, prefix) {
   const items = [];
@@ -130,7 +147,7 @@ async function mainView(env, ro, auth, now) {
     jsonOf(ro, "funnel-metrics.json"),
     jsonOf(ro, "delivery-log.json"),
     jsonOf(ro, "engagement.json"),
-    headOf(ro, "admin/outreach.json"),
+    outreachOf(ro),
     headOf(ro, "probe-map.json"),
     cachedProjection(ro, "source-health.json", projectSourceHealth)
       .catch(() => ({ state: "unreadable", proj: null, uploaded: null })),
@@ -156,9 +173,6 @@ async function mainView(env, ro, auth, now) {
     weekly: g && g.weekly ? { uploaded: g.weekly.uploaded, size: g.weekly.size } : null,
     monthly: g && g.monthly ? { uploaded: g.monthly.uploaded, size: g.monthly.size } : null,
   };
-  if (outreachHead.state === "present" && typeof outreachHead.size === "number" && outreachHead.size > 64 * 1024) {
-    outreachHead.state = "unreadable";
-  }
   const payload = buildMain({
     now, signedInAs: auth.email, outreachEdit: env.MISSION_OUTREACH_EDIT === "1",
     gathered, statusHead, htmlHead, roster, funnel, deliveries, engagement, outreachHead, probeHead,

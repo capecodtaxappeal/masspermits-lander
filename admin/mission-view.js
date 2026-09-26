@@ -109,7 +109,7 @@ export function tileView(t) {
   let value;
   if (!counted) value = "—";
   else if (!isNum(t.value)) value = TEXT.notReported;
-  else value = t.id === "revenue" ? money(t.value) : count(t.value);
+  else value = (/^at least/.test(t.sub) ? "at least " : "") + (t.id === "revenue" ? money(t.value) : count(t.value));
   const label = String(t.label || t.id);
   return { id: String(t.id), label, value, word: s.word, cls: s.cls,
     name: label + ": " + (value === "—" ? "no figure" : value) + ", " + s.word,
@@ -158,8 +158,8 @@ const rows = (a, label) => (Array.isArray(a) ? a.map((r) => rowLine(r, label)) :
 function refreshSection(r, map) {
   const p = [];
   if (!r) return { paras: [TEXT.cannotRead], lists: [] };
-  p.push("Last run " + when(r.ran_at) + ". " + (r.ok === true ? "It finished normally." : r.degraded === true
-    ? "A reduced run: it shipped and told subscribers." : "The refresh " + failSentence(r.fail_kind) + "."));
+  p.push(r.ok !== true && r.ok !== false ? "No run is reported." : "Last run " + when(r.ran_at) + ". " + (r.ok ? "It finished normally."
+    : r.degraded === true ? "A reduced run: it shipped and told subscribers." : "The refresh " + failSentence(r.fail_kind) + "."));
   const c = r.coverage;
   p.push(c ? "Coverage: " + count(c.live_sources) + " of " + count(c.expected_sources) + " sources live (" +
     count(c.attempted_sources) + " attempted, " + count(c.lost_sources) + " lost), " + count(c.rows) + " rows." +
@@ -193,11 +193,11 @@ function mondaySection(m, t) {
 
 function outreachSection(map, setup, mapState) {
   if (!map) return { paras: [mapState === "pending" ? TEXT.mapLoading : TEXT.mapFailed], lists: [] };
-  const c = map.counts || {};
-  let planned = 0;
-  for (const k in map.towns || {}) if (map.towns[k].planned) planned++;
-  const p = ["Answered or declined: " + count(c.answered) + ". Sent: " + count(c.sent) + ". Locked: " + count(c.locked) +
-    ". Planned (dashed outline): " + count(planned) + ".",
+  // Counted from each town's outreach fact: a live town keeps its outreach.
+  const c = map.counts || {}, o = { answered: 0, declined: 0, sent: 0, planned: 0 };
+  for (const k in map.towns || {}) if (typeof own(o, map.towns[k].o) === "number") o[map.towns[k].o]++;
+  const p = ["Answered or declined: " + count(o.answered + o.declined) + ". Sent: " + count(o.sent) + ". Locked: " + count(c.locked) +
+    ". Planned (dashed outline): " + count(o.planned) + ".",
   "OpenGov: " + count(map.opengov && map.opengov.registry) + " in the town registry, " +
     count(map.opengov && map.opengov.owner_list) + " on your list.",
   "Outreach object: " + (setup ? setup.outreach : TEXT.notReported) + (map.as_of && map.as_of.outreach ? ", uploaded " + when(map.as_of.outreach) : "") + "."];
@@ -232,7 +232,7 @@ export function sectionsView(main, map, mapState) {
   if (sg) {
     const al = sg.at_least ? "at least " : "";
     ss.paras.push("Signups in 7 days: " + al + count(sg.prospects) + " prospects, " + al + count(sg.agents) + " agents, " + al +
-      count(sg.newsletter_new) + " newsletter (" + count(sg.newsletter_confirmed) + " confirmed, " + count(sg.newsletter_pending) + " pending).");
+      count(sg.newsletter_new) + " newsletter (" + al + count(sg.newsletter_confirmed) + " confirmed, " + al + count(sg.newsletter_pending) + " pending).");
     ss.lists.push({ title: "Prospects by trade", items: Object.keys(sg.trades || {}).map((k) => ({ text: k + ": " + count(sg.trades[k]) })) });
     ss.lists.push({ title: "Signups by day (UTC)", items: Object.keys(sg.by_day || {}).map((k) => ({ text: day(k) + ": " + count(sg.by_day[k]) })) });
   } else ss.paras.push("Could not read the signup lists.");

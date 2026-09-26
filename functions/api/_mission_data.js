@@ -476,7 +476,9 @@ export function sourceTriage(projection, refreshStatus, now) {
     const ek = inErr ? errKind(errors[key]) : rec && rec.ek ? rec.ek : "other";
     const sinceIso = rec ? rec.last_good || rec.first_seen || null : null;
     const since = sinceIso ? sinceIso.slice(0, 10) : null;
-    const town = townName(key);
+    // The map's name for the town (an alias key such as "Foxboro, MA" is
+    // Foxborough there), so a line, the sources list and the map agree.
+    const town = joinTown(key) || townName(key);
     const item = { town, state, since, ek, recent: false };
     let id = null;
     if (ek === "access_controlled") id = "sources_blocked";
@@ -744,6 +746,11 @@ function monthlyCents(s) {
   return per ? (s.amount * per) / n : 0;
 }
 
+function mondayUnreadable(ctx) {
+  const g = ctx.g || {};
+  return g.log_state === "unreadable" || (g.attempt_state === "unreadable" && ctx.monday.state === "grey");
+}
+
 // Everything the tiles and needs-you lines derive from the reads.
 export function context(inp) {
   const now = inp.now;
@@ -822,10 +829,14 @@ export function tiles(ctx, inp) {
       (c.created || 0) * 1000 >= since);
     const gross = inv.reduce((a, i) => a + (i.amount_paid || 0), 0) +
       packs.reduce((a, c) => a + (c.amount_total || 0), 0);
-    const rate = entitled.filter((s) => s.status !== "trialing").reduce((a, s) => a + monthlyCents(s), 0);
     const cut = partial("invoices_paid") || partial("sessions") || partial("subscriptions");
+    // The run rate needs the subscription list: unreadable is "not available",
+    // never a $0.00 rate.
+    const rate = usable("subscriptions")
+      ? money(entitled.filter((s) => s.status !== "trialing").reduce((a, s) => a + monthlyCents(s), 0)) + "/mo"
+      : "not available";
     out.push(tile("revenue", "green", gross,
-      (cut ? "at least; " : "") + "list-price run rate " + money(rate) + "/mo", "stripe", nowIso));
+      (cut ? "at least; " : "") + "list-price run rate " + rate, "stripe", nowIso));
   }
 
   // renewals
@@ -876,9 +887,12 @@ export function tiles(ctx, inp) {
   }[m.rule];
   // gather() turns a read that throws, or a body that does not parse, into
   // null, which reads as "nothing sent". The route records which of the two
-  // send files failed that way; then the tile cannot say pending or red.
-  const g0 = ctx.g || {};
-  if (g0.log_state === "unreadable" || (g0.attempt_state === "unreadable" && !m.delivered)) {
+  // send files failed that way. An unreadable log: nothing can be judged. An
+  // unreadable attempt file can only turn "not yet" into the "started, no
+  // result" red, so it greys only a verdict that would be "not yet"; every
+  // red the log proves on its own (failed, missing, skipped, nothing by the
+  // hold hour) stays red.
+  if (mondayUnreadable(ctx)) {
     out.push(greyTile("monday", "unavailable", "the send log could not be read", "r2"));
   } else {
     out.push(m.state === "grey"
@@ -913,8 +927,8 @@ export function tiles(ctx, inp) {
     let sub = "new checkouts from the delivery log";
     if (usable("invoices_paid") && usable("sessions")) {
       const s = salesMoney(ctx);
-      sub = money(s.newSub + s.pack) + " gross: " + money(s.newSub) + " new subscriptions, " +
-        money(s.pack) + " packs";
+      sub = (partial("invoices_paid") || partial("sessions") ? "at least; " : "") +
+        money(s.newSub + s.pack) + " gross: " + money(s.newSub) + " new subscriptions, " + money(s.pack) + " packs";
     }
     out.push(tile("sales", "green", newSales.length, sub, "r2", dl.uploaded));
   } else {
@@ -955,10 +969,13 @@ function signupCounts(lists, now) {
   const names = ["prospects", "agents", "newsletter"];
   if (!names.every((n) => L[n] && L[n].state === "ok" && Array.isArray(L[n].items))) return null;
   const since = now - SIGNUP_DAYS * DAY;
+  // One key per UTC day the window touches (day(since) .. day(now), 8 days
+  // unless now is midnight), so the days always add up to the tile. A time
+  // ahead of the clock (within FUTURE_SKEW_MS) is counted on today.
   const byDay = {};
-  for (let i = SIGNUP_DAYS - 1; i >= 0; i--) byDay[day(now - i * DAY)] = 0;
-  const recent = (m) => { const t = tsOf(m); return Number.isFinite(t) && t >= since && t <= now + DAY; };
-  const bump = (m) => { const d = day(tsOf(m)); if (d in byDay) byDay[d]++; };
+  for (let t = Date.parse(day(since)); t <= now; t += DAY) byDay[day(t)] = 0;
+  const recent = (m) => { const t = tsOf(m); return Number.isFinite(t) && t >= since && t <= now + FUTURE_SKEW_MS; };
+  const bump = (m) => { byDay[day(Math.min(tsOf(m), now))]++; };
   const trades = {};
   let prospects = 0, agents = 0, newsletter = 0, confirmed = 0, pending = 0;
   for (const m of L.prospects.items) {
@@ -1329,18 +1346,21 @@ export function buildMain(inp) {
       t8: null, plan: null, status: null, since: null, date: null, amount_cents: null, currency: null,
       stripe_url: null };
   };
-  const mondayTile = tileList.find((t) => t.id === "monday");
-  const mondayUnread = !!mondayTile && mondayTile.state === "grey" && mondayTile.grey === "unavailable";
+  // When the tile is unreadable the send log gave no answer: no count and
+  // no list here either (a 0 would read as "nobody got it").
+  const mondayUnread = mondayUnreadable(ctx);
   const monday = {
     state: mondayUnread ? "grey" : m.state, rule: mondayUnread ? "unreadable" : m.rule,
     due: iso(m.due), hold: iso(m.hold), monday_date: m.monday_date,
-    best_at: m.best_at, delivered: m.delivered, expected: m.expected,
-    missing: m.missing.map((r) => customerRow(r, null)),
-    failed: m.failed.map(personRow),
-    duplicates: m.duplicates.length,
-    joined_on_send_day: m.joined.map((r) => customerRow(r, null)),
-    new_since_monday: m.new_since,
-    skipped_only: m.skipped_only,
+    best_at: mondayUnread ? null : m.best_at,
+    delivered: mondayUnread ? null : m.delivered,
+    expected: mondayUnread ? null : m.expected,
+    missing: mondayUnread ? [] : m.missing.map((r) => customerRow(r, null)),
+    failed: mondayUnread ? [] : m.failed.map(personRow),
+    duplicates: mondayUnread ? null : m.duplicates.length,
+    joined_on_send_day: mondayUnread ? [] : m.joined.map((r) => customerRow(r, null)),
+    new_since_monday: mondayUnread ? null : m.new_since,
+    skipped_only: mondayUnread ? false : m.skipped_only,
     caveat: MONDAY_CAVEAT,
   };
 

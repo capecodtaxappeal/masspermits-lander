@@ -117,9 +117,16 @@ function projectSubscription(s, prices) {
   const price = first.price && typeof first.price === "object" ? first.price : {};
   const recurring = price.recurring || (first.plan && { interval: first.plan.interval,
     interval_count: first.plan.interval_count }) || {};
-  const qty = num(first.quantity) || 1;
-  const unit = num(price.unit_amount) !== null ? num(price.unit_amount)
-    : num(first.plan && first.plan.amount);
+  // Every MassPermits item counts (a feed and a radar price can share one
+  // subscription; Stripe requires one interval per subscription).
+  let amount = 0, priced = false;
+  for (const it of mine) {
+    const p = it.price && typeof it.price === "object" ? it.price : {};
+    const u = num(p.unit_amount) !== null ? num(p.unit_amount) : num(it.plan && it.plan.amount);
+    if (u === null) continue;
+    amount += u * (num(it.quantity) || 1);
+    priced = true;
+  }
   return {
     id: str(s.id),
     customer: idOf(s.customer),
@@ -130,7 +137,7 @@ function projectSubscription(s, prices) {
     price_id: linePrice(first),
     interval: str(recurring.interval),
     interval_count: num(recurring.interval_count) || 1,
-    amount: unit === null ? null : unit * qty,
+    amount: priced ? amount : null,
     currency: str(price.currency) || str(s.currency),
     unknown_prices: others.length,
   };

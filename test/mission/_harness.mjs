@@ -669,10 +669,43 @@ export async function setup() {
   const owner = (over) => mint(signer, claims(over));
   const get = async (w, o = {}) => {
     if (o.cold !== false) await resetCaches();
-    return call(m.mission, { ...o, env: env(w.r2, o.env), now: o.now ?? w.now,
-      token: o.token === undefined ? owner() : o.token });
+    const e = env(w.r2, o.env);
+    const now = o.now ?? w.now;
+    const res = await call(m.mission, { ...o, env: e, now, token: o.token === undefined ? owner() : o.token });
+    // P4-COR: every answered request is traced against the independent oracle.
+    if ((res.status === 200 || res.status === 503) && o.oracle !== false && e.BUNDLES === w.r2 && !process.env.MISSION_ORACLE_OFF) oracleCheck(m, stub, w.r2, e, now, o.query, res);
+    return res;
   };
   return { m, stub, signer, owner, get };
+}
+
+// ── P4-COR oracle hook ──────────────────────────────────────────────────────
+// Town keys and aliases come from the public geometry file, not from the
+// shipped constant, so the oracle's join is independent of _mission_data.js.
+let oracleTowns = null;
+function townsForOracle() {
+  if (oracleTowns) return oracleTowns;
+  const g = JSON.parse(fs.readFileSync(path.join(REPO, "admin", "mission-towns.json"), "utf8"));
+  oracleTowns = setTowns(Object.keys(g.towns), g.aliases);
+  return oracleTowns;
+}
+export const oracleRuns = { main: 0, map: 0 };
+function oracleCheck(m, stub, r2, e, now, query, res) {
+  const towns = townsForOracle();
+  let bad;
+  if (query === "?view=map") {
+    oracleRuns.map++;
+    bad = checkMap(oracleMap({ r2, now, towns }), res);
+  } else if (!query) {
+    oracleRuns.main++;
+    if (res.status !== 200) bad = ["main.status: expected 200, got " + res.status];
+    else bad = checkMain(oracleMain({ r2, env: e, now, handler: stub.stripe, towns,
+      normalisePolicy: m.presend.normalisePolicy }), res.body);
+  } else return;
+  if (process.env.MISSION_ORACLE_LOG) {
+    fs.appendFileSync(process.env.MISSION_ORACLE_LOG, JSON.stringify({ file: process.argv[1], tally: tally, runs: oracleRuns }) + "\n");
+  }
+  if (bad.length) throw new Error("P4-COR oracle disagrees with the route:\n  " + bad.join("\n  "));
 }
 
 // A 200 body that is clean of identifiers: no redactions, no red privacy line,
@@ -701,4 +734,726 @@ export function lineIds(body, severity) {
 
 export function tileOf(body, id) {
   return body.tiles.find((t) => t.id === id);
+}
+
+// ══ P4-COR: an INDEPENDENT oracle for Mission Control ═════════════════════
+//
+// It re-derives every number the two views emit from the rules in the build
+// prompt (TIMING, MONDAY, TILES, FAILED TILE, NEEDS YOU, SOURCE TRIAGE, MAP,
+// OUTREACH), reading the fixture world straight out of the FakeR2 (no op is
+// recorded) and the fixture Stripe handler (no call is recorded). It does not
+// import functions/api/_mission_data.js and copies none of its code. The only
+// shipped code it uses is _presend.js normalisePolicy (the policy's own range
+// rule, which the prompt names as the thing to reuse).
+//
+// The harness runs it after every route call a test makes through setup().get,
+// so every fixture world in every test file (healthy, hostile, quiet day, the
+// D drills, the map drills, the demo scenarios, the security worlds) is traced.
+
+const MIN = 60_000;
+const SKEW = HOUR; // P4-SEC F7: a time more than 1 h ahead is not a run or a send
+
+// ── reading the fixture world (no op recorded) ─────────────────────────────
+const failed = (r2, op, key) => r2.fail.has(op + ":" + key) || r2.fail.has(op + ":*");
+function rawGet(r2, key) {
+  if (failed(r2, "get", key)) return { state: "unreadable" };
+  const o = r2.objects.get(key);
+  if (!o) return { state: "absent" };
+  try { return { state: "ok", value: JSON.parse(o.body), uploaded: o.uploaded.getTime(), size: o.size }; } catch (_) {
+    return { state: "unreadable", uploaded: o.uploaded.getTime(), size: o.size };
+  }
+}
+function rawHead(r2, key) {
+  if (failed(r2, "head", key)) return { state: "unreadable" };
+  const o = r2.objects.get(key);
+  return o ? { state: "present", uploaded: o.uploaded.getTime(), size: o.size } : { state: "absent" };
+}
+function rawList(r2, prefix, pages = 3) {
+  if (failed(r2, "list", prefix)) return { state: "unreadable" };
+  const keys = [...r2.objects.keys()].filter((k) => k.startsWith(prefix)).sort();
+  const cap = pages * r2.listLimit;
+  return { state: "ok", items: keys.slice(0, cap).map((k) => ({ ...r2.objects.get(k).customMetadata })),
+    truncated: keys.length > cap };
+}
+
+const isObj = (v) => !!v && typeof v === "object" && !Array.isArray(v);
+const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+const t = (v) => (typeof v === "string" || typeof v === "number" ? new Date(v).getTime() : NaN);
+const ymd = (ms) => new Date(ms).toISOString().slice(0, 10);
+const norm = (e) => (typeof e === "string" ? e.trim().toLowerCase() : "");
+export const dollars = (c) => "$" + (c / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+// ── ENGINE TEXT RULE ───────────────────────────────────────────────────────
+export function oErrKind(s) {
+  if (typeof s !== "string" || s === "") return "other";
+  const rules = [
+    ["owner_name_gate", /owner name|rule 5/i],
+    ["access_controlled", /\b40[13]\b|authori[sz]ation decision|login wall|requires_credentials|robots/i],
+    ["no_rows", /returned \d+ rows|no rows|silently dead/i],
+    ["timeout", /timed? ?out/i],
+    ["http_error", /\bHTTP\b|\b[45]\d\d\b|URLError|connection|SSL/i],
+    ["parse", /pars(e|ing|er)|column|header|decode|JSON/i],
+  ];
+  for (const [code, re] of rules) if (re.test(s)) return code;
+  return "other";
+}
+export function oFailKind(st) {
+  if (!isObj(st) || st.ok !== false || st.degraded === true) return null;
+  const e = typeof st.error === "string" ? st.error : "";
+  return /crashed/.test(e) ? "crash" : /^ABORT\b/.test(e) ? "gate" : "unknown";
+}
+
+// ── TIMING ─────────────────────────────────────────────────────────────────
+// The most recent 09:00 UTC at or before now.
+export const oRefreshDue = (now) => Math.floor((now - 9 * HOUR) / DAY) * DAY + 9 * HOUR;
+
+export function oRefresh(now, head, status, zipUploaded) {
+  if (head.state === "unreadable") return { state: "grey", grey: "unavailable", rule: "unavailable" };
+  if (head.state === "present" && !isObj(status)) return { state: "grey", grey: "unavailable", rule: "unavailable" };
+  if (!isObj(status)) return { state: "red", rule: "missing" };
+  const ran = t(status.ran_at);
+  if (!isNum(ran) || ran > now + SKEW) return { state: "red", rule: "missing" };
+  if (now - ran > 36 * HOUR) return { state: "red", rule: "too_old" };
+  const fk = oFailKind(status);
+  if (fk) return { state: "red", rule: "failed", fail_kind: fk };
+  const due = oRefreshDue(now);
+  if (ran >= due) return status.degraded === true ? { state: "amber", rule: "reduced" } : { state: "green", rule: "landed" };
+  if (isNum(zipUploaded) && zipUploaded >= due) return { state: "amber", rule: "bundles_shipped" };
+  if (now < due + 8 * HOUR) return { state: "grey", grey: "pending", rule: "pending" };
+  return { state: "red", rule: "not_landed" };
+}
+
+// The most recent send (dow, hour) at or before now, and that day's hold.
+export function oSendDue(now, p) {
+  const today = Math.floor(now / DAY) * DAY;
+  const back = (new Date(now).getUTCDay() - p.send_dow + 7) % 7;
+  let due = today - back * DAY + p.send_hour * HOUR;
+  if (due > now) due -= 7 * DAY;
+  return { due, hold: Math.floor(due / DAY) * DAY + p.hold_until_hour * HOUR };
+}
+
+// MONDAY. rows: roster rows or null (unreadable).
+export function oMonday(now, p, log, attempt, rows) {
+  const { due, hold } = oSendDue(now, p);
+  const mondayDate = ymd(due);
+  const entries = (Array.isArray(log) ? log : []).filter((e) => isObj(e) && isNum(t(e.at)) &&
+    t(e.at) >= due && t(e.at) <= now + SKEW);
+  const sent = (e) => (Array.isArray(e.sent) ? e.sent : []).filter(isObj);
+  const okN = new Map();
+  for (const e of entries) for (const s of sent(e)) if (s.ok) okN.set(norm(s.to), (okN.get(norm(s.to)) || 0) + 1);
+  okN.delete("");
+  const failedSet = new Set();
+  for (const e of entries) {
+    for (const s of sent(e)) {
+      if (s.ok || !norm(s.to)) continue;
+      const later = entries.some((x) => t(x.at) >= t(e.at) && sent(x).some((y) => y.ok && norm(y.to) === norm(s.to)));
+      if (!later) failedSet.add(norm(s.to));
+    }
+  }
+  const anyDelivered = okN.size > 0;
+  const dups = [...okN.values()].filter((n) => n > 1).length;
+  const skippedOnly = entries.length > 0 && !anyDelivered && entries.every((e) => e.skipped);
+  const noResult = isObj(attempt) && isNum(t(attempt.at)) && t(attempt.at) >= due && entries.length === 0;
+  const expected = [], joined = [];
+  let newSince = 0;
+  const active = rows ? rows.filter((r) => isObj(r) && r.email && r.active !== false) : [];
+  for (const r of active) {
+    const since = typeof r.since === "string" ? r.since.slice(0, 10) : "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(since) && since > mondayDate) newSince++;
+    else if (since === mondayDate) { if (!okN.has(norm(r.email))) joined.push(r); }
+    else expected.push(r);
+  }
+  const missing = anyDelivered ? expected.filter((r) => !okN.has(norm(r.email))) : [];
+  let state, rule;
+  if (failedSet.size) [state, rule] = ["red", "failed"];
+  else if (missing.length) [state, rule] = ["red", "missing"];
+  else if (skippedOnly) [state, rule] = ["red", "skipped"];
+  else if (noResult) [state, rule] = ["red", "no_result"];
+  else if (!anyDelivered && now >= hold) [state, rule] = ["red", "nothing"];
+  else if (!anyDelivered) [state, rule] = ["grey", "pending"];
+  else if (dups) [state, rule] = ["amber", "duplicate"];
+  else if (!rows) [state, rule] = ["amber", "roster_unreadable"];
+  else [state, rule] = ["green", "delivered"];
+  return { state, rule, due, hold, mondayDate, delivered: okN.size, expected: rows ? expected.length : null,
+    missing: missing.length, failed: failedSet.size, duplicates: dups, joined: joined.length, newSince, skippedOnly };
+}
+
+// ── STRIPE ─────────────────────────────────────────────────────────────────
+const priceOf = (l) => (isObj(l) ? (isObj(l.price) ? l.price.id : undefined) ??
+  (isObj(l.pricing) && isObj(l.pricing.price_details) ? l.pricing.price_details.price : undefined) : undefined);
+const linesOf = (o, m) => (isObj(o) && isObj(o[m]) && Array.isArray(o[m].data) ? o[m].data : []);
+
+function oList(handler, path, params) {
+  if (typeof handler !== "function") return { state: "unavailable", items: [] };
+  const items = [];
+  let after = null;
+  for (let page = 0; page < 3; page++) {
+    const u = new URL("https://api.stripe.com" + path);
+    for (const [k, v] of Object.entries(params)) u.searchParams.set(k, v);
+    u.searchParams.set("limit", "100");
+    if (after) u.searchParams.set("starting_after", after);
+    const r = handler(u, "GET");
+    if (!r || (r.status || 200) < 200 || (r.status || 200) > 299) return { state: "unavailable", items: [] };
+    let body = r.body;
+    if (typeof body === "string") { try { body = JSON.parse(body); } catch (_) { return { state: "unavailable", items: [] }; } }
+    if (!isObj(body) || !Array.isArray(body.data)) return { state: "unavailable", items: [] };
+    items.push(...body.data);
+    if (!body.has_more) return { state: "ok", items };
+    const last = body.data[body.data.length - 1];
+    if (!isObj(last) || typeof last.id !== "string" || !/^[a-z]+_[A-Za-z0-9]+$/.test(last.id)) return { state: "partial", items };
+    after = last.id;
+  }
+  return { state: "partial", items };
+}
+
+export function oStripe(env, now, handler) {
+  const key = env.STRIPE_READ_KEY;
+  if (key === undefined || key === null || key === "") return { state: "not-connected", why: "key" };
+  if (typeof key !== "string" || !/^rk_live_[A-Za-z0-9]{10,}$/.test(key)) return { state: "refused" };
+  const prices = new Set(String(env.MASSPERMITS_PRICE_IDS || "").split(",").map((s) => s.trim()).filter(Boolean));
+  if (!prices.size) return { state: "not-connected", why: "prices" };
+  const since = String(Math.floor((now - 30 * DAY) / 1000));
+  const L = {
+    subscriptions: oList(handler, "/v1/subscriptions", { status: "all" }),
+    invoices_paid: oList(handler, "/v1/invoices", { status: "paid", "created[gte]": since }),
+    invoices_open: oList(handler, "/v1/invoices", { status: "open" }),
+    sessions: oList(handler, "/v1/checkout/sessions", { status: "complete", "created[gte]": since, "expand[]": "data.line_items" }),
+    webhooks: oList(handler, "/v1/webhook_endpoints", {}),
+  };
+  const mine = (o, m) => linesOf(o, m).some((l) => prices.has(priceOf(l)));
+  const subs = L.subscriptions.items.filter((s) => mine(s, "items")).map((s) => {
+    const its = linesOf(s, "items");
+    const ends = its.map((i) => i && i.current_period_end).filter(isNum);
+    const mp = its.filter((i) => prices.has(priceOf(i)));
+    let monthly = 0, amount = 0;
+    for (const i of mp) {
+      const unit = isObj(i.price) && isNum(i.price.unit_amount) ? i.price.unit_amount : 0;
+      const q = isNum(i.quantity) ? i.quantity : 1;
+      const rec = isObj(i.price) && isObj(i.price.recurring) ? i.price.recurring : {};
+      const per = { month: 1, year: 1 / 12, week: 52 / 12, day: 365 / 12 }[rec.interval] || 0;
+      amount += unit * q;
+      monthly += (unit * q * per) / (rec.interval_count || 1);
+    }
+    return { id: s.id, customer: typeof s.customer === "string" ? s.customer : isObj(s.customer) ? s.customer.id : null,
+      status: s.status, cancel: s.cancel_at_period_end === true, cpe: ends.length ? Math.min(...ends) : null,
+      monthly, amount, other: its.map(priceOf).filter((p) => p && !prices.has(p)).length };
+  });
+  const inv = (x) => x.items.filter((i) => mine(i, "lines"));
+  const hooks = { "invoice.payment_failed": false, "customer.subscription.deleted": false };
+  for (const w of L.webhooks.items) {
+    if (!isObj(w) || w.status === "disabled" || !Array.isArray(w.enabled_events)) continue;
+    for (const ev of Object.keys(hooks)) if (w.enabled_events.includes(ev) || w.enabled_events.includes("*")) hooks[ev] = true;
+  }
+  const states = Object.values(L).map((x) => x.state);
+  return {
+    state: states.includes("unavailable") ? "unavailable" : states.includes("partial") ? "partial" : "ok",
+    sec: Object.fromEntries(Object.entries(L).map(([k, v]) => [k, v.state])),
+    subs, paid: inv(L.invoices_paid), open: inv(L.invoices_open),
+    sessions: L.sessions.items.filter((c) => mine(c, "line_items")),
+    hooks: L.webhooks.state === "unavailable" ? null : hooks,
+  };
+}
+
+// ── SOURCE TRIAGE ──────────────────────────────────────────────────────────
+const TOWNS = { set: null, aliases: null };
+export function oJoin(key, towns) {
+  if (typeof key !== "string") return null;
+  const s = key.replace(/,\s*MA\s*$/i, "").trim();
+  if (towns.set.has(s)) return s;
+  const a = towns.aliases[s.toLowerCase()];
+  return a && towns.set.has(a) ? a : null;
+}
+
+export function oTriage(now, shSources, errors, towns) {
+  const recs = isObj(shSources) ? shSources : {};
+  const keys = new Set(Object.keys(recs).filter((k) => isObj(recs[k]) && recs[k].state !== "ok"));
+  if (isObj(errors)) for (const k of Object.keys(errors)) keys.add(k);
+  const groups = { sources_blocked: [], sources_vanished: [], sources_failing: [], sources_stale: [], sources_down: [], sources_down_long: [] };
+  const list = [];
+  for (const k of keys) {
+    const rec = isObj(recs[k]) ? recs[k] : null;
+    const inErr = isObj(errors) && Object.prototype.hasOwnProperty.call(errors, k);
+    const state = inErr && (!rec || rec.state === "ok") ? "failing" : rec ? rec.state : "unknown";
+    const ek = inErr ? oErrKind(errors[k]) : rec ? oErrKind(rec.last_error) : "other";
+    const sinceRaw = rec ? rec.last_good || rec.first_seen : null;
+    const since = typeof sinceRaw === "string" && isNum(t(sinceRaw)) ? new Date(t(sinceRaw)).toISOString().slice(0, 10) : null;
+    const town = oJoin(k, towns) || k.replace(/,\s*MA$/i, "");
+    let id = null, recent = false;
+    if (ek === "access_controlled") id = "sources_blocked";
+    else if (state === "vanished") id = "sources_vanished";
+    else if (state === "failing") id = "sources_failing";
+    else if (state === "stale") id = "sources_stale";
+    else if (state === "dead") {
+      recent = !isNum(t(sinceRaw)) || now - t(sinceRaw) <= 7 * DAY;
+      id = recent ? "sources_down" : "sources_down_long";
+    } else if (state === "collapsed") {
+      recent = !Number.isInteger(rec.consecutive_low) || rec.consecutive_low <= 3 + 7;
+      id = recent ? "sources_down" : "sources_down_long";
+    }
+    if (id) groups[id].push(town);
+    list.push({ town, state, since, ek, recent });
+  }
+  return { groups, list };
+}
+
+// ── MAP ────────────────────────────────────────────────────────────────────
+export function oOutreach(got) {
+  if (got.state === "absent") return { state: "absent", towns: {}, ignored: [] };
+  if (got.state !== "ok" || (got.size || 0) > 64 * 1024 || !isObj(got.value) || !isObj(got.value.towns)) {
+    return { state: "unreadable", towns: {}, ignored: [] };
+  }
+  return { state: "present", raw: got.value.towns };
+}
+
+export function oMap(now, status, shSources, registryTowns, outreach, towns) {
+  const st = isObj(status) ? status : {};
+  const rowsBy = isObj(st.sources) ? st.sources : {};
+  const errors = isObj(st.errors) ? st.errors : {};
+  const cadBy = isObj(st.cadence) ? st.cadence : {};
+  const newestBy = isObj(st.newest) ? st.newest : {};
+  const recs = isObj(shSources) ? shSources : {};
+  const prodKeys = new Set([...Object.keys(rowsBy), ...Object.keys(errors), ...Object.keys(recs)]);
+  const byTown = {}, unmatched = new Set();
+  for (const k of prodKeys) {
+    const town = oJoin(k, towns);
+    if (!town) { unmatched.add(k.replace(/,\s*MA\s*$/i, "").trim()); continue; }
+    (byTown[town] = byTown[town] || []).push(k);
+  }
+  const keyFacts = (k) => {
+    const rec = isObj(recs[k]) ? recs[k] : null;
+    const rows = isNum(rowsBy[k]) ? rowsBy[k] : null;
+    const inErr = Object.prototype.hasOwnProperty.call(errors, k);
+    const bad = ["dead", "failing", "collapsed", "vanished", "stale"];
+    const dead = inErr || (rec ? bad.includes(rec.state) : !(rows > 0));
+    const live = !dead && (rec ? rec.state === "ok" : rows > 0);
+    const cad = cadBy[k] || (rec && rec.cadence) || null;
+    const ek = inErr ? oErrKind(errors[k]) : rec && rec.state !== "ok" ? oErrKind(rec.last_error) : null;
+    return { dead, live, rows, newest: typeof newestBy[k] === "string" ? newestBy[k].slice(0, 10) : null,
+      state: rec ? rec.state : null, cadence: cad, ek };
+  };
+  // outreach: exact key first, then alias
+  const out = {}, ignored = [];
+  if (outreach.state === "present") {
+    for (const [name, v] of Object.entries(outreach.raw)) {
+      const key = towns.set.has(name) ? name : oJoin(name, towns);
+      if (!key) { ignored.push(name); continue; }
+      if (!isObj(v)) continue;
+      out[key] = {
+        outreach: ["planned", "sent", "answered", "declined"].includes(v.outreach) ? v.outreach : null,
+        since: typeof v.since === "string" && /^\d{4}-\d{2}-\d{2}/.test(v.since) ? v.since.slice(0, 10) : null,
+        locked: typeof v.locked === "boolean" ? v.locked : null,
+      };
+    }
+  }
+  const counts = { dead: 0, weekly: 0, monthly: 0, answered: 0, sent: 0, locked: 0, none: 0 };
+  const res = {};
+  let reg = 0, ownerList = 0;
+  for (const town of towns.keys) {
+    const ks = byTown[town] || [];
+    const fs = ks.map(keyFacts);
+    const p = fs.length ? { dead: fs.some((f) => f.dead), live: !fs.some((f) => f.dead) && fs.some((f) => f.live),
+      one: fs.length === 1 ? fs[0] : null, cadence: (fs.find((f) => f.live) || {}).cadence || null } : null;
+    const r = registryTowns[town] || null;
+    const o = out[town] || null;
+    if (r && r.method === "opengov") reg++;
+    if (o && o.locked === true) ownerList++;
+    let code, lk = null;
+    if ((p && p.dead) || (r && r.feasibility === "built_not_wired")) { code = "dead"; if (!(p && p.dead)) lk = "paused"; }
+    else if (p && p.live) code = p.cadence ? "monthly" : "weekly";
+    else if (o && (o.outreach === "answered" || o.outreach === "declined")) code = "answered";
+    else if (o && o.outreach === "sent") code = "sent";
+    else if ((o && o.locked === true) || (!(o && o.locked === false) && r && r.method === "opengov")) {
+      code = "locked"; lk = o && o.locked === true ? "owner" : "opengov";
+    } else code = "none";
+    counts[code]++;
+    res[town] = { code, multi: fs.length > 1, facts: p && p.one ? p.one : null, lk,
+      o: o ? o.outreach : null, os: o ? o.since : null, planned: !!(o && o.outreach === "planned") };
+  }
+  return { counts, towns: res, unmatched: [...unmatched].sort(), ignored, opengov: { registry: reg, owner_list: ownerList } };
+}
+
+// ── the whole default view, as numbers and codes ───────────────────────────
+export function oracleMain({ r2, env, now, handler, towns, normalisePolicy }) {
+  const policyRaw = rawGet(r2, "presend-policy.json");
+  const p = normalisePolicy(policyRaw.state === "ok" ? policyRaw.value : null);
+  const statusHead = rawHead(r2, "refresh-status.json");
+  const statusGot = rawGet(r2, "refresh-status.json");
+  const status = statusGot.state === "ok" ? statusGot.value : null;
+  const logGot = rawGet(r2, "feed-send-log.json");
+  const attemptGot = rawGet(r2, "last-send-attempt.json");
+  const zip = rawHead(r2, "latest-weekly.zip");
+  const html = rawHead(r2, "latest-weekly.html");
+  const roster = rawGet(r2, "subscribers.json");
+  const rosterRows = roster.state === "ok" && Array.isArray(roster.value) ? roster.value.filter(isObj) : null;
+  const active = rosterRows ? rosterRows.filter((r) => r.email && r.active !== false) : null;
+  const funnelGot = rawGet(r2, "funnel-metrics.json");
+  const funnel = funnelGot.state === "ok" && Array.isArray(funnelGot.value) ? funnelGot.value.filter(isObj) : null;
+  const dl = rawGet(r2, "delivery-log.json");
+  const eng = rawGet(r2, "engagement.json");
+  const outreachGot = rawGet(r2, "admin/outreach.json");
+  const probe = rawHead(r2, "probe-map.json");
+  const shHead = rawHead(r2, "source-health.json");
+  const shGot = rawGet(r2, "source-health.json");
+  const shState = shHead.state === "unreadable" || (shHead.state === "present" && shGot.state !== "ok") ? "unreadable"
+    : shHead.state === "absent" ? "absent" : "ok";
+  const shSources = shState === "ok" && isObj(shGot.value) && isObj(shGot.value.sources) ? shGot.value.sources : {};
+  const lists = { prospects: rawList(r2, "prospects/"), agents: rawList(r2, "agent-prospects/"), newsletter: rawList(r2, "newsletter/") };
+  const S = oStripe(env, now, handler);
+  const on = ["ok", "partial", "unavailable"].includes(S.state);
+  const usable = (sec) => on && S.sec[sec] !== "unavailable";
+  const partial = (sec) => on && S.sec[sec] === "partial";
+  const entitled = usable("subscriptions") ? S.subs.filter((s) => ["active", "trialing", "past_due"].includes(s.status)) : [];
+
+  const E = { tiles: {}, lines: [], detail: {} };
+  const tile = (id, state, value, extra = {}) => { E.tiles[id] = { state, value: state === "grey" && extra.grey !== "unverified" ? null : value, ...extra }; };
+
+  // paying + paying_drop (like with like: roster now vs the funnel entry nearest now - 7 d)
+  let drop = null;
+  if (active && funnel && funnel.length) {
+    const target = now - 7 * DAY;
+    const withT = funnel.filter((e) => isNum(t(e.at)) && isNum(e.paying));
+    withT.sort((a, b) => Math.abs(t(a.at) - target) - Math.abs(t(b.at) - target));
+    if (withT.length && active.length < withT[0].paying) drop = { was: withT[0].paying, now: active.length };
+  }
+  if (usable("subscriptions")) {
+    const trials = entitled.filter((s) => s.status === "trialing").length;
+    tile("paying", drop ? "amber" : "green", entitled.length, { source: "stripe", trials, atLeast: partial("subscriptions") });
+  } else if (active) tile("paying", drop ? "amber" : "green", active.length, { source: "r2", subExact: "roster: feed and radar mixed, trials included" });
+  else tile("paying", "grey", null, { grey: "unavailable", source: "r2" });
+
+  // revenue
+  const since30 = now - 30 * DAY, since7 = now - 7 * DAY;
+  if (!on) tile("revenue", "grey", null, { grey: "not-connected", source: "none" });
+  else if (!usable("invoices_paid") || !usable("sessions")) tile("revenue", "grey", null, { grey: "unavailable", source: "stripe" });
+  else {
+    const gross = S.paid.filter((i) => (i.created || 0) * 1000 >= since30).reduce((a, i) => a + (i.amount_paid || 0), 0) +
+      S.sessions.filter((c) => c.mode === "payment" && !c.invoice && (c.created || 0) * 1000 >= since30).reduce((a, c) => a + (c.amount_total || 0), 0);
+    const rate = usable("subscriptions") ? entitled.filter((s) => s.status !== "trialing").reduce((a, s) => a + s.monthly, 0) : null;
+    tile("revenue", "green", gross, { source: "stripe", rate,
+      atLeast: partial("invoices_paid") || partial("sessions") || partial("subscriptions") });
+  }
+
+  // renewals
+  const due14 = entitled.filter((s) => isNum(s.cpe) && s.cpe * 1000 >= now && s.cpe * 1000 <= now + 14 * DAY);
+  const ending = due14.filter((s) => s.cancel).length;
+  if (!on) tile("renewals", "grey", null, { grey: "not-connected", source: "none" });
+  else if (!usable("subscriptions")) tile("renewals", "grey", null, { grey: "unavailable", source: "stripe" });
+  else tile("renewals", ending ? "amber" : "green", due14.length, { source: "stripe", ending, atLeast: partial("subscriptions") });
+
+  // failed (FAILED TILE)
+  if (S.state === "ok") {
+    const pd = S.subs.filter((s) => s.status === "past_due" || s.status === "unpaid").length;
+    const op = S.open.filter((i) => (i.attempt_count || 0) > 0).length;
+    tile("failed", pd + op > 0 ? "red" : "green", pd + op, { source: "stripe", pd, op });
+  } else if (rosterRows) {
+    const n = rosterRows.filter((r) => r.payment_failing).length;
+    if (n) tile("failed", "red", n, { source: "r2" });
+    else tile("failed", "grey", 0, { grey: "unverified", source: "r2", subExact: "webhook flags only; registration not verified" });
+  } else tile("failed", "grey", null, { grey: "unavailable", source: "r2" });
+
+  // monday
+  const M = oMonday(now, p, logGot.state === "ok" ? logGot.value : null, attemptGot.state === "ok" ? attemptGot.value : null, rosterRows);
+  // An unreadable send log: nothing can be judged. An unreadable attempt file
+  // matters only where it could turn "not yet" into the "started, no result"
+  // red; every red the log proves on its own stays red (COR-11).
+  const mUnread = logGot.state === "unreadable" || (attemptGot.state === "unreadable" && M.state === "grey");
+  if (mUnread) tile("monday", "grey", null, { grey: "unavailable", source: "r2" });
+  else if (M.state === "grey") tile("monday", "grey", null, { grey: "pending", source: "r2", subExact: "not sent yet; recent sends 15:20-18:46 UTC" });
+  else tile("monday", M.state, M.delivered, { source: "r2" });
+
+  // refresh
+  const R = oRefresh(now, statusHead, status, zip.state === "present" ? zip.uploaded : null);
+  const count = isObj(status) && isNum(status.count) ? status.count : null;
+  if (R.state === "grey") tile("refresh", "grey", null, { grey: R.grey, source: "r2", ...(R.grey === "pending" ? { subExact: "not landed yet, usually 13:00-16:00 UTC" } : {}) });
+  else tile("refresh", R.state, count, { source: "r2" });
+
+  // sales
+  if (dl.state === "ok" && Array.isArray(dl.value)) {
+    const recent = dl.value.filter((e) => isObj(e) && t(e.at) >= since7);
+    const money = usable("invoices_paid") && usable("sessions") ? {
+      newSub: S.paid.filter((i) => i.billing_reason === "subscription_create" && (i.created || 0) * 1000 >= since7).reduce((a, i) => a + (i.amount_paid || 0), 0),
+      pack: S.sessions.filter((c) => c.mode === "payment" && !c.invoice && (c.created || 0) * 1000 >= since7).reduce((a, c) => a + (c.amount_total || 0), 0),
+    } : null;
+    tile("sales", "green", recent.filter((e) => e.kind === "monthly").length, { source: "r2", money,
+      atLeast: partial("invoices_paid") || partial("sessions") });
+    E.detail.sales = { new_checkouts: E.tiles.sales.value, renewal_deliveries: recent.filter((e) => e.kind === "weekly").length,
+      gross_cents: money ? money.newSub + money.pack : null, new_subscription_cents: money ? money.newSub : null, pack_cents: money ? money.pack : null };
+  } else { tile("sales", "grey", null, { grey: "unavailable", source: "r2" }); E.detail.sales = null; }
+
+  // signups
+  if (Object.values(lists).every((l) => l.state === "ok")) {
+    const ts = (m) => { const v = m && m.ts; if (typeof v === "number") return v > 1e12 ? v : v * 1000;
+      if (typeof v !== "string" || !v) return NaN; if (/^\d+$/.test(v)) { const n = Number(v); return n > 1e12 ? n : n * 1000; } return Date.parse(v); };
+    const recent = (m) => isNum(ts(m)) && ts(m) >= since7 && ts(m) <= now + SKEW;
+    const pr = lists.prospects.items.filter(recent), ag = lists.agents.items.filter(recent);
+    const nlAll = lists.newsletter.items.filter((m) => m.un !== "1");
+    const nl = nlAll.filter(recent);
+    const byDay = {};
+    for (let d = Math.floor(since7 / DAY) * DAY; d <= now; d += DAY) byDay[ymd(d)] = 0;
+    for (const m of [...pr, ...ag, ...nl]) byDay[ymd(Math.min(ts(m), now))]++;
+    const trades = {};
+    for (const m of pr) { const k = typeof m.trade === "string" && m.trade ? m.trade.toLowerCase() : "unknown"; trades[k] = (trades[k] || 0) + 1; }
+    const atLeast = Object.values(lists).some((l) => l.truncated);
+    tile("signups", "green", pr.length + ag.length + nl.length, { source: "r2", split: [pr.length, ag.length, nl.length], atLeast });
+    E.detail.signups = { prospects: pr.length, agents: ag.length, newsletter_new: nl.length,
+      newsletter_confirmed: nlAll.filter((m) => m.c === "1").length, newsletter_pending: nlAll.filter((m) => m.c !== "1").length,
+      at_least: atLeast, by_day: byDay, trades };
+  } else { tile("signups", "grey", null, { grey: "unavailable", source: "r2" }); E.detail.signups = null; }
+
+  // ── NEEDS YOU ──
+  const L = (id, severity, extra = {}) => E.lines.push({ id, severity, ...extra });
+  const tr = oTriage(now, shSources, isObj(status) ? status.errors : null, towns);
+  const onMonday = new Date(now).getUTCDay() === 1;
+  const mondaySend = Math.floor(now / DAY) * DAY + p.send_hour * HOUR;
+  const deliveredSinceSend = (Array.isArray(logGot.value) ? logGot.value : []).some((e) => isObj(e) &&
+    t(e.at) >= mondaySend && t(e.at) <= now + SKEW && Array.isArray(e.sent) && e.sent.some((s) => s && s.ok));
+  const T = E.tiles;
+  if (T.refresh.state === "red") L("refresh", "red", { rule: R.rule, mondayClause: R.rule === "failed" && onMonday && !deliveredSinceSend });
+  if (T.monday.state === "red") L("monday", "red", { rule: M.rule });
+  if (T.failed.state === "red") L("failed_payments", "red", { n: T.failed.value });
+  if (T.refresh.state === "amber") L("refresh", "amber", { rule: R.rule });
+  if (T.monday.state === "amber") L("monday", "amber", { rule: M.rule });
+  if (usable("subscriptions") && rosterRows) {
+    const onRoster = new Set(rosterRows.map((r) => r.customer).filter(Boolean));
+    const n = entitled.filter((s) => s.customer && !onRoster.has(s.customer)).length;
+    if (n) L("paid_not_served", "amber", { n });
+  }
+  if (tr.groups.sources_down.length) L("sources_down", "amber", { towns: tr.groups.sources_down });
+  const unread = Object.entries(T).filter(([, x]) => x.state === "grey" && x.grey === "unavailable").map(([id]) => id);
+  if (unread.length || shState === "unreadable") L("unreadable", "amber", { tiles: unread, sourceHealth: shState === "unreadable" });
+  if (T.paying.state === "amber") L("paying_drop", "amber", { was: drop.was, now: drop.now });
+  if (T.renewals.state === "amber") L("renewals_ending", "amber", { n: ending });
+  if (S.state === "ok" && active) {
+    const paid = new Set(entitled.map((s) => s.customer).filter(Boolean));
+    const n = active.filter((r) => r.customer && !paid.has(r.customer)).length;
+    if (n) L("served_not_paid", "amber", { n });
+  }
+  if (usable("subscriptions")) {
+    const n = new Set(S.subs.filter((s) => s.other > 0).map((s) => s.customer || s.id)).size;
+    if (n) L("unknown_price", "amber", { n });
+  }
+  if (on && S.hooks && Object.values(S.hooks).some((v) => !v)) L("webhook_events", "amber");
+  if (funnel && funnel.length && isNum(funnel[0].no_customer_id) && funnel[0].no_customer_id > 0) L("no_customer_id", "amber", { n: funnel[0].no_customer_id });
+  if (html.state === "present") {
+    const zt = zip.state === "present" ? zip.uploaded : NaN;
+    if (now - html.uploaded > 8 * DAY) L("portal", "amber", { why: "stale" });
+    else if (isNum(zt) && Math.abs(html.uploaded - zt) > 15 * MIN) L("portal", "amber", { why: "drift" });
+  }
+  if (S.state === "refused") L("stripe_refused", "amber");
+  // OUTREACH: absent, or present and readable, or anything else is unreadable
+  // (a read that throws, over 64 KB, not JSON, towns not an object).
+  const outState = outreachGot.state === "absent" ? "absent" : oOutreach(outreachGot).state === "present" ? "present" : "unreadable";
+  if (outState === "unreadable") L("outreach_unreadable", "amber");
+  const cov = isObj(status) && isObj(status.coverage) ? status.coverage : null;
+  if (cov && cov.disclose === true) L("coverage_disclosed", "known");
+  for (const id of ["sources_blocked", "sources_vanished", "sources_down_long", "sources_failing", "sources_stale"]) {
+    if (tr.groups[id].length) L(id, "known", { towns: tr.groups[id] });
+  }
+  if (probe.state === "present" && now - probe.uploaded > 30 * DAY) L("registry_age", "known");
+  if (S.state === "not-connected") L("stripe_not_connected", "known");
+  if (S.state === "partial") L("stripe_partial", "known");
+  if (outState === "absent") L("outreach_absent", "known");
+  const ec = eng.state === "ok" && isObj(eng.value) && isObj(eng.value.counts) ? eng.value.counts : null;
+  if (ec && ((ec["never-downloaded"] || 0) > 0 || (ec.lapsed || 0) > 0)) L("engagement", "known");
+  const firstOf = (sev) => E.lines.find((l) => l.severity === sev);
+  E.headline = firstOf("red") ? "red" : firstOf("amber") ? "amber" : "clear";
+
+  // ── detail counts ──
+  E.detail.customers = { count: active ? active.length : null,
+    cancelled: rosterRows ? rosterRows.filter((r) => r.cancelled || r.active === false).length : null };
+  E.detail.monday = mUnread ? { delivered: null, expected: null, missing: 0, failed: 0 } :
+    { delivered: M.delivered, expected: M.expected, missing: M.missing, failed: M.failed, duplicates: M.duplicates,
+      joined: M.joined, new_since_monday: M.newSince, monday_date: M.mondayDate, skipped_only: M.skippedOnly };
+  E.detail.refresh = { fail_kind: oFailKind(status), count,
+    coverage: cov ? { live_sources: cov.live_sources ?? null, expected_sources: cov.expected_sources ?? null,
+      attempted_sources: cov.attempted_sources ?? null, lost_sources: cov.lost_sources ?? null, rows: cov.rows ?? null,
+      disclose: cov.disclose === true } : null, sources: tr.list };
+  E.detail.renewals = usable("subscriptions") ? due14.length : null;
+  E.detail.failed_rows = (usable("subscriptions") ? S.subs.filter((s) => s.status === "past_due" || s.status === "unpaid").length : 0) +
+    (usable("invoices_open") ? S.open.filter((i) => (i.attempt_count || 0) > 0).length : 0) +
+    (rosterRows ? rosterRows.filter((r) => r.payment_failing).length : 0);
+  E.detail.engagement = ec;
+  E.detail.setup = { stripe: on ? "ok" : S.state === "refused" ? "refused" : "not-connected", outreach: outState,
+    events: S.hooks ? { ...S.hooks } : null };
+  E.stripe = S;
+  return E;
+}
+
+export function oracleMap({ r2, now, towns }) {
+  const shHead = rawHead(r2, "source-health.json");
+  const pmHead = rawHead(r2, "probe-map.json");
+  const rs = rawGet(r2, "refresh-status.json");
+  // A head or get that throws on the three objects the map is built from: 503.
+  if (shHead.state === "unreadable" || pmHead.state === "unreadable" || rs.state === "unreadable" && failed(r2, "get", "refresh-status.json") ||
+    (shHead.state === "present" && failed(r2, "get", "source-health.json")) ||
+    (pmHead.state === "present" && failed(r2, "get", "probe-map.json"))) return { status: 503 };
+  const sh = shHead.state === "present" ? rawGet(r2, "source-health.json") : { state: "absent" };
+  const pm = pmHead.state === "present" ? rawGet(r2, "probe-map.json") : { state: "absent" };
+  const shSources = sh.state === "ok" && isObj(sh.value) && isObj(sh.value.sources) ? sh.value.sources : {};
+  const regTowns = {};
+  const reg = pm.state === "ok" && isObj(pm.value) && isObj(pm.value.registry) && Array.isArray(pm.value.registry.towns) ? pm.value.registry.towns : [];
+  for (const x of reg) { const k = isObj(x) ? oJoin(x.name, towns) : null; if (k) regTowns[k] = { method: x.method, feasibility: x.feasibility }; }
+  const og = rawGet(r2, "admin/outreach.json");
+  const outreach = og.state === "unreadable" && !r2.objects.has("admin/outreach.json") ? { state: "unreadable" } : oOutreach(og);
+  const m = oMap(now, rs.state === "ok" ? rs.value : null, shSources, regTowns, outreach, towns);
+  m.status = 200;
+  return m;
+}
+
+export function setTowns(keys, aliases) {
+  TOWNS.set = new Set(keys);
+  TOWNS.aliases = aliases;
+  TOWNS.keys = keys;
+  return TOWNS;
+}
+
+// ── comparing the oracle with the route ────────────────────────────────────
+// Every comparison is tallied by item (for the P4-COR trace table); every
+// disagreement is collected, and the caller fails the test with all of them.
+export const tally = {};
+function cmp(bad, item, expected, got) {
+  const ok = JSON.stringify(expected) === JSON.stringify(got);
+  const e = tally[item] || (tally[item] = { n: 0, bad: 0 });
+  e.n++;
+  if (!ok) { e.bad++; bad.push(item + ": expected " + JSON.stringify(expected) + ", got " + JSON.stringify(got)); }
+}
+const pl = (n, w, many) => n + " " + (n === 1 ? w : many || w + "s");
+const named = (text) => {
+  const seg = text.slice(text.indexOf(": ") + 2);
+  const cut = seg.indexOf(". ");
+  return (cut >= 0 ? seg.slice(0, cut) : seg.replace(/\.$/, ""));
+};
+
+export function checkMain(E, body) {
+  const bad = [];
+  const tiles = Object.fromEntries(body.tiles.map((x) => [x.id, x]));
+  cmp(bad, "tiles.ids", ["paying", "revenue", "renewals", "failed", "monday", "refresh", "sales", "signups"], body.tiles.map((x) => x.id));
+  for (const [id, x] of Object.entries(E.tiles)) {
+    const g = tiles[id];
+    cmp(bad, "tile." + id + ".state", [x.state, x.grey ?? null], [g.state, g.grey ?? null]);
+    cmp(bad, "tile." + id + ".value", x.value, g.value);
+    cmp(bad, "tile." + id + ".source", x.source, g.source);
+    if (x.subExact) cmp(bad, "tile." + id + ".sub", x.subExact, g.sub);
+    if (x.state === "grey") continue;
+    const sub = g.sub || "";
+    if (id === "paying" && x.source === "stripe") {
+      cmp(bad, "tile.paying.sub", (x.atLeast ? "at least " + x.value + "; " : "") + pl(x.trials, "trial") + " included", sub);
+    }
+    if (id === "revenue") {
+      cmp(bad, "tile.revenue.sub", (x.atLeast ? "at least; " : "") + "list-price run rate " +
+        (x.rate === null ? "not available" : dollars(x.rate)) + (x.rate === null ? "" : "/mo"), sub);
+    }
+    if (id === "renewals") cmp(bad, "tile.renewals.sub", (x.atLeast ? "at least; " : "") + (x.ending ? x.ending + " set to cancel" : "none set to cancel"), sub);
+    if (id === "failed" && x.source === "stripe") cmp(bad, "tile.failed.sub", pl(x.pd, "subscription") + " past due, " + pl(x.op, "open invoice") + " retried", sub);
+    if (id === "sales" && x.money) {
+      cmp(bad, "tile.sales.sub", (x.atLeast ? "at least; " : "") + dollars(x.money.newSub + x.money.pack) + " gross: " +
+        dollars(x.money.newSub) + " new subscriptions, " + dollars(x.money.pack) + " packs", sub);
+    }
+    if (id === "signups") {
+      cmp(bad, "tile.signups.sub", (x.atLeast ? "at least; " : "") + "prospects " + x.split[0] + " · agents " + x.split[1] + " · newsletter " + x.split[2], sub);
+    }
+  }
+  // needs you: ids, severities, order, and the facts inside each sentence
+  const got = body.needs_you.filter((l) => l.id !== "privacy");
+  cmp(bad, "needs_you.ids", E.lines.map((l) => l.id + "/" + l.severity), got.map((l) => l.id + "/" + l.severity));
+  cmp(bad, "headline.state", E.headline, body.headline.state);
+  if (E.headline === "clear") cmp(bad, "headline.text", "Nothing is wrong that this page can see.", body.headline.text);
+  else cmp(bad, "headline.text", (got.find((l) => l.severity === E.headline) || {}).text, body.headline.text);
+  for (const l of E.lines) {
+    const g = got.find((x) => x.id === l.id && x.severity === l.severity);
+    if (!g) continue;
+    if (l.id === "refresh" && l.severity === "red") {
+      const want = { missing: /never reported/, too_old: /more than 36 hours/, not_landed: /has not landed by 17:00 UTC/,
+        failed: /The data refresh (crashed|was stopped by its quality gate|failed)\./ }[l.rule];
+      cmp(bad, "line.refresh.rule", true, want.test(g.text));
+      cmp(bad, "line.refresh.monday_clause", l.mondayClause, g.text.includes("Monday's email will not send while this is the latest run."));
+    }
+    if (l.id === "monday" && l.severity === "red") {
+      const n = { failed: E.detail.monday.failed, missing: E.detail.monday.missing }[l.rule];
+      if (n !== undefined) cmp(bad, "line.monday.count", true, g.text.includes(pl(n, l.rule === "failed" ? "subscriber" : "expected subscriber")));
+    }
+    if (l.id === "failed_payments") cmp(bad, "line.failed_payments.count", true, g.text.startsWith(pl(l.n, "failed payment") + " "));
+    if (l.id === "paying_drop") cmp(bad, "line.paying_drop.numbers", true, g.text.includes("fell from " + l.was + " to " + l.now));
+    for (const k of ["paid_not_served", "renewals_ending", "served_not_paid", "unknown_price", "no_customer_id"]) {
+      if (l.id === k) cmp(bad, "line." + k + ".count", String(l.n), g.text.split(" ")[0]);
+    }
+    if (l.towns) {
+      const n = l.towns.length;
+      cmp(bad, "line." + l.id + ".count", String(n), g.text.split(" ")[0]);
+      const names = named(g.text).split(/, (?![^(]*\))/).map((s) => s.replace(/ \((dead|collapsed|down)[ ,].*\)$| \((dead|collapsed)\)$/, ""));
+      const shown = names.filter((s) => !/^\+\d+ more$/.test(s));
+      cmp(bad, "line." + l.id + ".towns", true, shown.length === Math.min(5, n) && shown.every((s) => l.towns.includes(s)));
+      cmp(bad, "line." + l.id + ".more", n > 5 ? "+" + (n - 5) + " more" : null, names.find((s) => /^\+\d+ more$/.test(s)) || null);
+    }
+    if (l.id === "sources_blocked") cmp(bad, "line.sources_blocked.sentence", true, g.text.includes("do not retry, it will not come back by itself."));
+    if (l.id === "unreadable") {
+      const labels = Object.fromEntries(body.tiles.map((x) => [x.id, x.label]));
+      const want = l.tiles.map((id) => labels[id]).concat(l.sourceHealth ? ["Source health"] : []);
+      cmp(bad, "line.unreadable.labels", "Could not read: " + want.join(", ") + ".", g.text.split(" Reload")[0]);
+    }
+  }
+  // detail
+  const d = body.detail;
+  cmp(bad, "detail.customers", [E.detail.customers.count, E.detail.customers.cancelled], [d.customers.count, d.customers.cancelled]);
+  const m = d.monday, em = E.detail.monday;
+  cmp(bad, "detail.monday.delivered", [em.delivered, em.expected], [m.delivered, m.expected]);
+  cmp(bad, "detail.monday.missing_failed", [em.missing, em.failed], [m.missing.length, m.failed.length]);
+  if ("duplicates" in em) {
+    cmp(bad, "detail.monday.other", [em.duplicates, em.joined, em.new_since_monday, em.monday_date, em.skipped_only],
+      [m.duplicates, m.joined_on_send_day.length, m.new_since_monday, m.monday_date, m.skipped_only]);
+  }
+  cmp(bad, "detail.refresh.fail_kind", E.detail.refresh.fail_kind, d.refresh.fail_kind);
+  cmp(bad, "detail.refresh.count", E.detail.refresh.count, d.refresh.count);
+  cmp(bad, "detail.refresh.coverage", E.detail.refresh.coverage, d.refresh.coverage);
+  const srt = (a) => a.map((x) => JSON.stringify([x.town, x.state, x.since, x.ek, x.recent])).sort();
+  cmp(bad, "detail.refresh.sources", srt(E.detail.refresh.sources), srt(d.refresh.sources));
+  cmp(bad, "detail.renewals", E.detail.renewals, d.renewals ? d.renewals.rows.length : null);
+  cmp(bad, "detail.failed_payments", E.detail.failed_rows, d.failed_payments.rows.length);
+  if (E.detail.sales) {
+    const s = d.sales;
+    cmp(bad, "detail.sales", E.detail.sales, s && { new_checkouts: s.new_checkouts, renewal_deliveries: s.renewal_deliveries,
+      gross_cents: s.gross_cents, new_subscription_cents: s.new_subscription_cents, pack_cents: s.pack_cents });
+  } else cmp(bad, "detail.sales", null, d.sales);
+  if (E.detail.signups) {
+    const s = d.signups, e = E.detail.signups;
+    cmp(bad, "detail.signups", [e.prospects, e.agents, e.newsletter_new, e.newsletter_confirmed, e.newsletter_pending, e.at_least],
+      s && [s.prospects, s.agents, s.newsletter_new, s.newsletter_confirmed, s.newsletter_pending, s.at_least]);
+    cmp(bad, "detail.signups.by_day", e.by_day, s && s.by_day);
+    // Plain trade words are compared as they are; a hostile trade value is
+    // neutralised by the route (privacy), so only its count is compared.
+    const plain = (o) => Object.fromEntries(Object.entries(o || {}).filter(([k]) => /^[a-z][a-z -]*$/.test(k)));
+    const total = (o) => Object.values(o || {}).reduce((a, x) => a + x, 0);
+    cmp(bad, "detail.signups.trades", [plain(e.trades), total(e.trades)], s && [plain(s.trades), total(s.trades)]);
+  } else cmp(bad, "detail.signups", null, d.signups);
+  if (E.detail.engagement) for (const [k, v] of Object.entries(E.detail.engagement)) cmp(bad, "detail.engagement", v, d.engagement && d.engagement[k]);
+  cmp(bad, "detail.setup.stripe", E.detail.setup.stripe, d.setup.stripe);
+  cmp(bad, "detail.setup.outreach", E.detail.setup.outreach, d.setup.outreach);
+  const ev = E.detail.setup.events;
+  cmp(bad, "detail.setup.webhook_events", ev ? ev : { "invoice.payment_failed": "unknown", "customer.subscription.deleted": "unknown" },
+    d.setup.webhook_events);
+  return bad;
+}
+
+export function checkMap(E, res) {
+  const bad = [];
+  cmp(bad, "map.status", E.status, res.status);
+  if (E.status !== 200 || res.status !== 200) return bad;
+  const b = res.body;
+  cmp(bad, "map.counts", E.counts, b.counts);
+  cmp(bad, "map.counts.sum", 351, Object.values(b.counts).reduce((a, x) => a + x, 0));
+  for (const [town, e] of Object.entries(E.towns)) {
+    const g = b.towns[town] || { k: "none" };
+    cmp(bad, "map.town.code", town + ":" + e.code, town + ":" + g.k);
+    if (e.facts) {
+      const f = e.facts;
+      cmp(bad, "map.town.facts", [town, f.rows, f.newest, f.state, f.cadence, f.ek],
+        [town, g.rows ?? null, g.newest ?? null, g.state ?? null, g.cadence ?? null, g.ek ?? null]);
+    }
+    cmp(bad, "map.town.outreach", [town, e.o, e.os, e.planned], [town, g.o ?? null, g.os ?? null, g.planned === 1]);
+    cmp(bad, "map.town.lk", [town, e.lk], [town, g.lk ?? null]);
+  }
+  cmp(bad, "map.unmatched", E.unmatched, b.unmatched);
+  cmp(bad, "map.outreach_ignored", E.ignored, b.outreach_ignored);
+  cmp(bad, "map.opengov", E.opengov, b.opengov);
+  return bad;
 }
