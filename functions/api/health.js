@@ -17,6 +17,7 @@
 //
 // It reads exactly three things:
 //   refresh-status.json   pipeline result + coverage counts + source_health counts
+//                         (+ the R2 upload time of that same get, for the lag flag)
 //   head(latest-weekly.html)  portal page publish time  (head, never get)
 //   head(latest-weekly.zip)   download publish time     (head, never get)
 //
@@ -37,6 +38,32 @@
 // previous week's objects — a state that looks identical to success from any
 // single "last updated" timestamp. So "worked", "ran but produced nothing" and
 // "never ran" are three separate values everywhere below, never collapsed.
+//
+// THE LAG FLAG (added 2026-09-25)
+// -------------------------------
+// On 2026-09-23 the daily run shipped fresh bundles at 14:35Z, but its
+// refresh-status.json PUT did not land: the upload curl ends in `|| true`, so
+// the step still reported success, and R2 kept the 09-22 status. The only
+// staleness rule here was 8 days, so this tile called the refresh fine while
+// every check that reads refresh-status.json was describing the day before. At
+// 03:14Z on 09-24 the status was 36.9 h old and nothing was flagged.
+// Three cheap timestamp checks now close that gap (codes in lag.reasons):
+//   status_not_landed  latest-weekly.zip was uploaded more than 30 min AFTER
+//                      refresh-status.json, and has been in R2 for 30 min. The
+//                      status step starts seconds after the zip PUT (5.8 s on
+//                      09-23), so this is the 09-23 miss, seen 30 min after it.
+//                      A zip replaced by hand trips it too, until the next run.
+//   refresh_late       refresh-status.json is older than 36 h AND so is the
+//                      zip (or there is no zip): no run has landed at all.
+//   status_late        the status is older than 36 h but the zip is not, and
+//                      the zip is not newer by 30 min (an edge of the above).
+//   bundle_not_landed  the status says ok but was uploaded more than 6 h after
+//                      the zip: the bundle PUT did not land.
+// 36 h and 6 h are _presend.js POLICY_DEFAULTS max_status_age_h and
+// divergence_h, so this tile and the pre-send gate agree. 36 h clears the
+// longest normal gap between two landed runs (26.2 h over 16 scheduled runs,
+// 09-09 to 09-24) by 9.8 h. It is age based, not due based, on purpose: runs
+// start 3.6 to 6.6 h after the 09:00 cron, so a due rule cries wolf daily.
 
 export async function onRequestGet(context) {
   const { env } = context;
@@ -44,12 +71,16 @@ export async function onRequestGet(context) {
 
   const STALE_MS = 8 * 86400_000; // the same 8 days as weekly-send.js:43 and leads.js
   const DRIFT_MS = 15 * 60_000;   // the same 15 minutes as leads.js
+  const LAG_MS = 36 * 3600_000;   // the same 36 h as _presend.js max_status_age_h
+  const LANDED_MS = 30 * 60_000;  // a run's status PUT follows its zip PUT by seconds
+  const DIVERGE_MS = 6 * 3600_000; // the same 6 h as _presend.js divergence_h
 
-  const [status, hHtml, hZip] = await Promise.all([
-    readJson(env, "refresh-status.json"),
+  const [statusObj, hHtml, hZip] = await Promise.all([
+    readJsonMeta(env, "refresh-status.json"),
     headSafe(env, "latest-weekly.html"),
     headSafe(env, "latest-weekly.zip"),
   ]);
+  const status = statusObj.json;
 
   // ---- the refresh pipeline ------------------------------------------------
   const tRan = status && status.ran_at ? Date.parse(status.ran_at) : NaN;
@@ -116,6 +147,34 @@ export async function onRequestGet(context) {
     drift_minutes: drift,
   };
 
+  // ---- the lag flag (see THE LAG FLAG above) -------------------------------
+  // Both upload times are the R2 server clock, so they compare with each other;
+  // ran_at is the runner clock and is only used for the age, exactly as
+  // refresh.age_hours already does, so the tile and the flag cannot disagree.
+  const tStatusUp = Number.isFinite(statusObj.uploaded) ? statusObj.uploaded : tRan;
+  const zipAhead = Number.isFinite(tZip) && Number.isFinite(tStatusUp) ? tZip - tStatusUp : NaN;
+  const zipAge = Number.isFinite(tZip) ? now - tZip : NaN;
+  const lagReasons = [];
+  if (status && Number.isFinite(tRan)) {
+    const statusLate = now - tRan > LAG_MS;
+    const zipLate = !Number.isFinite(tZip) || zipAge > LAG_MS;
+    const notLanded = zipAhead > LANDED_MS && zipAge > LANDED_MS;
+    if (statusLate && zipLate) lagReasons.push("refresh_late");
+    if (notLanded) lagReasons.push("status_not_landed");
+    if (statusLate && !zipLate && !notLanded) lagReasons.push("status_late");
+    if (status.ok !== false && -zipAhead > DIVERGE_MS) lagReasons.push("bundle_not_landed");
+  }
+  const h1 = (ms) => Number((ms / 3600_000).toFixed(1));
+  const lag = {
+    flag: lagReasons.length > 0,
+    reasons: lagReasons,
+    limit_hours: LAG_MS / 3600_000,
+    status_age_hours: refresh.age_hours,
+    status_uploaded_at: Number.isFinite(statusObj.uploaded) ? new Date(statusObj.uploaded).toISOString() : null,
+    download_age_hours: Number.isFinite(zipAge) ? h1(zipAge) : null,
+    download_ahead_minutes: Number.isFinite(zipAhead) ? Math.round(zipAhead / 60_000) : null,
+  };
+
   // ---- one word for the phone ---------------------------------------------
   const bad = [];
   const warn = [];
@@ -123,6 +182,25 @@ export async function onRequestGet(context) {
   if (refresh.state === "failed") bad.push("the last refresh FAILED" + (refresh.error ? ": " + refresh.error : ""));
   if (refresh.age_hours !== null && refresh.age_hours * 3600_000 > STALE_MS) {
     bad.push(`the last refresh ran ${Math.floor(refresh.age_hours / 24)} days ago`);
+  } else if (lagReasons.includes("refresh_late")) {
+    bad.push(`no refresh has landed for ${refresh.age_hours} h (limit ${lag.limit_hours} h): ` +
+             "refresh-status.json and " + (Number.isFinite(tZip)
+               ? `latest-weekly.zip (${lag.download_age_hours} h) are both older than that`
+               : "a missing latest-weekly.zip say the daily run is not landing"));
+  }
+  if (lagReasons.includes("status_not_landed")) {
+    warn.push(`the last status upload did not land: latest-weekly.zip was uploaded ` +
+              `${h1(zipAhead)} h after refresh-status.json, which is now ${refresh.age_hours} h old. ` +
+              "Anything that reads refresh-status.json is describing an older run " +
+              "(or the zip was replaced by hand)");
+  }
+  if (lagReasons.includes("status_late")) {
+    warn.push(`refresh-status.json is ${refresh.age_hours} h old (limit ${lag.limit_hours} h) ` +
+              `while latest-weekly.zip is ${lag.download_age_hours} h old`);
+  }
+  if (lagReasons.includes("bundle_not_landed")) {
+    warn.push(`the last refresh reported success, but latest-weekly.zip was uploaded ` +
+              `${h1(-zipAhead)} h before its status: the bundle upload did not land`);
   }
   if (Number.isFinite(tZip) && now - tZip > STALE_MS) {
     bad.push(`latest-weekly.zip is ${Math.floor((now - tZip) / 86400_000)} days old — ` +
@@ -144,18 +222,23 @@ export async function onRequestGet(context) {
     checked_at: new Date(now).toISOString(),
     problems: bad,
     warnings: warn,
-    refresh, coverage, sources, portal,
+    refresh, coverage, sources, portal, lag,
   });
 }
 
 function len(a) { return Array.isArray(a) ? a.length : null; }
 function numOrNull(v) { return typeof v === "number" && Number.isFinite(v) ? v : null; }
 
-async function readJson(env, key) {
+// Same read as before (an unreadable or unparseable object is null), plus the
+// R2 upload time that the get() already returns. No extra R2 call.
+async function readJsonMeta(env, key) {
   try {
     const o = await env.BUNDLES.get(key);
-    return o ? JSON.parse(await o.text()) : null;
-  } catch { return null; }
+    if (!o) return { json: null, uploaded: NaN };
+    const up = o.uploaded ? new Date(o.uploaded).getTime() : NaN;
+    try { return { json: JSON.parse(await o.text()), uploaded: up }; }
+    catch { return { json: null, uploaded: up }; }
+  } catch { return { json: null, uploaded: NaN }; }
 }
 
 async function headSafe(env, key) {

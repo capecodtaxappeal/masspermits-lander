@@ -923,7 +923,11 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # Raised 45 -> 90 (refresh-budget BUDGET_MEMO, 2026-09-25). A job killed
+    # here ships NO bundle: "Ship bundles to R2" has no always(). Projected
+    # with Kit A: 30.0-43.6 min; with Orleans' document scan at its
+    # 400-id cap, up to 52.1. The timeout only caps; a normal run is unchanged.
+    timeout-minutes: 90
     steps:
       - name: Fetch scraper engine (OIDC — engine is not in this repo)
         run: |
@@ -949,20 +953,93 @@ jobs:
       # noticed until seo_build died mid-run with most of the site rewritten.
       # So: assert the parts exist BEFORE anything runs. Failing here is free;
       # failing halfway through a build is not.
+      #
+      # Kit A (2026-09-25): the hard list also names fetch_common.py and every
+      # fetch module scraper.refresh() imports outside a try (26; it named 7).
+      # A missing one already killed the run, but only when refresh() reached
+      # its import, possibly well into the scrape, and that crash writes status
+      # ok:false, which weekly-send refuses to mail. Failing here instead leaves
+      # the previous run's status and bundles in R2 and names the missing files
+      # in run-log.txt. The fetch-import check re-reads scraper.py on every run,
+      # so wiring a new town cannot outrun this list. The contract gate inputs
+      # join the warn-only tier: without them hosted_refresh ships unchecked,
+      # exactly as it did before they existed.
+      # ORDER: upload the new engine tarball BEFORE pushing this file. The older
+      # tarball has no fetch_lowell.py or fetch_barre.py and would stop here.
       - name: Verify the engine is complete
         run: |
           set -euo pipefail
           missing=""
-          for f in entity.py scraper.py hosted_refresh.py build_bundle.py export_lander.py                    seo_build.py blog_build.py blog_voice.py subtype_pages.py                    research_stats.py research_pages.py pr_report.py town_visual.py                    fetch_cambridge.py fetch_worcester.py fetch_civicplus.py                    fetch_plymouth.py fetch_reading.py fetch_sudbury.py                    fetch_amherst.py data/town_bounds.json data/town_guides.json; do
+          for f in entity.py scraper.py hosted_refresh.py build_bundle.py export_lander.py                    seo_build.py blog_build.py blog_voice.py subtype_pages.py                    research_stats.py research_pages.py pr_report.py town_visual.py                    fetch_cambridge.py fetch_worcester.py fetch_civicplus.py                    fetch_plymouth.py fetch_reading.py fetch_sudbury.py                    fetch_amherst.py data/town_bounds.json data/town_guides.json fetch_common.py fetch_barre.py fetch_bourne.py fetch_civicplus_reports.py fetch_concord.py fetch_duxbury.py fetch_energov.py fetch_lowell.py fetch_needham.py fetch_orleans.py fetch_patriotpermitpro.py fetch_permitlink.py fetch_permitlink_west.py fetch_pittsfield.py fetch_provincetown.py fetch_somerville.py fetch_truro.py fetch_wakefield.py fetch_waltham.py fetch_wareham.py; do
             [ -f "$f" ] || missing="$missing $f"
           done
           if [ -n "$missing" ]; then
-            echo "::error::engine tarball is missing:$missing — a stale-read rebuild almost certainly clobbered it. Re-upload from a verified stage before rerunning."
+            echo "::error::engine tarball is missing:$missing. A stale-read rebuild clobbered it, or this workflow was pushed before the engine tarball it expects. Re-upload from a verified stage before rerunning." | tee -a run.log
             exit 1
           fi
           # Syntax-check every module too: a truncated upload extracts fine.
           python3 -m compileall -q $(ls *.py) > /dev/null
           echo "engine complete: $(ls *.py | wc -l) modules, all parse"
+          # Fetch-import check: every fetch_* module scraper.py imports outside a
+          # try must be in the tarball. Missing ones fail the run here (exit 3).
+          # If the check itself cannot run it only warns; the hard list stands.
+          fetch_rc=0
+          python3 - <<'PY' || fetch_rc=$?
+          import ast, os, sys
+          BROAD = {"ImportError", "ModuleNotFoundError", "Exception", "BaseException"}
+          TRY = tuple(t for t in (getattr(ast, "Try", None), getattr(ast, "TryStar", None)) if t)
+          def broad(node):
+              for h in node.handlers:
+                  if h.type is None:
+                      return True
+                  for x in (h.type.elts if isinstance(h.type, ast.Tuple) else [h.type]):
+                      if getattr(x, "id", getattr(x, "attr", None)) in BROAD:
+                          return True
+              return False
+          need = set()
+          def walk(node, guarded):
+              for field, value in ast.iter_fields(node):
+                  for ch in (value if isinstance(value, list) else [value]):
+                      if not isinstance(ch, ast.AST):
+                          continue
+                      g = guarded or (isinstance(node, TRY) and field == "body" and broad(node))
+                      if isinstance(ch, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda)):
+                          g = False
+                      mods = []
+                      if isinstance(ch, ast.Import):
+                          mods = [a.name for a in ch.names]
+                      elif isinstance(ch, ast.ImportFrom) and ch.level == 0 and ch.module:
+                          mods = [ch.module]
+                      for m in mods:
+                          top = m.split(".")[0]
+                          if top.startswith("fetch_") and not g:
+                              need.add(top + ".py")
+                      walk(ch, g)
+          try:
+              with open("scraper.py", encoding="utf-8") as fh:
+                  walk(ast.parse(fh.read()), False)
+          except Exception as e:
+              print("::warning::fetch-import check could not read scraper.py (%s); the hard list above still applies" % type(e).__name__)
+              sys.exit(0)
+          missing = sorted(n for n in need if not os.path.isfile(n))
+          if missing:
+              msg = ("::error::scraper.py imports fetch modules the engine tarball lacks: " + " ".join(missing)
+                     + ". Re-upload the tarball with them before rerunning.")
+              print(msg)
+              with open("run.log", "a", encoding="utf-8") as fh:
+                  fh.write(msg + "\n")
+              sys.exit(3)
+          print("fetch-import check: all %d fetch modules scraper.py imports are present" % len(need))
+          PY
+          if [ "$fetch_rc" -eq 3 ]; then exit 1; fi
+          if [ "$fetch_rc" -ne 0 ]; then
+            echo "::warning::fetch-import check exited $fetch_rc; the hard list above still applies"
+          fi
+          # Contract gate inputs, warn only. Without them hosted_refresh prints
+          # "contracts UNAVAILABLE" and ships unchecked, as before Kit A.
+          if [ ! -f source_contracts.py ] || ! ls data/contracts_2026_09_06/*.json > /dev/null 2>&1; then
+            echo "::warning::contract gate inputs missing (source_contracts.py or data/contracts_2026_09_06/*.json): bundles ship unchecked this run"
+          fi
           # Warn-only tier, for a module whose absence degrades observability but
           # must never abort a run. source_health.py reached this repo in the
           # same change that added the health step, and pushing THIS FILE fires
@@ -1148,18 +1225,81 @@ jobs:
       # Status + full run log go to R2 even on failure — Actions logs need
       # repo-admin auth, R2 doesn't. This is the pipeline's black box, and
       # weekly-send checks status.json (ok + freshness) before mailing anyone.
+      #
+      # READ-BACK (refresh-budget item 1, 2026-09-25). On 2026-09-23 this step
+      # exited 0 in 3 s while R2 kept the 09-22 refresh-status.json and
+      # run-log.txt: both PUTs ended in `|| true`, so nothing noticed for a day.
+      # Now the status PUT must pass three checks: a token was minted,
+      # upload-bundle's receipt says ok for the right byte count, and the public
+      # /api/health reads back the same ran_at (no allowlist is widened). Up to
+      # 3 tries within 3 minutes; if the read-back shows a newer status than
+      # this run's, the step stops rather than write again. A miss prints
+      # ::error:: (annotations are readable without admin access, unlike the
+      # logs). The script always exits 0 and the step
+      # is continue-on-error: the site-refresh step below has no always(), so a
+      # failure here would skip it. Status now ships before the run log.
       - name: Ship status + run log to R2 (always)
         if: always()
+        continue-on-error: true
+        timeout-minutes: 8
         run: |
           [ -f run.log ] || echo "(no run.log produced)" > run.log
-          OIDC=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r .value)
-          curl -fsS -X PUT -H "Authorization: Bearer $OIDC" -H "Content-Type: text/plain" \
-            --data-binary @run.log "https://masspermits.com/api/upload-bundle?key=run-log.txt" || true
+          mint() {
+            curl -fsS --retry 1 --retry-delay 3 --max-time 15 \
+              -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r '.value // empty'
+          }
+          put() {  # put FILE KEY TYPE: receipt JSON in put.out, exit 0 only on HTTP 2xx
+            curl -fsS --retry 1 --retry-delay 3 --retry-all-errors --max-time 30 -X PUT \
+              -H "Authorization: Bearer $OIDC" -H "Content-Type: $3" --data-binary @"$1" \
+              -o put.out "https://masspermits.com/api/upload-bundle?key=$2"
+          }
+          epoch() { date -u -d "$1" +%s 2>/dev/null || echo 0; }
           if [ -f status.json ]; then
-            curl -fsS -X PUT -H "Authorization: Bearer $OIDC" -H "Content-Type: application/json" \
-              --data-binary @status.json "https://masspermits.com/api/upload-bundle?key=refresh-status.json" || true
+            WANT="$(jq -r '.ran_at // empty' status.json 2>/dev/null || true)"
+            BYTES="$(wc -c < status.json | tr -d ' ')"
+            DEADLINE=$(( $(date +%s) + 180 ))
+            landed=""; why=""; sev=error
+            for try in 1 2 3; do
+              sev=error; GOT=""
+              OIDC="$(mint || true)"
+              if [ -z "$OIDC" ]; then
+                why="could not mint an OIDC token"
+              elif ! put status.json refresh-status.json application/json; then
+                why="the PUT failed"
+              elif [ "$(jq -r '.ok // empty' put.out 2>/dev/null || true)" != "true" ] ||
+                   [ "$(jq -r '.bytes // empty' put.out 2>/dev/null || true)" != "$BYTES" ]; then
+                why="the upload receipt was not ok for $BYTES bytes"
+              elif [ -z "$WANT" ]; then
+                landed="receipt ok for $BYTES bytes (status.json has no ran_at to read back)"; break
+              elif ! curl -fsS --retry 1 --max-time 15 -o health.out "https://masspermits.com/api/health?v=$(date +%s)"; then
+                why="receipt ok, but /api/health could not be read to confirm it"; sev=warning
+              else
+                GOT="$(jq -r '.refresh.ran_at // empty' health.out 2>/dev/null || true)"
+                if [ "$GOT" = "$WANT" ]; then landed="read back ran_at $GOT"; break; fi
+                if [ -n "$GOT" ] && [ "$(epoch "$WANT")" -gt 0 ] && [ "$(epoch "$GOT")" -gt "$(epoch "$WANT")" ]; then
+                  echo "::warning::R2 already holds a newer refresh-status.json ($GOT); not overwriting it"
+                  landed="a newer status is already in R2"; break
+                fi
+                why="R2 reads back ran_at ${GOT:-none}, not $WANT"
+              fi
+              echo "status upload try $try of 3: $why"
+              [ "$try" -lt 3 ] && [ "$(date +%s)" -lt "$DEADLINE" ] || break
+              sleep 20
+            done
+            if [ -n "$landed" ]; then
+              echo "refresh-status.json landed: $landed"
+            else
+              echo "::$sev::refresh-status.json not confirmed after $try tries: $why. If it did not land, R2 still holds the previous run's status, so weekly-send, the pre-send gate and /leads describe that run. The lag flag in /api/health shows it as status_not_landed."
+            fi
+          else
+            echo "::warning::no status.json this run; refresh-status.json in R2 is left as the previous run's"
           fi
+          OIDC="$(mint || true)"
+          if [ -z "$OIDC" ] || ! put run.log run-log.txt text/plain; then
+            echo "::warning::run-log.txt did not upload; R2 keeps the previous run's log"
+          fi
+          exit 0
 
       # Keep the PUBLIC SITE fresh too: regenerate the masked teaser data.json
       # AND all ~200 programmatic SEO pages (fresh counts, sitemap, llms.txt)
