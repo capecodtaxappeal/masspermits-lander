@@ -11,11 +11,16 @@ const NOW = H.T("2026-09-30T18:00:00Z");
 const git = (...a) => execFileSync("git", a, { cwd: H.REPO, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
 
 // P2 may extend this list with its page files (FILE RULES), never with anything else.
-const FUNCTION_FILES = [
+const P1_FILES = [
   "functions/api/_owner_gate.js", "functions/api/_mission_r2.js", "functions/api/_mission_stripe.js",
   "functions/api/_mission_data.js", "functions/admin/api/mission.js",
 ];
-const ALLOWED = (p) => FUNCTION_FILES.includes(p) ||
+const FUNCTION_FILES = [...P1_FILES, "functions/admin/api/mission-outreach.js"];
+const PAGE_FILES = ["admin/mission.html", "admin/mission-app.js", "admin/mission-render.js", "admin/mission-view.js",
+  "admin/mission-app.css", "admin/mission-towns.json"];
+// docs/mission/demo.html exists only on the three design branches (DEMO).
+const ALLOWED = (p) => FUNCTION_FILES.includes(p) || PAGE_FILES.includes(p) || p === "_headers" ||
+  p === "docs/mission/demo.html" || p === "test/mission/_demo.mjs" ||
   /^test\/mission\/[A-Za-z0-9_-]+\.test\.mjs$/.test(p) || p === "test/mission/_harness.mjs";
 const NEVER_EDIT = [
   "functions/api/stripe-webhook.js", "functions/api/weekly-send.js", "functions/api/my-leads.js",
@@ -52,7 +57,8 @@ test("P1-14 the diff from main lists only allowed paths", () => {
   for (const p of NEVER_EDIT) assert.ok(!changed.includes(p), p);
   assert.ok(!changed.some((p) => p.startsWith(".github/")));
   assert.ok(!changed.some((p) => /(^|\/)(package(-lock)?\.json|wrangler\.toml|_routes\.json)$|node_modules/.test(p)));
-  for (const f of FUNCTION_FILES) assert.ok(changed.includes(f), "missing " + f);
+  for (const f of [...FUNCTION_FILES, ...PAGE_FILES]) assert.ok(changed.includes(f), "missing " + f);
+  assert.deepEqual(changed.filter((p) => p.startsWith("docs/")), ["docs/mission/demo.html"]);
 });
 
 test("P1-14 exports: helpers export no onRequest*; the route exports onRequestGet only", () => {
@@ -60,6 +66,7 @@ test("P1-14 exports: helpers export no onRequest*; the route exports onRequestGe
     assert.ok(!Object.keys(mod).some((k) => k.startsWith("onRequest")));
   }
   assert.deepEqual(Object.keys(m.mission), ["onRequestGet"]);
+  assert.deepEqual(Object.keys(m.outreach), ["onRequestPost"]);
 });
 
 test("P1-14 import allowlist; no node:, no dynamic import, no fetch reassignment", () => {
@@ -90,13 +97,22 @@ test("P1-14 outbound: exactly one fetch call, inside stripeGet()", () => {
 });
 
 test("P1-14 writes: no put, delete or multipart in any P1 file", () => {
-  for (const f of FUNCTION_FILES) {
+  for (const f of P1_FILES) {
     const src = read(f);
     for (const re of [/\.put\(/, /\.delete\(/, /createMultipartUpload/, /resumeMultipartUpload/]) {
       assert.ok(!re.test(src), f + " " + re);
     }
   }
   assert.deepEqual(Object.keys(m.r2.readView(new H.FakeR2())).sort(), ["get", "head", "list"]);
+});
+
+test("P2-8 writes: \".put(\" exactly once across the functions files, in mission-outreach.js; no delete", () => {
+  const hits = FUNCTION_FILES.map((f) => [f, (read(f).match(/\.put\(/g) || []).length]).filter((x) => x[1] > 0);
+  assert.deepEqual(hits, [["functions/admin/api/mission-outreach.js", 1]]);
+  for (const f of FUNCTION_FILES) {
+    for (const re of [/\.delete\(/, /createMultipartUpload/, /resumeMultipartUpload/]) assert.ok(!re.test(read(f)), f + " " + re);
+  }
+  for (const f of PAGE_FILES) assert.ok(!/\.put\(/.test(read(f)), f);
 });
 
 test("P1-14 route strings never appear in non-test added files", () => {
@@ -126,6 +142,9 @@ test("P1-14 no real email address in any added file", () => {
 
 test("P1-14 node --check on each new non-test file", () => {
   for (const f of FUNCTION_FILES) execFileSync(process.execPath, ["--check", path.join(H.REPO, f)]);
+  // the page modules parse too (checked from the harness's temp copy, which is type: module)
+  const dir = H.tempCopy();
+  for (const f of ["admin/mission-view.js", "admin/mission-render.js", "admin/mission-app.js"]) execFileSync(process.execPath, ["--check", path.join(dir, f)]);
 });
 
 // ── budgets ────────────────────────────────────────────────────────────────

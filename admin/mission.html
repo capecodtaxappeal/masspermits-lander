@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mission Control</title>
+<link rel="stylesheet" href="/admin/mission-app.css">
+<script type="module" src="/admin/mission-app.js"></script>
+</head>
+<body>
+<div id="mission" class="page">
+<section id="setup-needed" class="setup" hidden>
+<h2>Setup needed</h2>
+<p>This page is installed but not switched on. It stays locked until these are in place:</p>
+<ol>
+<li>A Cloudflare Zero Trust Access application covering /admin and /admin/* on the apex domain, allowing only your email.</li>
+<li>Three Production variables in Pages: CF_ACCESS_TEAM_DOMAIN, CF_ACCESS_AUD and ADMIN_ALLOWED_EMAILS.</li>
+<li>A production redeploy, so the variables take effect.</li>
+</ol>
+</section>
+<div id="app"></div>
+<svg id="svg-ns" class="ns" hidden aria-hidden="true"></svg>
+</div>
+</body>
+</html>

@@ -23,6 +23,10 @@ export const SHIPPED = [
   "functions/api/_mission_stripe.js",
   "functions/api/_mission_data.js",
   "functions/admin/api/mission.js",
+  "functions/admin/api/mission-outreach.js",
+  "admin/mission-view.js",
+  "admin/mission-render.js",
+  "admin/mission-app.js",
 ];
 const IMPORTED = ["functions/api/_cf-access.js", "functions/api/_presend.js"];
 
@@ -52,6 +56,9 @@ export async function load() {
     stripe: await imp("functions/api/_mission_stripe.js"),
     data: await imp("functions/api/_mission_data.js"),
     presend: await imp("functions/api/_presend.js"),
+    outreach: await imp("functions/admin/api/mission-outreach.js"),
+    view: await imp("admin/mission-view.js"),
+    render: await imp("admin/mission-render.js"),
   };
   return loaded;
 }
@@ -156,8 +163,113 @@ export class FakeR2 {
       delimitedPrefixes: [],
     };
   }
-  async put(key, value) { this.ops.push({ op: "put", key }); this.set(key, String(value)); return {}; }
+  // Honours onlyIf.etagMatches as R2 does: a mismatch writes nothing and returns null.
+  async put(key, value, opts = {}) {
+    this.ops.push({ op: "put", key, opts });
+    this._check("put", key);
+    const want = opts && opts.onlyIf && opts.onlyIf.etagMatches;
+    const cur = this.objects.get(key);
+    if (want !== undefined && (!cur || cur.etag !== String(want).replace(/"/g, ""))) return null;
+    this.set(key, String(value), { uploaded: opts.uploadedAt });
+    return this._meta(key, this.objects.get(key));
+  }
   async delete(key) { this.ops.push({ op: "delete", key }); this.objects.delete(key); }
+}
+
+// ── a minimal fake DOM (test-only; no dependency) ──────────────────────────
+// Enough of the DOM for mission-render.js and the demo boot. The HTML sinks
+// throw, so a render that reached for one fails the test.
+const SVG_NS_URI = "http://www.w3.org/2000/svg";
+export class FakeNode {
+  constructor(doc, tag, ns) {
+    this.ownerDocument = doc;
+    this.tagName = tag ? tag.toUpperCase() : "#text";
+    this.localName = tag || "#text";
+    this.namespaceURI = ns || null;
+    this.childNodes = [];
+    this.parentNode = null;
+    this.attrs = new Map();
+    this.listeners = {};
+    this._text = "";
+    this.hidden = false;
+  }
+  get firstChild() { return this.childNodes[0] || null; }
+  get children() { return this.childNodes.filter((c) => c.tagName !== "#text"); }
+  appendChild(c) {
+    if (c.parentNode) c.parentNode.removeChild(c);
+    c.parentNode = this;
+    this.childNodes.push(c);
+    return c;
+  }
+  removeChild(c) { this.childNodes = this.childNodes.filter((x) => x !== c); c.parentNode = null; return c; }
+  replaceChildren(...kids) { for (const c of this.childNodes) c.parentNode = null; this.childNodes = []; for (const k of kids) this.appendChild(k); }
+  setAttribute(k, v) {
+    if (/^on/i.test(k) || k === "style") throw new Error("forbidden attribute " + k);
+    if (k === "hidden") this.hidden = true; else this.attrs.set(k, String(v));
+  }
+  getAttribute(k) { return k === "hidden" ? (this.hidden ? "" : null) : this.attrs.has(k) ? this.attrs.get(k) : null; }
+  removeAttribute(k) { if (k === "hidden") this.hidden = false; else this.attrs.delete(k); }
+  hasAttribute(k) { return this.getAttribute(k) !== null; }
+  get textContent() { return this.tagName === "#text" ? this._text : this.childNodes.map((c) => c.textContent).join(""); }
+  set textContent(v) {
+    if (this.tagName === "#text") { this._text = String(v); return; }
+    this.replaceChildren();
+    if (v !== "") this.appendChild(this.ownerDocument.createTextNode(String(v)));
+  }
+  get className() { return this.getAttribute("class") || ""; }
+  get innerHTML() { throw new Error("innerHTML is forbidden"); }
+  set innerHTML(_) { throw new Error("innerHTML is forbidden"); }
+  get outerHTML() { throw new Error("outerHTML is forbidden"); }
+  set outerHTML(_) { throw new Error("outerHTML is forbidden"); }
+  insertAdjacentHTML() { throw new Error("insertAdjacentHTML is forbidden"); }
+  addEventListener(t, f) { (this.listeners[t] = this.listeners[t] || []).push(f); }
+  dispatch(type, extra = {}) {
+    const ev = { type, target: this, defaultPrevented: false, preventDefault() { this.defaultPrevented = true; }, ...extra };
+    for (let n = this; n; n = n.parentNode) for (const f of n.listeners[type] || []) f(ev);
+    return ev;
+  }
+  click() { return this.dispatch("click"); }
+  focus() { this.ownerDocument.activeElement = this; }
+  walk(fn) { fn(this); for (const c of this.childNodes) c.walk(fn); }
+  all(pred) { const out = []; this.walk((n) => { if (n.tagName !== "#text" && pred(n)) out.push(n); }); return out; }
+  byPart(name) { return this.all((n) => n.getAttribute("data-part") === name); }
+  isShown() { for (let n = this; n; n = n.parentNode) if (n.hidden) return false; return true; }
+}
+export class FakeDocument {
+  constructor() {
+    this.documentElement = new FakeNode(this, "html");
+    this.body = new FakeNode(this, "body");
+    this.documentElement.appendChild(this.body);
+    this.activeElement = null;
+    this.listeners = {};
+  }
+  createElement(t) { return new FakeNode(this, t.toLowerCase(), "http://www.w3.org/1999/xhtml"); }
+  createElementNS(ns, t) { return new FakeNode(this, t, ns); }
+  createTextNode(s) { const n = new FakeNode(this, null); n._text = String(s); return n; }
+  getElementById(id) { let hit = null; this.documentElement.walk((n) => { if (!hit && n.getAttribute && n.getAttribute("id") === id) hit = n; }); return hit; }
+  addEventListener(t, f) { (this.listeners[t] = this.listeners[t] || []).push(f); }
+  write() { throw new Error("document.write is forbidden"); }
+}
+// Parses the page's own static body markup (simple, well-formed, no script)
+// into a FakeDocument.
+export function fakeDocumentFrom(bodyHtml) {
+  const doc = new FakeDocument();
+  const stack = [doc.body];
+  const VOID = new Set(["meta", "link", "br", "img", "input", "hr"]);
+  const re = /<\/([a-z0-9]+)\s*>|<([a-z0-9]+)((?:\s+[a-z-]+(?:="[^"]*")?)*)\s*(\/?)>|([^<]+)/gi;
+  let m;
+  while ((m = re.exec(bodyHtml))) {
+    const top = stack[stack.length - 1];
+    if (m[1]) { if (stack.length > 1) stack.pop(); continue; }
+    if (m[5] !== undefined) { if (m[5].trim()) top.appendChild(doc.createTextNode(m[5])); continue; }
+    const tag = m[2].toLowerCase();
+    const inSvg = tag === "svg" || top.namespaceURI === SVG_NS_URI;
+    const node = inSvg ? doc.createElementNS(SVG_NS_URI, tag) : doc.createElement(tag);
+    for (const a of m[3].matchAll(/([a-z-]+)(?:="([^"]*)")?/gi)) node.setAttribute(a[1].toLowerCase(), a[2] === undefined ? "" : a[2]);
+    top.appendChild(node);
+    if (!VOID.has(tag) && !m[4]) stack.push(node);
+  }
+  return doc;
 }
 
 // ── JWT ─────────────────────────────────────────────────────────────────────
@@ -255,6 +367,7 @@ export const liveKey = () => "rk_" + "live_" + "T".repeat(24);
 const FIRST = ["Avery", "Blake", "Casey", "Drew", "Emery", "Finley", "Harper", "Jordan", "Kendall", "Logan",
   "Morgan", "Parker", "Quinn", "Reese", "Riley", "Rowan", "Sawyer", "Skyler", "Taylor", "Wren", "Ellis", "Jules"];
 const LAST = ["Testwood", "Fakerly", "Samplesen", "Mockford", "Placeholt"];
+export const NAME_PARTS = Object.freeze({ first: FIRST.slice(), last: LAST.slice() });
 
 export function rosterRows(n, now, over = {}) {
   const rows = [];
