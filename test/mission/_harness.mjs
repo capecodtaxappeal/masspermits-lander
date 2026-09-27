@@ -1167,7 +1167,7 @@ export function oracleMain({ r2, env, now, handler, towns, normalisePolicy }) {
     const old = open.filter((i) => {
       const sub = byId[subOf(i)];
       const e = emailOf(i);
-      return !!sub && sub.status === "canceled" && !!e && (active || []).some((r) => norm(r.email) === e && r.customer !== cus(i));
+      return !!sub && sub.status === "canceled" && !!e && (active || []).some((r) => norm(r.email) === e && typeof r.customer === "string" && !!r.customer && r.customer !== cus(i));
     });
     const other = open.filter((i) => !old.includes(i) && (i.attempt_count || 0) > 0 &&
       !pdSubs.some((s) => s.id === subOf(i) || (s.customer && s.customer === cus(i))));

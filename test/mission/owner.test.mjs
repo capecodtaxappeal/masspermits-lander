@@ -151,6 +151,20 @@ test("replaced account controls: no active match, or a live subscription, is sti
   }
 });
 
+test("replaced account control: a matching active roster row WITHOUT a customer id is not a replacement (still ACT)", async () => {
+  const w = await H.healthyWorld(NOW, { roster: 2 });
+  const p = w.roster[0];
+  const cus = p.customer;
+  delete p.customer; w.r2.set("subscribers.json", w.roster, { uploaded: NOW - 3 * DAY });
+  const data = H.stripeData([{ ...p, customer: cus }, w.roster[1]], NOW,
+    { openInvoices: [openInvoice("in_TESTa3", cus, { subscription: "sub_TEST000001", email: p.email })] });
+  data.subscriptions[0].status = "canceled";
+  const res = await withStripe(data, () => get(w, { env: STRIPE_ENV }));
+  assert.deepEqual([tileOf(res, "failed").state, tileOf(res, "failed").value], ["red", 1]);
+  assert.equal(lineOf(res, "replaced_invoice"), undefined);
+  assert.ok(lineOf(res, "failed_payments"));
+});
+
 // ── i. a clock that runs ahead gets its own sentence ─────────────────────────
 test("i. a ran_at more than an hour ahead: its own words, never 'never reported'", async () => {
   const w = await H.healthyWorld(NOW);

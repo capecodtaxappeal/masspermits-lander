@@ -778,7 +778,7 @@ function failedPayments(ctx) {
     const sub = i.subscription ? subById.get(i.subscription) : null;
     const email = normEmail(i.email) || (i.customer && rosterEmail.get(i.customer)) || "";
     if (sub && sub.status === "canceled" && email &&
-      ctx.active.some((r) => normEmail(r.email) === email && r.customer !== i.customer)) {
+      ctx.active.some((r) => normEmail(r.email) === email && typeof r.customer === "string" && r.customer && r.customer !== i.customer)) {
       replaced.push(i);
       continue;
     }
