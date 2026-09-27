@@ -63,7 +63,7 @@ function hero(doc, p) {
   const box = el(doc, "section", "hero");
   if (typeof p.paying_now === "number") {
     const big = el(doc, "div", "big");
-    big.appendChild(doc.createTextNode(count(p.paying_now)));
+    big.appendChild(doc.createTextNode((p.paying_at_least === true ? "≥ " : "") + count(p.paying_now)));
     big.appendChild(el(doc, "span", "of", " of " + p.goal));
     big.setAttribute("data-part", "headline");
     box.appendChild(big);
@@ -117,23 +117,35 @@ function chart(doc, p) {
   return s;
 }
 
+// A funnel total: its word, or the number with the floor mark and, when it
+// covers fewer weeks than the card, how many.
+function totalText(f, key) {
+  const v = (f.totals || {})[key];
+  if (typeof v !== "number") {
+    const word = String(v == null ? "unavailable" : v);
+    return SHORT[word] || word;
+  }
+  const floor = Array.isArray(f.at_least) && f.at_least.includes(key);
+  const used = f.covered && typeof f.covered[key] === "number" ? f.covered[key] : f.weeks;
+  return (floor ? "≥ " : "") + count(v) + (used < f.weeks ? " (" + used + " of " + f.weeks + " weeks)" : "");
+}
+
 function funnelCard(doc, title, f) {
   const card = el(doc, "section", "card");
   card.appendChild(el(doc, "h3", null, title));
   const ul = el(doc, "ul", "steps");
-  const t = f.totals || {};
   const r = f.rates || {};
   const rows = [
-    ["Visits", t.visits, ""],
-    ["Clicked Buy", t.buy_clicks, rateText(r.visit_to_click, "visits")],
-    ["Opened checkout", t.checkouts, rateText(r.click_to_checkout, "Buy clicks")],
-    ["Paid", t.paid, rateText(r.checkout_to_paid, "checkouts")],
-    ["Abandoned", t.abandoned, rateText(r.checkout_abandoned, "checkouts")],
+    ["Visits", "visits", ""],
+    ["Clicked Buy", "buy_clicks", rateText(r.visit_to_click, "visits")],
+    ["Opened checkout", "checkouts", rateText(r.click_to_checkout, "Buy clicks")],
+    ["Paid", "paid", rateText(r.checkout_to_paid, "checkouts")],
+    ["Abandoned", "abandoned", rateText(r.checkout_abandoned, "checkouts")],
   ];
-  for (const [label, v, sub] of rows) {
+  for (const [label, key, sub] of rows) {
     const li = el(doc, "li");
     li.appendChild(el(doc, "span", null, label));
-    const n = el(doc, "span", "n", typeof v === "number" ? count(v) : "no data");
+    const n = el(doc, "span", "n", totalText(f, key));
     if (sub) n.appendChild(el(doc, "span", "r", sub));
     li.appendChild(n);
     ul.appendChild(li);
@@ -179,13 +191,14 @@ function notes(doc, p) {
     else if (s.clicks.state !== "unreadable") out.push("No Buy click has been recorded yet.");
   }
   if (s.visits && s.visits.old_offer_clicks_left_out > 0) {
-    out.push(count(s.visits.old_offer_clicks_left_out) + " old clicks on the offer page were logged as page views. They are left out of visits here.");
+    out.push(count(s.visits.old_offer_clicks_left_out) + " clicks on the offer page's buttons are logged as page views for /ops. They are left out of visits here, so /ops shows more visits for the same days.");
   }
   if (s.stripe && s.stripe.state !== "ok" && s.stripe.reason) out.push("Stripe: " + s.stripe.reason + ".");
   if (s.free && s.free.state !== "ok") out.push("Free sign ups: no snapshot history could be read.");
-  out.push("Checkouts, abandoned and paid are counted in the week the checkout was opened. Abandoned means it expired, or was still open 24 hours later, without being paid.");
+  out.push("Checkouts, abandoned and paid are counted in the week the checkout was opened. Paid means completed and charged; a checkout completed with nothing charged (a full discount or a trial) is not counted as paid. Abandoned means it expired, or was still open more than 24 hours later, and the same buyer (same Stripe customer or email) did not complete another checkout in these weeks.");
+  out.push("Buy clicks come from a counter on our own pages. A script could fake some, so read them as a guide, not an exact figure.");
   out.push("In the table, \"no data\" and \"not yet\" mean that counter had not started; \"unavailable\" means it could not be read just now; \"not set up\" means Stripe is not connected.");
-  out.push("≥ means at least: that week's list was cut short or its data starts partway through, so the real number may be higher.");
+  out.push("≥ means at least: that week's list was cut short or its data starts partway through, so the real number may be higher. In the two boxes, \"3 of 4 weeks\" means that total only covers the weeks its counter was running.");
   out.push("Weeks run Monday to Sunday, Boston time. Numbers are counts only; no names or emails are on this page.");
   const ul = el(doc, "ul", "notes small muted");
   ul.setAttribute("data-part", "notes");

@@ -82,7 +82,7 @@ test("page files: phone viewport, no inline script or style, CSP header, no dash
   const headers = read("_headers");
   assert.ok(headers.includes("/admin/growth\n  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self';"));
   for (const f of ["admin/growth.html", "admin/growth.css", "admin/growth-render.js", "admin/growth-app.js", "js/buy-click.js",
-    "functions/admin/api/growth.js", "functions/api/_growth_data.js", "functions/api/_growth_stripe.js", "docs/growth/README.md"]) {
+    "functions/admin/api/growth.js", "functions/api/_growth_data.js", "functions/api/_growth_stripe.js"]) {
     assert.ok(!DASH.test(read(f)), f + " has an em or en dash");
   }
   for (const f of ["admin/growth-render.js", "admin/growth-app.js"]) {

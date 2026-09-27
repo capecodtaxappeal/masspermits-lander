@@ -6,7 +6,8 @@
 //     for byte, into a temp dir with {"type":"module"} and imports from there;
 //   * GrowthR2: the mission FakeR2 plus customMetadata on put and startAfter on
 //     list, as R2 does;
-//   * synthetic Stripe fixtures (cs_TEST..., sub_TEST..., cus_TEST..., @example.com).
+//   * synthetic Stripe fixtures (cs_live_a1TEST..., the real id shape with a second
+//     underscore; sub_TEST..., cus_TEST..., @example.com).
 
 import fs from "node:fs";
 import os from "node:os";
@@ -91,7 +92,7 @@ export class GrowthR2 extends MH.FakeR2 {
 
 export const FEED = "price_TESTfeedmonthly";
 export const PACK = "price_TESTleadpack";
-export const IRWATCH = "price_TESTirwatch";
+export const OTHER = "price_TESTotherproduct";
 export const stripeEnv = (over = {}) => ({
   STRIPE_READ_KEY: MH.liveKey(),
   MASSPERMITS_PRICE_IDS: FEED + "," + PACK,
@@ -103,8 +104,9 @@ let seq = 0;
 export function session(createdMs, status, price = FEED, extra = {}) {
   seq++;
   return {
-    id: "cs_TEST" + String(seq).padStart(8, "0"), object: "checkout.session",
+    id: "cs_live_a1TEST" + String(seq).padStart(8, "0"), object: "checkout.session",
     created: Math.floor(createdMs / 1000), status,
+    payment_status: status === "complete" ? "paid" : "unpaid",
     customer: "cus_TEST" + String(seq).padStart(6, "0"),
     customer_details: { email: "buyer" + seq + "@example.com", name: "Avery Testwood" },
     amount_total: 9900, currency: "usd", mode: "subscription",

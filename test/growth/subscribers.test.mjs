@@ -43,7 +43,7 @@ test("the weekly series with a cancel, a past_due, a trial and a scheduled cance
     H.sub(now - 2 * H.DAY, "trialing"),                                            // this week only
     H.sub(wk(4).start + H.HOUR, "active", { cancelAt: now + 20 * H.DAY }),         // cancels next month: still paying
     H.sub(wk(3).start, "incomplete_expired"),                                      // never paid
-    H.sub(wk(1).start, "active", { price: H.IRWATCH }),                            // another product
+    H.sub(wk(1).start, "active", { price: H.OTHER }),                            // another product
   ];
   g.stripe.resetGrowthCaches();
   stub.stripe = H.stripeServer({ sessions: [], subscriptions: subs });

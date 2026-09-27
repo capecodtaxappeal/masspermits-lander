@@ -22,16 +22,16 @@ async function run(data, env = H.stripeEnv(), o = {}) {
 }
 const thisWeek = (res) => res.body.weeks[res.body.weeks.length - 1];
 
-test("IRWatch-priced sessions and subscriptions on the shared account never count", async () => {
+test("sessions and subscriptions priced for the other product on the shared account never count", async () => {
   const res = await run({
     sessions: [
       H.session(NOW - H.DAY, "complete"),
-      H.session(NOW - H.DAY, "complete", H.IRWATCH),
-      H.session(NOW - 2 * H.DAY, "expired", H.IRWATCH),
-      H.session(NOW - 2 * H.DAY, "open", H.IRWATCH),
+      H.session(NOW - H.DAY, "complete", H.OTHER),
+      H.session(NOW - 2 * H.DAY, "expired", H.OTHER),
+      H.session(NOW - 2 * H.DAY, "open", H.OTHER),
     ],
-    subscriptions: [H.sub(NOW - 30 * H.DAY, "active"), H.sub(NOW - 30 * H.DAY, "active", { price: H.IRWATCH }),
-      H.sub(NOW - 30 * H.DAY, "past_due", { price: H.IRWATCH })],
+    subscriptions: [H.sub(NOW - 30 * H.DAY, "active"), H.sub(NOW - 30 * H.DAY, "active", { price: H.OTHER }),
+      H.sub(NOW - 30 * H.DAY, "past_due", { price: H.OTHER })],
   });
   const w = thisWeek(res);
   assert.equal(w.checkouts, 1);
@@ -58,9 +58,9 @@ test("with MASSPERMITS_FEED_PRICE_IDS set, only the Weekly Feed counts; unset, e
   assert.equal(all.body.sources.stripe.scope, "all");
 });
 
-test("a feed price that is not on the MassPermits price list is refused, so IRWatch cannot be let in by it", async () => {
-  const res = await run({ sessions: [H.session(NOW - H.DAY, "complete", H.IRWATCH)], subscriptions: [] },
-    H.stripeEnv({ MASSPERMITS_FEED_PRICE_IDS: H.IRWATCH }));
+test("a feed price that is not on the MassPermits price list is refused, so the other product cannot be let in by it", async () => {
+  const res = await run({ sessions: [H.session(NOW - H.DAY, "complete", H.OTHER)], subscriptions: [] },
+    H.stripeEnv({ MASSPERMITS_FEED_PRICE_IDS: H.OTHER }));
   assert.equal(stub.stripeCalls().length, 0);
   assert.equal(thisWeek(res).checkouts, "not connected");
   assert.equal(res.body.paying_now, null);
@@ -72,7 +72,7 @@ test("abandoned versus paid, including the 24 hour open rule", async () => {
     sessions: [
       H.session(NOW - 2 * H.HOUR, "complete"),                 // paid
       H.session(NOW - 3 * H.DAY, "expired"),                   // abandoned
-      H.session(NOW - 24 * H.HOUR, "open"),                    // open exactly 24h: abandoned
+      H.session(NOW - 24 * H.HOUR, "open"),                    // open exactly 24h: not over 24h, in progress
       H.session(NOW - 30 * H.HOUR, "open"),                    // open 30h: abandoned
       H.session(NOW - 24 * H.HOUR + M, "open"),                // open 23h59m: still in progress
       H.session(NOW - 10 * M, "open"),                         // just opened: in progress
@@ -82,12 +82,12 @@ test("abandoned versus paid, including the 24 hour open rule", async () => {
   const w = thisWeek(res);
   assert.equal(w.checkouts, 6);
   assert.equal(w.paid, 1);
-  assert.equal(w.abandoned, 3);
-  assert.equal(w.in_progress, 2);
+  assert.equal(w.abandoned, 2);
+  assert.equal(w.in_progress, 3);
   // the rule on its own
   const c = g.data.classifySession;
-  assert.equal(c({ status: "open", created: (NOW - 24 * H.HOUR) / 1000 }, NOW), "abandoned");
-  assert.equal(c({ status: "open", created: (NOW - 24 * H.HOUR + 1000) / 1000 }, NOW), "in_progress");
+  assert.equal(c({ status: "open", created: (NOW - 24 * H.HOUR - 1000) / 1000 }, NOW), "abandoned");
+  assert.equal(c({ status: "open", created: (NOW - 24 * H.HOUR) / 1000 }, NOW), "in_progress");
   assert.equal(c({ status: "complete", created: 1 }, NOW), "paid");
   assert.equal(c({ status: "expired", created: NOW / 1000 }, NOW), "abandoned");
   // a checkout that expired and was never completed is abandoned, not paid, whatever its age
@@ -204,5 +204,5 @@ test("the Stripe projection keeps no id, customer, email, name or amount", async
   assert.deepEqual(Object.keys(snap.sessions.items[0]).sort(), ["created", "status"]);
   assert.deepEqual(Object.keys(snap.subscriptions.items[0]).sort(), ["ended", "start", "status"]);
   const text = JSON.stringify(snap);
-  for (const bad of ["cs_TEST", "cus_TEST", "sub_TEST", "@example.com", "Testwood", "9900", "price_"]) assert.ok(!text.includes(bad), bad);
+  for (const bad of ["cs_live_a1TEST", "cs_", "cus_TEST", "sub_TEST", "@example.com", "Testwood", "9900", "price_"]) assert.ok(!text.includes(bad), bad);
 });

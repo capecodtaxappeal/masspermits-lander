@@ -19,7 +19,8 @@ export const WEEKS = 13;
 export const GOAL = 100;
 export const DAY_MS = 86400000;
 export const WEEK_MS = 7 * DAY_MS;
-// A checkout still open this long after it was opened counts as abandoned.
+// A checkout still open MORE than this long after it was opened counts as
+// abandoned (the owner's rule: "open for over 24 hours").
 export const OPEN_LIMIT_MS = 24 * 3600000;
 // A percentage is printed only from this many; below it, only "x of y".
 // Same rule as the funnel snapshot (functions/api/funnel.js).
@@ -28,8 +29,9 @@ export const RATE_MIN = 20;
 // homepage and the offer pages). A click on any other buy link counts as
 // "other" (the Lead Pack, the agents Radar).
 export const FEED_LINKS = new Set(["dRmdR80Ms8WzctM9ZJ4gg01"]);
-// Clicks the /offer page logged as page views before buy clicks had their own
-// event. They are not visits, so they are left out of the visit count.
+// Clicks on the /offer page's buttons, which that page logs as page views so
+// the /ops counts stay as they were (changing that is the owner's call). They
+// are not visits, so they are left out of the visit count here.
 export const OLD_OFFER_CLICK_PATH = "/offer/click";
 
 export const WORDS = Object.freeze({
@@ -109,8 +111,12 @@ export function weekIndex(grid, ms) {
 }
 
 // ── checkouts ───────────────────────────────────────────────────────────────
-// "paid": completed. "abandoned": expired, or still open 24 hours after it
-// was opened. "in_progress": open and younger than that.
+// Statuses are the projection's (_growth_stripe.js). "paid": completed and
+// charged. "abandoned": expired, or still open more than 24 hours after it was
+// opened, and the same buyer did not complete another checkout in the window.
+// "in_progress": open and not older than that. "other": everything else, such
+// as a checkout completed with nothing charged (a 100% coupon or a trial), or
+// one the buyer replaced with a checkout they completed ("superseded").
 export function classifySession(s, now) {
   if (!s) return "other";
   if (s.status === "complete") return "paid";
@@ -118,7 +124,7 @@ export function classifySession(s, now) {
   if (s.status === "open") {
     const opened = typeof s.created === "number" ? s.created * 1000 : null;
     if (opened === null) return "other";
-    return now - opened >= OPEN_LIMIT_MS ? "abandoned" : "in_progress";
+    return now - opened > OPEN_LIMIT_MS ? "abandoned" : "in_progress";
   }
   return "other";
 }
@@ -196,18 +202,37 @@ const STEPS = [
   ["visit_to_paid", "paid", "visits"],
 ];
 
+// A total over some weeks: the sum of the weeks that have a number, how many
+// weeks that was, and whether it is only a floor (any summed week was). With
+// no number in any week, the total is that key's word, "unavailable" first,
+// so a source that failed never reads as a counter that had not started.
 function sumOf(weeks, key) {
-  let s = 0, used = 0;
-  for (const w of weeks) if (isNum(w[key])) { s += w[key]; used++; }
-  return used ? s : null;
+  let s = 0, used = 0, floor = false, word = null;
+  for (const w of weeks) {
+    const v = w[key];
+    if (isNum(v)) {
+      s += v;
+      used++;
+      if (Array.isArray(w.at_least) && w.at_least.includes(key)) floor = true;
+    } else if (typeof v === "string" && (word === null || v === WORDS.unavailable)) {
+      word = v;
+    }
+  }
+  if (used) return { value: s, used, floor };
+  return { value: word === null ? WORDS.unavailable : word, used: 0, floor: false };
 }
 
 function funnelOf(weeks) {
-  const totals = {};
-  for (const k of ["visits", "buy_clicks", "checkouts", "abandoned", "paid", "free_signups"]) totals[k] = sumOf(weeks, k);
+  const totals = {}, covered = {}, atLeast = [];
+  for (const k of ["visits", "buy_clicks", "checkouts", "abandoned", "paid", "free_signups"]) {
+    const t = sumOf(weeks, k);
+    totals[k] = t.value;
+    covered[k] = t.used;
+    if (t.floor) atLeast.push(k);
+  }
   const rates = {};
   for (const [name, num, den] of STEPS) rates[name] = pairRate(weeks, num, den);
-  return { weeks: weeks.length, totals, rates };
+  return { weeks: weeks.length, totals, covered, at_least: atLeast, rates };
 }
 
 // ── the payload ─────────────────────────────────────────────────────────────
@@ -286,7 +311,9 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
     if (!subsOk) {
       w.subscribers = subs ? WORDS.unavailable : stripeWord(st);
     } else {
-      w.subscribers = payingAt(subs.items, g.current ? now : g.end);
+      // A past week is measured at its last instant (end minus 1 ms): g.end is
+      // already the first instant of the next week, as weekIndex has it.
+      w.subscribers = payingAt(subs.items, g.current ? now : g.end - 1);
       if (subs.state === "partial") flag(w, "subscribers");
     }
   });
@@ -323,6 +350,7 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
     timezone: TZ,
     goal: GOAL,
     paying_now: paying,
+    paying_at_least: paying !== null && current.at_least.includes("subscribers"),
     paying_state: paying === null ? current.subscribers : "ok",
     sources: {
       stripe: {

@@ -8,10 +8,10 @@ const NOW = H.T("2026-09-27T18:00:00Z");
 
 // Every member name the payload may carry. A new one is a review decision.
 const ALLOWED_KEYS = new Set([
-  "as_of", "timezone", "goal", "paying_now", "paying_state", "sources", "stripe", "state", "scope", "reason",
+  "as_of", "timezone", "goal", "paying_now", "paying_at_least", "paying_state", "sources", "stripe", "state", "scope", "reason",
   "visits", "data_starts", "old_offer_clicks_left_out", "clicks", "free", "weeks", "week", "last_day", "current",
   "at_least", "buy_clicks", "other_buy_clicks", "checkouts", "abandoned", "paid", "in_progress", "subscribers",
-  "free_signups", "free_readers", "funnel", "this_week", "last_4_weeks", "all_weeks", "totals", "rates",
+  "free_signups", "free_readers", "funnel", "this_week", "last_4_weeks", "all_weeks", "totals", "covered", "rates",
   "visit_to_click", "click_to_checkout", "checkout_to_paid", "checkout_abandoned", "visit_to_paid", "n", "d", "pct",
 ]);
 
@@ -26,7 +26,7 @@ async function richWorld() {
     prospects: { total: 2, by_trade: { Roofing: 2 } }, paying: 1 }]);
   g.stripe.resetGrowthCaches();
   stub.stripe = H.stripeServer({
-    sessions: [H.session(NOW - H.DAY, "complete"), H.session(NOW - 2 * H.DAY, "expired"), H.session(NOW - H.DAY, "complete", H.IRWATCH)],
+    sessions: [H.session(NOW - H.DAY, "complete"), H.session(NOW - 2 * H.DAY, "expired"), H.session(NOW - H.DAY, "complete", H.OTHER)],
     subscriptions: [H.sub(NOW - 40 * H.DAY, "active"), H.sub(NOW - 40 * H.DAY, "canceled", { ended: NOW - 3 * H.DAY })],
   });
   return r2;
@@ -45,7 +45,7 @@ test("the full payload: only allowed member names, and no email, name, id, path,
   const keys = new Set(), strings = [];
   walk(res.body, keys, strings);
   for (const k of keys) assert.ok(ALLOWED_KEYS.has(k), "unexpected member " + k);
-  const bad = [/@/, /(cus|cs|sub|si|in|pi|ch|price)_[A-Za-z0-9]*[A-Z0-9]|rk_live|sk_live/, /Testwood|Avery|Plymouth|Comcast|Roofing/i,
+  const bad = [/@/, /\b(cus|cs|sub|si|in|pi|ch|price)_[A-Za-z0-9_]*[A-Z0-9]|rk_live|sk_live/, /Testwood|Avery|Plymouth|Comcast|Roofing/i,
     /\/permits|\/offer|buy\.stripe|dRmdR80/, /41\.9|70\.6|pt-br/];
   for (const s of strings) for (const re of bad) assert.ok(!re.test(s), JSON.stringify(s) + " matches " + re);
   for (const re of bad) assert.ok(!re.test(res.text), "raw text matches " + re);

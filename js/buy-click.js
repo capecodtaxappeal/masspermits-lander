@@ -1,9 +1,10 @@
 /* MassPermits: count clicks on Buy links. First party, no cookies, no personal data.
    ONE delegated listener on the document: any link to buy.stripe.com, on any
    page that loads this file, sends one beacon to the same endpoint as the page
-   view beacon, with e=buy_click, the page path, the utm source and the public
-   payment link path. The server stores it apart from page views. It never
-   delays or blocks the click, and any error is swallowed. */
+   view beacon, with e=buy_click and the public payment link path, nothing
+   else (no page path, no source, no referrer). The server stores it apart
+   from page views. It never delays or blocks the click, and any error is
+   swallowed. */
 (function () {
   try {
     if (window.__mpBuyClick) return;
@@ -17,10 +18,7 @@
         var u = new URL(a.href, location.href);
         if (u.hostname !== "buy.stripe.com") return;
         var link = (u.pathname.split("/")[1] || "").replace(/[^A-Za-z0-9]/g, "").slice(0, 40);
-        var q = new URL(location.href);
-        var s = q.searchParams.get("utm_source") || q.searchParams.get("ref") || "";
-        var b = "/api/hit?e=buy_click&p=" + encodeURIComponent(location.pathname) +
-          "&s=" + encodeURIComponent(s) + "&l=" + encodeURIComponent(link);
+        var b = "/api/hit?e=buy_click&l=" + encodeURIComponent(link);
         if (navigator.sendBeacon) navigator.sendBeacon(b); else (new Image()).src = b;
       } catch (e) {}
     };

@@ -98,7 +98,3 @@
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Referrer-Policy: no-referrer
   Cache-Control: private, no-store
-
-# Owner notes in the repo are served as files too; keep them out of search.
-/docs/*
-  X-Robots-Tag: noindex, nofollow

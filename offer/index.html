@@ -145,11 +145,14 @@
     }).catch(function(){});
   }catch(e){}
 })();
-// analytics: log the visit (with ad source). Buy clicks are counted by /js/buy-click.js as their own event, not as a page view.
+// analytics: log the visit (with ad source) + the buy-click, so /ops shows lander funnel
 (function(){
   function src(){ try{var u=new URL(location.href);return u.searchParams.get('utm_source')||u.searchParams.get('ref')||(document.referrer?new URL(document.referrer).hostname.replace(/^www\./,''):'')||'direct';}catch(e){return 'direct';} }
   var s=src();
   try{ var b='/api/hit?p='+encodeURIComponent('/offer')+'&s='+encodeURIComponent(s)+'&r='+encodeURIComponent(document.referrer||''); navigator.sendBeacon?navigator.sendBeacon(b):(new Image().src=b); }catch(e){}
+  function click(){ try{ navigator.sendBeacon&&navigator.sendBeacon('/api/hit?p='+encodeURIComponent('/offer/click')+'&s='+encodeURIComponent(s)); }catch(e){} }
+  var c1=document.getElementById('cta1'),c2=document.getElementById('cta2');
+  c1&&c1.addEventListener('click',click); c2&&c2.addEventListener('click',click);
 })();
 </script>
 <script src="/js/buy-click.js" defer></script>

@@ -21,6 +21,19 @@
 //   subscription: { start, ended, status }
 // No id, customer, email, name, amount or card detail is kept or cached.
 // The projection is cached per isolate for 10 minutes.
+//
+// A session's projected status is one of:
+//   "complete"            completed and charged (payment_status "paid")
+//   "complete_no_charge"  completed with nothing charged yet: a 100% coupon or
+//                         free trial ("no_payment_required"), or a delayed
+//                         method still waiting ("unpaid"). Not a paid checkout.
+//   "superseded"          expired or open, but the same buyer (same Stripe
+//                         customer, or same email) completed another session
+//                         in the listed window. Every visit to a payment link
+//                         opens a new session, so a buyer who comes back and
+//                         pays is not an abandoned cart. The customer and
+//                         email are compared while listing and then dropped.
+//   "expired", "open"     as Stripe says.
 
 import { stripeGet } from "./_mission_stripe.js";
 
@@ -29,7 +42,9 @@ const PAGE_LIMIT = 100;
 const MAX_PAGES = { sessions: 10, subscriptions: 5 };  // still has_more after this: "partial"
 const CACHE_MS = 10 * 60000;
 const KEY_SHAPE = /^rk_live_[A-Za-z0-9]{10,}$/;
-const CURSOR_SHAPE = /^[a-z]+_[A-Za-z0-9]+$/;
+// A Stripe object id: a lowercase prefix and one to three underscore parts,
+// as in sub_1Nx..., cs_live_a1B2... and cs_test_a1B2...
+const CURSOR_SHAPE = /^[a-z]{1,12}(?:_[A-Za-z0-9]{1,255}){1,3}$/;
 
 let cache = null; // { at, sig, snap }
 
@@ -123,11 +138,30 @@ function carries(o, member, prices) {
 const num = (v) => (typeof v === "number" && Number.isFinite(v) ? v : null);
 const str = (v) => (typeof v === "string" ? v : null);
 
-function projectSession(cs, prices) {
+// Who opened a session, for matching a retry to its purchase: the Stripe
+// customer id and the lowercased email. Used only inside growthStripe().
+function buyerKeys(cs) {
+  const out = [];
+  const c = cs && cs.customer;
+  const cid = typeof c === "string" ? c : c && typeof c.id === "string" ? c.id : null;
+  if (cid) out.push("c:" + cid);
+  const d = cs && cs.customer_details;
+  const e = (d && typeof d.email === "string" && d.email) || (typeof cs.customer_email === "string" && cs.customer_email) || "";
+  if (e.trim()) out.push("e:" + e.trim().toLowerCase());
+  return out;
+}
+
+function projectSession(cs, prices, completedBy) {
   if (!carries(cs, "line_items", prices)) return null;
   const created = num(cs.created);
   if (created === null) return null;
-  return { created, status: str(cs.status) };
+  let status = str(cs.status);
+  if (status === "complete") {
+    if (cs.payment_status !== "paid") status = "complete_no_charge";
+  } else if ((status === "expired" || status === "open") && buyerKeys(cs).some((k) => completedBy.has(k))) {
+    status = "superseded";
+  }
+  return { created, status };
 }
 
 function projectSubscription(s, prices) {
@@ -151,11 +185,21 @@ export async function growthStripe(env, now, sinceMs) {
     listAll("/v1/subscriptions", { status: "all" }, cfg.key, MAX_PAGES.subscriptions),
   ]);
 
+  // Buyers who completed a MassPermits session in the window (charged or not).
+  const completedBy = new Set();
+  if (sess.state !== "unavailable") {
+    for (const cs of sess.items) {
+      if (cs && cs.status === "complete" && carries(cs, "line_items", cfg.prices)) {
+        for (const k of buyerKeys(cs)) completedBy.add(k);
+      }
+    }
+  }
   const section = (res, project) => ({
     state: res.state,
-    items: res.state === "unavailable" ? [] : res.items.map((o) => project(o, cfg.prices)).filter(Boolean),
+    items: res.state === "unavailable" ? [] : res.items.map((o) => project(o, cfg.prices, completedBy)).filter(Boolean),
   });
   const sessions = section(sess, projectSession);
+  completedBy.clear();
   // Stripe lists newest first: a cut-short list is complete back to the
   // oldest session it did return (in ms, for the week grid).
   sessions.complete_from = sess.state === "partial" && sess.oldest !== null ? sess.oldest * 1000 : null;

@@ -36,14 +36,14 @@ test("unknown events are rejected: pixel back, nothing written", async () => {
   assert.equal(puts(r3).length, 0);
 });
 
-test("a buy_click is stored under clicks/, with the path, source and link only", async () => {
+test("a buy_click is stored under clicks/, with the event and the link path only", async () => {
   const r2 = new H.GrowthR2();
   await hit(r2, "?e=buy_click&p=%2Foffer%2F&s=Google&l=dRmdR80Ms8WzctM9ZJ4gg01%3Fx%3D%3Cb%3E&r=https%3A%2F%2Fexample.com");
   const [p] = puts(r2);
   assert.match(p.key, /^clicks\/\d{4}-\d{2}-\d{2}\/\d+-[0-9a-f]{8}$/);
   const meta = p.opts.customMetadata;
-  assert.deepEqual(Object.keys(meta).sort(), ["e", "l", "p", "s"]);
-  assert.deepEqual(meta, { e: "buy_click", p: "/offer/", s: "google", l: "dRmdR80Ms8WzctM9ZJ4gg01xb" });
+  assert.deepEqual(Object.keys(meta).sort(), ["e", "l"]);
+  assert.deepEqual(meta, { e: "buy_click", l: "dRmdR80Ms8WzctM9ZJ4gg01xb" });
 });
 
 test("a page view is unchanged: hits/ with the same fields as before", async () => {
@@ -110,10 +110,8 @@ test("js/buy-click.js: one delegated listener, capture phase, buy.stripe.com lin
   const u = new URL(p.sent[0], "https://masspermits.com");
   assert.equal(u.pathname, "/api/hit");
   assert.equal(u.searchParams.get("e"), "buy_click");
-  assert.equal(u.searchParams.get("p"), "/");
-  assert.equal(u.searchParams.get("s"), "newsletter");
   assert.equal(u.searchParams.get("l"), "dRmdR80Ms8WzctM9ZJ4gg01");
-  assert.deepEqual([...u.searchParams.keys()].sort(), ["e", "l", "p", "s"], "no referrer, no promo code, nothing else");
+  assert.deepEqual([...u.searchParams.keys()].sort(), ["e", "l"], "no page, no source, no referrer, no promo code");
   p.fire("auxclick", p.a, 1); // middle click opens checkout in a new tab
   p.fire("auxclick", p.a, 2); // right click does not
   assert.equal(p.sent.length, 2);
@@ -138,5 +136,5 @@ test("every HTML page with a buy.stripe.com link loads /js/buy-click.js exactly 
     assert.equal(html.split('<script src="/js/buy-click.js" defer></script>').length, 2, f);
   }
   const offer = fs.readFileSync(path.join(H.REPO, "offer", "index.html"), "utf8");
-  assert.ok(!offer.includes("/offer/click"), "the old click-as-page-view beacon is gone");
+  assert.ok(offer.includes("/offer/click"), "the /offer CTA page view beacon stays until the owner decides, so /ops counts do not change");
 });
