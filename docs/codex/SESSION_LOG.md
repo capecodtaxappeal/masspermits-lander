@@ -40,3 +40,7 @@ The permitted gh executable remains unavailable, so no draft PR has been created
 ## 2026-09-27, S6 failure injection
 
 Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no unexpected hard failure. S6-full.json and FAILURE_INJECTION.md record limits. Main remains 1068e8070. C17 independently pushed bf7b18a2d; C15/C04a remain in progress. No production change on harness branch. S7 next, then S8; continuous execution continues despite unavailable gh.
+
+## 2026-09-27, C21 operator instruction
+
+Reproduced the workflow-edit suggestion through the real authenticated endpoint, replaced only that overdue instruction, and passed three focused cases. Full 414/343/4/67, no unexpected hard failure. No workflow file or action was changed. Draft creation waits for gh; continuous program proceeds separately.

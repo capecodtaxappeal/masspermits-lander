@@ -108,8 +108,8 @@ export async function onRequestGet(context) {
       } else if (overdue) {
         rows.push(row("data", "Data refresh", "bad",
           `today's run has not landed — last ran ${ago(ageH)}`,
-          "GitHub drops scheduled jobs under load. Force one: push any edit to " +
-          ".github/workflows/weekly-refresh.yml on main."));
+          "Inspect the latest data-refresh run and its published bundle evidence. " +
+          "Have the maintainer review delivery evidence before triggering any workflow."));
       } else {
         rows.push(row("data", "Data refresh", "warn",
           `today's run is late but inside its ${REFRESH_GRACE_H}h grace — last ran ${ago(ageH)}`,

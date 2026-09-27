@@ -1,0 +1,24 @@
+{
+  "at": "2026-09-27T05:55:27.081Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/operator-guidance.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 3,
+    "suites": 0,
+    "pass": 2,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "failures": [
+    "C21 overdue refresh guidance requires evidence review without a workflow-edit trigger"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "C21 overdue refresh guidance requires evidence review without a workflow-edit trigger"
+  ],
+  "error": null
+}
