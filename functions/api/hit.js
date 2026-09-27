@@ -6,9 +6,23 @@
 // counts to a read-modify-write race. /api/traffic and /api/live aggregate from
 // list()+customMetadata (no body reads). Source = utm_source/ref param, else
 // derived from the referrer host, else "direct".
+//
+// EVENTS (2026-09-27). A request carrying e=<event> is NOT a page view. Only
+// the values in EVENTS are accepted; any other e (an empty one included) is
+// answered with the pixel and nothing is written. An accepted event is stored
+// under its own prefix, clicks/<day>/, never under hits/, so /api/traffic and
+// /api/live (which list hits/ only) count exactly the page views they always
+// did. Same no-cookie, no-PII shape: the page path, the utm source, and for a
+// buy click the public buy.stripe.com link path (letters and digits only).
+// Written by js/buy-click.js; read by the owner's Road to 100 page.
 
 const ipHits = new Map(); // per-isolate soft cap against write-spam
 const IP_CAP = 40;
+const EVENTS = new Set(["buy_click"]);
+
+function alnum(s, n) {
+  return String(s == null ? "" : s).replace(/[^A-Za-z0-9]/g, "").slice(0, n);
+}
 
 // Drop control chars (<0x20) and the HTML-breaking set  < > " ' `  so nothing
 // dangerous is ever stored. Built from numeric code points (no literal special
@@ -42,6 +56,19 @@ export async function onRequest(context) {
     const url = new URL(request.url);
     const day = new Date().toISOString().slice(0, 10);
     const path = clean(url.searchParams.get("p") || "/", 80);
+    const ev = url.searchParams.get("e");
+    if (ev !== null) {
+      if (!EVENTS.has(ev)) return px();
+      const meta = {
+        e: ev,
+        p: path,
+        s: clean(url.searchParams.get("s") || "", 40).toLowerCase() || "direct",
+        l: alnum(url.searchParams.get("l"), 40),
+      };
+      const key = `clicks/${day}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
+      await env.BUNDLES.put(key, "", { customMetadata: meta });
+      return px();
+    }
     const ref = (url.searchParams.get("r") || "").slice(0, 200);
     let src = clean(url.searchParams.get("s") || "", 40).toLowerCase();
     if (!src) {

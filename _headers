@@ -89,3 +89,16 @@
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Referrer-Policy: no-referrer
   Cache-Control: private, no-store
+
+# Road to 100 (owner only; Cloudflare Access covers /admin/*, and the data
+# route verifies the owner in code). Same headers as /admin/mission.
+/admin/growth
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+  X-Frame-Options: DENY
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Referrer-Policy: no-referrer
+  Cache-Control: private, no-store
+
+# Owner notes in the repo are served as files too; keep them out of search.
+/docs/*
+  X-Robots-Tag: noindex, nofollow
