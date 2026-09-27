@@ -52,3 +52,13 @@ Seven earlier isolated fixes remain published; C19 responses also published at 9
 Full suite after the final controls and bounded R2 correction: 715 tests, 644 pass, four known failures, 67 TODO, zero unexpected. Twenty local workerd cases pass. A fresh entire catalog ran 07:10:34 to 07:21:46 UTC: 1822 selected, 1680 killed, 129 survived, eight invalid, two unclassified exits and three timeouts. Requested paying path is 1323/1435 valid killed (92.2%); combined 92.6%. The runner exits 1 for unresolved outcomes. No earlier kills are carried into the final score. Current tests/harness are published at 39023cb60; final result and source hashes are in evidence/S7-final-exhaustive.json. The four newly killed candidates are two metadata-await/null cases and two out-of-range R2 list limits.
 
 Ten separate fix branches are now published, most recently C18 at 559b63740. gh is still unavailable; no draft PR has been created. Source freezes and unresolved owner policies remain. S8 promotion follows immediately. No production source changed on the harness branch.
+
+## 2026-09-27, S8 operator guide and final continuation checkpoint
+
+S7 closing head 1b19bb3dd075d6edb3512a7662cdd9e5ab617273 was pushed. Fetched origin/main remains 1068e8070. Required S8 baseline at 07:30:15 UTC: 715 tests, 644 pass, four known hard failures, 67 executed TODO, no skips/cancelled/unexpected. Evidence/S8-full.json preserves it.
+
+Promoted the independently reviewed 599-word RUNBOOK.md, checked controls/thresholds against source, and added RUNBOOK_SOURCES.md plus the complete REMAINING_WORK.md queue. The inbox workflow proposal is only a text fragment under docs/codex/proposals, explicitly unexecuted and incomplete at its remaining boundaries. It does not change any workflow or authorize execution. No production or test code changed in S8, so the unchanged full-suite baseline is retained rather than repeated for text-only edits.
+
+All ten fix worktrees were checked in the repository owner's execution context: clean, with local heads matching their published remote-tracking heads. No mutation Node processes remained. A first sandbox-account status attempt failed ownership checks and is not evidence of cleanliness; the successful owner-context verification supplied these conclusions without changing Git security configuration.
+
+gh remains absent; no PR exists. No main push, merge, deployment, customer send or live service call occurred. The remaining program is limited by the frozen sender/status files, prohibited live verification, unsettled delivery contracts and unanswered D-3/D-4 policies. All independent prepared work is saved. Continue from HANDOFF.md, not a prediction of Monday delivery.

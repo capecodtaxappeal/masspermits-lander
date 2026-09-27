@@ -1,14 +1,14 @@
 # MassPermits reliability handoff
 
 Branch: claude/codex-revenue-harness.
-Published implementation checkpoint: 39023cb6081646aed1f5956fdb63de00b4dd0832. The current closing documentation commit is identified by git rev-parse HEAD.
-Source main: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5.
+Published tested implementation: 39023cb6081646aed1f5956fdb63de00b4dd0832. S7 closing checkpoint: 1b19bb3dd075d6edb3512a7662cdd9e5ab617273. The current S8 documentation checkpoint is identified by git rev-parse HEAD.
+Source main: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5, freshly fetched 2026-09-27 before the 07:30 UTC S8 baseline.
 Physical worktree: C:/Users/patri/OneDrive/Desktop/masspermits-lander/.git/codex-session-worktrees/revenue-harness.
 Never read the neighboring private project or unrelated base-checkout files.
 
 ## Completed evidence
 
-S1, S2, S3 and S6 are published. S7 is complete as an offline verification checkpoint.
+S1, S2, S3, S6, S7 and S8 artifacts are complete and published or included in this closing checkpoint. The overall program remains open.
 Full suite: 715 tests, 644 pass, four known hard failures, 67 executed TODO, zero skipped/cancelled and zero unexpected hard failures. Twenty local workerd comparison cases pass. Evidence: evidence/S7-full.json.
 A fresh full mutation run completed 2026-09-27T07:21:46.565Z against frozen tests and the corrected harness: requested paying path 1323/1435 valid killed (92.2%); combined lifecycle 1680/1814 (92.6%). Eight invalid are excluded; two unclassified errors and three timeouts remain unresolved in the denominator. The mutation runner exits 1 for those unresolved outcomes.
 MUTATION_REPORT.md and evidence/S7-final-exhaustive.json record one complete run, not accumulated earlier kills. Earlier rounds remain historical evidence. No mutation process is still active.
@@ -18,7 +18,11 @@ Ten isolated fix branches are published. FIX_STATUS.md lists exact heads, depend
 
     git -c core.hooksPath=.git/codex-disabled-hooks fetch origin
 
-Then finish S8 immediately: promote the reviewed ignored S8-RUNBOOK-REVIEWED.md, S8-SOURCES-REVIEWED.md and S8-REMAINING-WORK.md from test/harness/.runtime into docs/codex; update the guide to 644 passes and the C18 queue to published; promote the unexecuted S8-INBOX-PROPOSAL.yml.txt only under docs/codex/proposals. Verify text and source links, append SESSION_LOG.md, commit and push, then continue any independent authorized work.
+Read REMAINING_WORK.md, FIX_STATUS.md and OWNER_DECISIONS.md. S8 is now saved as RUNBOOK.md (599 words), RUNBOOK_SOURCES.md, REMAINING_WORK.md and proposals/inbox-watchdog-evidence.yml.txt. The proposal is unexecuted and incomplete at its explicitly marked HTML/grace-policy boundary; it does not authorize a workflow edit. S8-full.json repeats the full suite at 715/644 pass/4 known fail/67 TODO.
+
+When gh is supplied, read/create only our own draft PRs using the prepared bodies. Do not claim existing drafts: none exists yet. If incoming main contains both promised sender changes, inspect them, rebase, rerun the queued scenarios, then resume one-finding draft fixes. If those changes are still absent, do not touch either frozen file.
+
+The remaining source work reaches the original stop boundaries: sender/status changes are frozen, and broader delivery recovery cannot be safely changed without the unresolved identity/recovery contracts. Live reconciliation/provider guarantees would require prohibited service access. Those limits and pending owner policy answers remain explicit; do not invent an answer or a successful deployment.
 No tests or background mutation jobs are in progress. Ordinary command: node test/harness/run.mjs --label review-full.
 If main moved, inspect source changes before tests, rebase with explicit LF flags, and rerun. Do not reuse this snapshot's mutation score for changed production source.
 

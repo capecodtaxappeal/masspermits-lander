@@ -1,14 +1,14 @@
-The tests now catch 92% of generated paying-path faults offline.
+The tests now catch 92.2% of generated faults in the paying path.
 The full suite has 644 passes, four known failures and 67 executed TODO cases.
 Findings and separate fix branches retain their before-and-after evidence.
 Production, workflows and mission tests are unchanged on this branch.
-Sender fixes remain on hold, and no draft PR has been submitted without gh.
+Sender changes remain on hold; draft PR creation needs the gh command.
 
 # Revenue reliability harness
 
 This branch maps the actual revenue path, imports real handlers into a closed test harness, records ranked findings, injects failures and measures test strength. All fixtures are synthetic. Dependencies stay under test/harness. There is no production build or root package manifest.
 
-S1 maps entry points, storage, mail and external calls. S2 and S3 add the harness, named invariant coverage and findings. S6 adds provider/storage faults, concurrency, large rosters, UTC boundaries and access checks. S7 adds exhaustive mutation evidence and focused regression controls. The operator guide follows in S8.
+S1 maps entry points, storage, mail and external calls. S2 and S3 add the harness, named invariant coverage and findings. S6 adds provider/storage faults, concurrency, large rosters, UTC boundaries and access checks. S7 adds exhaustive mutation evidence and focused regression controls. S8 adds a short operator guide, its source checks, and the remaining work queue. A proposed inbox-monitoring workflow fragment is saved only as text under docs/codex/proposals; no workflow was changed or run.
 
 Validation: node test/harness/run.mjs. Final S7 record: 715 tests, 644 pass, four known hard failures, 67 executed TODO, no skipped/cancelled or unexpected hard failures. The process exits 1; this is not a green suite. Twenty local workerd cases compare the exercised storage/signing/HTML contracts.
 

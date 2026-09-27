@@ -1,0 +1,59 @@
+# PROPOSAL ONLY: C20 inbox-watchdog transport and schema failures
+# Destination under review: .github/workflows/inbox-watchdog.yml
+# Do not copy or apply this automatically. That path is frozen.
+# No workflow was edited or executed to prepare this proposal.
+#
+# Problem in the inspected source:
+# - curl does not fail on HTTP error status.
+# - transport or non-JSON failures become verdict=never, alert=false.
+# - valid error JSON without alert also takes the quiet exit.
+# This can leave a successful job without usable monitoring evidence.
+#
+# Narrow proposed replacement for the STATUS collection/validation block:
+# Preserve the existing schedule, triggers, permissions and genuine-never policy.
+# Use the existing mint function and endpoint. Never print raw failed responses.
+
+STATUS=""
+if ! STATUS=$(curl -fsS -H "Authorization: Bearer $(mint)" \
+  https://masspermits.com/api/inbox-status); then
+  STATUS='{"verdict":"unknown","alert":true,"detail":"Inbox monitoring evidence could not be retrieved. Check the existing run and status service."}'
+fi
+if ! printf '%s' "$STATUS" | jq -e '
+  type == "object"
+  and (.verdict | type == "string")
+  and (.alert | type == "boolean")
+  and (.detail | type == "string")
+  and (.verdict == "ok" or .verdict == "waiting" or .verdict == "never"
+       or .verdict == "stale" or .verdict == "unarmed"
+       or .verdict == "backlog" or .verdict == "unknown")
+' >/dev/null 2>&1; then
+  STATUS='{"verdict":"unknown","alert":true,"detail":"Inbox monitoring evidence has an invalid response shape. Check the status service."}'
+fi
+
+# Replace the raw JSON print with a validated public summary. Additional numeric
+# fields may be emitted only after numeric validation. Do not log raw DETAIL.
+printf '%s' "$STATUS" | jq '{verdict, alert}'
+
+# Consumer changes required in the same reviewed workflow proposal:
+# - The quiet exit should print verdict only, not arbitrary detail.
+# - The final error annotation should print verdict only.
+# - The existing generic owner-alert path accepts unknown. It must still fail
+#   the job after attempting the owner alert, including when owner-mail fails.
+# - Escape text before inserting DETAIL/STATUS into HTML, or project a fixed
+#   safe diagnostic. This snippet alone does not complete that HTML boundary.
+# - Keep genuine never suppression unchanged until installation expectations
+#   and any finite first-deploy grace are explicitly reviewed.
+# - Remove prohibited long dashes from newly touched owner-visible wording.
+#
+# Acceptance evidence required before an actual workflow change:
+# 1. Transport failure, HTTP 401/403/404/500, non-JSON, JSON null/array, missing
+#    alert, alert as text, and unknown verdict produce alerting unknown.
+# 2. Valid ok/waiting responses retain the approved quiet behavior.
+# 3. Existing stale/unarmed/backlog responses remain alerting.
+# 4. A status-service error cannot print bearer values, addresses or raw bodies.
+# 5. Owner-alert failure leaves a failed job; acceptance is not inbox receipt.
+# 6. Genuine never behavior follows a separate explicit installation decision.
+#
+# These cases were NOT executed as a workflow. Review the exact GitHub shell,
+# OIDC and owner-mail behavior in an authorized workflow session. This is a
+# reviewable design fragment, not a complete or tested replacement workflow.
