@@ -9,12 +9,12 @@ const temp = resolve(clone, ".git/codex-session-scratch/revenue-continuous");
 const output = resolve(root, "test/harness/.runtime");
 mkdirSync(temp, { recursive: true });
 mkdirSync(output, { recursive: true });
-const env = { ...process.env, TEMP: temp, TMP: temp, TMPDIR: temp,
+const env = { TEMP: temp, TMP: temp, TMPDIR: temp,
   GIT_NO_LAZY_FETCH: "1", GIT_TERMINAL_PROMPT: "0", GIT_OPTIONAL_LOCKS: "0" };
-for (const key of ["NODE_OPTIONS","NODE_PATH","HEALTH_JS","HEALTH_DUMP","MISSION_DEMO_OUT",
-  "MISSION_ORACLE_LOG","MISSION_ORACLE_OFF","MISSION_TABLE","MASSPERMITS_STRIPE_READ_ONLY_KEY",
-  "STRIPE_SECRET_KEY","STRIPE_API_KEY","STRIPE_WEBHOOK_SECRET","CLOUDFLARE_API_TOKEN",
-  "CF_API_TOKEN","RESEND_API_KEY"]) delete env[key];
+// Inherit only executable/runtime lookup settings. Service credentials and
+// source overrides never enter ordinary test children.
+for (const name of ["SystemRoot", "WINDIR", "PATH", "Path", "PATHEXT", "COMSPEC"])
+  if (process.env[name]) env[name] = process.env[name];
 const files = process.argv.slice(2);
 const args = ["--test", "--test-reporter=tap", ...(files.length ? files :
   ["test/*.test.mjs","test/mission/*.test.mjs","functions/api/*.test.mjs","test/revenue/*.test.mjs"])];

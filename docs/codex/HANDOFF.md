@@ -3,17 +3,17 @@
 ## Five-line owner report
 
 Thirty revenue rules now have a named coverage map and ranked findings.
-The S6 full suite has 340 passes, four known baseline failures and 67 executed TODO cases.
+The current full suite has 494 passes, four known baseline failures and 67 executed TODO cases.
 Nine storage, HTML and signing comparisons pass against local workerd.
 Production and the existing mission tests are unchanged.
 Work continues into failure injection, mutation testing, small fixes and the runbook.
 
 ## Current state
 
-Updated 2026-09-27. Phases S2, S3 and S6 complete; S7 mutation testing next. Isolated fix branches continue in parallel.
+Updated 2026-09-27. Phases S2, S3 and S6 complete. S7 mutation strengthening is in progress; S8 runbook is being prepared in ignored scratch.
 Branch: claude/codex-revenue-harness.
 Source base: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5.
-Previous published head: 135db62d2414eab521a69ecaacac3ce8115527ae.
+Previous published head: ba5eee54f027c09c99e4d84461ec09b711d923a7.
 Current closing head: refs/heads/claude/codex-revenue-harness; resolve git rev-parse HEAD.
 Worktree: C:/Users/patri/OneDrive/Desktop/masspermits-lander/.git/codex-session-worktrees/revenue-harness
 
@@ -89,3 +89,20 @@ No defect is closed merely because its test is marked TODO or its PR is a draft.
 
 ## Isolated fix publication
 C17 branch claude/codex-fix-c17 pushed bf7b18a2dbe0e3f59bae828f14221151e9570a6f. Three failing-before regressions pass afterward. Its own full result is 380/315/4/61. C15 and C04a remain independent in-progress worktrees based on S3. No PR yet while gh remains unavailable. Draft bases should be the harness branch so fixes stay narrow.
+
+## Current S7 work before its closing checkpoint
+The AST mutator smoke test passed. Initial operator-stratified sample: 321 selected, 192 killed, 5 syntax-invalid, 122 survived, 2 unclassified process exits; no timeout. This is below target and not a program completion claim. Saved ignored report: test/harness/.runtime/mutation/S7-initial-sample.json. Forty-three helper contracts, 19 gate tests and 34 operations tests pass separately. Webhook/access mutation test files are being added by independent agents. Exact next command after both pass: node test/harness/mutate.mjs --limit 2000 --jobs 3. This covers all current candidates rather than a sampled score. Do not count failing TODO cases as killed mutations.
+Five separate fix branches are published: C17 bf7b18a2d; C15 33ced5f7b; C04a 330847c4b; C02 84a06d418; C20-retention 53e540033. No PR exists because gh is unavailable. All should target claude/codex-revenue-harness as drafts. C04a/C02 have the four known failures plus the new whole-file static-address structural check; it is not waived or relabeled baseline. C02 and C20 remain partial findings. Their sibling worktrees contain exact handoffs/evidence.
+S8 draft is being prepared only under ignored test/harness/.runtime, pending review and promotion after S7 checkpoint. A source instruction in pipeline-now recommends editing weekly-refresh.yml to force a refresh; the runbook must supersede that unsafe operator instruction and retain the workflow prohibition.
+
+## Live checkpoint 2026-09-27, S7 exhaustive run
+
+This section supersedes the older in-progress fix list above. See FIX_STATUS.md for six published fix branches and C05 in progress. No draft PR exists while gh is unavailable. C21 has a separate published fix for operator guidance that suggested editing a workflow on main.
+
+The strengthened baseline is 565 tests: 494 pass, four exact known baseline failures, 67 executed TODO, zero skipped/cancelled and zero unexpected hard failures. It passed again after ordinary test children were changed to inherit only executable/runtime settings; arbitrary environment values and REVENUE_SOURCE_ROOT are excluded. A synthetic one-case probe passed. Local evidence: test/harness/.runtime/S7-env-baseline.json and S7-runner-environment.json.
+
+The exhaustive mutation run is active as exec session 8071. It selects 1822 candidates across 15 files, not 1922. Source and selected test files must remain stable until it finishes. Command: node test/harness/mutate.mjs --limit 2000 --jobs 3. Progress: test/harness/.runtime/mutation/progress.json; final: results.json. The initial sample remains S7-initial-sample.json. Do not infer a final score from partial progress. Poll the existing process if it is still available; otherwise inspect progress and process state before starting another runner that uses the same scratch workers.
+
+Next: preserve the complete run, review every survivor, add meaningful missing contracts, rerun surviving/unresolved candidates with source hashes unchanged, and publish the S7 evidence and score. Then promote the prepared S8 runbook and source companion from ignored .runtime, verify links/text and checkpoint S8. Continue independent fixes. C05 is based on C02 and must target that branch as a draft; root review/final validation precedes its publication.
+
+Latest fetch at this checkpoint: origin/main still 1068e8070e88a436fbf5f86b88bf075e1f3a01c5. Frozen sender/status changes remain queued. Do not edit mission tests to change the four owner-known failures or the additional static-address structural failure on webhook-changing fix branches.
