@@ -1,0 +1,32 @@
+{
+  "at": "2026-09-27T05:26:22.271Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/access-storage.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 50,
+    "suites": 0,
+    "pass": 36,
+    "fail": 5,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 9
+  },
+  "failures": [
+    "I20 download controls object-shaped roster JSON",
+    "I20 download controls null-shaped roster JSON",
+    "I20 download controls string-shaped roster JSON",
+    "I20 missing roster is unavailable on both access routes",
+    "I20 throwing bundle read produces controlled download unavailability"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "I20 download controls object-shaped roster JSON",
+    "I20 download controls null-shaped roster JSON",
+    "I20 download controls string-shaped roster JSON",
+    "I20 missing roster is unavailable on both access routes",
+    "I20 throwing bundle read produces controlled download unavailability"
+  ],
+  "error": null
+}

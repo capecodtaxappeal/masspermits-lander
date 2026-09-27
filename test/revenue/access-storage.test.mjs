@@ -165,7 +165,6 @@ for (const [label, value] of [['object', {}], ['null', null], ['string', 'wrong_
     assert.equal(artifactReads(w).length, 0);
   }));
   test(`I20 download controls ${label}-shaped roster JSON`,
-    { todo: 'C15: download lacks consistent array-schema validation' },
     () => scenario(async (w, h) => {
       await w.r2.set('subscribers.json', JSON.stringify(value));
       const response = await w.call(h.download, `/api/my-leads?t=${TOKEN}`);
@@ -175,7 +174,6 @@ for (const [label, value] of [['object', {}], ['null', null], ['string', 'wrong_
 }
 
 test('I20 missing roster is unavailable on both access routes',
-  { todo: 'C15: download currently treats missing roster as inactive while portal reports unavailable' },
   () => withWorld(async (w) => {
     const h = await loadHandlers();
     const portal = await w.call(h.portal, `/leads?t=${TOKEN}`);
@@ -185,11 +183,14 @@ test('I20 missing roster is unavailable on both access routes',
   }, { now: NOW }));
 
 test('I20 throwing bundle read produces controlled download unavailability',
-  { todo: 'C15: download artifact get exception currently escapes the handler' },
   () => scenario(async (w, h) => {
-    w.r2.failNext('get', 'latest-weekly.zip', new Error('SYNTHETIC_BUNDLE_READ_TEST'));
-    const response = await w.call(h.download, `/api/my-leads?t=${TOKEN}`);
-    assert.equal(response.status, 503);
+    for (const tier of ['weekly', 'monthly']) {
+      w.r2.failNext('get', `latest-${tier}.zip`, new Error('SYNTHETIC_BUNDLE_READ_TEST'));
+      const response = await w.call(h.download, `/api/my-leads?t=${TOKEN}&k=${tier}`);
+      assert.equal(response.status, 503);
+      assert.doesNotMatch(await response.text(), /SYNTHETIC_BUNDLE_READ_TEST/);
+    }
+    assert.equal(puts(w).length, 0);
   }));
 
 test('I21 stale portal metadata hides paid rows without reading the HTML body', () => scenario(async (w, h) => {
