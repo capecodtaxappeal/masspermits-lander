@@ -89,3 +89,17 @@
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
   Referrer-Policy: no-referrer
   Cache-Control: private, no-store
+
+/admin/drop
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+  X-Frame-Options: DENY
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Referrer-Policy: no-referrer
+  Cache-Control: private, no-store
+
+# Documentation and Worker source are public on GitHub already; they are not
+# pages, so keep them out of search results.
+/docs/*
+  X-Robots-Tag: noindex, nofollow
+/workers/*
+  X-Robots-Tag: noindex, nofollow

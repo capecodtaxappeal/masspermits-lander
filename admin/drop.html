@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Drop box</title>
+<link rel="stylesheet" href="/admin/drop.css">
+<script type="module" src="/admin/drop-app.js"></script>
+</head>
+<body>
+<main class="page">
+<h1>Drop box</h1>
+<p class="lede">Pick the source, then drop a file or choose one. CSV, XLSX or PDF, up to 10 MB. The engine picks it up on its next daily refresh.</p>
+
+<form id="drop-form" class="card" novalidate>
+<label for="slug">Source</label>
+<select id="slug" name="slug" required></select>
+<div id="zone" class="zone" tabindex="0" role="button" aria-describedby="zone-hint">
+<p><strong>Drop a file here</strong></p>
+<p id="zone-hint" class="muted">or tap to choose one</p>
+<input id="file" type="file" accept=".csv,.xlsx,.pdf,text/csv,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+</div>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+</form>
+
+<section class="card">
+<h2>Hand-delivered sources</h2>
+<p class="muted">Read only. Weekly sources are overdue after 9 days, monthly after 40.</p>
+<div class="scroll">
+<table id="fresh">
+<thead><tr><th>Source</th><th>Last in</th><th>Days</th><th>Cadence</th><th>State</th></tr></thead>
+<tbody></tbody>
+</table>
+</div>
+</section>
+
+<section class="card">
+<h2>Recent receipts</h2>
+<p class="muted">The last 10 per source: date, size and file type only.</p>
+<div id="receipts"></div>
+</section>
+
+<p id="load-error" class="status bad" hidden>Could not load the drop box. Sign in through Cloudflare Access and reload.</p>
+</main>
+</body>
+</html>
