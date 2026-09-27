@@ -277,7 +277,18 @@ function proj(lon,lat){
 }
 async function loadLive(){
   try{
-    const d = await (await fetch("/api/live?v="+Date.now())).json();
+    const res = await fetch("/api/live?v="+Date.now());
+    // /api/live is owner-only (Cloudflare Access). Without an Access session
+    // it answers 403 with no data; say so instead of showing "nobody here".
+    if (res.status === 403) {
+      $("live-active").textContent = "owner only";
+      $("livedot").className = "livedot";
+      $("live-dots").innerHTML = "";
+      $("live-feed").innerHTML = '<tr><td class="muted">Live visitors are owner only. Sign in at <a href="/admin/now" style="color:var(--teal)">/admin/now</a>, then reload this page.</td></tr>';
+      $("live-states").innerHTML = "";
+      return;
+    }
+    const d = await res.json();
     const active = d.active||0;
     $("live-active").textContent = active + " on site now";
     $("livedot").className = "livedot" + (active>0?" on":"");
@@ -305,7 +316,13 @@ async function loadLive(){
       return `<div class="strow ${cls==="ma"?"":cls}"><span class="k">${esc(k)}</span>`+
              `<span class="b"><i style="width:${Math.round(n/max*100)}%"></i></span><span class="v">${n}</span></div>`;
     }).join("") : '<span class="muted" style="font-size:12px">no located visits in the last 24h yet</span>';
-  }catch(e){ /* keep last render */ }
+  }catch(e){
+    // Keep the last good render. If there never was one (for example Access
+    // redirected the request to its sign-in page), say where to sign in.
+    if (!$("live-active").textContent) {
+      $("live-feed").innerHTML = '<tr><td class="muted">Live visitors unavailable. They are owner only: sign in at <a href="/admin/now" style="color:var(--teal)">/admin/now</a>, then reload this page.</td></tr>';
+    }
+  }
 }
 // ---- product health (KB/07 §6.4 / F3) ----
 // The one tile that answers "is the thing customers pay for actually working".
