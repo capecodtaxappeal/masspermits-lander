@@ -297,7 +297,6 @@ test('I22 roster, unknown and encoded undeclared keys never reach storage', () =
 
 for (const key of ['constructor', 'toString', '__proto__']) {
   test(`I22 upload own-key allowlist rejects inherited property ${key} before put`,
-    { todo: 'C17: prototype-inclusive in check admits undeclared property names at the gate' },
     () => scenario(async (w, h) => {
       const headers = await w.oidcHeaders();
       const before = puts(w).length;

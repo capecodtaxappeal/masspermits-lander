@@ -36,3 +36,7 @@ FINDINGS.md ranks the source candidates with executable evidence, explicit polic
 Full suite rerun: 380 tests, 312 pass, the same four known failures, 64 executed TODO, no skipped/cancelled or unexpected hard failures. Saved evidence/S3-full.json. No functions, workflows or mission tests changed.
 Plan adaptation: narrow C17, C15 and C04a fixes can run independently of the frozen sender work, each on a separate draft branch based on the harness branch. Broader enrollment, concurrency and event recovery need distinct contracts. Next: S6 injection, S7 mutation, S8 runbook, plus the narrow fixes.
 The permitted gh executable remains unavailable, so no draft PR has been created. The published branch and PR_DESCRIPTION.md remain reviewable; independent work continues.
+
+## 2026-09-27, C17 isolated fix checkpoint
+
+Based on S3 harness135db62d2, branch claude/codex-fix-c17. Own-property check is the only production edit. Three exact regressions failed before and pass after. Focused50/39/0/11; full380/315/4/61, no unexpected hard failures. Evidence and risk note are in fixes/C17.md. Draft creation awaits the authorized gh CLI. Continuous harness work proceeds in its sibling worktree.

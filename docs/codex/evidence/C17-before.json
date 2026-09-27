@@ -1,0 +1,28 @@
+{
+  "at": "2026-09-27T05:25:08.612Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/access-storage.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 50,
+    "suites": 0,
+    "pass": 36,
+    "fail": 3,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 11
+  },
+  "failures": [
+    "I22 upload own-key allowlist rejects inherited property constructor before put",
+    "I22 upload own-key allowlist rejects inherited property toString before put",
+    "I22 upload own-key allowlist rejects inherited property __proto__ before put"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "I22 upload own-key allowlist rejects inherited property constructor before put",
+    "I22 upload own-key allowlist rejects inherited property toString before put",
+    "I22 upload own-key allowlist rejects inherited property __proto__ before put"
+  ],
+  "error": null
+}

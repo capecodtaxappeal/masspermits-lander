@@ -59,7 +59,7 @@ export async function onRequest(context) {
   if (!auth.ok) return json({ error: "unauthorized", reason: auth.reason }, 401);
 
   const key = new URL(request.url).searchParams.get("key") || "";
-  if (!(key in ALLOWED_KEYS)) return json({ error: "key not allowed" }, 400);
+  if (!Object.prototype.hasOwnProperty.call(ALLOWED_KEYS, key)) return json({ error: "key not allowed" }, 400);
 
   try {
     const body = await request.arrayBuffer();
