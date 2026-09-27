@@ -10,6 +10,7 @@ These are published branches for review, not deployed fixes. No draft pull reque
 | C02 durable enrollment before mail, partial | claude/codex-fix-c02 | 84a06d41860349095170915a588f7cc12481b141 | claude/codex-revenue-harness | 352 / 5 / 65 |
 | C20 preserve source after failed aggregate save, partial | claude/codex-fix-c20-retention | 53e54003372646b6eec31cae434b975dcd49abb0 | claude/codex-revenue-harness | 342 / 4 known / 66 |
 | C21 remove unsafe refresh guidance | claude/codex-fix-c21 | acbf5a01120f0a432f4b602d56a2eb2184471cc9 | claude/codex-revenue-harness | 343 / 4 known / 67 |
+| C18 optional upload conditions, partial | claude/codex-fix-c18-preconditions | 559b63740a7b8f589239ebe47fecd324f381370b | claude/codex-revenue-harness | 531 / 4 known / 66 |
 | C20 inbox uncertainty, partial | claude/codex-fix-c20-inbox | af369f90c5dbecc46c309ee8a30e2a381491322a | claude/codex-revenue-harness | 533 / 4 known / 64 |
 | C19 response privacy, partial | claude/codex-fix-c19-responses | 9762e4979d7e60e746ddb9f1ccd15cd60d53f9e4 | claude/codex-revenue-harness | 502 / 5 / 65 |
 | C05 conditional roster updates | claude/codex-fix-c05 | 39685135e397673ff8dc2eceb89e4b83b34be4b5 | claude/codex-fix-c02 | 383 / 5 / 63 |
@@ -33,6 +34,8 @@ D-11: Merge C21 operator guidance? Recommend: yes, because suggesting a workflow
 D-12: Merge the response privacy fix after checks and compatibility are reviewed? Recommend: yes, because responses need not expose identities or raw provider details.
 
 D-13: Merge the inbox uncertainty fix after review? Recommend: yes, because unreadable or malformed evidence must not be treated as an absent installation.
+
+D-14: Merge optional upload conditions after review? Recommend: yes, because a stale conditional upload must not silently replace a newer file.
 
 These are review recommendations, not claims that Patrick has accepted the remaining findings. The latest owner preauthorization allows creating draft fixes; it does not authorize deployment, customer mail, billing changes or policy choices.
 

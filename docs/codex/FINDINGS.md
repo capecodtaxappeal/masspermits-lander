@@ -507,4 +507,4 @@ No source, harness, workflow, dataset or service state was changed in preparing 
 
 ## Current review status
 
-The ranked S3 findings above retain their historical evidence. See FIX_STATUS.md for published partial and narrow fixes and the additional C21 operator-guidance finding. Closing S7 evidence has 630 passes, four known hard failures and 67 executed TODO across 701 cases. MUTATION_REPORT.md records 92.0% for the requested paying path. Neither TODO assertions, mutation kills nor published branches establish production remediation or owner acceptance.
+The ranked S3 findings above retain their historical evidence. See FIX_STATUS.md for published partial and narrow fixes and the additional C21 operator-guidance finding. Closing S7 evidence has 644 passes, four known hard failures and 67 executed TODO across 715 cases. MUTATION_REPORT.md records 92.2% for the requested paying path. Neither TODO assertions, mutation kills nor published branches establish production remediation or owner acceptance.

@@ -46,7 +46,7 @@ The HEAD namespace is imported only after loadHandlers validates the source root
 
 The missing-ZIP and asynchronous-HEAD cases require a controlled private response and do not choose stale-ZIP fallback policy. The incomplete-refresh cases identify the available timestamp basis and inspect the badge element rather than finding a publication date elsewhere. Preview tests assert only available numeric aggregates, not the claim that the corpus consists of permits from the current week. Malformed country metadata and an out-of-range JSON number are explicitly defensive synthetic fixtures, not observations of live Cloudflare/R2 values.
 
-## Every valid survivor
+## Historical first-run survivor classifications
 
 Classification: G = meaningful uncovered behavioral contract; P = existing finding/policy or an observable low-impact choice deliberately not pinned for score; E = no observable change under the stated call graph or operating domain. None is labelled wholly unreachable without a proof. Equivalent mutations stay in the raw denominator; this review does not recalculate a flattering score.
 
@@ -153,9 +153,9 @@ The test fixtures use genuine locally signed RSA tokens, actual handler imports,
 Retain the remaining resource-lifetime and visible-warning gaps for deliberate follow-up. Do not require raw error disclosures, choose C16 availability behavior, assert exact decorative color values or move time cutoffs by policy merely to inflate a mutation result. Cache/public-key equivalence arguments are bounded as stated in each row. Duplicate behavioral mutants remain individually listed and counted. The final-outcome section below records the root-owned post-strengthening evidence; TODOs are never counted as kills.
 
 
-## Final combined outcomes (2026-09-27)
+## Historical accumulated outcomes before the final fidelity rerun
 
-The historical rows above retain their original pre-strengthening dispositions. The durable final result is [S7-final-mutation.json](evidence/S7-final-mutation.json), generated 2026-09-27T06:47:15.824Z, SHA-256 `33721197341580c3dce27fa3a483382243effef5ffb9ad9952c910881fb5b83c`. It accumulates source-identical reruns and uses the latest observed outcome per ID. This is reported evidence from the root-owned run, not a new execution by this reviewer.
+The historical rows above retain their original pre-strengthening dispositions. The intermediate result is archived as [S7-accumulated-before-fidelity.json](evidence/S7-accumulated-before-fidelity.json), generated 2026-09-27T06:47:15.824Z, SHA-256 `33721197341580c3dce27fa3a483382243effef5ffb9ad9952c910881fb5b83c`. It accumulated source-identical reruns and used the latest observed outcome per ID. Its six-file access outcomes are unchanged in the authoritative final single run recorded below. This paragraph identifies historical evidence, not a new execution by this reviewer.
 
 | Access file | Candidates | Final killed | Final survived | Invalid | Unresolved |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -174,3 +174,22 @@ All 32 initial survivors targeted by the 13 added contracts are now recorded as 
 - The remaining 24 are the existing P dispositions: 12 portal availability/cookie/style/precision choices, four upload error disclosures, four GitHub diagnostics and four Access diagnostics. P does not mean no observable change. Preserve unresolved C16 policy and avoid pinning sensitive diagnostics for score.
 
 No valid access candidate has a final timeout or unclassified error. The three invalid candidates remain invalid; they are not kills. No production/source fix, live authorization check, Cloudflare certification, or complete coverage claim follows from these mutation results.
+
+
+## Authoritative final single-run access outcomes
+
+The final complete run is [S7-final-exhaustive.json](evidence/S7-final-exhaustive.json), started 2026-09-27T07:10:34.227Z and completed 2026-09-27T07:21:46.565Z, SHA-256 `e90a7df474dfe5c5648d4f20177bd36582840a3d28dd7206d0d18f3eaaafdce2`. Its [final summary](evidence/S7-final-mutation.json), generated 2026-09-27T07:22:15.332Z, has SHA-256 `d9c92105187d999852ee2c3c42c38818b8ca3d8e14d51a21aae7cbe40b1516de`. One recorded source, test and harness hash set governs this run; outcomes are not combined across earlier harness versions.
+
+| Access file | Selected | Valid | Final killed | Final survived | Invalid | Unresolved |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| functions/api/my-leads.js | 56 | 56 | 56 | 0 | 0 | 0 |
+| functions/leads.js | 182 | 182 | 164 | 18 | 0 | 0 |
+| functions/api/upload-bundle.js | 35 | 34 | 30 | 4 | 1 | 0 |
+| functions/api/get-object.js | 12 | 12 | 12 | 0 | 0 | 0 |
+| functions/api/_github-oidc.js | 66 | 65 | 58 | 7 | 1 | 0 |
+| functions/api/_cf-access.js | 90 | 89 | 82 | 7 | 1 | 0 |
+| Combined six-file access scope | 441 | 438 | 402 | 36 | 3 | 0 |
+
+A candidate-by-candidate comparison confirms zero access outcome changes from the accumulated archive. The four catalog-wide changes concern three send-status IDs and one supplemental lifecycle ID; none is an access candidate. All 32 targeted initial access survivors remain recorded as killed. The final 36 survivors and their four meaningful gaps, eight bounded-equivalence arguments and 24 policy/diagnostic dispositions remain as listed above.
+
+These are observed final outcomes, not a score inferred from added test names. TODOs never kill; invalid candidates remain invalid. There are no unresolved access candidates, but this does not waive unresolved outcomes elsewhere or certify all runtime behavior. No tests, source or production services were executed for this final documentation update.

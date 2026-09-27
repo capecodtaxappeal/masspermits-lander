@@ -18,10 +18,11 @@ World fixtures are synthetic and set owner/from addresses explicitly so a defaul
 
 ## Platform fidelity
 
-Nine contract tests compare the fake with local workerd through Miniflare 4:
+Twenty contract cases compare the fake with local workerd through Miniflare 4 (the original nine plus eleven numeric listing-limit cases):
 - Immutable body snapshots, body consumption, HTTP metadata and conditional storage results.
 - Two conditional writers with one winner.
 - Prefix pagination, custom metadata and deletion.
+- Observed finite numeric list limits: truncation, the -1 default sentinel, omitted default, and range rejection. Nonnumeric/nonfinite coercions remain unverified.
 - HTMLRewriter text escaping.
 - Raw request bodies, headers and HMAC computed by crypto.subtle.
 - Closed outbound transport and deterministic injected faults.
@@ -39,3 +40,5 @@ TODO tests execute desired assertions and retain their diagnostics. They do not 
 S2 evidence: 160 handler scenarios plus 9 platform contracts. Full suite: 380 tests, 312 pass, 4 known baseline failures, 64 TODO, no skips/cancellations or unexpected hard failures. See docs/codex/evidence/S2-full.json and FINDINGS.md as it develops.
 
 Nothing under functions/ imports these dependencies. There is no root package.json. Do not run workflow code or the rehearsal branch's aggregate runner.
+
+S7 closing full suite: 715 tests, 644 pass, four known hard failures and 67 executed TODO cases. Twenty platform contract cases pass. The final mutation report uses a fresh complete run after correcting the demonstrated R2 numeric-limit mismatch. See docs/codex/MUTATION_REPORT.md and evidence/S7-full.json. These results do not certify deployment or inbox receipt.

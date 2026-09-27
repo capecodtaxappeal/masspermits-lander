@@ -1,6 +1,6 @@
 # S7 exhaustive lifecycle and gate review
 
-This reviews the preserved first exhaustive **operator-candidate** run, not every possible program change. It adds tests of real exported helpers and the real pre-send endpoint. Production source, workflows, mission tests and service state were not changed. No live request or delivery was attempted.
+This records the preserved first exhaustive **operator-candidate** review and the final single whole-catalog measurement, not every possible program change. The historical review added tests of real exported helpers and the real pre-send endpoint. Production source, workflows, mission tests and service state were not changed. No live request or delivery was attempted.
 
 ## Preserved evidence and source identity
 
@@ -67,17 +67,17 @@ The other eight endpoint survivors keep their explicit limitations:
 
 The original invalid presend mutation `258c2701a00ac20e` removes part of a parenthesized unary expression at line 333 and fails syntax validation. It stays invalid, not killed.
 
-## Remaining lifecycle cautions and review priorities
+## Historical lifecycle cautions and review priorities
 
-Do not blanket-label the remaining lifecycle candidates equivalent after this baseline pass. The next mutation report must identify their actual outcome. In particular, action ranking in the owner digest (`_lifecycle.js:499-503`) is not comprehensively asserted by these cases. Adjacent priority changes can matter when multiple actionable rows occur together; numerical changes that preserve every reachable ordering may be equivalent, but that requires a case-specific argument. This is a lower-priority presentation gap, not evidence that a current customer action occurred.
+At the first focused baseline, the remaining lifecycle candidates could not be blanket-labeled equivalent; a later mutation report was still needed to identify their actual outcome. In particular, action ranking in the owner digest (`_lifecycle.js:499-503`) was not comprehensively asserted by those cases. Adjacent priority changes can matter when multiple actionable rows occur together; numerical changes that preserve every reachable ordering may be equivalent, but that requires a case-specific argument. This was a lower-priority presentation gap, not evidence that a current customer action occurred. The closing result below supersedes the historical outcome counts.
 
-Some narrow arithmetic/default candidates can be equivalent within the real domain: changing the zero fallback in `Math.max(parsed enrollment, instrumentation)` to one millisecond cannot change the result when the enforced instrumentation floor is in 2026. Likewise, a list request's limit of 1,000 versus 1,001 may be capped identically by R2. The existing fake caps at 1,000 (`test/harness/index.mjs:126`); do not invent a business outage or assert a synthetic request shape only to kill that candidate. Retain these qualifications if they survive.
+Some narrow arithmetic/default candidates can be equivalent within the real domain: changing the zero fallback in `Math.max(parsed enrollment, instrumentation)` to one millisecond cannot change the result when the enforced instrumentation floor is in 2026. The first review also suggested that list limits of 1,000 and 1,001 might be capped identically because the original fake capped both. That suggestion is withdrawn: a later local workerd check confirmed rejection of numeric 1,001, and the corrected fake now rejects numeric limits outside the observed supported range (`test/harness/index.mjs:127-134`). The closing result records the resulting kill; this is binding-fidelity evidence, not a claimed live outage.
 
 Original unresolved lifecycle IDs are `a13ae0c9c8e3b86c` (inverted cursor-loop condition, line 596), `b52ab5dcc0c196d2` (inverted retention-loop comparison, line 638), and `874a8dadc7e8abf4` (dropped save await, line 627). The first two timed out, and the last produced an unclassified error. None is a passing equivalence justification. The new successful-acknowledgement cases provide ordinary assertions relevant to the last mutation without making a failing TODO or unhandled rejection itself a kill.
 
 The helper's current comments sometimes describe provider acceptance as delivery and fleet silence as corroborated failure. This review does not upgrade those comments to historic proof. A response can report incomplete storage or uncertain observation without establishing a missed customer email.
 
-## Focused validation and reproducibility
+## Historical focused validation and reproducibility
 
 Command: `node test/harness/run.mjs test/revenue/lifecycle-mutation.test.mjs test/revenue/gate-mutation.test.mjs`.
 
@@ -92,4 +92,8 @@ Both files use `loadHandlers()` and honor `REVENUE_SOURCE_ROOT`; ordinary tests 
 
 ## Closing observed result
 
-The tracked evidence/S7-final-mutation.json contains the accumulated source-identical outcomes. Lifecycle now has 356 killed, 20 surviving and three unresolved timeouts across 379 valid candidates (93.9%). Presend has 248/248 valid killed; pre-send-check has 24/32. The closing round killed five additional lifecycle candidates after four root-added controls for delayed log reads, single-log summaries, delivery/dunning priority and continuing winback. No timeout is credited as a kill. Historical groupings above remain source explanations, not a claim that every original survivor still survives. MUTATION_REPORT.md records the final limitations and reproduction method.
+The authoritative closing measurement is [S7-final-exhaustive.json](evidence/S7-final-exhaustive.json), summarized in [S7-final-mutation.json](evidence/S7-final-mutation.json). It is one complete whole-catalog run against a single recorded source, test and harness hash set, started at `2026-09-27T07:10:34.227Z` and completed at `2026-09-27T07:21:46.565Z`. Lifecycle has **357 killed, 19 surviving and three unresolved timeouts across 379 valid candidates (94.2%)**. Presend remains **248/248 valid killed**, with one invalid-syntax candidate excluded; pre-send-check remains **24/32**, with eight survivors.
+
+The newly confirmed lifecycle kill is `014fac5a0f3b2a1b`, the line 592 numeric list-limit mutation from 1,000 to 1,001. After the binding-fidelity correction, its recorded `killedBy` includes `S6 I30 engagement reads all 1005 metadata events across the R2 page boundary` and `S7 lifecycle storage respects a monotonic instrumentation floor and an explicit observation clock`, among the recorded assertions. The tests distinguish usable aggregate evidence from a rejected list operation; no new production behavior or live service call was introduced.
+
+The earlier accumulated result is preserved as [S7-accumulated-before-fidelity.json](evidence/S7-accumulated-before-fidelity.json). Its 356/379 lifecycle result and the five additional kills following four root-added controls are historical, not the final measurement. No timeout or failing TODO is credited as a kill. Historical groupings above remain source explanations, not a claim that every original survivor still survives. [MUTATION_REPORT.md](MUTATION_REPORT.md) records the final limitations and reproduction method.

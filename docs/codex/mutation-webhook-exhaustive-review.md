@@ -1,6 +1,6 @@
 # Exhaustive webhook mutation review
 
-The closing combined webhook result is **359 killed of 391 valid candidates (91.8%), with 30 survivors and two unresolved errors**. All 26 meaningful G gaps from the prior survivor run were killed by the 18 closure controls. The 30 surviving cases retain their documented dispositions: **20 known-TODO/contract decisions, nine bounded equivalent changes, and one unreachable capability change**. They are not all benign, and neither unresolved exit is counted as a kill. The closing outcome below records exact IDs, observed failing cases and pins; earlier tables remain dated intermediate checkpoints.
+The final single-run webhook result is **359 killed of 391 valid candidates (91.8%), with 30 survivors and two unresolved errors**. It independently confirms the earlier accumulated result under the final frozen test/harness hashes. All 26 meaningful G gaps from the prior survivor run were killed by the 18 closure controls. The 30 surviving cases retain their documented dispositions: **20 known-TODO/contract decisions, nine bounded equivalent changes, and one unreachable capability change**. They are not all benign, and neither unresolved exit is counted as a kill. The final confirmation below records the fresh catalogue and exact pins; earlier tables remain dated intermediate checkpoints.
 
 The first exhaustive catalogue contained **392 webhook candidates: 249 killed, 140 survived, two unclassified errors, and one invalid**, with no pending webhook result. This review accounts for every one of the **142 surviving or unclassified, syntactically valid mutations** from that first run, plus their measured later disposition. A surviving mutation is a coverage observation, not a newly established production defect or customer incident.
 
@@ -257,7 +257,7 @@ The webhook selection was **59 candidates: 26 killed, 30 survived, two unclassif
 
 The result records unchanged source SHA256 `313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5` and the final 80-test file SHA256 `db1edbedfc66542b21f3bcc733bf0cc819724f9590267da0f38922ae1a611e5e`. Its surviving/unclassified valid rows show **138 mapped tests: 109 hard passes, 29 TODOs, zero parsed hard failures**. The extra 58 tests are the separately mapped original webhook scenario file; 138 is not the size of the focused 80-test file.
 
-Combined accounting is **249 first-run kills + 84 first-strengthening kills + 26 closure kills = 359/391 valid (91.8%)**. This carries forward earlier measured kills with the same source hash and preserved tests. It is not a claim that all 391 valid candidates were freshly rerun in the closing pass. No adjusted score discards K, E, R or unresolved valid cases.
+Combined accounting is **249 first-run kills + 84 first-strengthening kills + 26 closure kills = 359/391 valid (91.8%)**. This carries forward earlier measured kills with the same source hash and preserved tests. It is not a claim that all 391 valid candidates were freshly rerun in the closing pass. The historical combined summary is preserved as [S7-accumulated-before-fidelity.json](evidence/S7-accumulated-before-fidelity.json), generated at `2026-09-27T06:47:15.824Z`, SHA256 `33721197341580c3dce27fa3a483382243effef5ffb9ad9952c910881fb5b83c`. It is distinct from the later single-run final evidence below. No adjusted score discards K, E, R or unresolved valid cases.
 
 ### Exact G reconciliation
 
@@ -306,3 +306,27 @@ The existing precise per-ID reasoning in the earlier tables still applies. No st
 The unresolved IDs `8dd302a16916021e` (delivery-log put await removal) and `30f21bd8f9cd8bf2` (new-roster put await removal) again have no named hard failure in their saved result rows. Their nonzero outcomes are not successful test evidence, and the available row summaries do not establish the underlying diagnostic cause. They remain unresolved rather than being promoted to kills or waived as equivalent. No webhook timeout occurred in this closing selection.
 
 This closing reconciliation changed documentation only. No additional test execution, source modification, service action or policy decision was performed. The unchanged production TODOs, provider-schema limits and actual-delivery/credit boundaries described earlier remain in force.
+
+## Final single-run confirmation
+
+The [final exhaustive catalogue](evidence/S7-final-exhaustive.json) ran from **2026-09-27T07:10:34.227Z** through **07:21:46.565Z**, with seed `S7-v1`, limit 2000 and three jobs. The saved catalogue contains all **1822 candidates**; every file's selected count equals its candidate count. This is one fresh run against one recorded source/test/harness hash set, not carried-forward kills from the earlier rounds. The [final mutation summary](evidence/S7-final-mutation.json), generated at **07:22:15.332Z**, summarizes that run.
+
+The webhook portion freshly selected **392 unique candidates**: **359 killed, 30 survived, two unclassified errors, one invalid, zero timeouts and zero pending**. The valid denominator is **391** and the unadjusted score is **91.8%**. An ID-by-ID comparison with the historical accumulated summary found the exact same 392 IDs and no changed webhook outcome. All 26 IDs in the G reconciliation table above are killed in this fresh run. The K/E/R and unresolved classifications remain historical analytical judgments with their stated limits; the final run confirms their measured outcomes without widening those judgments.
+
+Exact final evidence pins:
+
+| Artifact or input | SHA256 |
+| --- | --- |
+| S7-final-exhaustive.json | `e90a7df474dfe5c5648d4f20177bd36582840a3d28dd7206d0d18f3eaaafdce2` |
+| S7-final-mutation.json | `d9c92105187d999852ee2c3c42c38818b8ca3d8e14d51a21aae7cbe40b1516de` |
+| Final exhaustive webhook rows, JSON-array method defined above | `26ba4c8dc83d11bfd04f354dac814f8d40b09b0d99f18af97a3594cb97f958e2` |
+| functions/api/stripe-webhook.js | `313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5` |
+| test/revenue/webhook.test.mjs | `944cbd7450f341e14cc45889e4fc04501da3630950f4db305b82ca5201430f75` |
+| test/revenue/webhook-mutation.test.mjs | `db1edbedfc66542b21f3bcc733bf0cc819724f9590267da0f38922ae1a611e5e` |
+| test/harness/index.mjs | `c05e5fbe06853c8d121564088a93836f0df85c177d2c3fbaacb7edf4fc2d2209` |
+| test/harness/mutate.mjs | `35fb8047e7273654c41835d16f3f6da78ca5eeaf0b6d5a37a3b7222a24a6489c` |
+| test/harness/package-lock.json | `0456d93f5aa0a9a96e643b00402ac6e7750f223d84c347de822f205552c33df0` |
+
+The final mapped webhook baseline has **138 tests: 109 hard passes, 29 TODOs, zero hard failures**, exit 0. Both unresolved IDs, `8dd302a16916021e` and `30f21bd8f9cd8bf2`, again report 138/109/0/29 with nonzero unclassified outcomes and no named hard failure. The saved final rows still lack the underlying diagnostic cause. They remain unresolved and stay in the valid denominator; neither is a kill, a timeout, an equivalence waiver or proof of a production incident.
+
+This update inspected saved results and changed this document only. It did not execute tests or mutations, change source/harness/tests, or access any service. The earlier accumulated artifact, hashes and dated tables are retained separately from the final single-run evidence.

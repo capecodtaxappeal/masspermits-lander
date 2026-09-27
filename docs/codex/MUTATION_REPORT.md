@@ -1,85 +1,86 @@
 # Mutation test report
 
-The strengthened tests catch 92.0% of the generated paying-path faults.
-The full suite has 630 passes, four known failures and 67 executed TODO cases.
-No production code changed on this branch.
-Open defects, uncertain runs and simulation limits remain visible.
-The results support review of the separate fixes, not a production release.
+The final tests catch 92.2% of generated faults in the paying path.
+The full suite has 644 passes, four known failures and 67 executed TODO cases.
+All 20 local runtime comparison cases pass.
+Production code is unchanged on this branch.
+Remaining defects and simulation limits stay visible for review.
 
-## Source and method
+## Final evidence
 
-Source: origin/main 1068e8070e88a436fbf5f86b88bf075e1f3a01c5. Node v25.9.0. The homemade Acorn-based runner changes copied modules inside clone-confined scratch directories and runs the actual handler tests in fresh Node processes. External transport is closed. Tracked production files, mission tests and workflows are unchanged.
+This report uses ONE fresh exhaustive run against the final frozen tests and corrected harness. It started 2026-09-27T07:10:34.227Z and finished 07:21:46.565Z. All 1822 catalog candidates were selected. No earlier kill is carried forward to compute this final score.
 
-The complete catalog contains 1822 candidates: 1443 in the 14 requested paying-path files and 379 in the supplemental lifecycle helper. Operators flip comparisons and logical operators, remove awaits, invert conditions or negation, flip booleans and increment numeric literals. These are raw source-token replacements; JavaScript precedence applies, so changing the final operator in A || B || C is not equivalent to rewriting an abstract syntax tree with added parentheses.
+Source: origin/main 1068e8070e88a436fbf5f86b88bf075e1f3a01c5. Test/harness checkpoint: 39023cb6081646aed1f5956fdb63de00b4dd0832, committed while the already-frozen run was active. The evidence records the actual source, test and harness hashes, and the runner verified test hashes again at completion.
 
-The first exhaustive round tested every candidate. Additive test strengthening was followed by source-identical survivor reruns. The latest observed result for a repeated candidate wins. Earlier kills remain evidence from their recorded test checkpoint, not a claim that all 1822 ran again against the final tests. Round source hashes, test manifests, timestamps and report hashes are retained in evidence/S7-final-mutation.json. The combiner rejects source or candidate catalog changes.
+Raw final evidence: evidence/S7-final-exhaustive.json. Summary and complete candidate outcomes: evidence/S7-final-mutation.json. The only removed raw field is the machine-local sourceRoot path. Earlier exhaustive and survivor rounds are preserved as development history, including S7-accumulated-before-fidelity.json; they are not the basis of this final score.
 
-Only an ordinary failing assertion kills a mutant. Executed TODO assertions do not. Eight syntax-invalid candidates are excluded. Two unclassified process errors and three timeouts remain unresolved in the score denominator; none is credited as a kill. A timeout is bounded at 30 seconds and confined child processes are terminated.
+## Method
+
+The Acorn-based runner mutates copied modules in clone-confined scratch, then runs the actual handler tests in fresh Node processes. External transport is closed. Tracked production files, mission tests and workflows are unchanged.
+
+Operators flip comparisons/logical operators, remove awaits, invert conditions/negation, flip booleans and increment numeric literals. Replacements are raw source tokens; normal JavaScript precedence applies. This is a defined homemade mutation catalog, not all possible faults or a probability that production is reliable.
+
+Only ordinary failing assertions kill mutants. Executed TODO failures do not. Eight syntax-invalid candidates are excluded. Two unclassified process errors and three bounded timeouts remain unresolved in the denominator; none is a kill. The runner exits 1 because those unresolved results remain. Timed-out child processes are confined and terminated.
 
 ## Results
 
 | Scope | Valid | Killed | Survived | Unresolved | Score |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Paying path | 1435 | 1320 | 113 | 2 | 92.0% |
-| Supplemental lifecycle | 379 | 356 | 20 | 3 | 93.9% |
-| Combined | 1814 | 1676 | 133 | 5 | 92.4% |
-
-Per-file counts and scores are in the following table. Invalid syntax is not in the valid column.
+| Requested paying path | 1435 | 1323 | 110 | 2 | 92.2% |
+| Supplemental lifecycle | 379 | 357 | 19 | 3 | 94.2% |
+| Combined | 1814 | 1680 | 129 | 5 | 92.6% |
 
 | File | Valid | Killed | Survived | Unresolved | Score |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| stripe-webhook.js | 391 | 359 | 30 | 2 | 91.8% |
-| _presend.js | 248 | 248 | 0 | 0 | 100% |
-| pre-send-check.js | 32 | 24 | 8 | 0 | 75% |
-| weekly-send.js | 123 | 109 | 14 | 0 | 88.6% |
-| send-status.js | 158 | 133 | 25 | 0 | 84.2% |
-| my-leads.js | 56 | 56 | 0 | 0 | 100% |
-| leads.js | 182 | 164 | 18 | 0 | 90.1% |
-| leads/out.js | 1 | 1 | 0 | 0 | 100% |
-| _notice.js | 21 | 21 | 0 | 0 | 100% |
-| upload-bundle.js | 34 | 30 | 4 | 0 | 88.2% |
-| get-object.js | 12 | 12 | 0 | 0 | 100% |
-| _github-oidc.js | 65 | 58 | 7 | 0 | 89.2% |
-| _cf-access.js | 89 | 82 | 7 | 0 | 92.1% |
-| mail-owner.js | 23 | 23 | 0 | 0 | 100% |
-| _lifecycle.js | 379 | 356 | 20 | 3 | 93.9% |
+| functions/api/stripe-webhook.js | 391 | 359 | 30 | 2 | 91.8% |
+| functions/api/_presend.js | 248 | 248 | 0 | 0 | 100% |
+| functions/api/pre-send-check.js | 32 | 24 | 8 | 0 | 75% |
+| functions/api/weekly-send.js | 123 | 109 | 14 | 0 | 88.6% |
+| functions/api/send-status.js | 158 | 136 | 22 | 0 | 86.1% |
+| functions/api/my-leads.js | 56 | 56 | 0 | 0 | 100% |
+| functions/leads.js | 182 | 164 | 18 | 0 | 90.1% |
+| functions/leads/out.js | 1 | 1 | 0 | 0 | 100% |
+| functions/api/_notice.js | 21 | 21 | 0 | 0 | 100% |
+| functions/api/upload-bundle.js | 34 | 30 | 4 | 0 | 88.2% |
+| functions/api/get-object.js | 12 | 12 | 0 | 0 | 100% |
+| functions/api/_github-oidc.js | 65 | 58 | 7 | 0 | 89.2% |
+| functions/api/_cf-access.js | 89 | 82 | 7 | 0 | 92.1% |
+| functions/api/mail-owner.js | 23 | 23 | 0 | 0 | 100% |
+| functions/api/_lifecycle.js | 379 | 357 | 19 | 3 | 94.2% |
 
-The score exceeds the program's aggregate 80% threshold. pre-send-check remains at 75%: seven surviving changes affect a defensive outer catch not reached through ordinary binding failures because the helper already catches them, and one changes an unused default response status while callers supply an explicit status. These are bounded coverage limits, not excluded candidates.
+The paying-path score exceeds 80%. pre-send-check remains at 75%: seven survivors concern a defensive outer catch not reached by ordinary binding faults because the helper catches them, and one changes an unused default response status while callers explicitly supply status. Those are documented limits, not excluded candidates.
 
-## What the stronger tests establish
+## What improved
 
-The new controls exercise real authentication, signature verification, payment and access boundaries, bundle checks, exact UTC day selection, partial-provider results, notices, limits, and storage failure handling. Delayed-operation controls race acknowledgment against a held storage operation, then release and drain it in finally. This tests awaited durability without relying only on an instantly resolved mock.
+The contracts exercise actual authentication, signatures, payment/access boundaries, bundle checks, UTC day selection, provider failures, notices, limits and storage handling. Delayed-operation tests hold a storage promise, check acknowledgment ordering, then release and drain it in finally.
 
-Forty-three presend contracts, 27 gate controls, 38 access controls, 80 webhook controls, 62 operations controls and 40 lifecycle controls all pass in the closing full suite. Existing failure scenarios remain executed TODOs; tests do not pin known bad behavior merely to increase the mutation score.
+Forty-three presend, 27 gate, 38 access, 80 webhook, 65 operations and 40 lifecycle controls pass. The full suite, including original tests and 20 local workerd comparisons, is 715 tests: 644 pass, four known hard failures, 67 executed TODO, no skips/cancellations and no unexpected hard failures. Evidence: S7-full.json. TODOs include unresolved policies and concrete defects; they are not 67 independent bugs.
 
-## Remaining gaps and justification
+Final review added three missing/asynchronously failing metadata controls. They killed status mutants 10ad73d556d11a8d and 93a1b50c262bde6d, which could hide an independently stale HTML warning.
 
-See mutation-webhook-exhaustive-review.md, mutation-access-exhaustive-review.md, mutation-operations-exhaustive-review.md and mutation-lifecycle-exhaustive-review.md for candidate IDs, source reasoning and test references. The original mutation-gate-review.md records the defensive gate boundary.
+A local binding probe proved MemoryR2 incorrectly clamped an out-of-range listing limit. Eleven comparison cases establish the observed finite numeric behavior: truncation, the -1 default sentinel, omitted default and range rejection. Seven failed before the fake correction; all 20 platform cases pass afterward. Nonnumeric/nonfinite coercions remain unverified. This correction also killed status 79fe03a4fcc9484d and lifecycle 014fac5a0f3b2a1b. Exactly these four outcomes differ from the preceding accumulated report.
 
-Some survivors overlap confirmed open findings, including skipped sends reported as ok, public diagnostic detail, bounded history eviction and swallowed storage errors. Some are equivalent under the exercised platform contract, while others concern presentation, unsupported shapes or narrow timing boundaries. Those categories remain separate from proved correctness. The R2 list limit mutation from 1000 to 1001 is an explicit mock-fidelity gap, not a claim of platform equivalence.
+## Remaining gaps
 
-The closing round killed 37 additional candidates: 26 webhook, six send-status and five lifecycle. The lifecycle review predates the final four added controls; those controls cover delayed log reads, single-log summaries, priority of delivery/dunning over engagement, and continuing winback with no adverse transition. Twenty lifecycle survivors and three bounded timeouts remain in the final evidence.
+The exhaustive webhook, access, operations and lifecycle review documents give candidate IDs and bounded reasons. Survivors include known-defect overlap, defensive branches, constrained equivalence, presentation differences, policy questions and lower-priority coverage. Five unresolved runs remain explicit. No survivor is discarded merely to raise the score.
 
-These scores apply to the unchanged harness source snapshot. They do not score any unmerged fix branch or prove live configuration, inbox receipt, billing completeness, provider idempotency, cloud races, or every R2/HTML behavior. Nine local workerd comparisons establish only their named contract subset.
+Known skips reported as success, history eviction, diagnostic disclosure and swallowed evidence failures remain findings. Tests do not require known bad behavior just to kill a beneficial mutation. D-2 and the sender/status freeze remain in force.
 
-## Reproduction and evidence
+These scores apply to the unchanged main-source snapshot, not the ten unmerged fix branches. The harness does not prove deployed settings, complete live billing scope, inbox receipt, provider retry guarantees or all cloud timing/R2/HTML behavior. Each fix has separate evidence and requires review.
 
-Run the full suite:
+## Reproduction
 
     node test/harness/run.mjs --label S7-review-full
-
-Run all mutation candidates:
-
     node test/harness/mutate.mjs --limit 2000 --jobs 3
 
-Preserve results.json before starting another runner. Run at most one mutator using the shared scratch workers. To strengthen a surviving set, pass the saved report with --rerun-survivors. Source and selected tests must remain stable during a run.
+Run one mutator at a time. Preserve results.json before another run and keep source/tests/harness stable during execution. To summarize a saved complete run:
 
-The saved five rounds are S7-first-exhaustive.json, S7-second-survivors.json, S7-status-final.json, S7-weekly-final.json and S7-closure-survivors.json under docs/codex/evidence. The combined report is S7-final-mutation.json. S7-full.json records 701 tests, 630 pass, four known hard failures, 67 TODO, no skipped/cancelled tests and zero unexpected hard failures. The suite exits 1 honestly.
+    node test/harness/report-mutation.mjs docs/codex/evidence/S7-final-exhaustive.json
 
-The four known failures remain unchanged:
+The four owner-known failures remain unchanged:
 1. P1-14 the diff from main lists only allowed paths
 2. P2-5 _headers gains exactly the /admin/mission block, outside the widget block
 3. P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ files changed; nothing under docs/
 4. P1-14 route strings never appear in non-test added files
 
-No test/mission file was edited. The additional static-address structural failure on certain fix branches is separately recorded in FIX_STATUS.md and is not part of this four-failure baseline.
+No mission test was edited. Certain fix branches additionally fail a whole-file static-address check. FIX_STATUS.md records it as unexpected, not part of this baseline and not a green release.

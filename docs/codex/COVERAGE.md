@@ -115,4 +115,4 @@ I31 is reproduced by C21 overdue refresh guidance requires evidence review witho
 
 ## S7 closing evidence
 
-The historical S3 counts above remain a dated snapshot. The closing S7 run in evidence/S7-full.json has 701 tests, 630 pass, four known failures and 67 executed TODO. Mutation strengthening and its coverage limits are in MUTATION_REPORT.md. I31 is the later operator-guidance rule; its failure-before/passing-after test is on the isolated C21 branch. Published fixes have separate source snapshots and counts in FIX_STATUS.md. No open finding is closed by the larger pass count.
+The historical S3 counts above remain a dated snapshot. The closing S7 run in evidence/S7-full.json has 715 tests, 644 pass, four known failures and 67 executed TODO. Mutation strengthening and its coverage limits are in MUTATION_REPORT.md. I31 is the later operator-guidance rule; its failure-before/passing-after test is on the isolated C21 branch. Published fixes have separate source snapshots and counts in FIX_STATUS.md. No open finding is closed by the larger pass count.
