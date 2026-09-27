@@ -603,13 +603,49 @@ test('I17 C14 POLICY approved review restores held access if automatic recovery 
 
 for (const type of ['invoice.payment_failed', 'invoice.payment_succeeded']) {
   test('I18 C04 conflicting customer identity cannot ' + (type.endsWith('failed') ? 'replace' : 'clear') + ' current payment flags',
-    { todo: 'C04 payment helpers use email OR customer without conflict precedence' }, async () => {
+    async () => {
       const before = row({ payment_failing: '2026-09-26', payment_detail: { attempt: 7 } });
       await using(async (world) => {
-        await invoke(world, invoice(type, { customer: 'cus_TEST_superseded', attempt_count: 1 }));
+        const result = await invoke(world, invoice(type, { customer: 'cus_TEST_superseded', attempt_count: 1 }));
+        assert.equal(result.response.status, 200);
         assert.deepEqual(await roster(world), [before]);
+        assert.equal(world.r2.ops.filter((op) => op.op === 'put' && op.key === 'subscribers.json').length, 0);
       }, { rows: [before] });
     });
+}
+
+// C04a shares cancellation's identity rule without adding event-time ordering.
+for (const type of ['invoice.payment_failed', 'invoice.payment_succeeded']) {
+  for (const fixture of [
+    { name: 'matching current ID wins over changed email',
+      invoiceOverrides: { customer_email: 'casey+changed@example.com' } },
+    { name: 'matching current ID works without event email',
+      invoiceOverrides: { customer_email: null } },
+    { name: 'missing roster ID uses email and backfills the current ID',
+      omitRowCustomer: true, invoiceOverrides: { customer_email: EMAIL.toUpperCase() } },
+    { name: 'missing event ID uses email and preserves the roster ID',
+      invoiceOverrides: { customer: null, customer_email: EMAIL.toUpperCase() } },
+  ]) {
+    test('I18 C04a ' + fixture.name + ' for ' + type, async () => {
+      const before = row({ payment_failing: '2026-09-26', payment_detail: { attempt: 7 } });
+      if (fixture.omitRowCustomer) delete before.customer;
+      const expected = { ...before, customer: CUSTOMER };
+      if (type.endsWith('failed')) {
+        expected.payment_failing = '2026-09-28';
+        expected.payment_detail = { attempt: 3, nextAttempt: null, amount: 9900 };
+      } else {
+        delete expected.payment_failing;
+        delete expected.payment_detail;
+      }
+      await using(async (world) => {
+        const result = await invoke(world, invoice(type, { attempt_count: 3, ...fixture.invoiceOverrides }));
+        assert.equal(result.response.status, 200);
+        if (type.endsWith('failed')) assert.equal(result.body.flagged, true);
+        assert.deepEqual(await roster(world), [expected]);
+        assert.equal(customerMail(world).length, 0);
+      }, { rows: [before] });
+    });
+  }
 }
 
 test('I24 C19 successful webhook machine response contains no recipient identity',

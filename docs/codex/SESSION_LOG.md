@@ -36,3 +36,7 @@ FINDINGS.md ranks the source candidates with executable evidence, explicit polic
 Full suite rerun: 380 tests, 312 pass, the same four known failures, 64 executed TODO, no skipped/cancelled or unexpected hard failures. Saved evidence/S3-full.json. No functions, workflows or mission tests changed.
 Plan adaptation: narrow C17, C15 and C04a fixes can run independently of the frozen sender work, each on a separate draft branch based on the harness branch. Broader enrollment, concurrency and event recovery need distinct contracts. Next: S6 injection, S7 mutation, S8 runbook, plus the narrow fixes.
 The permitted gh executable remains unavailable, so no draft PR has been created. The published branch and PR_DESCRIPTION.md remain reviewable; independent work continues.
+
+## 2026-09-27, C04a isolated fix checkpoint
+
+Two identity-conflict regressions fail before the patch and pass afterward; eight compatibility controls pass. Full suite: 388 tests, 321 pass, five failures and 62 TODO. See fixes/C04a.md and tracked sanitized evidence. No workflow or frozen sender/status change. The allowed gh CLI is unavailable, so draft creation remains pending. Program work continues in the harness branch.

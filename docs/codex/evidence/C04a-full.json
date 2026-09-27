@@ -1,0 +1,33 @@
+{
+  "at": "2026-09-27T05:27:51.865Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/*.test.mjs test/mission/*.test.mjs functions/api/*.test.mjs test/revenue/*.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 388,
+    "suites": 0,
+    "pass": 321,
+    "fail": 5,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 62
+  },
+  "failures": [
+    "P2-5 _headers gains exactly the /admin/mission block, outside the widget block",
+    "P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ files changed; nothing under docs/",
+    "P1-14 the diff from main lists only allowed paths",
+    "P1-14 route strings never appear in non-test added files",
+    "P1-14 no real email address in any added file"
+  ],
+  "knownBaseline": [
+    "P2-5 _headers gains exactly the /admin/mission block, outside the widget block",
+    "P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ files changed; nothing under docs/",
+    "P1-14 the diff from main lists only allowed paths",
+    "P1-14 route strings never appear in non-test added files"
+  ],
+  "unexpected": [
+    "P1-14 no real email address in any added file"
+  ],
+  "error": null
+}

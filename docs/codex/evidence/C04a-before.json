@@ -1,0 +1,26 @@
+{
+  "at": "2026-09-27T05:26:36.901Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/webhook.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 66,
+    "suites": 0,
+    "pass": 37,
+    "fail": 2,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 27
+  },
+  "failures": [
+    "I18 C04 conflicting customer identity cannot replace current payment flags",
+    "I18 C04 conflicting customer identity cannot clear current payment flags"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "I18 C04 conflicting customer identity cannot replace current payment flags",
+    "I18 C04 conflicting customer identity cannot clear current payment flags"
+  ],
+  "error": null
+}
