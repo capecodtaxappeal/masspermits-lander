@@ -205,10 +205,10 @@ async function sendEmail(env, to, name, b64, token, coverage) {
     (coverage.monthly_sources && coverage.monthly_sources.length
       ? '<p style="margin:0 0 8px;color:#5c4300;font-size:14px">Note: ' +
         coverage.monthly_sources.map((m) => m.replace(", MA", "")).join(", ") +
-        ' publish their permits <b>monthly</b>, so their new rows arrive in a batch early each month ' +
-        'rather than weekly. Every row shows its issue date.</p>'
+        ' publish their permits <b>monthly or less often</b>, so their new rows arrive in batches ' +
+        'when each town publishes, not every week. Every row shows its issue date.</p>'
       : "") +
-    '<p style="margin:0;color:#5c4300;font-size:14px">Everything in the attached file is real and current. ' +
+    '<p style="margin:0;color:#5c4300;font-size:14px">Every row in the attached file is a real permit. ' +
     'We are rebuilding the missing towns from their own municipal sources and will tell you as they come back. ' +
     // The coverage shortfall is disclosed because hiding it would be dishonest.
     // The unprompted REFUND offer is a separate thing and it is removed: it went

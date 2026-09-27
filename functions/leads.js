@@ -1,13 +1,13 @@
 // MassPermits — the hosted leads portal (Pages Function).  KB/07 Stage D, D2.
 //
 // WHY THIS EXISTS
-// The weekly leads ship as a ZIP attachment. QXO's M365 quarantines it and
-// merkemh bought on a phone and cannot open a ZIP. This serves the SAME
-// dashboard that is already inside the ZIP — one R2 object, streamed — behind
-// the token that already exists.
+// The weekly leads ship as a ZIP attachment. One buyer's corporate mail filter
+// quarantines it, and another bought on a phone and cannot open a ZIP. This
+// serves the SAME dashboard that is already inside the ZIP (one R2 object,
+// streamed) behind the token that already exists.
 //
 // THE LOAD-BEARING CONSTRAINT (KB/07 §1.2)
-// Email has a delivery EVENT; its absence is the alarm that made Silvestre
+// Email has a delivery EVENT; its absence is the alarm that made a subscriber
 // write in on 2026-08-03. A URL has no such event. If this page can show last
 // week's rows under a header that says "updated", the portal is a DOWNGRADE on
 // email: the same failure, quieter. So freshness is not a garnish here:
@@ -219,14 +219,14 @@ async function renderPortal(context, token, sub) {
       "access to its permit records. We are rebuilding town by town from municipal sources.</p>" +
       (cov && Array.isArray(cov.monthly_sources) && cov.monthly_sources.length
         ? "<p>Note: " + esc(cov.monthly_sources.map((m) => String(m).replace(", MA", "")).join(", ")) +
-          " publish their permits <b>monthly</b>, so their new rows arrive in a batch early " +
-          "each month rather than weekly. Every row shows its issue date.</p>"
+          " publish their permits <b>monthly or less often</b>, so their new rows arrive in " +
+          "batches when each town publishes, not every week. Every row shows its issue date.</p>"
         : "") +
       // Disclosure stays, unprompted refund offer goes. See the matching change
       // in weekly-send.js: this box rendered on every page load while coverage
       // disclosure was on, so it offered every subscriber their money back
       // without anyone deciding to. Standing rule from 2026-09-15.
-      "<p>Everything on this page is real and current. If a reduced feed is not worth your " +
+      "<p>Every row on this page is a real permit. If a reduced feed is not worth your " +
       "subscription in the meantime, reply to your last email and tell me.</p>");
   }
 
