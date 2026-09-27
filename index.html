@@ -150,7 +150,7 @@
 
   <a id="buy-banner" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit;background:rgba(45,212,191,.10);border:1px solid var(--teal);border-radius:10px;padding:10px 16px;text-align:center;font-size:14px;margin-top:6px">
     🚀 <b style="color:var(--teal)">Founders' rate:</b> first month of the Weekly Feed for
-    <b>$49</b>. Applied automatically at checkout. <b style="color:var(--teal)">Start now &rarr;</b>
+    <b>$49</b>. Applied automatically when you start here. <b style="color:var(--teal)">Start now &rarr;</b>
   </a>
 
   <div class="hero">
@@ -160,7 +160,7 @@
       <select id="sel-trade" aria-label="Trade"></select>
       <select id="sel-area" aria-label="Area"></select>
     </div>
-    <a class="cta" id="buy-hero" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" target="_blank" rel="noopener">Start the Monday feed — $99/mo &rarr;</a>
+    <a class="cta" id="buy-hero" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" target="_blank" rel="noopener">Start the Monday feed — $99/mo &rarr;</a>
     <span class="subcta">New permits in your trade, every Monday. Cancel anytime — free sample first.</span>
     <!-- EXISTING SUBSCRIBERS HAD NO ROUTE HOME. Until 2026-09-06 this page
          contained ZERO occurrences of "already a subscriber", "my leads",
@@ -208,8 +208,8 @@
       <div style="color:var(--good);font-weight:700;font-size:14px;margin-top:2px">&asymp; $23/week for every fresh permit in your trade.</div>
       <div id="feed-math" style="color:var(--muted);font-style:italic;font-size:13px;margin:2px 0 12px">Less than one job. One closed lead pays for the year.</div>
       <div class="d">A fresh batch every week, automatically — the permit holder, address, and project value for every new <span id="p-trade3">trade</span> permit in <span id="p-area3">your area</span>. You reach owners before your competitors even see the permit.</div>
-      <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
-      <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49, applied automatically</div>
+      <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
+      <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 when you start from the banner at the top</div>
       <div style="color:var(--muted);font-size:12px;margin-top:7px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
     </div>
     <div style="text-align:center;margin-top:14px">
@@ -355,7 +355,9 @@ const WEB3FORMS_KEY = "640c8bca-d620-496e-8db6-da6fbdef1bf5";
 // Stripe Payment Links. Paste the buy.stripe.com/... URLs here when created.
 // Until set, the Buy buttons fall back to the free-sample form (fails-soft).
 const STRIPE_LINK_PACK = "https://buy.stripe.com/5kQ7sK7aQ1u7dxQ0p94gg00";   // $49 one-time  "MassPermits Lead Pack"
-const STRIPE_LINK_FEED = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026";   // $99/mo        "MassPermits Weekly Feed"
+// The $49 first month rides ONLY on the founders banner. Every other feed button is full price.
+const STRIPE_LINK_FOUNDER = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026";
+const STRIPE_LINK_FEED = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01";   // $99/mo        "MassPermits Weekly Feed"
 // ─────────────────────────────────────────────────────────────────────────────
 
 const $ = id => document.getElementById(id);
@@ -463,7 +465,8 @@ function wireBuyButtons(){
   const sc = $("sample-feed-cta");
   if(sc){ if(feedUrl){ sc.href = feedUrl; sc.target = "_blank"; } else sc.href = "#get"; }
   // hero and banner already carry a live href in the served HTML; only enrich them
-  ["buy-hero","buy-banner"].forEach(function(id){ var e = $(id); if(e && feedUrl) e.href = feedUrl; });
+  var hero = $("buy-hero"); if (hero && feedUrl) hero.href = feedUrl;
+  var banner = $("buy-banner"), founderUrl = stripeWith(STRIPE_LINK_FOUNDER); if (banner && founderUrl) banner.href = founderUrl;
   const live = !!(packUrl || feedUrl);
   $("buy-note").textContent = live
     ? "Secure checkout via Stripe."
