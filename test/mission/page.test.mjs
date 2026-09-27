@@ -75,9 +75,13 @@ test("P2-3 only mission-app.js makes a request", () => {
 });
 
 test("P2-5 _headers gains exactly the /admin/mission block, outside the widget block", () => {
-  // against main (not the design base, which carries the block itself from P3 on)
-  const before = git("show", git("merge-base", "origin/main", "HEAD").trim() + ":_headers");
-  const now = read("_headers");
+  // Against the main the pull request (#3) was built on: the PR's own range,
+  // since after the merge main itself carries the block. Today's file must
+  // still hold the block once, outside the widget block.
+  const tip = git("rev-parse", H.PR3_MERGE + "^2").trim();
+  const before = git("show", git("merge-base", H.PR3_MERGE + "^1", tip).trim() + ":_headers");
+  const now = git("show", tip + ":_headers");
+  const today = read("_headers");
   const block = [
     "/admin/mission",
     "  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
@@ -87,8 +91,11 @@ test("P2-5 _headers gains exactly the /admin/mission block, outside the widget b
     "  Cache-Control: private, no-store",
   ].join("\n");
   assert.equal(now, before + "\n" + block + "\n");
-  assert.ok(now.indexOf("# <<< widget tier") < now.indexOf("/admin/mission"));
-  assert.equal(now.split("/admin/mission").length, 2);
+  for (const f of [now, today]) {
+    assert.ok(f.includes(block + "\n"));
+    assert.ok(f.indexOf("# <<< widget tier") < f.indexOf("/admin/mission"));
+    assert.equal(f.split("/admin/mission").length, 2);
+  }
 });
 
 test("P2-7 page weight <= 45 KB", () => {
@@ -159,10 +166,11 @@ test("P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ fil
   let tip;
   try { tip = git("rev-parse", "--verify", "--quiet", P1_TIP + "^{commit}").trim(); } catch (_) { tip = null; }
   assert.ok(tip, "the P1 tip commit is not in this clone");
-  const tracked = git("diff", "--name-only", tip).split("\n").filter(Boolean);
-  const untracked = git("ls-files", "--others", "--exclude-standard").split("\n").filter(Boolean);
-  const changed = [...new Set([...tracked, ...untracked])].sort();
-  const mainOnly = git("diff", "--name-only", tip, git("merge-base", "origin/main", "HEAD").trim()).split("\n").filter(Boolean);
+  // The pull request's own range (it merged to main as H.PR3_MERGE): P1 tip
+  // to PR tip, against the main it was built on. See structure.test.mjs.
+  const prTip = git("rev-parse", H.PR3_MERGE + "^2").trim();
+  const changed = git("diff", "--name-only", tip, prTip).split("\n").filter(Boolean).sort();
+  const mainOnly = git("diff", "--name-only", tip, git("merge-base", H.PR3_MERGE + "^1", prTip).trim()).split("\n").filter(Boolean);
   const ok = (p) => ALL.includes(p) || p === "_headers" || p === "functions/admin/api/mission-outreach.js" ||
     /^test\/mission\/[A-Za-z0-9_-]+\.(test\.)?mjs$/.test(p) || mainOnly.includes(p);
   assert.deepEqual(changed.filter((p) => !ok(p)), []);

@@ -16,7 +16,11 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-export const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
+// The merge of the Mission Control pull request (#3) into main. The branch
+// hygiene tests (P1-14, P2-5, P2-12) check that PR's own range, which is
+// fixed history; a diff against origin/main is empty once it has merged.
+export const PR3_MERGE = "7d5b05a1c2888dbcaf8fdcbfbd8ae28e9dcc1c83";
+export const REPO =path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 export const SHIPPED = [
   "functions/api/_owner_gate.js",
   "functions/api/_mission_r2.js",
