@@ -427,7 +427,7 @@ for (const fault of ['read failure', 'invalid JSON']) {
     const { body } = await call(w, h.inboxStatus, '/api/inbox-status');
     assert.equal(body.alert, true);
     assert.notEqual(body.verdict, 'never', 'unreadable state does not establish absence of prior monitoring');
-  }, { todo: 'C20 inbox safe reader erases the distinction between missing and unreadable evidence' });
+  });
 }
 
 scenario('I27 unusable heartbeat timestamp cannot look like a healthy live monitor', async (w, h) => {
@@ -435,7 +435,7 @@ scenario('I27 unusable heartbeat timestamp cannot look like a healthy live monit
   const { body } = await call(w, h.inboxStatus, '/api/inbox-status');
   assert.equal(body.alert, true);
   assert.notEqual(body.verdict, 'ok');
-}, { todo: 'C20 invalid timestamp produces NaN age and falls through to ok' });
+});
 
 scenario('I27 owner relay exposes a provider rejection instead of claiming accepted mail', async (w, h) => {
   const { response, body } = await call(w, h.mailOwner, '/api/mail-owner?subject=ALERT_TEST',

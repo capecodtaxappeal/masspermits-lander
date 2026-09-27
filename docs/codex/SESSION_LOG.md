@@ -40,3 +40,16 @@ The permitted gh executable remains unavailable, so no draft PR has been created
 ## 2026-09-27, S6 failure injection
 
 Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no unexpected hard failure. S6-full.json and FAILURE_INJECTION.md record limits. Main remains 1068e8070. C17 independently pushed bf7b18a2d; C15/C04a remain in progress. No production change on harness branch. S7 next, then S8; continuous execution continues despite unavailable gh.
+
+
+## 2026-09-27, C20 inbox diagnostic draft checkpoint
+
+Branch claude/codex-fix-c20-inbox, based on e4f913765f7c241505fcff959d1617114dfedcea; intended draft PR base claude/codex-revenue-harness. Root approved the source review before checkpoint preparation. The only production-content change is inbox-status.js: unreadable/malformed evidence returns static alerting unknown, while valid states and genuine missing/dry-only installations retain their behavior. No workflow, heartbeat producer, mission test or frozen sender/status implementation changed.
+
+Promoted the three inbox diagnostic TODOs and added 36 synthetic cases. Exact before/after test bytes were identical. Focused before at 06:40:17.510 UTC: 88/42 pass/28 hard fail/18 TODO; focused after at 06:47:58.406: 88/70/0/18. Full before at 06:40:35.339: 601/505/32/64; full after at 06:48:16.914: 601/533/4/64. Both used Node v25.9.0, with zero skipped/cancelled tests. After-full has only the same four known structural failures and no unexpected hard failure. Four byte-identical summary copies are tracked as evidence/C20-inbox-*-summary.json; matching TAP remains ignored.
+
+The worktree inherited CRLF checkout conversion. Root authorized exact HEAD-byte restoration of 60 proven-unmodified admin/functions/header paths before the baseline; 59 needed normalization. Generated widget/windows paths, workflows and mission tests were left untouched. After the paired runs, only changed checkpoint files were normalized to LF/no BOM; the weekly test normalization changes line endings alone and preserves its two annotation-removal hunks.
+
+Automatic approval review initially rejected the source patch. Patrick's explicit draft-fix preauthorization was then supplied, and the same apply_patch operation succeeded on one retry. There was no alternate source-write attempt. D-13 asks whether to merge this reader diagnostic draft and recommends yes after review; no merge/deployment is authorized or performed here.
+
+C20 remains partial: genuine-never suppression, workflow transport/non-JSON fallback behavior, owner-alert observability and mailbox installation are outside this patch; retention has a separate published fix. gh was not found on PATH, so no draft PR was created here and no alternate API client was used. Replaced the inherited harness HANDOFF with branch-specific state, exact next fetch/full commands, the four known failure names and publication constraints. No commit or push was performed by this checkpoint task.
