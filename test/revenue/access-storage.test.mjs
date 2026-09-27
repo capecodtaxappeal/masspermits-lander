@@ -341,14 +341,18 @@ for (const [key, body] of [['latest-weekly.zip', 'NOT_A_ZIP_TEST'], ['refresh-st
 }
 
 test('I23 stale conditional upload cannot replace a newer object unnoticed',
-  { todo: 'C18: upload does not forward or enforce the caller conditional write precondition' },
   () => scenario(async (w, h) => {
-    const headers = { ...(await w.oidcHeaders()), 'If-Match': 'obsolete_ETAG_TEST' };
-    const before = puts(w).length;
+    const headers = { ...(await w.oidcHeaders()), 'If-Match': '"obsolete_ETAG_TEST"' };
+    const before = await w.r2.head('latest-weekly.zip');
+    const start = w.r2.ops.length;
     const response = await w.call(h.upload, '/api/upload-bundle?key=latest-weekly.zip',
       { method: 'PUT', headers, body: MONTHLY });
-    assert.ok([409, 412].includes(response.status), 'conflict must be visible');
-    assert.equal(puts(w).length, before);
+    assert.equal(response.status, 412, 'failed atomic precondition must be visible');
+    assert.deepEqual(w.r2.ops.slice(start), [{ op: 'put', key: 'latest-weekly.zip',
+      onlyIf: { etagMatches: 'obsolete_ETAG_TEST' } }], 'one conditional attempt, without a read or unconditional retry');
+    const after = await w.r2.head('latest-weekly.zip');
+    assert.equal(after.etag, before.etag);
+    assert.equal(after.uploaded.getTime(), before.uploaded.getTime());
     assert.deepEqual(await bytes(await w.call(h.download, `/api/my-leads?t=${TOKEN}`)), WEEKLY);
   }));
 

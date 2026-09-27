@@ -40,3 +40,17 @@ The permitted gh executable remains unavailable, so no draft PR has been created
 ## 2026-09-27, S6 failure injection
 
 Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no unexpected hard failure. S6-full.json and FAILURE_INJECTION.md record limits. Main remains 1068e8070. C17 independently pushed bf7b18a2d; C15/C04a remain in progress. No production change on harness branch. S7 next, then S8; continuous execution continues despite unavailable gh.
+
+## 2026-09-27, isolated C18 optional upload preconditions draft
+
+Worktree: .git/codex-session-worktrees/fix-c18-preconditions. Branch: claude/codex-fix-c18-preconditions. Base: e4f913765f7c241505fcff959d1617114dfedcea. D-14 is the owner merge decision; implementation/offline testing was preauthorized, while this subtask permits no commit or push.
+
+Read the upload receiver, current tests, R2 fake and local platform contracts, and the existing workflow/cold-state upload consumer text. All inspected upload consumers omit precondition headers. Added 33 synthetic real-handler/platform cases and promoted the stale conditional-write TODO after correcting it to allow an attempted atomic put and assert unchanged bytes/ETag. Corrected one initial test-helper key typo before the recorded baseline; the calibration output is retained in ignored scratch.
+
+At 07:05 UTC the unchanged source produced focused 117/73 pass/31 hard fail/13 TODO, and full 598/497 pass/35 hard fail/66 TODO. The full failures are 31 new failing precondition contracts plus the four named historical mission gates. Modified only functions/api/upload-bundle.js in production source to parse one optional supported ETag condition, forward it to one R2 put, translate null to 412, and add a successful response ETag. No read-before-put or unconditional retry. Authentication, size/method gates and exact intended allowlist/content types are unchanged.
+
+At 07:06-07:07 UTC the same focused tests produced 117/104 pass/0 fail/13 TODO; full 598/528 pass/4 known fail/66 TODO. A review challenged opaque ETag fidelity. Three additional local-workerd checks at 07:09 UTC confirmed comma-containing and backslash-suffixed tags are literal mismatches against a real current ETag for both match directions, preserving the original paired evidence. Final full at 07:10:21.282 UTC: 601 tests, 531 pass, four known hard failures, 66 executed TODO, zero skipped/cancelled/unexpected failures, exit 1.
+
+Prepared docs/codex/fixes/C18.md, the current isolated handoff, and sanitized summaries/provenance under docs/codex/evidence/C18/. Raw sanitized TAP stays ignored in this worktree. All requests were synthetic and transport-closed; local workerd is ephemeral. No workflow, customer route, service, credential or main checkout was accessed or changed by the implementation. Sibling source and evidence were untouched; the preauthorized dependency junction reads shared test packages inside the clone.
+
+The endpoint capability is partial C18: consumers remain unconditional; content validation, multi-object generations, and consumer ETag adoption remain open. The C17 inherited-key gate and C19 error handling remain separate. No mission tests were weakened, and the full suite is not represented as green. No commit, push, PR creation, merge or deployment occurred in this subtask.

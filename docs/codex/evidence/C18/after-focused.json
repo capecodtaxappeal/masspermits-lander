@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-27T07:06:46.072Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/upload-preconditions.test.mjs test/revenue/access-storage.test.mjs test/revenue/access-mutation.test.mjs test/revenue/harness-contracts.test.mjs",
+  "exit": 0,
+  "signal": null,
+  "counts": {
+    "tests": 117,
+    "suites": 0,
+    "pass": 104,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 13
+  },
+  "failures": [],
+  "knownBaseline": [],
+  "unexpected": [],
+  "error": null
+}
