@@ -567,7 +567,7 @@ function overlapTwoRosterReads(world) {
 }
 
 test('I07 C05 simultaneous independent checkouts preserve both subscribers',
-  { todo: 'C05 whole-object roster writes race', timeout: 10000 }, async () => {
+  { timeout: 10000 }, async () => {
     await using(async (world) => {
       overlapTwoRosterReads(world);
       await Promise.all([
@@ -582,7 +582,7 @@ test('I07 C05 simultaneous independent checkouts preserve both subscribers',
   });
 
 test('I07 C05 concurrent enrollment and cancellation preserve both valid changes',
-  { todo: 'C05 enrollment and revocation replace the same roster object', timeout: 10000 }, async () => {
+  { timeout: 10000 }, async () => {
     await using(async (world) => {
       overlapTwoRosterReads(world);
       await Promise.all([

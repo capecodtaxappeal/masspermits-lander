@@ -44,3 +44,7 @@ Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no un
 ## 2026-09-27, C02 isolated checkpoint
 
 Enrollment storage failures now stop before customer mail; nine regressions fail before and pass after. Full suite: 422 tests, 352 pass, five failures and 65 TODO. C02 is only partly fixed. Post-provider evidence and C03 duplicate handling remain open. The fifth full-suite failure is the newly surfaced whole-file static-address scanner; keep it outside the four known baseline failures and do not call the suite green. See fixes/C02.md and the tracked sanitized summaries. The permitted CLI is unavailable, so PR creation remains pending. Continuous program work proceeds in the harness worktree.
+
+## 2026-09-27, C05 isolated conditional roster update fix
+
+Based on C02 84a06d418; draft base must claude/codex-fix-c02. All four roster writers share a get/body/etag conditional-write boundary with four attempts. Root reviewed source and race tests. Same focused suite before98/45/28/25; after98/73/0/25. Full451/383/5/63, including the four known failures and the disclosed unexpected static-address structural check. Nine local platform contracts pass. No source/test changed after full verification. No PR exists while gh is unavailable. Continue S7/S8 in the harness worktree; do not merge this branch.
