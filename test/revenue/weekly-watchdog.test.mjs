@@ -503,7 +503,63 @@ scenario('I30 future retention: failed aggregate persistence retains attributed 
   assert.equal(body.malformed_events, 0);
   assert.equal(body.pruned, 0, 'source events may not be discarded before their aggregate is durable');
   assert.notEqual(await w.r2.get(OLD_DL), null);
-}, { now: RETENTION_NOW, todo: 'C20 runRollup prunes old events even after aggregate put fails' });
+}, { now: RETENTION_NOW });
+
+scenario('I30 future retention: repeated save failures preserve clicks until successful recovery', async (w, h) => {
+  seedOldEvent(w);
+  const metadata = { t: subscriber().token.slice(0, 8), k: 'weekly', d: 'd' };
+  const addClick = (at, suffix) => {
+    const key = `dl/${at.slice(0, 10)}/${Date.parse(at)}-${suffix}`;
+    w.r2.set(key, '', { customMetadata: metadata });
+    return key;
+  };
+  const oldKeys = [OLD_DL, addClick('2026-09-10T14:00:00.000Z', '00000002')];
+  const beforeAggregate = w.r2.text('engagement.json');
+  const beforeRoster = w.r2.text('subscribers.json');
+  const beforeSendLog = w.r2.text('feed-send-log.json');
+  const recentAt = '2027-10-31T14:00:00.000Z';
+  let recentKey;
+  w.r2.failNext('put', 'engagement.json');
+  w.r2.failNext('put', 'engagement.json');
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const { response, body } = await call(w, h.engagement, '/api/engagement');
+    assert.equal(response.status, 200);
+    assert.equal(body.stored, false);
+    assert.equal(body.pruned, 0);
+    assert.equal(body.prune_remaining, oldKeys.length);
+    assert.equal(body.malformed_events, 0);
+    assert.equal(w.r2.text('engagement.json'), beforeAggregate);
+    assert.equal(w.r2.ops.filter(op => op.op === 'delete').length, 0);
+    for (const key of [...oldKeys, ...(recentKey ? [recentKey] : [])]) {
+      assert.notEqual(await w.r2.get(key), null);
+    }
+    if (attempt === 0) {
+      oldKeys.push(addClick('2026-09-11T14:00:00.000Z', '00000003'));
+      recentKey = addClick(recentAt, '00000004');
+    }
+  }
+  const recoveryStart = w.r2.ops.length;
+  const { response, body } = await call(w, h.engagement, '/api/engagement');
+  assert.equal(response.status, 200);
+  assert.equal(body.stored, true);
+  assert.equal(body.pruned, oldKeys.length);
+  assert.equal(body.prune_remaining, 0);
+  assert.equal(body.malformed_events, 0);
+  assert.equal(body.downloads_28d, 1);
+  const saved = w.r2.json('engagement.json').rows[0];
+  assert.equal(saved.downloads, 4);
+  assert.equal(saved.first_download, OLD_EVENT_AT);
+  assert.equal(saved.last_download, recentAt);
+  for (const key of oldKeys) assert.equal(await w.r2.get(key), null);
+  assert.notEqual(await w.r2.get(recentKey), null);
+  const recoveryOps = w.r2.ops.slice(recoveryStart);
+  const savedAt = recoveryOps.findIndex(op => op.op === 'put' && op.key === 'engagement.json');
+  const prunedAt = recoveryOps.findIndex(op => op.op === 'delete');
+  assert.ok(savedAt >= 0 && prunedAt > savedAt);
+  assert.equal(w.r2.text('subscribers.json'), beforeRoster);
+  assert.equal(w.r2.text('feed-send-log.json'), beforeSendLog);
+  assert.equal(w.mail.length, 0);
+}, { now: RETENTION_NOW });
 
 scenario('I27/I30 failed event listing is a visible rollup error and performs no retention writes', async (w, h) => {
   seedOldEvent(w);

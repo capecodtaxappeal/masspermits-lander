@@ -40,3 +40,7 @@ The permitted gh executable remains unavailable, so no draft PR has been created
 ## 2026-09-27, S6 failure injection
 
 Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no unexpected hard failure. S6-full.json and FAILURE_INJECTION.md record limits. Main remains 1068e8070. C17 independently pushed bf7b18a2d; C15/C04a remain in progress. No production change on harness branch. S7 next, then S8; continuous execution continues despite unavailable gh.
+
+## 2026-09-27, C20-retention isolated checkpoint
+
+Source clicks survive failed aggregate saves, and successful recovery saves before pruning. Full suite: 412 tests, 342 pass, four known failures and 66 TODO. Only C20 retention is fixed on this branch. Monitoring and input completeness remain open. No unexpected hard failure, and the four owner-known baseline failures remain visible. See fixes/C20-retention.md and the tracked sanitized summaries. The permitted CLI is unavailable, so PR creation remains pending. Continuous program work proceeds in the harness worktree.

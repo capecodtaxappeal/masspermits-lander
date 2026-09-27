@@ -1,0 +1,26 @@
+{
+  "at": "2026-09-27T05:40:48.215Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/weekly-watchdog.test.mjs test/revenue/failure-injection.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 71,
+    "suites": 0,
+    "pass": 46,
+    "fail": 2,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 23
+  },
+  "failures": [
+    "I30 future retention: failed aggregate persistence retains attributed source telemetry for a rebuild",
+    "I30 future retention: repeated save failures preserve clicks until successful recovery"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "I30 future retention: failed aggregate persistence retains attributed source telemetry for a rebuild",
+    "I30 future retention: repeated save failures preserve clicks until successful recovery"
+  ],
+  "error": null
+}
