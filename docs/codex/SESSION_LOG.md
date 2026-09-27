@@ -18,3 +18,13 @@ Final verification after docs: 211 tests, 207 pass, 4 fail, 0 skipped/todo/cance
 Closing fetch confirmed origin/main still at 1068e8070. Content commit d2a1d35add5be05bed91a7602dc950dbe6c2b9d8 was pushed successfully to origin/claude/codex-revenue-harness at 2026-09-27T04:43:32Z. Local and remote-tracking heads matched. This closing handoff commit records that publication. Test scratch was removed from the confined session directory; no scratch is committed. The final session reply records the closing commit and its push result.
 Draft PR: pending D-1 authorization because GitHub API access is prohibited by the current network rule. PR_DESCRIPTION.md contains the reviewable text; no PR was created.
 No production, workflow, dependency, customer-data or credential change. No service request or workflow execution.
+
+## 2026-09-27, S2, real-handler harness
+
+Owner decisions persisted in OWNER_DECISIONS.md. D-1 permits only gh CLI draft-PR operations on our branches; D-2 keeps legacy rows served and reviewed. Continuous execution replaces pauses. test/mission is frozen by owner request.
+
+Added 160 real-handler scenarios plus nine platform contract checks. Full result: 380 tests, 312 pass, four named known baseline failures, 64 executed TODOs, no skipped/cancelled or unexpected hard failures. Miniflare/workerd contract checks passed 9/9. No function or workflow was changed. Defect and policy TODO diagnostics were independently reviewed; corrected payment and retention fixtures were included.
+
+Dependencies and npm cache are confined to test/harness. Install scripts were disabled. Real-handler imports, closed fetch, generated signature fixtures, fake R2 and fixed clock replace live service access. The worker uses only loopback and rejects external transport. Evidence: evidence/S2-full.json and evidence/S2-platform.json.
+
+gh was not found on PATH or at its standard install path. The executable-path question remains pending while independent work continues. No alternate API was used. PR_DESCRIPTION.md is ready for the authorized draft. Next phase is S3 findings and test coverage, then S6/S7/S8 and separate preauthorized fix branches.

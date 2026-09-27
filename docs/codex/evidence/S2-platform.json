@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-27T05:04:04.782Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/harness-contracts.test.mjs",
+  "exit": 0,
+  "signal": null,
+  "counts": {
+    "tests": 9,
+    "suites": 0,
+    "pass": 9,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "failures": [],
+  "knownBaseline": [],
+  "unexpected": [],
+  "error": null
+}

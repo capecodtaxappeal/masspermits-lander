@@ -1,33 +1,31 @@
-The paying path is mapped without changing customer delivery.
-The final suite has 207 passing tests and four obsolete branch checks failing.
-Thirty rules and twenty candidate findings now have named test targets.
-Existing reconciliation and rehearsal work will be reused.
-D-1: Allow draft PR API access. Recommend: yes, so this review can remain a draft.
+The new tests exercise real purchase, delivery and access code offline.
+There are 312 passes, four known baseline failures and 64 executed TODO cases.
+Nine comparisons against local workerd check storage, HTML and signing behavior.
+Production, workflows and the existing mission tests are unchanged.
+The owner approved separate draft fixes; sender and status changes remain on hold.
 
-# S1: map the MassPermits paying path and define reliability tests
+# Revenue reliability harness and evidence
 
-This documentation-only change establishes the source contract for a tests-first reliability program. It maps billing events, subscriber state, R2 objects, Monday delivery, paid access, alerts and external effects at main 1068e8070. It separates observed code from unverified deployment/customer claims.
+S1 mapped the paying path and defined I01-I30. S2 now imports the actual handlers with a fixed clock, in-memory storage, captured mail and genuine synthetic Stripe/OIDC signatures. The 160 handler scenarios execute healthy cases and desired behavior at identified gaps. Nine additional tests compare the harness with local workerd. No request reaches a live service.
 
-INVARIANTS.md records I01-I30 and ranks C01-C20 as source-supported candidates for reproduction. No candidate has been marked a live incident or approved for a behavior change. REUSE.md prevents duplication of mission-control, Monday rehearsal and public-output work. HANDOFF.md and SESSION_LOG.md carry the next commands and decisions.
+## Verification
 
-## Validation
+    node test/harness/run.mjs
 
-The exact existing full command is:
+At main source 1068e8070: 380 tests, 312 pass, 4 known baseline failures, 64 TODO, 0 skipped/cancelled, no unexpected hard failures. The process correctly exits 1 for the known failures. Evidence is in docs/codex/evidence/S2-full.json.
 
-    node --test test/*.test.mjs test/mission/*.test.mjs functions/api/*.test.mjs
+The four known failures are retained by explicit owner instruction while another branch re-anchors them:
+1. P1-14 the diff from main lists only allowed paths
+2. P2-5 _headers gains exactly the /admin/mission block, outside the widget block
+3. P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ files changed; nothing under docs/
+4. P1-14 route strings never appear in non-test added files
 
-Pristine baseline: 211 tests, 209 pass, 2 fail, 0 skipped/todo/cancelled, exit 1, Node v25.9.0. Final after docs: 211 tests, 207 pass, 4 fail, 0 skipped/todo/cancelled, exit 1.
+TODO cases execute assertions. They are not skipped, and policy scenarios are separate from confirmed defects. One partial-refund policy TODO currently passes; it is not counted as a defect. Diagnostic review corrected fixtures and confirmed intended assertion failures.
 
-The two baseline failures are premerge assumptions in existing mission tests: P2-5 expects a header block to be added to a main that already contains it; P1-14 requires the original mission files in the current diff and rejects documentation. Two additional tests now reject the required docs and route names in the map: P2-12 branch hygiene and P1-14 route strings. The suite is not green. S2 will repair all four historical assumptions while retaining security and scope coverage.
+Dependencies live only under test/harness and are not imported by production. Workerd runs locally with cf:false and external transport denied. The compared API subset and remaining simulation limits are documented in test/harness/README.md.
 
-Only docs/codex/ files change. Functions, workflows, tests, static assets, dependencies and allowlists remain byte-for-byte unchanged from the source base. New text uses LF and neither prohibited long dash character. Tests use confined synthetic scratch and closed provider stubs.
+## Continuing work and review
 
-## Review and risk
+This branch remains a draft throughout findings, failure injection, mutation testing and the operator runbook. Read HANDOFF.md and OWNER_DECISIONS.md for the current checkpoint, exact next commands and owner approvals.
 
-This is a map and handoff, not a deployment or a fix. No live service or customer object was queried. Source line references are pinned to the recorded commit and future tests must assert behavior. Current tests do not yet prove delivery correctness. Keep this PR a draft until the expanded harness and baseline repairs provide the required green suite.
-
-## Decisions
-
-D-2: How should missing active fields be treated? Recommend: preserve service and flag the ambiguity until roster evidence can be reviewed, rather than silently excluding a paying row.
-D-3: What are the paid-through cancellation, refund and risk-hold recovery policies? Recommend: define them explicitly before changing entitlement.
-D-4: What explanation and stale-download access should customers receive when weekly delivery is blocked? Recommend: decide before connecting notices or changing fallback behavior.
+Fixes use separate claude/codex-fix-<id> draft branches. weekly-send.js and send-status.js are frozen until both pending incoming changes are verified on origin/main. test/mission/ is not edited. No workflow, allowlist expansion, live data, deployment or production change belongs in this harness PR.

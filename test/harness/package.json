@@ -1,0 +1,10 @@
+{
+  "name": "masspermits-revenue-test-harness",
+  "private": true,
+  "type": "module",
+  "description": "Offline test-only runtime dependencies. Never imported by production.",
+  "devDependencies": {
+    "@miniflare/html-rewriter": "2.14.4",
+    "miniflare": "4.20260730.0"
+  }
+}
