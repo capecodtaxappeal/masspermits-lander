@@ -206,7 +206,7 @@ async function sendEmail(env, to, name, b64, token, coverage) {
       ? '<p style="margin:0 0 8px;color:#5c4300;font-size:14px">Note: ' +
         coverage.monthly_sources.map((m) => m.replace(", MA", "")).join(", ") +
         ' publish their permits <b>monthly or less often</b>, so their new rows arrive in batches ' +
-        'when each town publishes, not every week. Every row shows its issue date.</p>'
+        'when each town publishes, not every week. Every row shows its date.</p>'
       : "") +
     '<p style="margin:0;color:#5c4300;font-size:14px">Every row in the attached file is a real permit. ' +
     'We are rebuilding the missing towns from their own municipal sources and will tell you as they come back. ' +

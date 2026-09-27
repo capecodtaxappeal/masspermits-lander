@@ -15,6 +15,7 @@
 //   node --test test/coverage-wording.test.mjs
 import test from "node:test";
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -38,7 +39,7 @@ function checkNote(html, where) {
   for (const re of FALSE_CLAIMS) assert.ok(!re.test(html), where + " still says " + re);
   assert.ok(html.includes("Needham, Lowell, Waltham publish their permits <b>monthly or less often</b>"), where);
   assert.ok(html.includes("so their new rows arrive in batches when each town publishes, not every week."), where);
-  assert.ok(html.includes("Every row shows its issue date."), where);
+  assert.ok(html.includes("Every row shows its date."), where);
 }
 
 test("D26 weekly email: the reduced-coverage box is true for quarterly and late towns", async () => {
@@ -99,9 +100,14 @@ test("D26 /leads portal: the mirrored note says the same, and never 'real and cu
 test("D27 no customer name or handle in any shipped function file, comments included", () => {
   const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(path.join(d, e.name)) : /\.m?js$/.test(e.name) ? [path.join(d, e.name)] : []);
-  // The names seen in these files before 2026-09-27. Test data uses Casey Example and @example.com.
-  const NAMES = /silvestre|merkemh|\bqxo\b/i;
-  const hits = walk(path.join(REPO, "functions")).filter((f) => NAMES.test(fs.readFileSync(f, "utf8")))
+  // SHA-256 of the lower-cased words seen in these files before 2026-09-27, stored
+  // as hashes so this public repo does not carry the words themselves.
+  const NAMES = new Set(["d7c73fb39f70b2d80b3b1268f607b092ffc35f96fbdc10a5f7b689ed7abdd048",
+    "193639b2c559dde372485c6be31955c42d59b0e49a5b0f403d23a8066188f8af",
+    "bf6d4e43f780d5137284bad3061596a6bf79e908997d6a441444661d762e6377"]);
+  const sha = (w) => crypto.createHash("sha256").update(w).digest("hex");
+  const hits = walk(path.join(REPO, "functions")).filter((f) =>
+    (fs.readFileSync(f, "utf8").toLowerCase().match(/[a-z0-9]+/g) || []).some((w) => NAMES.has(sha(w))))
     .map((f) => path.relative(REPO, f));
   assert.deepEqual(hits, []);
 });

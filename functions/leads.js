@@ -220,7 +220,7 @@ async function renderPortal(context, token, sub) {
       (cov && Array.isArray(cov.monthly_sources) && cov.monthly_sources.length
         ? "<p>Note: " + esc(cov.monthly_sources.map((m) => String(m).replace(", MA", "")).join(", ")) +
           " publish their permits <b>monthly or less often</b>, so their new rows arrive in " +
-          "batches when each town publishes, not every week. Every row shows its issue date.</p>"
+          "batches when each town publishes, not every week. Every row shows its date.</p>"
         : "") +
       // Disclosure stays, unprompted refund offer goes. See the matching change
       // in weekly-send.js: this box rendered on every page load while coverage
