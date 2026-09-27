@@ -613,7 +613,7 @@ for (const type of ['invoice.payment_failed', 'invoice.payment_succeeded']) {
 }
 
 test('I24 C19 successful webhook machine response contains no recipient identity',
-  { todo: 'C19 webhook response returns purchaser email' }, async () => {
+  async () => {
     await using(async (world) => {
       const result = await invoke(world, checkout());
       assert.equal(result.response.status, 200);
@@ -622,7 +622,7 @@ test('I24 C19 successful webhook machine response contains no recipient identity
   });
 
 test('I24 C19 provider error response does not echo identity or bearer material',
-  { todo: 'C19 provider response text is included in webhook error' }, async () => {
+  async () => {
     await using(async (world) => {
       const result = await invoke(world, checkout());
       assert.equal(result.response.status, 500);

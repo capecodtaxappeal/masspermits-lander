@@ -13,7 +13,7 @@ const MAX_BYTES = 512 * 1024; // digest HTML is ~20KB; anything huge is a bug
 export async function onRequestPost(context) {
   const { request, env } = context;
   const auth = await verifyGitHubOIDC(request);
-  if (!auth.ok) return json({ error: "unauthorized", reason: auth.reason }, 401);
+  if (!auth.ok) return json({ error: "unauthorized" }, 401);
 
   const subject = (new URL(request.url).searchParams.get("subject") || "MassPermits automation").slice(0, 160);
   const html = await request.text();
@@ -26,7 +26,7 @@ export async function onRequestPost(context) {
     body: JSON.stringify({ from: env.FROM_EMAIL, to: [owner], subject, html }),
   });
   if (!resp.ok) return json({ ok: false, error: "resend " + resp.status }, 502);
-  return json({ ok: true, to: owner, subject });
+  return json({ ok: true });
 }
 
 function json(obj, status = 200) {

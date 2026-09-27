@@ -1,0 +1,44 @@
+{
+  "at": "2026-09-27T06:32:39.029Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/webhook.test.mjs test/revenue/response-privacy.test.mjs test/revenue/operations-mutation.test.mjs test/revenue/auth-portal.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 112,
+    "suites": 0,
+    "pass": 74,
+    "fail": 11,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 27
+  },
+  "failures": [
+    "S7 owner relay preserves subject and body while ignoring caller-selected recipients",
+    "S7 owner relay defaults absent subjects and bounds supplied subjects at 160 characters",
+    "I24 C19 monthly webhook acknowledgment keeps operational fields and the real delivery",
+    "I24 C19 weekly webhook acknowledgment keeps operational fields and the real delivery",
+    "I24 C19 webhook bundle storage exceptions return a static failure before delivery",
+    "I24 C19 webhook bundle body exceptions return a static failure before delivery",
+    "I24 C19 webhook provider network exceptions retain failure without echoing details",
+    "I24 C19 owner relay acknowledgment omits destination and echoed subject while preserving the mail",
+    "I24 C19 owner relay authentication failures omit verifier exception text and perform no work",
+    "I24 C19 successful webhook machine response contains no recipient identity",
+    "I24 C19 provider error response does not echo identity or bearer material"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "S7 owner relay preserves subject and body while ignoring caller-selected recipients",
+    "S7 owner relay defaults absent subjects and bounds supplied subjects at 160 characters",
+    "I24 C19 monthly webhook acknowledgment keeps operational fields and the real delivery",
+    "I24 C19 weekly webhook acknowledgment keeps operational fields and the real delivery",
+    "I24 C19 webhook bundle storage exceptions return a static failure before delivery",
+    "I24 C19 webhook bundle body exceptions return a static failure before delivery",
+    "I24 C19 webhook provider network exceptions retain failure without echoing details",
+    "I24 C19 owner relay acknowledgment omits destination and echoed subject while preserving the mail",
+    "I24 C19 owner relay authentication failures omit verifier exception text and perform no work",
+    "I24 C19 successful webhook machine response contains no recipient identity",
+    "I24 C19 provider error response does not echo identity or bearer material"
+  ],
+  "error": null
+}

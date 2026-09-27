@@ -219,9 +219,9 @@ export async function onRequestPost(context) {
     if (kind === "monthly" && ref && ref.startsWith("ref-")) {
       try { await creditReferrer(env, ref.slice(4), email); } catch (e) { /* non-fatal */ }
     }
-    return json({ ok: true, delivered: kind, to: email, bundle: bundleKey });
+    return json({ ok: true, delivered: kind, bundle: bundleKey });
   } catch (e) {
-    return json({ ok: false, error: String(e && e.message || e) }, 500);
+    return json({ ok: false, error: "webhook_failed" }, 500);
   }
 }
 

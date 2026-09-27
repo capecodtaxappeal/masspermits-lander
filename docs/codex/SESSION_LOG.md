@@ -40,3 +40,7 @@ The permitted gh executable remains unavailable, so no draft PR has been created
 ## 2026-09-27, S6 failure injection
 
 Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no unexpected hard failure. S6-full.json and FAILURE_INJECTION.md record limits. Main remains 1068e8070. C17 independently pushed bf7b18a2d; C15/C04a remain in progress. No production change on harness branch. S7 next, then S8; continuous execution continues despite unavailable gh.
+
+## 2026-09-27, C19 response-only fix
+
+Four response expressions changed on an isolated branch. Eleven privacy regressions fail before and pass after. Full after: 572 tests, 502 pass, four known plus one unexpected structural failure, 65 TODO. LF checkout correction and anomaly evidence retained. Wider C19 remains open. Review and D-12 in fixes/C19-responses.md. No workflow, mission, frozen sender/status or live service operation. Draft creation awaits permitted gh CLI.

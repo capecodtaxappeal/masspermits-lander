@@ -27,13 +27,13 @@ scenario("S7 owner relay preserves subject and body while ignoring caller-select
   const html="<p>town-a TEST \u96ea</p>";
   const r=await call(w,h.mailOwner,"/api/mail-owner?subject=Synthetic%20TEST&to=casey%2Buntrusted%40example.com",{method:"POST",body:html});
   assert.equal(r.status,200);assert.match(r.headers.get("content-type"),/application\/json/);
-  const b=await r.json();assert.equal(b.ok,true);assert.equal(b.subject,"Synthetic TEST");
+  assert.deepEqual(await r.json(),{ok:true});
   assert.deepEqual(w.mail,[{from:w.env.FROM_EMAIL,to:[w.env.OWNER_EMAIL],subject:"Synthetic TEST",html}]);
 });
 scenario("S7 owner relay defaults absent subjects and bounds supplied subjects at 160 characters",async w=>{
   for(const [query,expected] of [["","MassPermits automation"],["?subject="+ "x".repeat(161),"x".repeat(160)]]) {
     const r=await call(w,h.mailOwner,"/api/mail-owner"+query,{method:"POST",body:"TEST"});
-    assert.equal(r.status,200);assert.equal((await r.json()).subject,expected);assert.equal(w.mail.at(-1).subject,expected);
+    assert.equal(r.status,200);assert.deepEqual(await r.json(),{ok:true});assert.equal(w.mail.at(-1).subject,expected);
   }
 });
 scenario("S7 owner relay accepts the ASCII body limit and rejects empty or oversized bodies before provider",async w=>{
