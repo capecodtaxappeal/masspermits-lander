@@ -329,7 +329,7 @@ scenario('I12 watchdog membership agrees with sender for the preserved missing-a
   const { body } = await call(w, h.sendStatus, '/api/send-status');
   assert.equal(body.roster_gap.length, 1, 'the sender-selected member was not served in this log');
   assert.notEqual(body.verdict, 'ok');
-}, { todo: 'C09 sender uses active !== false but watchdog uses active === true; policy remains unresolved' });
+}, { todo: 'C09 D2 approved: serve missing-active rows and flag for review; fix frozen pending main' });
 
 for (const fault of ['unavailable', 'malformed']) {
   scenario(`I13 ${fault} roster evidence cannot certify a complete send`, async (w, h) => {

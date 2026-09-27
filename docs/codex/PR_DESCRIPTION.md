@@ -1,5 +1,5 @@
 The new tests exercise real purchase, delivery and access code offline.
-There are 312 passes, four known baseline failures and 64 executed TODO cases.
+There are 340 passes, four known baseline failures and 67 executed TODO cases.
 Nine comparisons against local workerd check storage, HTML and signing behavior.
 Production, workflows and the existing mission tests are unchanged.
 The owner approved separate draft fixes; sender and status changes remain on hold.
@@ -14,7 +14,7 @@ S3 adds ranked FINDINGS.md and the I01-I30 COVERAGE.md map. The 64 TODOs are 55 
 
     node test/harness/run.mjs
 
-At main source 1068e8070: 380 tests, 312 pass, 4 known baseline failures, 64 TODO, 0 skipped/cancelled, no unexpected hard failures. The process correctly exits 1 for the known failures. Evidence is in docs/codex/evidence/S3-full.json.
+At main source 1068e8070: 411 tests, 340 pass, 4 known baseline failures, 67 TODO, 0 skipped/cancelled, no unexpected hard failures. The process correctly exits 1 for the known failures. Evidence is in docs/codex/evidence/S6-full.json.
 
 The four known failures are retained by explicit owner instruction while another branch re-anchors them:
 1. P1-14 the diff from main lists only allowed paths
@@ -31,3 +31,5 @@ Dependencies live only under test/harness and are not imported by production. Wo
 This branch remains a draft throughout findings, failure injection, mutation testing and the operator runbook. Read HANDOFF.md and OWNER_DECISIONS.md for the current checkpoint, exact next commands and owner approvals.
 
 Fixes use separate claude/codex-fix-<id> draft branches. weekly-send.js and send-status.js are frozen until both pending incoming changes are verified on origin/main. test/mission/ is not edited. No workflow, allowlist expansion, live data, deployment or production change belongs in this harness PR.
+
+S6 adds 31 scenarios:28 pass and 3 diagnostic TODOs. See FAILURE_INJECTION.md for provider faults, larger rosters, UTC/DST boundaries, Access and portal checks, pagination failure, and the additional diagnostic findings.

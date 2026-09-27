@@ -36,3 +36,7 @@ FINDINGS.md ranks the source candidates with executable evidence, explicit polic
 Full suite rerun: 380 tests, 312 pass, the same four known failures, 64 executed TODO, no skipped/cancelled or unexpected hard failures. Saved evidence/S3-full.json. No functions, workflows or mission tests changed.
 Plan adaptation: narrow C17, C15 and C04a fixes can run independently of the frozen sender work, each on a separate draft branch based on the harness branch. Broader enrollment, concurrency and event recovery need distinct contracts. Next: S6 injection, S7 mutation, S8 runbook, plus the narrow fixes.
 The permitted gh executable remains unavailable, so no draft PR has been created. The published branch and PR_DESCRIPTION.md remain reviewable; independent work continues.
+
+## 2026-09-27, S6 failure injection
+
+Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no unexpected hard failure. S6-full.json and FAILURE_INJECTION.md record limits. Main remains 1068e8070. C17 independently pushed bf7b18a2d; C15/C04a remain in progress. No production change on harness branch. S7 next, then S8; continuous execution continues despite unavailable gh.

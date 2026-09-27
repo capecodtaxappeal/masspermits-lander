@@ -3,17 +3,17 @@
 ## Five-line owner report
 
 Thirty revenue rules now have a named coverage map and ranked findings.
-The full suite has 312 passes, four known baseline failures and 64 executed TODO cases.
+The S6 full suite has 340 passes, four known baseline failures and 67 executed TODO cases.
 Nine storage, HTML and signing comparisons pass against local workerd.
 Production and the existing mission tests are unchanged.
 Work continues into failure injection, mutation testing, small fixes and the runbook.
 
 ## Current state
 
-Updated 2026-09-27. Phases S2 and S3 complete; S6 next, with independent small fix branches in parallel.
+Updated 2026-09-27. Phases S2, S3 and S6 complete; S7 mutation testing next. Isolated fix branches continue in parallel.
 Branch: claude/codex-revenue-harness.
 Source base: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5.
-Previous published head: 0e353e32741e4523994157a134071119368f06c5.
+Previous published head: 135db62d2414eab521a69ecaacac3ce8115527ae.
 Current closing head: refs/heads/claude/codex-revenue-harness; resolve git rev-parse HEAD.
 Worktree: C:/Users/patri/OneDrive/Desktop/masspermits-lander/.git/codex-session-worktrees/revenue-harness
 
@@ -57,14 +57,14 @@ Known failures, unchanged:
 
 ## Exact next steps
 
-First command at S6:
+First command at S7:
 
     git -c core.hooksPath=.git/codex-disabled-hooks fetch origin
 
 If main moved, read the changes, rebase this branch and rerun the full suite. Preserve the freeze unless both incoming changes are proved present.
 1. S3 complete: FINDINGS.md ranks C01-C20 with exact reproductions, impact, conditional likelihood and disposition. C04a identity conflicts is separate from C04b event ordering.
 2. S3 complete: COVERAGE.md maps I01-I30, retaining explicit partial and policy gaps. It attributes I15 to existing mission reconciliation oracles.
-3. Continue S6 now. Add provider faults, large rosters, UTC/DST boundaries, auth and rendered-portal controls. S3 evidence is evidence/S3-full.json: 380/312/4/64, no unexpected hard failures.
+3. S6 complete: FAILURE_INJECTION.md, auth-portal.test.mjs and failure-injection.test.mjs. Evidence/S6-full.json: 411/340/4/67. Three new C08 diagnostic counterexamples stay queued behind frozen sender/status work. S7 next: implement homemade AST mutation copies with per-file scores, then strengthen tests and justify survivors.
 4. Add genuine failure injection beyond existing cases, then mutation tests with per-file scores and justified survivors. Mutation copies must stay inside clone scratch, never in deployed source.
 5. Implement preauthorized minimal fixes on separate branches with failing-before/passing-after evidence. First fixes: C17 own-key gate, C15 controlled access errors, C04a conflicting-customer payment flags. Each branch is based on the harness branch and should target it as a stacked draft so production diffs remain small. Do not mix broader event-ordering work into C04a.
 6. Write the short operator runbook and continue resolving nonfrozen findings. Queue frozen and policy-dependent items with exact reasons.
@@ -86,3 +86,6 @@ Node/runtime tests and local workerd do not establish current deployment configu
 Fidelity covers the APIs exercised, not every R2/HTML feature or cloud timing property.
 The older Node HTMLRewriter dependency is test-only and checked against pinned workerd for the exercised behavior.
 No defect is closed merely because its test is marked TODO or its PR is a draft.
+
+## Isolated fix publication
+C17 branch claude/codex-fix-c17 pushed bf7b18a2dbe0e3f59bae828f14221151e9570a6f. Three failing-before regressions pass afterward. Its own full result is 380/315/4/61. C15 and C04a remain independent in-progress worktrees based on S3. No PR yet while gh remains unavailable. Draft bases should be the harness branch so fixes stay narrow.
