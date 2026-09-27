@@ -262,3 +262,83 @@ check('S7 pre-send normal storage-read failure yields a diagnostic rather than a
     assert.ok(body.reasons.some(reason => reason.includes('no refresh-status.json')));
   }, { now: NOW });
 });
+
+// Follow-up to the exhaustive operator run. These are real normal-path and
+// evidence contracts, not manufactured exceptions in the defensive catch.
+check('S7 pre-send rejects missing authentication with 401 before reading any bundle or customer evidence', async () => {
+  await withWorld(async w => {
+    seed(w);
+    const response = await w.call(H.preSend, '/api/pre-send-check');
+    assert.equal(response.status, 401);
+    const body = await response.json(); assert.equal(body.error, 'unauthorized');
+    assert.equal(w.r2.ops.length, 0); assert.equal(w.mail.length, 0); assert.equal(w.fetchCalls.length, 0);
+  }, { now: NOW });
+});
+
+check('S7 gate best-entry selection retains the first acceptance or first explicit skip within its class', () => {
+  const due = Date.parse('2026-09-28T12:00:00.000Z');
+  const newest = previous({ at: '2026-09-28T13:50:00.000Z' });
+  const older = previous({ at: SENT });
+  assert.equal(P.bestSince([newest, older], due), newest);
+  const skip = previous({ at: '2026-09-28T13:40:00.000Z', sent: [], skipped: 'identical_bundle' });
+  const oldSkip = previous({ at: SENT, sent: [], skipped: 'identical_bundle' });
+  const fail = previous({ at: '2026-09-28T13:55:00.000Z', sent: [{ to: 'casey@example.com', ok: false }] });
+  assert.equal(P.bestSince([fail, skip, oldSkip], due), skip);
+  assert.equal(P.bestSince([fail, skip, newest, older], due), newest);
+  // This is a chosen-entry summary; it does not union coverage across attempts.
+});
+
+check('S7 gate metadata prefers the unquoted etag and retains the explicit httpEtag fallback', async () => {
+  await withWorld(async w => {
+    seed(w);
+    const first = await P.gather(w.env, { hash: false });
+    assert.equal(first.weekly.etag, (await w.r2.head('latest-weekly.zip')).etag);
+    const head = w.r2.head.bind(w.r2);
+    w.r2.head = async key => { const value = await head(key); if (key === 'latest-weekly.zip') delete value.etag; return value; };
+    const fallback = await P.gather(w.env, { hash: false });
+    assert.equal(fallback.weekly.etag, (await w.r2.head('latest-weekly.zip')).httpEtag);
+    assert.equal(w.mail.length, 0);
+  }, { now: NOW });
+});
+
+check('S7 gate missing or invalid upload age remains null while a known age remains numeric', () => {
+  for (const uploaded of [null, '', 'INVALID_TEST']) {
+    const input = facts(); input.weekly.uploaded = uploaded;
+    assert.equal(evaluate(input).evidence.object_age_h, null);
+  }
+  const input = facts(); input.weekly.uploaded = NOW;
+  assert.equal(evaluate(input).evidence.object_age_h, 0);
+});
+
+check('S7 gate monthly age warning starts beyond eight days and reports calendar-day age without blocking a healthy weekly', () => {
+  for (const [hours, warning, days] of [[192, false, null], [193, true, 8], [600, true, 25]]) {
+    const input = facts(); input.monthly.uploaded = new Date(Date.parse(NOW) - hours * 3600_000).toISOString();
+    const result = evaluate(input);
+    assert.equal(result.verdict, 'GO');
+    assert.equal(result.notes.some(n => n.startsWith('latest-monthly.zip is ')), warning);
+    if (warning) assert.ok(result.notes.some(n => n.startsWith(`latest-monthly.zip is ${days} days old`)));
+  }
+});
+
+check('S7 gate size-band diagnostic reports the actual configured percentage', () => {
+  const input = facts(); input.weekly.size = ZIP.length * 3;
+  const r = evaluate(input);
+  assert.equal(r.verdict, 'NO_GO'); assert.equal(r.code, 'broken');
+  assert.ok(r.reasons.some(x => x.includes('(±60%)')));
+});
+
+check('S7 gate duplicate diagnosis tolerates null result slots while retaining an actual accepted result', () => {
+  const input = facts();
+  input.log[0].bundle_etag = input.weekly.etag;
+  input.log[0].sent = [null, { to: 'casey@example.com', ok: true }];
+  const r = evaluate(input);
+  assert.equal(r.code, 'already_delivered');
+  assert.ok(r.reasons.some(x => x.includes('these exact bytes were already delivered')));
+  assert.ok(r.reasons.every(x => !x.includes('were SKIPPED')));
+});
+
+check('S7 gate a clean result retains the useful nonempty explanation', () => {
+  const r = evaluate(facts());
+  assert.equal(r.verdict, 'GO');
+  assert.deepEqual(r.reasons, ['fresh bundle, uploaded inside this send window, byte-verified, not yet delivered']);
+});

@@ -1,0 +1,204 @@
+{
+  "at": "2026-09-27T07:06:27.405Z",
+  "node": "v25.9.0",
+  "mode": "offline local workerd only",
+  "compatibilityDate": "2026-07-01",
+  "r2Persist": false,
+  "externalTransport": "outboundService denies every outbound request",
+  "cases": [
+    {
+      "limit": 1000,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      }
+    },
+    {
+      "limit": 1001,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": false,
+        "errorClass": "Error",
+        "message": "list: MaxKeys params must be positive integer <= 1000. (10022)"
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      }
+    },
+    {
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      }
+    },
+    {
+      "limit": 0,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": false,
+        "errorClass": "Error",
+        "message": "list: MaxKeys params must be positive integer <= 1000. (10022)"
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 1,
+        "truncated": true,
+        "hasCursor": true
+      }
+    },
+    {
+      "limit": -1,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 1,
+        "truncated": true,
+        "hasCursor": true
+      }
+    },
+    {
+      "limit": -2,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": false,
+        "errorClass": "Error",
+        "message": "list: MaxKeys params must be positive integer <= 1000. (10022)"
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 1,
+        "truncated": true,
+        "hasCursor": true
+      }
+    },
+    {
+      "limit": -1.5,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 1,
+        "truncated": true,
+        "hasCursor": true
+      }
+    },
+    {
+      "limit": 0.5,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": false,
+        "errorClass": "Error",
+        "message": "list: MaxKeys params must be positive integer <= 1000. (10022)"
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 1,
+        "truncated": true,
+        "hasCursor": true
+      }
+    },
+    {
+      "limit": 1.5,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": true,
+        "count": 1,
+        "truncated": true,
+        "hasCursor": true
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 1,
+        "truncated": true,
+        "hasCursor": true
+      }
+    },
+    {
+      "limit": 1000.5,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      }
+    },
+    {
+      "limit": 2000,
+      "totalSyntheticObjects": 2,
+      "localWorkerd": {
+        "accepted": false,
+        "errorClass": "Error",
+        "message": "list: MaxKeys params must be positive integer <= 1000. (10022)"
+      },
+      "memoryR2": {
+        "accepted": true,
+        "count": 2,
+        "truncated": false,
+        "hasCursor": false
+      }
+    }
+  ],
+  "miniflareVersion": "4.20260730.0",
+  "workerdVersion": "1.20260730.1",
+  "memoryR2SourceSHA256": "6c13f622434348f74b2c2da120e755d83aea07a6d2d8c2d4c9317a1e1ea323ca",
+  "completed": true,
+  "externalAttempts": 0,
+  "launcher": {
+    "exit": 0,
+    "signal": null,
+    "allowlistedEnvironmentNames": [
+      "COMSPEC",
+      "GIT_NO_LAZY_FETCH",
+      "GIT_OPTIONAL_LOCKS",
+      "GIT_TERMINAL_PROMPT",
+      "PATH",
+      "PATHEXT",
+      "Path",
+      "SystemRoot",
+      "TEMP",
+      "TMP",
+      "TMPDIR",
+      "WINDIR"
+    ],
+    "stderrBytes": 0
+  }
+}

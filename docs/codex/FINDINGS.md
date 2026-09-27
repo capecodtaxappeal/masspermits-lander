@@ -488,3 +488,23 @@ C13/C14 scenarios are in [webhook.test.mjs](../../test/revenue/webhook.test.mjs)
 
 No source, harness, workflow, dataset or service state was changed in preparing this S3 document. Later patches must report their own focused tests and the remaining full-suite failures/TODOs without converting unresolved cases into silent skips.
 
+
+## Follow-up C21 - Operator guidance suggests a production workflow trigger
+
+**Invariant:** I31, added during S7: operator recovery instructions must not recommend unreviewed production triggers.
+
+**Evidence:** At main 1068e8070, functions/api/pipeline-now.js:111-112 tells the operator to force a refresh by pushing an edit to the refresh workflow on main. The endpoint exposes the selected row detail as what_to_do at line235. This is a source/test finding, not a claim that an operator followed the advice.
+
+**Reproduction:** `C21 overdue refresh guidance requires evidence review without a workflow-edit trigger` in test/revenue/operator-guidance.test.mjs on branch claude/codex-fix-c21. The actual Access-authenticated endpoint is exercised with synthetic storage. The test fails before the text change and passes after it; healthy-data and unauthorized-request controls also pass.
+
+**Customer impact:** Following the old instruction can start production work without first checking whether a recipient already received a delivery.
+
+**Likelihood:** Conditional on a delayed refresh and an operator following the displayed instruction; no live occurrence was observed.
+
+**Proposed fix:** Direct the operator to inspect existing run and artifact evidence, then obtain maintainer review before triggering a workflow. Do not add a repair button or execute a workflow.
+
+**Disposition:** Narrow fix published at acbf5a01120f0a432f4b602d56a2eb2184471cc9. Intended draft base is claude/codex-revenue-harness. No PR exists while gh is unavailable; nothing is deployed. Focused before3/2pass/1fail, after3/3pass. Branch full414/343pass/4knownfail/67TODO. See FIX_STATUS.md and that branch's fixes/C21.md.
+
+## Current review status
+
+The ranked S3 findings above retain their historical evidence. See FIX_STATUS.md for published partial and narrow fixes and the additional C21 operator-guidance finding. Closing S7 evidence has 630 passes, four known hard failures and 67 executed TODO across 701 cases. MUTATION_REPORT.md records 92.0% for the requested paying path. Neither TODO assertions, mutation kills nor published branches establish production remediation or owner acceptance.

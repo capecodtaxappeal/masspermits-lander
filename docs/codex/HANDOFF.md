@@ -1,108 +1,62 @@
-# Continuous reliability program handoff
+# Continuous reliability handoff
 
-## Five-line owner report
-
-Thirty revenue rules now have a named coverage map and ranked findings.
-The current full suite has 494 passes, four known baseline failures and 67 executed TODO cases.
-Nine storage, HTML and signing comparisons pass against local workerd.
-Production and the existing mission tests are unchanged.
-Work continues into failure injection, mutation testing, small fixes and the runbook.
-
-## Current state
-
-Updated 2026-09-27. Phases S2, S3 and S6 complete. S7 mutation strengthening is in progress; S8 runbook is being prepared in ignored scratch.
 Branch: claude/codex-revenue-harness.
-Source base: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5.
-Previous published head: ba5eee54f027c09c99e4d84461ec09b711d923a7.
-Current closing head: refs/heads/claude/codex-revenue-harness; resolve git rev-parse HEAD.
-Worktree: C:/Users/patri/OneDrive/Desktop/masspermits-lander/.git/codex-session-worktrees/revenue-harness
+Source main: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5, fetched again 2026-09-27 06:50 UTC.
+Published prior checkpoint: e4f913765f7c241505fcff959d1617114dfedcea. This S7 closing checkpoint is identified by git rev-parse HEAD; its commit contains this handoff.
+Physical worktree: .git/codex-session-worktrees/revenue-harness inside the public clone. Never read the neighboring private project or unrelated base-checkout files.
 
-Read OWNER_DECISIONS.md first. It overrides the old S1 approvals. Do not pause between phases. Commit, push and update the draft PR at each checkpoint, then continue.
-The base checkout's pre-existing files remain untouched. All new test scratch and dependencies stay inside this clone.
+## Current result
 
-## Authorization and pending conditions
+S1, S2, S3 and S6 are published. S7 is complete as an offline test-strength checkpoint: 701 tests, 630 pass, four known hard failures, 67 executed TODO, zero skip/cancel and zero unexpected hard failures. Evidence: evidence/S7-full.json. This is not an all-green suite.
+Mutation result: paying path 1320/1435 valid, 92.0%; combined with lifecycle 1676/1814, 92.4%. Eight invalid excluded, five unresolved kept in denominator. See MUTATION_REPORT.md and evidence/S7-final-mutation.json for actual per-file scores and all five rounds. No mutator process is still running.
 
-D-1 approved: gh CLI only, for create/update/read of our own claude/codex-* draft PRs. No other GitHub API use.
-D-2 approved: keep serving missing-active rows and flag them; tests only until incoming sender changes land.
-Fixes preauthorized as separate draft PRs, one finding per claude/codex-fix-<id> branch. Never merge.
-Do not edit test/mission/. Another branch will re-anchor its four known failures.
-weekly-send.js and send-status.js remain frozen. Both pending guards must appear on origin/main before any fix to either file. Latest fetch still shows 1068e8070.
-D-3/D-4 business outcomes for refunds/risk-review recovery/customer notices and stale-access policy remain unspecified. Policy scenarios are not claimed as defects.
+Every historical rule has a named coverage entry, but open TODOs and operational gaps are not enforced behavior. COVERAGE.md preserves its S3 snapshot, with later addenda. I31 and C21 add the unsafe operator-guidance finding. FINDINGS.md is not a list of live incidents.
+Published isolated fixes and their own evidence are in FIX_STATUS.md. Fixes are not merged into this branch or deployed. Each needs a separate draft. Source-dependent scores cannot be reused to certify those changed branches.
 
-gh is not on PATH or at its standard install path. An asynchronous question requests the command/path used by the other session. Continue independent offline work; do not substitute a different GitHub API client or download from an unauthorized service.
-Draft PR body: docs/codex/PR_DESCRIPTION.md. The branch is published; draft creation awaits the permitted CLI. No unauthorized API workaround was attempted.
+## Exact next action
 
-## Done with evidence
+    git -c core.hooksPath=.git/codex-disabled-hooks fetch origin
 
-S1: REVENUE_PATH.md, INVARIANTS.md, REUSE.md and the original source map.
-S2: test/harness/index.mjs, run.mjs, platform.mjs and isolated dependency manifest/lock.
-Real-handler scenarios: access-storage.test.mjs, webhook.test.mjs, weekly-watchdog.test.mjs.
-Platform comparison: harness-contracts.test.mjs, nine passing cases using local workerd with external transport blocked.
-Evidence: docs/codex/evidence/S2-baseline.json, S2-scenarios.json, S2-platform.json, S2-full.json.
+If main moved, inspect and rebase with the full suite. Otherwise promote the reviewed ignored S8-RUNBOOK-DRAFT.md and S8-RUNBOOK-SOURCES.md from test/harness/.runtime into docs/codex, update stale counts/source references, verify the guide and checkpoint S8. Continue independent preauthorized fixes after that. Do not stop just because S7 is checkpointed.
+Current parallel work: C20-inbox published af369f90c5dbecc46c309ee8a30e2a381491322a after root review; C18 optional upload preconditions are being implemented in an isolated draft worktree. C19-responses published 9762e4979d7e60e746ddb9f1ccd15cd60d53f9e4.
+Pending runner state: none. Full command: node test/harness/run.mjs --label review-full.
+Never start two mutation runners sharing scratch workers.
 
-Full command:
+## Owner instructions
 
-    node test/harness/run.mjs
-
-S2 full result: 380 tests, 312 pass, 4 known fail, 64 TODO, 0 skip/cancelled, exit 1, unexpected hard failures 0.
-The 64 TODOs execute; 63 failed and one policy case passed in the initial diagnostic review. They are not 64 independent defects. Detailed grouping belongs in FINDINGS.md.
-Independent reviews found no loader/auth/mock errors in TODO failures. Corrected payment, retention and timestamp fixtures were included in the final full run.
-The nine fidelity tests pass after moving native Headers mutation inside workerd, rather than sending a Node Headers object across its RPC boundary.
-
-Known failures, unchanged:
+D-1 permits only gh CLI create/update/read of our own claude/codex-* draft PRs. gh remains unavailable; the executable-path question is pending. No draft PR exists. PR_DESCRIPTION.md and each fix note are prepared. Do not substitute another API or unauthorized download. Attach every created PR URL once the CLI is available.
+D-2: keep missing-active rows eligible and flag for review. Do not rewrite them. Tests only until pending sender changes are present.
+S4/S5 fixes are preauthorized as isolated one-finding drafts. No merge or deployment. Decisions for final review remain in FIX_STATUS.md and each branch's note.
+D-3 refund/risk-review entitlement policy and D-4 stale-access policy questions remain unanswered. Do not invent them.
+weekly-send.js and send-status.js remain frozen: both incoming once-per-week and counts-only changes are absent from fetched main. Queue dependent fixes; do not overwrite incoming work.
+Never edit test/mission/. Exact known failures:
 1. P1-14 the diff from main lists only allowed paths
 2. P2-5 _headers gains exactly the /admin/mission block, outside the widget block
 3. P2-12 branch hygiene: since the P1 tip only P2 files and test/mission/ files changed; nothing under docs/
 4. P1-14 route strings never appear in non-test added files
 
-## Exact next steps
+Some webhook-changing fixes also fail P1-14 no real email address in any added file because of unchanged static source literals. This fifth failure is unexpected, not owner-waived and not green. See FIX_STATUS.md.
 
-First command at S7:
+## Boundaries and surprises
 
-    git -c core.hooksPath=.git/codex-disabled-hooks fetch origin
+No workflow edit/run, service request, real data, secret read, wrangler, main push or merge. Network is package registries, git fetch/push and the narrow gh exception. No allowlist expansion, root package.json or production dependency on test tooling.
+Use LF with no BOM and no en/em dashes in new owner/customer/PR text. Create future worktrees with git -c core.autocrlf=false -c core.eol=lf. Windows CRLF checkout inflated and broke six historical mission checks in two fix worktrees; proven-unmodified source bytes were restored exactly to HEAD, with anomaly evidence retained. No mission test or workflow changed.
+Use explicit paths for staging and disabled Git hooks. Before pushing check UTC; never Monday 11:00-19:00 UTC.
+The closed harness strips credentials/source overrides from child environments. Local workerd checks nine bounded contracts, not the full platform. Provider acceptance is not inbox receipt.
+Original stop conditions still apply. Program completion additionally needs findings closed or explicitly accepted, reviewed PRs with legitimate green checks, and the runbook. The mutation threshold alone is not completion.
 
-If main moved, read the changes, rebase this branch and rerun the full suite. Preserve the freeze unless both incoming changes are proved present.
-1. S3 complete: FINDINGS.md ranks C01-C20 with exact reproductions, impact, conditional likelihood and disposition. C04a identity conflicts is separate from C04b event ordering.
-2. S3 complete: COVERAGE.md maps I01-I30, retaining explicit partial and policy gaps. It attributes I15 to existing mission reconciliation oracles.
-3. S6 complete: FAILURE_INJECTION.md, auth-portal.test.mjs and failure-injection.test.mjs. Evidence/S6-full.json: 411/340/4/67. Three new C08 diagnostic counterexamples stay queued behind frozen sender/status work. S7 next: implement homemade AST mutation copies with per-file scores, then strengthen tests and justify survivors.
-4. Add genuine failure injection beyond existing cases, then mutation tests with per-file scores and justified survivors. Mutation copies must stay inside clone scratch, never in deployed source.
-5. Implement preauthorized minimal fixes on separate branches with failing-before/passing-after evidence. First fixes: C17 own-key gate, C15 controlled access errors, C04a conflicting-customer payment flags. Each branch is based on the harness branch and should target it as a stacked draft so production diffs remain small. Do not mix broader event-ordering work into C04a.
-6. Write the short operator runbook and continue resolving nonfrozen findings. Queue frozen and policy-dependent items with exact reasons.
+## Current live continuation, 2026-09-27 after final review
 
-## Boundaries
+S7 is receiving one final harness fidelity correction before its closing checkpoint; the earlier "complete" wording describes the prior measured snapshot only. Three additional status metadata contracts pass, bringing operations controls to 65. A local workerd probe proved limit 1001 is rejected while MemoryR2 clamped it. The bounded numeric-limit parity correction is in progress in the main harness, with no production source edit.
 
-Network only package registries and git fetch/push, plus the explicit gh draft-PR exception above. No live service calls, credentials, real data, deployment commands or workflows. Do not run wrangler.
-Never read outside this clone. Installed runtimes are invoked normally; no unrelated workspace files are read.
-Do not change .github/workflows/. Workflow proposals go under docs/codex/proposals/ as text.
-Never widen upload/read allowlists, add root package.json, import test dependencies into functions/, copy private engine code or real data.
-Use LF, no BOM and no prohibited long dash characters in new owner/customer wording.
-Before every push, check UTC and refuse Monday 11:00-19:00 UTC. Never main push or merge.
-Use explicit staged paths and disable repository hooks for commits/pushes so unrelated automation is not executed.
-Stop only for original stop conditions, whole-program completion, or platform termination; otherwise checkpoint and continue.
+Next: after the harness agent freezes its files, run node test/harness/run.mjs --label S7-final-full. Preserve earlier full evidence separately, record actual new counts, then run the entire mutation catalog once with the final tests and harness. Do not run a mutator while files are changing. This avoids relying only on accumulated evidence across the harness correction. No mutator is currently running.
 
-## Honest remaining limits
+C20-inbox is now published af369f90c5dbecc46c309ee8a30e2a381491322a. C19-responses is published 9762e4979d7e60e746ddb9f1ccd15cd60d53f9e4. Both worktrees have clean content and index status after exact-HEAD hash checks refreshed stale Windows index entries. Effective Git core.autocrlf is true, contrary to the clone claim; continue using explicit false/LF flags for worktree creation and staging.
 
-Node/runtime tests and local workerd do not establish current deployment configuration or customer inbox receipt.
-Fidelity covers the APIs exercised, not every R2/HTML feature or cloud timing property.
-The older Node HTMLRewriter dependency is test-only and checked against pinned workerd for the exercised behavior.
-No defect is closed merely because its test is marked TODO or its PR is a draft.
+C18-preconditions is in an isolated worktree: focused after 117/104 pass/0 fail/13 TODO, full 598/528 pass/4 known fail/66 TODO. Root is checking opaque ETag SDK semantics before committing it. No PR exists; gh remains absent.
 
-## Isolated fix publication
-C17 branch claude/codex-fix-c17 pushed bf7b18a2dbe0e3f59bae828f14221151e9570a6f. Three failing-before regressions pass afterward. Its own full result is 380/315/4/61. C15 and C04a remain independent in-progress worktrees based on S3. No PR yet while gh remains unavailable. Draft bases should be the harness branch so fixes stay narrow.
+S8 reviewed guide and queue are saved under test/harness/.runtime/S8-RUNBOOK-REVIEWED.md and S8-REMAINING-WORK.md. Promote after S7 closes, using actual final counts. A source companion and workflow-proposal fragment are being prepared; workflow files remain unchanged and no workflow is run.
 
-## Current S7 work before its closing checkpoint
-The AST mutator smoke test passed. Initial operator-stratified sample: 321 selected, 192 killed, 5 syntax-invalid, 122 survived, 2 unclassified process exits; no timeout. This is below target and not a program completion claim. Saved ignored report: test/harness/.runtime/mutation/S7-initial-sample.json. Forty-three helper contracts, 19 gate tests and 34 operations tests pass separately. Webhook/access mutation test files are being added by independent agents. Exact next command after both pass: node test/harness/mutate.mjs --limit 2000 --jobs 3. This covers all current candidates rather than a sampled score. Do not count failing TODO cases as killed mutations.
-Five separate fix branches are published: C17 bf7b18a2d; C15 33ced5f7b; C04a 330847c4b; C02 84a06d418; C20-retention 53e540033. No PR exists because gh is unavailable. All should target claude/codex-revenue-harness as drafts. C04a/C02 have the four known failures plus the new whole-file static-address structural check; it is not waived or relabeled baseline. C02 and C20 remain partial findings. Their sibling worktrees contain exact handoffs/evidence.
-S8 draft is being prepared only under ignored test/harness/.runtime, pending review and promotion after S7 checkpoint. A source instruction in pipeline-now recommends editing weekly-refresh.yml to force a refresh; the runbook must supersede that unsafe operator instruction and retain the workflow prohibition.
+## Active final exhaustive verification
 
-## Live checkpoint 2026-09-27, S7 exhaustive run
-
-This section supersedes the older in-progress fix list above. See FIX_STATUS.md for six published fix branches and C05 in progress. No draft PR exists while gh is unavailable. C21 has a separate published fix for operator guidance that suggested editing a workflow on main.
-
-The strengthened baseline is 565 tests: 494 pass, four exact known baseline failures, 67 executed TODO, zero skipped/cancelled and zero unexpected hard failures. It passed again after ordinary test children were changed to inherit only executable/runtime settings; arbitrary environment values and REVENUE_SOURCE_ROOT are excluded. A synthetic one-case probe passed. Local evidence: test/harness/.runtime/S7-env-baseline.json and S7-runner-environment.json.
-
-The exhaustive mutation run is active as exec session 8071. It selects 1822 candidates across 15 files, not 1922. Source and selected test files must remain stable until it finishes. Command: node test/harness/mutate.mjs --limit 2000 --jobs 3. Progress: test/harness/.runtime/mutation/progress.json; final: results.json. The initial sample remains S7-initial-sample.json. Do not infer a final score from partial progress. Poll the existing process if it is still available; otherwise inspect progress and process state before starting another runner that uses the same scratch workers.
-
-Next: preserve the complete run, review every survivor, add meaningful missing contracts, rerun surviving/unresolved candidates with source hashes unchanged, and publish the S7 evidence and score. Then promote the prepared S8 runbook and source companion from ignored .runtime, verify links/text and checkpoint S8. Continue independent fixes. C05 is based on C02 and must target that branch as a draft; root review/final validation precedes its publication.
-
-Latest fetch at this checkpoint: origin/main still 1068e8070e88a436fbf5f86b88bf075e1f3a01c5. Frozen sender/status changes remain queued. Do not edit mission tests to change the four owner-known failures or the additional static-address structural failure on webhook-changing fix branches.
+Full suite after the final metadata controls and numeric R2 parity correction: 715 tests, 644 pass, four known failures, 67 TODO, zero unexpected. Source/test/harness files are now frozen. The entire 1822-candidate catalog is running as exec_command session 93070, started 2026-09-27T07:10:34Z. Poll that process if still available; otherwise inspect .runtime/mutation/progress.json before starting another runner. Do not overlap mutation runners. Final raw output will be .runtime/mutation/results.json. Preserve it as evidence/S7-final-exhaustive.json after removing only the local sourceRoot field, then run node test/harness/report-mutation.mjs docs/codex/evidence/S7-final-exhaustive.json. That one fresh run will be the reported final score. Earlier accumulated evidence is preserved as S7-accumulated-before-fidelity.json. Update the report, handoff and PR body to actual final counts and checkpoint S7, then S8.

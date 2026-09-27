@@ -108,3 +108,11 @@ These contracts improve the credibility of the offline reproductions. They are n
 | `P1-14 route strings never appear in non-test added files` | [test/mission/structure.test.mjs](../../test/mission/structure.test.mjs), line 125 | Required source maps name existing routes. |
 
 They remain visible and failing. Mission tests are frozen by owner instruction pending the owner's branch; do not repair these checks in this workstream. Any later authorized update must retain header-security and change-scope intent. This coverage map neither waives them nor changes those tests.
+
+## S7 additional I31 coverage
+
+I31 is reproduced by C21 overdue refresh guidance requires evidence review without a workflow-edit trigger in test/revenue/operator-guidance.test.mjs on claude/codex-fix-c21. It fails before and passes after the separate guidance patch; healthy-data and unauthorized-request controls also pass. This test and source change live only on the fix branch, not the harness branch. See FIX_STATUS.md for its immutable head and full-suite limits.
+
+## S7 closing evidence
+
+The historical S3 counts above remain a dated snapshot. The closing S7 run in evidence/S7-full.json has 701 tests, 630 pass, four known failures and 67 executed TODO. Mutation strengthening and its coverage limits are in MUTATION_REPORT.md. I31 is the later operator-guidance rule; its failure-before/passing-after test is on the isolated C21 branch. Published fixes have separate source snapshots and counts in FIX_STATUS.md. No open finding is closed by the larger pass count.

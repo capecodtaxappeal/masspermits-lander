@@ -40,3 +40,9 @@ The permitted gh executable remains unavailable, so no draft PR has been created
 ## 2026-09-27, S6 failure injection
 
 Added 31 cases:28 pass and 3 executed diagnostic TODOs. Full 411/340/4/67, no unexpected hard failure. S6-full.json and FAILURE_INJECTION.md record limits. Main remains 1068e8070. C17 independently pushed bf7b18a2d; C15/C04a remain in progress. No production change on harness branch. S7 next, then S8; continuous execution continues despite unavailable gh.
+
+## 2026-09-27, S7 exhaustive mutation testing
+
+Closing full suite: 701 tests, 630 pass, four exact owner-known failures, 67 executed TODO, zero unexpected hard failures. Saved evidence/S7-full.json. Exhaustive catalog plus source-identical strengthening rounds: paying path 1320/1435 valid killed (92.0%); combined lifecycle 1676/1814 (92.4%). Eight syntax-invalid excluded; two unclassified exits and three timeouts remain unresolved in denominator. All 26 final webhook gap targets were killed. Scores, IDs, hashes and limits are in MUTATION_REPORT.md and evidence/S7-final-mutation.json. No production, workflow or mission test changed on this branch.
+
+Seven earlier isolated fixes remain published; C19 responses also published at 9762e4979. C20 inbox passed before/after and awaits publication. C18 optional preconditions are under source-only assessment. gh remains unavailable, so no draft PR exists. Main fetched again at 06:50 UTC remains 1068e8070. Next phase is S8 promotion and verification, without stopping.

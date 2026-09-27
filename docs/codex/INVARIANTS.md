@@ -84,3 +84,7 @@ After adding the required S1 documentation, the same full command reports 211 te
 These failures must not be hidden, deleted or called a green suite. Repair the obsolete branch acceptance assumptions in a tests-only step while retaining header-security and change-scope checks. No production change is needed to reproduce these failures.
 
 Existing mission tests provide useful reconciliation/privacy/security examples. The decision-only webhook test extracts a private function and explicitly says its zero-value caller check is not covered. It is not a substitute for signed events reaching the real exported handler. S2 coverage is incomplete until every rule above has a named executable scenario or an explicitly approved, tested policy.
+
+## S7 additional operational invariant
+
+I31: Operator recovery instructions must not recommend unreviewed production triggers. UNENFORCED at main1068e8070, pipeline-now.js:111-112 and235. C21 reproduces this through the actual endpoint; the separate published claude/codex-fix-c21 branch contains the named test and narrow text correction. This addendum does not revise the historical S1 source map or claim a deployed fix.

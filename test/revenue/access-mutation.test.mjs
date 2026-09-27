@@ -1,10 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { generateKeyPairSync, createSign } from 'node:crypto';
-import { loadHandlers, withWorld, TEST_JWK } from '../harness/index.mjs';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { loadHandlers, withWorld, TEST_JWK, REPO } from '../harness/index.mjs';
 
 // Passing contracts only. Policy/known-defect TODOs stay in their existing files.
 const h = await loadHandlers();
+// loadHandlers validated this source root before this namespace import.
+const portalModule = await import(pathToFileURL(resolve(process.env.REVENUE_SOURCE_ROOT || REPO,
+  'functions/leads.js')).href);
+assert.equal(portalModule.onRequestGet, h.portal);
+const portalHead = portalModule.onRequestHead;
 const DAY = 86400_000;
 const HOUR = 3600_000;
 const TOKEN = 'a'.repeat(32);
@@ -472,4 +479,211 @@ scenario('S7 I21 portal coverage disclosure uses supplied numeric counts and esc
   assert.match(body, /town-a publish their permits <b>monthly<\/b>/);
   assert.match(body, /ROW_ACCESS_TEST/);
   // No assertion endorses the unrelated "real and current" marketing wording.
+});
+
+scenario('S7 exhaustive I25 malformed GitHub JWT encodings reject before any storage or fetch', async w => {
+  const valid = (await w.oidcHeaders()).authorization.slice(7).split('.');
+  const brokenJSON = Buffer.from('{INVALID_TEST').toString('base64url');
+  const malformed = [
+    'single_part_TEST', 'a.b.c.d', brokenJSON + '.' + valid[1] + '.' + valid[2],
+    valid[0] + '.' + brokenJSON + '.' + valid[2],
+  ];
+  for (const token of malformed) {
+    const request = w.request('/api/get-object?key=source-health.json',
+      { headers: { authorization: 'Bearer ' + token } });
+    assert.equal((await h.githubOIDC.verifyGitHubOIDC(request)).ok, false);
+    assert.equal((await w.call(h.getObject, request)).status, 401);
+  }
+  assert.equal(w.r2.ops.length, 0);
+  assert.equal(w.fetchCalls.length, 0);
+  assert.equal(w.mail.length, 0);
+});
+
+scenario('S7 exhaustive I25 missing and malformed Access assertions have false authorization', async w => {
+  const valid = (await accessToken(w)).split('.');
+  const brokenJSON = Buffer.from('{INVALID_TEST').toString('base64url');
+  const requests = [
+    w.request('/admin/mission'),
+    accessRequest(w, ''),
+    accessRequest(w, 'single_part_TEST'),
+    accessRequest(w, 'a.b.c.d'),
+    accessRequest(w, brokenJSON + '.' + valid[1] + '.' + valid[2]),
+    accessRequest(w, valid[0] + '.' + brokenJSON + '.' + valid[2]),
+    w.request('/admin/mission', { headers: { cookie: 'CF_Authorization=malformed_TEST' } }),
+  ];
+  for (const request of requests) {
+    const result = await h.cfAccess.verifyCfAccess(request, w.env);
+    assert.equal(result.ok, false);
+    assert.equal(h.cfAccess.accessDenied(result).status, 403);
+  }
+  assert.equal(w.r2.ops.length, 0);
+  assert.equal(w.fetchCalls.length, 0);
+  assert.equal(w.mail.length, 0);
+});
+
+scenario('S7 exhaustive I25 each missing Access configuration value fails before certificate lookup', async w => {
+  for (const overrides of [
+    { CF_ACCESS_TEAM_DOMAIN: '', CF_ACCESS_AUD: '' },
+    { CF_ACCESS_TEAM_DOMAIN: '' },
+    { CF_ACCESS_AUD: '' },
+  ]) {
+    const env = { ...w.env, ...overrides };
+    const request = accessRequest(w, await accessToken(w,
+      env.CF_ACCESS_AUD ? {} : { aud: '' }));
+    const result = await h.cfAccess.verifyCfAccess(request, env);
+    assert.equal(result.ok, false);
+    assert.equal(result.reason, 'not-configured');
+  }
+  assert.equal(w.r2.ops.length, 0);
+  assert.equal(w.fetchCalls.length, 0);
+  assert.equal(w.mail.length, 0);
+});
+
+scenario('S7 exhaustive I25 Access common-name identity survives a valid token without email', async w => {
+  const result = await h.cfAccess.verifyCfAccess(accessRequest(w,
+    await accessToken(w, { email: null, common_name: 'casey@example.com' })), w.env);
+  assert.equal(result.ok, true);
+  assert.equal(result.email, 'casey@example.com');
+  assert.equal(w.r2.ops.length, 0);
+  assert.equal(w.mail.length, 0);
+});
+
+scenario('S7 exhaustive I25 Access missing-assertion remedy is distinct from ordinary sign-in rejection', async () => {
+  const missing = h.cfAccess.accessDenied({ ok: false, reason: 'no-assertion' });
+  const rejected = h.cfAccess.accessDenied({ ok: false, reason: 'iss' });
+  assert.equal(missing.status, 403);
+  assert.equal(rejected.status, 403);
+  assert.match(await missing.text(), /No Cf-Access-Jwt-Assertion reached the origin/);
+  const other = await rejected.text();
+  assert.match(other, /Sign in through Cloudflare Access and retry/);
+  assert.doesNotMatch(other, /No Cf-Access-Jwt-Assertion reached the origin/);
+});
+
+scenario('S7 exhaustive I19 I25 real portal HEAD retains GET access status and private headers with no body', async w => {
+  seed(w);
+  const cases = [
+    ['/leads', {}, 403],
+    ['/leads?t=malformed_TEST', {}, 400],
+    ['/leads?t=' + TOKEN, {}, 302],
+    ['/leads', { cookie: 'mp_sess=' + TOKEN }, 200],
+  ];
+  for (const [path, headers, status] of cases) {
+    const response = await w.call(portalHead, path, { method: 'HEAD', headers });
+    assert.equal(response.status, status);
+    privatePage(response);
+    assert.equal(response.body, null);
+    assert.equal(await response.text(), '');
+    if (status === 302) {
+      assert.equal(response.headers.get('location'), '/leads');
+      assert.match(response.headers.get('set-cookie') || '', /HttpOnly; Secure; SameSite=Lax/);
+    }
+  }
+  seed(w, { active: false });
+  const revoked = await w.call(portalHead, '/leads',
+    { method: 'HEAD', headers: { cookie: 'mp_sess=' + TOKEN } });
+  assert.equal(revoked.status, 403);
+  privatePage(revoked);
+  assert.equal(revoked.body, null);
+  assert.equal(puts(w, 'portal-access/').length, 0);
+});
+
+scenario('S7 exhaustive I20 portal handles asynchronous metadata lookup rejection as a controlled response', async w => {
+  for (const key of ['latest-weekly.html', 'latest-weekly.zip']) {
+    seed(w);
+    w.r2.failNext('head', key, new Error('ASYNC_HEAD_TEST'));
+    const response = await w.call(h.portal, portalRequest(w));
+    privatePage(response);
+    assert.ok(response.status < 500 || response.status === 503);
+    const body = await response.text();
+    assert.doesNotMatch(body, /ASYNC_HEAD_TEST/);
+    if (key.endsWith('.html')) assert.doesNotMatch(body, /ROW_ACCESS_TEST/);
+  }
+  // This contract does not choose whether a missing-HTML fallback may serve a stale ZIP.
+});
+
+scenario('S7 exhaustive I20 missing ZIP metadata cannot turn a fresh portal request into an exception', async w => {
+  seed(w);
+  await w.r2.delete('latest-weekly.zip');
+  const response = await w.call(h.portal, portalRequest(w));
+  privatePage(response);
+  assert.ok(response.status < 500 || response.status === 503);
+  await response.text();
+  // No assertion approves missing-file availability or pins a particular fallback policy.
+});
+
+scenario('S7 exhaustive I21 incomplete refresh metadata discloses the remaining timestamp basis', async w => {
+  for (const status of [null, {}, { ran_at: 'INVALID_DATE_TEST' }]) {
+    seed(w);
+    if (status === null) await w.r2.delete('refresh-status.json');
+    else w.r2.set('refresh-status.json', status);
+    const response = await w.call(h.portal, portalRequest(w));
+    privatePage(response);
+    const body = await response.text();
+    assert.match(body, /We cannot fully confirm this page's freshness/);
+    assert.match(body, /refresh record \(refresh-status.json\) is missing or unreadable/);
+    assert.doesNotMatch(body, /This page's publish timestamp is unavailable/);
+    assert.match(body, new RegExp('<span class="fresh"[^>]*>published ' + iso(w.now).slice(0, 10) + '</span>'));
+  }
+});
+
+scenario('S7 exhaustive I19 inactive previews retain only available numeric aggregate counts', async w => {
+  const cases = [
+    [{ count: 1234, coverage: { live_sources: 3 } }, '1,234 permit records', '3 live town sources'],
+    [{ count: 1234 }, '1,234 permit records', null],
+    [{ coverage: { live_sources: 3 } }, 'our current corpus', '3 live town sources'],
+    [{}, null, null],
+    [{ count: '1234', coverage: { live_sources: '3' } }, null, null],
+  ];
+  for (const [status, rows, sources] of cases) {
+    seed(w, { active: false });
+    w.r2.set('refresh-status.json', status);
+    const response = await w.call(h.portal, '/leads?t=' + TOKEN);
+    assert.equal(response.status, 403);
+    privatePage(response);
+    const body = await response.text();
+    if (rows) assert.ok(body.includes(rows));
+    else assert.doesNotMatch(body, /permit records|our current corpus/);
+    if (sources) assert.ok(body.includes(sources));
+    else assert.doesNotMatch(body, /live town sources/);
+    assert.doesNotMatch(body, /ROW_ACCESS_TEST|casey@example\.com/);
+  }
+  assert.equal(w.r2.ops.filter(op => op.op === 'get' && op.key === 'latest-weekly.html').length, 0);
+  // Counts do not certify the separate wording about when the underlying records were filed.
+});
+
+scenario('S7 exhaustive I21 degraded coverage tolerates absent empty and non-list monthly metadata', async w => {
+  for (const coverage of [null, { monthly_sources: [] }, { monthly_sources: null },
+    { monthly_sources: 'NOT_LIST_TEST' }]) {
+    seed(w);
+    w.r2.set('refresh-status.json', { ran_at: iso(w.now), degraded: true, coverage });
+    const response = await w.call(h.portal, portalRequest(w));
+    privatePage(response);
+    const body = await response.text();
+    assert.match(body, /Reduced coverage: please read/);
+    assert.match(body, /<b>fewer of our usual<\/b> town sources/);
+    assert.doesNotMatch(body, /Note:|NOT_LIST_TEST/);
+  }
+});
+
+scenario('S7 exhaustive I21 non-finite JSON coverage numbers use the unavailable-count wording', async w => {
+  seed(w);
+  // JSON.parse accepts an out-of-range numeric exponent as Infinity. JSON.stringify would erase this fixture.
+  w.r2.set('refresh-status.json', '{"ran_at":"' + iso(w.now) +
+    '","coverage":{"disclose":true,"live_sources":1e400,"expected_sources":1e400}}');
+  const response = await w.call(h.portal, portalRequest(w));
+  privatePage(response);
+  const body = await response.text();
+  assert.match(body, /<b>fewer of our usual<\/b> town sources/);
+  assert.doesNotMatch(body, /Infinity|NaN/);
+});
+
+scenario('S7 exhaustive I19 portal country telemetry stays coarse even with malformed metadata', async w => {
+  seed(w);
+  const request = portalRequest(w);
+  Object.defineProperty(request, 'cf', { value: { country: 'USextra_TEST' } });
+  await (await w.call(h.portal, request)).text();
+  const events = puts(w, 'portal-access/');
+  assert.equal(events.length, 1);
+  assert.deepEqual((await w.r2.get(events[0].key)).customMetadata,
+    { tok: TOKEN.slice(0, 8), ua: 'desktop', st: 'ok', cc: 'US' });
 });

@@ -1,0 +1,1130 @@
+{
+  "at": "2026-09-27T06:30:42.059Z",
+  "seed": "S7-v1",
+  "limit": 2000,
+  "jobs": 3,
+  "method": "AST mutation; deterministic operator-stratified selection (exhaustive when limit covers every candidate); TODOs never kill; timeouts/errors remain unresolved",
+  "baseline": [
+    {
+      "signature": "test/revenue/weekly-watchdog.test.mjs|test/revenue/failure-injection.test.mjs|test/revenue/operations-mutation.test.mjs",
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 608,
+      "error": null
+    }
+  ],
+  "files": [
+    {
+      "file": "functions/api/send-status.js",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "candidates": 161,
+      "selected": 53,
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs"
+      ],
+      "killed": 19,
+      "survived": 31,
+      "invalid": 3,
+      "unresolved": 0,
+      "score": 38
+    }
+  ],
+  "results": [
+    {
+      "id": "2e2268429d5ebbe6",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 53,
+      "column": 76,
+      "original": "401",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 1016,
+      "killedBy": [
+        "S7 watchdog rejects missing authorization with 401 before storage"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1853693cee7b70b3",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-condition",
+      "line": 56,
+      "column": 26,
+      "original": "predicate",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 996,
+      "killedBy": [
+        "S7 watchdog attempt age remains a readable rounded duration"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "41041d0fef9ea391",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 56,
+      "column": 58,
+      "original": "3600000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 866,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "e873d0a813689ddf",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-condition",
+      "line": 60,
+      "column": 17,
+      "original": "predicate",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 824,
+      "killedBy": [
+        "S7 watchdog retains historical timestamps and coverage when this week has no selected result"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "4a3240bee05d2dd3",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 60,
+      "column": 17,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 848,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "55c7d01a9ac3d020",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 60,
+      "column": 56,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 784,
+      "killedBy": [
+        "S7 watchdog retains historical timestamps and coverage when this week has no selected result"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "dabafe4ddebf423b",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 108,
+      "column": 25,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 929,
+      "killedBy": [
+        "S7 partial delivery still exposes its unserved eligible recipient in nested gap evidence"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d9524c4fbe5f63a1",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 111,
+      "column": 25,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 843,
+      "killedBy": [
+        "S7 blank-email roster rows do not create fabricated unserved identities"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "6ae057f475ac28ad",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 111,
+      "column": 25,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 840,
+      "killedBy": [
+        "S7 blank-email roster rows do not create fabricated unserved identities"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "57636e1c713d310c",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-filter",
+      "line": 125,
+      "column": 24,
+      "original": "!",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "invalid"
+    },
+    {
+      "id": "975ce8dac3662448",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 125,
+      "column": 81,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 802,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d07a3919eaf84fbf",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-filter",
+      "line": 126,
+      "column": 27,
+      "original": "!",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "invalid"
+    },
+    {
+      "id": "afbfb3476d08ed63",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-filter",
+      "line": 127,
+      "column": 25,
+      "original": "!",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "invalid"
+    },
+    {
+      "id": "25a35c259f7c359a",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 138,
+      "column": 30,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 816,
+      "killedBy": [
+        "S7 clean delivery diagnosis reports its actual accepted-recipient count"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c02143e27ef1e258",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 138,
+      "column": 61,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 826,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5a2d805732b5d7bd",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 138,
+      "column": 111,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 819,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a9c581a6e0cb3db6",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 140,
+      "column": 13,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 827,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8be1866f622891cd",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 142,
+      "column": 37,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 948,
+      "killedBy": [
+        "S7 partial-send diagnosis reports failure count against the actual attempt size"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "b7e6b6f11dfcac0d",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 154,
+      "column": 54,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 835,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cd91c3fc744b26f4",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 192,
+      "column": 30,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 865,
+      "killedBy": [
+        "S7 roster-gap diagnosis preserves accepted and unserved counts independently"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "27a0bc80034e3780",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 192,
+      "column": 61,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 868,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d84c5ccbae13c384",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 201,
+      "column": 21,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 905,
+      "killedBy": [
+        "S7 watchdog retains historical timestamps and coverage when this week has no selected result"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c1e694ad01026fec",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 202,
+      "column": 19,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 924,
+      "killedBy": [
+        "S7 watchdog retains historical timestamps and coverage when this week has no selected result"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5fb1c21be7a0a4b7",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 203,
+      "column": 56,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 968,
+      "killedBy": [
+        "S7 watchdog retains historical timestamps and coverage when this week has no selected result"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "0065733b44d1aff2",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 212,
+      "column": 25,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 881,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cd16729f29a1fb8a",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 212,
+      "column": 24,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 869,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f4194c18e2215db4",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 213,
+      "column": 21,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 813,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "3e16a180e7d9b18e",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 213,
+      "column": 20,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 871,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8818044e12e78e38",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 215,
+      "column": 21,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 886,
+      "killedBy": [
+        "S7 watchdog retains historical timestamps and coverage when this week has no selected result"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "7158668d0140e7df",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 242,
+      "column": 28,
+      "original": "86400000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 838,
+      "killedBy": [
+        "S7 portal staleness begins immediately after the eight-day boundary"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8e2390c4c83c7d72",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 243,
+      "column": 29,
+      "original": "60000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 828,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "40f696dbc566ee86",
+      "file": "functions/api/send-status.js",
+      "kind": "boolean",
+      "line": 255,
+      "column": 37,
+      "original": "false",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 784,
+      "killedBy": [
+        "S7 missing unpublished portal keeps the documented fresh-ZIP fallback state"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "93a1b50c262bde6d",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 263,
+      "column": 17,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 782,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cb7dea0e4e28fb90",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 264,
+      "column": 33,
+      "original": "3600000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 805,
+      "killedBy": [
+        "S7 portal staleness begins immediately after the eight-day boundary"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "62866a741eb59460",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 265,
+      "column": 78,
+      "original": "60000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 792,
+      "killedBy": [
+        "S7 portal publication drift uses the documented nearest-minute value"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "6333a45995e6110a",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 268,
+      "column": 37,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 819,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "118b13b6a8f1657c",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 276,
+      "column": 81,
+      "original": "24",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 800,
+      "killedBy": [
+        "S7 portal staleness begins immediately after the eight-day boundary"
+      ],
+      "counts": {
+        "tests": 130,
+        "pass": 105,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c30290764d0d4e93",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 293,
+      "column": 52,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 793,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "7938665ac7281239",
+      "file": "functions/api/send-status.js",
+      "kind": "boolean",
+      "line": 300,
+      "column": 31,
+      "original": "false",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 759,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f3d69858ba68124a",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 301,
+      "column": 48,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 843,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2480705950d2ac59",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 301,
+      "column": 47,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 902,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "345f6756f12e5313",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 301,
+      "column": 76,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 836,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d28ca827b895ca10",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 301,
+      "column": 79,
+      "original": "200",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 766,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1bc21436c61fa0aa",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 22,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 865,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "bd4d37daf4bba27f",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 25,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 886,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8d4c13cc2433b486",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 28,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 848,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "934992902687014a",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 31,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 780,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "62589c686534f048",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 320,
+      "column": 38,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 793,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2cd0e301706e7da5",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 320,
+      "column": 41,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 807,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d1cfe52193959930",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 320,
+      "column": 57,
+      "original": "10",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 787,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2256bbafbc71091d",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 320,
+      "column": 66,
+      "original": "86400000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 837,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "79fe03a4fcc9484d",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 322,
+      "column": 56,
+      "original": "1000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 694,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "10ad73d556d11a8d",
+      "file": "functions/api/send-status.js",
+      "kind": "drop-await",
+      "line": 342,
+      "column": 15,
+      "original": "await",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 671,
+      "killedBy": [],
+      "counts": {
+        "tests": 130,
+        "pass": 106,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "testSHA256": {
+    "test/revenue/weekly-watchdog.test.mjs": "bca39a146301706fd5f3b953932ac0fa6fac41c8dfdade557fb98ce6152fef0a",
+    "test/revenue/failure-injection.test.mjs": "fc04a727f38f7f0c75c35000826764cefdc42a54c5b7b395d6b024388df658ac",
+    "test/revenue/operations-mutation.test.mjs": "35c92c9b2c98f49a00faba1f911adce50a529be20a4c7dae63fef35618078951"
+  },
+  "harnessSHA256": {
+    "test/harness/index.mjs": "6c13f622434348f74b2c2da120e755d83aea07a6d2d8c2d4c9317a1e1ea323ca",
+    "test/harness/mutate.mjs": "35fb8047e7273654c41835d16f3f6da78ca5eeaf0b6d5a37a3b7222a24a6489c",
+    "test/harness/package-lock.json": "0456d93f5aa0a9a96e643b00402ac6e7750f223d84c347de822f205552c33df0"
+  },
+  "completedAt": "2026-09-27T06:30:57.525Z"
+}

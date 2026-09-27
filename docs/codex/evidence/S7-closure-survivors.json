@@ -1,0 +1,4107 @@
+{
+  "at": "2026-09-27T06:42:11.520Z",
+  "seed": "S7-v1",
+  "limit": 2000,
+  "jobs": 3,
+  "method": "AST mutation; deterministic operator-stratified selection (exhaustive when limit covers every candidate); TODOs never kill; timeouts/errors remain unresolved",
+  "baseline": [
+    {
+      "signature": "test/revenue/webhook.test.mjs|test/revenue/webhook-mutation.test.mjs",
+      "tests": [
+        "test/revenue/webhook.test.mjs",
+        "test/revenue/webhook-mutation.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 518,
+      "error": null
+    },
+    {
+      "signature": "test/revenue/weekly-watchdog.test.mjs|test/revenue/failure-injection.test.mjs|test/revenue/operations-mutation.test.mjs|test/revenue/presend-contracts.test.mjs|test/revenue/gate-mutation.test.mjs",
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs",
+        "test/revenue/presend-contracts.test.mjs",
+        "test/revenue/gate-mutation.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 558,
+      "error": null
+    },
+    {
+      "signature": "test/revenue/weekly-watchdog.test.mjs|test/revenue/failure-injection.test.mjs|test/revenue/operations-mutation.test.mjs",
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 547,
+      "error": null
+    },
+    {
+      "signature": "test/revenue/access-storage.test.mjs|test/revenue/auth-portal.test.mjs|test/revenue/access-mutation.test.mjs",
+      "tests": [
+        "test/revenue/access-storage.test.mjs",
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/access-mutation.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 609,
+      "error": null
+    },
+    {
+      "signature": "test/revenue/access-storage.test.mjs",
+      "tests": [
+        "test/revenue/access-storage.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 50,
+        "pass": 36,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 432,
+      "error": null
+    },
+    {
+      "signature": "test/revenue/webhook.test.mjs|test/revenue/presend-contracts.test.mjs",
+      "tests": [
+        "test/revenue/webhook.test.mjs",
+        "test/revenue/presend-contracts.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 101,
+        "pass": 72,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 437,
+      "error": null
+    },
+    {
+      "signature": "test/revenue/auth-portal.test.mjs|test/revenue/operations-mutation.test.mjs",
+      "tests": [
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/operations-mutation.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 75,
+        "pass": 75,
+        "fail": 0,
+        "todo": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 417,
+      "error": null
+    },
+    {
+      "signature": "test/revenue/weekly-watchdog.test.mjs|test/revenue/failure-injection.test.mjs|test/revenue/operations-mutation.test.mjs|test/revenue/lifecycle-mutation.test.mjs",
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs",
+        "test/revenue/lifecycle-mutation.test.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "timedOut": false,
+      "hard": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ms": 514,
+      "error": null
+    }
+  ],
+  "files": [
+    {
+      "file": "functions/api/stripe-webhook.js",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "candidates": 392,
+      "selected": 59,
+      "tests": [
+        "test/revenue/webhook.test.mjs",
+        "test/revenue/webhook-mutation.test.mjs"
+      ],
+      "killed": 26,
+      "survived": 30,
+      "invalid": 1,
+      "unresolved": 2,
+      "score": 44.8
+    },
+    {
+      "file": "functions/api/_presend.js",
+      "sourceSHA256": "e865bf885b57bd07967ccc920f914ed5d1e42321538d8ea2e65b3178fe321f0d",
+      "candidates": 249,
+      "selected": 1,
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs",
+        "test/revenue/presend-contracts.test.mjs",
+        "test/revenue/gate-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 0,
+      "invalid": 1,
+      "unresolved": 0,
+      "score": null
+    },
+    {
+      "file": "functions/api/pre-send-check.js",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "candidates": 32,
+      "selected": 8,
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs",
+        "test/revenue/presend-contracts.test.mjs",
+        "test/revenue/gate-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 8,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": 0
+    },
+    {
+      "file": "functions/api/weekly-send.js",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "candidates": 123,
+      "selected": 14,
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 14,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": 0
+    },
+    {
+      "file": "functions/api/send-status.js",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "candidates": 161,
+      "selected": 34,
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs"
+      ],
+      "killed": 6,
+      "survived": 25,
+      "invalid": 3,
+      "unresolved": 0,
+      "score": 19.4
+    },
+    {
+      "file": "functions/api/my-leads.js",
+      "sourceSHA256": "75a9adecf6f47e1a7637b736d5e73e36d75cd7a393fabe882157c12f25b98332",
+      "candidates": 56,
+      "selected": 0,
+      "tests": [
+        "test/revenue/access-storage.test.mjs",
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/access-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 0,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": null
+    },
+    {
+      "file": "functions/leads.js",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "candidates": 182,
+      "selected": 18,
+      "tests": [
+        "test/revenue/access-storage.test.mjs",
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/access-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 18,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": 0
+    },
+    {
+      "file": "functions/leads/out.js",
+      "sourceSHA256": "10f373eb74f2b80d7778d42973625b9a39d566ac15878311b2d229caff570d58",
+      "candidates": 1,
+      "selected": 0,
+      "tests": [
+        "test/revenue/access-storage.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 0,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": null
+    },
+    {
+      "file": "functions/api/_notice.js",
+      "sourceSHA256": "5c69335657fc06adea35f5d2d11628711a07241c7a46d630f10adee2d9856f44",
+      "candidates": 21,
+      "selected": 0,
+      "tests": [
+        "test/revenue/webhook.test.mjs",
+        "test/revenue/presend-contracts.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 0,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": null
+    },
+    {
+      "file": "functions/api/upload-bundle.js",
+      "sourceSHA256": "9776f47348292a6326b4b9db9f0ce1ade1fe48836c11134288f2f7e458fc1aaf",
+      "candidates": 35,
+      "selected": 5,
+      "tests": [
+        "test/revenue/access-storage.test.mjs",
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/access-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 4,
+      "invalid": 1,
+      "unresolved": 0,
+      "score": 0
+    },
+    {
+      "file": "functions/api/get-object.js",
+      "sourceSHA256": "4a51958989fbcbfad8724b3a8f88a94c06927cd15e9a5a51e88c06d4cbcbd12d",
+      "candidates": 12,
+      "selected": 0,
+      "tests": [
+        "test/revenue/access-storage.test.mjs",
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/access-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 0,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": null
+    },
+    {
+      "file": "functions/api/_github-oidc.js",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "candidates": 66,
+      "selected": 8,
+      "tests": [
+        "test/revenue/access-storage.test.mjs",
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/access-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 7,
+      "invalid": 1,
+      "unresolved": 0,
+      "score": 0
+    },
+    {
+      "file": "functions/api/_cf-access.js",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "candidates": 90,
+      "selected": 8,
+      "tests": [
+        "test/revenue/access-storage.test.mjs",
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/access-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 7,
+      "invalid": 1,
+      "unresolved": 0,
+      "score": 0
+    },
+    {
+      "file": "functions/api/mail-owner.js",
+      "sourceSHA256": "7502eb388c43706ce44ae827f217d594225eb1cc66e08426ea2310eabf60d3df",
+      "candidates": 23,
+      "selected": 0,
+      "tests": [
+        "test/revenue/auth-portal.test.mjs",
+        "test/revenue/operations-mutation.test.mjs"
+      ],
+      "killed": 0,
+      "survived": 0,
+      "invalid": 0,
+      "unresolved": 0,
+      "score": null
+    },
+    {
+      "file": "functions/api/_lifecycle.js",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "candidates": 379,
+      "selected": 28,
+      "tests": [
+        "test/revenue/weekly-watchdog.test.mjs",
+        "test/revenue/failure-injection.test.mjs",
+        "test/revenue/operations-mutation.test.mjs",
+        "test/revenue/lifecycle-mutation.test.mjs"
+      ],
+      "killed": 5,
+      "survived": 20,
+      "invalid": 0,
+      "unresolved": 3,
+      "score": 17.9
+    }
+  ],
+  "results": [
+    {
+      "id": "0e028ac165d65504",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 44,
+      "column": 24,
+      "original": "true",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 703,
+      "killedBy": [
+        "I16 closure contract acknowledges cancellation only after the changed roster is persisted"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2d8ce569d238e5f6",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 68,
+      "column": 6,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 744,
+      "killedBy": [
+        "I17 closure contract awaits the failed-payment owner transport and identifies an ID-only customer"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "ecdfc9b664ad8ff5",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 69,
+      "column": 27,
+      "original": "||",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 738,
+      "killedBy": [
+        "I17 closure contract awaits the failed-payment owner transport and identifies an ID-only customer"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "6a9f93fa0c1d4420",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "invert-condition",
+      "line": 73,
+      "column": 11,
+      "original": "predicate",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 620,
+      "killedBy": [
+        "I17 closure contract awaits the failed-payment owner transport and identifies an ID-only customer"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "e89e3508a954ffe1",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 77,
+      "column": 41,
+      "original": "10",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 563,
+      "killedBy": [
+        "I17 closure contract persists a failed-payment flag before acknowledging or describing it to the owner"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "22dd962c3ab53b58",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 118,
+      "column": 6,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 561,
+      "killedBy": [
+        "I17 closure compatibility contract persists a resolved-risk flag before acknowledgment and owner notice"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5f2d3da5ac27a223",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 120,
+      "column": 6,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 571,
+      "killedBy": [
+        "I17 closure compatibility contract awaits the resolved-risk owner transport after persisting its hold"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "62b137c45ea4db12",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 145,
+      "column": 8,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 565,
+      "killedBy": [
+        "I17 I18 closure contract awaits ID-only review.closed recovery persistence"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "04833ef26bb3ca01",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 146,
+      "column": 57,
+      "original": "||",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 567,
+      "killedBy": [
+        "I17 I18 closure contract awaits ID-only review.closed recovery persistence"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a53b9815b9590795",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 160,
+      "column": 6,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 540,
+      "killedBy": [
+        "I17 I18 closure contract awaits ID-only invoice.payment_succeeded recovery persistence"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cbaf9fd9e17b9533",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 168,
+      "column": 34,
+      "original": "true",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 583,
+      "killedBy": [
+        "I04 closure contract acknowledges a checkout with missing recipient without attempting delivery"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "57f92b20bf20ed39",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 175,
+      "column": 18,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 593,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "fd94f5366bc02241",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 183,
+      "column": 26,
+      "original": "true",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 533,
+      "killedBy": [
+        "I02 closure contract acknowledges a zero-value renewal without a known subscriber as a no-delivery result"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "acc6dde12428b8af",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 190,
+      "column": 33,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 555,
+      "killedBy": [
+        "I04 closure contract exposes a missing bundle as both HTTP and machine failure before mail"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8dd302a16916021e",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 216,
+      "column": 6,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "unclassified-error",
+      "durationMs": 612,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f1469ac2d4427fa7",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 216,
+      "column": 77,
+      "original": "50",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 600,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "87edd57c2b99b7db",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 220,
+      "column": 12,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 551,
+      "killedBy": [
+        "I05 closure contract persists referral attribution before the owner instruction and acknowledgment",
+        "I05 closure contract awaits the referral owner transport after attribution is stored"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 107,
+        "fail": 2,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "e4b5cfe3eb8e09b9",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 224,
+      "column": 22,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 559,
+      "killedBy": [
+        "I04 closure contract exposes a bundle read exception as a machine failure without pinning raw error text"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d550d5610ac8eada",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 224,
+      "column": 43,
+      "original": "&&",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 549,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9d3941708ff28adc",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 224,
+      "column": 43,
+      "original": "||",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 540,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "ccb87e5ff1146120",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 248,
+      "column": 73,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 565,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "08a417aea4413285",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 249,
+      "column": 27,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 539,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "6439b5c4c4c66fed",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 259,
+      "column": 39,
+      "original": "&&",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 555,
+      "killedBy": [
+        "I02 I04 closure contract never treats an invoice address object as a recipient email"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "761f68f19e19b72a",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 259,
+      "column": 18,
+      "original": "||",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 598,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8f87e715e0416434",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 260,
+      "column": 17,
+      "original": "||",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 550,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "34031eb3f66a057f",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 260,
+      "column": 17,
+      "original": "||",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 541,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "be7f61f871847e60",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 301,
+      "column": 20,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 554,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5bc25fa64e958003",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 321,
+      "column": 19,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 607,
+      "killedBy": [
+        "I04 closure contract persists existing-row re-enrollment before the customer provider attempt"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "30f21bd8f9cd8bf2",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 335,
+      "column": 6,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "unclassified-error",
+      "durationMs": 599,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "403d0aede9793558",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "invert-filter",
+      "line": 369,
+      "column": 20,
+      "original": "!",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "invalid"
+    },
+    {
+      "id": "d65dece1e2667d0b",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 383,
+      "column": 21,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 585,
+      "killedBy": [
+        "I16 closure contract reports zero changed rows when cancellation finds no roster object"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "ef915a3da5d30655",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 396,
+      "column": 11,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 595,
+      "killedBy": [
+        "I16 closure contract acknowledges cancellation only after the changed roster is persisted"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a67fa6eadba99464",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 408,
+      "column": 11,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 596,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9cb46c55f57f3a57",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 420,
+      "column": 21,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 611,
+      "killedBy": [
+        "I17 closure contract reports no payment flag when the roster object is absent"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "bbf4b0d080f627c4",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 428,
+      "column": 10,
+      "original": "&&",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 554,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "e5464b5b580f4f4c",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 432,
+      "column": 13,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 606,
+      "killedBy": [
+        "I17 closure contract persists a failed-payment flag before acknowledging or describing it to the owner",
+        "I17 closure compatibility contract persists a resolved-risk flag before acknowledgment and owner notice"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 107,
+        "fail": 2,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "3710bf0fd8d8d26a",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 434,
+      "column": 19,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 650,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "36e897437475ae56",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "invert-filter",
+      "line": 440,
+      "column": 6,
+      "original": "!",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 553,
+      "killedBy": [
+        "I17 I18 closure contract awaits ID-only review.closed recovery persistence",
+        "I17 I18 closure contract awaits ID-only invoice.payment_succeeded recovery persistence"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 107,
+        "fail": 2,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "e566a89fc1ee59dd",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 445,
+      "column": 18,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 562,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "12412d8f4077e4af",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 450,
+      "column": 10,
+      "original": "&&",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 549,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "87eb26327eb25e2c",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 457,
+      "column": 17,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 567,
+      "killedBy": [
+        "I17 I18 closure contract awaits ID-only review.closed recovery persistence",
+        "I17 I18 closure contract awaits ID-only invoice.payment_succeeded recovery persistence"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 107,
+        "fail": 2,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cebff55ed835a23d",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 479,
+      "column": 60,
+      "original": "16",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 550,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9d3348725fd127f0",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 479,
+      "column": 73,
+      "original": "2",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 577,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5cb87317a51d3eec",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 479,
+      "column": 97,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 568,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9404189765bf9803",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 479,
+      "column": 100,
+      "original": "10",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 573,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1a836d1efaf7b9ec",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 480,
+      "column": 2,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 576,
+      "killedBy": [
+        "I04 I05 closure contract persists the referral lookup before emailing its customer link"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "7cd13ab3470d8351",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 493,
+      "column": 2,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 548,
+      "killedBy": [
+        "I05 closure contract persists referral attribution before the owner instruction and acknowledgment"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1c6b5f7ec72d5608",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 499,
+      "column": 2,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "killed",
+      "durationMs": 562,
+      "killedBy": [
+        "I05 closure contract awaits the referral owner transport after attribution is stored"
+      ],
+      "counts": {
+        "tests": 138,
+        "pass": 108,
+        "fail": 1,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "b9286d430eed84d5",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "drop-await",
+      "line": 562,
+      "column": 65,
+      "original": "await",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 580,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9e6a374380dda01c",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 562,
+      "column": 90,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 562,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a56669617dd62ae8",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 562,
+      "column": 93,
+      "original": "200",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 572,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c76617b857b44716",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boolean",
+      "line": 581,
+      "column": 39,
+      "original": "false",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 565,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "825e0faa4c1fa316",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 594,
+      "column": 35,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 592,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "7d4189d4232409b3",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 594,
+      "column": 38,
+      "original": "10",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 637,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "09edd90541994b9d",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 595,
+      "column": 20,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 656,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "67b4c0b4741c8c11",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "comparison",
+      "line": 595,
+      "column": 16,
+      "original": "||",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 629,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "af361928a5b39ea4",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 595,
+      "column": 36,
+      "original": "0",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 627,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a1723db62dd52ad3",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 595,
+      "column": 39,
+      "original": "10",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 647,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1dc8c1481b66bbd1",
+      "file": "functions/api/stripe-webhook.js",
+      "kind": "boundary-plus-one",
+      "line": 602,
+      "column": 16,
+      "original": "32768",
+      "sourceSHA256": "313aa39ca34c6f6af6f96f61ce75cde58267c4d00f7a022b652c7076e3716fd5",
+      "outcome": "survived",
+      "durationMs": 816,
+      "killedBy": [],
+      "counts": {
+        "tests": 138,
+        "pass": 109,
+        "fail": 0,
+        "todo": 29,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "258c2701a00ac20e",
+      "file": "functions/api/_presend.js",
+      "kind": "invert-filter",
+      "line": 333,
+      "column": 26,
+      "original": "!",
+      "sourceSHA256": "e865bf885b57bd07967ccc920f914ed5d1e42321538d8ea2e65b3178fe321f0d",
+      "outcome": "invalid"
+    },
+    {
+      "id": "51672fa5d62538ba",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "boolean",
+      "line": 62,
+      "column": 28,
+      "original": "false",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 869,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8d7aade497c7e991",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "boolean",
+      "line": 62,
+      "column": 78,
+      "original": "true",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 889,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "99d60845e75e8ae3",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "comparison",
+      "line": 63,
+      "column": 63,
+      "original": "&&",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 1024,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a39dcc14a8ed6d5c",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "comparison",
+      "line": 63,
+      "column": 62,
+      "original": "||",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 963,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5cde9efd0fab017c",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "boundary-plus-one",
+      "line": 63,
+      "column": 91,
+      "original": "0",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 966,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "60a4292f192e86d6",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "boundary-plus-one",
+      "line": 63,
+      "column": 94,
+      "original": "200",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 959,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "407970bd41bca6a3",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "boundary-plus-one",
+      "line": 64,
+      "column": 7,
+      "original": "500",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 959,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "63bcdd8c886b728a",
+      "file": "functions/api/pre-send-check.js",
+      "kind": "boundary-plus-one",
+      "line": 92,
+      "column": 28,
+      "original": "200",
+      "sourceSHA256": "3dfaaf350d8662455049483e18ea83d6814123a098d730d56e83195fdf37acdb",
+      "outcome": "survived",
+      "durationMs": 948,
+      "killedBy": [],
+      "counts": {
+        "tests": 202,
+        "pass": 178,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "337fe60c0d2973e6",
+      "file": "functions/api/weekly-send.js",
+      "kind": "boundary-plus-one",
+      "line": 55,
+      "column": 59,
+      "original": "0",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 849,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "7e215bba8195df81",
+      "file": "functions/api/weekly-send.js",
+      "kind": "comparison",
+      "line": 59,
+      "column": 11,
+      "original": "||",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 765,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "da35db56c009de6b",
+      "file": "functions/api/weekly-send.js",
+      "kind": "comparison",
+      "line": 63,
+      "column": 11,
+      "original": "||",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 697,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9227e00bba2fdb79",
+      "file": "functions/api/weekly-send.js",
+      "kind": "boolean",
+      "line": 79,
+      "column": 40,
+      "original": "true",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 755,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "bdf07804d058e27f",
+      "file": "functions/api/weekly-send.js",
+      "kind": "comparison",
+      "line": 97,
+      "column": 17,
+      "original": "||",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 747,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c0ebca9431942b9a",
+      "file": "functions/api/weekly-send.js",
+      "kind": "boundary-plus-one",
+      "line": 132,
+      "column": 79,
+      "original": "12",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 746,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "4e833c5f6e144e15",
+      "file": "functions/api/weekly-send.js",
+      "kind": "boolean",
+      "line": 134,
+      "column": 24,
+      "original": "true",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 722,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "170edd761fd16ea6",
+      "file": "functions/api/weekly-send.js",
+      "kind": "boundary-plus-one",
+      "line": 172,
+      "column": 78,
+      "original": "12",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 731,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "4ce1081cc18f510f",
+      "file": "functions/api/weekly-send.js",
+      "kind": "comparison",
+      "line": 178,
+      "column": 63,
+      "original": "||",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 686,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1a6b7a35b5f4f754",
+      "file": "functions/api/weekly-send.js",
+      "kind": "comparison",
+      "line": 180,
+      "column": 43,
+      "original": "&&",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 739,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "4ff2711f735df088",
+      "file": "functions/api/weekly-send.js",
+      "kind": "comparison",
+      "line": 180,
+      "column": 43,
+      "original": "||",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 726,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a3f507ab27c03dfe",
+      "file": "functions/api/weekly-send.js",
+      "kind": "boundary-plus-one",
+      "line": 243,
+      "column": 93,
+      "original": "160",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 767,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "10f31364acc5dbb5",
+      "file": "functions/api/weekly-send.js",
+      "kind": "comparison",
+      "line": 273,
+      "column": 6,
+      "original": "&&",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 711,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "04df7092c61ce386",
+      "file": "functions/api/weekly-send.js",
+      "kind": "boundary-plus-one",
+      "line": 287,
+      "column": 16,
+      "original": "32768",
+      "sourceSHA256": "f164d93d09eba3116ea7e014fd5ebd7063e6302533ddc92e6d4bfd7211e861ae",
+      "outcome": "survived",
+      "durationMs": 764,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "41041d0fef9ea391",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 56,
+      "column": 58,
+      "original": "3600000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 750,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "4a3240bee05d2dd3",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 60,
+      "column": 17,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 726,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "57636e1c713d310c",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-filter",
+      "line": 125,
+      "column": 24,
+      "original": "!",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "invalid"
+    },
+    {
+      "id": "975ce8dac3662448",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 125,
+      "column": 81,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 726,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d07a3919eaf84fbf",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-filter",
+      "line": 126,
+      "column": 27,
+      "original": "!",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "invalid"
+    },
+    {
+      "id": "afbfb3476d08ed63",
+      "file": "functions/api/send-status.js",
+      "kind": "invert-filter",
+      "line": 127,
+      "column": 25,
+      "original": "!",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "invalid"
+    },
+    {
+      "id": "c02143e27ef1e258",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 138,
+      "column": 61,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 731,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5a2d805732b5d7bd",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 138,
+      "column": 111,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 776,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a9c581a6e0cb3db6",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 140,
+      "column": 13,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 742,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "b7e6b6f11dfcac0d",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 154,
+      "column": 54,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 707,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "27a0bc80034e3780",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 192,
+      "column": 61,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 738,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "0065733b44d1aff2",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 212,
+      "column": 25,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 822,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cd16729f29a1fb8a",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 212,
+      "column": 24,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 868,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f4194c18e2215db4",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 213,
+      "column": 21,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 829,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "3e16a180e7d9b18e",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 213,
+      "column": 20,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 827,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8e2390c4c83c7d72",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 243,
+      "column": 29,
+      "original": "60000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 791,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "93a1b50c262bde6d",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 263,
+      "column": 17,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 799,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "6333a45995e6110a",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 268,
+      "column": 37,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 753,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c30290764d0d4e93",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 293,
+      "column": 52,
+      "original": "1",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 736,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "7938665ac7281239",
+      "file": "functions/api/send-status.js",
+      "kind": "boolean",
+      "line": 300,
+      "column": 31,
+      "original": "false",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 725,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f3d69858ba68124a",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 301,
+      "column": 48,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 732,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2480705950d2ac59",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 301,
+      "column": 47,
+      "original": "||",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 817,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "345f6756f12e5313",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 301,
+      "column": 76,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 799,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d28ca827b895ca10",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 301,
+      "column": 79,
+      "original": "200",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 723,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1bc21436c61fa0aa",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 22,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 715,
+      "killedBy": [
+        "S7 portal reader counts include the current UTC day at exact midnight"
+      ],
+      "counts": {
+        "tests": 132,
+        "pass": 107,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "bd4d37daf4bba27f",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 25,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 842,
+      "killedBy": [
+        "S7 portal reader counts include the current UTC day at exact midnight"
+      ],
+      "counts": {
+        "tests": 132,
+        "pass": 107,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8d4c13cc2433b486",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 28,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 744,
+      "killedBy": [
+        "S7 portal reader counts include the current UTC day at exact midnight"
+      ],
+      "counts": {
+        "tests": 132,
+        "pass": 107,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "934992902687014a",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 317,
+      "column": 31,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 746,
+      "killedBy": [
+        "S7 portal reader counts include the current UTC day at exact midnight"
+      ],
+      "counts": {
+        "tests": 132,
+        "pass": 107,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "62589c686534f048",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 320,
+      "column": 38,
+      "original": "0",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 787,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2cd0e301706e7da5",
+      "file": "functions/api/send-status.js",
+      "kind": "comparison",
+      "line": 320,
+      "column": 41,
+      "original": "&&",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 757,
+      "killedBy": [
+        "S7 portal reader counts do not include keys from a future UTC day"
+      ],
+      "counts": {
+        "tests": 132,
+        "pass": 107,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d1cfe52193959930",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 320,
+      "column": 57,
+      "original": "10",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 744,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2256bbafbc71091d",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 320,
+      "column": 66,
+      "original": "86400000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "killed",
+      "durationMs": 739,
+      "killedBy": [
+        "S7 portal reader counts include the current UTC day at exact midnight"
+      ],
+      "counts": {
+        "tests": 132,
+        "pass": 107,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "79fe03a4fcc9484d",
+      "file": "functions/api/send-status.js",
+      "kind": "boundary-plus-one",
+      "line": 322,
+      "column": 56,
+      "original": "1000",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 829,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "10ad73d556d11a8d",
+      "file": "functions/api/send-status.js",
+      "kind": "drop-await",
+      "line": 342,
+      "column": 15,
+      "original": "await",
+      "sourceSHA256": "1c24f5289ce6db99ffc41602316e5abecc51d2d6efb18f53cdc031d33e875a36",
+      "outcome": "survived",
+      "durationMs": 739,
+      "killedBy": [],
+      "counts": {
+        "tests": 132,
+        "pass": 108,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f2ffd7f8ac30806f",
+      "file": "functions/leads.js",
+      "kind": "boundary-plus-one",
+      "line": 58,
+      "column": 21,
+      "original": "86400000",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 859,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "75163d1ad4ce45ba",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 76,
+      "column": 14,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 829,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "2626a0d6b1e61e80",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 76,
+      "column": 48,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 817,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "786fb204917e8ff5",
+      "file": "functions/leads.js",
+      "kind": "boolean",
+      "line": 93,
+      "column": 44,
+      "original": "false",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 819,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "383516fa3c0ab1f9",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 113,
+      "column": 6,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 859,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "3c533855e47edb1d",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 131,
+      "column": 12,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 783,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cf5f7a86c57c1d99",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 234,
+      "column": 57,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 915,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "32b553f2545b8cd7",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 240,
+      "column": 31,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 887,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "138af37a1ee0e93d",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 283,
+      "column": 21,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 877,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "0f04f4656759a70e",
+      "file": "functions/leads.js",
+      "kind": "boundary-plus-one",
+      "line": 490,
+      "column": 12,
+      "original": "0",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 937,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5a9361fd3c1abc83",
+      "file": "functions/leads.js",
+      "kind": "boundary-plus-one",
+      "line": 497,
+      "column": 38,
+      "original": "302",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 956,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "b5d48706d1a5eac7",
+      "file": "functions/leads.js",
+      "kind": "boundary-plus-one",
+      "line": 565,
+      "column": 41,
+      "original": "60000",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 955,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "05c312bb35382910",
+      "file": "functions/leads.js",
+      "kind": "boundary-plus-one",
+      "line": 566,
+      "column": 14,
+      "original": "120",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 879,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c7f6c66a77e612d1",
+      "file": "functions/leads.js",
+      "kind": "boundary-plus-one",
+      "line": 566,
+      "column": 35,
+      "original": "60",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 916,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "aa73a5dbcc70fd10",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 583,
+      "column": 17,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 873,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "4300674c361721c2",
+      "file": "functions/leads.js",
+      "kind": "comparison",
+      "line": 583,
+      "column": 17,
+      "original": "===",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 925,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cf5badf741d2162e",
+      "file": "functions/leads.js",
+      "kind": "invert-condition",
+      "line": 583,
+      "column": 46,
+      "original": "predicate",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 829,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a0db0df669cc11a5",
+      "file": "functions/leads.js",
+      "kind": "comparison",
+      "line": 583,
+      "column": 46,
+      "original": "===",
+      "sourceSHA256": "7e596c1d0e551b23720a535d2b99fe35998d0187bd4da0a569788c445ea3db63",
+      "outcome": "survived",
+      "durationMs": 865,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "c062d8e0b0dca946",
+      "file": "functions/api/upload-bundle.js",
+      "kind": "invert-filter",
+      "line": 62,
+      "column": 6,
+      "original": "!",
+      "sourceSHA256": "9776f47348292a6326b4b9db9f0ce1ade1fe48836c11134288f2f7e458fc1aaf",
+      "outcome": "invalid"
+    },
+    {
+      "id": "00172b96184f105a",
+      "file": "functions/api/upload-bundle.js",
+      "kind": "comparison",
+      "line": 71,
+      "column": 43,
+      "original": "&&",
+      "sourceSHA256": "9776f47348292a6326b4b9db9f0ce1ade1fe48836c11134288f2f7e458fc1aaf",
+      "outcome": "survived",
+      "durationMs": 836,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "af20b6b87b21ba01",
+      "file": "functions/api/upload-bundle.js",
+      "kind": "comparison",
+      "line": 71,
+      "column": 43,
+      "original": "||",
+      "sourceSHA256": "9776f47348292a6326b4b9db9f0ce1ade1fe48836c11134288f2f7e458fc1aaf",
+      "outcome": "survived",
+      "durationMs": 832,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "90577cedb63168d2",
+      "file": "functions/api/upload-bundle.js",
+      "kind": "boundary-plus-one",
+      "line": 71,
+      "column": 70,
+      "original": "0",
+      "sourceSHA256": "9776f47348292a6326b4b9db9f0ce1ade1fe48836c11134288f2f7e458fc1aaf",
+      "outcome": "survived",
+      "durationMs": 892,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "7eea0b19781da33c",
+      "file": "functions/api/upload-bundle.js",
+      "kind": "boundary-plus-one",
+      "line": 71,
+      "column": 73,
+      "original": "200",
+      "sourceSHA256": "9776f47348292a6326b4b9db9f0ce1ade1fe48836c11134288f2f7e458fc1aaf",
+      "outcome": "survived",
+      "durationMs": 854,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "72b9d256cc3e277e",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "boundary-plus-one",
+      "line": 15,
+      "column": 30,
+      "original": "0",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "survived",
+      "durationMs": 845,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8c95b2b06dbe3e3b",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "invert-filter",
+      "line": 41,
+      "column": 8,
+      "original": "!",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "invalid"
+    },
+    {
+      "id": "e4d76b87790e3040",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "comparison",
+      "line": 50,
+      "column": 57,
+      "original": "&&",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "survived",
+      "durationMs": 901,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8b714fbc2d1e4fcf",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "comparison",
+      "line": 50,
+      "column": 57,
+      "original": "||",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "survived",
+      "durationMs": 819,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8795a6e6191bb084",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "boundary-plus-one",
+      "line": 50,
+      "column": 84,
+      "original": "0",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "survived",
+      "durationMs": 815,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f7a6b2619a9f2e42",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "boundary-plus-one",
+      "line": 50,
+      "column": 87,
+      "original": "80",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "survived",
+      "durationMs": 763,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "067e2557721da616",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "boundary-plus-one",
+      "line": 62,
+      "column": 15,
+      "original": "0",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "survived",
+      "durationMs": 794,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "3b2fed4f2bf08920",
+      "file": "functions/api/_github-oidc.js",
+      "kind": "boolean",
+      "line": 66,
+      "column": 52,
+      "original": "false",
+      "sourceSHA256": "1e37c126141f717eff0fce157c098024e8c8ce39cb7e515dd81e83d08fc4b11c",
+      "outcome": "survived",
+      "durationMs": 804,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "3fa2b68e2b04b7d3",
+      "file": "functions/api/_cf-access.js",
+      "kind": "boundary-plus-one",
+      "line": 35,
+      "column": 30,
+      "original": "0",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "survived",
+      "durationMs": 798,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "ff8b90160d03b8e0",
+      "file": "functions/api/_cf-access.js",
+      "kind": "invert-filter",
+      "line": 76,
+      "column": 8,
+      "original": "!",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "invalid"
+    },
+    {
+      "id": "7c3ee547d3dda296",
+      "file": "functions/api/_cf-access.js",
+      "kind": "comparison",
+      "line": 89,
+      "column": 58,
+      "original": "&&",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "survived",
+      "durationMs": 813,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "32acce9b957a559e",
+      "file": "functions/api/_cf-access.js",
+      "kind": "comparison",
+      "line": 89,
+      "column": 57,
+      "original": "||",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "survived",
+      "durationMs": 853,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5fa80f2f79c07433",
+      "file": "functions/api/_cf-access.js",
+      "kind": "boundary-plus-one",
+      "line": 89,
+      "column": 86,
+      "original": "0",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "survived",
+      "durationMs": 857,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "b0319ed83ba23b8a",
+      "file": "functions/api/_cf-access.js",
+      "kind": "boundary-plus-one",
+      "line": 89,
+      "column": 89,
+      "original": "80",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "survived",
+      "durationMs": 870,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "b2f7001893e5de41",
+      "file": "functions/api/_cf-access.js",
+      "kind": "boundary-plus-one",
+      "line": 102,
+      "column": 15,
+      "original": "0",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "survived",
+      "durationMs": 847,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "ca14b95bbb806afc",
+      "file": "functions/api/_cf-access.js",
+      "kind": "boolean",
+      "line": 106,
+      "column": 52,
+      "original": "false",
+      "sourceSHA256": "f2407a218c5f1c4afa427e46d5c71226608acfe41d0d067a1125581c7802d2b2",
+      "outcome": "survived",
+      "durationMs": 798,
+      "killedBy": [],
+      "counts": {
+        "tests": 101,
+        "pass": 87,
+        "fail": 0,
+        "todo": 14,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "f7895691ba88612e",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 236,
+      "column": 37,
+      "original": "0",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "killed",
+      "durationMs": 961,
+      "killedBy": [
+        "S7 lifecycle one retained send is known evidence rather than an absent log"
+      ],
+      "counts": {
+        "tests": 172,
+        "pass": 147,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9ccae169a9138a09",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "comparison",
+      "line": 303,
+      "column": 8,
+      "original": "||",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 988,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "1434319a44955255",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 303,
+      "column": 21,
+      "original": "4",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 893,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "fff9e257761e43d6",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "comparison",
+      "line": 306,
+      "column": 8,
+      "original": "||",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 897,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "12f5aa2091a44a08",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 352,
+      "column": 85,
+      "original": "0",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 913,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d50141776b6a72d9",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "comparison",
+      "line": 362,
+      "column": 20,
+      "original": "<=",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "timeout",
+      "durationMs": 30470,
+      "killedBy": [],
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "todo": null,
+        "cancelled": null,
+        "skipped": null
+      }
+    },
+    {
+      "id": "df9b926434f71f5a",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 472,
+      "column": 61,
+      "original": "0",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 771,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "cc882bf145d855ae",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 499,
+      "column": 40,
+      "original": "0",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "killed",
+      "durationMs": 747,
+      "killedBy": [
+        "S7 lifecycle digest puts delivery repair and stale payment review ahead of engagement follow-up"
+      ],
+      "counts": {
+        "tests": 172,
+        "pass": 147,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "eaddb02e3d928afe",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 499,
+      "column": 69,
+      "original": "1",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "killed",
+      "durationMs": 750,
+      "killedBy": [
+        "S7 lifecycle digest puts delivery repair and stale payment review ahead of engagement follow-up"
+      ],
+      "counts": {
+        "tests": 172,
+        "pass": 147,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a8e2eda0c1a29894",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 499,
+      "column": 87,
+      "original": "2",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 749,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "fd4b9a7f1ca841a6",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 500,
+      "column": 41,
+      "original": "3",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 724,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "41fb0b44a64ba225",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 500,
+      "column": 55,
+      "original": "4",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 732,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "92bb21c227928b5d",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 500,
+      "column": 79,
+      "original": "5",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 753,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "fd47c3cce12cf1d2",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 501,
+      "column": 34,
+      "original": "6",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 771,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "40c6ab176d49cadf",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 501,
+      "column": 53,
+      "original": "7",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 714,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "9e1ddaa0cdb8e6d5",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 501,
+      "column": 64,
+      "original": "9",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 753,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "38bdf79d3533a5df",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 503,
+      "column": 34,
+      "original": "9",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 715,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "edfc972d157b3e76",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 503,
+      "column": 59,
+      "original": "9",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 768,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a8b639c74b88ae5c",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 512,
+      "column": 61,
+      "original": "10",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 745,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "fe803bb14bd32b5a",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 531,
+      "column": 89,
+      "original": "10",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 711,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "333535ef4fb6450a",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "comparison",
+      "line": 538,
+      "column": 48,
+      "original": "||",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 730,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "5b7e1cb17cd909ea",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "comparison",
+      "line": 538,
+      "column": 47,
+      "original": "||",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 795,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "014fac5a0f3b2a1b",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 592,
+      "column": 52,
+      "original": "1000",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 758,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "a13ae0c9c8e3b86c",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "invert-condition",
+      "line": 596,
+      "column": 11,
+      "original": "predicate",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "timeout",
+      "durationMs": 30415,
+      "killedBy": [
+        "S6 I30 engagement reads all 1005 metadata events across the R2 page boundary",
+        "S6 I27/I30 second-page list failure cannot publish a partial aggregate or prune evidence"
+      ],
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "todo": null,
+        "cancelled": null,
+        "skipped": null
+      }
+    },
+    {
+      "id": "d55778d353625694",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "drop-await",
+      "line": 602,
+      "column": 19,
+      "original": "await",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "killed",
+      "durationMs": 738,
+      "killedBy": [
+        "S7 lifecycle storage uses the resolved send history for delivery diagnosis"
+      ],
+      "counts": {
+        "tests": 172,
+        "pass": 147,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "d0ae3927e6904ec0",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "comparison",
+      "line": 602,
+      "column": 18,
+      "original": "||",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "killed",
+      "durationMs": 758,
+      "killedBy": [
+        "S7 lifecycle storage uses the resolved send history for delivery diagnosis"
+      ],
+      "counts": {
+        "tests": 172,
+        "pass": 147,
+        "fail": 1,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "8de9fd129b7535b6",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "boundary-plus-one",
+      "line": 613,
+      "column": 37,
+      "original": "86400000",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "survived",
+      "durationMs": 762,
+      "killedBy": [],
+      "counts": {
+        "tests": 172,
+        "pass": 148,
+        "fail": 0,
+        "todo": 24,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "b52ab5dcc0c196d2",
+      "file": "functions/api/_lifecycle.js",
+      "kind": "comparison",
+      "line": 638,
+      "column": 20,
+      "original": "<",
+      "sourceSHA256": "79c93ed2929056a18ffa1bb4910823b676e58c2bf5f0e9dc659b37c36c6c6714",
+      "outcome": "timeout",
+      "durationMs": 30372,
+      "killedBy": [],
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "todo": null,
+        "cancelled": null,
+        "skipped": null
+      }
+    }
+  ],
+  "testSHA256": {
+    "test/revenue/webhook.test.mjs": "944cbd7450f341e14cc45889e4fc04501da3630950f4db305b82ca5201430f75",
+    "test/revenue/webhook-mutation.test.mjs": "db1edbedfc66542b21f3bcc733bf0cc819724f9590267da0f38922ae1a611e5e",
+    "test/revenue/weekly-watchdog.test.mjs": "bca39a146301706fd5f3b953932ac0fa6fac41c8dfdade557fb98ce6152fef0a",
+    "test/revenue/failure-injection.test.mjs": "fc04a727f38f7f0c75c35000826764cefdc42a54c5b7b395d6b024388df658ac",
+    "test/revenue/operations-mutation.test.mjs": "f8206c6af7eca0e2be2c376dd77f618d3e970da70aaf0f9185d29064941a7878",
+    "test/revenue/presend-contracts.test.mjs": "ca0b890f0e6aa67bfc546d21e16dd2c39a11cba5078ae524269fb6d0e299ca94",
+    "test/revenue/gate-mutation.test.mjs": "0a460382557a6cea92bbc546351d2f7f20266cc058227b06db4328d638b68ebf",
+    "test/revenue/access-storage.test.mjs": "414972c09459bdbd90bd2bffcc9779dcfc82c483f69c3e5da34fd76254e94fef",
+    "test/revenue/auth-portal.test.mjs": "0393d36bb94e646be5ca96a40edf54897d8cfac3198b8c944b48682cbaa25aa7",
+    "test/revenue/access-mutation.test.mjs": "b68734e02d34809978f1bd9b65c08fb2ba6623a4eca65cafddc0929b3179226b",
+    "test/revenue/lifecycle-mutation.test.mjs": "cab70a6bbd794737b29414d55f84180794e1d3ec1b3753b0720fd93c9349044a"
+  },
+  "harnessSHA256": {
+    "test/harness/index.mjs": "6c13f622434348f74b2c2da120e755d83aea07a6d2d8c2d4c9317a1e1ea323ca",
+    "test/harness/mutate.mjs": "35fb8047e7273654c41835d16f3f6da78ca5eeaf0b6d5a37a3b7222a24a6489c",
+    "test/harness/package-lock.json": "0456d93f5aa0a9a96e643b00402ac6e7750f223d84c347de822f205552c33df0"
+  },
+  "completedAt": "2026-09-27T06:43:33.926Z"
+}

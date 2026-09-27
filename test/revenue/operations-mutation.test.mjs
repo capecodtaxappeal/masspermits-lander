@@ -202,3 +202,259 @@ test("S7 lifecycle collision warns about identity attribution and preserves both
   assert.equal(result.rows.length,2);assert.equal(result.response.unattributable,2);assert.equal(result.alert,true);
   assert.ok(result.rows.every(r=>r.action==="lengthen_join_key"));
 });
+
+
+// Exhaustive mutation follow-up: independent observable sender/status contracts.
+for(const [label,handler,path] of [
+  ["sender",h.weeklySend,"/api/weekly-send"],["watchdog",h.sendStatus,"/api/send-status"]
+]) scenario("S7 "+label+" rejects missing authorization with 401 before storage",async w=>{
+  const r=await w.call(handler,path);
+  assert.equal(r.status,401);assert.equal((await r.json()).error,"unauthorized");
+  assert.equal(w.mail.length,0);assert.equal(w.r2.ops.length,0);
+});
+scenario("S7 ordinary weekly mail retains recipient first name, private link, dated bytes and success evidence",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[]);
+  const r=await call(w,h.weeklySend,"/api/weekly-send"),b=await r.json();
+  assert.equal(b.ok,true);assert.equal(b.delivered,1);assert.equal(b.failed,0);
+  assert.equal(w.mail.length,1);
+  const m=w.mail[0];
+  assert.deepEqual(m.to,["casey@example.com"]);assert.equal(m.from,w.env.FROM_EMAIL);
+  assert.equal(m.subject,"Your weekly MassPermits leads");
+  assert.match(m.html,/<p>Hi Casey,/);assert.doesNotMatch(m.html,/<p>Hi TEST,/);
+  assert.ok(m.html.includes("/api/my-leads?t="+TOKEN));
+  assert.equal(m.attachments[0].filename,"MassPermits-weekly-2026-10-26.zip");
+  assert.deepEqual(Buffer.from(m.attachments[0].content,"base64"),
+    Buffer.from("504b0506000000000000000000000000000000000000","hex"));
+});
+scenario("S7 unnamed legacy recipient without a token still gets attachment without a fabricated private link",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[]);
+  w.r2.set("subscribers.json",[{email:"casey@example.com"}]);
+  const b=await (await call(w,h.weeklySend,"/api/weekly-send")).json();
+  assert.equal(b.delivered,1);assert.equal(w.mail.length,1);
+  assert.match(w.mail[0].html,/<p>Hi,/);
+  assert.doesNotMatch(w.mail[0].html,/\/api\/my-leads\?t=|undefined/);
+});
+for(const [label,refresh,parts] of [
+  ["healthy but disclosed",{ok:true,coverage:{disclose:true,live_sources:4,expected_sources:7,
+    monthly_sources:["town-a, MA"]}},["<b>4 of 7</b>","town-a","publish their permits"]],
+  ["degraded without coverage",{ok:false,degraded:true},["<b>fewer of our usual</b>"]],
+  ["disclosed without monthly towns",{ok:true,coverage:{disclose:true,live_sources:4,expected_sources:7,
+    monthly_sources:[]}},["<b>4 of 7</b>"]]
+]) scenario("S7 "+label+" keeps the disclosure subject and accurate coverage wording",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[]);
+  w.r2.set("refresh-status.json",{ran_at:NOW,...refresh});
+  const b=await (await call(w,h.weeklySend,"/api/weekly-send")).json();
+  assert.equal(b.delivered,1);assert.equal(w.mail.length,1);
+  const m=w.mail[0];assert.equal(m.subject,"Your weekly MassPermits leads: reduced coverage, please read");
+  for(const text of parts)assert.ok(m.html.includes(text),text);
+  if(!refresh.coverage?.monthly_sources?.length)assert.doesNotMatch(m.html,/publish their permits/);
+  assert.equal(w.r2.json("last-send-attempt.json").degraded,true);
+});
+for(const [label,age,expected] of [
+  ["one millisecond before",8*DAY-1,200],["exactly at",8*DAY,500],["one millisecond after",8*DAY+1,500]
+]) scenario("S7 sender refresh freshness "+label+" eight days",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[]);
+  w.r2.set("refresh-status.json",{ok:true,ran_at:new Date(w.now-age).toISOString()});
+  const r=await call(w,h.weeklySend,"/api/weekly-send");
+  assert.equal(r.status,expected);assert.equal(w.mail.length,expected===200?1:0);
+});
+scenario("S7 short provider rejection preserves its leading diagnostic in the private log",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[]);
+  await call(w,h.weeklySend,"/api/weekly-send");
+  const sent=w.r2.json("feed-send-log.json")[0].sent;
+  assert.equal(sent[0].ok,false);assert.equal(sent[0].error,"resend 500 TEST_PROVIDER_FAILURE");
+},{mailResponses:[{status:500,body:"TEST_PROVIDER_FAILURE"}]});
+scenario("S7 first weekly result creates a log when no prior log object exists",async w=>{
+  seed(w);await w.r2.delete("feed-send-log.json");
+  const b=await (await call(w,h.weeklySend,"/api/weekly-send")).json();
+  assert.equal(b.delivered,1);
+  const log=w.r2.json("feed-send-log.json");
+  assert.equal(log.length,1);assert.equal(log[0].at,NOW);assert.equal(log[0].sent[0].ok,true);
+});
+for(const skip of [false,true]) scenario("S7 "+(skip?"skipped":"accepted")+" weekly result preserves the new evidence and prior outcomes",async w=>{
+  seed(w);
+  const history=Array.from({length:3},(_,i)=>({at:new Date(w.now-(i+1)*DAY).toISOString(),
+    bundle_etag:skip&&i===0?"OPS_WEEKLY_TEST":"HISTORY_TEST_"+i,
+    sent:[{to:"casey@example.com",ok:true}],history_TEST:i}));
+  w.r2.set("feed-send-log.json",history);
+  const r=await call(w,h.weeklySend,"/api/weekly-send");assert.equal(r.status,200);
+  assert.equal(w.mail.length,skip?0:1);
+  const saved=w.r2.json("feed-send-log.json");
+  assert.equal(saved.length,4);assert.equal(saved[0].at,NOW);
+  assert.deepEqual(saved.slice(1),history);
+  if(skip)assert.match(saved[0].skipped,/identical bundle/);
+});
+scenario("S7 skip response waits for its attempted evidence write",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[{at:DUE,bundle_etag:"OPS_WEEKLY_TEST",
+    sent:[{to:"casey@example.com",ok:true}]}]);
+  const put=w.r2.put.bind(w.r2);let release,entered;
+  const hold=new Promise(r=>{release=r;}),started=new Promise(r=>{entered=r;});
+  w.r2.put=async(key,...args)=>{if(key==="feed-send-log.json"){entered();await hold;}return put(key,...args);};
+  let finished=false;
+  const pending=call(w,h.weeklySend,"/api/weekly-send").then(r=>{finished=true;return r;});
+  try{await Promise.race([started,pending.then(()=>{throw new Error("Response finished before evidence write began");})]);
+    await new Promise(r=>setImmediate(r));assert.equal(finished,false);assert.equal(w.mail.length,0);}
+  finally{release();await pending;}
+  assert.equal(w.r2.json("feed-send-log.json")[0].at,NOW);
+});
+scenario("S7 ordinary provider request waits for the attempted marker write",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[]);
+  const put=w.r2.put.bind(w.r2);let release,entered;
+  const hold=new Promise(r=>{release=r;}),started=new Promise(r=>{entered=r;});
+  w.r2.put=async(key,...args)=>{if(key==="last-send-attempt.json"){entered();await hold;}return put(key,...args);};
+  const pending=call(w,h.weeklySend,"/api/weekly-send");
+  try{await Promise.race([started,pending.then(()=>{throw new Error("Response finished before attempt marker began");})]);
+    await new Promise(r=>setImmediate(r));assert.equal(w.mail.length,0);}
+  finally{release();await pending;}
+  assert.equal(w.mail.length,1);
+});
+scenario("S7 watchdog retains historical timestamps and coverage when this week has no selected result",async w=>{
+  seed(w);
+  const old="2026-10-19T14:00:00.000Z",coverage={live_sources:4,expected_sources:7};
+  w.r2.set("last-send-attempt.json",{at:old});
+  w.r2.set("feed-send-log.json",[{at:old,coverage,sent:[{to:"casey@example.com",ok:true}]}]);
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.verdict,"missed");assert.equal(b.last_attempt_at,old);assert.equal(b.last_log_at,old);
+  assert.equal(b.last_subscribers,0);assert.deepEqual(b.last_coverage,coverage);
+  assert.ok(b.detail.includes(old));assert.equal(w.mail.length,0);
+});
+scenario("S7 partial-send diagnosis reports failure count against the actual attempt size",async w=>{
+  seed(w);w.r2.set("last-send-attempt.json",{at:DUE});
+  w.r2.set("feed-send-log.json",[{at:DUE,sent:[
+    {to:"casey@example.com",ok:true},{to:"casey+two@example.com",ok:false,error:"TEST rejection"}]}]);
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.verdict,"partial");assert.equal(b.retry_safe,false);assert.equal(b.last_subscribers,2);
+  assert.match(b.detail,/1 of 2 deliveries FAILED/);
+});
+scenario("S7 watchdog attempt age remains a readable rounded duration",async w=>{
+  seed(w);w.r2.set("feed-send-log.json",[]);
+  w.r2.set("last-send-attempt.json",{at:new Date(w.now-1.95*3600_000).toISOString()});
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.verdict,"unknown");assert.equal(b.retry_safe,false);
+  assert.match(b.detail,/attempted (?:1\.9|1\.95|2(?:\.0+)?)h/);
+});
+scenario("S7 missing unpublished portal keeps the documented fresh-ZIP fallback state",async w=>{
+  seed(w);await w.r2.delete("latest-weekly.html");
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.portal.state,"not_shipped");assert.equal(b.portal.alert,false);assert.equal(b.verdict,"ok");
+  assert.equal(b.portal.published_at,null);assert.equal(b.portal.age_hours,null);
+});
+scenario("S7 portal staleness begins immediately after the eight-day boundary",async w=>{
+  seed(w);const uploaded=new Date(w.now-8*DAY-1).toISOString();
+  w.r2.set("latest-weekly.html","TEST",{uploaded});w.r2.set("latest-weekly.zip","TEST",{uploaded});
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.portal.state,"stale");assert.equal(b.portal.alert,true);assert.equal(b.retry_safe,false);
+  assert.match(b.portal.detail,/in 8 days/);
+});
+scenario("S7 portal publication drift uses the documented nearest-minute value",async w=>{
+  seed(w);const uploaded="2026-10-26T10:00:00.000Z";
+  w.r2.set("latest-weekly.html","TEST",{uploaded});
+  w.r2.set("latest-weekly.zip","TEST",{uploaded:new Date(Date.parse(uploaded)+15.5*60_000).toISOString()});
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.portal.drift_minutes,16);assert.equal(b.portal.state,"drift");assert.equal(b.portal.alert,true);
+});
+scenario("S7 blank-email roster rows do not create fabricated unserved identities",async w=>{
+  seed(w);w.r2.set("subscribers.json",[
+    {email:"casey@example.com",active:true},{email:"",active:true},{active:true}]);
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.deepEqual(b.roster_gap,[]);assert.equal(b.verdict,"ok");
+});
+
+scenario("S7 clean delivery diagnosis reports its actual accepted-recipient count",async w=>{
+  seed(w);
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.verdict,"ok");assert.match(b.detail,/delivered to 1 subscriber\(s\)/);
+});
+scenario("S7 roster-gap diagnosis preserves accepted and unserved counts independently",async w=>{
+  seed(w);w.r2.set("subscribers.json",[
+    {email:"casey@example.com",active:true},{email:"casey+two@example.com",active:true}]);
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.verdict,"roster_gap");assert.equal(b.retry_safe,false);
+  assert.match(b.detail,/delivered to 1 subscriber\(s\), but 1 ACTIVE subscriber\(s\)/);
+  assert.equal(b.roster_gap.length,1);
+});
+scenario("S7 partial delivery still exposes its unserved eligible recipient in nested gap evidence",async w=>{
+  seed(w);w.r2.set("subscribers.json",[
+    {email:"casey@example.com",active:true},{email:"casey+two@example.com",active:true}]);
+  w.r2.set("feed-send-log.json",[{at:DUE,sent:[
+    {to:"casey@example.com",ok:true},{to:"casey+two@example.com",ok:false,error:"TEST rejection"}]}]);
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.verdict,"partial");assert.equal(b.retry_safe,false);
+  assert.equal(b.roster_gap.length,1);
+});
+
+scenario("S7 portal reader counts include the current UTC day at exact midnight",async w=>{
+  seed(w);
+  const midnight=Date.parse("2026-10-27T00:00:00.000Z");
+  for(const [at,tok] of [[Date.parse(DUE),"MIDDAY_TEST"],[midnight,"MIDNIGHT_TEST"]])
+    w.r2.set("portal-access/"+new Date(at).toISOString().slice(0,10)+"/"+at+"-TEST","",
+      {customMetadata:{tok}});
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.portal.opens_since_due,2);assert.equal(b.portal.distinct_readers_since_due,2);
+},{now:"2026-10-27T00:00:00.000Z"});
+scenario("S7 portal reader counts do not include keys from a future UTC day",async w=>{
+  seed(w);
+  const tomorrow=Date.parse("2026-10-27T12:00:00.000Z");
+  w.r2.set("portal-access/2026-10-27/"+tomorrow+"-TEST","",{customMetadata:{tok:"FUTURE_TEST"}});
+  const b=await (await call(w,h.sendStatus,"/api/send-status")).json();
+  assert.equal(b.portal.opens_since_due,0);assert.equal(b.portal.distinct_readers_since_due,0);
+});
+
+scenario("S7 independently stale HTML alerts when ZIP head metadata is absent",async w=>{
+  seed(w);
+  const uploaded=new Date(Date.parse(NOW)-9*DAY).toISOString();
+  w.r2.set("latest-weekly.html","<!doctype html><p>town-a TEST</p>",{uploaded});
+  w.r2.store.delete("latest-weekly.zip");
+  const r=await call(w,h.sendStatus,"/api/send-status");
+  assert.equal(r.status,200);
+  const b=await r.json();
+  assert.equal(b.verdict,"portal_stale");assert.equal(b.retry_safe,false);
+  assert.equal(b.portal.state,"stale");assert.equal(b.portal.alert,true);
+  assert.equal(b.portal.published_at,uploaded);assert.equal(b.portal.age_hours,216);
+  assert.equal(b.portal.drift_minutes,null);
+  assert.equal(w.mail.length,0);assert.equal(w.r2.ops.some(o=>o.op==="put"||o.op==="delete"),false);
+});
+
+scenario("S7 independently stale HTML alerts when the ZIP head promise rejects asynchronously",async w=>{
+  seed(w);
+  const uploaded=new Date(Date.parse(NOW)-9*DAY).toISOString();
+  w.r2.set("latest-weekly.html","<!doctype html><p>town-a TEST</p>",{uploaded});
+  const head=w.r2.head.bind(w.r2);
+  let rejected=false;
+  w.r2.head=async key=>{
+    if(key==="latest-weekly.zip") {
+      await Promise.resolve();rejected=true;throw new Error("ZIP_HEAD_TEST");
+    }
+    return head(key);
+  };
+  const r=await call(w,h.sendStatus,"/api/send-status");
+  assert.equal(r.status,200);
+  const b=await r.json();
+  assert.equal(rejected,true);
+  assert.equal(b.verdict,"portal_stale");assert.equal(b.retry_safe,false);
+  assert.equal(b.portal.state,"stale");assert.equal(b.portal.alert,true);
+  assert.equal(b.portal.published_at,uploaded);assert.equal(b.portal.age_hours,216);
+  assert.equal(b.portal.drift_minutes,null);
+  assert.equal(w.mail.length,0);assert.equal(w.r2.ops.some(o=>o.op==="put"||o.op==="delete"),false);
+});
+
+scenario("S7 an asynchronously rejected HTML head retains the current not-shipped fallback semantics",async w=>{
+  seed(w);
+  const head=w.r2.head.bind(w.r2);
+  let rejected=false;
+  w.r2.head=async key=>{
+    if(key==="latest-weekly.html") {
+      await Promise.resolve();rejected=true;throw new Error("HTML_HEAD_TEST");
+    }
+    return head(key);
+  };
+  const r=await call(w,h.sendStatus,"/api/send-status");
+  assert.equal(r.status,200);
+  const b=await r.json();
+  assert.equal(rejected,true);
+  assert.equal(b.verdict,"ok");assert.equal(b.retry_safe,false);
+  assert.equal(b.portal.state,"not_shipped");assert.equal(b.portal.alert,false);
+  assert.equal(b.portal.published_at,null);assert.equal(b.portal.age_hours,null);
+  assert.equal(b.portal.drift_minutes,null);
+  assert.equal(w.mail.length,0);assert.equal(w.r2.ops.some(o=>o.op==="put"||o.op==="delete"),false);
+});

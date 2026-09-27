@@ -10,13 +10,15 @@ These are published branches for review, not deployed fixes. No draft pull reque
 | C02 durable enrollment before mail, partial | claude/codex-fix-c02 | 84a06d41860349095170915a588f7cc12481b141 | claude/codex-revenue-harness | 352 / 5 / 65 |
 | C20 preserve source after failed aggregate save, partial | claude/codex-fix-c20-retention | 53e54003372646b6eec31cae434b975dcd49abb0 | claude/codex-revenue-harness | 342 / 4 known / 66 |
 | C21 remove unsafe refresh guidance | claude/codex-fix-c21 | acbf5a01120f0a432f4b602d56a2eb2184471cc9 | claude/codex-revenue-harness | 343 / 4 known / 67 |
-| C05 conditional roster updates | claude/codex-fix-c05 | In progress, uncommitted | claude/codex-fix-c02 | Pending final verification |
+| C20 inbox uncertainty, partial | claude/codex-fix-c20-inbox | af369f90c5dbecc46c309ee8a30e2a381491322a | claude/codex-revenue-harness | 533 / 4 known / 64 |
+| C19 response privacy, partial | claude/codex-fix-c19-responses | 9762e4979d7e60e746ddb9f1ccd15cd60d53f9e4 | claude/codex-revenue-harness | 502 / 5 / 65 |
+| C05 conditional roster updates | claude/codex-fix-c05 | 39685135e397673ff8dc2eceb89e4b83b34be4b5 | claude/codex-fix-c02 | 383 / 5 / 63 |
 
 Each sibling worktree under .git/codex-session-worktrees/fix-<id> contains its own exact HANDOFF.md, SESSION_LOG.md, review body at docs/codex/fixes/<ID>.md, and before/after evidence. Test totals differ by branch because these are separate snapshots, not a merged fixes branch. All changes require owner review at merge. No merge is performed here.
 
 ## Additional structural failure
 
-C04a and C02 have the four approved baseline failures plus "P1-14 no real email address in any added file". That test scans entire changed files and now scans the webhook's unchanged static addresses. The source diffs add no address, but this is an unexpected fifth failure, not an approved baseline or a green suite. Do not modify test/mission/ or remove source literals merely to evade it. These branches are not merge-ready until the scope check is legitimately re-anchored.
+C04a, C02, C05 and C19-responses have the four approved baseline failures plus "P1-14 no real email address in any added file". That test scans entire changed files and now scans the webhook's unchanged static addresses. The source diffs add no address, but this is an unexpected fifth failure, not an approved baseline or a green suite. Do not modify test/mission/ or remove source literals merely to evade it. These branches are not merge-ready until the scope check is legitimately re-anchored.
 
 ## Review decisions
 
@@ -25,8 +27,12 @@ D-6: Merge C15 controlled download failures? Recommend: yes, because unreadable 
 D-7: Merge C04a identity precedence? Recommend: yes, because an old customer event must not change the replacement customer's payment flag.
 D-8: Merge the C02 enrollment prerequisite? Recommend: yes, because a purchase must not be acknowledged after its roster update failed before any customer mail.
 D-9: Merge C20 retention prerequisite? Recommend: yes, because source events must survive a failed replacement save.
-D-10: Review C05 after conflict tests pass. Recommend: conditional roster writes with bounded recomputation, because concurrent events otherwise overwrite unrelated changes.
+D-10: Merge C05 after its dependency and checks are reviewed? Recommend: yes, because concurrent events otherwise overwrite valid changes.
 D-11: Merge C21 operator guidance? Recommend: yes, because suggesting a workflow edit on main can trigger an unplanned production run.
+
+D-12: Merge the response privacy fix after checks and compatibility are reviewed? Recommend: yes, because responses need not expose identities or raw provider details.
+
+D-13: Merge the inbox uncertainty fix after review? Recommend: yes, because unreadable or malformed evidence must not be treated as an absent installation.
 
 These are review recommendations, not claims that Patrick has accepted the remaining findings. The latest owner preauthorization allows creating draft fixes; it does not authorize deployment, customer mail, billing changes or policy choices.
 

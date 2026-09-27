@@ -1,0 +1,36 @@
+{
+  "at": "2026-09-27T07:08:00.373Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/harness-contracts.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 20,
+    "suites": 0,
+    "pass": 13,
+    "fail": 7,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "failures": [
+    "HARNESS R2 list limit too large 1001 agrees with local workerd",
+    "HARNESS R2 list limit zero agrees with local workerd",
+    "HARNESS R2 list limit negative two agrees with local workerd",
+    "HARNESS R2 list limit default sentinel negative one agrees with local workerd",
+    "HARNESS R2 list limit negative fraction agrees with local workerd",
+    "HARNESS R2 list limit fraction below one agrees with local workerd",
+    "HARNESS R2 list limit too large 2000 agrees with local workerd"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "HARNESS R2 list limit too large 1001 agrees with local workerd",
+    "HARNESS R2 list limit zero agrees with local workerd",
+    "HARNESS R2 list limit negative two agrees with local workerd",
+    "HARNESS R2 list limit default sentinel negative one agrees with local workerd",
+    "HARNESS R2 list limit negative fraction agrees with local workerd",
+    "HARNESS R2 list limit fraction below one agrees with local workerd",
+    "HARNESS R2 list limit too large 2000 agrees with local workerd"
+  ],
+  "error": null
+}

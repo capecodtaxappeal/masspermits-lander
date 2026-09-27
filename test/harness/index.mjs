@@ -123,7 +123,16 @@ export class MemoryR2 {
     const prefix = options.prefix || "";
     this.record("list", prefix, { cursor: options.cursor });
     const after = options.cursor ? Buffer.from(options.cursor, "base64url").toString("utf8") : "";
-    const limit = Math.max(1, Math.min(1000, options.limit ?? 1000));
+    let limit = Math.max(1, Math.min(1000, options.limit ?? 1000));
+    // Observed local workerd numeric behavior: truncate, then use -1 as default.
+    // Leave unobserved nonnumeric/nonfinite coercions on the existing path.
+    if (typeof options.limit === "number" && Number.isFinite(options.limit)) {
+      const supplied = Math.trunc(options.limit);
+      if (supplied === -1) limit = 1000;
+      else if (supplied < 1 || supplied > 1000)
+        throw new Error("list: MaxKeys params must be positive integer <= 1000. (10022)");
+      else limit = supplied;
+    }
     const found = [...this.store.values()].filter((o) => o.key.startsWith(prefix) && o.key > after)
       .sort((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0);
     const selected = found.slice(0, limit);

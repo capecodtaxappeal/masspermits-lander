@@ -16,6 +16,14 @@ const env = { TEMP: temp, TMP: temp, TMPDIR: temp,
 for (const name of ["SystemRoot", "WINDIR", "PATH", "Path", "PATHEXT", "COMSPEC"])
   if (process.env[name]) env[name] = process.env[name];
 const files = process.argv.slice(2);
+const labelAt = files.indexOf("--label");
+let label = null;
+if (labelAt >= 0) {
+  label = files[labelAt + 1];
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/.test(label || "")) throw new Error("Invalid local report label");
+  files.splice(labelAt, 2);
+  if (files.includes("--label")) throw new Error("Duplicate report label");
+}
 const args = ["--test", "--test-reporter=tap", ...(files.length ? files :
   ["test/*.test.mjs","test/mission/*.test.mjs","functions/api/*.test.mjs","test/revenue/*.test.mjs"])];
 const child = spawnSync(process.execPath, args, { cwd: root, env, encoding: "utf8",
@@ -41,5 +49,9 @@ const summary = { at: new Date().toISOString(), node: process.version, command: 
   unexpected: failures.filter((x) => !knownNames.includes(x)), error: child.error?.message || null };
 writeFileSync(resolve(output, "last.tap.txt"), text);
 writeFileSync(resolve(output, "last-summary.json"), JSON.stringify(summary, null, 2) + "\n");
+if (label) {
+  writeFileSync(resolve(output, label + ".tap.txt"), text);
+  writeFileSync(resolve(output, label + "-summary.json"), JSON.stringify(summary, null, 2) + "\n");
+}
 console.log(JSON.stringify(summary, null, 2));
 process.exitCode = child.status ?? 1;

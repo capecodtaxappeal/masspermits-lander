@@ -7,6 +7,14 @@ import { MemoryR2, withWorld, signedRequest, stripeEvent, loadHandlers, TEST_WEB
 let mf, real, externalAttempts = 0;
 const worker = `export default { async fetch(request, env) {
   const path = new URL(request.url).pathname;
+  if (path === "/list-limit") {
+    const options=await request.json();
+    try {
+      const page=await env.BUNDLES.list(options);
+      return Response.json({accepted:true,count:page.objects.length,
+        truncated:page.truncated,hasCursor:!!page.cursor});
+    } catch(e) { return Response.json({accepted:false,errorClass:e.name}); }
+  }
   if (path === "/body") {
     await env.BUNDLES.put("headers_TEST","abc",{httpMetadata:{contentType:"text/plain",cacheControl:"private"}});
     const o=await env.BUNDLES.get("headers_TEST");const headers=new Headers();o.writeHttpMetadata(headers);
@@ -134,4 +142,33 @@ test("HARNESS fault queue consumes exactly one selected storage operation", asyn
   b.failNext("get","a");
   await assert.rejects(()=>b.get("a"),/TEST injected/);
   assert.equal(await (await b.get("a")).text(),"TEST");
+});
+
+// Numeric cases observed against the same denied-transport local workerd binding.
+// Nonnumeric/nonfinite coercions are deliberately outside this finite table.
+for (const [label,limit,count,truncated] of [
+  ["omitted",undefined,2,false], ["maximum 1000",1000,2,false],
+  ["too large 1001",1001,null,false], ["zero",0,null,false],
+  ["negative two",-2,null,false], ["default sentinel negative one",-1,2,false],
+  ["negative fraction",-1.5,2,false], ["fraction below one",0.5,null,false],
+  ["fraction above one",1.5,1,true], ["fraction above maximum",1000.5,2,false],
+  ["too large 2000",2000,null,false],
+]) test("HARNESS R2 list limit "+label+" agrees with local workerd",async()=>{
+  const prefix="limit_contract_TEST/"+label.replaceAll(" ","_")+"/";
+  const fake=new MemoryR2();
+  for(const bucket of [fake,real])for(let i=0;i<2;i++)
+    await bucket.put(prefix+i,"TEST",{customMetadata:{marker:"TEST"}});
+  const options={prefix,include:["customMetadata"]};
+  if(limit!==undefined)options.limit=limit;
+  const response=await mf.dispatchFetch("https://offline.invalid/list-limit",{
+    method:"POST",body:JSON.stringify(options)});
+  const actual=await response.json();
+  assert.deepEqual(actual,count===null?{accepted:false,errorClass:"Error"}:
+    {accepted:true,count,truncated,hasCursor:truncated});
+  let simulated;
+  try {
+    const page=await fake.list(options);
+    simulated={accepted:true,count:page.objects.length,truncated:page.truncated,hasCursor:!!page.cursor};
+  } catch(e) { simulated={accepted:false,errorClass:e.name}; }
+  assert.deepEqual(simulated,actual);
 });

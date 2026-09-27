@@ -1,7 +1,7 @@
 // Deterministic, test-only mutation runner. Never edits tracked production source.
 import { parse } from "acorn";
 import { createHash } from "node:crypto";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
 import { resolve, dirname, relative, sep, isAbsolute } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -23,6 +23,7 @@ const T = n => "test/revenue/"+n+".test.mjs";
 const access=[T("access-storage"),T("auth-portal"),T("access-mutation")];
 const weekly=[T("weekly-watchdog"),T("failure-injection"),T("operations-mutation")];
 const gate=[...weekly,T("presend-contracts"),T("gate-mutation")];
+const lifecycle=[...weekly,T("lifecycle-mutation")];
 const targets=[
   ["functions/api/stripe-webhook.js",[T("webhook"),T("webhook-mutation")]],
   ["functions/api/_presend.js",gate],
@@ -38,7 +39,7 @@ const targets=[
   ["functions/api/_github-oidc.js",access],
   ["functions/api/_cf-access.js",access],
   ["functions/api/mail-owner.js",[T("auth-portal"),T("operations-mutation")]],
-  ["functions/api/_lifecycle.js",weekly],
+  ["functions/api/_lifecycle.js",lifecycle],
 ].filter(([file])=>!only||file===only);
 for(const [,tests] of targets) for(const f of tests)
   if(!existsSync(resolve(ROOT,f))) throw new Error("Required test file missing: "+f);
@@ -127,7 +128,15 @@ function run(tests,sourceRoot) {
       cwd:ROOT,env:{...envBase,REVENUE_SOURCE_ROOT:sourceRoot},windowsHide:true,stdio:["ignore","pipe","pipe"]});
     child.stdout.on("data",x=>{stdout+=x;if(stdout.length>16*1024*1024)child.kill();});
     child.stderr.on("data",x=>{stderr+=x;if(stderr.length>1024*1024)child.kill();});
-    const timer=setTimeout(()=>{timedOut=true;child.kill();},30000);
+    const timer=setTimeout(()=>{
+      timedOut=true;
+      // Kill only this generated subprocess tree, never unrelated Node tasks.
+      if(process.platform==="win32" && child.pid) {
+        const stopped=spawnSync("taskkill",["/PID",String(child.pid),"/T","/F"],
+          {env:envBase,windowsHide:true,stdio:"ignore",timeout:5000});
+        if(stopped.status!==0)child.kill();
+      } else child.kill();
+    },30000);
     child.on("error",error=>{clearTimeout(timer);resolveRun({error:error.code||"spawn-error",status:null,hard:[],counts:{},ms:Date.now()-start});});
     child.on("close",(status,signal)=>{
       clearTimeout(timer);
@@ -143,7 +152,11 @@ function run(tests,sourceRoot) {
 }
 const report={at:new Date().toISOString(),sourceRoot:ROOT,seed:"S7-v1",limit,jobs,
   method:"AST mutation; deterministic operator-stratified selection (exhaustive when limit covers every candidate); TODOs never kill; timeouts/errors remain unresolved",
-  baseline:[],files:[],results:[]};
+  baseline:[],files:[],results:[],
+  testSHA256:Object.fromEntries([...new Set(targets.flatMap(([,tests])=>tests))]
+    .map(file=>[file,digest(readFileSync(resolve(ROOT,file),"utf8"))])),
+  harnessSHA256:Object.fromEntries(["test/harness/index.mjs","test/harness/mutate.mjs","test/harness/package-lock.json"]
+    .map(file=>[file,digest(readFileSync(resolve(ROOT,file),"utf8"))]))};
 const baselineRoot=sandbox("baseline");
 for(const [file,tests] of targets) {
   const signature=tests.join("|");let base=report.baseline.find(x=>x.signature===signature);
@@ -156,6 +169,9 @@ for(const [file,tests] of targets) {
   let chosen=select(all);
   if(rerun) {
     const previous=JSON.parse(readFileSync(confined(resolve(ROOT,rerun)),"utf8"));
+    const priorFile=previous.files.find(f=>f.file===file);
+    if(!priorFile || priorFile.sourceSHA256!==digest(sources.get(file)))
+      throw new Error("Cannot carry mutation evidence across a changed source: "+file);
     const ids=new Set(previous.results.filter(r=>r.outcome!=="killed").map(r=>r.id));
     chosen=all.filter(m=>ids.has(m.id));
   }
@@ -193,6 +209,9 @@ for(const f of report.files) {
   f.unresolved=rows.length-f.killed-f.survived-f.invalid;
   f.score=rows.length-f.invalid?Number((100*f.killed/(rows.length-f.invalid)).toFixed(1)):null;
 }
+for(const [file,expected] of Object.entries(report.testSHA256))
+  if(digest(readFileSync(resolve(ROOT,file),"utf8"))!==expected)
+    throw new Error("Test changed during mutation run: "+file);
 report.completedAt=new Date().toISOString();
 const filename=rerun?"rerun.json":"results.json";
 writeFileSync(resolve(OUT,filename),JSON.stringify(clean(report),null,2)+"\n");
