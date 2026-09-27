@@ -816,7 +816,9 @@ export function oRefresh(now, head, status, zipUploaded) {
   if (head.state === "present" && !isObj(status)) return { state: "grey", grey: "unavailable", rule: "unavailable" };
   if (!isObj(status)) return { state: "red", rule: "missing" };
   const ran = t(status.ran_at);
-  if (!isNum(ran) || ran > now + SKEW) return { state: "red", rule: "missing" };
+  if (!isNum(ran)) return { state: "red", rule: "missing" };
+  // owner, 2026-09-27: a clock that runs ahead gets its own sentence
+  if (ran > now + SKEW) return { state: "red", rule: "future" };
   if (now - ran > 36 * HOUR) return { state: "red", rule: "too_old" };
   const fk = oFailKind(status);
   if (fk) return { state: "red", rule: "failed", fail_kind: fk };
@@ -867,7 +869,8 @@ export function oMonday(now, p, log, attempt, rows) {
     else if (since === mondayDate) { if (!okN.has(norm(r.email))) joined.push(r); }
     else expected.push(r);
   }
-  const missing = anyDelivered ? expected.filter((r) => !okN.has(norm(r.email))) : [];
+  // owner, 2026-09-27: a failed send is also listed as not delivered
+  const missing = expected.filter((r) => !okN.has(norm(r.email)) && (anyDelivered || failedSet.has(norm(r.email))));
   let state, rule;
   if (failedSet.size) [state, rule] = ["red", "failed"];
   else if (missing.length) [state, rule] = ["red", "missing"];
@@ -1144,11 +1147,35 @@ export function oracleMain({ r2, env, now, handler, towns, normalisePolicy }) {
   else if (!usable("subscriptions")) tile("renewals", "grey", null, { grey: "unavailable", source: "stripe" });
   else tile("renewals", ending ? "amber" : "green", due14.length, { source: "stripe", ending, atLeast: partial("subscriptions") });
 
-  // failed (FAILED TILE)
+  // failed (FAILED TILE). Owner, 2026-09-27: a past-due customer with an open
+  // invoice counts once; an open invoice on a canceled subscription whose
+  // email is another active subscriber's is an old invoice on a replaced
+  // account (amber, "void it"), never a failed payment.
+  const FP = (() => {
+    const subs = usable("subscriptions") ? S.subs : [];
+    const open = usable("invoices_open") ? S.open : [];
+    const pdSubs = subs.filter((s) => s.status === "past_due" || s.status === "unpaid");
+    const byId = Object.fromEntries(subs.map((s) => [s.id, s]));
+    const emailOf = (i) => {
+      if (typeof i.customer_email === "string" && i.customer_email.trim()) return i.customer_email.trim().toLowerCase();
+      const r = (rosterRows || []).find((x) => x.customer && x.customer === i.customer);
+      return r ? norm(r.email) : "";
+    };
+    const cus = (i) => (typeof i.customer === "string" ? i.customer : isObj(i.customer) ? i.customer.id : null);
+    const subOf = (i) => (typeof i.subscription === "string" ? i.subscription : isObj(i.parent) && isObj(i.parent.subscription_details)
+      ? i.parent.subscription_details.subscription : null);
+    const old = open.filter((i) => {
+      const sub = byId[subOf(i)];
+      const e = emailOf(i);
+      return !!sub && sub.status === "canceled" && !!e && (active || []).some((r) => norm(r.email) === e && r.customer !== cus(i));
+    });
+    const other = open.filter((i) => !old.includes(i) && (i.attempt_count || 0) > 0 &&
+      !pdSubs.some((s) => s.id === subOf(i) || (s.customer && s.customer === cus(i))));
+    return { pd: pdSubs.length, op: other.length, old: old.length };
+  })();
   if (S.state === "ok") {
-    const pd = S.subs.filter((s) => s.status === "past_due" || s.status === "unpaid").length;
-    const op = S.open.filter((i) => (i.attempt_count || 0) > 0).length;
-    tile("failed", pd + op > 0 ? "red" : "green", pd + op, { source: "stripe", pd, op });
+    const { pd, op, old } = FP;
+    tile("failed", pd + op > 0 ? "red" : old > 0 ? "amber" : "green", pd + op, { source: "stripe", pd, op, old });
   } else if (rosterRows) {
     const n = rosterRows.filter((r) => r.payment_failing).length;
     if (n) tile("failed", "red", n, { source: "r2" });
@@ -1215,6 +1242,7 @@ export function oracleMain({ r2, env, now, handler, towns, normalisePolicy }) {
   if (T.refresh.state === "red") L("refresh", "red", { rule: R.rule, mondayClause: R.rule === "failed" && onMonday && !deliveredSinceSend });
   if (T.monday.state === "red") L("monday", "red", { rule: M.rule });
   if (T.failed.state === "red") L("failed_payments", "red", { n: T.failed.value });
+  const replacedLine = FP.old;
   if (T.refresh.state === "amber") L("refresh", "amber", { rule: R.rule });
   if (T.monday.state === "amber") L("monday", "amber", { rule: M.rule });
   if (usable("subscriptions") && rosterRows) {
@@ -1222,6 +1250,7 @@ export function oracleMain({ r2, env, now, handler, towns, normalisePolicy }) {
     const n = entitled.filter((s) => s.customer && !onRoster.has(s.customer)).length;
     if (n) L("paid_not_served", "amber", { n });
   }
+  if (replacedLine) L("replaced_invoice", "amber", { n: replacedLine });
   if (tr.groups.sources_down.length) L("sources_down", "amber", { towns: tr.groups.sources_down });
   const unread = Object.entries(T).filter(([, x]) => x.state === "grey" && x.grey === "unavailable").map(([id]) => id);
   if (unread.length || shState === "unreadable") L("unreadable", "amber", { tiles: unread, sourceHealth: shState === "unreadable" });
@@ -1273,9 +1302,7 @@ export function oracleMain({ r2, env, now, handler, towns, normalisePolicy }) {
       attempted_sources: cov.attempted_sources ?? null, lost_sources: cov.lost_sources ?? null, rows: cov.rows ?? null,
       disclose: cov.disclose === true } : null, sources: tr.list };
   E.detail.renewals = usable("subscriptions") ? due14.length : null;
-  E.detail.failed_rows = (usable("subscriptions") ? S.subs.filter((s) => s.status === "past_due" || s.status === "unpaid").length : 0) +
-    (usable("invoices_open") ? S.open.filter((i) => (i.attempt_count || 0) > 0).length : 0) +
-    (rosterRows ? rosterRows.filter((r) => r.payment_failing).length : 0);
+  E.detail.failed_rows = FP.pd + FP.op + FP.old + (rosterRows ? rosterRows.filter((r) => r.payment_failing).length : 0);
   E.detail.engagement = ec;
   E.detail.setup = { stripe: on ? "ok" : S.state === "refused" ? "refused" : "not-connected", outreach: outState,
     events: S.hooks ? { ...S.hooks } : null };
@@ -1348,7 +1375,10 @@ export function checkMain(E, body) {
         (x.rate === null ? "not available" : dollars(x.rate)) + (x.rate === null ? "" : "/mo"), sub);
     }
     if (id === "renewals") cmp(bad, "tile.renewals.sub", (x.atLeast ? "at least; " : "") + (x.ending ? x.ending + " set to cancel" : "none set to cancel"), sub);
-    if (id === "failed" && x.source === "stripe") cmp(bad, "tile.failed.sub", pl(x.pd, "subscription") + " past due, " + pl(x.op, "open invoice") + " retried", sub);
+    if (id === "failed" && x.source === "stripe") {
+      cmp(bad, "tile.failed.sub", pl(x.pd, "subscription") + " past due, " + pl(x.op, x.pd ? "other open invoice" : "open invoice") +
+        " retried" + (x.old ? "; " + pl(x.old, "old invoice") + " on a replaced account" : ""), sub);
+    }
     if (id === "sales" && x.money) {
       cmp(bad, "tile.sales.sub", (x.atLeast ? "at least; " : "") + dollars(x.money.newSub + x.money.pack) + " gross: " +
         dollars(x.money.newSub) + " new subscriptions, " + dollars(x.money.pack) + " packs", sub);
@@ -1367,7 +1397,8 @@ export function checkMain(E, body) {
     const g = got.find((x) => x.id === l.id && x.severity === l.severity);
     if (!g) continue;
     if (l.id === "refresh" && l.severity === "red") {
-      const want = { missing: /never reported/, too_old: /more than 36 hours/, not_landed: /has not landed by 17:00 UTC/,
+      const want = { missing: /never reported/, future: /ahead of this page's clock/, too_old: /more than 36 hours/,
+        not_landed: /has not landed by 17:00 UTC/,
         failed: /The data refresh (crashed|was stopped by its quality gate|failed)\./ }[l.rule];
       cmp(bad, "line.refresh.rule", true, want.test(g.text));
       cmp(bad, "line.refresh.monday_clause", l.mondayClause, g.text.includes("Monday's email will not send while this is the latest run."));
@@ -1378,6 +1409,7 @@ export function checkMain(E, body) {
     }
     if (l.id === "failed_payments") cmp(bad, "line.failed_payments.count", true, g.text.startsWith(pl(l.n, "failed payment") + " "));
     if (l.id === "paying_drop") cmp(bad, "line.paying_drop.numbers", true, g.text.includes("fell from " + l.was + " to " + l.now));
+    if (l.id === "replaced_invoice") cmp(bad, "line.replaced_invoice.text", pl(l.n, "old invoice") + " on a replaced account: void it.", g.text);
     for (const k of ["paid_not_served", "renewals_ending", "served_not_paid", "unknown_price", "no_customer_id"]) {
       if (l.id === k) cmp(bad, "line." + k + ".count", String(l.n), g.text.split(" ")[0]);
     }

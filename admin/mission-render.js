@@ -7,7 +7,7 @@
 
 import {
   TEXT, screenOf, mapOk, tilesView, loadingTiles, headlineView, needsView, sectionsView, legendView, mapLabel,
-  listGroups, townSheet, codeOf, dateline, when, staleNote, HATCHED, OUTREACH_CHOICES,
+  listGroups, townSheet, codeOf, dateline, when, staleNote, HATCHED, OUTREACH_CHOICES, mapPrivacy,
 } from "./mission-view.js";
 
 function el(tag, cls, text) {
@@ -217,7 +217,7 @@ function mapFigure(parent, main, data, o, ns, mapState) {
   }
   const cap = add(el("figcaption"), el("p", "cap", "The 351 towns by source status" +
     (map.as_of && map.as_of.source_health ? ", as of " + when(map.as_of.source_health) : "") + ". Tap a town for its facts."),
-  legend, el("p", "attr", TEXT.attribution));
+  mapPrivacy(map) && part(el("p", "cap", mapPrivacy(map)), "map-privacy"), legend, el("p", "attr", TEXT.attribution));
   add(sec, add(fig, svg, cap));
 
   const listBox = el("div", "town-list");

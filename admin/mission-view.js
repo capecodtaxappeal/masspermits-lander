@@ -262,6 +262,9 @@ export function legendView(map) {
   const c = (map && map.counts) || {};
   return LEGEND.map(([code, text]) => ({ code, text, count: isNum(c[code]) ? c[code] : 0, cls: "m-" + code }));
 }
+// The map view's privacy walk has no needs-you line of its own: say it here.
+export const mapPrivacy = (map) => (map && map.privacy_redactions > 0 ? "The privacy check withheld " +
+  plural(map.privacy_redactions, "value") + " from this map. The page needs a fix." : "");
 export function mapLabel(map) {
   return "Map of the 351 Massachusetts towns: " + legendView(map).map((l) => l.text + " " + l.count).join(", ") + ".";
 }
