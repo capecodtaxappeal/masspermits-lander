@@ -14,11 +14,11 @@ C:/Users/patri/OneDrive/Desktop/masspermits-lander/.git/codex-session-worktrees/
 Branch: claude/codex-fix-c20-inbox.
 Base commit: e4f913765f7c241505fcff959d1617114dfedcea.
 Intended draft PR base: claude/codex-revenue-harness.
-Resolve the checkpoint head with git rev-parse HEAD; this document does not invent its own future commit ID.
+Implementation checkpoint: fab744215. The following documentation checkpoint records the implementation head; git rev-parse HEAD identifies the current review head.
 
 Only functions/api/inbox-status.js changes production content. Three existing inbox TODOs are promoted in test/revenue/weekly-watchdog.test.mjs; test/revenue/inbox-diagnostics.test.mjs adds 36 synthetic cases. The producer, frozen weekly-send/send-status handlers, workflows and mission tests are unchanged. Root approved the source review; root owns commit and publication after checking this checkpoint.
 
-D-13 - Merge this C20 inbox diagnostic draft?
+D-13: Merge this C20 inbox diagnostic draft?
 Recommend: Yes, after review. Draft implementation is covered by Patrick's explicit preauthorization of separate draft fix branches; merge remains the owner's decision. See fixes/C20-inbox.md for validation details and compatibility risks.
 
 ## Reproducible evidence
