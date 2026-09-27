@@ -142,6 +142,72 @@ export function bestSince(log, since) {
   return delivered || skipped || attempted || null;
 }
 
+// ONE EMAIL PER SUBSCRIBER PER DELIVERY WEEK.
+//
+// 2026-09-07: every paying subscriber got the Monday email twice, 1h55m apart.
+// The watchdog (push-triggered, before the late cron) sent at 15:20; a refresh
+// then rebuilt latest-weekly.zip, so the etag changed; the cron weekly-feed run
+// sent again at 17:15. The etag guard only asks "are these the same BYTES", and
+// a rebuild re-stamps the date, so different bytes re-arm it. The question the
+// subscriber cares about is "have I already had this week's email", and that is
+// what these two functions answer. weekly-send.js and send-status.js both use
+// them, so the sender and the watchdog agree on what "this week" means.
+//
+// The delivery week starts Monday 00:00 America/New_York (the customer's clock).
+// That is always before the Monday 12:00 UTC cron, and it moves with DST:
+// 04:00 UTC in summer, 05:00 UTC in winter. US DST switches on a Sunday at
+// 02:00, so Monday 00:00 is never skipped or repeated.
+function etOffsetMs(t) {
+  // New York wall clock minus UTC at instant t, e.g. -4h in summer.
+  const f = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York", hourCycle: "h23",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit",
+  });
+  const p = {};
+  for (const x of f.formatToParts(new Date(t))) p[x.type] = Number(x.value);
+  const wall = Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute, p.second);
+  return wall - (t - (((t % 1000) + 1000) % 1000));
+}
+
+export function deliveryWeekStart(now) {
+  let off;
+  try { off = etOffsetMs(now); } catch { off = -5 * HOUR; }  // no Intl: assume EST
+  const wall = new Date(now + off);                   // UTC fields read as NY wall clock
+  const back = (wall.getUTCDay() + 6) % 7;            // days since Monday
+  const midnight = Date.UTC(wall.getUTCFullYear(), wall.getUTCMonth(), wall.getUTCDate() - back);
+  let off0;
+  try { off0 = etOffsetMs(midnight - off); } catch { off0 = off; }
+  return midnight - off0;
+}
+
+// Who already has a delivered (ok) weekly email in [since, until]. Keys are
+// trimmed lower-case addresses, values the ISO time of the newest such send.
+// Anything unreadable yields an empty map, which means "nobody is known to
+// have it" and so falls back to sending: an unreadable log must never be the
+// reason a paying subscriber gets nothing (the 2026-08-03 lesson). Entries
+// dated after `until` are ignored, so one corrupt future timestamp cannot
+// block every week that follows it.
+export function deliveredSince(log, since, until = Infinity) {
+  const out = new Map();
+  if (!Array.isArray(log)) return out;
+  for (const e of log) {
+    if (!e || typeof e !== "object") continue;
+    const t = Date.parse(e.at);
+    if (!Number.isFinite(t) || t < since || t > until) continue;
+    for (const s of Array.isArray(e.sent) ? e.sent : []) {
+      if (!s || !s.ok) continue;
+      const k = normEmail(s.to);
+      if (k && !(out.has(k) && Date.parse(out.get(k)) >= t)) out.set(k, e.at);
+    }
+  }
+  return out;
+}
+
+export function normEmail(v) {
+  return typeof v === "string" ? v.trim().toLowerCase() : "";
+}
+
 async function readJson(env, key) {
   try {
     const o = await env.BUNDLES.get(key);

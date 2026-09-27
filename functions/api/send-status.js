@@ -27,7 +27,7 @@ import { verifyGitHubOIDC } from "./_github-oidc.js";
 // guard, and logs a skip on top of the delivery. A monitor that cries wolf on a
 // good week is worse than no monitor, because the next real alarm is the one
 // that gets ignored. bestSince() takes the BEST outcome since the due time.
-import { bestSince } from "./_presend.js";
+import { bestSince, deliveryWeekStart, deliveredSince, normEmail } from "./_presend.js";
 
 // The delivery cadence is WEEKLY (weekly-feed.yml: "0 12 * * 1"). So the
 // question is never "did we send in the last N hours" — five days after a
@@ -61,16 +61,38 @@ export async function onRequest(context) {
 
   const dueAt = lastDueAt(now);
   const dueIso = new Date(dueAt).toISOString();
+  // The DELIVERY WEEK the due time belongs to: Monday 00:00 New York, the same
+  // boundary weekly-send.js uses to decide who already has this week's email.
+  // Judging from the same start is what keeps the two from disagreeing: a
+  // delivery weekly-send counts as "this week" is counted here too, so a
+  // re-trigger that it correctly declines can never be reported as `missed`.
+  // It is at most 8h before dueAt, so this only adds Monday-morning sends.
+  const since = deliveryWeekStart(dueAt);
 
   // G1: judge the WEEK, not the newest line. `best` is the strongest outcome
   // recorded since the due time — a delivery outranks a skip, a skip outranks a
   // bare attempt — so a skip landing on top of a real delivery no longer erases
   // it. `newest` is kept only for the "last recorded" field in the payload.
-  const best = bestSince(log, dueAt);
+  const best = bestSince(log, since);
 
   const attemptAge = hours(attempt && attempt.at);
   const logAge = hours(best && best.at);
-  const failed = best ? (best.sent || []).filter((s) => !s.ok) : [];
+  // Judge the week PER SUBSCRIBER across every log entry since `since`, not
+  // from one entry. weekly-send.js now completes a partial delivery by mailing
+  // only the people still missing, so the newest delivering entry can hold one
+  // recipient while the others were served by an earlier entry. A failure that
+  // a later run delivered is not a failure any more.
+  const served = deliveredSince(log, since, now + 10 * 60_000);
+  const failedBy = new Map();
+  for (const e of Array.isArray(log) ? log : []) {
+    const t = Date.parse(e && e.at);
+    if (!Number.isFinite(t) || t < since) continue;
+    for (const s of (e && Array.isArray(e.sent)) ? e.sent : []) {
+      const k = normEmail(s && s.to);
+      if (s && !s.ok && k && !served.has(k) && !failedBy.has(k)) failedBy.set(k, s);
+    }
+  }
+  const failed = [...failedBy.values()];
 
   // ---- ROSTER GAP: the check that did not exist -------------------------
   // Every verdict below judges the SEND. None of them asks who should have been
@@ -104,9 +126,6 @@ export async function onRequest(context) {
     if (so) {
       const subs = JSON.parse(await so.text());
       if (Array.isArray(subs)) {
-        const served = new Set(((best && best.sent) || [])
-          .filter((s) => s && s.ok)
-          .map((s) => String((s && s.to) || "").trim().toLowerCase()));
         rosterGap = subs
           .filter((s) => s && s.email && s.active === true)
           .map((s) => String(s.email).trim().toLowerCase())
@@ -124,7 +143,7 @@ export async function onRequest(context) {
   // produced nothing new, so the subscriber is owed an explanation, not a retry.
   const sentSinceDue = !!(best && !best.skipped && (best.sent || []).some((s) => s && s.ok));
   const skippedSinceDue = !!(best && best.skipped);
-  const triedSinceDue = !!(attempt && Date.parse(attempt.at) >= dueAt);
+  const triedSinceDue = !!(attempt && Date.parse(attempt.at) >= since);
 
   let verdict, detail, retry_safe = false;
   if (!graceOver) {
@@ -135,11 +154,11 @@ export async function onRequest(context) {
              `${GRACE_HOURS}h grace window`;
   } else if (sentSinceDue && !failed.length) {
     verdict = "ok";
-    detail = `delivered to ${(best.sent || []).filter((s) => s && s.ok).length} subscriber(s) ${logAge.toFixed(1)}h ago, ` +
-             `after the ${dueIso} send time`;
+    detail = `delivered to ${served.size} subscriber(s), last ${logAge.toFixed(1)}h ago, ` +
+             `in the delivery week starting ${new Date(since).toISOString()}`;
   } else if (sentSinceDue && failed.length) {
     verdict = "partial";
-    detail = `${failed.length} of ${(best.sent || []).length} deliveries FAILED`;
+    detail = `${failed.length} of ${failed.length + served.size} deliveries FAILED`;
   } else if (skippedSinceDue) {
     // Retrying cannot help — the bundle is unchanged because the upstream
     // refresh produced nothing new. A human has to look at the pipeline.
@@ -189,7 +208,7 @@ export async function onRequest(context) {
   // missing from the list the sender reads, not from the send.
   if (verdict === "ok" && rosterGap.length) {
     verdict = "roster_gap";
-    detail = `delivered to ${(best.sent || []).filter((s) => s && s.ok).length} subscriber(s), ` +
+    detail = `delivered to ${served.size} subscriber(s), ` +
              `but ${rosterGap.length} ACTIVE subscriber(s) were not in the run at all ` +
              `(${rosterGap.join(", ")}) — they are being billed and received nothing. ` +
              "Retrying will not fix this: check subscribers.json against Stripe.";

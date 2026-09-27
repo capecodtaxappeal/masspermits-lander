@@ -21,7 +21,7 @@ import { verifyGitHubOIDC } from "./_github-oidc.js";
 // load and nobody gets mail. The guard is `node presend_replay.mjs`, which
 // imports the same module and exits non-zero if it is broken. Run it before any
 // deploy that touches _presend.js.
-import { lastEtagEntry } from "./_presend.js";
+import { lastEtagEntry, deliveryWeekStart, deliveredSince, normEmail } from "./_presend.js";
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -76,6 +76,16 @@ export async function onRequest(context) {
     const so = await env.BUNDLES.get("subscribers.json");
     if (so) subs = JSON.parse(await so.text());
     subs = (subs || []).filter((s) => s && s.email && s.active !== false);
+    // One row per address. Two active rows for the same email (a re-subscribe
+    // under a new Stripe customer while the old row stays active) would
+    // otherwise mail that person twice in the same run.
+    const seenAddr = new Set();
+    subs = subs.filter((s) => {
+      const k = normEmail(s.email);
+      if (!k || seenAddr.has(k)) return false;
+      seenAddr.add(k);
+      return true;
+    });
     if (!subs.length) return json({ ok: true, note: "no active subscribers" });
 
     // NOTE: weekly-send is READ-ONLY on subscribers.json. Tokens for the
@@ -97,6 +107,34 @@ export async function onRequest(context) {
     const etag = file.etag || file.httpEtag || "";
     const force = new URL(request.url).searchParams.get("force") === "1";
     const priorLog = (await readJsonSafe(env, "feed-send-log.json")) || [];
+
+    // ONE WEEKLY EMAIL PER SUBSCRIBER PER DELIVERY WEEK (Monday 00:00 New York).
+    // 2026-09-07: all three subscribers got Monday's email twice. The watchdog
+    // sent at 15:20, a refresh rebuilt the zip (new etag), and the cron run sent
+    // again at 17:15; the etag guard below passed because the BYTES differed.
+    // So ask the question the subscriber would ask, per subscriber: have you
+    // already had this week's email? Anyone who has is left out of this run,
+    // whatever triggered it (cron, watchdog, backstop, a human, ?force=1).
+    // Anyone who has not (a failure, a missed or new subscriber) still gets it,
+    // so a partial delivery can be completed. An empty or unreadable log gives
+    // an empty map, which sends to everyone: today's behaviour. Stripe
+    // renewal and purchase deliveries are logged to delivery-log.json, not
+    // here, so they never count and never block Monday.
+    const nowMs = Date.now();
+    const weekStart = deliveryWeekStart(nowMs);
+    const haveIt = deliveredSince(priorLog, weekStart, nowMs + 10 * 60_000);
+    const todo = subs.filter((s) => !haveIt.has(normEmail(s.email)));
+    if (!todo.length) {
+      // Nothing to deliver. No attempt marker and no log line: the deliveries
+      // this reply points at are already in feed-send-log.json, and that is
+      // what send-status reads. Counts only (this is printed to a public log).
+      let lastAt = null;
+      for (const at of haveIt.values()) if (!lastAt || Date.parse(at) > Date.parse(lastAt)) lastAt = at;
+      return json({ ok: true, skipped: "every active subscriber already has this week's email",
+                    already_delivered: subs.length, week_start: new Date(weekStart).toISOString(),
+                    previously_sent_at: lastAt });
+    }
+    const already = subs.length - todo.length;
     // G2. The old form was `priorLog[0]` plus a `sent.some(ok)` requirement, and
     // that combination fails in the same direction twice:
     //   1. a SKIP entry carries `sent: []`, so once a skip is on top of the log
@@ -112,7 +150,12 @@ export async function onRequest(context) {
     // already been delivered. So: newest entry that HAS an etag, and a match is
     // a match whether that entry delivered or skipped.
     const prior = lastEtagEntry(priorLog);
-    if (!force && etag && prior && prior.bundle_etag === etag) {
+    // Scoped to a week in which nobody has been delivered yet. Once somebody
+    // has, the per-subscriber check above is the stricter guard, and the only
+    // people left in `todo` have not had this week's email, so sending them
+    // these bytes cannot be a duplicate. This is what lets a partial delivery
+    // be completed with the same bundle.
+    if (!force && !already && etag && prior && prior.bundle_etag === etag) {
       // RECORD the skip. A skip writes no delivery, so if it were silent the
       // watchdog would read "nothing since the due time", call it `missed`, and
       // retry into the same skip forever — reporting a cause that isn't true.
@@ -145,11 +188,11 @@ export async function onRequest(context) {
     // got here => a retry cannot double-send.
     try {
       await env.BUNDLES.put("last-send-attempt.json", JSON.stringify({
-        at: new Date().toISOString(), subscribers: subs.length, degraded: !!coverage }));
+        at: new Date().toISOString(), subscribers: todo.length, degraded: !!coverage }));
     } catch (_) { /* never block a delivery on bookkeeping */ }
 
     const sent = [];
-    for (const s of subs) {
+    for (const s of todo) {
       try {
         const ok = await sendEmail(env, s.email, s.name || "", b64, s.token || "", coverage);
         sent.push({ to: s.email, ok });
@@ -168,14 +211,16 @@ export async function onRequest(context) {
       const lo = await env.BUNDLES.get("feed-send-log.json");
       const log = lo ? JSON.parse(await lo.text()) : [];
       log.unshift({ at: new Date().toISOString(), subscribers: subs.length, sent, coverage,
-                    bundle_etag: etag, ...fingerprintOf(status, file) });
+                    bundle_etag: etag, ...fingerprintOf(status, file),
+                    ...(already ? { already_delivered: already } : {}) });
       await env.BUNDLES.put("feed-send-log.json", JSON.stringify(log.slice(0, 12)));
     } catch (_) { /* logging must never fail the send */ }
     // COUNTS + DOMAIN ONLY in the response: it is printed into a public log.
     const bad = sent.filter((s) => !s.ok);
     return json({ ok: true, subscribers: subs.length,
                   delivered: sent.length - bad.length, failed: bad.length,
-                  failed_domains: bad.map((s) => "…@" + String(s.to || "").split("@").pop()) });
+                  failed_domains: bad.map((s) => "…@" + String(s.to || "").split("@").pop()),
+                  ...(already ? { already_delivered: already } : {}) });
   } catch (e) {
     return json({ ok: false, error: String(e && e.message || e) }, 500);
   }
