@@ -119,7 +119,7 @@ export async function onRequest(context) {
   // wider hole still needs a Stripe-to-roster reconciliation, because Stripe is
   // the only record that cannot be wrong about who is paying.
   //
-  // Domain only in the output: this JSON is printed into a GitHub Actions log.
+  // Only the COUNT leaves (D28): this JSON is printed into a public Actions log.
   let rosterGap = [];
   try {
     const so = await env.BUNDLES.get("subscribers.json");
@@ -210,7 +210,7 @@ export async function onRequest(context) {
     verdict = "roster_gap";
     detail = `delivered to ${served.size} subscriber(s), ` +
              `but ${rosterGap.length} ACTIVE subscriber(s) were not in the run at all ` +
-             `(${rosterGap.join(", ")}) — they are being billed and received nothing. ` +
+             "and are being billed but received nothing. " +
              "Retrying will not fix this: check subscribers.json against Stripe.";
     retry_safe = false;
   }
@@ -220,17 +220,14 @@ export async function onRequest(context) {
     last_attempt_at: (attempt && attempt.at) || null,
     last_log_at: ((best || newest) || {}).at || null,
     last_subscribers: best ? (best.sent || []).length : 0,
-    // Active subscribers who were not in the run at all. Domain-masked, because
-    // this body is printed into a GitHub Actions log.
-    roster_gap: rosterGap,
-    // Domain-masked for the same reason as roster_gap: send-watchdog.yml prints
-    // this body with `jq .` into a PUBLIC Actions log. Full addresses stay in
-    // feed-send-log.json (private R2). The provider's error text can quote the
-    // address back, so any address-shaped string in it is masked too.
-    last_failed: failed.map((f) => ({
-      to: "…@" + String((f && f.to) || "").split("@").pop(),
-      error: String((f && f.error) || "").replace(/[^\s"'<>(),;:@]+@/g, "…@"),
-    })),
+    // COUNTS ONLY (D28, 2026-09-27). send-watchdog.yml prints this body with
+    // `jq .` into a PUBLIC Actions log, and with a handful of subscribers even
+    // an address's domain can point to one person. Who was missed or failed,
+    // and the provider's error text, stay in feed-send-log.json (private R2).
+    //   roster_gap:  active subscribers who were not in the run at all
+    //   last_failed: failed deliveries in the run judged above
+    roster_gap: rosterGap.length,
+    last_failed: failed.length,
     last_coverage: ((best || newest) || {}).coverage || null,
     portal,
   });

@@ -215,11 +215,12 @@ export async function onRequest(context) {
                     ...(already ? { already_delivered: already } : {}) });
       await env.BUNDLES.put("feed-send-log.json", JSON.stringify(log.slice(0, 12)));
     } catch (_) { /* logging must never fail the send */ }
-    // COUNTS + DOMAIN ONLY in the response: it is printed into a public log.
+    // COUNTS ONLY in the response (D28): it is printed into a public Actions
+    // log, and with a handful of subscribers even a domain can point to one
+    // person. Who failed, and why, is in feed-send-log.json (private R2) above.
     const bad = sent.filter((s) => !s.ok);
     return json({ ok: true, subscribers: subs.length,
                   delivered: sent.length - bad.length, failed: bad.length,
-                  failed_domains: bad.map((s) => "…@" + String(s.to || "").split("@").pop()),
                   ...(already ? { already_delivered: already } : {}) });
   } catch (e) {
     return json({ ok: false, error: String(e && e.message || e) }, 500);

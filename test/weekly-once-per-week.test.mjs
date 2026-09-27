@@ -212,7 +212,7 @@ test("partial first send, then a retry with the SAME bytes mails only the missed
   const s1 = await status(w, "2026-09-28T18:51:00Z");
   assert.equal(s1.verdict, "partial");
   assert.equal(s1.retry_safe, false);
-  assert.equal(s1.last_failed.length, 1);
+  assert.equal(s1.last_failed, 1); // a count since D28
   noAddr(s1);
 
   failFor = new Set();
@@ -226,8 +226,8 @@ test("partial first send, then a retry with the SAME bytes mails only the missed
 
   const s2 = await status(w, "2026-09-28T19:06:00Z");
   assert.equal(s2.verdict, "ok", "the week is whole once C is delivered");
-  assert.deepEqual(s2.roster_gap, []);
-  assert.deepEqual(s2.last_failed, []);
+  assert.equal(s2.roster_gap, 0); // counts since D28
+  assert.equal(s2.last_failed, 0);
 
   const r3 = await send(w, "2026-09-28T19:10:00Z");
   assert.deepEqual(r3.to, []);
