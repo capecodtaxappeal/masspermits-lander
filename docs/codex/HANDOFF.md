@@ -14,6 +14,7 @@ Date: 2026-09-27.
 Branch: claude/codex-revenue-harness.
 Current head reference: refs/heads/claude/codex-revenue-harness. Resolve with git rev-parse HEAD. The final session reply records the published closing commit.
 Source/base head: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5.
+Published content head: d2a1d35add5be05bed91a7602dc950dbe6c2b9d8, confirmed by git push at 2026-09-27T04:43:32Z. The closing commit adds this publication record; use the branch reference for its head.
 The handoff is part of the closing commit. Its own commit hash cannot be embedded in itself; the exact branch reference above is authoritative.
 Working directory: C:/Users/patri/OneDrive/Desktop/masspermits-lander/.git/codex-session-worktrees/revenue-harness
 
