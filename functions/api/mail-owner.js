@@ -26,7 +26,10 @@ export async function onRequestPost(context) {
     body: JSON.stringify({ from: env.FROM_EMAIL, to: [owner], subject, html }),
   });
   if (!resp.ok) return json({ ok: false, error: "resend " + resp.status }, 502);
-  return json({ ok: true, to: owner, subject });
+  // {ok:true} only (D29, 2026-09-27). Every caller is a workflow that prints
+  // this response into a PUBLIC Actions log, and echoing `to` published the
+  // owner's own address there. The caller already knows its subject.
+  return json({ ok: true });
 }
 
 function json(obj, status = 200) {
