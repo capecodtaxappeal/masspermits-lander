@@ -1,0 +1,40 @@
+{
+  "at": "2026-09-27T05:43:58.589Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/webhook.test.mjs",
+  "exit": 1,
+  "signal": null,
+  "counts": {
+    "tests": 69,
+    "suites": 0,
+    "pass": 33,
+    "fail": 9,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 27
+  },
+  "failures": [
+    "I04 C02 roster get failure cannot be acknowledged as durable signup",
+    "I04 C02 roster put failure cannot be acknowledged as durable signup",
+    "I04 C02 malformed JSON roster blocks enrollment and customer mail",
+    "I04 C02 object-shaped JSON roster blocks enrollment and customer mail",
+    "I04 C02 null-shaped JSON roster blocks enrollment and customer mail",
+    "I04 C02 string-shaped JSON roster blocks enrollment and customer mail",
+    "I04 C02 roster body-read failure stops before customer mail",
+    "I04 C02 failed new enrollment persistence can retry before one customer request",
+    "I04 C02 failed reactivation persistence can retry before one customer request"
+  ],
+  "knownBaseline": [],
+  "unexpected": [
+    "I04 C02 roster get failure cannot be acknowledged as durable signup",
+    "I04 C02 roster put failure cannot be acknowledged as durable signup",
+    "I04 C02 malformed JSON roster blocks enrollment and customer mail",
+    "I04 C02 object-shaped JSON roster blocks enrollment and customer mail",
+    "I04 C02 null-shaped JSON roster blocks enrollment and customer mail",
+    "I04 C02 string-shaped JSON roster blocks enrollment and customer mail",
+    "I04 C02 roster body-read failure stops before customer mail",
+    "I04 C02 failed new enrollment persistence can retry before one customer request",
+    "I04 C02 failed reactivation persistence can retry before one customer request"
+  ],
+  "error": null
+}

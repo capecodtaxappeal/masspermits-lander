@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-27T05:44:07.555Z",
+  "node": "v25.9.0",
+  "command": "node --test --test-reporter=tap test/revenue/webhook.test.mjs",
+  "exit": 0,
+  "signal": null,
+  "counts": {
+    "tests": 69,
+    "suites": 0,
+    "pass": 42,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 27
+  },
+  "failures": [],
+  "knownBaseline": [],
+  "unexpected": [],
+  "error": null
+}

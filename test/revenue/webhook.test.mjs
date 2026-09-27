@@ -296,15 +296,114 @@ test('I03 C01 foreign-product invoice cannot clear Weekly Feed payment failure',
 
 for (const operation of ['get', 'put']) {
   test('I04 C02 roster ' + operation + ' failure cannot be acknowledged as durable signup',
-    { todo: 'C02 registration errors are swallowed before a successful delivery acknowledgment' }, async () => {
+    async () => {
       await using(async (world) => {
         world.r2.failNext(operation, 'subscribers.json');
         const result = await invoke(world, checkout());
-        const registered = (await roster(world)).some((entry) => entry.email === EMAIL && entry.active !== false);
-        assert.ok(result.body.ok !== true || registered, 'complete success requires durable subscription membership');
+        assert.deepEqual({ status: result.response.status, ok: result.body.ok,
+          customerRequests: customerMail(world).length, rows: await roster(world) },
+        { status: 500, ok: false, customerRequests: 0, rows: [] });
+        assert.equal(world.r2.ops.some((op) => op.op === 'put' && op.key === 'delivery-log.json'), false);
       });
     });
 }
+
+for (const [shape, bytes] of [
+  ['malformed JSON', '{TEST invalid JSON'],
+  ['object-shaped JSON', '{"subscribers":[]}'],
+  ['null-shaped JSON', 'null'],
+  ['string-shaped JSON', '"TEST not an array"'],
+]) {
+  test('I04 C02 ' + shape + ' roster blocks enrollment and customer mail', async () => {
+    await using(async (world) => {
+      const result = await invoke(world, checkout());
+      assert.deepEqual({ status: result.response.status, ok: result.body.ok,
+        customerRequests: customerMail(world).length, savedBytes: world.r2.text('subscribers.json') },
+      { status: 500, ok: false, customerRequests: 0, savedBytes: bytes });
+      assert.equal(world.r2.ops.some((op) => op.op === 'put' && op.key === 'subscribers.json'), false);
+    }, { objects: { 'subscribers.json': bytes } });
+  });
+}
+
+test('I04 C02 roster body-read failure stops before customer mail', async () => {
+  await using(async (world) => {
+    const get = world.r2.get.bind(world.r2);
+    world.r2.get = async (key, ...args) => {
+      const object = await get(key, ...args);
+      if (key === 'subscribers.json' && object) object.text = async () => { throw new Error('TEST roster body unavailable'); };
+      return object;
+    };
+    const result = await invoke(world, checkout());
+    assert.deepEqual({ status: result.response.status, ok: result.body.ok,
+      customerRequests: customerMail(world).length, rows: await roster(world) },
+    { status: 500, ok: false, customerRequests: 0, rows: [] });
+  });
+});
+
+for (const existing of [false, true]) {
+  test('I04 C02 failed ' + (existing ? 'reactivation' : 'new enrollment') + ' persistence can retry before one customer request', async () => {
+    const initial = existing ? [row({ active: false, cancelled: '2026-09-26', customer: 'cus_TEST_old' })] : [];
+    await using(async (world) => {
+      world.r2.failNext('put', 'subscribers.json');
+      const payload = checkout();
+      const first = await invoke(world, payload);
+      assert.deepEqual({ status: first.response.status, customerRequests: customerMail(world).length,
+        rows: await roster(world) }, { status: 500, customerRequests: 0, rows: initial });
+      const second = await invoke(world, payload);
+      assert.equal(second.response.status, 200);
+      const saved = await roster(world);
+      assert.equal(saved.length, 1);
+      assert.equal(saved[0].customer, CUSTOMER);
+      assert.equal(saved[0].active, true);
+      assert.equal(saved[0].cancelled, undefined);
+      if (existing) assert.equal(saved[0].token, TOKEN);
+      assert.equal(customerMail(world).length, 1);
+      assert.ok(customerMail(world)[0].html.includes('/api/my-leads?t=' + saved[0].token));
+      assert.equal((await world.r2.json('delivery-log.json')).length, 1);
+    }, { rows: initial });
+  });
+}
+
+test('I04 C02 missing roster object remains an intentional first enrollment', async () => {
+  await using(async (world) => {
+    await world.r2.delete('subscribers.json');
+    const result = await invoke(world, checkout());
+    assert.equal(result.response.status, 200);
+    const saved = await roster(world);
+    assert.equal(saved.length, 1);
+    assert.equal(saved[0].customer, CUSTOMER);
+    assert.equal(saved[0].active, true);
+    assert.equal(customerMail(world).length, 1);
+    assert.ok(customerMail(world)[0].html.includes('/api/my-leads?t=' + saved[0].token));
+  });
+});
+
+test('I04 C02 customer provider request waits for the roster write to finish', { timeout: 10000 }, async () => {
+  await using(async (world) => {
+    const put = world.r2.put.bind(world.r2);
+    let release;
+    let entered;
+    const pendingWrite = new Promise((resolve) => { release = resolve; });
+    const writeEntered = new Promise((resolve) => { entered = resolve; });
+    world.r2.put = async (key, ...args) => {
+      if (key === 'subscribers.json') { entered(); await pendingWrite; }
+      return put(key, ...args);
+    };
+    const pendingRequest = invoke(world, checkout());
+    await writeEntered;
+    let result;
+    try {
+      assert.equal(customerMail(world).length, 0);
+      assert.deepEqual(await roster(world), []);
+    } finally {
+      release();
+      result = await pendingRequest;
+    }
+    assert.equal(result.response.status, 200);
+    assert.equal((await roster(world)).length, 1);
+    assert.equal(customerMail(world).length, 1);
+  });
+});
 
 for (const operation of ['get', 'put']) {
   test('I04 C02 delivery-log ' + operation + ' failure cannot claim complete recoverable delivery',
@@ -317,6 +416,19 @@ for (const operation of ['get', 'put']) {
           'complete success requires durable first-delivery evidence or an explicit incomplete outcome');
       });
     });
+}
+
+for (const operation of ['get', 'put']) {
+  test('I04 C02 accepted mail does not become a retry response after delivery-log ' + operation + ' failure', async () => {
+    await using(async (world) => {
+      world.r2.failNext(operation, 'delivery-log.json');
+      const result = await invoke(world, checkout());
+      assert.ok(result.response.status >= 200 && result.response.status < 300);
+      assert.equal(customerMail(world).length, 1);
+      assert.equal((await roster(world)).length, 1);
+      assert.equal(await world.r2.json('delivery-log.json'), null);
+    });
+  });
 }
 
 test('I04 missing bundle read fails before enrollment or provider requests', async () => {

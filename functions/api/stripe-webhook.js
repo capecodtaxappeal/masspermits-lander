@@ -197,7 +197,7 @@ export async function onRequestPost(context) {
       try { myCode = await mintReferralCode(env, email); } catch (e) { /* non-fatal */ }
     }
 
-    // Subscriber record FIRST, so its download token can go in the email.
+    // Durable enrollment FIRST, so failure can be retried before customer mail.
     let dlToken = "";
     if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
       dlToken = await addSubscriber(env, email, event);
@@ -294,6 +294,7 @@ async function addSubscriber(env, email, event) {
     const o = (event.data && event.data.object) || {};
     const cur = await env.BUNDLES.get("subscribers.json");
     const list = cur ? JSON.parse(await cur.text()) : [];
+    if (!Array.isArray(list)) throw new Error("invalid subscriber roster");
     const existing = list.find((s) => s.email === email);
     if (existing) {
       // Re-subscribe after a cancellation, or a second checkout. Reactivate and
@@ -335,10 +336,10 @@ async function addSubscriber(env, email, event) {
       await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
       return token;
     }
-  } catch (e) {
-    /* non-fatal — the bundle still goes out, just without the link */
+  } catch {
+    // The caller has not attempted customer mail yet. Keep this retryable.
+    throw new Error("subscriber enrollment unavailable");
   }
-  return "";
 }
 
 // Flip a subscriber to inactive when their Stripe subscription is deleted.
