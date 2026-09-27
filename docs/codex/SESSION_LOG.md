@@ -28,3 +28,11 @@ Added 160 real-handler scenarios plus nine platform contract checks. Full result
 Dependencies and npm cache are confined to test/harness. Install scripts were disabled. Real-handler imports, closed fetch, generated signature fixtures, fake R2 and fixed clock replace live service access. The worker uses only loopback and rejects external transport. Evidence: evidence/S2-full.json and evidence/S2-platform.json.
 
 gh was not found on PATH or at its standard install path. The executable-path question remains pending while independent work continues. No alternate API was used. PR_DESCRIPTION.md is ready for the authorized draft. Next phase is S3 findings and test coverage, then S6/S7/S8 and separate preauthorized fix branches.
+
+## 2026-09-27, S3, findings and named coverage
+
+Published S2 head: 0e353e32741e4523994157a134071119368f06c5. Fetched origin/main remains 1068e8070.
+FINDINGS.md ranks the source candidates with executable evidence, explicit policy boundaries and proposed changes. COVERAGE.md maps every I01-I30 to named evidence while retaining partial coverage rather than claiming full enforcement.
+Full suite rerun: 380 tests, 312 pass, the same four known failures, 64 executed TODO, no skipped/cancelled or unexpected hard failures. Saved evidence/S3-full.json. No functions, workflows or mission tests changed.
+Plan adaptation: narrow C17, C15 and C04a fixes can run independently of the frozen sender work, each on a separate draft branch based on the harness branch. Broader enrollment, concurrency and event recovery need distinct contracts. Next: S6 injection, S7 mutation, S8 runbook, plus the narrow fixes.
+The permitted gh executable remains unavailable, so no draft PR has been created. The published branch and PR_DESCRIPTION.md remain reviewable; independent work continues.

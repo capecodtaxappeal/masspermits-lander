@@ -8,11 +8,13 @@ The owner approved separate draft fixes; sender and status changes remain on hol
 
 S1 mapped the paying path and defined I01-I30. S2 now imports the actual handlers with a fixed clock, in-memory storage, captured mail and genuine synthetic Stripe/OIDC signatures. The 160 handler scenarios execute healthy cases and desired behavior at identified gaps. Nine additional tests compare the harness with local workerd. No request reaches a live service.
 
+S3 adds ranked FINDINGS.md and the I01-I30 COVERAGE.md map. The 64 TODOs are 55 concrete failing counterexample scenarios plus nine policy scenarios; they are not 64 independent bugs. Partial coverage and operational limits remain explicit.
+
 ## Verification
 
     node test/harness/run.mjs
 
-At main source 1068e8070: 380 tests, 312 pass, 4 known baseline failures, 64 TODO, 0 skipped/cancelled, no unexpected hard failures. The process correctly exits 1 for the known failures. Evidence is in docs/codex/evidence/S2-full.json.
+At main source 1068e8070: 380 tests, 312 pass, 4 known baseline failures, 64 TODO, 0 skipped/cancelled, no unexpected hard failures. The process correctly exits 1 for the known failures. Evidence is in docs/codex/evidence/S3-full.json.
 
 The four known failures are retained by explicit owner instruction while another branch re-anchors them:
 1. P1-14 the diff from main lists only allowed paths

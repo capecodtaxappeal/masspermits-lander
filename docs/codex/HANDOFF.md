@@ -2,18 +2,18 @@
 
 ## Five-line owner report
 
-The new tests exercise real purchase, delivery and access handlers offline.
+Thirty revenue rules now have a named coverage map and ranked findings.
 The full suite has 312 passes, four known baseline failures and 64 executed TODO cases.
 Nine storage, HTML and signing comparisons pass against local workerd.
 Production and the existing mission tests are unchanged.
-Work continues into findings, failure injection, mutation testing, fixes and the runbook.
+Work continues into failure injection, mutation testing, small fixes and the runbook.
 
 ## Current state
 
-Updated 2026-09-27. Phase S2 complete; S3 next.
+Updated 2026-09-27. Phases S2 and S3 complete; S6 next, with independent small fix branches in parallel.
 Branch: claude/codex-revenue-harness.
 Source base: 1068e8070e88a436fbf5f86b88bf075e1f3a01c5.
-Previous published head: fafd43411144e07822a23de8525e624e05506515.
+Previous published head: 0e353e32741e4523994157a134071119368f06c5.
 Current closing head: refs/heads/claude/codex-revenue-harness; resolve git rev-parse HEAD.
 Worktree: C:/Users/patri/OneDrive/Desktop/masspermits-lander/.git/codex-session-worktrees/revenue-harness
 
@@ -57,16 +57,16 @@ Known failures, unchanged:
 
 ## Exact next steps
 
-First command at S3:
+First command at S6:
 
     git -c core.hooksPath=.git/codex-disabled-hooks fetch origin
 
 If main moved, read the changes, rebase this branch and rerun the full suite. Preserve the freeze unless both incoming changes are proved present.
-1. Write FINDINGS.md with exact reproductions, impact, likelihood, disposition and proposed fix; distinguish concrete counterexamples, refuted candidates and policy questions.
-2. Map all I01-I30 to executable tests, including reuse of the existing mission payment oracle rather than claiming status alone reconciles Stripe.
-3. Commit/push/update this branch's draft PR as S3 checkpoint, then continue S6.
+1. S3 complete: FINDINGS.md ranks C01-C20 with exact reproductions, impact, conditional likelihood and disposition. C04a identity conflicts is separate from C04b event ordering.
+2. S3 complete: COVERAGE.md maps I01-I30, retaining explicit partial and policy gaps. It attributes I15 to existing mission reconciliation oracles.
+3. Continue S6 now. Add provider faults, large rosters, UTC/DST boundaries, auth and rendered-portal controls. S3 evidence is evidence/S3-full.json: 380/312/4/64, no unexpected hard failures.
 4. Add genuine failure injection beyond existing cases, then mutation tests with per-file scores and justified survivors. Mutation copies must stay inside clone scratch, never in deployed source.
-5. Implement preauthorized minimal fixes on separate branches with failing-before/passing-after evidence. Candidate first fixes: C17 own-key gate, C15 controlled access errors, C04a conflicting-customer payment flags. Do not mix broader event-ordering work into C04a.
+5. Implement preauthorized minimal fixes on separate branches with failing-before/passing-after evidence. First fixes: C17 own-key gate, C15 controlled access errors, C04a conflicting-customer payment flags. Each branch is based on the harness branch and should target it as a stacked draft so production diffs remain small. Do not mix broader event-ordering work into C04a.
 6. Write the short operator runbook and continue resolving nonfrozen findings. Queue frozen and policy-dependent items with exact reasons.
 
 ## Boundaries
