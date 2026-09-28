@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Townsend, MA",
- "home_page_url": "https://masspermits.com/permits/townsend",
+ "title": "MassPermits \u2014 building permits in Townsend, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/townsend.json",
- "description": "MassPermits no longer receives building-permit records for Townsend, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-23. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Townsend, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,122 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-23",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-09-23",
- "items": []
+ "_window_total": 11,
+ "_window_from": "2026-09-22",
+ "_window_to": "2026-09-28",
+ "items": [
+  {
+   "id": "f7d121a8d918975e",
+   "url": "https://masspermits.com/permits/townsend",
+   "title": "Electrical permit \u2014 Woodland Dr, Townsend",
+   "content_text": "Electrical permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "609f74a9abf79e83",
+   "url": "https://masspermits.com/permits/townsend",
+   "title": "HVAC permit \u2014 Dudley Rd, Townsend",
+   "content_text": "HVAC permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "5b5cd6acb7323fb1",
+   "url": "https://masspermits.com/permits/townsend",
+   "title": "Solar permit \u2014 New Fitchburg Rd, Townsend",
+   "content_text": "Solar permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Solar"
+  },
+  {
+   "id": "1c45fc8d8ed0da52",
+   "url": "https://masspermits.com/permits/townsend-plumbing",
+   "title": "Plumbing permit \u2014 Worcester Rd, Townsend",
+   "content_text": "Plumbing permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "0c1447fbbe87ee13",
+   "url": "https://masspermits.com/permits/townsend",
+   "title": "Solar permit \u2014 Depot St, Townsend",
+   "content_text": "Solar permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Solar"
+  },
+  {
+   "id": "e07540b6d363291d",
+   "url": "https://masspermits.com/permits/townsend",
+   "title": "Electrical permit \u2014 Smith St, Townsend",
+   "content_text": "Electrical permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "385e07d7ef17c957",
+   "url": "https://masspermits.com/permits/townsend-plumbing",
+   "title": "Plumbing permit \u2014 Main St, Townsend",
+   "content_text": "Plumbing permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "fa77227bda960b3e",
+   "url": "https://masspermits.com/permits/townsend-plumbing",
+   "title": "Plumbing permit \u2014 Emery Rd, Townsend",
+   "content_text": "Plumbing permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "42ce73ff842cf13c",
+   "url": "https://masspermits.com/permits/townsend",
+   "title": "Building permit \u2014 Fox Run Rd, Townsend",
+   "content_text": "Building permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Building"
+  },
+  {
+   "id": "d27ab3457ef68a0b",
+   "url": "https://masspermits.com/permits/townsend-plumbing",
+   "title": "Plumbing permit \u2014 Turnpike Rd, Townsend",
+   "content_text": "Plumbing permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "3558d134ee8304b7",
+   "url": "https://masspermits.com/permits/townsend",
+   "title": "Electrical permit \u2014 Emery Rd, Townsend",
+   "content_text": "Electrical permit in Townsend, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Townsend",
+   "_trade": "Electrical"
+  }
+ ]
 }
