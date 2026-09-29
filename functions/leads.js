@@ -12,7 +12,7 @@
 // week's rows under a header that says "updated", the portal is a DOWNGRADE on
 // email: the same failure, quieter. So freshness is not a garnish here:
 //   * it is computed at request time from the returned R2 object's uploaded
-//     date and refresh-status.ran_at — NEVER from the "updated <date>" string baked
+//     date and refresh-status.ran_at, never from the "updated <date>" string baked
 //     into the HTML, which is `date.today()` on the build machine
 //     (build_bundle.py:185) and has no causal relationship to the data;
 //   * D-4 keeps dated older rows available with a clear Data as of label;
