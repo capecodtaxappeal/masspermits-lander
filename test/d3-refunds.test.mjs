@@ -352,3 +352,12 @@ check('D3 failed first enrollment cannot acknowledge or mail before required ref
   assert.equal((await invoke(w,purchase)).status,200);
   assert.equal(first(w).billing_access.customer,CUSTOMER);assert.equal(customerMail(w).length,1);
 }));
+
+check('D3 failed existing-row token write cannot send an unusable first-delivery link',()=>using(async w=>{
+  const rows=w.r2.json(KEY);delete rows[0].token;w.r2.set(KEY,rows);
+  w.r2.failNext('put',KEY,new Error('TOKEN_WRITE_TEST'));
+  const purchase=checkout();purchase.data.object.subscription='sub_primary_TEST';
+  assert.equal((await invoke(w,purchase)).status,503);assert.equal(first(w).token,undefined);noCustomerMail(w);
+  assert.equal((await invoke(w,purchase)).status,200);assert.match(first(w).token,/^[a-f0-9]{32}$/);
+  assert.equal(customerMail(w).length,1);
+}));

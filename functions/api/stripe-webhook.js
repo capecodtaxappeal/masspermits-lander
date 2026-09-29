@@ -170,6 +170,7 @@ export async function onRequestPost(context) {
     let dlToken = "";
     if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
       dlToken = await addSubscriber(env, email, event);
+      if (!dlToken) return json({ ok: false, error: "billing policy update failed" }, 503);
       try {
         if (!await rememberBillingDelivery(env, event, email, { requireRow: true }))
           return json({ ok: true, skipped: "billing access held" });
