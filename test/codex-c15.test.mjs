@@ -7,7 +7,7 @@ async function call({roster=JSON.stringify([{token:TOKEN,active:true}]),rosterFa
  const gets=[],waits=[],writes=[];
  const response=await onRequestGet({request:new Request('https://example.test/api/my-leads?t='+token),env:{BUNDLES:{
   async get(key){gets.push(key);if(key==='subscribers.json'){if(rosterFailure)throw new Error(PRIVATE);return roster===undefined?null:{text:async()=>{if(bodyFailure)throw new Error(PRIVATE);return roster;}};}
-   if(bundleFailure)throw new Error(PRIVATE);return bundle===null?null:{body:bundle};},
+   if(bundleFailure)throw new Error(PRIVATE);return bundle===null?null:{body:bundle,uploaded:new Date('2026-09-28T10:00:00Z')};},
   async put(...args){writes.push(args);}
  }},waitUntil:p=>waits.push(p)});
  await Promise.all(waits);return {response,gets,writes};
