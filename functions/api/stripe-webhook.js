@@ -1,3 +1,5 @@
+import { applyBillingAccess, cancelBillingAccess, rememberBillingDelivery, billingBlocked } from "./_billing-policy.js";
+
 // MassPermits — Stripe webhook → auto-deliver the lead bundle.
 //
 // Cloudflare Pages Function (deploys with the site; no separate Worker). Stripe
@@ -40,8 +42,11 @@ export async function onRequestPost(context) {
     // Stripe webhook destination to also subscribe to customer.subscription.deleted.)
     if (event.type === "customer.subscription.deleted") {
       const o = (event.data && event.data.object) || {};
+      let policyDeactivated;
+      try { policyDeactivated = await cancelBillingAccess(env, o); }
+      catch { return json({ ok: false, error: "billing policy update failed" }, 503); }
       const n = await deactivateSubscriber(env, o.customer, o);
-      return json({ ok: true, deactivated: n });
+      return json({ ok: true, deactivated: n + policyDeactivated });
     }
 
     // A FAILING PAYMENT WAS COMPLETELY INVISIBLE TO US. This event was not
@@ -84,73 +89,22 @@ export async function onRequestPost(context) {
       return json({ ok: true, flagged: marked, type: event.type });
     }
 
-    // RADAR AND FRAUD SIGNALS — hold, alert, let the owner decide. (Owner
-    // decision, 2026-09-08: "hold it, email you, you decide".)
-    //
-    // BE HONEST ABOUT WHAT THIS CAN AND CANNOT DO. Stripe never sends
-    // checkout.session.completed for a payment Radar BLOCKS, so blocked cards
-    // already deliver nothing. The gap is a payment Radar puts in REVIEW, or
-    // one the bank later calls fraud: those succeed first and are flagged
-    // afterwards, so the first bundle may already have gone out. What this
-    // stops is everything after it — the recurring weekly feed, which is the
-    // part with the value — and it puts the fact in front of the owner the
-    // same minute instead of leaving it in the Stripe dashboard.
-    //
-    // Deactivating rather than merely flagging is deliberate, and is the
-    // OPPOSITE of the invoice.payment_failed policy above. A failed card is
-    // usually an expired card and cutting the customer off is worse than the
-    // problem; an early fraud warning or a chargeback is a third party stating
-    // the charge was not authorised, and shipping a paid product against that
-    // helps nobody. review.closed/approved puts them straight back.
-    if (event.type === "radar.early_fraud_warning.created" ||
-        event.type === "charge.dispute.created" ||
-        event.type === "review.opened") {
-      const o = (event.data && event.data.object) || {};
-      const who = o.customer_email ||
-        (o.customer_details && o.customer_details.email) ||
-        (o.billing_details && o.billing_details.email) || "";
-      const cust = o.customer || null;
-      const label = event.type === "review.opened" ? "Radar put a payment in review"
-        : event.type === "charge.dispute.created" ? "A charge was disputed (chargeback)"
-        : "The bank flagged a charge as fraud";
-      const stopped = await deactivateSubscriber(env, cust,
-        { customer_email: who, customer_details: { email: who } });
-      await flagPaymentIssue(env, cust, who,
-        { radar: event.type, at: new Date().toISOString() });
-      await notifyOwner(env,
-        `HOLD (${label}): ${who || cust || "unknown customer"}`,
-        `<div style="font-family:sans-serif;max-width:560px">
-         <h2 style="color:#b91c1c">${escapeHtml(label)}</h2>
-         <p><b>${escapeHtml(who || "(no email on the event)")}</b>${
-           cust ? ` &middot; <code>${escapeHtml(cust)}</code>` : ""}</p>
-         <p>Stripe event <code>${escapeHtml(event.type)}</code>${
-           o.reason ? ` &middot; reason <b>${escapeHtml(String(o.reason))}</b>` : ""}.</p>
-         <p>${stopped ? `<b>Weekly feed STOPPED</b> for ${stopped} subscriber record(s).`
-                      : "<b>No subscriber record matched</b>, so nothing was stopped. " +
-                        "This may be a one-time pack buyer, who is not on the feed."}</p>
-         <p style="color:#667;font-size:13px">Nothing further ships to them until you decide.
-         If the payment is legitimate, set <code>active: true</code> on their row in
-         subscribers.json. For a review, approving it in Stripe sends review.closed.
-         If a bundle had already been emailed before this event arrived, it is out; this
-         stops everything after it.</p></div>`);
-      return json({ ok: true, held: event.type, stopped });
-    }
-
-    // A review closed as APPROVED is Stripe saying the payment is fine. Undo
-    // the hold rather than leaving a good customer switched off.
-    if (event.type === "review.closed") {
-      const o = (event.data && event.data.object) || {};
-      const who = o.customer_email || "";
-      if ((o.closed_reason || "") === "approved") {
-        await clearPaymentIssue(env, o.customer, who);
-        await notifyOwner(env, `Radar review APPROVED: ${who || o.customer || "customer"}`,
-          `<div style="font-family:sans-serif;max-width:560px">
-           <p>Stripe closed the review as <b>approved</b>; the payment flag is cleared.</p>
-           <p style="color:#667;font-size:13px">If the hold had stopped their weekly feed,
-           set <code>active: true</code> on their row in subscribers.json to resume it.</p>
-           </div>`);
+    // Refunds and cleared reviews follow the owner's access policy. Reviews
+    // usually carry charge/payment-intent IDs, not customer IDs or addresses.
+    if (["charge.refunded", "review.opened", "review.closed",
+         "charge.dispute.created", "radar.early_fraud_warning.created"].includes(event.type)) {
+      let result;
+      try { result = await applyBillingAccess(env, event); }
+      catch { return json({ ok: false, error: "billing policy update failed" }, 503); }
+      if (event.type !== "charge.refunded") {
+        await notifyOwner(env, "Billing access policy updated",
+          '<div style="font-family:sans-serif"><p>A signed billing event updated one subscriber access record.</p>' +
+           '<p>Event: <code>' + escapeHtml(event.type) + '</code> <code>' +
+          escapeHtml(event.data?.object?.id || "") + '</code>.</p><p>Subscriber: ' +
+          escapeHtml(result.ownerDetail.email) + ' <code>' + escapeHtml(result.ownerDetail.customer) + '</code>.</p>' +
+          '<p>Current access: ' + (result.active ? 'active' : 'held') + '.</p></div>');
       }
-      return json({ ok: true, review_closed: o.closed_reason || "unknown" });
+      return json({ ok: true, policy: result.policy, active: result.active });
     }
 
     // Payment recovered — clear the flag so a resolved card does not leave a
@@ -159,6 +113,16 @@ export async function onRequestPost(context) {
       const o = (event.data && event.data.object) || {};
       await clearPaymentIssue(env, o.customer,
         o.customer_email || (o.customer_details && o.customer_details.email) || "");
+    }
+
+    // The first invoice is not delivered twice, but its payment IDs are needed
+    // to resolve later sparse Review events. A completed checkout must first
+    // link this exact subscription; a missing link retries instead of guessing.
+    const invoice = event.data?.object || {};
+    if (event.type === "invoice.paid" && invoice.billing_reason === "subscription_create" &&
+        (invoice.amount_paid || invoice.total || 0) >= MIN_CENTS) {
+      try { await rememberBillingDelivery(env, event, invoice.customer_email || "", { requireLinkedSubscription: true }); }
+      catch { return json({ ok: false, error: "billing policy update failed" }, 503); }
     }
 
     const decision = decideDelivery(event);
@@ -186,6 +150,11 @@ export async function onRequestPost(context) {
       }
     }
 
+    try {
+      if (!await rememberBillingDelivery(env, event, email))
+        return json({ ok: true, skipped: "billing access held" });
+    } catch { return json({ ok: false, error: "billing policy update failed" }, 503); }
+
     const file = await env.BUNDLES.get(bundleKey);
     if (!file) return json({ ok: false, error: `bundle ${bundleKey} not in R2` }, 500);
     const bytes = await file.arrayBuffer();
@@ -201,6 +170,10 @@ export async function onRequestPost(context) {
     let dlToken = "";
     if (kind === "monthly" && ((event.data && event.data.object) || {}).mode === "subscription") {
       dlToken = await addSubscriber(env, email, event);
+      try {
+        if (!await rememberBillingDelivery(env, event, email, { requireRow: true }))
+          return json({ ok: true, skipped: "billing access held" });
+      } catch { return json({ ok: false, error: "billing policy update failed" }, 503); }
     }
 
     await sendEmail(env, email, kind, ref, bytes, bundleKey, myCode, dlToken);
@@ -299,7 +272,7 @@ async function addSubscriber(env, email, event) {
       // Re-subscribe after a cancellation, or a second checkout. Reactivate and
       // backfill anything missing rather than creating a duplicate row.
       let changed = false;
-      if (existing.active === false) { existing.active = true; delete existing.cancelled; changed = true; }
+      if (existing.active === false && !billingBlocked(existing)) { existing.active = true; delete existing.cancelled; changed = true; }
       if (!existing.token) { existing.token = crypto.randomUUID().replace(/-/g, ""); changed = true; }
       // REPLACE the Stripe customer id, do not merely backfill a missing one.
       //
@@ -385,6 +358,9 @@ async function deactivateSubscriber(env, customerId, evObj) {
     let n = 0;
     let superseded = 0;
     for (const s of list) {
+      // Policy-aware rows were handled by subscription ID above. Do not let
+      // this legacy customer-only fallback revoke a different subscription.
+      if (s.billing_access !== undefined) continue;
       const hit = matchesForRevoke(s, customerId, byEmail);
       if (hit === "superseded") { superseded++; continue; }
       if (hit && s.active !== false) {
