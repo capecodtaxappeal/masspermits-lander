@@ -285,6 +285,35 @@ function decideDelivery(event) {
   return null;
 }
 
+// All four webhook roster writers use the body and etag from the same read. A failed
+// condition means another writer won; discard our list and recompute its change
+// on the new snapshot. Keep the work bounded so contention is retryable before
+// any caller reaches customer mail or an owner notification.
+async function updateSubscriberRoster(env, change, { create = false, missing } = {}) {
+  try {
+    for (let attempt = 0; attempt < 4; attempt++) {
+      const cur = await env.BUNDLES.get("subscribers.json");
+      if (!cur && !create) return missing;
+      const list = cur ? JSON.parse(await cur.text()) : [];
+      if (!Array.isArray(list)) throw new Error("invalid subscriber roster");
+      if (cur && (typeof cur.etag !== "string" || !cur.etag)) {
+        throw new Error("missing subscriber roster version");
+      }
+      const result = change(list);
+      if (!result.changed) return result.value;
+      const saved = await env.BUNDLES.put("subscribers.json", JSON.stringify(list), {
+        onlyIf: cur ? { etagMatches: cur.etag } : { etagDoesNotMatch: "*" },
+      });
+      if (saved === null) continue;
+      if (!saved) throw new Error("missing subscriber roster write result");
+      return result.value;
+    }
+  } catch {
+    throw new Error("subscriber roster update unavailable");
+  }
+  throw new Error("subscriber roster update unavailable");
+}
+
 // Maintain the weekly-feed subscriber list in R2 (read by /api/weekly-send).
 // RETURNS the subscriber's download token so the purchase email can link to
 // /api/my-leads. It used to return nothing and run AFTER the email was sent,
@@ -292,37 +321,33 @@ function decideDelivery(event) {
 async function addSubscriber(env, email, event) {
   try {
     const o = (event.data && event.data.object) || {};
-    const cur = await env.BUNDLES.get("subscribers.json");
-    const list = cur ? JSON.parse(await cur.text()) : [];
-    if (!Array.isArray(list)) throw new Error("invalid subscriber roster");
-    const existing = list.find((s) => s.email === email);
-    if (existing) {
-      // Re-subscribe after a cancellation, or a second checkout. Reactivate and
-      // backfill anything missing rather than creating a duplicate row.
-      let changed = false;
-      if (existing.active === false) { existing.active = true; delete existing.cancelled; changed = true; }
-      if (!existing.token) { existing.token = crypto.randomUUID().replace(/-/g, ""); changed = true; }
-      // REPLACE the Stripe customer id, do not merely backfill a missing one.
-      //
-      // A re-subscription after a cancellation arrives as a NEW Stripe customer
-      // id for the SAME email. The old form only filled the field when it was
-      // absent, so the row went on naming the DEAD customer. When Stripe later
-      // cancelled that dead customer, deactivateSubscriber matched this row by
-      // its stale id and switched off someone who was paying under the new one.
-      // That is exactly what happened on 2026-08-31: a subscriber who had
-      // re-subscribed on 08-18 was dropped from the 08-31, 09-07 and 09-14
-      // sends while still being billed, and nothing in the system disagreed.
-      //
-      // The newest completed checkout is the most recent truth about which
-      // Stripe customer this email pays as, so it wins.
-      if (o.customer && existing.customer !== o.customer) {
-        existing.customer = o.customer;
-        changed = true;
+    return await updateSubscriberRoster(env, (list) => {
+      const existing = list.find((s) => s.email === email);
+      if (existing) {
+        // Re-subscribe after a cancellation, or a second checkout. Reactivate and
+        // backfill anything missing rather than creating a duplicate row.
+        let changed = false;
+        if (existing.active === false) { existing.active = true; delete existing.cancelled; changed = true; }
+        if (!existing.token) { existing.token = crypto.randomUUID().replace(/-/g, ""); changed = true; }
+        // REPLACE the Stripe customer id, do not merely backfill a missing one.
+        //
+        // A re-subscription after a cancellation arrives as a NEW Stripe customer
+        // id for the SAME email. The old form only filled the field when it was
+        // absent, so the row went on naming the DEAD customer. When Stripe later
+        // cancelled that dead customer, deactivateSubscriber matched this row by
+        // its stale id and switched off someone who was paying under the new one.
+        // That is exactly what happened on 2026-08-31: a subscriber who had
+        // re-subscribed on 08-18 was dropped from the 08-31, 09-07 and 09-14
+        // sends while still being billed, and nothing in the system disagreed.
+        //
+        // The newest completed checkout is the most recent truth about which
+        // Stripe customer this email pays as, so it wins.
+        if (o.customer && existing.customer !== o.customer) {
+          existing.customer = o.customer;
+          changed = true;
+        }
+        return { changed, value: existing.token || "" };
       }
-      if (changed) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
-      return existing.token || "";
-    }
-    {
       const token = crypto.randomUUID().replace(/-/g, "");
       list.push({
         email,
@@ -333,9 +358,8 @@ async function addSubscriber(env, email, event) {
         // self-serve download token for the /api/my-leads fallback link
         token,
       });
-      await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
-      return token;
-    }
+      return { changed: true, value: token };
+    }, { create: true });
   } catch {
     // The caller has not attempted customer mail yet. Keep this retryable.
     throw new Error("subscriber enrollment unavailable");
@@ -379,10 +403,7 @@ async function deactivateSubscriber(env, customerId, evObj) {
   const byEmail = ((evObj && (evObj.customer_email ||
     (evObj.customer_details && evObj.customer_details.email))) || "").toLowerCase();
   if (!customerId && !byEmail) return 0;
-  try {
-    const cur = await env.BUNDLES.get("subscribers.json");
-    if (!cur) return 0;
-    const list = JSON.parse(await cur.text());
+  const { n, superseded } = await updateSubscriberRoster(env, (list) => {
     let n = 0;
     let superseded = 0;
     for (const s of list) {
@@ -394,20 +415,18 @@ async function deactivateSubscriber(env, customerId, evObj) {
         n++;
       }
     }
-    if (n) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
-    // An ignored cancellation is the signal that someone re-subscribed under a new
-    // Stripe customer. It is not an error, but it is the exact condition that used
-    // to cut a paying customer off in silence, so say so out loud.
-    if (superseded) {
-      try {
-        console.log(JSON.stringify({ evt: "cancellation_superseded", customerId,
-          rows: superseded, note: "row holds a different Stripe customer id; not revoked" }));
-      } catch (_) { /* logging must never break the webhook */ }
-    }
-    return n;
-  } catch (e) {
-    return 0;
+    return { changed: n > 0, value: { n, superseded } };
+  }, { missing: { n: 0, superseded: 0 } });
+  // An ignored cancellation is the signal that someone re-subscribed under a new
+  // Stripe customer. It is not an error, but it is the exact condition that used
+  // to cut a paying customer off in silence, so say so out loud.
+  if (superseded) {
+    try {
+      console.log(JSON.stringify({ evt: "cancellation_superseded", customerId,
+        rows: superseded, note: "row holds a different Stripe customer id; not revoked" }));
+    } catch (_) { /* logging must never break the webhook */ }
   }
+  return n;
 }
 
 // Mark a subscriber whose payment failed. Returns true if a record matched.
@@ -416,10 +435,7 @@ async function deactivateSubscriber(env, customerId, evObj) {
 async function flagPaymentIssue(env, customerId, email, detail) {
   const byEmail = (email || "").toLowerCase();
   if (!customerId && !byEmail) return false;
-  try {
-    const cur = await env.BUNDLES.get("subscribers.json");
-    if (!cur) return false;
-    const list = JSON.parse(await cur.text());
+  return updateSubscriberRoster(env, (list) => {
     let hit = false;
     for (const s of list) {
       const match = (customerId && s.customer === customerId) ||
@@ -430,19 +446,15 @@ async function flagPaymentIssue(env, customerId, email, detail) {
       s.payment_failing = new Date().toISOString().slice(0, 10);
       s.payment_detail = detail || {};
     }
-    if (hit) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
-    return hit;
-  } catch { return false; }
+    return { changed: hit, value: hit };
+  }, { missing: false });
 }
 
 // Payment went through after a failure: drop the flag.
 async function clearPaymentIssue(env, customerId, email) {
   const byEmail = (email || "").toLowerCase();
   if (!customerId && !byEmail) return;
-  try {
-    const cur = await env.BUNDLES.get("subscribers.json");
-    if (!cur) return;
-    const list = JSON.parse(await cur.text());
+  return updateSubscriberRoster(env, (list) => {
     let changed = false;
     for (const s of list) {
       const match = (customerId && s.customer === customerId) ||
@@ -455,8 +467,8 @@ async function clearPaymentIssue(env, customerId, email) {
         changed = true;
       }
     }
-    if (changed) await env.BUNDLES.put("subscribers.json", JSON.stringify(list));
-  } catch { /* never block a successful delivery on bookkeeping */ }
+    return { changed };
+  });
 }
 
 // One place to reach the owner. Never throws: a failed alert must not turn into
