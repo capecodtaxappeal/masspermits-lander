@@ -139,59 +139,35 @@ export async function onRequestHead(context) {
 async function renderPortal(context, token, sub) {
   const { env } = context;
 
-  // head(), not get(): `uploaded` is the only timestamp in this system that
-  // goes stale when the pipeline stops (§6.1). ran_at, fetched_at and the
-  // header's "updated <date>" are all RUN stamps — a successful build over
-  // stale scraped data stamps today's date on rows nobody refreshed.
-  const [hHtml, hZip, status] = await Promise.all([
-    headSafe(env, HTML_KEY),
+  // Read the returned object's body and publication date together. A separate
+  // head can describe a different generation during an upload.
+  let src;
+  try { src = await env.BUNDLES.get(HTML_KEY); }
+  catch (_) { return unavailable(); }
+  if (!src) return redirect("/api/my-leads?t=" + token);
+  const [hZip, status] = await Promise.all([
     headSafe(env, ZIP_KEY),
     readJson(env, "refresh-status.json"),
   ]);
-
-  // The artifact is not in R2 (Stage B/C not shipped yet, or the workflow's
-  // "Ship bundles to R2" step was skipped by an aborted refresh). Degrade to
-  // the emailed download instead of 404-ing a paying customer. This is the
-  // step-8 fallback that turns a deploy-ordering mistake into a degraded link
-  // rather than an outage — it ships in v1, not later.
-  if (!hHtml) return redirect("/api/my-leads?t=" + token);
-
   const now = Date.now();
   const tRan = status && status.ran_at ? Date.parse(status.ran_at) : NaN;
-  const tHtml = hHtml.uploaded ? new Date(hHtml.uploaded).getTime() : NaN;
+  const tHtml = src.uploaded ? new Date(src.uploaded).getTime() : NaN;
   const tZip = hZip && hZip.uploaded ? new Date(hZip.uploaded).getTime() : NaN;
-  const ageRan = Number.isFinite(tRan) ? now - tRan : null;
-  const ageHtml = Number.isFinite(tHtml) ? now - tHtml : null;
-  const known = [ageRan, ageHtml].filter((a) => a !== null);
-
-  // ---- RED (§2.5 rules 1-2). The rows are SUPPRESSED, not warned over. ----
-  // Implemented by not streaming latest-weekly.html at all: the dashboard
-  // rebuilds its table client-side from an embedded payload, so removing the
-  // <table> would leave the data in the document and one script away from view.
-  // A separate page is the only way "suppress" is actually true.
-  let red = null;
-  if (!known.length) {
-    // Neither timestamp is readable. "Never ran" and "ran fine" must not look
-    // alike (a green run is not proof), and the honest answer here is that we
-    // do not know — which is a red, not a quiet grey line.
-    red = { days: null };
-  } else if (Math.max.apply(null, known) > STALE_MS) {
-    red = { days: Math.floor(Math.max.apply(null, known) / 86400_000) };
+  // Do not put an unrelated refresh date on undated bytes.
+  if (!Number.isFinite(tHtml) || tHtml > now) {
+    return page(503, "The data date is unavailable",
+      "<p>We cannot confirm this file's date. Please try again shortly.</p>");
   }
-  if (red) {
-    logAccess(context, token, "red");
-    return page(200, "This week's data has not refreshed",
-      "<p>" + (red.days === null
-        ? "We cannot confirm how old this data is: the refresh record is missing."
-        : "This data is <b>" + red.days + " days old</b> and we have not been able to refresh it.") +
-      " <b>Do not work from this page.</b> Reply to your last email and we will sort it out.</p>" +
-      "<p class=\"mp-dim\">Your rows are hidden deliberately. Stale permit records look " +
-      "exactly like fresh ones, and a week-old list sends you to jobs that are already let.</p>",
-      null, "bad");
-  }
+  const ageRan = Number.isFinite(tRan) && tRan <= now ? now - tRan : null;
+  const ageHtml = now - tHtml;
+  const dataAt = ageRan === null ? tHtml : Math.min(tRan, tHtml);
+  const stale = now - dataAt > STALE_MS;
 
   // ---- AMBER (§2.5 rules 3-4). More than one can be true at once. ----
   const notes = [];
+  if (stale) notes.push("<p><b>This week's data has not refreshed.</b> " +
+    "You can still use the last available snapshot below. This is older data; " +
+    "check each permit's issue date before acting on it.</p>");
   if (ageRan === null || ageHtml === null) {
     notes.push("<p><b>We cannot fully confirm this page's freshness.</b> " +
       (ageRan === null
@@ -226,19 +202,16 @@ async function renderPortal(context, token, sub) {
       // in weekly-send.js: this box rendered on every page load while coverage
       // disclosure was on, so it offered every subscriber their money back
       // without anyone deciding to. Standing rule from 2026-09-15.
-      "<p>Everything on this page is real and current. If a reduced feed is not worth your " +
+      "<p>Records reflect the dated snapshot above. If a reduced feed is not worth your " +
       "subscription in the meantime, reply to your last email and tell me.</p>");
   }
 
   // ---- GREY (§2.5, otherwise) ----
-  const refreshed = Number.isFinite(tRan) ? iso(tRan) : (Number.isFinite(tHtml) ? iso(tHtml) : "");
-  const grey = "<p>Data refreshed " + esc(refreshed) + ". Next refresh Monday." +
-    (Number.isFinite(tHtml) ? " <span class=\"mp-dim\">This page published " + esc(iso(tHtml)) + ".</span>" : "") +
-    "</p>";
-
+  const grey = "<p><b>Data as of " + esc(iso(dataAt)) + ".</b> Next refresh Monday." +
+    " <span class=\"mp-dim\">This page published " + esc(iso(tHtml)) + ".</span></p>";
   const banner =
     "<div class=\"mp-note " + (notes.length ? "mp-amber" : "mp-grey") + "\">" +
-    (notes.length ? notes.join("") : grey) + "</div>";
+    grey + notes.join("") + "</div>";
 
   // Watermark (§2.5.2). Local part only: enough for us to attribute a forwarded
   // screenshot to one subscriber, not enough to dox them into a WhatsApp group.
@@ -252,10 +225,7 @@ async function renderPortal(context, token, sub) {
     "<a class=\"mp-out\" href=\"/leads/out\">Sign out</a>" +
     "</div>" + banner + "</div>";
 
-  const src = await env.BUNDLES.get(HTML_KEY);
-  if (!src) return redirect("/api/my-leads?t=" + token); // raced with a re-upload
-
-  logAccess(context, token, "ok");
+  logAccess(context, token, stale ? "red" : "ok");
 
   const base = new Response(src.body, {
     status: 200,
@@ -539,9 +509,8 @@ async function readKillSwitch(env) {
     try {
       return JSON.parse(await o.text());
     } catch (_) {
-      // Present but unreadable. The ONLY reason this object exists is to turn
-      // the portal off, so a broken one fails SAFE (off), not open.
-      return { off: true, message: "" };
+      // An unreadable pause setting must not remove paid access.
+      return null;
     }
   } catch (_) {
     return null; // an R2 blip must not take the portal down by itself

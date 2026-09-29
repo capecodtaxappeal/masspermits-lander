@@ -111,12 +111,17 @@ export async function onRequestGet(context) {
     return new Response("This week's file isn't ready yet. Check back shortly.", { status: 404 });
   }
 
-  const d = new Date().toISOString().slice(0, 10);
+  const published = file.uploaded ? new Date(file.uploaded).getTime() : NaN;
+  if (!Number.isFinite(published) || published > Date.now()) {
+    return new Response("We cannot confirm this file's date. Please try again shortly.", { status: 503 });
+  }
+  const d = new Date(published).toISOString().slice(0, 10);
   const resp = new Response(file.body, {
     headers: {
       "Content-Type": "application/zip",
-      "Content-Disposition": `attachment; filename="MassPermits-${want}-${d}.zip"`,
+      "Content-Disposition": `attachment; filename="MassPermits-${want}-data-as-of-${d}.zip"`,
       "Cache-Control": "no-store",
+      "X-MassPermits-Data-As-Of": d,
     },
   });
   // AFTER the response object exists, so nothing below can affect what the
