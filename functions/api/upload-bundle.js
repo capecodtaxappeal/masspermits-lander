@@ -61,17 +61,42 @@ export async function onRequest(context) {
   const key = new URL(request.url).searchParams.get("key") || "";
   if (!(key in ALLOWED_KEYS)) return json({ error: "key not allowed" }, 400);
 
+  const condition = uploadCondition(request.headers);
+  if (condition.error) return json({ ok: false, error: condition.error }, 400);
+
   try {
     const body = await request.arrayBuffer();
     if (!body || body.byteLength === 0) return json({ error: "empty body" }, 400);
     if (body.byteLength > MAX_BYTES) return json({ error: "too large" }, 413);
-    await env.BUNDLES.put(key, body, { httpMetadata: { contentType: ALLOWED_KEYS[key] } });
-    return json({ ok: true, key, bytes: body.byteLength });
+    const options = { httpMetadata: { contentType: ALLOWED_KEYS[key] } };
+    if (condition.onlyIf) options.onlyIf = condition.onlyIf;
+    // Let R2 check and write atomically. A prior head/get would race another writer.
+    const stored = await env.BUNDLES.put(key, body, options);
+    if (stored === null) return json({ ok: false, error: "precondition failed" }, 412);
+    return json({ ok: true, key, bytes: body.byteLength }, 200,
+      stored?.httpEtag ? { ETag: stored.httpEtag } : {});
   } catch (e) {
     return json({ ok: false, error: String(e && e.message || e).slice(0, 200) }, 500);
   }
 }
 
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json" } });
+function uploadCondition(headers) {
+  if (["If-Modified-Since", "If-Unmodified-Since", "If-Range"].some(name => headers.has(name)) ||
+      (headers.has("If-Match") && headers.has("If-None-Match"))) {
+    return { error: "unsupported precondition" };
+  }
+  const name = headers.has("If-Match") ? "If-Match" : headers.has("If-None-Match") ? "If-None-Match" : null;
+  if (!name) return {};
+  const value = headers.get(name).trim();
+  // A single nonempty strong ETag or the unquoted wildcard. Reject lists, weak
+  // tags and quoted "*" rather than giving them different R2 SDK semantics.
+  if (value !== "*" && (!/^"[\x21\x23-\x7e\x80-\xff]+"$/.test(value) || value === '"*"')) {
+    return { error: "invalid precondition" };
+  }
+  const etag = value === "*" ? "*" : value.slice(1, -1);
+  return { onlyIf: name === "If-Match" ? { etagMatches: etag } : { etagDoesNotMatch: etag } };
+}
+
+function json(obj, status = 200, headers = {}) {
+  return new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json", ...headers } });
 }
