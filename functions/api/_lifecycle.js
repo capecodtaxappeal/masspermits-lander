@@ -633,7 +633,8 @@ export async function runRollup(bucket, opts = {}) {
   // Retention, bounded. A 400-day backlog must drain over several runs rather
   // than blow the subrequest budget in one.
   let pruned = 0;
-  const doomed = stale.slice(0, PRUNE_MAX_PER_RUN);
+  // Preserve source evidence until its replacement aggregate is durable.
+  const doomed = stored_ok ? stale.slice(0, PRUNE_MAX_PER_RUN) : [];
   try {
     for (let i = 0; i < doomed.length; i += 100) {
       await bucket.delete(doomed.slice(i, i + 100));
