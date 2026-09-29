@@ -72,11 +72,14 @@ export async function onRequestGet(context) {
     return new Response("Missing or malformed download token.", { status: 400 });
   }
 
-  let subs = [];
+  let subs = null;
   try {
     const so = await env.BUNDLES.get("subscribers.json");
     if (so) subs = JSON.parse(await so.text());
   } catch (_) {
+    return new Response("Temporarily unavailable. Please try the emailed attachment.", { status: 503 });
+  }
+  if (!Array.isArray(subs)) {
     return new Response("Temporarily unavailable. Please try the emailed attachment.", { status: 503 });
   }
 
@@ -102,7 +105,12 @@ export async function onRequestGet(context) {
   // for. Anything else falls back to weekly rather than reaching R2 with it.
   const want = new URL(request.url).searchParams.get("k") === "monthly"
     ? "monthly" : "weekly";
-  const file = await env.BUNDLES.get(`latest-${want}.zip`);
+  let file;
+  try {
+    file = await env.BUNDLES.get(`latest-${want}.zip`);
+  } catch (_) {
+    return new Response("Temporarily unavailable. Please try the emailed attachment.", { status: 503 });
+  }
   if (!file) {
     // A real subscriber clicked and their product was not there. Nothing else
     // in the system can see this: no send failed, no log recorded it, and the
