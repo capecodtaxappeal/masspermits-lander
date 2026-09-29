@@ -39,7 +39,7 @@ const PRIVATE = 'PRIVATE_DIAGNOSTIC_TEST';
 const check = (name, fn) => test(name, { concurrency: false, timeout: 10000 }, fn);
 
 // Matches the current producer's allowlisted live/dry shape, with synthetic
-// counts only. Import the actual status handler through the shared source loader.
+// counts only. Exercise the actual status handler with a single-object fake.
 function run(extra = {}) {
   return { ran_at: LIVE, version: 'gs-TEST', mode: 'live', scanned: 4, waiting: 0,
     oldest_hours: 0, customers_waiting: 0, humans_waiting: 0, cold_replies_waiting: 0,
