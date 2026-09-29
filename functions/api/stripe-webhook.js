@@ -421,8 +421,7 @@ async function flagPaymentIssue(env, customerId, email, detail) {
     const list = JSON.parse(await cur.text());
     let hit = false;
     for (const s of list) {
-      const match = (customerId && s.customer === customerId) ||
-                    (byEmail && (s.email || "").toLowerCase() === byEmail);
+      const match = matchesForRevoke(s, customerId, byEmail) === true;
       if (!match) continue;
       hit = true;
       if (customerId && !s.customer) s.customer = customerId;   // backfill
@@ -444,8 +443,7 @@ async function clearPaymentIssue(env, customerId, email) {
     const list = JSON.parse(await cur.text());
     let changed = false;
     for (const s of list) {
-      const match = (customerId && s.customer === customerId) ||
-                    (byEmail && (s.email || "").toLowerCase() === byEmail);
+      const match = matchesForRevoke(s, customerId, byEmail) === true;
       if (!match) continue;
       if (customerId && !s.customer) { s.customer = customerId; changed = true; }
       if (s.payment_failing) {
