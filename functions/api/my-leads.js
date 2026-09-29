@@ -27,8 +27,8 @@
 //     That is accepted: losing an event beats losing a customer's file.
 //  3. NO NEW READ. Whether a fetch looks machine-generated is decided later, by
 //     the rollup, not here. The hot path keeps exactly the reads it had.
-//  4. Status codes, headers, body and the 403 message are UNCHANGED. A
-//     customer cannot tell this shipped.
+//  4. Telemetry does not affect the response. D-4 separately labels downloads
+//     with their object date and rejects an unknown date.
 //  5. What is stored is the minimum: no email, no name, no IP, no full token,
 //     no path, no referrer, no user-agent string — only the letter m or d. The
 //     timestamp lives in the key, so it is not stored twice.

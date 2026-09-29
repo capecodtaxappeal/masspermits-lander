@@ -43,7 +43,7 @@ after(() => { Date.now = originalNow; globalThis.fetch = originalFetch; globalTh
 
 function world({ uploaded = OLD, ran = OLD, active = true, pause, pauseFailure,
   missingHtml = false, missingZip = false, bodyFailure = false, coverage = false,
-  headUploaded = uploaded } = {}) {
+  headUploaded = uploaded, statusFailure } = {}) {
   const calls = [], pending = [];
   const bytes = new Uint8Array([80, 75, 3, 4]);
   const html = '<html><head></head><body><span class="fresh">updated TEST</span><p>TEST LAST GOOD ROWS</p></body></html>';
@@ -60,9 +60,14 @@ function world({ uploaded = OLD, ran = OLD, active = true, pause, pauseFailure,
           return pauseFailure === "json" ? "{" : JSON.stringify(pause);
         }};
       }
-      if (key === "refresh-status.json") return ran === null ? null : {
-        text: async () => JSON.stringify({ ran_at: ran, coverage: coverage ? { disclose: true, live_sources: 2, expected_sources: 4 } : null })
-      };
+      if (key === "refresh-status.json") {
+        if (statusFailure === "get") throw new Error("TEST refresh read unavailable");
+        return ran === null ? null : { text: async () => {
+          if (statusFailure === "body") throw new Error("TEST refresh body unavailable");
+          return statusFailure === "json" ? "{" : JSON.stringify({ ran_at: ran,
+            coverage: coverage ? { disclose: true, live_sources: 2, expected_sources: 4 } : null });
+        }};
+      }
       if (key === "latest-weekly.html") {
         if (bodyFailure) throw new Error("TEST HTML unavailable");
         return missingHtml ? null : { ...meta(uploaded), body: html };
@@ -181,5 +186,22 @@ for (const uploaded of [null, "bad-date", "2027-01-01T00:00:00Z"]) {
     const w = world({ uploaded });
     const r = await download(w.context("https://unit.invalid/api/my-leads?t=" + TOKEN));
     assert.equal(r.status, 503); assert.notEqual(r.headers.get("content-type"), "application/zip");
+  });
+}
+
+for (const statusFailure of ["get", "body", "json"]) {
+  test("D4 failed refresh evidence " + statusFailure + " keeps dated paid access", async () => {
+    const w = world({ statusFailure });
+    const r = await portal(w.context()), text = await r.text();
+    assert.equal(r.status, 200); assert.match(text, /TEST LAST GOOD ROWS/);
+    assert.match(text, /Data as of 2026-09-14/); assert.match(text, /publish/);
+  });
+}
+for (const ran of ["bad-date", "2027-01-01T00:00:00Z"]) {
+  test("D4 invalid refresh date falls back to the dated object " + ran, async () => {
+    const w = world({ ran });
+    const r = await portal(w.context()), text = await r.text();
+    assert.equal(r.status, 200); assert.match(text, /TEST LAST GOOD ROWS/);
+    assert.match(text, /Data as of 2026-09-14/);
   });
 }

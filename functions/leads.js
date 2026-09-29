@@ -11,12 +11,12 @@
 // write in on 2026-08-03. A URL has no such event. If this page can show last
 // week's rows under a header that says "updated", the portal is a DOWNGRADE on
 // email: the same failure, quieter. So freshness is not a garnish here:
-//   * it is computed at REQUEST time, in this Function, from R2 head().uploaded
-//     and refresh-status.ran_at — NEVER from the "updated <date>" string baked
+//   * it is computed at request time from the returned R2 object's uploaded
+//     date and refresh-status.ran_at — NEVER from the "updated <date>" string baked
 //     into the HTML, which is `date.today()` on the build machine
 //     (build_bundle.py:185) and has no causal relationship to the data;
-//   * the RED state does not warn above the rows, it REPLACES the page, because
-//     a warning over a full week of plausible-looking data still looks usable;
+//   * D-4 keeps dated older rows available with a clear Data as of label;
+//     an unknown object date never exposes unlabeled data;
 //   * the 8-day threshold is literally weekly-send.js's own constant. One number.
 //
 // AUTH — no passwords, no accounts, no new credential (KB/07 §2.2)
