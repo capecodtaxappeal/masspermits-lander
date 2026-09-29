@@ -25,18 +25,27 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 94,
+ "_window_total": 97,
  "_window_from": "2026-08-31",
- "_window_to": "2026-09-28",
+ "_window_to": "2026-09-29",
  "items": [
   {
-   "id": "ae784c102e528fd3",
-   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Old Pasture Rd, Cohasset",
-   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
+   "id": "6dc01913a4f5ddf9",
+   "url": "https://masspermits.com/permits/cohasset-plumbing",
+   "title": "Plumbing permit \u2014 Beach St, Cohasset",
+   "content_text": "Plumbing permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "ef32e849eb7d8a24",
+   "url": "https://masspermits.com/permits/cohasset-building",
+   "title": "Building permit \u2014 Pond St, Cohasset",
+   "content_text": "Building permit in Cohasset, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-28T00:00:00Z",
    "_town": "Cohasset",
-   "_trade": "Renovation/Remodel"
+   "_trade": "Building"
   },
   {
    "id": "c73a84eb519c06f1",
@@ -48,9 +57,45 @@
    "_trade": "HVAC"
   },
   {
-   "id": "3c508c7923cff9d8",
+   "id": "fb7e507f5fe719f5",
+   "url": "https://masspermits.com/permits/cohasset-electrical",
+   "title": "Electrical permit \u2014 Howe Rd, Cohasset",
+   "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "ae784c102e528fd3",
+   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Old Pasture Rd, Cohasset",
+   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "e453053bbee628c2",
+   "url": "https://masspermits.com/permits/cohasset-electrical",
+   "title": "Electrical permit \u2014 Lighthouse Ln, Cohasset",
+   "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "dcc233879abe70bb",
    "url": "https://masspermits.com/permits/cohasset-electrical",
    "title": "Electrical permit \u2014 North Main St, Cohasset",
+   "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "07438360f1f04059",
+   "url": "https://masspermits.com/permits/cohasset-electrical",
+   "title": "Electrical permit \u2014 Jerusalem Rd, Cohasset",
    "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-25T00:00:00Z",
    "_town": "Cohasset",
@@ -75,24 +120,6 @@
    "_trade": "Other"
   },
   {
-   "id": "07438360f1f04059",
-   "url": "https://masspermits.com/permits/cohasset-electrical",
-   "title": "Electrical permit \u2014 Jerusalem Rd, Cohasset",
-   "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-25T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "e453053bbee628c2",
-   "url": "https://masspermits.com/permits/cohasset-electrical",
-   "title": "Electrical permit \u2014 Lighthouse Ln, Cohasset",
-   "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-25T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Electrical"
-  },
-  {
    "id": "d0ef9009219e0577",
    "url": "https://masspermits.com/permits/cohasset-electrical",
    "title": "Electrical permit \u2014 Ripley Rd, Cohasset",
@@ -111,15 +138,6 @@
    "_trade": "Electrical"
   },
   {
-   "id": "87153023c38fc178",
-   "url": "https://masspermits.com/permits/cohasset-electrical",
-   "title": "Electrical permit \u2014 Beechwood St, Cohasset",
-   "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Electrical"
-  },
-  {
    "id": "35f9dd340625c306",
    "url": "https://masspermits.com/permits/cohasset-gas",
    "title": "Gas permit \u2014 Jerusalem Rd, Cohasset",
@@ -127,6 +145,15 @@
    "date_published": "2026-09-23T00:00:00Z",
    "_town": "Cohasset",
    "_trade": "Gas"
+  },
+  {
+   "id": "87153023c38fc178",
+   "url": "https://masspermits.com/permits/cohasset-electrical",
+   "title": "Electrical permit \u2014 Beechwood St, Cohasset",
+   "content_text": "Electrical permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Electrical"
   },
   {
    "id": "6bc2af5364dd8cd6",
@@ -192,6 +219,15 @@
    "_trade": "Electrical"
   },
   {
+   "id": "d34bc218ada761f7",
+   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Highland Ave, Cohasset",
+   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Renovation/Remodel"
+  },
+  {
    "id": "9a2933c8b6f277ad",
    "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Wheelwright Farm, Cohasset",
@@ -213,15 +249,6 @@
    "id": "10c87657bc550831",
    "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Nichols Rd, Cohasset",
-   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "d34bc218ada761f7",
-   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Highland Ave, Cohasset",
    "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-22T00:00:00Z",
    "_town": "Cohasset",
@@ -291,6 +318,15 @@
    "_trade": "Gas"
   },
   {
+   "id": "feae4de1e7f4113e",
+   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Dolan Lane, Cohasset",
+   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Renovation/Remodel"
+  },
+  {
    "id": "9fcd2a9b48f1b72d",
    "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Fairoaks Ln, Cohasset",
@@ -307,15 +343,6 @@
    "date_published": "2026-09-21T00:00:00Z",
    "_town": "Cohasset",
    "_trade": "Plumbing"
-  },
-  {
-   "id": "feae4de1e7f4113e",
-   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Dolan Lane, Cohasset",
-   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Renovation/Remodel"
   },
   {
    "id": "72e8253c224f7ca6",
@@ -435,15 +462,6 @@
    "_trade": "Plumbing"
   },
   {
-   "id": "a41a431163eaa7db",
-   "url": "https://masspermits.com/permits/cohasset-gas",
-   "title": "Gas permit \u2014 Forest Ave, Cohasset",
-   "content_text": "Gas permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-11T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Gas"
-  },
-  {
    "id": "ba5d3505649dbb14",
    "url": "https://masspermits.com/permits/cohasset-electrical",
    "title": "Electrical permit \u2014 Ocean Ledge Drive, Cohasset",
@@ -456,6 +474,15 @@
    "id": "b129285409c464ad",
    "url": "https://masspermits.com/permits/cohasset-gas",
    "title": "Gas permit \u2014 Ocean Ledge Drive, Cohasset",
+   "content_text": "Gas permit in Cohasset, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-11T00:00:00Z",
+   "_town": "Cohasset",
+   "_trade": "Gas"
+  },
+  {
+   "id": "a41a431163eaa7db",
+   "url": "https://masspermits.com/permits/cohasset-gas",
+   "title": "Gas permit \u2014 Forest Ave, Cohasset",
    "content_text": "Gas permit in Cohasset, MA. Full lead at masspermits.com.",
    "date_published": "2026-09-11T00:00:00Z",
    "_town": "Cohasset",
@@ -541,33 +568,6 @@
    "date_published": "2026-09-10T00:00:00Z",
    "_town": "Cohasset",
    "_trade": "Plumbing"
-  },
-  {
-   "id": "c715d36e21c81d42",
-   "url": "https://masspermits.com/permits/cohasset-gas",
-   "title": "Gas permit \u2014 Walnut Hill Lane, Cohasset",
-   "content_text": "Gas permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Gas"
-  },
-  {
-   "id": "ce7552123292a96b",
-   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Evergreen Ln, Cohasset",
-   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "b09d751d5a4968d0",
-   "url": "https://masspermits.com/permits/cohasset-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Atlantic Ave, Cohasset",
-   "content_text": "Renovation/Remodel permit in Cohasset, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-09T00:00:00Z",
-   "_town": "Cohasset",
-   "_trade": "Renovation/Remodel"
   }
  ]
 }
