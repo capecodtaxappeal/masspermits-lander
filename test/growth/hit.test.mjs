@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { execFileSync } from "node:child_process";
+import { createSign, generateKeyPairSync } from "node:crypto";
 import * as H from "./_harness.mjs";
 
 const { g } = await H.growthSetup();
@@ -23,6 +24,36 @@ async function hit(r2, query, o = {}) {
   return res;
 }
 const puts = (r2) => r2.ops.filter((o) => o.op === "put");
+
+// /api/live is owner-only since the lock-live change: read it as the owner,
+// with a locally minted Access token and a stubbed key set. Nothing leaves
+// the machine; any other fetch goes to whatever stub was already in place.
+const ACCESS_TEAM = "masspermits-test.cloudflareaccess.com";
+const ACCESS_AUD = "aud-growth-test";
+const ACCESS_KID = "kid-growth-1";
+const ACCESS_KEY = generateKeyPairSync("rsa", { modulusLength: 2048 });
+const ACCESS_JWK = { ...ACCESS_KEY.publicKey.export({ format: "jwk" }), kid: ACCESS_KID, alg: "RS256", use: "sig" };
+function ownerToken() {
+  const b64u = (x) => Buffer.from(x).toString("base64url");
+  const now = Math.floor(Date.now() / 1000);
+  const h = b64u(JSON.stringify({ alg: "RS256", kid: ACCESS_KID, typ: "JWT" }));
+  const p = b64u(JSON.stringify({ aud: [ACCESS_AUD], iss: "https://" + ACCESS_TEAM, exp: now + 3600,
+    iat: now - 10, nbf: now - 10, email: "owner@example.com", sub: "sub-1", type: "app" }));
+  return h + "." + p + "." + createSign("RSA-SHA256").update(h + "." + p).sign(ACCESS_KEY.privateKey).toString("base64url");
+}
+async function readLiveAsOwner(r2) {
+  const prior = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    const u = new URL(String(url));
+    if (u.origin === "https://" + ACCESS_TEAM && u.pathname === "/cdn-cgi/access/certs")
+      return new Response(JSON.stringify({ keys: [ACCESS_JWK] }), { status: 200 });
+    return prior(url, init);
+  };
+  try {
+    const request = new Request("https://masspermits.com/api/live", { headers: { "Cf-Access-Jwt-Assertion": ownerToken() } });
+    return await g.live.onRequestGet({ request, env: { BUNDLES: r2, CF_ACCESS_TEAM_DOMAIN: ACCESS_TEAM, CF_ACCESS_AUD: ACCESS_AUD } });
+  } finally { globalThis.fetch = prior; }
+}
 
 test("unknown events are rejected: pixel back, nothing written", async () => {
   const r2 = new H.GrowthR2();
@@ -68,7 +99,7 @@ test("page view counts in /api/traffic, /api/live and the growth page are not ch
   for (let i = 0; i < 3; i++) await hit(r2, "?p=%2F");
   const read = async () => {
     const t = await (await g.traffic.onRequestGet({ env: { BUNDLES: r2 } })).json();
-    const l = await (await g.live.onRequestGet({ env: { BUNDLES: r2 } })).json();
+    const l = await (await readLiveAsOwner(r2)).json();
     return { traffic: t.days[t.days.length - 1].total, live: l.today_total, active: l.active };
   };
   const before = await read();

@@ -125,7 +125,10 @@ test("owner notes are not served from the site: no docs/growth, and no added fil
     if (f === "functions/api/stripe-webhook.js") continue; // already on main, not touched here
     assert.ok(!other.test(fs.readFileSync(path.join(H.REPO, f), "utf8")), f + " names the other product");
   }
-  assert.ok(!/^\/docs\/\*/m.test(fs.readFileSync(path.join(H.REPO, "_headers"), "utf8")), "no header rule left for a removed folder");
+  // A /docs/* rule is only a leftover when the folder is gone. The manual
+  // inputs pages keep their own docs/ folder and noindex it on purpose.
+  const docsRule = /^\/docs\/\*/m.test(fs.readFileSync(path.join(H.REPO, "_headers"), "utf8"));
+  assert.ok(!docsRule || fs.existsSync(path.join(H.REPO, "docs")), "no header rule left for a removed folder");
 });
 
 // ── Stripe listing ──────────────────────────────────────────────────────────

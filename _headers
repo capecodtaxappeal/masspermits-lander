@@ -91,7 +91,7 @@
   Cache-Control: private, no-store
 
 # Road to 100 (owner only; Cloudflare Access covers /admin/*, and the data
-# route verifies the owner in code). Same headers as /admin/mission.
+# route verifies the owner in code). Same headers as the Mission Control page.
 /admin/growth
   Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
   X-Frame-Options: DENY
