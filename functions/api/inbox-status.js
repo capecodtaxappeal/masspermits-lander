@@ -35,6 +35,7 @@
 //              itself is dead, and its silence is indistinguishable
 //              from a quiet inbox. THIS IS THE WHOLE POINT.          -> ALERT
 //   never      no heartbeat has ever been recorded — not installed   -> ALERT
+//   unknown    stored evidence could not be read or trusted          -> ALERT
 
 import { verifyGitHubOIDC } from "./_github-oidc.js";
 
@@ -57,11 +58,42 @@ export async function onRequest(context) {
   const auth = await verifyGitHubOIDC(request);
   if (!auth.ok) return json({ error: "unauthorized", reason: auth.reason }, 401);
 
-  let state = null;
+  let state = null, present = false;
   try {
     const o = await env.BUNDLES.get(STATE_KEY);
+    present = o !== null;
     state = o ? JSON.parse(await o.text()) : null;
-  } catch { state = null; }
+  } catch {
+    return unknown("the stored inbox watchdog heartbeat could not be read or parsed. " +
+      "Whether the monitor is live and whether anyone is waiting are unknown. " +
+      "Check the saved heartbeat and its last successful write.");
+  }
+
+  // Absence is different from unreadable or malformed evidence. In particular,
+  // the caller treats `never` as pre-installation grace and does not alert on it.
+  // Do not turn an unknown monitor into that exemption, or echo untrusted values.
+  if (present) {
+    if (!record(state) || (state.history !== undefined && !Array.isArray(state.history))) {
+      return unknown("the stored inbox watchdog heartbeat has an invalid state shape. " +
+        "The monitor's current condition is unknown; check the heartbeat writer and saved state.");
+    }
+    const live = state.last_live_run_at;
+    if (live == null) {
+      // A real first dry run has no live timestamp and no live history. A lost
+      // timestamp beside retained live runs does not establish never-installed.
+      if ((state.history && state.history.length) || !timestamp(state.last_dry_run_at)) {
+        return unknown("the stored inbox watchdog heartbeat has no usable live-run evidence " +
+          "and does not establish a dry-only installation. Its current condition is unknown.");
+      }
+    } else if (!timestamp(live)) {
+      return unknown("the stored inbox watchdog heartbeat has an invalid live-run timestamp. " +
+        "The monitor's freshness is unknown; check the heartbeat writer and saved state.");
+    }
+    if ((live != null || state.last != null) && !summary(state.last)) {
+      return unknown("the stored inbox watchdog heartbeat has an invalid live-run summary. " +
+        "Roster protection and waiting-message counts are unknown; check the saved heartbeat.");
+    }
+  }
 
   const now = Date.now();
   const hours = (iso) => (iso ? (now - Date.parse(iso)) / 3600_000 : Infinity);
@@ -143,6 +175,32 @@ export async function onRequest(context) {
     scanned: last ? last.scanned : null,
     errors: last ? last.errors : null,
     runs_recorded: state && Array.isArray(state.history) ? state.history.length : 0,
+  });
+}
+
+function record(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function timestamp(value) {
+  return typeof value === "string" && Number.isFinite(Date.parse(value));
+}
+
+function summary(value) {
+  if (!record(value) || typeof value.roster_armed !== "boolean") return false;
+  if (value.safe_mode !== undefined && typeof value.safe_mode !== "boolean") return false;
+  return ["waiting", "oldest_hours", "customers_waiting", "humans_waiting",
+    "cold_replies_waiting", "roster_active", "roster_cancelled", "scanned", "errors"]
+    .every(key => typeof value[key] === "number" && Number.isFinite(value[key]) && value[key] >= 0);
+}
+
+function unknown(detail) {
+  return json({
+    verdict: "unknown", detail, alert: true, stale_after_hours: STALE_HOURS,
+    last_live_run_at: null, hours_since_run: null, waiting: null, oldest_hours: null,
+    customers_waiting: null, humans_waiting: null, cold_replies_waiting: null,
+    roster_armed: null, roster_digests: null, safe_mode: null, scanned: null,
+    errors: null, runs_recorded: null,
   });
 }
 
