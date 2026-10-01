@@ -346,7 +346,10 @@ export function refreshState(inp) {
   }
   // 1. missing, or no usable ran_at
   const ranAt = status ? ms(status.ran_at) : NaN;
-  if (!status || !Number.isFinite(ranAt) || ranAt > now + FUTURE_SKEW_MS) return out("red", "missing");
+  if (!status || !Number.isFinite(ranAt)) return out("red", "missing");
+  // 1b. a run time ahead of the clock is not a run (FUTURE_SKEW_MS), but it did
+  // report: it gets its own words, never "has never reported" (owner, 2026-09-27).
+  if (ranAt > now + FUTURE_SKEW_MS) return out("red", "future");
   // 2. too old
   if (now - ranAt > REFRESH_MAX_AGE_H * HOUR) return out("red", "too_old", { ranAt });
   // 3. the latest run failed (the state weekly-send.js refuses to send on)
@@ -430,7 +433,12 @@ export function mondayReach(inp) {
     else if (since === mondayDate) { if (!okCount.has(normEmail(r.email))) joined.push(r); }
     else expected.push(r);
   }
-  const missing = anyDelivered ? expected.filter((r) => !okCount.has(normEmail(r.email))) : [];
+  // Expected and not delivered. Before any delivery that is everyone, so the
+  // list waits for one; an address whose send FAILED is listed here as well
+  // even when nobody was delivered (owner, 2026-09-27: a failed send is also
+  // "not delivered").
+  const missing = expected.filter((r) => !okCount.has(normEmail(r.email)) &&
+    (anyDelivered || failed.has(normEmail(r.email))));
 
   let state, rule;
   if (failed.size) { state = "red"; rule = "failed"; }
@@ -746,6 +754,44 @@ function monthlyCents(s) {
   return per ? (s.amount * per) / n : 0;
 }
 
+// ── FAILED PAYMENTS (owner answers, 2026-09-27) ─────────────────────────────
+// A past-due subscription and its own open invoice are ONE failed payment: an
+// open invoice is not counted again when its subscription or its customer is
+// already counted past due.
+// An open invoice on a CANCELLED subscription whose email belongs to a
+// different, active subscriber is an old invoice on a replaced Stripe account
+// (the person re-subscribed under a new customer). It is not a failed payment:
+// it is housekeeping, amber, "void it". The email comes from the invoice
+// (customer_email, kept in memory by _mission_stripe.js) or from the roster row
+// of the invoice's customer; it is compared here and never emitted.
+function failedPayments(ctx) {
+  const subs = ctx.usable("subscriptions") ? ctx.subs : [];
+  const open = ctx.usable("invoices_open") ? ctx.stripe.invoices_open.items : [];
+  const pastDue = subs.filter((s) => s.status === "past_due" || s.status === "unpaid");
+  const pdSub = new Set(pastDue.map((s) => s.id).filter(Boolean));
+  const pdCus = new Set(pastDue.map((s) => s.customer).filter(Boolean));
+  const subById = new Map(subs.filter((s) => s.id).map((s) => [s.id, s]));
+  const rosterEmail = new Map(ctx.rosterRows.filter((r) => typeof r.customer === "string" && r.customer)
+    .map((r) => [r.customer, normEmail(r.email)]));
+  const counted = [], replaced = [], folded = new Set();
+  for (const i of open) {
+    const sub = i.subscription ? subById.get(i.subscription) : null;
+    const email = normEmail(i.email) || (i.customer && rosterEmail.get(i.customer)) || "";
+    if (sub && sub.status === "canceled" && email &&
+      ctx.active.some((r) => normEmail(r.email) === email && typeof r.customer === "string" && r.customer && r.customer !== i.customer)) {
+      replaced.push(i);
+      continue;
+    }
+    if ((i.attempt_count || 0) <= 0) continue;
+    if ((i.subscription && pdSub.has(i.subscription)) || (i.customer && pdCus.has(i.customer))) {
+      folded.add(i.subscription && pdSub.has(i.subscription) ? i.subscription : i.customer);
+      continue;
+    }
+    counted.push(i);
+  }
+  return { pastDue, open: counted, replaced, folded };
+}
+
 function mondayUnreadable(ctx) {
   const g = ctx.g || {};
   return g.log_state === "unreadable" || (g.attempt_state === "unreadable" && ctx.monday.state === "grey");
@@ -854,10 +900,11 @@ export function tiles(ctx, inp) {
 
   // failed
   if (stripe.state === "ok") {
-    const pd = subs.filter((s) => s.status === "past_due" || s.status === "unpaid").length;
-    const open = stripe.invoices_open.items.filter((i) => (i.attempt_count || 0) > 0).length;
-    out.push(tile("failed", pd + open > 0 ? "red" : "green", pd + open,
-      plural(pd, "subscription") + " past due, " + plural(open, "open invoice") + " retried",
+    const fp = failedPayments(ctx);
+    const pd = fp.pastDue.length, open = fp.open.length, old = fp.replaced.length;
+    out.push(tile("failed", pd + open > 0 ? "red" : old > 0 ? "amber" : "green", pd + open,
+      plural(pd, "subscription") + " past due, " + plural(open, pd ? "other open invoice" : "open invoice") + " retried" +
+      (old ? "; " + plural(old, "old invoice") + " on a replaced account" : ""),
       "stripe", nowIso));
   } else if (rosterOk) {
     const n = ctx.rosterRows.filter((s) => s.payment_failing).length;
@@ -907,6 +954,7 @@ export function tiles(ctx, inp) {
   const rSub = {
     unavailable: "refresh-status.json could not be read",
     missing: "no refresh has reported",
+    future: "the reported run time is ahead of this page's clock",
     too_old: "has not run for more than " + REFRESH_MAX_AGE_H + " h",
     failed: "the latest run " + FAIL_WORDS[rf.fail_kind || "unknown"],
     landed: rf.ranAt ? "ran " + hhmm(rf.ranAt) + " UTC" : "",
@@ -1000,7 +1048,7 @@ function signupCounts(lists, now) {
 // ── NEEDS YOU ───────────────────────────────────────────────────────────────
 const TABLE = [
   ["privacy", "red"], ["refresh", "red"], ["monday", "red"], ["failed_payments", "red"],
-  ["refresh", "amber"], ["monday", "amber"], ["paid_not_served", "amber"], ["sources_down", "amber"],
+  ["refresh", "amber"], ["monday", "amber"], ["paid_not_served", "amber"], ["replaced_invoice", "amber"], ["sources_down", "amber"],
   ["unreadable", "amber"], ["paying_drop", "amber"], ["renewals_ending", "amber"],
   ["served_not_paid", "amber"], ["unknown_price", "amber"], ["webhook_events", "amber"],
   ["no_customer_id", "amber"], ["portal", "amber"], ["stripe_refused", "amber"],
@@ -1034,6 +1082,8 @@ export function needsYou(ctx, tileList, inp) {
   if (T.refresh.state === "red") {
     const text = {
       missing: "The data refresh has never reported: refresh-status.json is missing or has no run time.",
+      future: "The data refresh reported a run time more than an hour ahead of this page's clock, " +
+        "so it is not counted as a run. Check the clock of the machine that runs the refresh.",
       too_old: "The data refresh has not run for more than " + REFRESH_MAX_AGE_H + " hours.",
       failed: "The data refresh " + FAIL_WORDS[rf.fail_kind || "unknown"] + "." + mondayClause(ctx),
       not_landed: "Today's data refresh has not landed by 17:00 UTC.",
@@ -1066,6 +1116,11 @@ export function needsYou(ctx, tileList, inp) {
   if (T.failed.state === "red") {
     lines.push(line("failed_payments", "red",
       plural(T.failed.value, "failed payment") + " need attention.", "Stripe dashboard"));
+  }
+  const oldInvoices = failedPayments(ctx).replaced.length;
+  if (oldInvoices) {
+    lines.push(line("replaced_invoice", "amber",
+      plural(oldInvoices, "old invoice") + " on a replaced account: void it.", "Stripe dashboard"));
   }
 
   // paid, maybe not served
@@ -1313,23 +1368,24 @@ export function buildMain(inp) {
 
   // failed payments
   const failedRows = [];
-  if (ctx.usable("subscriptions")) {
-    for (const s of ctx.subs) if (s.status === "past_due" || s.status === "unpaid") failedRows.push(subRow(s, byCustomer));
+  const fp = failedPayments(ctx);
+  for (const s of fp.pastDue) {
+    // Its own open invoice is this row, not a second one (owner, 2026-09-27).
+    const withInvoice = fp.folded.has(s.id) || fp.folded.has(s.customer);
+    failedRows.push(subRow(s, byCustomer, withInvoice ? { status: s.status + ", open invoice retried" } : null));
   }
-  if (ctx.usable("invoices_open")) {
-    for (const i of ctx.stripe.invoices_open.items) {
-      if ((i.attempt_count || 0) <= 0) continue;
-      const r = (i.customer && byCustomer.get(i.customer)) || null;
-      failedRows.push({
-        name: r ? safeName(r.name) : "(not on the roster)", email_masked: r ? maskEmail(r.email) : "hidden",
-        t8: r ? t8(r.token) : null, plan: null,
-        status: "open invoice, " + plural(i.attempt_count, "attempt"),
-        since: r ? dateOnly(r.since) : null, date: i.created ? day(i.created * 1000) : null,
-        amount_cents: i.amount_due, currency: typeof i.currency === "string" ? i.currency.slice(0, 3) : null,
-        stripe_url: stripeUrl(i.id),
-      });
-    }
-  }
+  const invoiceRow = (i, status) => {
+    const r = (i.customer && byCustomer.get(i.customer)) || null;
+    return {
+      name: r ? safeName(r.name) : "(not on the roster)", email_masked: r ? maskEmail(r.email) : "hidden",
+      t8: r ? t8(r.token) : null, plan: null, status,
+      since: r ? dateOnly(r.since) : null, date: i.created ? day(i.created * 1000) : null,
+      amount_cents: i.amount_due, currency: typeof i.currency === "string" ? i.currency.slice(0, 3) : null,
+      stripe_url: stripeUrl(i.id),
+    };
+  };
+  for (const i of fp.open) failedRows.push(invoiceRow(i, "open invoice, " + plural(i.attempt_count, "attempt")));
+  for (const i of fp.replaced) failedRows.push(invoiceRow(i, "old invoice on a replaced account: void it"));
   for (const r of ctx.rosterRows) {
     if (r.payment_failing) {
       const row = customerRow(r, null);

@@ -12,7 +12,11 @@
 // version they are not on the Subscription object.
 //
 // Only a PROJECTION leaves this file (ids, statuses, amounts, dates, price ids,
-// intervals, flags); raw Stripe objects are never cached or returned.
+// intervals, flags); raw Stripe objects are never cached or returned. One
+// exception is kept in memory only: an OPEN invoice's customer email, lower
+// cased, so _mission_data.js can tell an old invoice on a replaced Stripe
+// account (same person, new customer) from a failed payment. It is compared
+// there and never emitted; privacyWalk() would withhold it and go red if it were.
 
 const API_ORIGIN = "https://api.stripe.com";
 const STRIPE_VERSION = "2026-08-26.dahlia";
@@ -143,11 +147,13 @@ function projectSubscription(s, prices) {
   };
 }
 
-function projectInvoice(inv, prices) {
+function projectInvoice(inv, prices, withEmail) {
   if (!lines(inv, "lines").some((l) => prices.has(linePrice(l)))) return null;
   const parentSub = inv.parent && inv.parent.subscription_details &&
     inv.parent.subscription_details.subscription;
+  const email = withEmail && typeof inv.customer_email === "string" ? inv.customer_email.trim().toLowerCase() : "";
   return {
+    ...(email ? { email } : {}),
     id: str(inv.id),
     customer: idOf(inv.customer),
     status: str(inv.status),
@@ -227,7 +233,7 @@ export async function stripeSnapshot(env, now) {
     price_count: priceList.length,
     subscriptions: section(subs, (s) => projectSubscription(s, prices)),
     invoices_paid: section(paid, (i) => projectInvoice(i, prices)),
-    invoices_open: section(open, (i) => projectInvoice(i, prices)),
+    invoices_open: section(open, (i) => projectInvoice(i, prices, true)),
     sessions: section(sessions, (c) => projectSession(c, prices)),
     webhooks: { state: hooks.state, events: hooks.state === "unavailable" ? null : projectWebhooks(hooks.items) },
   };

@@ -497,9 +497,10 @@ test("(4) money worked by hand: gross, run rate, renewals, trials, failed, both 
   assert.equal(V.tileView(tileOf(res, "revenue")).value, "$127.00");
   // renewals: A (5 d) and D (2 d); A cancels
   assert.deepEqual([tileOf(res, "renewals").state, tileOf(res, "renewals").value, tileOf(res, "renewals").sub], ["amber", 2, "1 set to cancel"]);
-  // failed: D past_due + D's own open invoice (attempt 2) = 2; the attempt-0 invoice is not counted
-  assert.deepEqual([tileOf(res, "failed").state, tileOf(res, "failed").value], ["red", 2]);
-  assert.equal(tileOf(res, "failed").sub, "1 subscription past due, 1 open invoice retried");
+  // failed: D past_due, and D's own open invoice (attempt 2) is the same failed payment, so 1
+  // (owner, 2026-09-27: counted once); the attempt-0 invoice is not counted
+  assert.deepEqual([tileOf(res, "failed").state, tileOf(res, "failed").value], ["red", 1]);
+  assert.equal(tileOf(res, "failed").sub, "1 subscription past due, 0 other open invoices retried");
   // unknown_price: F's customer
   assert.ok(res.body.needs_you.some((l) => l.id === "unknown_price" && l.text.startsWith("1 customer")));
   // sales: 7 days: in_TESTpaid0001 is subscription_create 3 d ago (4900), the pack 1 d ago (2900)
@@ -510,7 +511,7 @@ test("(4) money worked by hand: gross, run rate, renewals, trials, failed, both 
   assert.equal(V.money(-4900), "-$49.00");
 });
 
-test("(4) the failed tile counts a past_due subscription AND its own open invoice (rule as written; owner question)", async () => {
+test("(4) the failed tile counts a past_due subscription and its own open invoice ONCE (owner, 2026-09-27)", async () => {
   const w = await H.healthyWorld(NOW, { roster: 1 });
   const nowS = Math.floor(NOW / 1000);
   const data = H.stripeData(w.roster, NOW, { openInvoices: [{ id: "in_TESTopen0001", customer: w.roster[0].customer,
@@ -518,7 +519,11 @@ test("(4) the failed tile counts a past_due subscription AND its own open invoic
     subscription: "sub_TEST000001", lines: { data: [{ price: { id: H.PRICE_A } }] } }] });
   data.subscriptions[0].status = "past_due";
   const res = await withStripe(data, () => get(w, { env: STRIPE_ENV }));
-  assert.equal(tileOf(res, "failed").value, 2, "one customer, counted twice: see the owner question");
+  assert.equal(tileOf(res, "failed").value, 1, "one customer, one failed payment");
+  assert.equal(tileOf(res, "failed").sub, "1 subscription past due, 0 other open invoices retried");
+  assert.equal(res.body.needs_you.find((l) => l.id === "failed_payments").text, "1 failed payment need attention.");
+  const rows = res.body.detail.failed_payments.rows;
+  assert.deepEqual(rows.map((r) => r.status), ["past_due, open invoice retried"]);
 });
 
 test("(4) \"at least\" totals: 3 pages of 100, still has_more", async () => {

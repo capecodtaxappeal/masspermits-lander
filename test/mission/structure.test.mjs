@@ -37,15 +37,18 @@ const ROUTES = ["weekly-send", "mail-owner", "newsletter-send", "newsletter", "n
   "request-sample", "agent-sample", "upload-bundle", "funnel", "hit"].map((r) => "/api/" + r);
 const read = (p) => fs.readFileSync(path.join(H.REPO, p), "utf8");
 
+// These P1-14 checks describe what the Mission Control pull request (#3)
+// changed. It merged to main as PR3_MERGE, so after the merge a diff from
+// origin/main is empty on main and lists unrelated work on any later branch.
+// The PR's own range (its merge base with main, to its tip) is fixed history
+// and keeps every check meaningful. The file scans below still read today's
+// content of those files.
 function changedFiles() {
-  let base;
-  for (const ref of ["origin/main", "main"]) {
-    try { base = git("merge-base", ref, "HEAD").trim(); break; } catch (_) { /* next */ }
-  }
-  assert.ok(base, "no main ref to compare against");
-  const tracked = git("diff", "--name-only", base).split("\n").filter(Boolean);
-  const untracked = git("ls-files", "--others", "--exclude-standard").split("\n").filter(Boolean);
-  return [...new Set([...tracked, ...untracked])].sort();
+  let tip;
+  try { tip = git("rev-parse", "--verify", "--quiet", H.PR3_MERGE + "^2").trim(); } catch (_) { tip = null; }
+  assert.ok(tip, "the Mission Control merge commit is not in this clone");
+  const base = git("merge-base", H.PR3_MERGE + "^1", tip).trim();
+  return git("diff", "--name-only", base, tip).split("\n").filter(Boolean).sort();
 }
 
 const changed = changedFiles();
