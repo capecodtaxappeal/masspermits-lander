@@ -2,7 +2,7 @@
 //
 // Why this exists: the weekly leads go out as a ZIP attachment, and a ZIP from
 // a young sending domain is the single biggest spam-filter trigger we control.
-// A paying subscriber (Silvestre, 2026-07-20) reported "no emails" when in fact
+// A paying subscriber (2026-07-20) reported "no emails" when in fact
 // all five were delivered — they were sitting in a spam folder, attachment and
 // all. This endpoint is the always-works fallback: the same weekly email now
 // carries a "Download this week's leads" button linking here, so even a

@@ -64,7 +64,7 @@ export function disclosureBlock(codes, facts = {}) {
       `Some rows have changed since last week, but the newest permit in this file is still ` +
       `dated ${facts.max_issued_date}, the same as last week's. Several of the towns we ` +
       "cover publish once a month, so their permits arrive in a batch rather than weekly. " +
-      "Every row shows its own issue date.");
+      "Every row shows its own date.");
   }
 
   if (!lines.length) return "";
