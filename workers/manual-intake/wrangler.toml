@@ -1,0 +1,16 @@
+# MassPermits manual intake Worker. Deployed by hand with `npx wrangler deploy`
+# from this directory, per docs/manual-inputs/SETUP.md. Never from CI.
+#
+# No addresses and no source names live here: this repo is public. ALLOWED_SENDERS,
+# OWNER_FORWARDER and MANUAL_SOURCES are set as secrets (`npx wrangler secret put`),
+# which survive every deploy. TRUSTED_AUTHSERV_ID is optional (default mx.cloudflare.net).
+name = "masspermits-manual-intake"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+preview_urls = false
+
+[[r2_buckets]]
+binding = "BUNDLES"
+# The same private bucket the Pages project binds as BUNDLES.
+bucket_name = "masspermits-bundles"
