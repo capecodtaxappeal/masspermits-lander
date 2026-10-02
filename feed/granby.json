@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Granby, MA",
- "home_page_url": "https://masspermits.com/permits/granby",
+ "title": "MassPermits \u2014 building permits in Granby, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/granby.json",
- "description": "MassPermits no longer receives building-permit records for Granby, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-22. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Granby, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,194 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-22",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-09-22",
- "items": []
+ "_window_total": 19,
+ "_window_from": "2026-09-17",
+ "_window_to": "2026-10-02",
+ "items": [
+  {
+   "id": "9e7da4e4de42257e",
+   "url": "https://masspermits.com/permits/granby-building",
+   "title": "Building permit \u2014 Harris St, Granby",
+   "content_text": "Building permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Building"
+  },
+  {
+   "id": "6b2ed76c30bc2610",
+   "url": "https://masspermits.com/permits/granby-building",
+   "title": "Building permit \u2014 High St, Granby",
+   "content_text": "Building permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Building"
+  },
+  {
+   "id": "56ce36a67cd73a21",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Windows/Doors/Siding permit \u2014 Taylor St, Granby",
+   "content_text": "Windows/Doors/Siding permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "908b013e29c9e02f",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Roofing permit \u2014 North St, Granby",
+   "content_text": "Roofing permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "9f0f6191be14de67",
+   "url": "https://masspermits.com/permits/granby-building",
+   "title": "Building permit \u2014 West State St, Granby",
+   "content_text": "Building permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Building"
+  },
+  {
+   "id": "9e36041afdfc23c7",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "HVAC permit \u2014 West State St, Granby",
+   "content_text": "HVAC permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "998f2faee07f9d57",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "HVAC permit \u2014 Taylor St, Granby",
+   "content_text": "HVAC permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "b00a25c347286249",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Electrical permit \u2014 Taylor St, Granby",
+   "content_text": "Electrical permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f4b7a4b4bd87aca6",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Electrical permit \u2014 Batchelor St, Granby",
+   "content_text": "Electrical permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "730ddd7236d94a28",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Solar permit \u2014 Maximilian Dr, Granby",
+   "content_text": "Solar permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Solar"
+  },
+  {
+   "id": "c4ba278136207d32",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Windows/Doors/Siding permit \u2014 Amherst St, Granby",
+   "content_text": "Windows/Doors/Siding permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "132aa411b62b4bcf",
+   "url": "https://masspermits.com/permits/granby-building",
+   "title": "Building permit \u2014 West St, Granby",
+   "content_text": "Building permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Building"
+  },
+  {
+   "id": "20aa63cdcf36f469",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Plumbing permit \u2014 Batchelor St, Granby",
+   "content_text": "Plumbing permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "482b12fbdcf2f8a3",
+   "url": "https://masspermits.com/permits/granby-building",
+   "title": "Building permit \u2014 School St, Granby",
+   "content_text": "Building permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Building"
+  },
+  {
+   "id": "d397580d0d613977",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Plumbing permit \u2014 Amherst St, Granby",
+   "content_text": "Plumbing permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "bc7cffed4e9df2db",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "HVAC permit \u2014 Carver St, Granby",
+   "content_text": "HVAC permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "9e5dc55ab8c38f57",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Kitchen/Bath permit \u2014 Pheasant Hill, Granby",
+   "content_text": "Kitchen/Bath permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "29894b813037d869",
+   "url": "https://masspermits.com/permits/granby",
+   "title": "Other permit \u2014 Truby St, Granby",
+   "content_text": "Other permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Other"
+  },
+  {
+   "id": "7c729429b03e05a8",
+   "url": "https://masspermits.com/permits/granby-building",
+   "title": "Building permit \u2014 Truby St, Granby",
+   "content_text": "Building permit in Granby, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Granby",
+   "_trade": "Building"
+  }
+ ]
 }
