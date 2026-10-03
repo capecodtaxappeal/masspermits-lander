@@ -277,6 +277,29 @@ test("a Resend outage (nobody delivered) is retried by an ordinary re-run of the
   for (const x of [A, B, C]) assert.equal(count(mail.map((m) => m.to), x), 1, "exactly one weekly email");
 });
 
+// The deliberate resend weekly-send.js documents, "?force=1 ... after a Resend
+// outage", still makes the week good, and still only once.
+test("a Resend outage (nobody delivered) is made good by ?force=1, and a second ?force=1 mails nobody", async () => {
+  const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B, C], "E-0921")], etag: "E-0921" });
+  refresh(w, "2026-09-28T16:01:00Z", "E-0928");
+  failFor = new Set([A, B, C]);
+  const r1 = await send(w, "2026-09-28T17:52:00Z");
+  assert.equal(r1.status, 424);
+  assert.deepEqual(r1.to, []);
+  failFor = new Set();
+  const r2 = await send(w, "2026-09-28T18:40:00Z", { force: true });
+  assert.equal(r2.status, 200);
+  assert.equal(r2.body.ok, true);
+  assert.equal(r2.body.delivered, 3);
+  assert.deepEqual(r2.to.sort(), [A, B, C], "everyone gets it once");
+  const r3 = await send(w, "2026-09-28T18:45:00Z", { force: true });
+  assert.deepEqual(r3.to, [], "force=1 cannot mail a subscriber twice in one week");
+  assert.ok(r3.body.skipped, "reported as a skip");
+  assert.equal(r3.body.already_delivered, 3);
+  noAddr(r3.body);
+  for (const x of [A, B, C]) assert.equal(count(mail.map((m) => m.to), x), 1, "exactly one weekly email");
+});
+
 test("a re-run that completes a partial week but delivers to nobody is not reported as success", async () => {
   const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B, C], "E-0921")], etag: "E-0921" });
   refresh(w, "2026-09-28T16:01:00Z", "E-0928");
