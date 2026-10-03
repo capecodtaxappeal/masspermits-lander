@@ -1,4 +1,50 @@
 town,trade,issued_date,street_masked,valuation
+Mashpee,Building,2026-10-03,Old Barnstable Rd,
+Randolph,HVAC,2026-10-03,Oconnor Dr,
+Hanson,Renovation/Remodel,2026-10-03,Maquan St,
+Attleboro,Plumbing,2026-10-03,So Main St,
+Fairhaven,Plumbing,2026-10-03,Reservation Road,
+Easthampton,Renovation/Remodel,2026-10-03,Oliver St,
+Easthampton,Renovation/Remodel,2026-10-03,Hendrick St,
+Easthampton,Renovation/Remodel,2026-10-03,East St,
+Easthampton,Renovation/Remodel,2026-10-03,Ranch Ave,
+Easthampton,Renovation/Remodel,2026-10-03,Lyman St,
+Townsend,Electrical,2026-10-03,Ash St,
+Boston,Electrical,2026-10-02,Huntington Av,1500.0
+Allston,HVAC,2026-10-02,Glenville Av,2500.0
+Jamaica Plain,Gas,2026-10-02,Centre St,5000.0
+Dorchester,Other,2026-10-02,Driscoll Dr,7000.0
+Dorchester,Solar,2026-10-02,Granville St,21200.0
+Roxbury,Other,2026-10-02,Burrell St,3780.0
+Roxbury,Kitchen/Bath,2026-10-02,Union Pk,90800.0
+Mattapan,HVAC,2026-10-02,Hosmer St,30000.0
+Mattapan,HVAC,2026-10-02,Hosmer St,1000.0
+Boston,HVAC,2026-10-02,Marlborough St,500.0
+Mattapan,Other,2026-10-02,Dr. Mary Moore Beatty Ci,175000.0
+Charlestown,Roofing,2026-10-02,Monument Sq,59750.0
+Roslindale,HVAC,2026-10-02,Mount Hope St,1000.0
+Dorchester,Gas,2026-10-02,Bateswell Rd,4000.0
+West Roxbury,HVAC,2026-10-02,Chesbrough Rd,500.0
+Dorchester,Roofing,2026-10-02,Ruthven St,2000.0
+Roxbury,Sign/Awning,2026-10-02,Albany St,15000.0
+Jamaica Plain,Electrical,2026-10-02,Centre St,53000.0
+Jamaica Plain,Electrical,2026-10-02,Centre St,16000.0
+Boston,Electrical,2026-10-02,Lincoln St,196500.0
+Jamaica Plain,Electrical,2026-10-02,Centre St,25000.0
+Jamaica Plain,Electrical,2026-10-02,Centre St,300000.0
+Boston,Kitchen/Bath,2026-10-02,Edgerly Rd,43675.0
+Boston,Demolition,2026-10-02,India St,6825.0
+Boston,Electrical,2026-10-02,Longwood Av,2000.0
+Boston,Electrical,2026-10-02,Boylston St,20000.0
+Boston,Electrical,2026-10-02,Boylston St,44500.0
+Boston,Electrical,2026-10-02,Federal St,198000.0
+Boston,HVAC,2026-10-02,Commonwealth Av,2100.0
+Dorchester,Plumbing,2026-10-02,Park St,3500.0
+Boston,Electrical,2026-10-02,Brookline Av,180000.0
+Boston,Electrical,2026-10-02,Autumn St,10000.0
+Dorchester,Electrical,2026-10-02,Bellflower St,2000.0
+Dorchester,Electrical,2026-10-02,Bellflower St,25000.0
+Roxbury,Electrical,2026-10-02,Shawmut Av,18000.0
 Braintree,Building,2026-10-02,Wood Road,
 Braintree,Gas,2026-10-02,Liberty Street,
 Braintree,Building,2026-10-02,Liberty Street,
@@ -6,14 +52,16 @@ Braintree,Other,2026-10-02,Union Street,
 Braintree,Renovation/Remodel,2026-10-02,Union Street,
 Braintree,Renovation/Remodel,2026-10-02,Maplewood Terrace,
 Braintree,Plumbing,2026-10-02,Cavanaugh Road,
-Braintree,Plumbing,2026-10-02,Liberty Street,
+Braintree,Renovation/Remodel,2026-10-02,Shaw Street,
 Braintree,Renovation/Remodel,2026-10-02,Pleasant View Avenue,
+Braintree,Plumbing,2026-10-02,Liberty Street,
 Braintree,Plumbing,2026-10-02,Hingston Circle,
 Braintree,Renovation/Remodel,2026-10-02,Blossom Road,
+Braintree,Electrical,2026-10-02,Congress Street,
 Braintree,Plumbing,2026-10-02,Hillside Road,
 Braintree,Renovation/Remodel,2026-10-02,Whittier Road,
 Braintree,Gas,2026-10-02,Hawthorn Road,
-Braintree,Electrical,2026-10-02,Congress Street,
+Braintree,Electrical,2026-10-02,Shepard Road,
 Rockland,Gas,2026-10-02,Liberty St,
 Rockland,Gas,2026-10-02,Driftwood Ln,
 Rockland,Plumbing,2026-10-02,Driftwood Ln,
@@ -23,6 +71,7 @@ Falmouth,Electrical,2026-10-02,Bournes Pond Rd,
 Falmouth,Electrical,2026-10-02,Beechwood Rd,
 Falmouth,Plumbing,2026-10-02,Streeter Hill Rd,
 Falmouth,Renovation/Remodel,2026-10-02,Eldona Ave,
+Falmouth,Renovation/Remodel,2026-10-02,Gage Dr,
 Falmouth,Gas,2026-10-02,East Falmouth Hwy,
 Falmouth,Windows/Doors/Siding,2026-10-02,Pine St,
 Falmouth,Renovation/Remodel,2026-10-02,Edgewater Dr East,
@@ -30,38 +79,50 @@ Falmouth,Windows/Doors/Siding,2026-10-02,Trotting Ln,
 Falmouth,Gas,2026-10-02,Carriage Shop Rd,
 Falmouth,Electrical,2026-10-02,Regis Rd,
 Falmouth,Roofing,2026-10-02,Penzance Rd,
-Falmouth,Gas,2026-10-02,Rivers End Rd,
-Falmouth,Plumbing,2026-10-02,Rivers End Rd,
-Falmouth,Gas,2026-10-02,Hollis St,
-Falmouth,Gas,2026-10-02,Streeter Hill Rd,
+Falmouth,Plumbing,2026-10-02,Montauk St,
 Falmouth,Renovation/Remodel,2026-10-02,Teneycke Hill Rd,
 Falmouth,Electrical,2026-10-02,Wild Harbor Rd,
 Falmouth,Gas,2026-10-02,Montauk St,
+Falmouth,Gas,2026-10-02,Rivers End Rd,
+Falmouth,Plumbing,2026-10-02,Rivers End Rd,
+Falmouth,Gas,2026-10-02,Hollis St,
+Falmouth,Renovation/Remodel,2026-10-02,Pheasant Ln,
+Falmouth,Gas,2026-10-02,Streeter Hill Rd,
 Falmouth,Gas,2026-10-02,Woods Hole Rd,
 Falmouth,Electrical,2026-10-02,Carolyn Ln,
 Falmouth,Gas,2026-10-02,Clear Pond Rd,
+Mashpee,Building,2026-10-02,North St,
+Mashpee,Electrical,2026-10-02,Great River Rd,
+Mashpee,Gas,2026-10-02,Great River Rd,
+Mashpee,Renovation/Remodel,2026-10-02,Sand Dunes Ct,
+Mashpee,Building,2026-10-02,Central Square,
+Mashpee,Plumbing,2026-10-02,Els Rd,
 Mashpee,Renovation/Remodel,2026-10-02,Eagle Dr,
 Mashpee,Gas,2026-10-02,Barbary Cir,
 Mashpee,Electrical,2026-10-02,Falmouth Rd,
-Mashpee,Electrical,2026-10-02,Great River Rd,
-Mashpee,Renovation/Remodel,2026-10-02,Sand Dunes Ct,
-Mashpee,Gas,2026-10-02,Great River Rd,
-Mashpee,Gas,2026-10-02,Waterway,
+Mashpee,Electrical,2026-10-02,Old Great Neck Rd,
 Mashpee,Building,2026-10-02,Sampsons Mill Rd,
 Mashpee,Gas,2026-10-02,Whippoorwill Cir,
 Mashpee,Building,2026-10-02,Falmouth Rd,
+Mashpee,Gas,2026-10-02,Waterway,
+Mashpee,Gas,2026-10-02,Darby Pt,
 Mashpee,Renovation/Remodel,2026-10-02,Cobblestone Cir,
 Mashpee,Electrical,2026-10-02,Neshobe Rd,
-Mashpee,Gas,2026-10-02,Darby Pt,
 Mashpee,Electrical,2026-10-02,Deerfoot Cir,
 Mashpee,Renovation/Remodel,2026-10-02,Polaris Dr,
 Mashpee,Renovation/Remodel,2026-10-02,Mid-Iron Way,
+Sandwich,Gas,2026-10-02,Burg Avenue,
+Sandwich,Gas,2026-10-02,Sconset Circle,
+Sandwich,Plumbing,2026-10-02,Sconset Circle,
+Sandwich,Gas,2026-10-02,Settlers Path,
 Sandwich,Gas,2026-10-02,Jody Lane,
 Sandwich,Electrical,2026-10-02,Main Street,
-Randolph,Renovation/Remodel,2026-10-02,Highland Av,
 Randolph,Other,2026-10-02,South St,
+Randolph,Renovation/Remodel,2026-10-02,Alice Rd,
 Randolph,Plumbing,2026-10-02,Canavan Dr,
+Randolph,Renovation/Remodel,2026-10-02,Highland Av,
 Randolph,HVAC,2026-10-02,Maple Rd,
+Randolph,Renovation/Remodel,2026-10-02,Wilmarth Rd,
 Randolph,Plumbing,2026-10-02,Warren St,
 Randolph,Renovation/Remodel,2026-10-02,Krypto Ci,
 Milton,Electrical,2026-10-02,Highland St,
@@ -78,45 +139,73 @@ Milton,Gas,2026-10-02,Blue Hill Av,
 Milton,Electrical,2026-10-02,Woodmere Dr,
 Milton,Building,2026-10-02,Highland St,
 Milton,Renovation/Remodel,2026-10-02,Margaret Rd,
+Stoughton,Electrical,2026-10-02,West St,
+Stoughton,Building,2026-10-02,Ikea Way,
 Stoughton,Building,2026-10-02,Water St,
 Stoughton,Building,2026-10-02,Esten Rd,
+Stoughton,Building,2026-10-02,West St,
 Stoughton,Gas,2026-10-02,Pondview Ln,
-Stoughton,Building,2026-10-02,Bramblebush Rd,
+Stoughton,Building,2026-10-02,Trowbridge Cir,
 Stoughton,Electrical,2026-10-02,Water St,
+Stoughton,Building,2026-10-02,Atkinson Ave,
+Stoughton,Building,2026-10-02,Bramblebush Rd,
+Stoughton,Building,2026-10-02,Park St,
 Stoughton,Building,2026-10-02,Island St,
+Stoughton,Building,2026-10-02,Cabot Pl,
 Stoughton,Electrical,2026-10-02,Walnut St,
 Easton,Plumbing,2026-10-02,Turnpike Street,
+Easton,Electrical,2026-10-02,Kilsyth Road,
+Easton,Electrical,2026-10-02,Dunbar Drive,
+Easton,Renovation/Remodel,2026-10-02,Prospect Street,
 Easton,Renovation/Remodel,2026-10-02,Arborway,
 Easton,Renovation/Remodel,2026-10-02,Lyman Wheelock Road,
 Easton,Renovation/Remodel,2026-10-02,Black Brook Road,
-Easton,Gas,2026-10-02,Owl Ridge Road,
+Easton,Renovation/Remodel,2026-10-02,Norton Avenue,
 Easton,Gas,2026-10-02,Turnpike Street,
-Hanson,Renovation/Remodel,2026-10-02,Monponsett St,
-Hanson,Electrical,2026-10-02,Monponsett St,
-Hanson,Electrical,2026-10-02,Cross St,
+Easton,Other,2026-10-02,Pine Street,
+Easton,Gas,2026-10-02,Owl Ridge Road,
+Hanson,Renovation/Remodel,2026-10-02,Winter St,
+Hanson,Renovation/Remodel,2026-10-02,Spring Street,
+Hanson,Electrical,2026-10-02,Woodbine Av,
 Hanson,Gas,2026-10-02,Cross St,
+Hanson,Plumbing,2026-10-02,Phillips St,
+Hanson,Electrical,2026-10-02,Cross St,
+Hanson,Renovation/Remodel,2026-10-02,Monponsett St,
+Hanson,Renovation/Remodel,2026-10-02,Franklin St,
+Hanson,Electrical,2026-10-02,Monponsett St,
 Avon,Renovation/Remodel,2026-10-02,Page St,
 Cohasset,Plumbing,2026-10-02,Norfolk Rd,
 Cohasset,Gas,2026-10-02,Norfolk Rd,
 Cohasset,Electrical,2026-10-02,Norfolk Rd,
+Attleboro,Other,2026-10-02,Newell Ln,
+Attleboro,Electrical,2026-10-02,Cathedral Dr,
 Attleboro,HVAC,2026-10-02,So Main St,
 Attleboro,Building,2026-10-02,Washington St,
-Attleboro,Plumbing,2026-10-02,So Main St,
+Attleboro,Building,2026-10-02,West St,
+Attleboro,Renovation/Remodel,2026-10-02,Orange St,
+Attleboro,Renovation/Remodel,2026-10-02,Wright Circle,
 Attleboro,Electrical,2026-10-02,Paulette Ln,
 Attleboro,Other,2026-10-02,Louis Rd,
-Attleboro,Renovation/Remodel,2026-10-02,Orange St,
+Attleboro,Plumbing,2026-10-02,So Main St,
 Attleboro,Gas,2026-10-02,Steeple Chase Circle,
+Attleboro,Building,2026-10-02,Riverbank Rd,
 Mansfield,Renovation/Remodel,2026-10-02,Beaumont Pond Dr,
 Mansfield,Renovation/Remodel,2026-10-02,North St,
 Foxborough,Renovation/Remodel,2026-10-02,Creighton Avenue,35000.0
+Foxborough,Plumbing,2026-10-02,Baker Street,675.0
 Foxborough,Renovation/Remodel,2026-10-02,County Street,350000.0
 Foxborough,Building,2026-10-02,Willis Lane,600.0
-Fairhaven,Renovation/Remodel,2026-10-02,Alder Street,
+Fairhaven,Building,2026-10-02,Main,
 Fairhaven,Plumbing,2026-10-02,Main Street,
+Fairhaven,Renovation/Remodel,2026-10-02,James Street,
 Fairhaven,Gas,2026-10-02,Main Street,
 Fairhaven,Electrical,2026-10-02,Huttleston Avenue,
-Fairhaven,Renovation/Remodel,2026-10-02,Reservation Road,
+Fairhaven,Electrical,2026-10-02,Birchfield Street,
+Fairhaven,Renovation/Remodel,2026-10-02,Alder Street,
+Fairhaven,Building,2026-10-02,Huttleston Avenue,
 Fairhaven,Renovation/Remodel,2026-10-02,Bayview Avenue,
+Fairhaven,Renovation/Remodel,2026-10-02,Reservation Road,
+Fairhaven,Electrical,2026-10-02,Howland Road,
 Fairhaven,Renovation/Remodel,2026-10-02,Mill Road,
 Fairhaven,Renovation/Remodel,2026-10-02,Hamlet Street,
 Taunton,Plumbing,2026-10-02,Hoffman Street,2000.0
@@ -125,6 +214,8 @@ Taunton,Renovation/Remodel,2026-10-02,Joanne Drive,88775.0
 Taunton,Plumbing,2026-10-02,Weir Street,25000.0
 Taunton,Renovation/Remodel,2026-10-02,Glebe St,11500.0
 Taunton,Gas,2026-10-02,Scaddings Street,2000.0
+Taunton,Electrical,2026-10-02,Rocky Woods Street,5400.0
+Taunton,Electrical,2026-10-02,Lydia Lane,5500.0
 Taunton,Renovation/Remodel,2026-10-02,Washington Street,1600.0
 Taunton,Plumbing,2026-10-02,Norton Avenue,5000.0
 Taunton,Plumbing,2026-10-02,Scaddings Street,2000.0
@@ -133,13 +224,36 @@ Bellingham,Renovation/Remodel,2026-10-02,Stella Rd,
 Bellingham,Electrical,2026-10-02,Laurel Ln,
 Bellingham,Electrical,2026-10-02,Whitman Cr,
 Bellingham,Building,2026-10-02,South Main St,
+Chicopee,Sign/Awning,2026-10-02,Mckinstry,
+Chicopee,Electrical,2026-10-02,Regency Ct,
+Chicopee,Sign/Awning,2026-10-02,Main St,
+Chicopee,Other,2026-10-02,Burnett Rd,
+Chicopee,Electrical,2026-10-02,Bonneville Ave,
+Chicopee,Electrical,2026-10-02,Beaumont Ave,
+Chicopee,Other,2026-10-02,Westover Rd,
+Chicopee,Electrical,2026-10-02,Jean Cir,
+Chicopee,Electrical,2026-10-02,Applewood Dr,
+Chicopee,Renovation/Remodel,2026-10-02,Granby Rd,
+Chicopee,Building,2026-10-02,Cabot St,
+Chicopee,Sign/Awning,2026-10-02,East St,
+Chicopee,Building,2026-10-02,Memorial Dr,
 Chicopee,Renovation/Remodel,2026-10-02,Beaudry Ave,
 Chicopee,Renovation/Remodel,2026-10-02,Wildermere St,
 Chicopee,Renovation/Remodel,2026-10-02,Clarendon Ave,
-Chicopee,Other,2026-10-02,Westover Rd,
-Chicopee,Renovation/Remodel,2026-10-02,Granby Rd,
-Chicopee,Building,2026-10-02,Memorial Dr,
+Chicopee,Plumbing,2026-10-02,Regency Ct,
+Chicopee,Electrical,2026-10-02,Lorraine St,
+Chicopee,Plumbing,2026-10-02,Lorraine St,
+Chicopee,Renovation/Remodel,2026-10-02,Davenport St,
+Chicopee,Gas,2026-10-02,A Memorial Drive,
+Chicopee,Plumbing,2026-10-02,Jean Cir,
 Chicopee,Other,2026-10-02,Ondrick Dr,
+Chicopee,Gas,2026-10-02,Bonneville Ave,
+Chicopee,Other,2026-10-02,Exchange St,
+Chicopee,Renovation/Remodel,2026-10-02,Mountainview St,
+Chicopee,Renovation/Remodel,2026-10-02,Parkwood Dr,
+Hopedale,Plumbing,2026-10-02,Hopedale St,
+Hopedale,Plumbing,2026-10-02,Warfield St,
+Hopedale,Gas,2026-10-02,Westcott Rd,
 Ludlow,Building,2026-10-02,Lakeview Avenue,
 Ludlow,Building,2026-10-02,Center Street,
 Ludlow,Plumbing,2026-10-02,Richmond Road,
@@ -151,34 +265,85 @@ Ipswich,Gas,2026-10-02,Colonial Dr,
 Ipswich,Renovation/Remodel,2026-10-02,Oakwood Knoll Rd,
 Ipswich,Plumbing,2026-10-02,Dix Rd,
 Ipswich,Electrical,2026-10-02,Lakemans Ln,
-Easthampton,Plumbing,2026-10-02,Cottage St,
+North Reading,Renovation/Remodel,2026-10-02,Pleasant St,
+North Reading,Renovation/Remodel,2026-10-02,Wyoming Ave,
 Easthampton,Gas,2026-10-02,Cottage St,
 Easthampton,Gas,2026-10-02,Loomis Way,
+Easthampton,Plumbing,2026-10-02,Cottage St,
 Otis,Gas,2026-10-02,South Main Rd,
 Otis,Plumbing,2026-10-02,Hayre Island Rd,
 Otis,Gas,2026-10-02,Becket Rd,
+Great Barrington,Plumbing,2026-10-02,Silver St,
+Great Barrington,Renovation/Remodel,2026-10-02,Monument Valley Rd,
+Great Barrington,Renovation/Remodel,2026-10-02,Kirk St,
+Great Barrington,Electrical,2026-10-02,Dresser Ave,
+Great Barrington,Electrical,2026-10-02,Stockbridge Rd,
+Great Barrington,Renovation/Remodel,2026-10-02,Stanley Dr,
+Great Barrington,Renovation/Remodel,2026-10-02,Alford Rd,
+Great Barrington,Electrical,2026-10-02,North Plain Rd,
+Great Barrington,Renovation/Remodel,2026-10-02,Division St,
+Great Barrington,Renovation/Remodel,2026-10-02,Long Pond Rd,
+Great Barrington,Renovation/Remodel,2026-10-02,Pearl St,
+Lee,Plumbing,2026-10-02,Tamarack Ave,
+Lee,Plumbing,2026-10-02,Meadow St,
 Lenox,Building,2026-10-02,Cliffwood St,
 Lenox,Renovation/Remodel,2026-10-02,Walker St,
+Lenox,Building,2026-10-02,Pittsfield Road,
 Lenox,Renovation/Remodel,2026-10-02,Stone Ledge Rd,
 Lenox,Other,2026-10-02,Delafield Dr,
-Lenox,Building,2026-10-02,Pittsfield Road,
+Stockbridge,Gas,2026-10-02,Glendale Middle Rd,
+Stockbridge,Renovation/Remodel,2026-10-02,Church St,
+Stockbridge,Gas,2026-10-02,Interlaken Crossrd,
+Cambridge,Addition,2026-10-02,Clay St,107000.0
+Cambridge,Gas,2026-10-02,Richard Ave,21101.16
+Cambridge,Windows/Doors/Siding,2026-10-02,"Inman St, Unit B",8760.0
+Cambridge,Windows/Doors/Siding,2026-10-02,Gold Star Rd,6600.0
+Cambridge,Renovation/Remodel,2026-10-02,Berkeley Pl,91600.0
+Cambridge,Windows/Doors/Siding,2026-10-02,Cambridge St,285000.0
+Cambridge,HVAC,2026-10-02,"Pearl St, Unit",2450.0
+Cambridge,Electrical,2026-10-02,Canal Pk,50120.0
+Cambridge,Solar,2026-10-02,Kelley St,21224.0
+Cambridge,Electrical,2026-10-02,Wendell St,5000.0
+Cambridge,Electrical,2026-10-02,Cambridge Pkwy,5000.0
+Cambridge,Plumbing,2026-10-02,"Thorndike St, Unit",
+Cambridge,Plumbing,2026-10-02,Essex St,
+Cambridge,Plumbing,2026-10-02,Lee St,
+Cambridge,Plumbing,2026-10-02,"Otis St, Unit",
+Cambridge,Gas,2026-10-02,"Green St, Unit",
+Cambridge,Gas,2026-10-02,Massachusetts Ave,
+Cambridge,Gas,2026-10-02,"Essex St, Unit",
+Cambridge,Roofing,2026-10-02,Hampshire St,13685.0
+Cambridge,HVAC,2026-10-02,Technology Sq,160000.0
+Cambridge,HVAC,2026-10-02,Arrow St,12000.0
+Cambridge,Windows/Doors/Siding,2026-10-02,Massachusetts Ave,2100.0
+Cambridge,Asbestos,2026-10-02,Albany St,5200.0
+Cambridge,Asbestos,2026-10-02,Ames St,2600.0
+Cambridge,New Construction,2026-10-02,Broadway,12000.0
 Concord,Gas,2026-10-02,Elm St,
 Concord,Renovation/Remodel,2026-10-02,Main St,
 Concord,Gas,2026-10-02,Main St,
+Concord,Electrical,2026-10-02,Elm St,
+Concord,Electrical,2026-10-02,Isaac Davis Rd,
+Concord,Electrical,2026-10-02,Whits End Rd,
+Concord,Renovation/Remodel,2026-10-02,Monsen Rd,
+Concord,Renovation/Remodel,2026-10-02,Spring Rd,
 Concord,Electrical,2026-10-02,Hayward Mill Rd,
+Concord,Electrical,2026-10-02,Bow St,
+Concord,HVAC,2026-10-02,Thoreau St,
 Concord,Plumbing,2026-10-02,Garrison Rd Extention,
+Concord,HVAC,2026-10-02,Oak Rd,
 Concord,Plumbing,2026-10-02,Hayward Mill Rd,
 Concord,Building,2026-10-02,Forest Ridge Rd,
-Concord,Renovation/Remodel,2026-10-02,Spring Rd,
 Townsend,Windows/Doors/Siding,2026-10-02,Warren Rd,
 Townsend,Building,2026-10-02,Balsam Dr,
 Townsend,Electrical,2026-10-02,Sagittarius Ln,
 Wenham,Renovation/Remodel,2026-10-02,Angus Circle,
+Southampton,Other,2026-10-02,Middle Rd,
 Granby,Building,2026-10-02,Harris St,
+Granby,HVAC,2026-10-02,Taylor St,
 Granby,Building,2026-10-02,High St,
 Granby,Windows/Doors/Siding,2026-10-02,Taylor St,
 Granby,Roofing,2026-10-02,North St,
-Granby,Building,2026-10-02,West State St,
 Sunderland,Building,2026-10-02,Plumtree Rd,
 Sunderland,Building,2026-10-02,Bridge St,
 Nahant,Electrical,2026-10-02,Wharf St,
@@ -189,16 +354,24 @@ Carlisle,Deck/Porch,2026-10-02,Maple St,
 Carlisle,Kitchen/Bath,2026-10-02,Rutland St,
 Pittsfield,Renovation/Remodel,2026-10-02,Elaine Dr,
 Pittsfield,Sign/Awning,2026-10-02,Park St,
+Pittsfield,Gas,2026-10-02,Pond St,
 Pittsfield,Building,2026-10-02,Mohawk St,
+Pittsfield,Gas,2026-10-02,George St,
+Pittsfield,Plumbing,2026-10-02,Paul Ave,
 Pittsfield,Building,2026-10-02,North,
 Pittsfield,Electrical,2026-10-02,Congress St,
+Pittsfield,Gas,2026-10-02,Wahconah St,
 Pittsfield,Building,2026-10-02,Mohegan St,
 Pittsfield,Electrical,2026-10-02,Putnam Ave,
 Pittsfield,Electrical,2026-10-02,Maryland Ave,
+Pittsfield,Gas,2026-10-02,Commonwealth Ave,
 Pittsfield,Electrical,2026-10-02,Ontario St,
 Pittsfield,Building,2026-10-02,Memorial Dr,
+Pittsfield,Electrical,2026-10-02,Euclid Ave,
+Pittsfield,Gas,2026-10-02,Garden St,
 Pittsfield,Gas,2026-10-02,Mountain Dr,
 Pittsfield,Renovation/Remodel,2026-10-02,Lucia Dr,
+Pittsfield,Gas,2026-10-02,Brenton Ter,
 Pittsfield,Electrical,2026-10-02,Lakeway Dr,
 Norwood,Fire/Sprinkler,2026-10-02,Hampden Drive,
 Norwood,Fire/Sprinkler,2026-10-02,Walpole Street,
@@ -207,10 +380,158 @@ Norwood,Electrical,2026-10-02,Lydon Street,
 Norwood,Electrical,2026-10-02,School Street,
 Norwood,Electrical,2026-10-02,Lenox Street,
 Norwood,Fire/Sprinkler,2026-10-02,Access Road,
-Norwood,Gas,2026-10-02,Boston Providence Highway,
 Norwood,Gas,2026-10-02,Pleasant St,
 Norwood,Renovation/Remodel,2026-10-02,Downing Street,
+Norwood,Gas,2026-10-02,Boston Providence Highway,
 Norwood,Plumbing,2026-10-02,Everett Avenue,
+Norwood,Fire/Sprinkler,2026-10-02,Boston Providence Highway,
+Norwood,Renovation/Remodel,2026-10-02,Neponset Street,
+Dorchester,Demolition,2026-10-01,Fairfax St,20000.0
+Boston,Electrical,2026-10-01,Newbury St,4000.0
+Brighton,Plumbing,2026-10-01,Market St,500.0
+Boston,Electrical,2026-10-01,Newbury St,1000.0
+Charlestown,Electrical,2026-10-01,New Rutherford Av,50000.0
+Dorchester,Plumbing,2026-10-01,Fuller St,25000.0
+South Boston,Windows/Doors/Siding,2026-10-01,E Fifth St,43048.0
+Boston,Kitchen/Bath,2026-10-01,Beacon St,536911.0
+Roslindale,Plumbing,2026-10-01,Neponset Av,5000.0
+Jamaica Plain,Electrical,2026-10-01,Lamartine St,3175.0
+West Roxbury,HVAC,2026-10-01,Parklawn Rd,500.0
+Mattapan,Plumbing,2026-10-01,Kennebec St,11000.0
+Boston,Plumbing,2026-10-01,Saint Botolph St,9000000.0
+Roxbury,Plumbing,2026-10-01,W Newton St,400.0
+Dorchester,Renovation/Remodel,2026-10-01,Ellington St,1.0
+Dorchester,Electrical,2026-10-01,Dorchester Av,4500.0
+West Roxbury,Electrical,2026-10-01,Manthorne Rd,18000.0
+Mattapan,HVAC,2026-10-01,Westmore Rd,32000.0
+Boston,Plumbing,2026-10-01,Queensberry St,4300.0
+Mattapan,Solar,2026-10-01,Deering Rd,80400.0
+Brighton,Electrical,2026-10-01,Leicester St,4500.0
+Hyde Park,Plumbing,2026-10-01,Washington St,5000.0
+Boston,Electrical,2026-10-01,Huntington Av,8500.0
+Boston,Electrical,2026-10-01,Beacon St,3500.0
+West Roxbury,Solar,2026-10-01,Centre St,32700.0
+Dorchester,Plumbing,2026-10-01,Whitfield St,300.0
+West Roxbury,Solar,2026-10-01,Crosstown Av,41559.0
+Charlestown,Roofing,2026-10-01,Washington St,500000.0
+Boston,Electrical,2026-10-01,Saint James Av,334815.85
+Boston,Electrical,2026-10-01,Babbitt St,9000.0
+Allston,Pool/Spa,2026-10-01,Commonwealth Av,159338.0
+Brighton,Electrical,2026-10-01,Regal St,5000.0
+Boston,Electrical,2026-10-01,Joslin Pl,95000.0
+Boston,Electrical,2026-10-01,Brookline Av,9000.0
+West Roxbury,Electrical,2026-10-01,Belgrade Av,50000.0
+Roxbury,Electrical,2026-10-01,Hommagen Ct,12000.0
+East Boston,HVAC,2026-10-01,Lexington St,1000.0
+Charlestown,Plumbing,2026-10-01,First Av,9600.0
+Boston,Electrical,2026-10-01,Federal St,6000.0
+Boston,Electrical,2026-10-01,Federal St,10000.0
+Brighton,HVAC,2026-10-01,Brooks St,15000.0
+Boston,Electrical,2026-10-01,Federal St,12000.0
+Hyde Park,Kitchen/Bath,2026-10-01,Pierce St,40000.0
+Dorchester,Roofing,2026-10-01,Talbot Av,6000.0
+Brighton,Demolition,2026-10-01,Murdock St,50000.0
+Roslindale,Windows/Doors/Siding,2026-10-01,Ravenna Rd,25750.0
+Hyde Park,Other,2026-10-01,West St,3500.0
+Boston,Plumbing,2026-10-01,Commercial St,1500.0
+Boston,Plumbing,2026-10-01,Commercial St,3000.0
+Boston,Addition,2026-10-01,Seaport Bl,416639.0
+Boston,Electrical,2026-10-01,Queensberry St,6000.0
+Boston,Electrical,2026-10-01,Queensberry St,11000.0
+Boston,Electrical,2026-10-01,Park Dr,6000.0
+Roslindale,Addition,2026-10-01,Cummins Hw,150000.0
+Boston,Electrical,2026-10-01,Winter St,124275.0
+Boston,Electrical,2026-10-01,Queensberry St,47000.0
+Boston,Electrical,2026-10-01,Queensberry St,403510.0
+Allston,Solar,2026-10-01,Bradbury St,958000.0
+Brighton,Electrical,2026-10-01,Chestnut Hill Av,30000.0
+Boston,Plumbing,2026-10-01,State St,12000.0
+Allston,Electrical,2026-10-01,Brighton Av,500.0
+Jamaica Plain,Electrical,2026-10-01,Rock Hill Rd,2900.0
+Brighton,HVAC,2026-10-01,Foster St,16000.0
+Boston,Plumbing,2026-10-01,Boylston St,320000.0
+West Roxbury,Renovation/Remodel,2026-10-01,Centre St,350.0
+Boston,Electrical,2026-10-01,Longwood Av,141840.0
+Allston,Roofing,2026-10-01,Hooker St,7695.0
+Hyde Park,Pool/Spa,2026-10-01,Spring Hill Rd,52985.0
+Boston,Electrical,2026-10-01,Commonwealth Av,9000.0
+Dorchester,Electrical,2026-10-01,Howard Av,3000.0
+South Boston,Deck/Porch,2026-10-01,W Fourth St,39000.0
+Brighton,Electrical,2026-10-01,Orkney Rd,40000.0
+Boston,Electrical,2026-10-01,Massachusetts Av,25000.0
+Boston,Electrical,2026-10-01,Boylston St,15000.0
+Hyde Park,Roofing,2026-10-01,Austin St,19974.81
+Brighton,Electrical,2026-10-01,N Beacon St,12790.49
+Boston,Kitchen/Bath,2026-10-01,Commonwealth Av,20000.0
+Mattapan,Other,2026-10-01,Ralwood Rd,8198.05
+West Roxbury,Windows/Doors/Siding,2026-10-01,Carlson Ci,12405.0
+Boston,Plumbing,2026-10-01,Oliver St,27000.0
+Boston,Addition,2026-10-01,Stuart St,330000.0
+East Boston,Electrical,2026-10-01,Eutaw St,3000.0
+Boston,HVAC,2026-10-01,Brookline Av,66000.0
+East Boston,Electrical,2026-10-01,E Eagle St,13000.0
+Roxbury,Plumbing,2026-10-01,Northampton St,3000.0
+Boston,Electrical,2026-10-01,Fruit St,30430.0
+Boston,Plumbing,2026-10-01,Brookline Av,33000.0
+Boston,Electrical,2026-10-01,Newbury St,55000.0
+Boston,Renovation/Remodel,2026-10-01,Lincoln St,600000.0
+Boston,Demolition,2026-10-01,Lincoln St,3000000.0
+South Boston,Electrical,2026-10-01,E Fifth St,49157.0
+Boston,Demolition,2026-10-01,State St,400000.0
+Boston,Electrical,2026-10-01,Tyler St,10000.0
+West Roxbury,Plumbing,2026-10-01,Washington St,5000.0
+Dorchester,HVAC,2026-10-01,Annapolis St,5000.0
+Mattapan,Plumbing,2026-10-01,Idaho St,4000.0
+Roslindale,Plumbing,2026-10-01,Sycamore St,2500.0
+Boston,Plumbing,2026-10-01,Binney St,43450.0
+Jamaica Plain,Plumbing,2026-10-01,Rock Hill Rd,200000.0
+Charlestown,Roofing,2026-10-01,Union St,10500.0
+Roxbury,Plumbing,2026-10-01,Rutland St,5000.0
+Brighton,Plumbing,2026-10-01,Atkins St,4800.0
+Roxbury,Deck/Porch,2026-10-01,Massachusetts Av,25000.0
+Boston,Plumbing,2026-10-01,Lincoln St,89172.0
+East Boston,Electrical,2026-10-01,Havre St,25000.0
+Roxbury,HVAC,2026-10-01,Saint James St,5375.0
+Boston,Electrical,2026-10-01,Longwood Av,5000.0
+Boston,Electrical,2026-10-01,Deaconess Rd,115000.0
+Boston,Electrical,2026-10-01,Brookline Av,5000.0
+Charlestown,Plumbing,2026-10-01,Warren St,2500.0
+Boston,Electrical,2026-10-01,Hudson St,160000.0
+Boston,Electrical,2026-10-01,Hudson St,450000.0
+Boston,Fire/Sprinkler,2026-10-01,Brookline Av,949374.0
+Boston,Electrical,2026-10-01,Brookline Av,4300.0
+Hyde Park,Renovation/Remodel,2026-10-01,Webster St,4000.0
+Boston,Plumbing,2026-10-01,Beacon St,3000.0
+Dorchester,Deck/Porch,2026-10-01,Harbor View St,20000.0
+Dorchester,Electrical,2026-10-01,Melville Av,15400.0
+Hyde Park,Electrical,2026-10-01,Sherrin St,3951.0
+Boston,HVAC,2026-10-01,Beacon St,10000.0
+Boston,Plumbing,2026-10-01,Summer St,30000.0
+Brighton,Renovation/Remodel,2026-10-01,Wallingford Rd,10000.0
+West Roxbury,Windows/Doors/Siding,2026-10-01,Washington St,4812.0
+Roxbury,Electrical,2026-10-01,Wareham St,9000.0
+Jamaica Plain,Electrical,2026-10-01,Beaufort Rd,3500.0
+Boston,Electrical,2026-10-01,Wormwood St,15000.0
+Allston,Windows/Doors/Siding,2026-10-01,Pomeroy St,9086.26
+Hyde Park,Windows/Doors/Siding,2026-10-01,Fairmount Av,6650.07
+East Boston,Electrical,2026-10-01,Webster St,1600.0
+Boston,Gas,2026-10-01,W Canton St,1000.0
+Boston,Plumbing,2026-10-01,W Canton St,30000.0
+Boston,Electrical,2026-10-01,Binney St,270000.0
+Dorchester,Gas,2026-10-01,Freeport Wy,1200.0
+Roslindale,Windows/Doors/Siding,2026-10-01,Fletcher St,10710.0
+Roxbury,HVAC,2026-10-01,Shawmut Av,5000.0
+Roxbury,HVAC,2026-10-01,Shawmut Av,1200.0
+Boston,Plumbing,2026-10-01,Chestnut St,10000.0
+Boston,Electrical,2026-10-01,Charles St,50250.0
+Roxbury,Electrical,2026-10-01,Massachusetts Av,3350.0
+Dorchester,Roofing,2026-10-01,Harvard St,148000.0
+West Roxbury,Other,2026-10-01,Montview St,3000.0
+Jamaica Plain,Electrical,2026-10-01,Prince St,1500.0
+Roslindale,Electrical,2026-10-01,West Roxbury Pw,1500.0
+Roslindale,HVAC,2026-10-01,West Roxbury Pw,19000.0
+Hyde Park,Electrical,2026-10-01,Wood Av,5000.0
+Boston,Electrical,2026-10-01,Revere St,1500.0
 Braintree,Building,2026-10-01,Elm Street,
 Braintree,Plumbing,2026-10-01,Franklin Street,
 Braintree,Plumbing,2026-10-01,Park Avenue,
@@ -266,14 +587,12 @@ Falmouth,Electrical,2026-10-01,Currier Rd,
 Falmouth,Other,2026-10-01,Two Ponds Rd,
 Falmouth,Renovation/Remodel,2026-10-01,Maple St,
 Falmouth,Plumbing,2026-10-01,Maple St,
-Falmouth,Windows/Doors/Siding,2026-10-01,Wild Harbor Rd,
 Falmouth,Electrical,2026-10-01,Fairway Ln,
+Falmouth,Windows/Doors/Siding,2026-10-01,Wild Harbor Rd,
 Falmouth,Electrical,2026-10-01,Old Meeting House Rd,
 Falmouth,Plumbing,2026-10-01,Sandwich Rd,
 Falmouth,HVAC,2026-10-01,Oyster Pond Rd,
 Falmouth,Renovation/Remodel,2026-10-01,Kilmer Rd,
-Falmouth,Renovation/Remodel,2026-10-01,Anchorage Rd,
-Falmouth,Gas,2026-10-01,Carriage Shop Rd,
 Falmouth,Electrical,2026-10-01,Brigantine Dr,
 Falmouth,Electrical,2026-10-01,Acapesket Rd,
 Falmouth,Plumbing,2026-10-01,Fairway Ln,
@@ -282,32 +601,33 @@ Falmouth,Plumbing,2026-10-01,Cape Woods Dr,
 Falmouth,Electrical,2026-10-01,Crooked Meadow Rd,
 Falmouth,Roofing,2026-10-01,Pitch Pine Ln,
 Falmouth,Roofing,2026-10-01,Mariners Ln,
+Falmouth,Renovation/Remodel,2026-10-01,Anchorage Rd,
+Falmouth,Gas,2026-10-01,Carriage Shop Rd,
 Falmouth,Renovation/Remodel,2026-10-01,Cataumet St,
-Mashpee,Electrical,2026-10-01,Fells Pond Rd,
+Mashpee,Gas,2026-10-01,Surrey Pl,
+Mashpee,Other,2026-10-01,Cross Rd,
+Mashpee,Renovation/Remodel,2026-10-01,Marway,
+Mashpee,Plumbing,2026-10-01,Daniels Island Rd,
+Mashpee,Sign/Awning,2026-10-01,Falmouth Rd,
+Mashpee,Renovation/Remodel,2026-10-01,Daniels Island Rd,
+Mashpee,Renovation/Remodel,2026-10-01,Troon Way,
 Mashpee,Electrical,2026-10-01,Little Neck Ln,
 Mashpee,Electrical,2026-10-01,Horseshoe Bend Way,
-Mashpee,Gas,2026-10-01,Daniels Island Rd,
-Mashpee,Renovation/Remodel,2026-10-01,Marway,
-Mashpee,Renovation/Remodel,2026-10-01,Troon Way,
 Mashpee,Electrical,2026-10-01,Old Barnstable Rd,
+Mashpee,Gas,2026-10-01,Daniels Island Rd,
+Mashpee,Electrical,2026-10-01,Fells Pond Rd,
 Mashpee,Renovation/Remodel,2026-10-01,Fells Pond Rd,
 Mashpee,Gas,2026-10-01,Eagle Dr,
 Mashpee,Plumbing,2026-10-01,Surrey Pl,
-Mashpee,Gas,2026-10-01,Surrey Pl,
-Mashpee,Other,2026-10-01,Cross Rd,
-Mashpee,Plumbing,2026-10-01,Daniels Island Rd,
-Mashpee,Electrical,2026-10-01,Old Great Neck Rd,
-Mashpee,Sign/Awning,2026-10-01,Falmouth Rd,
-Mashpee,Renovation/Remodel,2026-10-01,Daniels Island Rd,
-Mashpee,Electrical,2026-10-01,Brant Rock Rd,
-Mashpee,Electrical,2026-10-01,Sampsons Mill Rd,
-Mashpee,Renovation/Remodel,2026-10-01,Porthole Dr,
 Mashpee,Plumbing,2026-10-01,Brewster Rd,
 Mashpee,Electrical,2026-10-01,Nathan Ellis Hwy,
-Mashpee,Gas,2026-10-01,The Hacking Cir,
-Mashpee,Renovation/Remodel,2026-10-01,Cobblestone Cir,
+Mashpee,Renovation/Remodel,2026-10-01,Porthole Dr,
+Mashpee,Electrical,2026-10-01,Brant Rock Rd,
+Mashpee,Electrical,2026-10-01,Sampsons Mill Rd,
 Mashpee,Gas,2026-10-01,Ironwood Path,
 Mashpee,Electrical,2026-10-01,The Hacking Cir,
+Mashpee,Renovation/Remodel,2026-10-01,Cobblestone Cir,
+Mashpee,Gas,2026-10-01,The Hacking Cir,
 Mashpee,Gas,2026-10-01,The Cartway,
 Mashpee,Electrical,2026-10-01,The Cartway,
 Mashpee,Building,2026-10-01,Cooper St,
@@ -329,18 +649,18 @@ Sandwich,Renovation/Remodel,2026-10-01,Shore Drive,
 Sandwich,Electrical,2026-10-01,Viking Lane,
 Randolph,Renovation/Remodel,2026-10-01,Chestnut St,
 Randolph,Plumbing,2026-10-01,S Main St,
+Randolph,Renovation/Remodel,2026-10-01,Himoor Ci,
+Randolph,Renovation/Remodel,2026-10-01,Frederickson Dr,
+Randolph,Plumbing,2026-10-01,Pond St,
+Randolph,Renovation/Remodel,2026-10-01,Bonnie Ln,
+Randolph,Electrical,2026-10-01,Gloria Rd,
+Randolph,Renovation/Remodel,2026-10-01,Edwin St,
 Randolph,Renovation/Remodel,2026-10-01,Centre St,
 Randolph,Electrical,2026-10-01,Glen Ln,
 Randolph,Building,2026-10-01,S Main St,
 Randolph,Plumbing,2026-10-01,Frederickson Dr,
 Randolph,Electrical,2026-10-01,S Main St,
-Randolph,Renovation/Remodel,2026-10-01,Bonnie Ln,
-Randolph,Electrical,2026-10-01,Gloria Rd,
-Randolph,Renovation/Remodel,2026-10-01,Himoor Ci,
-Randolph,Renovation/Remodel,2026-10-01,Frederickson Dr,
-Randolph,Plumbing,2026-10-01,Pond St,
 Randolph,Renovation/Remodel,2026-10-01,Glen Ln,
-Randolph,Renovation/Remodel,2026-10-01,Edwin St,
 Milton,Plumbing,2026-10-01,Marine Rd,
 Milton,Renovation/Remodel,2026-10-01,Hillside St,
 Milton,Gas,2026-10-01,St Agatha Rd,
@@ -351,36 +671,36 @@ Milton,Renovation/Remodel,2026-10-01,Mathaurs St,
 Stoughton,Building,2026-10-01,Park St,
 Stoughton,Building,2026-10-01,Sumner St,
 Stoughton,Building,2026-10-01,Central St,
-Stoughton,Plumbing,2026-10-01,Central St,
 Stoughton,Building,2026-10-01,Turnpike St,
+Stoughton,Plumbing,2026-10-01,Central St,
 Stoughton,Building,2026-10-01,Laura Ln,
 Stoughton,Building,2026-10-01,Ikea Way,
 Stoughton,Gas,2026-10-01,William Kelley Rd,
+Stoughton,Building,2026-10-01,Camelot Ct,
 Stoughton,Building,2026-10-01,Walters Way,
 Stoughton,Building,2026-10-01,Zabrosky Ave,
-Stoughton,Building,2026-10-01,Camelot Ct,
-Easton,Gas,2026-10-01,Avis Circle,
 Easton,Building,2026-10-01,Purchase Street,
 Easton,Renovation/Remodel,2026-10-01,Fox Ridge Road,
 Easton,Renovation/Remodel,2026-10-01,Reynolds Street,
+Easton,Gas,2026-10-01,Avis Circle,
 Easton,Renovation/Remodel,2026-10-01,Kilsyth Road,
+Easton,Electrical,2026-10-01,Lincoln Street,
 Easton,Plumbing,2026-10-01,Sheridan Street,
 Easton,Plumbing,2026-10-01,Avis Circle,
 Easton,Electrical,2026-10-01,Washington Street,
 Easton,Electrical,2026-10-01,Purchase Street,
-Easton,Electrical,2026-10-01,Lincoln Street,
 West Bridgewater,Renovation/Remodel,2026-10-01,Plain St,
 West Bridgewater,Plumbing,2026-10-01,Copper Beech Circle,
 West Bridgewater,Building,2026-10-01,Harvestwood Dr,
 West Bridgewater,Gas,2026-10-01,Goldie Rd,
+Hanson,Renovation/Remodel,2026-10-01,Indian Head St,
+Hanson,Renovation/Remodel,2026-10-01,Union Park St,
 Hanson,Gas,2026-10-01,Gorwin Dr,
 Hanson,HVAC,2026-10-01,County Rd,
 Hanson,Electrical,2026-10-01,County Rd,
-Hanson,Electrical,2026-10-01,Woodman Ter,
-Hanson,Renovation/Remodel,2026-10-01,Woodman Ter,
-Hanson,Renovation/Remodel,2026-10-01,Indian Head St,
-Hanson,Renovation/Remodel,2026-10-01,Union Park St,
 Hanson,Gas,2026-10-01,County Rd,
+Hanson,Renovation/Remodel,2026-10-01,Woodman Ter,
+Hanson,Electrical,2026-10-01,Woodman Ter,
 Avon,Plumbing,2026-10-01,Everett St,
 Cohasset,Electrical,2026-10-01,Windy Hill Rd,
 Cohasset,Renovation/Remodel,2026-10-01,South Main St,
@@ -400,23 +720,23 @@ Cohasset,Renovation/Remodel,2026-10-01,Jerusalem Rd,
 Cohasset,Electrical,2026-10-01,Ripley Rd,
 Cohasset,Plumbing,2026-10-01,Linden Dr,
 Cohasset,Electrical,2026-10-01,Highland Ave,
-Attleboro,Renovation/Remodel,2026-10-01,Regatta Dr,
-Attleboro,Renovation/Remodel,2026-10-01,Long Ave,
 Attleboro,Gas,2026-10-01,Tanager Rd,
+Attleboro,Renovation/Remodel,2026-10-01,Long Ave,
+Attleboro,Renovation/Remodel,2026-10-01,Regatta Dr,
 Attleboro,Renovation/Remodel,2026-10-01,Veery Rd,
 Attleboro,HVAC,2026-10-01,Park St,
 Attleboro,Renovation/Remodel,2026-10-01,Hope St,
 Attleboro,Renovation/Remodel,2026-10-01,Newport Ave,
 Attleboro,Renovation/Remodel,2026-10-01,Hudson St,
-Attleboro,Electrical,2026-10-01,Pentecostal Way,
-Attleboro,Building,2026-10-01,Cedar St,
-Attleboro,Renovation/Remodel,2026-10-01,Wilmarth St,
-Attleboro,Electrical,2026-10-01,Washington St,
-Attleboro,Electrical,2026-10-01,Claire Dr,
-Attleboro,Electrical,2026-10-01,Ellis St,
-Attleboro,Renovation/Remodel,2026-10-01,Alvin St,
 Attleboro,Electrical,2026-10-01,Hope St,
 Attleboro,Plumbing,2026-10-01,Tanager Rd,
+Attleboro,Electrical,2026-10-01,Washington St,
+Attleboro,Electrical,2026-10-01,Ellis St,
+Attleboro,Electrical,2026-10-01,Claire Dr,
+Attleboro,Renovation/Remodel,2026-10-01,Wilmarth St,
+Attleboro,Electrical,2026-10-01,Pentecostal Way,
+Attleboro,Renovation/Remodel,2026-10-01,Alvin St,
+Attleboro,Building,2026-10-01,Cedar St,
 Attleboro,HVAC,2026-10-01,Collins St,
 Mansfield,HVAC,2026-10-01,Plain St,
 Mansfield,Renovation/Remodel,2026-10-01,Balcom St,
@@ -438,24 +758,24 @@ Foxborough,Electrical,2026-10-01,Boette Lane,500.0
 Foxborough,Electrical,2026-10-01,Phyllis Road,2500.0
 Foxborough,Renovation/Remodel,2026-10-01,Sherman Street,5000.0
 Foxborough,Plumbing,2026-10-01,Link Street,600.0
-Fairhaven,Renovation/Remodel,2026-10-01,Center Street,
-Fairhaven,Other,2026-10-01,Seaview Avenue,
-Fairhaven,Plumbing,2026-10-01,Brae Road,
-Fairhaven,Electrical,2026-10-01,Laurel Street,
-Fairhaven,Renovation/Remodel,2026-10-01,Bayview Avenue,
 Fairhaven,Renovation/Remodel,2026-10-01,Church Street,
+Fairhaven,Renovation/Remodel,2026-10-01,Bluepoint Road,
+Fairhaven,Electrical,2026-10-01,Alden Road,
 Fairhaven,Gas,2026-10-01,Evergreen Street,
 Fairhaven,Plumbing,2026-10-01,Church Street,
-Fairhaven,Renovation/Remodel,2026-10-01,Bluepoint Road,
 Fairhaven,Building,2026-10-01,Huttleston Avenue,
-Fairhaven,Electrical,2026-10-01,Alden Road,
 Fairhaven,Electrical,2026-10-01,Bluepoint Road,
 Fairhaven,Electrical,2026-10-01,Sconticut Neck Road,
+Fairhaven,Plumbing,2026-10-01,Brae Road,
+Fairhaven,Renovation/Remodel,2026-10-01,Center Street,
+Fairhaven,Other,2026-10-01,Seaview Avenue,
+Fairhaven,Electrical,2026-10-01,Laurel Street,
+Fairhaven,Renovation/Remodel,2026-10-01,Bayview Avenue,
 Fairhaven,Other,2026-10-01,Mill Road,
 Fairhaven,Electrical,2026-10-01,Silver Shell Beach Drive,
 Fairhaven,Other,2026-10-01,Century Drive,
-Fairhaven,Electrical,2026-10-01,Hathaway Street,
 Fairhaven,Gas,2026-10-01,Mina Street,
+Fairhaven,Electrical,2026-10-01,Hathaway Street,
 Fairhaven,Gas,2026-10-01,Collins Way,
 Fairhaven,Electrical,2026-10-01,Birchfield Street,
 Fairhaven,Renovation/Remodel,2026-10-01,Crow Island,
@@ -515,11 +835,11 @@ Rehoboth,Electrical,2026-10-01,Winthrop St,
 Rehoboth,HVAC,2026-10-01,Sophia,
 Rehoboth,Renovation/Remodel,2026-10-01,Simmons St,
 Chicopee,Renovation/Remodel,2026-10-01,Grace St,
-Chicopee,Other,2026-10-01,Memorial Dr,
-Chicopee,Electrical,2026-10-01,Fletcher Cir,
-Chicopee,HVAC,2026-10-01,W. Main St,
-Chicopee,Renovation/Remodel,2026-10-01,Chicopee St,
 Chicopee,Building,2026-10-01,Carew St,
+Chicopee,Renovation/Remodel,2026-10-01,Chicopee St,
+Chicopee,Electrical,2026-10-01,Fletcher Cir,
+Chicopee,Other,2026-10-01,Memorial Dr,
+Chicopee,HVAC,2026-10-01,W. Main St,
 Hopedale,Electrical,2026-10-01,Dutcher St,
 Ludlow,Renovation/Remodel,2026-10-01,Chapin Street,
 Ludlow,Electrical,2026-10-01,Vienna Avenue,
@@ -537,9 +857,9 @@ North Reading,Electrical,2026-10-01,Duane Dr,
 North Reading,Plumbing,2026-10-01,Castle Rd,
 Easthampton,Renovation/Remodel,2026-10-01,Karen Cir,
 Easthampton,Renovation/Remodel,2026-10-01,Lownds Ave,
+Great Barrington,Gas,2026-10-01,Monument Valley Rd,
 Great Barrington,Electrical,2026-10-01,Silver St,
 Great Barrington,Electrical,2026-10-01,Main St,
-Great Barrington,Gas,2026-10-01,Monument Valley Rd,
 Lee,Renovation/Remodel,2026-10-01,East St,
 Lenox,Electrical,2026-10-01,Morgan Manor,
 Lenox,Renovation/Remodel,2026-10-01,West St,
@@ -548,8 +868,53 @@ Lenox,Building,2026-10-01,Main St,
 Lenox,Other,2026-10-01,Lee Rd,
 Lenox,Electrical,2026-10-01,Under Mt Rd,
 Lenox,Plumbing,2026-10-01,Walker St,
-Stockbridge,Renovation/Remodel,2026-10-01,Hill Rd,
 Stockbridge,Building,2026-10-01,Main St,
+Stockbridge,Renovation/Remodel,2026-10-01,Hill Rd,
+Cambridge,Addition,2026-10-01,"Harvard St, Unit",145958.24
+Cambridge,Deck/Porch,2026-10-01,Magoun St,25305.0
+Cambridge,Addition,2026-10-01,"Prospect St, Unit",15000.0
+Cambridge,Windows/Doors/Siding,2026-10-01,"Pemberton St, Unit",23285.0
+Cambridge,Plumbing,2026-10-01,Cambridge St,16475.0
+Cambridge,Addition,2026-10-01,"Harvard St, Unit",142410.2
+Cambridge,New Construction,2026-10-01,Inman St,105097.33
+Cambridge,Kitchen/Bath,2026-10-01,"Earhart St, Unit",18622.0
+Cambridge,Renovation/Remodel,2026-10-01,"Arlington St, Unit",65549.41
+Cambridge,HVAC,2026-10-01,Ames St,18600.0
+Cambridge,Electrical,2026-10-01,Canal Pk,50580.0
+Cambridge,Electrical,2026-10-01,Coolidge Hill,46000.0
+Cambridge,HVAC,2026-10-01,Massachusetts Ave,114250.0
+Cambridge,Solar,2026-10-01,Fayerweather St,3000.0
+Cambridge,Electrical,2026-10-01,Cambridge St,30103.0
+Cambridge,Electrical,2026-10-01,Massachusetts Ave,12000.0
+Cambridge,Electrical,2026-10-01,Cambridge St,22000.0
+Cambridge,Electrical,2026-10-01,Magnolia Ave,5000.0
+Cambridge,Electrical,2026-10-01,Second St,21000.0
+Cambridge,Electrical,2026-10-01,Massachusetts Ave,50000.0
+Cambridge,HVAC,2026-10-01,Broadway,2351440.0
+Cambridge,Electrical,2026-10-01,Rindge Ave,500.0
+Cambridge,Electrical,2026-10-01,Pearl St,6200.0
+Cambridge,Electrical,2026-10-01,Broadway,125000.0
+Cambridge,Electrical,2026-10-01,Cambridge Pkwy,16000.0
+Cambridge,Electrical,2026-10-01,Canal Pk,1500.0
+Cambridge,Plumbing,2026-10-01,"Hancock St, Unit",
+Cambridge,Plumbing,2026-10-01,"Earhart St, Unit",
+Cambridge,Plumbing,2026-10-01,Massachusetts Ave,
+Cambridge,Plumbing,2026-10-01,Upland Rd,
+Cambridge,Plumbing,2026-10-01,"Broadway, Unit",
+Cambridge,Plumbing,2026-10-01,Mt Auburn St,
+Cambridge,Gas,2026-10-01,Montgomery St,
+Cambridge,Gas,2026-10-01,"Valentine St, Unit",
+Cambridge,Gas,2026-10-01,Memorial Dr,
+Cambridge,Gas,2026-10-01,Land Blvd,
+Cambridge,Gas,2026-10-01,Fort Washington Pl,
+Cambridge,HVAC,2026-10-01,Montgomery St,
+Cambridge,HVAC,2026-10-01,"Valentine St, Unit",
+Cambridge,Fire/Sprinkler,2026-10-01,Pleasant St,
+Cambridge,Fire/Sprinkler,2026-10-01,"Franklin, Unit",
+Cambridge,Fire/Sprinkler,2026-10-01,Prospect St,
+Cambridge,Roofing,2026-10-01,Camelia Ave,43500.0
+Cambridge,Sign/Awning,2026-10-01,Kendall St,3000.0
+Cambridge,Other,2026-10-01,Land Blvd,4500.0
 Somerville,Kitchen/Bath,2026-10-01,Jay St,19880.0
 Somerville,HVAC,2026-10-01,Broadway,125000.0
 Somerville,Plumbing,2026-10-01,Lowell St,
@@ -604,13 +969,10 @@ Groveland,Deck/Porch,2026-10-01,School St,
 Stow,Gas,2026-10-01,Whispering Way,
 Stow,HVAC,2026-10-01,Elm Ridge Road,
 Stow,Electrical,2026-10-01,Harvard Road,
-Stow,Electrical,2026-10-01,Indian Ridge Road,
-Stow,Kitchen/Bath,2026-10-01,Kirkland Drive,
 Townsend,Electrical,2026-10-01,Main St,
 Townsend,HVAC,2026-10-01,Oak St,
 Hamilton,Roofing,2026-10-01,Village Ln,
 Hamilton,Building,2026-10-01,Elm St,
-Hamilton,HVAC,2026-10-01,Cutler Rd,
 Georgetown,Plumbing,2026-10-01,Lake Shore Dr,
 Georgetown,Electrical,2026-10-01,Baldpate Rd,
 Georgetown,Roofing,2026-10-01,Rainbow Ridge Wy,
@@ -649,8 +1011,8 @@ Pittsfield,Renovation/Remodel,2026-10-01,South St,
 Pittsfield,Electrical,2026-10-01,Fairfield St,
 Pittsfield,Renovation/Remodel,2026-10-01,Unkamet Park Dr,
 Pittsfield,Other,2026-10-01,Swan St,
-Pittsfield,Plumbing,2026-10-01,Lenox Ave,
 Pittsfield,Electrical,2026-10-01,Reuter Ave,
+Pittsfield,Plumbing,2026-10-01,Lenox Ave,
 Pittsfield,Electrical,2026-10-01,Grand Ave,
 Pittsfield,Building,2026-10-01,Mohawk St,
 Pittsfield,Renovation/Remodel,2026-10-01,Elberon Ave,
@@ -667,6 +1029,181 @@ Pittsfield,Renovation/Remodel,2026-10-01,West St,
 Pittsfield,Renovation/Remodel,2026-10-01,Dutchess Ave,
 Pittsfield,Renovation/Remodel,2026-10-01,Gale Ave,
 Pittsfield,Renovation/Remodel,2026-10-01,East St,
+Dorchester,Electrical,2026-09-30,Barry St,200.0
+West Roxbury,Electrical,2026-09-30,Franclaire Dr,2200.0
+Boston,Electrical,2026-09-30,Marlborough St,40250.0
+Boston,Kitchen/Bath,2026-09-30,Hanover St,94000.0
+Roxbury,Electrical,2026-09-30,Gerard St,12000.0
+Dorchester,Plumbing,2026-09-30,Greenbrier St,9800.0
+West Roxbury,HVAC,2026-09-30,Wycliff Av,129500.0
+Hyde Park,Electrical,2026-09-30,Halsey Rd,1500.0
+East Boston,Electrical,2026-09-30,Frankfort St,14000.0
+Roslindale,HVAC,2026-09-30,Hillview Av,1000.0
+Mattapan,HVAC,2026-09-30,Cookson Te,1000.0
+Mattapan,HVAC,2026-09-30,Cookson Te,5000.0
+East Boston,Electrical,2026-09-30,Brandywyne Dr,3200.0
+Roslindale,Windows/Doors/Siding,2026-09-30,Ledgedale Rd,17099.0
+Dorchester,Plumbing,2026-09-30,Bateswell Rd,13000.0
+Dorchester,Electrical,2026-09-30,Brookvale St,1500.0
+Mission Hill,Electrical,2026-09-30,Calumet St,1500.0
+Hyde Park,Electrical,2026-09-30,Poplar St,1500.0
+Brighton,Electrical,2026-09-30,S Waverly St,1500.0
+Boston,Electrical,2026-09-30,Newbury St,1500.0
+Dorchester,Electrical,2026-09-30,Fuller St,1500.0
+Dorchester,Electrical,2026-09-30,Train St,1500.0
+Dorchester,Electrical,2026-09-30,Gallivan Bl,1500.0
+West Roxbury,Electrical,2026-09-30,Rutledge St,1500.0
+Roslindale,Electrical,2026-09-30,Johnswood Rd,1500.0
+Roxbury,Electrical,2026-09-30,Clarence St,1500.0
+Hyde Park,Electrical,2026-09-30,Navarre St,1500.0
+Hyde Park,Electrical,2026-09-30,Pleasantview St,1500.0
+Jamaica Plain,HVAC,2026-09-30,Robinwood Av,500.0
+Dorchester,Plumbing,2026-09-30,Blue Hill Av,10000.0
+Roslindale,Plumbing,2026-09-30,Paine St,15000.0
+Jamaica Plain,Electrical,2026-09-30,Centre St,2000.0
+Boston,Renovation/Remodel,2026-09-30,Beacon St,2400.0
+Boston,Plumbing,2026-09-30,Commonwealth Av,14000.0
+Boston,Electrical,2026-09-30,Newbury St,1050.0
+Boston,HVAC,2026-09-30,Brookline Av,75000.0
+East Boston,Electrical,2026-09-30,Trustman Te,2800.0
+Boston,Electrical,2026-09-30,Brookline Av,350000.0
+Dorchester,Electrical,2026-09-30,Merlin St,18000.0
+Hyde Park,Electrical,2026-09-30,Pierce St,2000.0
+Jamaica Plain,Electrical,2026-09-30,Centre St,22000.0
+Hyde Park,Roofing,2026-09-30,Hyde Park Av,2500.0
+Roslindale,Plumbing,2026-09-30,Bradeen St,9000.0
+East Boston,Plumbing,2026-09-30,Paris St,2000.0
+East Boston,Addition,2026-09-30,Beachview Rd,25000.0
+Boston,Windows/Doors/Siding,2026-09-30,Fruit St,266500.0
+Allston,Electrical,2026-09-30,Commonwealth Av,5000.0
+East Boston,Electrical,2026-09-30,E Eagle St,1500.0
+Roxbury,Roofing,2026-09-30,Morley St,30350.0
+Boston,Electrical,2026-09-30,Lincoln St,725000.0
+Roslindale,Roofing,2026-09-30,Arborough Rd,19500.0
+Hyde Park,Roofing,2026-09-30,Gwinnett St,17000.0
+West Roxbury,Roofing,2026-09-30,Oriole St,20200.0
+Boston,HVAC,2026-09-30,State St,1000000.0
+Boston,Electrical,2026-09-30,Sleeper St,2000.0
+East Boston,HVAC,2026-09-30,Saratoga St,1000.0
+East Boston,Windows/Doors/Siding,2026-09-30,Princeton St,29501.0
+Boston,Electrical,2026-09-30,Charles St,15000.0
+East Boston,Deck/Porch,2026-09-30,Cowper St,12000.0
+Brighton,Windows/Doors/Siding,2026-09-30,Newton St,17531.0
+Dorchester,Electrical,2026-09-30,Whitfield St,3500.0
+Boston,Renovation/Remodel,2026-09-30,S Russell St,3425.0
+Boston,Electrical,2026-09-30,Summer St,1000.0
+Boston,Electrical,2026-09-30,Dry Dock Av,5681.0
+Jamaica Plain,Electrical,2026-09-30,Boylston St,30000.0
+Roslindale,Kitchen/Bath,2026-09-30,Havana St,77750.0
+Jamaica Plain,Plumbing,2026-09-30,Boylston St,30000.0
+Brighton,Windows/Doors/Siding,2026-09-30,Guest St,244905.0
+West Roxbury,Electrical,2026-09-30,Cricket Ln,3800.0
+Boston,Renovation/Remodel,2026-09-30,Newbury St,450000.0
+West Roxbury,Electrical,2026-09-30,Centre St,2000.0
+Hyde Park,Electrical,2026-09-30,Garfield Av,5000.0
+Mattapan,Solar,2026-09-30,Deering Rd,80400.0
+Roxbury,Electrical,2026-09-30,Walnut Pk,2650.0
+Roxbury,Electrical,2026-09-30,Walnut Pk,675.0
+Boston,Roofing,2026-09-30,Cooper St,29500.0
+Hyde Park,Solar,2026-09-30,Cummins Hw,60600.0
+West Roxbury,Other,2026-09-30,Vogel St,5000.0
+Hyde Park,Solar,2026-09-30,Clifford St,33636.0
+Dorchester,Solar,2026-09-30,Wentworth St,52950.0
+Dorchester,Solar,2026-09-30,Monsignor Patrick J. Lydon Wy,16872.0
+Charlestown,Electrical,2026-09-30,Cordis St,2500.0
+Charlestown,Electrical,2026-09-30,Cordis St,45000.0
+Hyde Park,Electrical,2026-09-30,Solaris Rd,1200.0
+Charlestown,Electrical,2026-09-30,Cordis St,4000.0
+Mattapan,Solar,2026-09-30,Alabama St,110100.0
+Mattapan,Solar,2026-09-30,Westmore Rd,104700.0
+Roslindale,Solar,2026-09-30,Stella Rd,35400.0
+Mattapan,Electrical,2026-09-30,Halborn St,3000.0
+Mattapan,Solar,2026-09-30,Halborn St,54600.0
+Brighton,Electrical,2026-09-30,N Beacon St,12790.49
+Boston,Electrical,2026-09-30,India St,2200000.0
+Boston,Electrical,2026-09-30,Northern Av,49814.0
+Boston,Renovation/Remodel,2026-09-30,Merrimac St,950000.0
+West Roxbury,Electrical,2026-09-30,Vfw Pw,44500.0
+Hyde Park,Windows/Doors/Siding,2026-09-30,Silvia Ct,60000.0
+East Boston,Electrical,2026-09-30,Marion St,17000.0
+Boston/Fenway/Kenmore/Audubo,HVAC,2026-09-30,Longwood Av,60000.0
+Dorchester,New Construction,2026-09-30,Old Rd,36970000.0
+Roslindale,Other,2026-09-30,Montclair Av,2363.43
+Boston,Electrical,2026-09-30,Dartmouth St,3500.0
+East Boston,Other,2026-09-30,Bayswater St,14530.07
+East Boston,Roofing,2026-09-30,Saint Andrew Rd,20780.0
+Dorchester,Demolition,2026-09-30,Nazing Ct,75000.0
+Boston,Demolition,2026-09-30,Commonwealth Av,77000.0
+Boston,Electrical,2026-09-30,Kingston St,3500.0
+Boston,Other,2026-09-30,Tremont St,10325.0
+Dorchester,Other,2026-09-30,William T Morrissey Bl,6325.0
+Boston,Electrical,2026-09-30,Binney St,275000.0
+Boston,Electrical,2026-09-30,Binney St,75000.0
+Boston,Electrical,2026-09-30,Huntington Av,30000.0
+Roxbury,Electrical,2026-09-30,Harrison Av,300.0
+Dorchester,Electrical,2026-09-30,Victory Rd,760000.0
+Allston,Other,2026-09-30,Braintree St,4500.0
+Allston,Other,2026-09-30,Emery Rd,3500.0
+Boston,Electrical,2026-09-30,Brookline Av,60000.0
+Boston,Other,2026-09-30,Salem St,59500.0
+Boston,Kitchen/Bath,2026-09-30,Commonwealth Av,130000.0
+Boston,Electrical,2026-09-30,Appleton St,2500.0
+Boston,Electrical,2026-09-30,Boylston St,202000.0
+Boston,Electrical,2026-09-30,Atlantic Av,1200.0
+West Roxbury,Windows/Doors/Siding,2026-09-30,Garth Rd,19014.0
+Boston,Electrical,2026-09-30,Boylston St,750.0
+Dorchester,Other,2026-09-30,Boston St,5476.06
+Boston,Electrical,2026-09-30,Summer St,18000.0
+Boston,Kitchen/Bath,2026-09-30,Blackwood St,30000.0
+Boston,Electrical,2026-09-30,High St,1200.0
+Boston,HVAC,2026-09-30,Boylston St,11529.0
+South Boston,Gas,2026-09-30,E Fourth St,500.0
+Boston,HVAC,2026-09-30,Boylston St,9297.0
+Boston,HVAC,2026-09-30,Charles St,594244.38
+Boston,HVAC,2026-09-30,Fruit St,42450.0
+Hyde Park,Windows/Doors/Siding,2026-09-30,Spring Hill Rd,65540.0
+Dorchester,Electrical,2026-09-30,Rockne Av,1000.0
+Dorchester,Plumbing,2026-09-30,Bicknell St,30381.0
+Brighton,Plumbing,2026-09-30,Kenrick St,4000.0
+Boston,Electrical,2026-09-30,Beacon St,3000.0
+West Roxbury,Roofing,2026-09-30,Bangor Rd,1673.0
+Boston,HVAC,2026-09-30,Charles St,5000.0
+Roxbury,Roofing,2026-09-30,Blue Hill Av,200000.0
+Mattapan,Electrical,2026-09-30,Colorado St,7000.0
+Roslindale,HVAC,2026-09-30,South St,6000.0
+Roslindale,Plumbing,2026-09-30,South St,25000.0
+Roxbury,Electrical,2026-09-30,Dudley St,500.0
+East Boston,Kitchen/Bath,2026-09-30,Havre St,20550.0
+Boston,Electrical,2026-09-30,Huntington Av,86950.0
+Dorchester,Windows/Doors/Siding,2026-09-30,Blakeville St,26527.0
+Hyde Park,Electrical,2026-09-30,River St,1500.0
+Dorchester,Deck/Porch,2026-09-30,Geneva Av,8000.0
+Boston,HVAC,2026-09-30,Post Office Sq,130000.0
+South Boston,Gas,2026-09-30,K St,500.0
+Mattapan,Roofing,2026-09-30,Clarkwood St,30630.0
+Brighton,Demolition,2026-09-30,Washington St,8000.0
+Dorchester,Roofing,2026-09-30,Washington St,2800.0
+Mission Hill,Plumbing,2026-09-30,Lawn St,7000.0
+East Boston,Renovation/Remodel,2026-09-30,Maverick St,795000.0
+Dorchester,Plumbing,2026-09-30,Harvest St,25000.0
+Dorchester,HVAC,2026-09-30,Harvest St,12000.0
+Boston,HVAC,2026-09-30,Commonwealth Av,100000.0
+Hyde Park,Renovation/Remodel,2026-09-30,Truman Pw,110000.0
+Brighton,HVAC,2026-09-30,Goodenough St,75000.0
+Dorchester,Electrical,2026-09-30,Cottrell St,1500.0
+Boston,Electrical,2026-09-30,Huntington Av,1500.0
+Dorchester,Electrical,2026-09-30,Michigan Av,1500.0
+Roslindale,Electrical,2026-09-30,Cornell St,2000.0
+West Roxbury,Gas,2026-09-30,Welton Rd,500.0
+West Roxbury,HVAC,2026-09-30,Washington St,8000.0
+Dorchester,Kitchen/Bath,2026-09-30,Seaver St,5000.0
+Boston,Windows/Doors/Siding,2026-09-30,Clarendon St,14000.0
+Roxbury,Electrical,2026-09-30,Northampton St,62169.57
+Roxbury,Electrical,2026-09-30,Northampton St,60727.09
+Roxbury,Electrical,2026-09-30,Northampton St,60845.57
+Roxbury,Deck/Porch,2026-09-30,W Newton St,44099.0
+Boston,Plumbing,2026-09-30,High St,1000.0
+Roslindale,HVAC,2026-09-30,Ainsworth St,9000.0
 Boston,Electrical,2026-09-30,Pinckney St,20000.0
 Roslindale,Electrical,2026-09-30,Murray Hill Rd,3200.0
 East Boston,Electrical,2026-09-30,Terminal Rd,2500.0
@@ -712,8 +1249,8 @@ Falmouth,Plumbing,2026-09-30,Ginwal St,
 Falmouth,Renovation/Remodel,2026-09-30,Seacoast Shores Blvd,
 Falmouth,Plumbing,2026-09-30,Turner Rd,
 Falmouth,Renovation/Remodel,2026-09-30,Shorewood Dr,
-Falmouth,Roofing,2026-09-30,Oak Ridge Rd,
 Falmouth,Plumbing,2026-09-30,Massasoit St,
+Falmouth,Roofing,2026-09-30,Oak Ridge Rd,
 Falmouth,Gas,2026-09-30,Depot Ave,
 Falmouth,Gas,2026-09-30,King St,
 Falmouth,Renovation/Remodel,2026-09-30,Edgewater Dr East,
@@ -730,13 +1267,18 @@ Falmouth,Windows/Doors/Siding,2026-09-30,King St,
 Falmouth,Renovation/Remodel,2026-09-30,Wildwood Cir,
 Falmouth,Roofing,2026-09-30,Stagecoach Way,
 Falmouth,Gas,2026-09-30,Silver Beach Ave,
-Falmouth,Plumbing,2026-09-30,Greengate Rd,
-Falmouth,Plumbing,2026-09-30,Davisville Rd,
 Falmouth,Renovation/Remodel,2026-09-30,Acapesket Rd,
+Falmouth,Plumbing,2026-09-30,Davisville Rd,
 Falmouth,Other,2026-09-30,Shore St,
 Falmouth,Gas,2026-09-30,Teneycke Hill Rd,
 Falmouth,Electrical,2026-09-30,Gifford St Ext,
+Falmouth,Plumbing,2026-09-30,Greengate Rd,
 Falmouth,Renovation/Remodel,2026-09-30,Pondlet Pl,
+Mashpee,Renovation/Remodel,2026-09-30,Main St,
+Mashpee,Plumbing,2026-09-30,Nathan Ellis Hwy,
+Mashpee,Gas,2026-09-30,Balfour Ln,
+Mashpee,Electrical,2026-09-30,Deerfield Rd,
+Mashpee,Renovation/Remodel,2026-09-30,Captains Row,
 Mashpee,Gas,2026-09-30,Keel Way,
 Mashpee,Renovation/Remodel,2026-09-30,Wilann Rd,
 Mashpee,Gas,2026-09-30,Nathan Ellis Hwy,
@@ -745,15 +1287,10 @@ Mashpee,Gas,2026-09-30,Juniper Dr,
 Mashpee,Gas,2026-09-30,Uncle Percys Rd,
 Mashpee,Other,2026-09-30,Brewster Rd,
 Mashpee,Other,2026-09-30,Fiddler Crab Pl,
-Mashpee,Renovation/Remodel,2026-09-30,Main St,
-Mashpee,Gas,2026-09-30,Balfour Ln,
-Mashpee,Electrical,2026-09-30,Deerfield Rd,
-Mashpee,Renovation/Remodel,2026-09-30,Captains Row,
-Mashpee,Plumbing,2026-09-30,Nathan Ellis Hwy,
-Mashpee,Electrical,2026-09-30,Oneida Ave,
-Mashpee,Plumbing,2026-09-30,Buccaneer Way,
 Mashpee,Gas,2026-09-30,Oneida Ave,
 Mashpee,Plumbing,2026-09-30,Holly Farm Dr,
+Mashpee,Plumbing,2026-09-30,Buccaneer Way,
+Mashpee,Electrical,2026-09-30,Oneida Ave,
 Mashpee,Building,2026-09-30,Mid-Iron Way,
 Mashpee,Gas,2026-09-30,Shellback Way,
 Mashpee,Renovation/Remodel,2026-09-30,Four Seasons Dr,
@@ -769,18 +1306,18 @@ Sandwich,Gas,2026-09-30,Hunters Trail,
 Sandwich,Renovation/Remodel,2026-09-30,Surrey Lane,
 Sandwich,Renovation/Remodel,2026-09-30,Manor Drive,
 Sandwich,Renovation/Remodel,2026-09-30,Pin Oak Drive,
-Randolph,Plumbing,2026-09-30,North Street,
-Randolph,Renovation/Remodel,2026-09-30,Soren St,
-Randolph,Plumbing,2026-09-30,Country Club Dr,
-Randolph,Renovation/Remodel,2026-09-30,Fowler St,
-Randolph,Gas,2026-09-30,Reilly Dr,
-Randolph,Electrical,2026-09-30,Devine Rd,
-Randolph,Renovation/Remodel,2026-09-30,Fitch Terrace,
 Randolph,Renovation/Remodel,2026-09-30,Devine Rd,
 Randolph,Plumbing,2026-09-30,Reilly Dr,
 Randolph,Electrical,2026-09-30,Pleasant St,
-Randolph,Other,2026-09-30,Liberty St,
 Randolph,Electrical,2026-09-30,Mill St,
+Randolph,Other,2026-09-30,Liberty St,
+Randolph,Electrical,2026-09-30,Devine Rd,
+Randolph,Renovation/Remodel,2026-09-30,Fitch Terrace,
+Randolph,Plumbing,2026-09-30,North Street,
+Randolph,Plumbing,2026-09-30,Country Club Dr,
+Randolph,Renovation/Remodel,2026-09-30,Fowler St,
+Randolph,Gas,2026-09-30,Reilly Dr,
+Randolph,Renovation/Remodel,2026-09-30,Soren St,
 Milton,Plumbing,2026-09-30,Brookside Pk,
 Milton,HVAC,2026-09-30,Frothingham St,
 Milton,Plumbing,2026-09-30,Brook Rd,
@@ -790,45 +1327,45 @@ Milton,Renovation/Remodel,2026-09-30,Cape Cod Ln,
 Milton,Plumbing,2026-09-30,Windsor Rd,
 Milton,Electrical,2026-09-30,Edward Av,
 Milton,Renovation/Remodel,2026-09-30,Truro Ln,
-Stoughton,Building,2026-09-30,Turnpike St,
-Stoughton,Electrical,2026-09-30,Orangewood Dr,
-Stoughton,Plumbing,2026-09-30,Ryan Rd,
 Stoughton,Plumbing,2026-09-30,School St,
 Stoughton,Electrical,2026-09-30,Ninth St,
+Stoughton,Electrical,2026-09-30,Orangewood Dr,
+Stoughton,Plumbing,2026-09-30,Ryan Rd,
 Stoughton,Electrical,2026-09-30,Greenbrook Dr,
+Stoughton,Building,2026-09-30,Turnpike St,
 Stoughton,Gas,2026-09-30,Ryan Rd,
 Stoughton,Electrical,2026-09-30,Plain St,
 Stoughton,Plumbing,2026-09-30,Tosca Dr,
-Stoughton,Building,2026-09-30,Oriole Rd,
-Stoughton,Other,2026-09-30,Atkinson Ave Ex,
 Stoughton,Electrical,2026-09-30,Lowe Ave,
 Stoughton,Building,2026-09-30,School St,
 Stoughton,Plumbing,2026-09-30,Cedar St,
+Stoughton,Building,2026-09-30,Oriole Rd,
+Stoughton,Other,2026-09-30,Atkinson Ave Ex,
+Easton,Electrical,2026-09-30,Columbus Avenue,
+Easton,Electrical,2026-09-30,Highland Street,
+Easton,Electrical,2026-09-30,Dongary Road,
+Easton,Plumbing,2026-09-30,Ridgewood Road,
+Easton,Renovation/Remodel,2026-09-30,Washington Street,
+Easton,Building,2026-09-30,Washington Street,
+Easton,Plumbing,2026-09-30,Allen Road,
 Easton,Electrical,2026-09-30,Foundry Street,
 Easton,Electrical,2026-09-30,Turnpike Street,
 Easton,Electrical,2026-09-30,Ridgewood Road,
 Easton,Electrical,2026-09-30,Amber Lane,
-Easton,Electrical,2026-09-30,Columbus Avenue,
-Easton,Electrical,2026-09-30,Highland Street,
-Easton,Electrical,2026-09-30,Dongary Road,
-Easton,Renovation/Remodel,2026-09-30,Washington Street,
-Easton,Building,2026-09-30,Washington Street,
-Easton,Plumbing,2026-09-30,Allen Road,
-Easton,Plumbing,2026-09-30,Ridgewood Road,
+Easton,Gas,2026-09-30,Ridgewood Road,
 Easton,Renovation/Remodel,2026-09-30,Columbus Avenue,
 Easton,Renovation/Remodel,2026-09-30,Black Brook Road,
 Easton,Renovation/Remodel,2026-09-30,Lili Way,
 Easton,Renovation/Remodel,2026-09-30,Foundry Street,
-Easton,Gas,2026-09-30,Ridgewood Road,
 West Bridgewater,Renovation/Remodel,2026-09-30,Metacomet,
 West Bridgewater,Building,2026-09-30,North Elm St,
 West Bridgewater,Renovation/Remodel,2026-09-30,Copper Beech Circle,
 West Bridgewater,Renovation/Remodel,2026-09-30,Snells Way,
 West Bridgewater,Renovation/Remodel,2026-09-30,Milebrook Rd,
 Hanson,Renovation/Remodel,2026-09-30,Winter St,
+Hanson,Renovation/Remodel,2026-09-30,High St,
 Hanson,Plumbing,2026-09-30,High St,
 Hanson,Plumbing,2026-09-30,Winter St,
-Hanson,Renovation/Remodel,2026-09-30,High St,
 Hanson,Electrical,2026-09-30,Maquan St,
 Avon,Electrical,2026-09-30,Central St,
 Cohasset,Building,2026-09-30,Pond St,
@@ -837,14 +1374,14 @@ Cohasset,Gas,2026-09-30,Jerusalem Rd,
 Cohasset,Plumbing,2026-09-30,North Main St,
 Cohasset,Gas,2026-09-30,North Main St,
 Attleboro,Gas,2026-09-30,Benjamin Dr,
-Attleboro,Other,2026-09-30,West St,
-Attleboro,Electrical,2026-09-30,Free Way,
-Attleboro,Renovation/Remodel,2026-09-30,Holman St,
-Attleboro,HVAC,2026-09-30,Newport Ave,
 Attleboro,HVAC,2026-09-30,Woodside Ave,
 Attleboro,Electrical,2026-09-30,Country View Dr,
 Attleboro,Gas,2026-09-30,Simpson Ave,
 Attleboro,Electrical,2026-09-30,Colvin St,
+Attleboro,Other,2026-09-30,West St,
+Attleboro,Electrical,2026-09-30,Free Way,
+Attleboro,Renovation/Remodel,2026-09-30,Holman St,
+Attleboro,HVAC,2026-09-30,Newport Ave,
 Attleboro,Renovation/Remodel,2026-09-30,Clifton St,
 Attleboro,Electrical,2026-09-30,Dailey St Unit,
 Attleboro,Gas,2026-09-30,Black Oak Dr,
@@ -887,17 +1424,17 @@ Foxborough,Building,2026-09-30,Elm Street,57136.0
 Foxborough,Renovation/Remodel,2026-09-30,Bradford Avenue,8000.0
 Foxborough,Renovation/Remodel,2026-09-30,North High Street,5909.4
 Foxborough,Renovation/Remodel,2026-09-30,Idlewild Street,78150.0
+Fairhaven,Building,2026-09-30,Sconticut Neck Road,
+Fairhaven,Plumbing,2026-09-30,Elizabeth Street,
 Fairhaven,Renovation/Remodel,2026-09-30,Bayview Avenue,
 Fairhaven,Electrical,2026-09-30,Jarvis Avenue,
-Fairhaven,Plumbing,2026-09-30,Elizabeth Street,
-Fairhaven,Building,2026-09-30,Sconticut Neck Road,
 Fairhaven,Renovation/Remodel,2026-09-30,Francis Street,
 Fairhaven,Electrical,2026-09-30,Point Street,
-Fairhaven,Renovation/Remodel,2026-09-30,Grandview Avenue,
 Fairhaven,Electrical,2026-09-30,Nakata Avenue,
-Fairhaven,Other,2026-09-30,Fort Street,
 Fairhaven,Plumbing,2026-09-30,Quincy Street,
 Fairhaven,Electrical,2026-09-30,Elm Avenue,
+Fairhaven,Renovation/Remodel,2026-09-30,Grandview Avenue,
+Fairhaven,Other,2026-09-30,Fort Street,
 Fairhaven,Renovation/Remodel,2026-09-30,Deane Street,
 Fairhaven,Sign/Awning,2026-09-30,Main Street,
 Taunton,Renovation/Remodel,2026-09-30,Dexter Avenue,14393.0
@@ -922,17 +1459,17 @@ Bellingham,Building,2026-09-30,South Main St,
 Bellingham,Plumbing,2026-09-30,Deer Run Rd,
 Bellingham,Gas,2026-09-30,Highridge Rd,
 Bellingham,Electrical,2026-09-30,Pine Grove Av,
-Chicopee,Plumbing,2026-09-30,Beaumont Ave,
-Chicopee,Renovation/Remodel,2026-09-30,Simonich Cir,
-Chicopee,Electrical,2026-09-30,Palmer Ave,
-Chicopee,Gas,2026-09-30,Front St,
-Chicopee,Renovation/Remodel,2026-09-30,Kaveney St,
 Chicopee,Electrical,2026-09-30,Fletcher Cir,
 Chicopee,Renovation/Remodel,2026-09-30,St Jacques Ave,
 Chicopee,Plumbing,2026-09-30,Berger St,
 Chicopee,Renovation/Remodel,2026-09-30,Sunrise Lane,
-Chicopee,Building,2026-09-30,Lambert Ter,
+Chicopee,Renovation/Remodel,2026-09-30,Simonich Cir,
+Chicopee,Gas,2026-09-30,Front St,
+Chicopee,Renovation/Remodel,2026-09-30,Kaveney St,
+Chicopee,Electrical,2026-09-30,Palmer Ave,
 Chicopee,Renovation/Remodel,2026-09-30,Bostwick Ln,
+Chicopee,Plumbing,2026-09-30,Beaumont Ave,
+Chicopee,Building,2026-09-30,Lambert Ter,
 Chicopee,Other,2026-09-30,Ward St,
 Hopedale,Electrical,2026-09-30,Mill St,
 Hopedale,Gas,2026-09-30,Driftway,
@@ -961,45 +1498,45 @@ Otis,Renovation/Remodel,2026-09-30,East Otis Rd,
 Otis,Renovation/Remodel,2026-09-30,Hayre Island Rd,
 Otis,Electrical,2026-09-30,Harrington Rd,
 Otis,Renovation/Remodel,2026-09-30,Leonard Rd,
-Great Barrington,Electrical,2026-09-30,Long Pond Rd,
-Great Barrington,Electrical,2026-09-30,Main St,
-Great Barrington,Building,2026-09-30,Main Main St North,
 Great Barrington,Renovation/Remodel,2026-09-30,East St,
 Great Barrington,Electrical,2026-09-30,West Sheffield Rd,
+Great Barrington,Electrical,2026-09-30,Main St,
+Great Barrington,Building,2026-09-30,Main Main St North,
+Great Barrington,Electrical,2026-09-30,Long Pond Rd,
 Lee,Electrical,2026-09-30,Cape St,
+Lee,Renovation/Remodel,2026-09-30,East St,
+Lee,Building,2026-09-30,Main St,
 Lee,Electrical,2026-09-30,Prospect St,
 Lee,Renovation/Remodel,2026-09-30,West Rd,
-Lee,Building,2026-09-30,Main St,
 Lee,Electrical,2026-09-30,Washington Mt Rd,
-Lee,Renovation/Remodel,2026-09-30,East St,
 Lenox,Renovation/Remodel,2026-09-30,Wexford Ct,
 Lenox,Renovation/Remodel,2026-09-30,Walker St,
 Lenox,Electrical,2026-09-30,Stone Ledge Rd,
 Lenox,Renovation/Remodel,2026-09-30,East Dugway Rd,
-Stockbridge,Gas,2026-09-30,Mahkeenac Tr,
 Stockbridge,Gas,2026-09-30,Old Stockbridge Rd,
-Cambridge,HVAC,2026-09-30,Concord Ave,3369295.0
+Stockbridge,Gas,2026-09-30,Mahkeenac Tr,
 Cambridge,Kitchen/Bath,2026-09-30,Massachusetts Ave,56000.0
+Cambridge,HVAC,2026-09-30,Concord Ave,3369295.0
 Cambridge,Windows/Doors/Siding,2026-09-30,Ellery Sq,61058.5
-Cambridge,Windows/Doors/Siding,2026-09-30,Cogswell Ave,33372.0
 Cambridge,Windows/Doors/Siding,2026-09-30,Grove St,94212.0
-Cambridge,Renovation/Remodel,2026-09-30,Amory St,3500.0
 Cambridge,Windows/Doors/Siding,2026-09-30,Fresh Pond Pkwy,2355.0
-Cambridge,Electrical,2026-09-30,Camelia Ave,250.0
+Cambridge,Windows/Doors/Siding,2026-09-30,Cogswell Ave,33372.0
+Cambridge,Renovation/Remodel,2026-09-30,Amory St,3500.0
 Cambridge,Electrical,2026-09-30,Walden St,4500.0
-Cambridge,Electrical,2026-09-30,"Inman St, Unit",2500.0
-Cambridge,Electrical,2026-09-30,Cambridge St,5000.0
 Cambridge,Electrical,2026-09-30,Jackson St,385.0
+Cambridge,Electrical,2026-09-30,Cambridge St,5000.0
 Cambridge,Electrical,2026-09-30,Stearns St,14000.0
+Cambridge,Electrical,2026-09-30,Camelia Ave,250.0
 Cambridge,Electrical,2026-09-30,Saville St,15000.0
-Cambridge,Plumbing,2026-09-30,Gerrys Landing Rd,
-Cambridge,Plumbing,2026-09-30,Washburn Ave,
-Cambridge,Plumbing,2026-09-30,Massachusetts Ave,
-Cambridge,Plumbing,2026-09-30,Ames St,
+Cambridge,Electrical,2026-09-30,"Inman St, Unit",2500.0
 Cambridge,Plumbing,2026-09-30,Garden St,
 Cambridge,Plumbing,2026-09-30,Vassar St,
-Cambridge,HVAC,2026-09-30,Pleasant St,
+Cambridge,Plumbing,2026-09-30,Washburn Ave,
+Cambridge,Plumbing,2026-09-30,Ames St,
+Cambridge,Plumbing,2026-09-30,Massachusetts Ave,
+Cambridge,Plumbing,2026-09-30,Gerrys Landing Rd,
 Cambridge,HVAC,2026-09-30,Massachusetts Ave,
+Cambridge,HVAC,2026-09-30,Pleasant St,
 Cambridge,HVAC,2026-09-30,"Pearl St, Unit",
 Cambridge,Fire/Sprinkler,2026-09-30,Technology Sq,
 Cambridge,Roofing,2026-09-30,Walker St,40000.0
@@ -1009,8 +1546,8 @@ Cambridge,Roofing,2026-09-30,Camelia Ave,23740.0
 Cambridge,Roofing,2026-09-30,"Second St, Unit",19000.0
 Cambridge,Roofing,2026-09-30,Fayerweather St,112000.0
 Cambridge,Windows/Doors/Siding,2026-09-30,Grant St,30000.0
-Cambridge,Asbestos,2026-09-30,Massachusetts Ave,4365.0
 Cambridge,Gas,2026-09-30,Memorial Dr,2250.0
+Cambridge,Asbestos,2026-09-30,Massachusetts Ave,4365.0
 Cambridge,Windows/Doors/Siding,2026-09-30,Hayes St,
 Somerville,New Construction,2026-09-30,Crest Hill Rd,150000.0
 Somerville,Electrical,2026-09-30,Harvard St,250.0
@@ -1033,8 +1570,8 @@ Concord,Plumbing,2026-09-30,Partridge Ln,
 Concord,Renovation/Remodel,2026-09-30,Lowell Rd,
 Concord,Renovation/Remodel,2026-09-30,Monument St,
 Concord,Electrical,2026-09-30,Pope Rd,
-Concord,Electrical,2026-09-30,Elm St,
 Concord,Renovation/Remodel,2026-09-30,Bedford St,
+Concord,Electrical,2026-09-30,Elm St,
 Concord,Plumbing,2026-09-30,Independence Rd,
 Concord,Electrical,2026-09-30,Barretts Mill Rd,
 Lexington,Other,2026-09-30,Massachusetts Ave,
@@ -1249,8 +1786,8 @@ Brighton,Demolition,2026-09-29,Fairbanks St,27500.0
 Mattapan,HVAC,2026-09-29,Woodhaven St,10000.0
 Mattapan,Plumbing,2026-09-29,Woodhaven St,9000.0
 Charlestown,Windows/Doors/Siding,2026-09-29,Sullivan St,3591.0
-Boston,Electrical,2026-09-29,Franklin St,42750.0
 Boston,Electrical,2026-09-29,Arch St,64250.0
+Boston,Electrical,2026-09-29,Franklin St,42750.0
 Boston,Electrical,2026-09-29,Arch St,68550.0
 Roslindale,Renovation/Remodel,2026-09-29,Canterbury St,0.01
 East Boston,Renovation/Remodel,2026-09-29,Brooks St,1.0
@@ -1310,40 +1847,40 @@ Rockland,Plumbing,2026-09-29,Hemlock,
 Falmouth,Electrical,2026-09-29,Palmer Ave,
 Falmouth,Electrical,2026-09-29,East Harbor Dr,
 Falmouth,Plumbing,2026-09-29,Kilmer Rd,
+Falmouth,Plumbing,2026-09-29,Metoxit Rd,
 Falmouth,Renovation/Remodel,2026-09-29,Highwood Ln,
 Falmouth,Electrical,2026-09-29,Wright St,
 Falmouth,Gas,2026-09-29,Clipper Ln,
-Falmouth,Plumbing,2026-09-29,Metoxit Rd,
 Falmouth,Plumbing,2026-09-29,Wright St,
 Falmouth,Electrical,2026-09-29,Herring Brook Ln,
 Falmouth,Gas,2026-09-29,Little Island Rd,
 Falmouth,Gas,2026-09-29,Maravista Ave,
-Falmouth,Plumbing,2026-09-29,Green Acre Rd,
 Falmouth,HVAC,2026-09-29,Whitman Rd,
 Falmouth,Gas,2026-09-29,Coonamessett Cir,
 Falmouth,Gas,2026-09-29,Waterside Dr,
 Falmouth,Gas,2026-09-29,Hillside Ave,
 Falmouth,Plumbing,2026-09-29,Hornbeam Ave,
+Falmouth,Plumbing,2026-09-29,Green Acre Rd,
 Falmouth,Plumbing,2026-09-29,Hillside Ave,
 Falmouth,Renovation/Remodel,2026-09-29,Millfield St,
 Falmouth,HVAC,2026-09-29,Anchorage Rd,
 Falmouth,Electrical,2026-09-29,Greycourt Ln,
+Mashpee,Plumbing,2026-09-29,Punkhorn Point Rd,
+Mashpee,Renovation/Remodel,2026-09-29,Highland St,
 Mashpee,Building,2026-09-29,Main St,
 Mashpee,Renovation/Remodel,2026-09-29,Strawberry Ave,
-Mashpee,Renovation/Remodel,2026-09-29,Vista Cir,
 Mashpee,Renovation/Remodel,2026-09-29,The Hacking Cir,
-Mashpee,Renovation/Remodel,2026-09-29,Highland St,
+Mashpee,Renovation/Remodel,2026-09-29,Vista Cir,
 Mashpee,Renovation/Remodel,2026-09-29,Sand Dunes Ct,
-Mashpee,Plumbing,2026-09-29,Punkhorn Point Rd,
-Mashpee,Electrical,2026-09-29,Shore Dr West,
-Mashpee,Electrical,2026-09-29,Hilltop Rd,
+Mashpee,Electrical,2026-09-29,Steeple St,
 Mashpee,Gas,2026-09-29,Hilltop Rd,
 Mashpee,Plumbing,2026-09-29,Quinaquisset Ave,
-Mashpee,Electrical,2026-09-29,Steeple St,
-Mashpee,Plumbing,2026-09-29,Osprey,
-Mashpee,Gas,2026-09-29,Dunrobin Rd,
-Mashpee,Other,2026-09-29,Harwich Rd,
+Mashpee,Electrical,2026-09-29,Shore Dr West,
+Mashpee,Electrical,2026-09-29,Hilltop Rd,
 Mashpee,Gas,2026-09-29,Osprey,
+Mashpee,Other,2026-09-29,Harwich Rd,
+Mashpee,Gas,2026-09-29,Dunrobin Rd,
+Mashpee,Plumbing,2026-09-29,Osprey,
 Mashpee,Electrical,2026-09-29,Captains Row,
 Mashpee,Gas,2026-09-29,Cobblestone Cir,
 Mashpee,Renovation/Remodel,2026-09-29,Leeward Ln,
@@ -1370,14 +1907,14 @@ Sandwich,Electrical,2026-09-29,Lost Meadows Road,
 Sandwich,Electrical,2026-09-29,Boardley Road,
 Sandwich,Gas,2026-09-29,Boardley Road,
 Sandwich,Other,2026-09-29,Grove Street,
+Randolph,Renovation/Remodel,2026-09-29,Liberty St,
+Randolph,Electrical,2026-09-29,Liberty St,
+Randolph,Renovation/Remodel,2026-09-29,Mill St,
+Randolph,Electrical,2026-09-29,Michael Rd,
 Randolph,Renovation/Remodel,2026-09-29,Hemlock Tr,
 Randolph,Plumbing,2026-09-29,Sunset Dr,
-Randolph,Renovation/Remodel,2026-09-29,Mill St,
-Randolph,Electrical,2026-09-29,Liberty St,
-Randolph,Electrical,2026-09-29,Michael Rd,
-Randolph,Renovation/Remodel,2026-09-29,Summit Rd,
-Randolph,Renovation/Remodel,2026-09-29,Liberty St,
 Randolph,Renovation/Remodel,2026-09-29,Michael Rd,
+Randolph,Renovation/Remodel,2026-09-29,Summit Rd,
 Randolph,Renovation/Remodel,2026-09-29,Cole Tr,
 Milton,Renovation/Remodel,2026-09-29,Briarfield Rd,
 Milton,Electrical,2026-09-29,Brush Hill Rd,
@@ -1391,32 +1928,32 @@ Milton,Renovation/Remodel,2026-09-29,Lincoln St,
 Milton,Plumbing,2026-09-29,Allerton Rd,
 Milton,Renovation/Remodel,2026-09-29,Viola St,
 Stoughton,Building,2026-09-29,Howland Rd,
-Stoughton,Gas,2026-09-29,Winslow Dr,
 Stoughton,Gas,2026-09-29,Canton St,
-Stoughton,Electrical,2026-09-29,Kwedar Ave,
-Stoughton,Electrical,2026-09-29,Howland Rd,
-Stoughton,Building,2026-09-29,Winslow Dr,
-Stoughton,Gas,2026-09-29,Lawler Ln,
-Stoughton,Building,2026-09-29,Kim Ter,
+Stoughton,Gas,2026-09-29,Winslow Dr,
 Stoughton,Building,2026-09-29,Rogers Dr,
 Stoughton,Building,2026-09-29,Rosewood Dr,
+Stoughton,Electrical,2026-09-29,Kwedar Ave,
+Stoughton,Building,2026-09-29,Winslow Dr,
+Stoughton,Gas,2026-09-29,Lawler Ln,
+Stoughton,Electrical,2026-09-29,Howland Rd,
+Stoughton,Building,2026-09-29,Kim Ter,
 Stoughton,Electrical,2026-09-29,Greenbrook Dr,
 Stoughton,HVAC,2026-09-29,Ninth St,
 Stoughton,Electrical,2026-09-29,Annina Ave,
-Easton,Gas,2026-09-29,Gilmore Road,
 Easton,Renovation/Remodel,2026-09-29,Beaver Dam Road,
 Easton,Renovation/Remodel,2026-09-29,Massapoag Avenue,
 Easton,Renovation/Remodel,2026-09-29,Depot Street,
 Easton,Renovation/Remodel,2026-09-29,Columbus Avenue,
 Easton,HVAC,2026-09-29,Foundry Street,
-Easton,Renovation/Remodel,2026-09-29,Dean Street,
 Easton,Renovation/Remodel,2026-09-29,Highland Street,
 Easton,HVAC,2026-09-29,Canton Street,
+Easton,Renovation/Remodel,2026-09-29,Dean Street,
 Easton,Renovation/Remodel,2026-09-29,Washington Street,
+Easton,Gas,2026-09-29,Gilmore Road,
+Easton,Electrical,2026-09-29,King Arthur Road,
 Easton,Plumbing,2026-09-29,Gilmore Road,
 Easton,Other,2026-09-29,Thayer Lane,
 Easton,Plumbing,2026-09-29,Highland Street,
-Easton,Electrical,2026-09-29,King Arthur Road,
 West Bridgewater,HVAC,2026-09-29,Shaw Ave,
 West Bridgewater,Electrical,2026-09-29,N Elm St,
 Hanson,Building,2026-09-29,County Rd,
@@ -1441,11 +1978,11 @@ Attleboro,Gas,2026-09-29,Paisley Way,
 Attleboro,Other,2026-09-29,West St,
 Attleboro,Renovation/Remodel,2026-09-29,Wilmarth St,
 Attleboro,Electrical,2026-09-29,Mendon Rd Castle Rd,
-Attleboro,Renovation/Remodel,2026-09-29,Greenwich St,
 Attleboro,HVAC,2026-09-29,Claire Dr,
 Attleboro,Building,2026-09-29,Pleasant St,
 Attleboro,Gas,2026-09-29,Knight Ave,
 Attleboro,Plumbing,2026-09-29,Davis Ave,
+Attleboro,Renovation/Remodel,2026-09-29,Greenwich St,
 Mansfield,Gas,2026-09-29,Fredric Ln,
 Mansfield,Electrical,2026-09-29,School St,
 Mansfield,Renovation/Remodel,2026-09-29,North Main St,
@@ -1459,543 +1996,6 @@ Foxborough,Electrical,2026-09-29,Vernal Avenue,5000.0
 Foxborough,Electrical,2026-09-29,South Street,1200.0
 Foxborough,Plumbing,2026-09-29,Kinsman Way,35000.0
 Foxborough,Gas,2026-09-29,Kinsman Way,6000.0
-Fairhaven,Building,2026-09-29,Middle Street,
-Fairhaven,Building,2026-09-29,Ferry Street,
-Fairhaven,Renovation/Remodel,2026-09-29,Nancy Street,
-Fairhaven,Gas,2026-09-29,Green Street,
 Fairhaven,Building,2026-09-29,Berdon Way,
-Fairhaven,Plumbing,2026-09-29,Jerusalem Road,
-Fairhaven,Other,2026-09-29,Jeannette Street,
-Fairhaven,Plumbing,2026-09-29,Nancy Street,
-Fairhaven,Electrical,2026-09-29,Kane Street,
-Fairhaven,Renovation/Remodel,2026-09-29,Dogwood,
-Taunton,Renovation/Remodel,2026-09-29,South Walker Street,13000.0
-Taunton,Plumbing,2026-09-29,Fairbanks Avenue,500.0
-Taunton,Electrical,2026-09-29,Tremont Street,150.0
-Taunton,Renovation/Remodel,2026-09-29,Gentry Lane,4100.0
-Taunton,Gas,2026-09-29,Broadway,550.0
-Taunton,Electrical,2026-09-29,Range Avenue,2617.0
-Taunton,Renovation/Remodel,2026-09-29,Crossover Lane,28569.0
-Taunton,Plumbing,2026-09-29,Country Way,1.0
-Taunton,Electrical,2026-09-29,Clinton Street,800.0
-Taunton,Renovation/Remodel,2026-09-29,Oak Avenue,13650.0
-Taunton,Renovation/Remodel,2026-09-29,Benefit Street,2486.0
-Taunton,Gas,2026-09-29,Johnson Street,550.0
-Taunton,Plumbing,2026-09-29,Field Street,3334.0
-Taunton,Plumbing,2026-09-29,Broadway,550.0
-Taunton,Renovation/Remodel,2026-09-29,Worcester Street,35000.0
-Taunton,Building,2026-09-29,Lawton Street,167179.0
-Taunton,Gas,2026-09-29,Weir Street,550.0
-Taunton,Gas,2026-09-29,Field Street,3334.0
-Taunton,Plumbing,2026-09-29,Dean Street,2500.0
-Taunton,Plumbing,2026-09-29,Bay Street,12000.0
-Taunton,Renovation/Remodel,2026-09-29,Evergreen Drive,10000.0
-Taunton,Plumbing,2026-09-29,Strawberry Lane,3000.0
-Taunton,Renovation/Remodel,2026-09-29,South Walker Street,27900.0
-Taunton,Renovation/Remodel,2026-09-29,Highland Street,13800.0
-Taunton,Plumbing,2026-09-29,Tremont Street,1665.0
-Taunton,Gas,2026-09-29,Flintlock Road,1500.0
-Taunton,Plumbing,2026-09-29,Johnson Street,550.0
-Taunton,Plumbing,2026-09-29,Dwinell Road,1400.0
-Taunton,Building,2026-09-29,Constitution Drive,613927.0
-Taunton,Renovation/Remodel,2026-09-29,Whittenton Street,26780.0
-Taunton,Gas,2026-09-29,Dean Street,2500.0
-Taunton,Gas,2026-09-29,Fairbanks Avenue,6000.0
-Taunton,Renovation/Remodel,2026-09-29,Thrasher Street,4999.0
-Taunton,Renovation/Remodel,2026-09-29,Clinton Street,3900.0
-Taunton,Renovation/Remodel,2026-09-29,Hillside Drive,13380.0
-Taunton,Plumbing,2026-09-29,Weir Street,550.0
-Taunton,Plumbing,2026-09-29,Bartlett Street,2500.0
-Taunton,Renovation/Remodel,2026-09-29,Highland Street,3200.0
-Taunton,Gas,2026-09-29,Dwinell Road,1400.0
-Bellingham,Plumbing,2026-09-29,Maple St,
-Bellingham,Gas,2026-09-29,Maple St,
-Bellingham,Electrical,2026-09-29,North Main St,
-Bellingham,Electrical,2026-09-29,Annmarie Dr,
-Rehoboth,Electrical,2026-09-29,Pine St,
-Rehoboth,Renovation/Remodel,2026-09-29,Reed St,
-Rehoboth,Renovation/Remodel,2026-09-29,Summer St,
-Chicopee,Renovation/Remodel,2026-09-29,Deslauriers St,
-Chicopee,Building,2026-09-29,Chicopee Street,
-Chicopee,Electrical,2026-09-29,Sheridan St,
-Chicopee,Plumbing,2026-09-29,Stonina Drive,
-Chicopee,Plumbing,2026-09-29,Lambert Terrace,
-Chicopee,Building,2026-09-29,Benoit Circle,
-Chicopee,Renovation/Remodel,2026-09-29,Fanwood Ave,
-Chicopee,Building,2026-09-29,Emerson St,
-Chicopee,Renovation/Remodel,2026-09-29,Manning St,
-Chicopee,Renovation/Remodel,2026-09-29,Johnson Rd,
-Chicopee,Building,2026-09-29,West St,
-Chicopee,Renovation/Remodel,2026-09-29,Asinof Ave,
-Chicopee,Electrical,2026-09-29,Trilby Ave,
-Chicopee,Other,2026-09-29,East Street,
-Hopedale,Electrical,2026-09-29,Mill St,
-Hopedale,Renovation/Remodel,2026-09-29,Spruce Cr,
-Ludlow,Plumbing,2026-09-29,Center Street,
-Ludlow,Renovation/Remodel,2026-09-29,Sunbriar Lane,
-Ludlow,Renovation/Remodel,2026-09-29,Glenwood Street,
-Ludlow,Sign/Awning,2026-09-29,West Street,
-Ludlow,HVAC,2026-09-29,Vienna Avenue,
-Ludlow,Gas,2026-09-29,Grandview Avenue,
-Ludlow,Renovation/Remodel,2026-09-29,East Street,
-Ludlow,Renovation/Remodel,2026-09-29,Lavoie Avenue,
-Ipswich,Plumbing,2026-09-29,Chattanooga Rd,
-Ipswich,Gas,2026-09-29,Island Park Rd,
-Ipswich,Gas,2026-09-29,Argilla Rd,
-Ipswich,HVAC,2026-09-29,Colonial Dr,
-Ipswich,Electrical,2026-09-29,Washington St Unit,
-Ipswich,Renovation/Remodel,2026-09-29,Adeline Dr,
-Ipswich,HVAC,2026-09-29,County St,
-Ipswich,Renovation/Remodel,2026-09-29,Plum Sound Rd,
-North Reading,Building,2026-09-29,Martins Lndg,
-North Reading,Renovation/Remodel,2026-09-29,Marblehead St,
-North Reading,Electrical,2026-09-29,Elm St,
-North Reading,Electrical,2026-09-29,Valley Rd,
-Easthampton,Building,2026-09-29,Berkeley St,
-Easthampton,HVAC,2026-09-29,Emily Ln,
-Great Barrington,Gas,2026-09-29,Round Hill Rd,
-Great Barrington,Building,2026-09-29,Main St (For Cobalt),
-Great Barrington,Building,2026-09-29,Main St (For Bridge),
-Lee,Sign/Awning,2026-09-29,Water St,
-Lenox,Plumbing,2026-09-29,East St,
-Lenox,Renovation/Remodel,2026-09-29,Cliffwood St,
-Lenox,Plumbing,2026-09-29,Housatonic St,
-Lenox,Renovation/Remodel,2026-09-29,St Ann`S Ave,
-Lenox,Building,2026-09-29,Holmes Road,
-Lenox,Renovation/Remodel,2026-09-29,Lawton St,
-Lenox,Gas,2026-09-29,Dunmore Ct,
-Lenox,Gas,2026-09-29,Housatonic St,
-Cambridge,Kitchen/Bath,2026-09-29,"Massachusetts Ave, Unit",45000.0
-Cambridge,Windows/Doors/Siding,2026-09-29,"Thorndike St, Unit",1250.0
-Cambridge,Kitchen/Bath,2026-09-29,Erie St,373900.0
-Cambridge,Building,2026-09-29,Cambridge St,7700.0
-Cambridge,Kitchen/Bath,2026-09-29,"Hollis St, Unit",26819.0
-Cambridge,Plumbing,2026-09-29,"Aberdeen Way, Unit",45000.0
-Cambridge,Electrical,2026-09-29,First St,15000.0
-Cambridge,HVAC,2026-09-29,Surrey St,300.0
-Cambridge,Electrical,2026-09-29,Broadway,12000.0
-Cambridge,Electrical,2026-09-29,Pearl St,1785.0
-Cambridge,Electrical,2026-09-29,Binney St,39250.0
-Cambridge,Electrical,2026-09-29,Otis St,1200.0
-Cambridge,Electrical,2026-09-29,"Columbia St, Unit G",5875.0
-Cambridge,Electrical,2026-09-29,Harrington Rd,25000.0
-Cambridge,Electrical,2026-09-29,Massachusetts Ave,20000.0
-Cambridge,Electrical,2026-09-29,Fairmont St,500.0
-Cambridge,Electrical,2026-09-29,Pleasant St,1800.0
-Cambridge,Electrical,2026-09-29,Rockingham St,
-Cambridge,Electrical,2026-09-29,Sidney St,47250.0
-Cambridge,Electrical,2026-09-29,First St,20000.0
-Cambridge,Electrical,2026-09-29,Huron Ave,85000.0
-Cambridge,Plumbing,2026-09-29,"Yerxa Rd, Unit",
-Cambridge,Gas,2026-09-29,"Frost St, Unit",
-Cambridge,HVAC,2026-09-29,Broadway,
-Cambridge,HVAC,2026-09-29,Cherry St,
-Cambridge,HVAC,2026-09-29,Rindge Ave,
-Cambridge,HVAC,2026-09-29,St Sauveur Ct,
-Cambridge,HVAC,2026-09-29,Cherry St,60850.0
-Cambridge,HVAC,2026-09-29,Acorn Park Dr,92650.0
-Cambridge,HVAC,2026-09-29,St Sauveur Ct,45787.0
-Cambridge,HVAC,2026-09-29,Massachusetts Ave,9780.0
-Cambridge,HVAC,2026-09-29,Massachusetts Ave,38640.0
-Cambridge,HVAC,2026-09-29,Concord Ave,67000.0
-Cambridge,HVAC,2026-09-29,One Kendall Square Complex,19000.0
-Cambridge,HVAC,2026-09-29,Richard Ave,66000.0
-Cambridge,Fire/Sprinkler,2026-09-29,"Jackson Pl, Unit Building",
-Cambridge,Roofing,2026-09-29,Newtowne Ct,1266300.0
-Cambridge,Roofing,2026-09-29,Spring St,3810.74
-Cambridge,Roofing,2026-09-29,Lexington Ave,35865.0
-Cambridge,Roofing,2026-09-29,Cambridge St,37799.67
-Cambridge,Roofing,2026-09-29,Rockingham St,73253.16
-Cambridge,Kitchen/Bath,2026-09-29,May St,6300.0
-Cambridge,Roofing,2026-09-29,Fulkerson St,2600.0
-Cambridge,New Construction,2026-09-29,Ames St,20000.0
-Somerville,Electrical,2026-09-29,Raymond Ave,700.0
-Somerville,Kitchen/Bath,2026-09-29,Tower St,91125.0
-Somerville,Kitchen/Bath,2026-09-29,Holland St,38287.0
-Somerville,Solar,2026-09-29,Belmont St,10890.0
-Somerville,Solar,2026-09-29,Rogers Ave,4500.0
-Somerville,Electrical,2026-09-29,Summer St,28500.0
-Somerville,Deck/Porch,2026-09-29,Lowell St,55000.0
-Somerville,Roofing,2026-09-29,North St,18430.0
-Somerville,HVAC,2026-09-29,Pearl St,34420.0
-Somerville,Electrical,2026-09-29,Powder House Blvd,32000.0
-Somerville,Roofing,2026-09-29,Sanborn Ave,17825.0
-Somerville,Renovation/Remodel,2026-09-29,Elm St,190750.0
-Somerville,Windows/Doors/Siding,2026-09-29,Summer St,31978.0
-Somerville,HVAC,2026-09-29,Corinthian Rd,24000.0
-Somerville,Roofing,2026-09-29,Summer St,2700.0
-Somerville,Windows/Doors/Siding,2026-09-29,Wesley Park,2763.0
-Somerville,Electrical,2026-09-29,Broadway,1650.0
-Somerville,Electrical,2026-09-29,Grant St,900.0
-Somerville,Electrical,2026-09-29,Crest Hill Rd,10000.0
-Somerville,Plumbing,2026-09-29,Morrison Ave,
-Somerville,HVAC,2026-09-29,Water St,5500.0
-Somerville,Plumbing,2026-09-29,Westwood Rd,
-Somerville,Electrical,2026-09-29,Highland Ave,250.0
-Somerville,Electrical,2026-09-29,Westwood Rd,3000.0
-Somerville,Electrical,2026-09-29,Broadway,1100.0
-Somerville,Electrical,2026-09-29,Marshall St,2500.0
-Concord,Plumbing,2026-09-29,Concord Grn,
-Concord,Gas,2026-09-29,Barretts Mill Rd,
-Concord,Plumbing,2026-09-29,Barretts Mill Rd,
-Concord,Electrical,2026-09-29,Fitchburg Tpke,
-Concord,Plumbing,2026-09-29,Bow St,
-Concord,Renovation/Remodel,2026-09-29,Powder Mill Rd,
-Concord,Electrical,2026-09-29,Fairhaven Rd,
-Concord,Gas,2026-09-29,Mattison Dr,
-Concord,Electrical,2026-09-29,Orchard Rd,
-Lexington,Electrical,2026-09-29,Earl St,4000.0
-Lexington,Gas,2026-09-29,Cider Mill Ln,
-Lexington,Plumbing,2026-09-29,Bedford St,
-Lexington,Roofing,2026-09-29,Tyler Rd,17700.0
-Lexington,Building,2026-09-29,Seaborn Pl,3000.0
-Lexington,Plumbing,2026-09-29,Winchester Dr,
-Lexington,Plumbing,2026-09-29,Waltham St,
-Lexington,Electrical,2026-09-29,Grove St,1000.0
-Lexington,Plumbing,2026-09-29,Massachusetts Ave,
-Lexington,Building,2026-09-29,Revere St,6154.0
-Lexington,Electrical,2026-09-29,Webster Rd,15000.0
-Lexington,Plumbing,2026-09-29,Lincoln St,
-Lexington,Electrical,2026-09-29,Clarke St,5400.0
-Lexington,Gas,2026-09-29,Linc Cole Ln,
-Lexington,Electrical,2026-09-29,Bedford St,2500.0
-Lexington,Electrical,2026-09-29,Hill St,7000.0
-Lexington,Windows/Doors/Siding,2026-09-29,Massachusetts Ave,8900.0
-Lexington,Roofing,2026-09-29,Carnegie Pl,21650.0
-Lexington,Roofing,2026-09-29,Bedford St,8460.0
-Lexington,HVAC,2026-09-29,Kendall Rd,18000.0
-Lexington,Kitchen/Bath,2026-09-29,Forest St,59230.0
-Lexington,Deck/Porch,2026-09-29,Grant St,74640.0
-Lexington,New Construction,2026-09-29,Grove St,761130.0
-Newbury,Gas,2026-09-29,Seaview Ln,
-Newbury,HVAC,2026-09-29,Plum Island Bl,
-Groveland,Plumbing,2026-09-29,King St,
-Groveland,Plumbing,2026-09-29,Wood St,
-Groveland,Building,2026-09-29,Center St,
-Groveland,Roofing,2026-09-29,Lindsays Way Sw,
-West Newbury,HVAC,2026-09-29,Coffin St,
-West Newbury,Windows/Doors/Siding,2026-09-29,Prospect St,
-West Newbury,Roofing,2026-09-29,Hilltop Cir,
-West Newbury,Electrical,2026-09-29,Old Wharf Ln,
-West Newbury,Windows/Doors/Siding,2026-09-29,Meadow Sweet Rd,
-West Newbury,Kitchen/Bath,2026-09-29,Indian Hill St,
-West Newbury,Electrical,2026-09-29,Maple St,
-Stow,Roofing,2026-09-29,Edson Street,
-Townsend,Roofing,2026-09-29,Elm Cr,
-Townsend,Plumbing,2026-09-29,School St,
-Townsend,HVAC,2026-09-29,School St,
-Townsend,Solar,2026-09-29,Main St,
-Townsend,Roofing,2026-09-29,Haynes Rd,
-Townsend,Building,2026-09-29,Warner Rd,
-Townsend,Solar,2026-09-29,New Fitchburg Rd,
-Townsend,Kitchen/Bath,2026-09-29,Highland St,
-Townsend,Solar,2026-09-29,Depot St,
-Townsend,Building,2026-09-29,North End Rd,
-Townsend,Plumbing,2026-09-29,Haynes Rd,
-Wenham,Plumbing,2026-09-29,Daniels Road,
-Wenham,HVAC,2026-09-29,Daniels Road,
-Hamilton,Electrical,2026-09-29,Park St,
-Hamilton,HVAC,2026-09-29,Lake Dr,
-Hamilton,Gas,2026-09-29,Naples Rd,
-Hamilton,Plumbing,2026-09-29,Naples Rd,
-Hamilton,HVAC,2026-09-29,Honeysuckle Rd,
-Hamilton,Plumbing,2026-09-29,Park St,
-Hamilton,Building,2026-09-29,Gardner St,
-Georgetown,Kitchen/Bath,2026-09-29,Web Rd,
-Georgetown,Electrical,2026-09-29,Wilkins Pl,
-Merrimac,Roofing,2026-09-29,Lakewoods Dr,
-Merrimac,Other,2026-09-29,Birchmeadow Rd,
-Merrimac,Windows/Doors/Siding,2026-09-29,Birchmeadow Rd,
-Merrimac,Roofing,2026-09-29,Fairfield Av,
-Merrimac,Kitchen/Bath,2026-09-29,Valley St,
-Merrimac,Electrical,2026-09-29,West Parish Ln,
-Boylston,Building,2026-09-29,Green St,185412.0
-Nahant,Windows/Doors/Siding,2026-09-29,Wharf St,9041.0
-Nahant,Plumbing,2026-09-29,Maolis Rd,
-Nahant,Building,2026-09-29,Summer St,4988.97
-Nahant,Electrical,2026-09-29,Central St,
-Carlisle,Windows/Doors/Siding,2026-09-29,Suffolk Ln,
-Carlisle,Electrical,2026-09-29,Davis Rd,
-Carlisle,Plumbing,2026-09-29,Daniels Lane,
-Carlisle,Electrical,2026-09-29,Concord St,
-Pittsfield,Electrical,2026-09-29,West St,
-Pittsfield,Gas,2026-09-29,Reed St,
-Pittsfield,Electrical,2026-09-29,Juliana Dr,
-Pittsfield,Gas,2026-09-29,Cheshire Rd,
-Pittsfield,Building,2026-09-29,West St,
-Pittsfield,Plumbing,2026-09-29,Hungerford St,
-Pittsfield,Gas,2026-09-29,Lebanon Ave,
-Pittsfield,Electrical,2026-09-29,Emerson Ave,
-Pittsfield,Plumbing,2026-09-29,Cascade St,
-Pittsfield,Gas,2026-09-29,Williams St,
-Pittsfield,Electrical,2026-09-29,Greenings Ave,
-Pittsfield,Gas,2026-09-29,Unkamet Park Dr,
-Pittsfield,Electrical,2026-09-29,Burke Ave,
-Pittsfield,Plumbing,2026-09-29,New York Ave,
-Pittsfield,Plumbing,2026-09-29,Pecks Rd,
-Pittsfield,Plumbing,2026-09-29,Second St,
-Pittsfield,Gas,2026-09-29,Newell St,
-Pittsfield,Gas,2026-09-29,Tyler St,
-Pittsfield,Gas,2026-09-29,Gravesleigh Ter,
-Pittsfield,Electrical,2026-09-29,Second St,
-Pittsfield,Plumbing,2026-09-29,Waverly St,
-Pittsfield,Electrical,2026-09-29,Elberon Ave,
-Pittsfield,Plumbing,2026-09-29,E New Lenox Rd,
-Pittsfield,Electrical,2026-09-29,Unkamet Park Dr,
-Pittsfield,Gas,2026-09-29,West St,
-Pittsfield,Electrical,2026-09-29,Fort Hill Ave,
-Pittsfield,Building,2026-09-29,Plastics Ave,
-Pittsfield,Gas,2026-09-29,Maple Grove Dr,
-Pittsfield,Gas,2026-09-29,Brookside Dr,
-Pittsfield,Plumbing,2026-09-29,Gravesleigh Ter,
-Pittsfield,Gas,2026-09-29,Pecks Rd,
-Pittsfield,Gas,2026-09-29,Spadina Pkwy,
-Pittsfield,Renovation/Remodel,2026-09-29,Greenings Ave,
-Pittsfield,Plumbing,2026-09-29,Churchill St,
-Pittsfield,Renovation/Remodel,2026-09-29,Pheasant Way,
-Pittsfield,Gas,2026-09-29,Valentine Rd,
-Norwood,Renovation/Remodel,2026-09-29,Greenleaf Road,
-Norwood,Electrical,2026-09-29,East Hoyle St,
-Norwood,Plumbing,2026-09-29,Monroe Street,
-Norwood,Renovation/Remodel,2026-09-29,Crescent Avenue,
-Norwood,Gas,2026-09-29,Monroe Street,
-Norwood,Electrical,2026-09-29,Railroad Avenue,
-Norwood,Renovation/Remodel,2026-09-29,Deerfield Road,
-Norwood,HVAC,2026-09-29,Ryan Drive,
-Norwood,Other,2026-09-29,Ryan Drive,
-Norwood,HVAC,2026-09-29,Berwick Place,
-Norwood,Roofing,2026-09-29,Azalea Drive,
-Norwood,Other,2026-09-29,Joy Street,
-Norwood,Fire/Sprinkler,2026-09-29,Nichols Street,
-Norwood,Other,2026-09-29,Berwick Place,
-Norwood,Plumbing,2026-09-29,Centennial Dr,
-Norwood,Fire/Sprinkler,2026-09-29,Washington Street,
-Norwood,Plumbing,2026-09-29,Centennial Drive,
-Norwood,Gas,2026-09-29,Washington Street,
-Norwood,Gas,2026-09-29,Washinton St,
-Norwood,Other,2026-09-29,Cypress Street,
-Norwood,Electrical,2026-09-29,Saunders Rd,
-Norwood,Electrical,2026-09-29,Boston Providence Highway,
-Norwood,Other,2026-09-29,Nichols Street,
-Norwood,Gas,2026-09-29,Plymouth Drive,
-Norwood,Electrical,2026-09-29,Endicott,
-Norwood,New Construction,2026-09-29,Neponset Street,
-Norwood,Electrical,2026-09-29,Prospect Street,
-Hyde Park,Solar,2026-09-28,Hyde Park Av,24834.11
-South Boston,Renovation/Remodel,2026-09-28,W Eighth St,49340.0
-Dorchester,Electrical,2026-09-28,Mayhew St,2500.0
-Roxbury,Other,2026-09-28,Greenville St,7000.0
-Boston,Electrical,2026-09-28,Brookline Av,5000.0
-Dorchester,Other,2026-09-28,Boston St,9000.0
-Boston,Kitchen/Bath,2026-09-28,Queensberry St,45000.0
-Boston,Kitchen/Bath,2026-09-28,Park Dr,16000.0
-Boston,Kitchen/Bath,2026-09-28,Queensberry St,16000.0
-Dorchester,Electrical,2026-09-28,Maxwell St,3600.0
-Boston,HVAC,2026-09-28,W Cedar St,1491.48
-Boston,Electrical,2026-09-28,Shattuck St,6000.0
-Dorchester,Electrical,2026-09-28,Park St,2500.0
-Dorchester,HVAC,2026-09-28,Bentham Rd,6800.0
-Roslindale,Electrical,2026-09-28,Leniston St,910.85
-Boston,Electrical,2026-09-28,Summer St,5800.0
-Boston,Electrical,2026-09-28,State St,13000.0
-Hyde Park,Other,2026-09-28,Como Rd,7851.45
-Brighton,Roofing,2026-09-28,Soldiers Field Rd,164000.0
-Jamaica Plain,Electrical,2026-09-28,Perkins St,12000.0
-Brighton,Electrical,2026-09-28,Kenrick St,13000.0
-Boston,Electrical,2026-09-28,Atlantic Av,17000.0
-West Roxbury,Solar,2026-09-28,Halford Rd,5846.0
-Charlestown,Roofing,2026-09-28,Essex St,10499.0
-Boston,Plumbing,2026-09-28,Huntington Av,2800.0
-Charlestown,Electrical,2026-09-28,Cordis St,1200.0
-Hyde Park,Electrical,2026-09-28,Raldne Rd,1200.0
-Roslindale,Electrical,2026-09-28,Metropolitan Av,1200.0
-South Boston,Windows/Doors/Siding,2026-09-28,W Third St,300000.0
-Boston,Electrical,2026-09-28,Beacon St,5200.0
-South Boston,Deck/Porch,2026-09-28,E Sixth St,14825.0
-Boston,Renovation/Remodel,2026-09-28,High St,375000.0
-Dorchester,HVAC,2026-09-28,Quincy St,6112.8
-South Boston,Electrical,2026-09-28,Columbia Rd,48000.0
-Boston,Electrical,2026-09-28,Boylston St,15000.0
-South Boston,HVAC,2026-09-28,H St,785200.0
-Charlestown,Renovation/Remodel,2026-09-28,Russell St,1.0
-Roxbury,Plumbing,2026-09-28,Harrison Av,4800.0
-Dorchester,Electrical,2026-09-28,Melville Av,400.0
-Boston,Electrical,2026-09-28,Charles St,10000.0
-Charlestown,Electrical,2026-09-28,New Rutherford Av,400741.0
-Roxbury,Electrical,2026-09-28,Washington St,25000.0
-Boston,Plumbing,2026-09-28,Commonwealth Av,50000.0
-Boston,Electrical,2026-09-28,Northern Av,16850.0
-Hyde Park,HVAC,2026-09-28,Beacon St,1000.0
-Jamaica Plain,Plumbing,2026-09-28,Starr Ln,500.0
-Boston,Roofing,2026-09-28,Commercial St,
-Boston,Renovation/Remodel,2026-09-28,Commonwealth Av,140000.0
-Jamaica Plain,Plumbing,2026-09-28,Parkton Rd,500.0
-Dorchester,New Construction,2026-09-28,Intervale St,
-Charlestown,Plumbing,2026-09-28,Cordis St,65000.0
-Charlestown,HVAC,2026-09-28,Cordis St,7600.0
-Dorchester,Electrical,2026-09-28,Milton St,16000.0
-Boston,New Construction,2026-09-28,Charles St,4000.0
-Boston,New Construction,2026-09-28,Charles St,26000.0
-Boston,Electrical,2026-09-28,Francis St,50000.0
-Dorchester,Electrical,2026-09-28,Cushing Av,12500.0
-Boston,Electrical,2026-09-28,Brookline Av,50000.0
-Boston,Electrical,2026-09-28,Deaconess Rd,50000.0
-Mission Hill,Electrical,2026-09-28,Fisher Av,21000.0
-Roxbury,Electrical,2026-09-28,E Brookline St,16962.0
-West Roxbury,Electrical,2026-09-28,Centre St,14000.0
-Hyde Park,Renovation/Remodel,2026-09-28,Dell Av,1.0
-Jamaica Plain,Plumbing,2026-09-28,Williams St,500.0
-Hyde Park,Roofing,2026-09-28,Prospect St,16280.0
-Mission Hill,Roofing,2026-09-28,Kendall St,201845.95
-Mission Hill,Roofing,2026-09-28,Warwick St,283890.7
-Mission Hill,Roofing,2026-09-28,Hammond St,127693.62
-Mission Hill,Roofing,2026-09-28,Hammond St,195998.39
-Boston,Renovation/Remodel,2026-09-28,Beacon St,25000.0
-Roslindale,Electrical,2026-09-28,Sycamore St,150.0
-Hyde Park,Other,2026-09-28,Beechmont Te,8573.0
-Boston,Electrical,2026-09-28,Commonwealth Av,950000.0
-Jamaica Plain,Windows/Doors/Siding,2026-09-28,Eldridge Rd,5953.0
-Boston,Electrical,2026-09-28,Babcock St,4000.0
-Roxbury,Electrical,2026-09-28,Harrison Av,20.0
-Boston,HVAC,2026-09-28,Brookline Av,9206424.0
-South Boston,Windows/Doors/Siding,2026-09-28,L St,2816.0
-Brighton,Roofing,2026-09-28,Kenrick St,12500.0
-Charlestown,Windows/Doors/Siding,2026-09-28,Union St,2216.0
-Mattapan,Windows/Doors/Siding,2026-09-28,River St,8158.0
-West Roxbury,Roofing,2026-09-28,Ivory St,17500.0
-Boston,HVAC,2026-09-28,Charter St,29000.0
-Boston,Fire/Sprinkler,2026-09-28,High St,58875.0
-Dorchester,HVAC,2026-09-28,N Munroe Te,2000.0
-Boston,Electrical,2026-09-28,Pier Bl,15000.0
-Boston,Windows/Doors/Siding,2026-09-28,Temple St,31525.0
-Boston,Roofing,2026-09-28,Beacon St,68500.0
-Boston,Electrical,2026-09-28,Fulton St,15527.85
-Dorchester,Electrical,2026-09-28,Harlem St,3500.0
-Dorchester,HVAC,2026-09-28,Vesta Rd,12000.0
-Roxbury,Electrical,2026-09-28,Dale St,10000.0
-Roxbury,Gas,2026-09-28,Mount Pleasant Av,500.0
-Dorchester,Plumbing,2026-09-28,Blue Hill Av,2500.0
-South Boston,Electrical,2026-09-28,E Fifth St,5000.0
-Boston,Roofing,2026-09-28,Park Ln,2000.0
-Boston,Kitchen/Bath,2026-09-28,Marlborough St,60000.0
-South Boston,Electrical,2026-09-28,General Lawrence J Logan Wy,2500.0
-South Boston,Electrical,2026-09-28,Colonel Michael J. Mcdonough Wy,4500.0
-South Boston,Electrical,2026-09-28,Monsignor Dennis F. O'Callaghan Wy,2500.0
-Charlestown,Electrical,2026-09-28,Constitution Rd,38602.0
-Mattapan,HVAC,2026-09-28,Favre St,8000.0
-Boston,Demolition,2026-09-28,Bay State Rd,30500.0
-Hyde Park,Other,2026-09-28,Westminster St,21000.0
-Charlestown,Kitchen/Bath,2026-09-28,First Av,205000.0
-East Boston,HVAC,2026-09-28,Bennington St,800.0
-Roxbury,Electrical,2026-09-28,Traveler St,3890.0
-Boston,Renovation/Remodel,2026-09-28,Berkeley St,122250.0
-Dorchester,New Construction,2026-09-28,William J Day Bl,2388.67
-Boston,Gas,2026-09-28,N Washington St,2000.0
-Mission Hill,Roofing,2026-09-28,Tremont St,13000.0
-Dorchester,Electrical,2026-09-28,Elmhurst St,28000.0
-Boston,Electrical,2026-09-28,Beacon St,58000.0
-Boston,Electrical,2026-09-28,Longwood Av,30000.0
-Boston,Electrical,2026-09-28,Commonwealth Av,18230.0
-Roxbury,Kitchen/Bath,2026-09-28,Moreland St,50000.0
-Brighton,Other,2026-09-28,Glenmont Rd,15908.2
-Boston,Electrical,2026-09-28,State St,106000.0
-Jamaica Plain,Windows/Doors/Siding,2026-09-28,Centre St,16000.0
-Roxbury,Roofing,2026-09-28,Upton St,83000.0
-Roxbury,Other,2026-09-28,Columbus Av,43500.0
-Boston,Electrical,2026-09-28,Atlantic Av,103000.0
-Allston,New Construction,2026-09-28,Warren St,3476.76
-Boston,Electrical,2026-09-28,Shattuck St,126000.0
-Boston,Electrical,2026-09-28,Summer St,25000.0
-Charlestown,Electrical,2026-09-28,Thirteenth St,75000.0
-Boston,Plumbing,2026-09-28,Boylston St,50000.0
-Boston,Electrical,2026-09-28,Newbury St,500.0
-East Boston,Plumbing,2026-09-28,Brooks St,25000.0
-Roxbury,Plumbing,2026-09-28,Morley St,3000.0
-Roxbury,Gas,2026-09-28,Blue Hill Av,300.0
-Braintree,Renovation/Remodel,2026-09-28,Christina Drive,
-Braintree,Gas,2026-09-28,Skyline Dr,
-Braintree,Electrical,2026-09-28,Wood Road,
-Braintree,Electrical,2026-09-28,Skyline Drive,
-Braintree,Renovation/Remodel,2026-09-28,Marisa Drive,
-Braintree,HVAC,2026-09-28,Granite Street,
-Braintree,Electrical,2026-09-28,John Paul Circle,
-Braintree,Plumbing,2026-09-28,Skyline Dr,
-Braintree,Electrical,2026-09-28,Town Street,
-Braintree,Renovation/Remodel,2026-09-28,Allen Street,
-Hingham,Renovation/Remodel,2026-09-28,Playground Road,
-Hingham,Renovation/Remodel,2026-09-28,Independence Lane,
-Hingham,HVAC,2026-09-28,Fisher Road,
-Hingham,Plumbing,2026-09-28,Maple Street,
-Hingham,Renovation/Remodel,2026-09-28,Stagecoach Road,
-Hingham,Plumbing,2026-09-28,Irving Street,
-Hingham,Plumbing,2026-09-28,High Street,
-Hingham,Electrical,2026-09-28,Side Hill Road,
-Hingham,Electrical,2026-09-28,Bradley Woods Drive,
-Hingham,Electrical,2026-09-28,Butler Road,
-Hingham,Plumbing,2026-09-28,Gardner Street,
-Hingham,Renovation/Remodel,2026-09-28,Otis Hill Road,
-Rockland,Electrical,2026-09-28,Bay Path Ln,
-Rockland,Windows/Doors/Siding,2026-09-28,Eleanor Ln,
-Rockland,Electrical,2026-09-28,Arlington St,
-Rockland,Electrical,2026-09-28,Levin Rd,
-Falmouth,Electrical,2026-09-28,Carol Ave,
-Falmouth,Renovation/Remodel,2026-09-28,Regis Rd,
-Falmouth,Renovation/Remodel,2026-09-28,Drumlin Rd,
-Falmouth,Gas,2026-09-28,Gunning Point Ave,
-Falmouth,Electrical,2026-09-28,Berrihill Cir,
-Falmouth,Gas,2026-09-28,Edgewater Dr East,
-Falmouth,Renovation/Remodel,2026-09-28,Bourne St,
-Falmouth,Electrical,2026-09-28,Sandwich Rd,
-Falmouth,Electrical,2026-09-28,Wildwood Cir,
-Falmouth,Other,2026-09-28,Church St,
-Falmouth,Plumbing,2026-09-28,Gunning Point Ave,
-Falmouth,Windows/Doors/Siding,2026-09-28,Regis Rd,
-Falmouth,Electrical,2026-09-28,Beccles Rd,
-Falmouth,Windows/Doors/Siding,2026-09-28,Quinsigamond Ave,
-Falmouth,Electrical,2026-09-28,Candace Way,
-Falmouth,Roofing,2026-09-28,Joshua Ln,
-Falmouth,Electrical,2026-09-28,Massasoit St,
-Falmouth,Other,2026-09-28,Waquoit Hwy,
-Falmouth,Building,2026-09-28,Highfield Dr,
-Falmouth,Renovation/Remodel,2026-09-28,Ruth Ter,
-Falmouth,HVAC,2026-09-28,Gifford St,
-Falmouth,Windows/Doors/Siding,2026-09-28,Main St,
-Falmouth,Plumbing,2026-09-28,Homestead Ln,
-Falmouth,Roofing,2026-09-28,Main St,
-Falmouth,Renovation/Remodel,2026-09-28,Worcester Ct,
-Falmouth,Roofing,2026-09-28,Sam Turner Rd,
-Falmouth,Electrical,2026-09-28,Oyster Shell Ln,
-Falmouth,Sign/Awning,2026-09-28,County Rd,
-Mashpee,Electrical,2026-09-28,Sand Dollar Ln,
-Mashpee,Other,2026-09-28,Cape Dr,
-Mashpee,Gas,2026-09-28,Fells Pond Rd,
-Mashpee,Renovation/Remodel,2026-09-28,Spinnaker Dr,
-Mashpee,HVAC,2026-09-28,Little Neck Ln,
-Mashpee,Renovation/Remodel,2026-09-28,Santuit Pond Way,
-Mashpee,Plumbing,2026-09-28,Fells Pond Rd,
-Mashpee,HVAC,2026-09-28,Shore Dr West,
-Mashpee,Renovation/Remodel,2026-09-28,Fells Pond Rd,
-Mashpee,Plumbing,2026-09-28,Milestone Way,
-Mashpee,HVAC,2026-09-28,Monomoscoy Rd West,
-Mashpee,Gas,2026-09-28,Milestone Way,
-Mashpee,Renovation/Remodel,2026-09-28,Glenneagle Dr,
-Mashpee,Plumbing,2026-09-28,Santuit Ln,
-Mashpee,Plumbing,2026-09-28,Triton Way,
-Mashpee,HVAC,2026-09-28,Heron Way,
-Mashpee,Gas,2026-09-28,Captains Row,
-Mashpee,Electrical,2026-09-28,Mashpee Neck Rd,
-Mashpee,Other,2026-09-28,Quinaquisset Ave,
-Mashpee,Gas,2026-09-28,Finway,
-Mashpee,Electrical,2026-09-28,Ocean Bluff Dr,
-Mashpee,Renovation/Remodel,2026-09-28,Polaris Dr,
-Mashpee,Other,2026-09-28,Wheeler Rd,
-Mashpee,Renovation/Remodel,2026-09-28,Popponesset Island Rd,
-Mashpee,Renovation/Remodel,2026-09-28,Running Light Way,
-Sandwich,Other,2026-09-28,Boardley Road,
-Sandwich,Electrical,2026-09-28,Pinkham Road,
-Sandwich,Other,2026-09-28,Wood Avenue,
-Sandwich,Plumbing,2026-09-28,Moon Compass Lane,
-Sandwich,Electrical,2026-09-28,Knott Avenue,
-Sandwich,Plumbing,2026-09-28,Lan Road,
-Sandwich,Electrical,2026-09-28,Mill Road,
-Sandwich,Gas,2026-09-28,Country Club Road,
+Fairhaven,Gas,2026-09-29,Green Street,
+Fairhaven,Building,2026-09-29,Ferry Street,
