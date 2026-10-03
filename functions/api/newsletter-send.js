@@ -218,6 +218,7 @@ async function sendDigest(env, reader, d) {
       <p style="margin:10px 0 0;font-size:12px;color:#667">or grab a <a href="https://masspermits.com" style="color:#0e7c6b">free sample</a> first</p>
     </div>
     <p style="color:#9aa;font-size:12px;margin-top:22px">MassPermits · masspermits.com · compiled from public municipal permit records<br>
+    MassPermits, PO Box 781, West Falmouth, MA 02574<br>
     <a href="${unsub}" style="color:#9aa">Unsubscribe</a>: one click, no questions.</p></div>`;
 
   const resp = await fetch("https://api.resend.com/emails", {
