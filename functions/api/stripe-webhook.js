@@ -294,7 +294,14 @@ async function addSubscriber(env, email, event) {
     const o = (event.data && event.data.object) || {};
     const cur = await env.BUNDLES.get("subscribers.json");
     const list = cur ? JSON.parse(await cur.text()) : [];
-    const existing = list.find((s) => s.email === email);
+    // Match the address trimmed and case-insensitively, as the rest of this
+    // file and weekly-send.js do. An exact match missed "Casey@..." against a
+    // "casey@..." row and appended a second row with a new token instead of
+    // reactivating the first. If an old duplicate is still on file, the row
+    // that is not cancelled wins, so a stale row is never revived over it.
+    const key = String(email || "").trim().toLowerCase();
+    const same = key ? list.filter((s) => s && String(s.email || "").trim().toLowerCase() === key) : [];
+    const existing = same.find((s) => s.active !== false) || same[0];
     if (existing) {
       // Re-subscribe after a cancellation, or a second checkout. Reactivate and
       // backfill anything missing rather than creating a duplicate row.
