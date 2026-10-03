@@ -57,6 +57,10 @@ export async function onRequest(context) {
     // customer their own subscription has now cost goodwill twice. The abort
     // returns an explicit error so a silent non-send is never mistaken for a
     // clean run.
+    //
+    // "Paying" uses weekly-send.js's own rule: every row except active:false.
+    // It used to be active === true, so a row with no active field (or null)
+    // got the paid file from weekly-send AND this pitch for it.
     let payers;
     try {
       const so = await env.BUNDLES.get("subscribers.json");
@@ -64,7 +68,7 @@ export async function onRequest(context) {
       const subs = JSON.parse(await so.text());
       if (!Array.isArray(subs)) throw new Error("subscribers.json is not an array");
       payers = new Set(
-        subs.filter(s => s && s.email && s.active === true)
+        subs.filter(s => s && s.email && s.active !== false)
             .map(s => String(s.email).trim().toLowerCase())
       );
     } catch (e) {
