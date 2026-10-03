@@ -119,9 +119,23 @@ export function holdDeadline(now, p = POLICY_DEFAULTS) {
 // `priorLog[0]`, and a SKIP entry carries `sent: []` — so one skip disarms the
 // duplicate guard and the very next trigger re-sends bytes the subscriber
 // already holds. The etag memory is the newest entry that HAS an etag.
+//
+// Edge 1: except a run that DELIVERED TO NOBODY. If every recipient in a run
+// failed (a Resend outage), nobody holds those bytes, so that run is no
+// evidence that they were handled. Counting it made the next ordinary run of
+// the same bundle a skip, "identical bundle already delivered", and only
+// ?force=1 could make the week good. A skip entry still counts (it is only
+// written for bytes that had been delivered), as does any entry with at least
+// one accepted recipient, or one with no `sent` list at all. The pre-send gate
+// reads this too, so it no longer calls those bytes a duplicate either.
+export function deliveredToNobody(e) {
+  return !!e && !e.skipped && Array.isArray(e.sent) && e.sent.length > 0 &&
+    !e.sent.some((s) => s && s.ok);
+}
+
 export function lastEtagEntry(log) {
   if (!Array.isArray(log)) return null;
-  for (const e of log) if (e && e.bundle_etag) return e;
+  for (const e of log) if (e && e.bundle_etag && !deliveredToNobody(e)) return e;
   return null;
 }
 

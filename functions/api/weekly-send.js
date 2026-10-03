@@ -148,7 +148,9 @@ export async function onRequest(context) {
     // THESE BYTES already been handled". A skip entry bearing this etag is
     // itself proof they were: a skip is only ever written because they had
     // already been delivered. So: newest entry that HAS an etag, and a match is
-    // a match whether that entry delivered or skipped.
+    // a match whether that entry delivered or skipped. A run in which every
+    // recipient FAILED is neither, so lastEtagEntry() passes over it: nobody
+    // holds those bytes, and an ordinary re-run must be able to retry them.
     const prior = lastEtagEntry(priorLog);
     // Scoped to a week in which nobody has been delivered yet. Once somebody
     // has, the per-subscriber check above is the stricter guard, and the only
@@ -219,6 +221,20 @@ export async function onRequest(context) {
     // log, and with a handful of subscribers even a domain can point to one
     // person. Who failed, and why, is in feed-send-log.json (private R2) above.
     const bad = sent.filter((s) => !s.ok);
+    // A RUN THAT DELIVERED TO NOBODY IS NOT A SUCCESS. It used to answer ok:true
+    // with a 200, so the Actions run went green while nobody got the file.
+    // 424 (Failed Dependency: the mail provider failed) is deliberately NOT a
+    // status weekly-feed.yml's `curl --retry 3` repeats. A repeated 5xx would
+    // re-trigger the whole run within seconds, and this run's recipients are
+    // all still eligible (lastEtagEntry ignores a run that delivered to
+    // nobody), so one trigger would become four attempts each. A human, or the
+    // next ordinary run, retries instead. The results are logged above.
+    if (sent.length && bad.length === sent.length) {
+      return json({ ok: false, error: "every delivery in this run failed, so nobody received the file; " +
+                    "results are in feed-send-log.json and an ordinary re-run retries them",
+                    subscribers: subs.length, delivered: 0, failed: bad.length,
+                    ...(already ? { already_delivered: already } : {}) }, 424);
+    }
     return json({ ok: true, subscribers: subs.length,
                   delivered: sent.length - bad.length, failed: bad.length,
                   ...(already ? { already_delivered: already } : {}) });

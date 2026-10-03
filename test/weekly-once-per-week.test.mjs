@@ -234,20 +234,111 @@ test("partial first send, then a retry with the SAME bytes mails only the missed
   for (const x of [A, B, C]) assert.equal(count(mail.map((m) => m.to), x), 1);
 });
 
-test("a Resend outage (nobody delivered) is still made good by ?force=1, and only once", async () => {
+// Edge 1. A run in which every provider call failed handed these bytes to
+// nobody. It used to stand as the etag memory, so the next ordinary run of the
+// SAME bundle was skipped as "identical bundle already delivered" and only
+// ?force=1 could make the week good. It also answered ok:true with a 200, and
+// send-status called the week `unknown` with "no results were recorded".
+test("a Resend outage (nobody delivered) is retried by an ordinary re-run of the same bytes, once", async () => {
   const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B, C], "E-0921")], etag: "E-0921" });
   refresh(w, "2026-09-28T16:01:00Z", "E-0928");
   failFor = new Set([A, B, C]);
   const r1 = await send(w, "2026-09-28T17:52:00Z");
   assert.deepEqual(r1.to, []);
+  assert.equal(r1.body.ok, false, "a run that delivered to nobody is not a success");
+  assert.equal(r1.status, 424, "non-2xx, and not one weekly-feed.yml's curl --retry repeats");
+  assert.equal(r1.body.delivered, 0);
+  assert.equal(r1.body.failed, 3);
+  noAddr(r1.body);
+  assert.deepEqual(w.r2.json("feed-send-log.json")[0].sent.map((s) => s.ok), [false, false, false],
+    "per-recipient results are still logged");
+
+  const s1 = await status(w, "2026-09-28T18:51:00Z");
+  assert.equal(s1.verdict, "failed", "results were recorded: every delivery failed");
+  assert.equal(s1.retry_safe, false);
+  assert.equal(s1.last_failed, 3);
+  assert.ok(!/no results were recorded/.test(s1.detail), s1.detail);
+  noAddr(s1);
+
   failFor = new Set();
-  const r2 = await send(w, "2026-09-28T18:30:00Z");
-  assert.ok(r2.body.skipped, "same bytes, nobody delivered: the etag guard still stands (unchanged)");
+  const r2 = await send(w, "2026-09-28T19:05:00Z");                  // ordinary re-run, same etag
+  assert.equal(r2.status, 200);
+  assert.ok(!r2.body.skipped, "nobody holds these bytes, so the same-bundle guard does not apply");
+  assert.deepEqual(r2.to.sort(), [A, B, C]);
+  assert.equal((await status(w, "2026-09-28T19:06:00Z")).verdict, "ok");
+
+  const r3 = await send(w, "2026-09-28T19:10:00Z", { force: true });
+  assert.deepEqual(r3.to, [], "force=1 cannot mail a subscriber twice in one week");
+  const r4 = await send(w, "2026-09-28T19:15:00Z");
+  assert.deepEqual(r4.to, []);
+  for (const x of [A, B, C]) assert.equal(count(mail.map((m) => m.to), x), 1, "exactly one weekly email");
+});
+
+test("a re-run that completes a partial week but delivers to nobody is not reported as success", async () => {
+  const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B, C], "E-0921")], etag: "E-0921" });
+  refresh(w, "2026-09-28T16:01:00Z", "E-0928");
+  failFor = new Set([C]);
+  const r1 = await send(w, "2026-09-28T17:52:00Z");
+  assert.equal(r1.status, 200);
+  assert.equal(r1.body.ok, true, "a partial delivery keeps its 200 and ok:true");
+  const r2 = await send(w, "2026-09-28T18:30:00Z");                  // C is rejected again
   assert.deepEqual(r2.to, []);
-  const r3 = await send(w, "2026-09-28T18:40:00Z", { force: true });
-  assert.deepEqual(r3.to.sort(), [A, B, C]);
-  const r4 = await send(w, "2026-09-28T18:45:00Z", { force: true });
-  assert.deepEqual(r4.to, [], "force=1 cannot mail a subscriber twice in one week");
+  assert.equal(r2.status, 424);
+  assert.equal(r2.body.ok, false);
+  assert.equal(r2.body.failed, 1);
+  assert.equal(r2.body.already_delivered, 2);
+  const s = await status(w, "2026-09-28T18:51:00Z");
+  assert.equal(s.verdict, "partial", "two of three have it: still partial");
+  assert.equal(s.last_failed, 1);
+  failFor = new Set();
+  assert.deepEqual((await send(w, "2026-09-28T19:00:00Z")).to, [C]);
+  assert.equal((await status(w, "2026-09-28T19:01:00Z")).verdict, "ok");
+});
+
+test("a failed run on top does not make the guard forget bytes subscribers already hold", async () => {
+  // 09-21 delivered E-0921. The 09-28 refresh ran but rebuilt nothing, and a
+  // forced attempt with those same bytes then failed for everyone. The bytes
+  // are still the ones every subscriber received on 09-21: an ordinary run
+  // must still skip them (stale_bundle), exactly as before.
+  const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B, C], "E-0921")], etag: "E-0921" });
+  at("2026-09-28T16:01:00Z");
+  w.r2.set("refresh-status.json", { ok: true, ran_at: "2026-09-28T16:01:00Z" });
+  failFor = new Set([A, B, C]);
+  const forced = await send(w, "2026-09-28T17:00:00Z", { force: true });
+  assert.equal(forced.status, 424);
+  failFor = new Set();
+  const r = await send(w, "2026-09-28T17:52:00Z");
+  assert.deepEqual(r.to, []);
+  assert.ok(r.body.skipped, "identical to the bundle delivered 09-21");
+  assert.match(String(w.r2.json("feed-send-log.json")[0].skipped), /2026-09-21T17:52:00Z/);
+  assert.equal((await status(w, "2026-09-28T18:51:00Z")).verdict, "stale_bundle");
+});
+
+test("send-status still says `unknown` when a later attempt left no results", async () => {
+  const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B, C], "E-0921")], etag: "E-0921" });
+  refresh(w, "2026-09-28T16:01:00Z", "E-0928");
+  failFor = new Set([A, B, C]);
+  await send(w, "2026-09-28T17:52:00Z");                             // all failed, recorded
+  at("2026-09-28T18:10:00Z");                                       // a later run crashed mid-send
+  w.r2.set("last-send-attempt.json", { at: "2026-09-28T18:10:00Z", subscribers: 3, degraded: false });
+  const s = await status(w, "2026-09-28T18:51:00Z");
+  assert.equal(s.verdict, "unknown", "the newest attempt has no results, so nobody can say");
+  assert.equal(s.retry_safe, false);
+});
+
+test("lastEtagEntry ignores a run that delivered to nobody, and nothing else", async () => {
+  const { lastEtagEntry } = await import(pathToFileURL(path.join(API, "_presend.js")).href);
+  const allFailed = { at: "2026-09-28T17:52:00Z", bundle_etag: "E1", sent: [{ to: A, ok: false }, { to: B, ok: false }] };
+  const partial = { at: "2026-09-28T17:00:00Z", bundle_etag: "E1", sent: [{ to: A, ok: true }, { to: B, ok: false }] };
+  const skip = { at: "2026-09-28T16:00:00Z", bundle_etag: "E0", sent: [], skipped: "identical bundle" };
+  const noSent = { at: "2026-09-21T17:52:00Z", bundle_etag: "E-old" };
+  assert.equal(lastEtagEntry([allFailed, partial]), partial);
+  assert.equal(lastEtagEntry([allFailed, skip]), skip, "a skip still carries the etag memory");
+  assert.equal(lastEtagEntry([allFailed, { ...allFailed }, noSent]), noSent, "an entry without a sent list still counts");
+  assert.equal(lastEtagEntry([allFailed]), null);
+  assert.equal(lastEtagEntry([{ ...allFailed, sent: [null, { to: A, ok: false }] }]), null);
+  assert.equal(lastEtagEntry([partial, allFailed]), partial);
+  for (const bad of [null, undefined, {}, "x", []]) assert.equal(lastEtagEntry(bad), null);
 });
 
 test("a new week sends normally; the same bytes as last week are still an etag skip (stale_bundle)", async () => {

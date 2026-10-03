@@ -14,6 +14,8 @@
 //   feed-send-log.json     — written AFTER, with per-recipient results
 // no attempt   -> the sender never ran  -> retrying cannot double-send
 // attempt only -> it ran, outcome unknown -> alert, but NEVER auto-retry
+// results, all failed -> it ran and nobody got it (`failed`) -> alert; an
+//                ordinary re-run of the weekly feed retries them
 //
 // Read-only. Sends nothing. The caller (send-watchdog.yml) decides what to do.
 
@@ -27,7 +29,7 @@ import { verifyGitHubOIDC } from "./_github-oidc.js";
 // guard, and logs a skip on top of the delivery. A monitor that cries wolf on a
 // good week is worse than no monitor, because the next real alarm is the one
 // that gets ignored. bestSince() takes the BEST outcome since the due time.
-import { bestSince, deliveryWeekStart, deliveredSince, normEmail } from "./_presend.js";
+import { bestSince, deliveryWeekStart, deliveredSince, deliveredToNobody, normEmail } from "./_presend.js";
 
 // The delivery cadence is WEEKLY (weekly-feed.yml: "0 12 * * 1"). So the
 // question is never "did we send in the last N hours" — five days after a
@@ -144,6 +146,13 @@ export async function onRequest(context) {
   const sentSinceDue = !!(best && !best.skipped && (best.sent || []).some((s) => s && s.ok));
   const skippedSinceDue = !!(best && best.skipped);
   const triedSinceDue = !!(attempt && Date.parse(attempt.at) >= since);
+  // Edge 1: results WERE recorded and every delivery in them failed. This used
+  // to fall through to `unknown`, "no results were recorded", which was untrue
+  // and pointed the owner at a crash instead of at the provider. A newer
+  // attempt marker than those results means a later run left no results, and
+  // that stays `unknown`.
+  const failedSinceDue = !!(best && deliveredToNobody(best) && !served.size &&
+    !(attempt && Date.parse(attempt.at) > Date.parse(best.at)));
 
   let verdict, detail, retry_safe = false;
   if (!graceOver) {
@@ -165,6 +174,16 @@ export async function onRequest(context) {
     verdict = "stale_bundle";
     detail = "the send ran but was skipped: " + best.skipped +
              " — the data refresh produced no new bundle, so subscribers received nothing new";
+  } else if (failedSinceDue) {
+    // Nobody has this week's email. Not retried automatically: a provider error
+    // reported after the mail was accepted would make a retry a duplicate, so a
+    // human decides. An ordinary re-run of the weekly feed retries everyone in
+    // this run, because lastEtagEntry() ignores a run that delivered to nobody.
+    verdict = "failed";
+    detail = `every recorded delivery since the ${dueIso} scheduled send FAILED ` +
+             `(${failed.length} subscriber(s), last attempt ${logAge.toFixed(1)}h ago), so nobody ` +
+             "has this week's email. The errors are in feed-send-log.json, and an ordinary re-run " +
+             "of the weekly feed retries them; NOT retrying automatically";
   } else if (triedSinceDue) {
     // It started but never finished writing results — a crash mid-send, or the
     // log write failed. Some subscribers may already hold the file, so a retry
