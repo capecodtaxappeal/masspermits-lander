@@ -129,6 +129,7 @@ function wrap(inner) {
   return `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
     ${inner}
     <p style="color:#9aa;font-size:12px;margin-top:26px">MassPermits · masspermits.com · public municipal permit records<br>
+    MassPermits, PO Box 781, West Falmouth, MA 02574<br>
     You're getting this because you requested our free sample. Reply "stop" to opt out.</p></div>`;
 }
 
