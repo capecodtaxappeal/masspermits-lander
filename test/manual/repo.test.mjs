@@ -4,6 +4,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import * as H from "./_h.mjs";
 
@@ -27,27 +28,99 @@ const NEVER_EDIT = [
   "functions/api/_cf-access.js", "functions/api/_owner_gate.js", "functions/_middleware.js",
 ];
 
-function changedFiles() {
-  let base = null;
-  for (const ref of ["origin/main", "main"]) {
-    try { base = git("merge-base", ref, "HEAD").trim(); break; } catch (_) { /* next */ }
-  }
-  if (!base) return null;
-  const tracked = git("diff", "--name-only", base).split("\n").filter(Boolean);
-  const untracked = git("ls-files", "--others", "--exclude-standard").split("\n").filter(Boolean);
-  return [...new Set([...tracked, ...untracked])].sort();
+// The never-edit guard is anchored to PR #7's OWN commit range, as merged. It
+// used to diff merge-base(origin/main, HEAD) against the working tree. That
+// proved the point while PR #7 was the branch under review, but once PR #7 was
+// on main it judged every later branch instead, and failed each one that edits
+// a money-path file for its own approved reasons. A fixed range keeps the proof
+// about PR #7 and stops judging work that is not PR #7's. Later changes to these
+// files are reviewed on their own branches.
+const PR7 = {
+  base: "1068e8070e88a436fbf5f86b88bf075e1f3a01c5",  // main when PR #7 branched
+  head: "0e080ecf660bfb7290509862cd48f58e9818353a",  // PR #7's last commit
+  merge: "7aa5cdf8c12bf4d92f18a4eaa1b0133d413df651", // the merge that put it on main
+};
+
+const lines = (s) => s.split("\n").map((l) => l.trim()).filter(Boolean);
+const hasCommit = (sha, run = git) => { try { run("cat-file", "-e", sha + "^{commit}"); return true; } catch (_) { return false; } };
+const changedIn = (base, head, run = git) => lines(run("diff", "--name-only", base, head)).sort();
+
+// Every path in `changed` that this guard forbids, in a stable order.
+function violations(changed) {
+  return [
+    ...changed.filter((p) => p.startsWith(".github/")),
+    ...NEVER_EDIT.filter((f) => changed.includes(f)),
+    ...changed.filter((p) => p.includes("node_modules/")),
+  ];
 }
 
 test("every shipped file exists", () => {
   for (const f of NEW_FILES) assert.ok(fs.existsSync(path.join(H.REPO, f)), f);
 });
 
-test("nothing under .github/ and none of the money-path files is changed", (t) => {
-  const changed = changedFiles();
-  if (!changed) return t.skip("no main ref to compare against");
-  assert.deepEqual(changed.filter((p) => p.startsWith(".github/")), []);
-  for (const f of NEVER_EDIT) assert.ok(!changed.includes(f), f);
-  assert.ok(!changed.some((p) => p.includes("node_modules/")));
+test("PR #7's own range changed nothing under .github/ and none of the money-path files", (t) => {
+  if (!Object.values(PR7).every((sha) => hasCommit(sha))) return t.skip("PR #7's commits are not in this clone");
+  // The anchor is the range that was actually merged, not a guess.
+  assert.equal(git("merge-base", PR7.base, PR7.head).trim(), PR7.base, "base is an ancestor of head");
+  const parents = git("rev-list", "--parents", "-n", "1", PR7.merge).trim().split(/\s+/).slice(1);
+  assert.ok(parents.includes(PR7.head), "the merge commit has PR #7's head as a parent");
+  const changed = changedIn(PR7.base, PR7.head);
+  for (const f of NEW_FILES) assert.ok(changed.includes(f), "the range is PR #7's own: " + f);
+  assert.deepEqual(violations(changed), []);
+  // What the merge brought to main, conflict resolution included, is clean too.
+  assert.deepEqual(violations(changedIn(PR7.merge + "^1", PR7.merge)), []);
+});
+
+test("a later branch that edits a money-path file does not fail the PR #7 guard", (t) => {
+  // A throwaway repository: a base, a stand-in for PR #7 that adds only a
+  // manual-inputs file, then a later branch that edits weekly-send.js.
+  // core.longpaths: a test runner may put the temp dir deep inside a clone's
+  // .git, past the Windows 260-character limit for the object files.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "pr7-anchor-"));
+  const ident = ["-c", "user.name=guard test", "-c", "user.email=" + H.addr("guard", "example.invalid"),
+    "-c", "commit.gpgsign=false", "-c", "core.autocrlf=false", "-c", "core.longpaths=true"];
+  const g = (...a) => execFileSync("git", [...ident, ...a], { cwd: dir, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
+  const put = (rel, text) => {
+    fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true });
+    fs.writeFileSync(path.join(dir, rel), text);
+  };
+  const commit = (msg) => { g("add", "-A"); g("commit", "-q", "-m", msg); return g("rev-parse", "HEAD").trim(); };
+  try {
+    g("init", "-q");
+    g("symbolic-ref", "HEAD", "refs/heads/main");
+  } catch (e) {
+    return t.skip("git cannot create a scratch repository here");
+  }
+  try {
+    put("functions/api/weekly-send.js", "// v1\n");
+    put("functions/api/stripe-webhook.js", "// v1\n");
+    const base = commit("base");
+    put("functions/api/_manual_store.js", "// stand-in\n");
+    const head = commit("stand-in for PR #7");
+    g("checkout", "-q", "-b", "later");
+    put("functions/api/weekly-send.js", "// v2, an approved later fix\n");
+    commit("later branch edits a money-path file");
+    put("functions/api/stripe-webhook.js", "// v2, uncommitted\n");
+
+    // The anchored guard reads only the fixed range, so the later work passes.
+    assert.deepEqual(violations(changedIn(base, head, g)), []);
+
+    // Not vacuous: the old merge-base comparison flags this very branch.
+    const mb = g("merge-base", "main", "HEAD").trim();
+    assert.equal(mb, head);
+    const old = [...new Set([...lines(g("diff", "--name-only", mb)),
+      ...lines(g("ls-files", "--others", "--exclude-standard"))])].sort();
+    assert.deepEqual(violations(old), ["functions/api/weekly-send.js", "functions/api/stripe-webhook.js"]);
+
+    // And the guard still bites when the anchored range itself touches one.
+    g("checkout", "-q", "-f", "-b", "bad", base);
+    put("functions/api/stripe-webhook.js", "// edited inside the range\n");
+    put(".github/workflows/x.yml", "on: push\n");
+    const badHead = commit("a range that breaks the rule");
+    assert.deepEqual(violations(changedIn(base, badHead, g)), [".github/workflows/x.yml", "functions/api/stripe-webhook.js"]);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test("get-object READABLE and upload-bundle ALLOWED_KEYS are exactly as before", () => {
