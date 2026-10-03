@@ -1353,8 +1353,29 @@ jobs:
           # then correctly sends nothing.
           git diff --cached --name-only > "$GITHUB_WORKSPACE/changed-paths.txt" || true
           echo "changed files: $(wc -l < "$GITHUB_WORKSPACE/changed-paths.txt")"
-          git commit -m "data+seo+report: weekly site refresh (automated)" && git push origin main \
-            || echo "site unchanged — nothing to push"
+          # Nothing staged: nothing to publish. Otherwise commit and push,
+          # rebasing onto anything else pushed to main during the run. A push
+          # that still fails after 3 tries turns the run red instead of being
+          # silently swallowed.
+          if git diff --cached --quiet; then
+            echo "site unchanged - nothing to push"
+          else
+            git commit -m "data+seo+report: weekly site refresh (automated)"
+            pushed=0
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push origin main; then
+                pushed=1
+                break
+              fi
+              git rebase --abort 2>/dev/null || true
+              echo "site push attempt $attempt failed, retrying"
+              sleep $((attempt * 5))
+            done
+            if [ "$pushed" != "1" ]; then
+              echo "::error::site refresh push to main failed after 3 attempts; today's site update was NOT published"
+              exit 1
+            fi
+          fi
 
       # IndexNow: tell Bing/Yandex/Seznam/Naver (and, indirectly, Google) which
       # pages CHANGED, rather than resubmitting ~2,400 unchanged URLs every day.
