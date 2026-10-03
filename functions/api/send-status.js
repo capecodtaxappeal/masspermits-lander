@@ -181,9 +181,11 @@ export async function onRequest(context) {
     // this run, because lastEtagEntry() ignores a run that delivered to nobody.
     verdict = "failed";
     detail = `every recorded delivery since the ${dueIso} scheduled send FAILED ` +
-             `(${failed.length} subscriber(s), last attempt ${logAge.toFixed(1)}h ago), so nobody ` +
-             "has this week's email. The errors are in feed-send-log.json, and an ordinary re-run " +
-             "of the weekly feed retries them; NOT retrying automatically";
+             `(${failed.length} subscriber(s), last attempt ${logAge.toFixed(1)}h ago), so no one ` +
+             "is recorded as having this week's email. The errors are in feed-send-log.json. Before " +
+             "re-running, check the email provider's sent log: a 5xx or a timeout can follow a send " +
+             "it accepted, and then a re-run would be a duplicate. If none were accepted, an " +
+             "ordinary re-run of the weekly feed retries them; NOT retrying automatically";
   } else if (triedSinceDue) {
     // It started but never finished writing results — a crash mid-send, or the
     // log write failed. Some subscribers may already hold the file, so a retry
