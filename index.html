@@ -8,7 +8,7 @@
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MassPermits: building-permit leads for MA contractors">
-<meta property="og:description" content="Building permits from across Massachusetts, by trade and town, with the address, project type and declared value. Weekly feed $99/mo, free sample first.">
+<meta property="og:description" content="Building permits from across Massachusetts, by trade and town, with the full address, project type and permit holder, plus the declared value where the town publishes one. Weekly feed $99/mo, free sample first.">
 <meta property="og:url" content="https://masspermits.com/">
 <meta property="og:site_name" content="MassPermits">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,12 +18,12 @@
      one page where entity identity matters most. -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://masspermits.com/#org", "name": "MassPermits", "url": "https://masspermits.com", "description": "Building-permit leads for Massachusetts contractors.", "logo": {"@type": "ImageObject", "url": "https://masspermits.com/logo.png"}, "email": "hello@masspermits.com", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "hello@masspermits.com", "areaServed": "US-MA", "availableLanguage": ["en"]}, "knowsAbout": ["building permits", "Massachusetts", "construction leads", "municipal public records"], "publishingPrinciples": "https://masspermits.com/research/methodology", "correctionsPolicy": "https://masspermits.com/research/corrections", "areaServed": {"@type": "State", "name": "Massachusetts"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://masspermits.com/#website", "name": "MassPermits", "url": "https://masspermits.com", "inLanguage": "en-US", "publisher": {"@id": "https://masspermits.com/#org", "@type": "Organization", "name": "MassPermits"}, "license": "https://creativecommons.org/licenses/by-nc/4.0/", "dateModified": "2026-09-07"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Massachusetts Building-Permit Leads","description":"Ready-to-work contractor leads built from Massachusetts building permits: address, permit holder, and project value, by trade and town.","brand":{"@type":"Brand","name":"MassPermits"},"offers":[{"@type":"Offer","name":"Weekly Feed","price":"99","priceCurrency":"USD","availability":"https://schema.org/InStock"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Massachusetts Building-Permit Leads","description":"Contractor leads built from Massachusetts building permits: full address, project type and permit holder, plus the declared project value where the town publishes one, by trade and town.","brand":{"@type":"Brand","name":"MassPermits"},"offers":[{"@type":"Offer","name":"Weekly Feed","price":"99","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","unitCode":"MON"},"availability":"https://schema.org/InStock"}]}</script>
 <!-- Count checked against /api/health on 2026-09-19: 70 live sources. It said 59, which
      was stale by eleven towns. This is hand-maintained, so it will drift again; the durable
      fix is to render it from live coverage at build time. "name" removed because it read as
      owner name, which is never shipped: the contractor on file is what the lead carries. -->
-<meta name="description" content="Building permits from 70 Massachusetts towns and counting, sorted by trade and town, delivered as ready-to-work leads. Roofing, solar, HVAC, pools, remodels and more, with the address, project type and declared value. Weekly feed $99/mo, free sample first.">
+<meta name="description" content="Building permits from 70 Massachusetts towns and counting, sorted by trade and town, delivered as ready-to-work leads. Roofing, solar, HVAC, pools, remodels and more, with the full address, project type and permit holder, plus the declared value where the town publishes one. Weekly feed $99/mo, free sample first.">
 <!-- Real files, not a data: URI. A browser renders an inline SVG emoji happily, which is
      why this looked fine on the page, but Google cannot use a data URI as a site icon and
      nothing answered /favicon.ico either, so every search result fell back to the generic
@@ -155,7 +155,7 @@
 
   <div class="hero">
     <h1>Every <span class="hl" id="h-trade">contractor</span> lead in <span id="h-area">Massachusetts</span>,<br>the week the permit is filed.</h1>
-    <p>When a homeowner pulls a building permit, they're spending on their home <em>right now</em> — and your trade is next. We pull fresh permits across Greater Boston, the South Shore and Cape Cod — expanding across Massachusetts weekly — and hand you the name, address, and project value.</p>
+    <p>When a homeowner pulls a building permit, they're spending on their home <em>right now</em>, and your trade is next. We pull fresh permits across Greater Boston, the South Shore and Cape Cod (expanding across Massachusetts weekly) and hand you the full address, project type and permit holder, plus the declared project value where the town publishes one.</p>
     <div class="controls">
       <select id="sel-trade" aria-label="Trade"></select>
       <select id="sel-area" aria-label="Area"></select>
@@ -197,7 +197,7 @@
      old wording described a product we do not ship, so it now describes
      the one we do. -->
     <div class="step"><div class="n">2</div><h3>You filter to your trade &amp; town</h3><p>Roofing, solar, HVAC, pools, remodels — every town we cover in one file, sorted by trade and filterable to exactly your patch.</p></div>
-    <div class="step"><div class="n">3</div><h3>You reach out first</h3><p>Name, address, project value, permit-holder. You beat every competitor to the door.</p></div>
+    <div class="step"><div class="n">3</div><h3>You reach out first</h3><p>Full address, project type and permit holder, plus the declared value where the town publishes one. You beat every competitor to the door.</p></div>
   </div>
 
   <div class="pricebox" id="get">
@@ -207,7 +207,7 @@
       <div class="pr" style="font-size:40px">$99 <small style="font-size:14px;color:var(--muted)">/ month</small></div>
       <div style="color:var(--good);font-weight:700;font-size:14px;margin-top:2px">&asymp; $23/week for every fresh permit in your trade.</div>
       <div id="feed-math" style="color:var(--muted);font-style:italic;font-size:13px;margin:2px 0 12px">Less than one job. One closed lead pays for the year.</div>
-      <div class="d">A fresh batch every week, automatically — the permit holder, address, and project value for every new <span id="p-trade3">trade</span> permit in <span id="p-area3">your area</span>. You reach owners before your competitors even see the permit.</div>
+      <div class="d">A fresh batch every week, automatically: the permit holder, full address and project type for every new <span id="p-trade3">trade</span> permit in <span id="p-area3">your area</span>, plus the declared value where the town publishes one. You reach owners before your competitors even see the permit.</div>
       <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
       <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 when you start from the banner at the top</div>
       <div style="color:var(--muted);font-size:12px;margin-top:7px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
@@ -254,7 +254,7 @@
     <h3>What if the leads don't pan out?</h3>
     <p>Every lead is a real, verifiable public permit. If your first paid month doesn't return more than it cost, email hello@masspermits.com and I'll refund it — no forms, no argument. Cancel anytime from your Stripe receipt; any leads already delivered are yours to keep. — Pat</p>
     <h3>What do I actually get?</h3>
-    <p>A clean spreadsheet plus a polished PDF report: the permit holder, full property address, project type, and declared project value.</p>
+    <p>An interactive dashboard that opens in any browser, filterable by trade and town, plus spreadsheets (one master CSV and one per trade): the permit holder, full property address and project type, plus the declared project value where the town publishes one.</p>
   </div>
 
   <div id="digest" style="background:rgba(20,31,45,.68);border:1px solid var(--border);border-radius:14px;padding:24px 22px;margin:30px 0;text-align:center;backdrop-filter:blur(16px)">
