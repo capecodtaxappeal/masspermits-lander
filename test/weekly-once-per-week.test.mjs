@@ -314,6 +314,41 @@ test("a failed run on top does not make the guard forget bytes subscribers alrea
   assert.equal((await status(w, "2026-09-28T18:51:00Z")).verdict, "stale_bundle");
 });
 
+// Review scenario R3. The log keeps 12 entries. A is accepted and B rejected;
+// twelve more ordinary re-runs that week each try only B and are rejected, so
+// A's acceptance falls off the end of the log. Each of those re-runs recorded
+// `already_delivered: 1`: somebody held these bytes. If lastEtagEntry passed
+// over them as well, the log would hold no etag memory, the per-subscriber
+// guard would no longer see A, and the next ordinary run would mail A the same
+// bytes a second time. Main skips that run as an identical bundle, and so must
+// this branch.
+test("12 re-runs rejecting one subscriber do not let an ordinary run mail the other one again", async () => {
+  const roster = ROSTER.filter((s) => s.email !== C);
+  const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B], "E-0921")], etag: "E-0921", roster });
+  refresh(w, "2026-09-28T16:01:00Z", "E-0928");
+  failFor = new Set([B]);
+  const r0 = await send(w, "2026-09-28T17:00:00Z");
+  assert.equal(r0.status, 200);
+  assert.deepEqual(r0.to, [A], "A accepted, B rejected");
+  for (let i = 1; i <= 12; i++) {
+    const t = new RealDate(RealDate.parse("2026-09-28T17:00:00Z") + i * 5 * 60_000).toISOString();
+    const r = await send(w, t);
+    assert.deepEqual(r.to, [], "re-run " + i + " tries only B, and B is rejected again");
+    assert.equal(r.status, 424);
+    assert.equal(r.body.already_delivered, 1);
+  }
+  const log = w.r2.json("feed-send-log.json");
+  assert.equal(log.length, 12);
+  assert.ok(log.every((e) => e.already_delivered === 1 && e.sent.every((s) => !s.ok)),
+    "A's acceptance has been pushed out of the 12-entry log");
+
+  failFor = new Set();
+  const last = await send(w, "2026-09-28T18:10:00Z");               // ordinary run, no force
+  assert.ok(!last.to.includes(A), "A already holds these bytes and must not get them again");
+  assert.ok(last.body.skipped, "identical bundle: the etag memory still stands");
+  assert.equal(count(mail.map((m) => m.to), A), 1, "exactly one weekly email for A");
+});
+
 test("send-status still says `unknown` when a later attempt left no results", async () => {
   const w = world({ log: [entry("2026-09-21T17:52:00Z", [A, B, C], "E-0921")], etag: "E-0921" });
   refresh(w, "2026-09-28T16:01:00Z", "E-0928");
@@ -326,18 +361,24 @@ test("send-status still says `unknown` when a later attempt left no results", as
   assert.equal(s.retry_safe, false);
 });
 
-test("lastEtagEntry ignores a run that delivered to nobody, and nothing else", async () => {
+test("lastEtagEntry ignores a run that delivered to nobody when nobody already had it, and nothing else", async () => {
   const { lastEtagEntry } = await import(pathToFileURL(path.join(API, "_presend.js")).href);
   const allFailed = { at: "2026-09-28T17:52:00Z", bundle_etag: "E1", sent: [{ to: A, ok: false }, { to: B, ok: false }] };
   const partial = { at: "2026-09-28T17:00:00Z", bundle_etag: "E1", sent: [{ to: A, ok: true }, { to: B, ok: false }] };
   const skip = { at: "2026-09-28T16:00:00Z", bundle_etag: "E0", sent: [], skipped: "identical bundle" };
   const noSent = { at: "2026-09-21T17:52:00Z", bundle_etag: "E-old" };
+  const rerunFailed = { at: "2026-09-28T18:00:00Z", bundle_etag: "E1", sent: [{ to: B, ok: false }], already_delivered: 1 };
   assert.equal(lastEtagEntry([allFailed, partial]), partial);
   assert.equal(lastEtagEntry([allFailed, skip]), skip, "a skip still carries the etag memory");
   assert.equal(lastEtagEntry([allFailed, { ...allFailed }, noSent]), noSent, "an entry without a sent list still counts");
   assert.equal(lastEtagEntry([allFailed]), null);
   assert.equal(lastEtagEntry([{ ...allFailed, sent: [null, { to: A, ok: false }] }]), null);
   assert.equal(lastEtagEntry([partial, allFailed]), partial);
+  assert.equal(lastEtagEntry([rerunFailed, partial]), rerunFailed,
+    "an all-failed re-run after somebody already had the bytes still counts");
+  assert.equal(lastEtagEntry([rerunFailed]), rerunFailed, "even once the delivery itself has left the log");
+  assert.equal(lastEtagEntry([allFailed, rerunFailed]), rerunFailed);
+  assert.equal(lastEtagEntry([{ ...rerunFailed, already_delivered: 0 }]), null, "a zero count is nobody");
   for (const bad of [null, undefined, {}, "x", []]) assert.equal(lastEtagEntry(bad), null);
 });
 

@@ -128,6 +128,14 @@ export function holdDeadline(now, p = POLICY_DEFAULTS) {
 // written for bytes that had been delivered), as does any entry with at least
 // one accepted recipient, or one with no `sent` list at all. The pre-send gate
 // reads this too, so it no longer calls those bytes a duplicate either.
+//
+// An all-failed run that carries `already_delivered` still counts. It is a
+// re-run that tried only the people still missing, so somebody already held
+// these bytes that week. The log keeps 12 entries: twelve such re-runs (one
+// subscriber rejected every time) push out the entry that recorded the others'
+// delivery. Passing over them too left no etag memory at all, and the next
+// ordinary run mailed the others a second copy of the same bytes. Kept, they
+// make that run an etag skip, as before edge 1.
 export function deliveredToNobody(e) {
   return !!e && !e.skipped && Array.isArray(e.sent) && e.sent.length > 0 &&
     !e.sent.some((s) => s && s.ok);
@@ -135,7 +143,7 @@ export function deliveredToNobody(e) {
 
 export function lastEtagEntry(log) {
   if (!Array.isArray(log)) return null;
-  for (const e of log) if (e && e.bundle_etag && !deliveredToNobody(e)) return e;
+  for (const e of log) if (e && e.bundle_etag && !(deliveredToNobody(e) && !e.already_delivered)) return e;
   return null;
 }
 

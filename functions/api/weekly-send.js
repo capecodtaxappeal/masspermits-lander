@@ -151,6 +151,8 @@ export async function onRequest(context) {
     // a match whether that entry delivered or skipped. A run in which every
     // recipient FAILED is neither, so lastEtagEntry() passes over it: nobody
     // holds those bytes, and an ordinary re-run must be able to retry them.
+    // Unless that run records `already_delivered`: then somebody held these
+    // bytes that week, and the entry still counts.
     const prior = lastEtagEntry(priorLog);
     // Scoped to a week in which nobody has been delivered yet. Once somebody
     // has, the per-subscriber check above is the stricter guard, and the only
