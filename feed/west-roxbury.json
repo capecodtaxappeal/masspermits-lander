@@ -25,19 +25,239 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 136,
- "_window_from": "2026-09-02",
- "_window_to": "2026-09-30",
+ "_window_total": 142,
+ "_window_from": "2026-09-03",
+ "_window_to": "2026-10-02",
  "items": [
   {
-   "id": "f89baaf2bda05464",
+   "id": "5d5373fb7d87add6",
+   "url": "https://masspermits.com/permits/west-roxbury-hvac",
+   "title": "HVAC permit \u2014 Chesbrough Rd, West Roxbury ($500)",
+   "content_text": "HVAC permit in West Roxbury, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "HVAC",
+   "_value": 500.0
+  },
+  {
+   "id": "6b82b8af453757f0",
+   "url": "https://masspermits.com/permits/west-roxbury-hvac",
+   "title": "HVAC permit \u2014 Parklawn Rd, West Roxbury ($500)",
+   "content_text": "HVAC permit in West Roxbury, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "HVAC",
+   "_value": 500.0
+  },
+  {
+   "id": "c95a13c56d2c8044",
    "url": "https://masspermits.com/permits/west-roxbury-electrical",
-   "title": "Electrical permit \u2014 Centre St, West Roxbury ($14,000)",
-   "content_text": "Electrical permit in West Roxbury, MA. Value $14,000. Full lead at masspermits.com.",
+   "title": "Electrical permit \u2014 Manthorne Rd, West Roxbury ($18,000)",
+   "content_text": "Electrical permit in West Roxbury, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Electrical",
+   "_value": 18000.0
+  },
+  {
+   "id": "24aeaa68abe19a8d",
+   "url": "https://masspermits.com/permits/west-roxbury-solar",
+   "title": "Solar permit \u2014 Centre St, West Roxbury ($32,700)",
+   "content_text": "Solar permit in West Roxbury, MA. Value $32,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Solar",
+   "_value": 32700.0
+  },
+  {
+   "id": "a8ad234c2160fb27",
+   "url": "https://masspermits.com/permits/west-roxbury-solar",
+   "title": "Solar permit \u2014 Crosstown Av, West Roxbury ($41,559)",
+   "content_text": "Solar permit in West Roxbury, MA. Value $41,559. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Solar",
+   "_value": 41559.0
+  },
+  {
+   "id": "900b477d44cedfbc",
+   "url": "https://masspermits.com/permits/west-roxbury-electrical",
+   "title": "Electrical permit \u2014 Belgrade Av, West Roxbury ($50,000)",
+   "content_text": "Electrical permit in West Roxbury, MA. Value $50,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Electrical",
+   "_value": 50000.0
+  },
+  {
+   "id": "7ae4b153a396d588",
+   "url": "https://masspermits.com/permits/west-roxbury-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Centre St, West Roxbury ($350)",
+   "content_text": "Renovation/Remodel permit in West Roxbury, MA. Value $350. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Renovation/Remodel",
+   "_value": 350.0
+  },
+  {
+   "id": "1b60308d8b89ab54",
+   "url": "https://masspermits.com/permits/west-roxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Carlson Ci, West Roxbury ($12,405)",
+   "content_text": "Windows/Doors/Siding permit in West Roxbury, MA. Value $12,405. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 12405.0
+  },
+  {
+   "id": "f8b85b839bda475f",
+   "url": "https://masspermits.com/permits/west-roxbury-plumbing",
+   "title": "Plumbing permit \u2014 Washington St, West Roxbury ($5,000)",
+   "content_text": "Plumbing permit in West Roxbury, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Plumbing",
+   "_value": 5000.0
+  },
+  {
+   "id": "503c563a0781e030",
+   "url": "https://masspermits.com/permits/west-roxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Washington St, West Roxbury ($4,812)",
+   "content_text": "Windows/Doors/Siding permit in West Roxbury, MA. Value $4,812. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4812.0
+  },
+  {
+   "id": "e4f5dea33252518c",
+   "url": "https://masspermits.com/permits/west-roxbury-other",
+   "title": "Other permit \u2014 Montview St, West Roxbury ($3,000)",
+   "content_text": "Other permit in West Roxbury, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Other",
+   "_value": 3000.0
+  },
+  {
+   "id": "9143d01dde39be9e",
+   "url": "https://masspermits.com/permits/west-roxbury-electrical",
+   "title": "Electrical permit \u2014 Franclaire Dr, West Roxbury ($2,200)",
+   "content_text": "Electrical permit in West Roxbury, MA. Value $2,200. Full lead at masspermits.com.",
    "date_published": "2026-09-30T00:00:00Z",
    "_town": "West Roxbury",
    "_trade": "Electrical",
-   "_value": 14000.0
+   "_value": 2200.0
+  },
+  {
+   "id": "099dea93177580e5",
+   "url": "https://masspermits.com/permits/west-roxbury-hvac",
+   "title": "HVAC permit \u2014 Wycliff Av, West Roxbury ($129,500)",
+   "content_text": "HVAC permit in West Roxbury, MA. Value $129,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "HVAC",
+   "_value": 129500.0
+  },
+  {
+   "id": "ec8b52ad6cce9aa1",
+   "url": "https://masspermits.com/permits/west-roxbury-electrical",
+   "title": "Electrical permit \u2014 Rutledge St, West Roxbury ($1,500)",
+   "content_text": "Electrical permit in West Roxbury, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Electrical",
+   "_value": 1500.0
+  },
+  {
+   "id": "d995c5b51064428f",
+   "url": "https://masspermits.com/permits/west-roxbury-roofing",
+   "title": "Roofing permit \u2014 Oriole St, West Roxbury ($20,200)",
+   "content_text": "Roofing permit in West Roxbury, MA. Value $20,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Roofing",
+   "_value": 20200.0
+  },
+  {
+   "id": "88fb73b92e646f42",
+   "url": "https://masspermits.com/permits/west-roxbury-electrical",
+   "title": "Electrical permit \u2014 Cricket Ln, West Roxbury ($3,800)",
+   "content_text": "Electrical permit in West Roxbury, MA. Value $3,800. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Electrical",
+   "_value": 3800.0
+  },
+  {
+   "id": "4d8b367075b39eb7",
+   "url": "https://masspermits.com/permits/west-roxbury-electrical",
+   "title": "Electrical permit \u2014 Centre St, West Roxbury ($2,000)",
+   "content_text": "Electrical permit in West Roxbury, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Electrical",
+   "_value": 2000.0
+  },
+  {
+   "id": "05d7351dbb9a0996",
+   "url": "https://masspermits.com/permits/west-roxbury-other",
+   "title": "Other permit \u2014 Vogel St, West Roxbury ($5,000)",
+   "content_text": "Other permit in West Roxbury, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Other",
+   "_value": 5000.0
+  },
+  {
+   "id": "462ac95b25cc93dc",
+   "url": "https://masspermits.com/permits/west-roxbury-electrical",
+   "title": "Electrical permit \u2014 Vfw Pw, West Roxbury ($44,500)",
+   "content_text": "Electrical permit in West Roxbury, MA. Value $44,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Electrical",
+   "_value": 44500.0
+  },
+  {
+   "id": "8b6826cee183ce80",
+   "url": "https://masspermits.com/permits/west-roxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Garth Rd, West Roxbury ($19,014)",
+   "content_text": "Windows/Doors/Siding permit in West Roxbury, MA. Value $19,014. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 19014.0
+  },
+  {
+   "id": "4cfe5d58ac2dbb19",
+   "url": "https://masspermits.com/permits/west-roxbury-roofing",
+   "title": "Roofing permit \u2014 Bangor Rd, West Roxbury ($1,673)",
+   "content_text": "Roofing permit in West Roxbury, MA. Value $1,673. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Roofing",
+   "_value": 1673.0
+  },
+  {
+   "id": "f69d4efc9fce0229",
+   "url": "https://masspermits.com/permits/west-roxbury-gas",
+   "title": "Gas permit \u2014 Welton Rd, West Roxbury ($500)",
+   "content_text": "Gas permit in West Roxbury, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "Gas",
+   "_value": 500.0
+  },
+  {
+   "id": "9ff77707bd25555c",
+   "url": "https://masspermits.com/permits/west-roxbury-hvac",
+   "title": "HVAC permit \u2014 Washington St, West Roxbury ($8,000)",
+   "content_text": "HVAC permit in West Roxbury, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "West Roxbury",
+   "_trade": "HVAC",
+   "_value": 8000.0
   },
   {
    "id": "d6fad37078286b87",
@@ -70,7 +290,7 @@
    "_value": 48806.0
   },
   {
-   "id": "7cc01fdaf2f848b2",
+   "id": "01283325381d6bc2",
    "url": "https://masspermits.com/permits/west-roxbury-plumbing",
    "title": "Plumbing permit \u2014 Glenhaven Rd, West Roxbury ($2,247)",
    "content_text": "Plumbing permit in West Roxbury, MA. Value $2,247. Full lead at masspermits.com.",
@@ -150,16 +370,6 @@
    "_value": 3500.0
   },
   {
-   "id": "a7d2941def3b483d",
-   "url": "https://masspermits.com/permits/west-roxbury-solar",
-   "title": "Solar permit \u2014 Centre St, West Roxbury ($32,700)",
-   "content_text": "Solar permit in West Roxbury, MA. Value $32,700. Full lead at masspermits.com.",
-   "date_published": "2026-09-25T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Solar",
-   "_value": 32700.0
-  },
-  {
    "id": "edaf5da3418de58d",
    "url": "https://masspermits.com/permits/west-roxbury",
    "title": "Deck/Porch permit \u2014 Corey St, West Roxbury ($15,800)",
@@ -178,16 +388,6 @@
    "_town": "West Roxbury",
    "_trade": "Windows/Doors/Siding",
    "_value": 62442.0
-  },
-  {
-   "id": "9f57b4f8cff93b1e",
-   "url": "https://masspermits.com/permits/west-roxbury-solar",
-   "title": "Solar permit \u2014 Crosstown Av, West Roxbury ($29,091)",
-   "content_text": "Solar permit in West Roxbury, MA. Value $29,091. Full lead at masspermits.com.",
-   "date_published": "2026-09-25T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Solar",
-   "_value": 29091.3
   },
   {
    "id": "96a7ceeed7b57282",
@@ -428,206 +628,6 @@
    "_town": "West Roxbury",
    "_trade": "Roofing",
    "_value": 40000.0
-  },
-  {
-   "id": "4ef7ff23d1ef8fa3",
-   "url": "https://masspermits.com/permits/west-roxbury-roofing",
-   "title": "Roofing permit \u2014 Bonair St, West Roxbury ($9,600)",
-   "content_text": "Roofing permit in West Roxbury, MA. Value $9,600. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Roofing",
-   "_value": 9600.0
-  },
-  {
-   "id": "ac62ed779ab27552",
-   "url": "https://masspermits.com/permits/west-roxbury-other",
-   "title": "Other permit \u2014 New Haven St, West Roxbury ($5,000)",
-   "content_text": "Other permit in West Roxbury, MA. Value $5,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Other",
-   "_value": 5000.0
-  },
-  {
-   "id": "3137012873d79139",
-   "url": "https://masspermits.com/permits/west-roxbury-electrical",
-   "title": "Electrical permit \u2014 Anawan Av, West Roxbury ($9,000)",
-   "content_text": "Electrical permit in West Roxbury, MA. Value $9,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Electrical",
-   "_value": 9000.0
-  },
-  {
-   "id": "2b8641be1da7ea37",
-   "url": "https://masspermits.com/permits/west-roxbury-electrical",
-   "title": "Electrical permit \u2014 Hastings St, West Roxbury ($1,035)",
-   "content_text": "Electrical permit in West Roxbury, MA. Value $1,035. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Electrical",
-   "_value": 1035.0
-  },
-  {
-   "id": "56626db7cab747b0",
-   "url": "https://masspermits.com/permits/west-roxbury-other",
-   "title": "Other permit \u2014 Sturges Rd, West Roxbury ($3,634)",
-   "content_text": "Other permit in West Roxbury, MA. Value $3,634. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Other",
-   "_value": 3633.82
-  },
-  {
-   "id": "69d07e34122aadc7",
-   "url": "https://masspermits.com/permits/west-roxbury-solar",
-   "title": "Solar permit \u2014 De Soto Rd, West Roxbury ($52,800)",
-   "content_text": "Solar permit in West Roxbury, MA. Value $52,800. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Solar",
-   "_value": 52800.0
-  },
-  {
-   "id": "bdf572d8c2e94843",
-   "url": "https://masspermits.com/permits/west-roxbury-roofing",
-   "title": "Roofing permit \u2014 Worley St, West Roxbury ($3,760)",
-   "content_text": "Roofing permit in West Roxbury, MA. Value $3,760. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Roofing",
-   "_value": 3760.0
-  },
-  {
-   "id": "c2f048f9439f66d2",
-   "url": "https://masspermits.com/permits/west-roxbury",
-   "title": "Deck/Porch permit \u2014 Avalon Rd, West Roxbury ($30,000)",
-   "content_text": "Deck/Porch permit in West Roxbury, MA. Value $30,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Deck/Porch",
-   "_value": 30000.0
-  },
-  {
-   "id": "ffd320fc949ff6cd",
-   "url": "https://masspermits.com/permits/west-roxbury-kitchen-bath",
-   "title": "Kitchen/Bath permit \u2014 Stratford St, West Roxbury ($10,000)",
-   "content_text": "Kitchen/Bath permit in West Roxbury, MA. Value $10,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Kitchen/Bath",
-   "_value": 10000.0
-  },
-  {
-   "id": "bbf8e4f4e50f7289",
-   "url": "https://masspermits.com/permits/west-roxbury-plumbing",
-   "title": "Plumbing permit \u2014 Bogandale Rd, West Roxbury ($4,000)",
-   "content_text": "Plumbing permit in West Roxbury, MA. Value $4,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Plumbing",
-   "_value": 4000.0
-  },
-  {
-   "id": "fcf61b1e228e6174",
-   "url": "https://masspermits.com/permits/west-roxbury-gas",
-   "title": "Gas permit \u2014 Cheriton Rd, West Roxbury ($200)",
-   "content_text": "Gas permit in West Roxbury, MA. Value $200. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Gas",
-   "_value": 200.0
-  },
-  {
-   "id": "35518c5c462b5a45",
-   "url": "https://masspermits.com/permits/west-roxbury-gas",
-   "title": "Gas permit \u2014 Mount Vernon St, West Roxbury ($1,500)",
-   "content_text": "Gas permit in West Roxbury, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Gas",
-   "_value": 1500.0
-  },
-  {
-   "id": "6eea7b8f43fa8e9c",
-   "url": "https://masspermits.com/permits/west-roxbury-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Yorktown St, West Roxbury ($55,000)",
-   "content_text": "Windows/Doors/Siding permit in West Roxbury, MA. Value $55,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 55000.0
-  },
-  {
-   "id": "e46e20fbe643e452",
-   "url": "https://masspermits.com/permits/west-roxbury-roofing",
-   "title": "Roofing permit \u2014 Yorktown St, West Roxbury ($13,500)",
-   "content_text": "Roofing permit in West Roxbury, MA. Value $13,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Roofing",
-   "_value": 13500.0
-  },
-  {
-   "id": "b0e275bec448a746",
-   "url": "https://masspermits.com/permits/west-roxbury-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Billings St, West Roxbury ($10,000)",
-   "content_text": "Windows/Doors/Siding permit in West Roxbury, MA. Value $10,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 10000.0
-  },
-  {
-   "id": "703467d5e03110fb",
-   "url": "https://masspermits.com/permits/west-roxbury-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Sunnybank Rd, West Roxbury ($19,508)",
-   "content_text": "Windows/Doors/Siding permit in West Roxbury, MA. Value $19,508. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 19507.69
-  },
-  {
-   "id": "5ddecd01f690d5d6",
-   "url": "https://masspermits.com/permits/west-roxbury-hvac",
-   "title": "HVAC permit \u2014 Durant St, West Roxbury ($3,500)",
-   "content_text": "HVAC permit in West Roxbury, MA. Value $3,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "HVAC",
-   "_value": 3500.0
-  },
-  {
-   "id": "ea2bd6fb5445a69e",
-   "url": "https://masspermits.com/permits/west-roxbury-hvac",
-   "title": "HVAC permit \u2014 Woodley Av, West Roxbury ($1,200)",
-   "content_text": "HVAC permit in West Roxbury, MA. Value $1,200. Full lead at masspermits.com.",
-   "date_published": "2026-09-18T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "HVAC",
-   "_value": 1200.0
-  },
-  {
-   "id": "b3554c1657c90fb6",
-   "url": "https://masspermits.com/permits/west-roxbury-hvac",
-   "title": "HVAC permit \u2014 Church St, West Roxbury ($2,500)",
-   "content_text": "HVAC permit in West Roxbury, MA. Value $2,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-18T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "HVAC",
-   "_value": 2500.0
-  },
-  {
-   "id": "93dfbff63355b756",
-   "url": "https://masspermits.com/permits/west-roxbury-plumbing",
-   "title": "Plumbing permit \u2014 Oriole St, West Roxbury ($500)",
-   "content_text": "Plumbing permit in West Roxbury, MA. Value $500. Full lead at masspermits.com.",
-   "date_published": "2026-09-18T00:00:00Z",
-   "_town": "West Roxbury",
-   "_trade": "Plumbing",
-   "_value": 500.0
   }
  ]
 }
