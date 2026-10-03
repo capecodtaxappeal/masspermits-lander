@@ -228,12 +228,17 @@ export async function onRequest(context) {
     // 424 (Failed Dependency: the mail provider failed) is deliberately NOT a
     // status weekly-feed.yml's `curl --retry 3` repeats. A repeated 5xx would
     // re-trigger the whole run within seconds, and this run's recipients are
-    // all still eligible (lastEtagEntry ignores a run that delivered to
-    // nobody), so one trigger would become four attempts each. A human, or the
-    // next ordinary run, retries instead. The results are logged above.
+    // all still eligible (none of them was delivered, and the same-bundle
+    // guard does not hold them back: see lastEtagEntry), so one trigger would
+    // become four attempts each. A human, or the next ordinary run, retries
+    // instead. The results are logged above.
+    // The wording is about THIS run only. A re-run that completes a partial
+    // week tries only the people still missing, and the ones it left out
+    // already had the file, so it reports how many (a count, never an address).
     if (sent.length && bad.length === sent.length) {
-      return json({ ok: false, error: "every delivery in this run failed, so nobody received the file; " +
-                    "results are in feed-send-log.json and an ordinary re-run retries them",
+      return json({ ok: false, error: "every delivery in this run failed, so nobody in this run received the file" +
+                    (already ? " (" + already + " subscriber(s) already had this week's email)" : "") +
+                    "; results are in feed-send-log.json and an ordinary re-run retries them",
                     subscribers: subs.length, delivered: 0, failed: bad.length,
                     ...(already ? { already_delivered: already } : {}) }, 424);
     }

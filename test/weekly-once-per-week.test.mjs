@@ -249,6 +249,9 @@ test("a Resend outage (nobody delivered) is retried by an ordinary re-run of the
   assert.equal(r1.status, 424, "non-2xx, and not one weekly-feed.yml's curl --retry repeats");
   assert.equal(r1.body.delivered, 0);
   assert.equal(r1.body.failed, 3);
+  assert.match(r1.body.error, /nobody in this run received the file;/);
+  assert.ok(!/already had/.test(r1.body.error), "no already-delivered clause when nobody had it");
+  assert.equal(r1.body.already_delivered, undefined);
   noAddr(r1.body);
   assert.deepEqual(w.r2.json("feed-send-log.json")[0].sent.map((s) => s.ok), [false, false, false],
     "per-recipient results are still logged");
@@ -287,6 +290,9 @@ test("a re-run that completes a partial week but delivers to nobody is not repor
   assert.equal(r2.body.ok, false);
   assert.equal(r2.body.failed, 1);
   assert.equal(r2.body.already_delivered, 2);
+  // Not "nobody received the file": two subscribers did, in the earlier run.
+  assert.match(r2.body.error, /nobody in this run received the file \(2 subscriber\(s\) already had this week's email\);/);
+  noAddr(r2.body);
   const s = await status(w, "2026-09-28T18:51:00Z");
   assert.equal(s.verdict, "partial", "two of three have it: still partial");
   assert.equal(s.last_failed, 1);
