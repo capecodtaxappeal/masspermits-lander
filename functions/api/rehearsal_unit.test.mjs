@@ -217,6 +217,18 @@ const at = (s) => Date.parse(s);
   check("dates found: 1 August, 11 August, ISO", ["2026-08-01", "2026-08-11", "2026-09-30"].every((d) => ds.includes(d)), ds.join(","));
   const jan = R.datesInText("December 30", "2026-01-05").map(R.isoDay);
   check("a day-month after the run date falls back a year", jan[0] === "2025-12-30", jan.join(","));
+  // A date is a claim about NOW only after a currency cue in the same sentence.
+  const ph = (t) => R.datedPhrases(t, "2026-10-04").map((x) => R.isoDay(x.t) + (x.current ? " now" : " past")).join(",");
+  check("dated phrases: 'back as of 11 August' is current, 'On 1 August ... dropped out' is past",
+    ph("On 1 August a large group of towns dropped out. Chatham is back as of 11 August.") === "2026-08-01 past,2026-08-11 now",
+    ph("On 1 August a large group of towns dropped out. Chatham is back as of 11 August."));
+  check("dated phrases: 'updated 2026-09-01' and 'data through September 2' are current",
+    ph("Data updated 2026-09-01; data through September 2.") === "2026-09-01 now,2026-09-02 now",
+    ph("Data updated 2026-09-01; data through September 2."));
+  check("dated phrases: a cue in an EARLIER sentence does not carry over",
+    ph("Updated weekly. On 1 August towns dropped out.") === "2026-08-01 past", ph("Updated weekly. On 1 August towns dropped out."));
+  check("dated phrases: tags are stripped before the words are read",
+    ph("<p>as of <b>11 August</b></p>") === "2026-08-11 now", ph("<p>as of <b>11 August</b></p>"));
 }
 
 check("fetch stub: 0 calls", stub.calls.length === 0);

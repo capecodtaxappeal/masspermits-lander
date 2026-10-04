@@ -57,14 +57,27 @@ const SAT = { now: at("2026-10-03T20:30:00Z"), date: "2026-10-03", refreshAt: at
 const SUN = { now: at("2026-10-04T20:30:00Z"), date: "2026-10-04", refreshAt: at("2026-10-04T14:00:00Z") };
 const MON_SEND = at("2026-09-28T14:00:00Z");
 const day = (ms) => new Date(ms).toISOString().slice(0, 10);
+// The field names and shapes are the production engine's (hosted_refresh.py
+// _write_status and _summarize, engine a1e68864, checked against a real
+// refresh-status.json of 2026-09-30): newest, oldest, truncated, window_days,
+// cadence, contracts {ran, blocked[{source, rows, scope, ...}], ...} and
+// coverage.attempted_sources. Town names here are invented.
+function contracts(over = {}) {
+  return { schema: 1, ran: true, status: "ok", error: null, blocked: [], warned: [], warned_omitted: 0,
+    privacy_block: false, site_privacy_block: false, degraded_by_contracts: false,
+    rows_in: 5702, rows_shipped: 5702, rows_blocked: 0, ...over };
+}
 function fullStatus(ranAt, date, over = {}) {
   const d0 = at(date + "T00:00:00Z");
   const st = K.status(ranAt);
-  st.coverage = { live_sources: 39, expected_sources: 140, disclose: false, monthly_sources: ["Testville, MA"] };
+  st.coverage = { live_sources: 39, expected_sources: 140, attempted_sources: 40, disclose: false,
+    monthly_sources: ["Testville, MA"] };
   st.cadence = { "Testville, MA": "monthly" };
-  st.source_newest = { boston: day(d0 - 1 * DAY), cambridge: day(d0 - 3 * DAY), "Testville, MA": day(d0 - 20 * DAY) };
-  st.window_loss = { "Testville, MA": 0 };
-  st.contracts = { ran: true, paid_blocks: 0, live: 5, attempted: 6, dead_status_rows: 0 };
+  st.newest = { "Boston, MA": day(d0 - 1 * DAY), "Cambridge, MA": day(d0 - 3 * DAY), "Testville, MA": day(d0 - 20 * DAY) };
+  st.oldest = { "Boston, MA": day(d0 - 179 * DAY), "Cambridge, MA": day(d0 - 178 * DAY), "Testville, MA": day(d0 - 300 * DAY) };
+  st.truncated = {};
+  st.window_days = 180;
+  st.contracts = contracts();
   for (const [k, v] of Object.entries(over)) { if (v === undefined) delete st[k]; else st[k] = v; }
   return st;
 }
@@ -144,7 +157,7 @@ function judge(id, chk, fault, twin, code, note = "") {
 
 { // I-17 Boston newest 6 days -> C10
   const st = fullStatus(SAT.refreshAt, SAT.date);
-  st.source_newest.boston = "2026-09-27";
+  st.newest["Boston, MA"] = "2026-09-27";
   const f = await fx({ ...SAT, mode: "sat", status: st });
   judge("I-17", "C10", f, satOk, "C10.source_stale:boston");
   check("I-17: the stale code is ackable, and a valid ack lists it as Known open (no NO-GO)",
@@ -154,21 +167,47 @@ function judge(id, chk, fault, twin, code, note = "") {
   check("I-17 acked: C10.source_stale:boston is Known open, not in the response codes",
     !acked.codes.includes("C10.source_stale:boston") && acked.rec.findings.includes("NO-GO C10.source_stale:boston acked"));
   check("I-17: Boston 4 days old is still fresh (the limit is <= 4)", R.checkC10({ status: {
-    source_newest: { boston: "2026-09-29" } }, date: "2026-10-03" })[0].result === "PASS");
+    newest: { "Boston, MA": "2026-09-29" } }, date: "2026-10-03" })[0].result === "PASS");
+  // The engine's own per-source limits (source_health.py STALE_PER_SOURCE):
+  // towns that publish in arrears are not stale at their normal age.
+  const arrears = R.checkC10({ status: { newest: { "Boston, MA": "2026-10-02", "Lowell, MA": "2026-06-30",
+    "Bourne, MA": "2026-07-20", "Provincetown, MA": "2026-07-25", "North Attleborough, MA": "2026-06-30" },
+    cadence: { "Lowell, MA": "monthly", "Bourne, MA": "monthly", "Provincetown, MA": "monthly",
+      "North Attleborough, MA": "monthly" } }, date: "2026-10-03" });
+  check("C10: Lowell 95, Bourne 75, Provincetown 70 and North Attleborough 95 days old are inside the engine's own limits",
+    arrears.length === 1 && arrears[0].result === "PASS", JSON.stringify(arrears.map((r) => r.code)));
+  const waltham = R.checkC10({ status: { newest: { "Boston, MA": "2026-10-02", "Waltham, MA": "2026-07-31" },
+    cadence: { "Waltham, MA": "monthly" } }, date: "2026-10-01" });
+  check("C10: a monthly town 62 days old (Waltham on 2026-10-01) is NO-GO C10.source_stale:waltham",
+    waltham.some((r) => r.result === "NO-GO" && r.code === "C10.source_stale:waltham"));
+  check("C10: the field the engine does not write (source_newest) is not read: BLIND C10.no_newest",
+    R.checkC10({ status: { source_newest: { boston: "2026-10-02" } }, date: "2026-10-03" })[0].code === "C10.no_newest");
 }
-{ // I-25 window_loss field -> C11 (reader only)
-  const st = fullStatus(SAT.refreshAt, SAT.date, { window_loss: { "Testville, MA": 12 } });
+{ // I-25 a source's window cut short by the row cap -> C11 WARN (computed from truncated, oldest, window_days)
+  const st = fullStatus(SAT.refreshAt, SAT.date);
+  st.truncated = { "Falmouth, MA": 2400 };
+  st.newest["Falmouth, MA"] = "2026-10-02";
+  st.oldest["Falmouth, MA"] = "2026-06-19";  // 106 of 180 days shipped
   const f = await fx({ ...SAT, mode: "sat", status: st });
-  judge("I-25", "C11", f, satOk, "C11.window_loss", "reader only");
-  const absent = await fx({ ...SAT, mode: "sat", status: fullStatus(SAT.refreshAt, SAT.date, { window_loss: undefined }) });
-  check("I-25: window_loss absent is BLIND, never PASS", absent.worst("C11") === "BLIND" && absent.has("C11.no_window_loss"));
+  judge("I-25", "C11", f, satOk, "C11.window_short:falmouth", "computed from truncated + oldest + window_days");
+  check("I-25: a short window is WARN (a standing engine cap), never NO-GO", f.worst("C11") === "WARN" && f.v === satOk.v);
+  const line = R.checkC11({ status: st, date: SAT.date })[0].detail_private[0];
+  check("I-25: the digest line names the town and the days missing", line === "falmouth: oldest 2026-06-19, 74 of 180 days missing (row cap)", line);
+  check("I-25: C11.window_short:<town> is ackable", R.isAckable("C11.window_short:falmouth"));
+  const whole = R.checkC11({ status: { ...st, oldest: { ...st.oldest, "Falmouth, MA": "2026-04-08" } }, date: SAT.date });
+  check("C11: a truncated town whose span still covers the window (slack 3 days) PASSes", whole[0].result === "PASS",
+    JSON.stringify(whole.map((r) => r.code)));
+  const absent = await fx({ ...SAT, mode: "sat", status: fullStatus(SAT.refreshAt, SAT.date, { truncated: undefined }) });
+  check("I-25: truncated absent is BLIND, never PASS", absent.worst("C11") === "BLIND" && absent.has("C11.no_window_fields"));
   check("I-25: an Extended BLIND does not change the verdict", absent.v === satOk.v);
+  check("C11: a truncated town with no oldest date is BLIND C11.source_absent",
+    R.checkC11({ status: { truncated: { "X, MA": 2400 }, oldest: {}, window_days: 180 }, date: SAT.date })[0].code === "C11.source_absent");
 }
 { // I-26 dead and stale sources -> C10, C12
   const st = fullStatus(SAT.refreshAt, SAT.date);
-  st.source_newest.cambridge = "2026-09-01";
+  st.newest["Cambridge, MA"] = "2026-09-01";
   st.coverage.live_sources = 34;
-  st.errors = { cambridge: "returned 0 rows" };
+  st.errors = { "Cambridge, MA": "returned 0 rows" };
   st.source_health = { dead: ["Lowell"], failing: [], vanished: [], collapsed: [] };
   const f = await fx({ ...SAT, mode: "sat", status: st });
   judge("I-26", "C10", f, satOk, "C10.source_stale:cambridge");
@@ -197,13 +236,27 @@ function judge(id, chk, fault, twin, code, note = "") {
   check("C12 with no baseline at all is BLIND C12.no_baseline", nb.has("C12.no_baseline") && nb.worst("C12") === "BLIND");
 }
 { // I-27 contracts.ran false, live > attempted -> C13
-  const st = fullStatus(SAT.refreshAt, SAT.date, { contracts: { ran: false, paid_blocks: 0, live: 9, attempted: 6, dead_status_rows: 0 } });
+  const st = fullStatus(SAT.refreshAt, SAT.date, { contracts: contracts({ ran: false, status: "unavailable" }) });
+  st.coverage.live_sources = 9;
+  st.coverage.attempted_sources = 6;
   const f = await fx({ ...SAT, mode: "sat", status: st });
   judge("I-27", "C13", f, satOk, "C13.contracts_not_run");
-  check("I-27: live > attempted is also reported", f.has("C13.live_over_attempted"));
-  const u = R.checkC13({ status: { contracts: { ran: true, paid_blocks: 2, live: 1, attempted: 1, dead_status_rows: 3 } } });
-  check("C13 unit: paid blocks and dead-status rows are NO-GO",
-    u.map((r) => r.code).sort().join() === "C13.dead_status_rows,C13.paid_blocks");
+  check("I-27: live > attempted (coverage) is also reported", f.has("C13.live_over_attempted"));
+  const cov = { live_sources: 1, attempted_sources: 1 };
+  const paid = { source: "Testburg, MA", rows: 300, scope: "all", privacy: false, rules: ["address_shape"], why: "x" };
+  const sample = { source: "Sampleton, MA", rows: 90, scope: "sample", privacy: true, rules: ["masked_view_is_actually_masked"], why: "y" };
+  const u = R.checkC13({ status: { coverage: cov, contracts: contracts({ status: "block", blocked: [paid, sample], dead_status_rows: 3 }) } });
+  check("C13 unit: a scope:all block and dead-status rows are NO-GO; a sample-only block is not a paid block",
+    u.map((r) => r.code).sort().join() === "C13.dead_status_rows,C13.paid_blocks" &&
+    u.find((r) => r.code === "C13.paid_blocks").detail_private[0] === "1 source(s) blocked from the paid file: testburg",
+    JSON.stringify(u.map((r) => [r.code, r.detail_private])));
+  const s1 = R.checkC13({ status: { coverage: cov, contracts: contracts({ status: "block", blocked: [sample] }) } });
+  check("C13 unit: only sample-scoped blocks (the 2026-09-30 production state) PASS", s1.length === 1 && s1[0].result === "PASS");
+  const legacy = R.checkC13({ status: { coverage: cov, contracts: { ran: true, paid_blocks: 2 } } });
+  check("C13 unit: the first contract shape (numeric paid_blocks) is still read", legacy.some((r) => r.code === "C13.paid_blocks"));
+  const noCov = R.checkC13({ status: { contracts: contracts() } });
+  check("C13 unit: coverage counts absent is BLIND C13.fields_absent", noCov[0].code === "C13.fields_absent" &&
+    noCov[0].detail_private[0] === "absent: coverage.live_sources, coverage.attempted_sources");
   check("C13 unit: contracts absent is BLIND", R.checkC13({ status: {} })[0].code === "C13.no_contracts");
 }
 { // I-30 roster email inside index.html -> C15 (and a token prefix inside offer.html)

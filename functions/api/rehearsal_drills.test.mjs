@@ -15,6 +15,7 @@
 import { makeRunner, makeFetchStub, resendFixture, HTMLRewriterStub } from "../../test/rehearsal/harness.mjs";
 import * as K from "../../test/rehearsal/rehearsal_kit.mjs";
 import * as R from "./_rehearsal.js";
+import { renderWeekly } from "./_rehearsal_mail.js";
 
 const RESEND = "https://api.resend.com/emails";
 const rs = resendFixture(RESEND);
@@ -198,12 +199,33 @@ const C5_TWIN = ["PASS", "WARN"];
   judge("I-20", "C14", f, base.sat, { code: "C14.house_numbers", note: "runner scan: runner.test.mjs" });
   judge("I-21", "C14", f, base.sat, { code: "C14.owner_cue", note: "runner scan: runner.test.mjs" });
 }
-{ // I-22 today's shipped copy at 2026-10-04 (reduced coverage disclosed) -> C5 NO-GO
+{ // I-22 the coverage copy that shipped until main f73ca0af9 ("back as of 11 August",
+  // "largest upstream provider") -> C5 NO-GO. Rendered through the pure check with that
+  // copy, because the shipped copy no longer carries it.
+  const OLD_NOTE = "<p>This file covers <b>39 of 140</b> town sources. On 1 August our largest upstream provider " +
+    "closed public access to its permit records. We are rebuilding town by town from municipal sources, " +
+    "Worcester, Cambridge, Lexington and Chatham are back as of 11 August.</p>";
+  const subs = K.roster(3);
+  const c5 = (render) => R.checkC5({ roster: { ok: true, rows: subs }, ...R.validateRunnerFacts(K.facts()),
+    date: "2026-10-04", coverage: { live_sources: 39, expected_sources: 140, disclose: true }, weeklySize: 4096, render });
+  const oldCopy = (o) => { const m = renderWeekly(o); return { ...m, html: m.html.replace("<p>Hi", OLD_NOTE + "<p>Hi") }; };
+  const old = c5(oldCopy);
+  const code = (rs, c) => rs.find((r) => r.code === c);
+  const ok = !!code(old, "C5.stale_date") && code(old, "C5.stale_date").result === "NO-GO" &&
+    code(old, "C5.stale_date").detail_private.join(" ").includes("2026-08-11 as current") &&
+    !!code(old, "C5.vendor_words") && code(old, "C5.vendor_words").result === "NO-GO";
+  check("I-22: the old copy is NO-GO C5.stale_date (11 August given as current) and C5.vendor_words", ok,
+    JSON.stringify(old.map((r) => [r.result, r.code, r.detail_private])));
+  // Today's shipped copy at 2026-10-04 (reduced coverage disclosed): "On 1 August a large group
+  // of towns dropped out of our coverage" dates a past event, so it is WARN C5.dated_history,
+  // never NO-GO C5.stale_date (the false alarm this lint used to raise every weekend).
   const st = K.status(SUN.refreshAt, { coverage: { live_sources: 39, expected_sources: 140, disclose: true,
     monthly_sources: ["Chatham, MA"] } });
   const f = await fx({ ...SUN, worldOpts: { status: st } });
-  judge("I-22", "C5", f, base.sun, { code: "C5.stale_date", twinOk: C5_TWIN });
-  check("I-22: the copy's \"upstream provider\" is NO-GO C5.vendor_words", f.has("C5.vendor_words"));
+  const today = !f.has("C5.stale_date") && !f.has("C5.vendor_words") && f.has("C5.dated_history") && f.worst("C5") === "WARN";
+  check("I-22 twin: today's shipped coverage copy is WARN C5.dated_history, not NO-GO", today, JSON.stringify(f.rec.findings));
+  row("I-22", "C5", "NO-GO C5.stale_date + C5.vendor_words on the old copy; today's copy WARN C5.dated_history",
+    ok && today ? "Y" : "N", "old copy rendered through the pure check");
 }
 { // I-23 no text/plain -> C5 WARN (the DMARC half is C22: rehearsal_r3b.test.mjs)
   const ok = base.sat.has("C5.style_no_text_part") && base.sat.worst("C5") === "WARN";

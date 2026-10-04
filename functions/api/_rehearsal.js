@@ -49,9 +49,9 @@ const pass = (id, code = id + ".ok", extra) => res(id, "PASS", code, extra);
 // or before its date, and only if its date is at most 28 days after the run
 // date (so nothing can be acked for longer than four weeks at a time).
 export const ACKABLE = [
-  "C5.purchase_copy", "C5.style_*", "C9.guard1_late", "C10.source_stale:*",
-  "C13.contracts_not_run", "C15.feed_log_emails", "C17.inbox_never", "C17.inbox_stale",
-  "C19.no_open", "C21.unattested",
+  "C5.purchase_copy", "C5.style_*", "C5.dated_history", "C9.guard1_late", "C10.source_stale:*",
+  "C11.window_short:*", "C13.contracts_not_run", "C15.feed_log_emails", "C17.inbox_never",
+  "C17.inbox_stale", "C19.no_open", "C21.unattested",
 ];
 export const ACK_MAX_DAYS = 28;
 export function isAckable(code) {
@@ -95,6 +95,9 @@ export function nogoCodes(results) {
 // ── digest ──────────────────────────────────────────────────────────────────
 export const ROSTER_UNREADABLE_TEXT =
   "The subscriber list could not be read; nothing that depends on it was checked.";
+// The em dash, built from its code point so no outbound literal in this file
+// carries one (test/no-dash-outbound.test.mjs scans every literal).
+const EM_DASH = String.fromCharCode(0x2014);
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // composeDigest(results, ctx) -> {subject, html}. The first line is the
@@ -132,7 +135,7 @@ export function composeDigest(results, ctx = {}) {
     (ctx.ciOnly && ctx.ciOnly.length ? `<p>Checked in CI, not per run: ${esc(ctx.ciOnly.join(", "))}</p>` : "") +
     "</div>";
   const subject = `${verdict} | MassPermits rehearsal ${ctx.mode || ""} ${ctx.date || ""}`.trim();
-  return { subject: subject.replace(/—/g, "-"), html: html.replace(/—/g, "-") };
+  return { subject: subject.split(EM_DASH).join("-"), html: html.split(EM_DASH).join("-") };
 }
 
 // ── runner facts ────────────────────────────────────────────────────────────
@@ -426,11 +429,25 @@ const MONTHS = ["january", "february", "march", "april", "may", "june", "july", 
 // Every calendar date written in the copy, as ms. A day-month date with no
 // year takes the run date's year, or the year before if that would be after it.
 export function datesInText(text, date) {
+  return datedPhrases(text, date).map((x) => x.t);
+}
+// The same dates, each with whether the copy presents it as the state of
+// things NOW. Words just before the date decide it: "back as of 11 August",
+// "updated 11 August", "data through 11 August" claim currency, so an old date
+// there is a stale claim. "On 1 August a large group of towns dropped out of
+// our coverage" dates a past event: it stays true however old it gets, so it
+// is history, not a stale claim (2026-10-04: the shipped weekly copy says
+// exactly that, and the old lint called it NO-GO every weekend).
+const CURRENCY_CUE = /\b(as of|as at|as on|updated|update|current|currently|latest|through|thru|until|till|effective|valid|starting|beginning)\b/i;
+export function datedPhrases(text, date) {
   const s = String(text).replace(/<[^>]*>/g, " ");
   const d0 = dateMs(date);
   const y0 = new Date(d0).getUTCFullYear();
   const out = [];
-  for (const m of s.matchAll(/\b(\d{4})-(\d{2})-(\d{2})\b/g)) out.push(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+  // The last four words before the date, inside the same sentence.
+  const lead = (i) => s.slice(0, i).split(/[.!?:;]/).pop().trim().split(/\s+/).slice(-4).join(" ");
+  const push = (t, i) => out.push({ t, current: CURRENCY_CUE.test(lead(i)) });
+  for (const m of s.matchAll(/\b(\d{4})-(\d{2})-(\d{2})\b/g)) push(Date.UTC(+m[1], +m[2] - 1, +m[3]), m.index);
   const mon = MONTHS.join("|");
   const dm = new RegExp(`\\b(\\d{1,2})\\s+(${mon})\\b|\\b(${mon})\\s+(\\d{1,2})\\b`, "gi");
   for (const m of s.matchAll(dm)) {
@@ -438,7 +455,7 @@ export function datesInText(text, date) {
     const mi = MONTHS.indexOf((m[2] || m[3]).toLowerCase());
     let t = Date.UTC(y0, mi, day);
     if (t > d0) t = Date.UTC(y0 - 1, mi, day);
-    out.push(t);
+    push(t, m.index);
   }
   return out;
 }
@@ -479,10 +496,13 @@ export function checkC5(ctx) {
     const text = (m.subject + " " + html).toLowerCase();
     const vend = VENDOR_WORDS.filter((w) => text.includes(w));
     if (vend.length) add("NO-GO", "C5.vendor_words", buyer, "copy says " + vend.map((w) => `"${w}"`).join(", "));
-    const old = datesInText(m.subject + " " + html, date).filter((t) => d0 - t > 21 * DAY);
-    if (old.length) add("NO-GO", "C5.stale_date", buyer, "copy names " + old.map(isoDay).join(", "));
+    const old = datedPhrases(m.subject + " " + html, date).filter((x) => d0 - x.t > 21 * DAY);
+    const claim = old.filter((x) => x.current).map((x) => isoDay(x.t));
+    const past = old.filter((x) => !x.current).map((x) => isoDay(x.t));
+    if (claim.length) add("NO-GO", "C5.stale_date", buyer, "copy gives " + claim.join(", ") + " as current");
+    if (past.length) add("WARN", "C5.dated_history", buyer, "copy dates a past event " + past.join(", ") + ": check it still reads true");
     if (!/href="https:\/\/masspermits\.com\/leads[?"]/.test(html)) add("WARN", "C5.no_leads_link", buyer);
-    if (/—/.test(m.subject + html)) add("WARN", "C5.style_em_dash", buyer);
+    if ((m.subject + html).includes(EM_DASH)) add("WARN", "C5.style_em_dash", buyer);
     if (EMOJI.test(m.subject + html)) add("WARN", "C5.style_emoji", buyer);
     // weekly-send.js sends html only: there is no text/plain part.
     add("WARN", "C5.style_no_text_part", buyer);
@@ -1221,22 +1241,28 @@ const DAY_RE = /^\d{4}-\d{2}-\d{2}/;
 const dayOf = (v) => (typeof v === "string" && DAY_RE.test(v) ? dateMs(v.slice(0, 10)) : NaN);
 
 // ── C10: every source is fresh for its cadence ─────────────────────────────
-// Source of these numbers: the PermitPulse engine (its source registry and
-// cadence table, scraper.py / hosted_refresh.py), which is not in this public
-// repository. Boston publishes daily and is held to 4 days; every other
-// source is judged by the cadence refresh-status.json gives it in
-// status.cadence (absent means daily). SOURCE_MAX_DAYS holds the per-source
-// overrides; add a row here when the engine gives a source its own limit.
+// The engine (PermitPulse, not in this public repository) writes these
+// refresh-status.json fields (hosted_refresh.py _write_status, engine
+// a1e68864, the one in production on 2026-10-04):
+//   status.newest  = {"<Town>, MA": "YYYY-MM-DD"}, the newest issue date each
+//                    source returned this run;
+//   status.cadence = {"<Town>, MA": "monthly" | "quarterly"}, only for the
+//                    sources that do not publish daily (absent means daily).
+// The limits are the engine's own (source_health.py STALE_MAX_AGE_DAYS and
+// STALE_PER_SOURCE): daily 10, monthly 55, quarterly 130 days, plus the towns
+// that publish in arrears. Boston is held to 4 days (I-17). Add a row to
+// SOURCE_MAX_DAYS when the engine gives a source its own limit. Absent
+// `newest`: BLIND, never PASS.
 export const CADENCE_MAX_DAYS = Object.freeze({ daily: 10, monthly: 55, quarterly: 130 });
-export const SOURCE_MAX_DAYS = Object.freeze({ boston: 4 });
-// status.source_newest = {"<source>": "YYYY-MM-DD"}: the newest permit date
-// each source returned. Absent: BLIND, never PASS.
+export const SOURCE_MAX_DAYS = Object.freeze({
+  boston: 4, bourne: 80, provincetown: 75, "north-attleborough": 100, lowell: 120,
+});
 export function checkC10(ctx) {
   const { status, date } = ctx;
   if (!status) return [res("C10", "BLIND", "C10.status_unreadable")];
-  const newest = status.source_newest;
+  const newest = status.newest;
   if (!isObj(newest) || !Object.keys(newest).length) {
-    return [res("C10", "BLIND", "C10.no_newest", { lines: ["refresh-status.json has no source_newest"] })];
+    return [res("C10", "BLIND", "C10.no_newest", { lines: ["refresh-status.json has no newest"] })];
   }
   const cadence = isObj(status.cadence) ? status.cadence : {};
   const d0 = dateMs(date);
@@ -1267,41 +1293,51 @@ export function checkC10(ctx) {
         { lines: [`${town}: newest ${isoDay(t)}, ${age} days old (limit ${max}, ${why})`] }));
     }
   }
-  // A source with its own limit must be reported at all.
-  for (const town of Object.keys(SOURCE_MAX_DAYS)) {
-    if (!seen.has(town)) out.push(res("C10", "NO-GO", `C10.source_stale:${town}`,
-      { lines: [`${town}: missing from source_newest`] }));
+  // Boston is the one source held to a SHORTER limit than its cadence, so it
+  // must be reported at all. The arrears towns only relax a limit; a town
+  // that stops reporting is C12's business, not C10's.
+  if (!seen.has("boston")) {
+    out.push(res("C10", "NO-GO", "C10.source_stale:boston", { lines: ["boston: missing from newest"] }));
   }
   return out.length ? out : [pass("C10")];
 }
 
-// ── C11: no monthly source lost part of its window ─────────────────────────
-// status.window_loss = {"<source>": int}, one entry per monthly source (the
-// rows a monthly publisher's trailing window dropped). Reader only: absent
-// is BLIND.
-function monthlySources(status) {
-  const cov = isObj(status.coverage) ? status.coverage : {};
-  if (Array.isArray(cov.monthly_sources) && cov.monthly_sources.length) return cov.monthly_sources.map(String);
-  const cad = isObj(status.cadence) ? status.cadence : {};
-  return Object.keys(cad).filter((k) => lc(cad[k]) === "monthly");
-}
+// ── C11: no source lost part of its window to the row cap ──────────────────
+// The engine pulls a trailing window of `window_days` (180) from the vendor
+// portals, capped at a row count. status.truncated = {"<Town>, MA": cap}
+// names the towns whose pull ENDED AT THE CAP, and status.oldest gives each
+// source's oldest issue date, so the days missing at the old end of the
+// window are window_days minus the span that shipped (the engine's own note
+// in hosted_refresh.py says a reader should compute it this way). Measured by
+// the engine 2026-09-09: Falmouth ships 2,400 rows and 70 of its 180 days are
+// absent. A truncated window is a standing engine cap, not a Monday decision,
+// so it is a WARN naming the town and the days missing (ackable), never a
+// NO-GO. Any of the three fields absent: BLIND, never PASS.
+export const WINDOW_SLACK_DAYS = 3;
 export function checkC11(ctx) {
-  const { status } = ctx;
+  const { status, date } = ctx;
   if (!status) return [res("C11", "BLIND", "C11.status_unreadable")];
-  const wl = status.window_loss;
-  if (!isObj(wl)) return [res("C11", "BLIND", "C11.no_window_loss", { lines: ["refresh-status.json has no window_loss"] })];
-  const by = new Map(Object.entries(wl).map(([k, v]) => [townKey(k), v]));
-  const monthly = monthlySources(status);
-  const towns = [...new Set((monthly.length ? monthly : Object.keys(wl)).map(townKey))].sort();
-  const lost = [], absent = [];
-  for (const t of towns) {
-    const v = by.get(t);
-    if (!Number.isInteger(v) || v < 0) absent.push(t);
-    else if (v > 0) lost.push(`${t} lost ${v}`);
+  const { truncated, oldest } = status;
+  const win = status.window_days;
+  if (!isObj(truncated) || !isObj(oldest) || !Number.isInteger(win) || win <= 0) {
+    return [res("C11", "BLIND", "C11.no_window_fields",
+      { lines: ["refresh-status.json lacks truncated, oldest or window_days"] })];
   }
+  const d0 = dateMs(date);
   const out = [];
-  if (lost.length) out.push(res("C11", "NO-GO", "C11.window_loss", { lines: lost }));
-  if (absent.length) out.push(res("C11", "BLIND", "C11.source_absent", { lines: absent.map((t) => `${t}: no window_loss`) }));
+  for (const k of Object.keys(truncated).sort()) {
+    const town = townKey(k);
+    const t = dayOf(oldest[k]);
+    if (!Number.isFinite(t)) {
+      out.push(res("C11", "BLIND", "C11.source_absent", { lines: [`${town}: truncated, but no oldest date`] }));
+      continue;
+    }
+    const missing = win - Math.floor((d0 - t) / DAY);
+    if (missing > WINDOW_SLACK_DAYS) {
+      out.push(res("C11", "WARN", `C11.window_short:${town}`, { counts: { missing, window: win },
+        lines: [`${town}: oldest ${isoDay(t)}, ${missing} of ${win} days missing (row cap)`] }));
+    }
+  }
   return out.length ? out : [pass("C11")];
 }
 
@@ -1341,22 +1377,40 @@ export function checkC12(ctx) {
 }
 
 // ── C13: the contracts step ran, cleanly ────────────────────────────────────
-// status.contracts = {ran, paid_blocks, live, attempted, dead_status_rows}.
+// The engine writes status.contracts (hosted_refresh.py, engine a1e68864):
+//   {ran, status, error, blocked: [{source, rows, scope, privacy, rules, why}],
+//    warned, rows_in, rows_shipped, rows_blocked, ...}
+// A blocked entry with scope "all" was dropped from the PAID bundles; scope
+// "sample" only from the free sample. live and attempted are
+// status.coverage.live_sources and attempted_sources. dead_status_rows is
+// judged only if a future engine writes it. A numeric paid_blocks (the shape
+// this check was first written against) is still read.
 export function checkC13(ctx) {
   const { status } = ctx;
   if (!status) return [res("C13", "BLIND", "C13.status_unreadable")];
   const c = status.contracts;
   if (!isObj(c)) return [res("C13", "BLIND", "C13.no_contracts", { lines: ["refresh-status.json has no contracts"] })];
+  const cov = isObj(status.coverage) ? status.coverage : {};
   const out = [];
   if (c.ran !== true) out.push(res("C13", "NO-GO", "C13.contracts_not_run"));
-  const INTS = ["paid_blocks", "live", "attempted", "dead_status_rows"];
-  const missing = INTS.filter((k) => !Number.isInteger(c[k]));
-  if (c.ran === true && missing.length) out.push(res("C13", "BLIND", "C13.fields_absent", { lines: [`absent: ${missing.join(", ")}`] }));
-  if (Number.isInteger(c.paid_blocks) && c.paid_blocks > 0) {
-    out.push(res("C13", "NO-GO", "C13.paid_blocks", { lines: [`${c.paid_blocks} paid block(s)`] }));
+  const paid = Array.isArray(c.blocked) ? c.blocked.filter((b) => isObj(b) && b.scope !== "sample") : null;
+  const paidBlocks = paid ? paid.length : Number.isInteger(c.paid_blocks) ? c.paid_blocks : null;
+  const live = cov.live_sources;
+  const attempted = cov.attempted_sources;
+  const missing = [];
+  if (paidBlocks === null) missing.push("blocked");
+  if (!Number.isInteger(live)) missing.push("coverage.live_sources");
+  if (!Number.isInteger(attempted)) missing.push("coverage.attempted_sources");
+  if (c.ran === true && missing.length) {
+    out.push(res("C13", "BLIND", "C13.fields_absent", { lines: [`absent: ${missing.join(", ")}`] }));
   }
-  if (Number.isInteger(c.live) && Number.isInteger(c.attempted) && c.live > c.attempted) {
-    out.push(res("C13", "NO-GO", "C13.live_over_attempted", { lines: [`live ${c.live} > attempted ${c.attempted}`] }));
+  if (paidBlocks > 0) {
+    const towns = paid ? paid.map((b) => townKey(b.source)).slice(0, LOST_LIST_MAX) : [];
+    out.push(res("C13", "NO-GO", "C13.paid_blocks", { lines: [`${paidBlocks} source(s) blocked from the paid file` +
+      (towns.length ? ": " + towns.join(", ") : "")] }));
+  }
+  if (Number.isInteger(live) && Number.isInteger(attempted) && live > attempted) {
+    out.push(res("C13", "NO-GO", "C13.live_over_attempted", { lines: [`live ${live} > attempted ${attempted}`] }));
   }
   if (Number.isInteger(c.dead_status_rows) && c.dead_status_rows > 0) {
     out.push(res("C13", "NO-GO", "C13.dead_status_rows", { lines: [`${c.dead_status_rows} dead-status row(s)`] }));
