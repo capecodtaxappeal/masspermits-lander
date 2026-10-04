@@ -11,7 +11,7 @@ Evidence it judges against (both committed on main by the daily refresh):
   `stats.n_sources`, `stats.no_valuation`, `stats.monthly`, `stats.errors`
   and `stats.table` (one row per source: rows, first, last, valued_pct, ...).
 - `data.json`: `areas[].label` gives the region labels.
-- `scripts/gate/town-county.json` and `scripts/gate/aliases.json`: town to
+- `functions/_gate/town-county.json` and `functions/_gate/aliases.json`: town to
   county, and site place names (Boston neighbourhoods, Barnstable villages) to
   their source. Every row is marked "owner confirms" until the owner does.
 
@@ -28,14 +28,14 @@ WARN or UNJUDGED (G0 is information only). The workflow step also has
 
 ## Run it
 
-    node scripts/gate/gate.mjs --root <checkout> --out <report.md> [--json <findings.json>] [--stale-days N]
+    node functions/_gate/gate.mjs --root <checkout> --out <report.md> [--json <findings.json>] [--stale-days N]
 
 Node 22, built-ins only, no install. `--out` and `--json` must be outside
 `--root`. Stdout carries counts per code only, never excerpts, because
 Actions logs of a public repo are public.
 
-Tests: `node --test scripts/gate/` (Node 22 resolves the directory through
-`scripts/gate/index.js`, which only loads `gate.test.mjs`). Fixtures are
+Tests: `node --test functions/_gate/` (Node 22 resolves the directory through
+`functions/_gate/index.js`, which only loads `gate.test.mjs`). Fixtures are
 synthetic and written to the OS temp dir; no fixture page is committed.
 
 ## What is linted
@@ -104,7 +104,39 @@ by "[excerpt withheld]".
 Most pages are regenerated daily by the refresh bot, so a finding is fixed in
 the engine that writes the text, not in the built page.
 
-## Installing the workflow
+## Where it lives, and why there
+
+The site is served from the repository root (the Pages build output is "/",
+DEPLOY.md), so a file under `scripts/` or `test/` is a public URL on
+masspermits.com. The gate first lived in `scripts/gate/`, which would have
+published the scripts, `town-county.json` and `aliases.json` the day it
+merged. It now lives in `functions/_gate/`:
+
+- Pages does not upload the top-level `functions/` folder as static assets.
+  Wrangler's Pages upload skips it by name (`IGNORE_LIST` in wrangler's
+  `pages` upload code: `_worker.js`, `_redirects`, `_headers`, `_routes.json`,
+  `functions`, `**/.DS_Store`, `**/node_modules`, `**/.git`, `.wrangler`;
+  read in wrangler 4.147.0 on 2026-10-04).
+- Pages turns a file under `functions/` into a route only if it exports
+  `onRequest`, `onRequestGet` and so on. No gate file exports anything with
+  that name, and `gate.test.mjs` fails if one ever does. Non-JavaScript files
+  (the two JSON files) are never looked at by the route builder.
+
+## Where it runs
+
+Today: on demand, by Claude, after a daily refresh lands. It needs nothing
+from the owner, no secret and no workflow:
+
+    git -C <lander checkout> pull --ff-only
+    node functions/_gate/gate.mjs --root <lander checkout> --out <outside dir>/gate.md --json <outside dir>/gate.json
+
+Read the counts on stdout and the report outside the checkout. Nothing is
+written into the repository.
+
+Later, if the owner wants it weekly without a session: install the workflow
+(below). That is the owner's step because it adds a file under `.github/`.
+
+## Installing the workflow (optional)
 
 `docs/gate/public-output-gate.yml.txt` is the workflow. It is a .txt file
 because this project may not add anything under `.github/`. To install, the
@@ -113,4 +145,6 @@ It runs weekly (Tuesday 18:00 UTC, after the daily rebuild and away from
 Monday's send) and on manual dispatch only; it has `contents: read` and
 nothing else, checks out main without persisted credentials, writes the report
 to `$RUNNER_TEMP`, puts the counts in the job summary and uploads the report
-and JSON as an artifact kept 30 days.
+and JSON as an artifact kept 30 days. The artifact of a public repository can
+be downloaded by any signed-in GitHub user; the report holds only excerpts of
+public pages, with any address, email or token shape withheld.

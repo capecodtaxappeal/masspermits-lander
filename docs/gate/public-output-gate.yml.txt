@@ -34,7 +34,7 @@ jobs:
         id: gate
         continue-on-error: true
         run: |
-          node scripts/gate/gate.mjs --root "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/gate/gate.md" --json "$RUNNER_TEMP/gate/gate.json" > "$RUNNER_TEMP/gate-stdout.txt"
+          node functions/_gate/gate.mjs --root "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/gate/gate.md" --json "$RUNNER_TEMP/gate/gate.json" > "$RUNNER_TEMP/gate-stdout.txt"
           cat "$RUNNER_TEMP/gate-stdout.txt"
 
       - name: Counts to the job summary

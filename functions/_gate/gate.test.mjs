@@ -507,3 +507,27 @@ test('workflow: line rules', () => {
     assert.ok(!block.join('\n').includes('${{'), `run block at line ${i + 1}`);
   }
 });
+
+// ---------------------------------------------------------------- 10. not served, not routed
+
+test('location: the gate lives under functions/ (never uploaded as a static asset) and is never a route', () => {
+  // The repository root is the Pages build output, so scripts/gate/ would be a
+  // public URL. Wrangler's Pages upload skips the top-level functions/ folder
+  // by name (its IGNORE_LIST), and a functions/ file is a route only if it
+  // exports onRequest or onRequest<Method>.
+  assert.equal(path.relative(REPO, HERE).split(path.sep).join('/'), 'functions/_gate');
+  assert.ok(!fs.existsSync(path.join(REPO, 'scripts', 'gate')), 'nothing is left under scripts/gate');
+  // An export statement that names onRequest*: a declaration or an export list.
+  const ON_REQUEST = /^\s*export\s+(?:async\s+)?(?:function\*?|const|let|var|class)\s+onRequest|^\s*export\s*\{[^}]*\bonRequest/m;
+  assert.ok(ON_REQUEST.test('export async function onRequestGet(context) {}') &&
+    ON_REQUEST.test('export { handler as onRequestPost };') && !ON_REQUEST.test('// exports an onRequest handler'),
+    'the pattern is not vacuous');
+  for (const e of fs.readdirSync(HERE)) {
+    if (!/\.(m?js|ts)$/.test(e)) continue;
+    const code = fs.readFileSync(path.join(HERE, e), 'utf8').split('\n').map((l) => l.replace(/\/\/.*$/, '')).join('\n');
+    assert.ok(!ON_REQUEST.test(code), `${e} exports an onRequest handler, which Pages would serve as a route`);
+  }
+  const wf = fs.readFileSync(path.join(REPO, 'docs', 'gate', 'public-output-gate.yml.txt'), 'utf8');
+  assert.match(wf, /node functions\/_gate\/gate\.mjs --root/);
+  assert.ok(!wf.includes('scripts/gate'));
+});

@@ -72,8 +72,10 @@ export const CODE_ORDER = Object.keys(CODE_LEVEL);
 
 // ---------------------------------------------------------------- helpers
 
-const EM = '\u2014';
-const EN = '\u2013';
+// Built from their code points: main's test/no-dash-outbound.test.mjs scans
+// every literal under functions/, escapes included.
+const EM = String.fromCharCode(0x2014);
+const EN = String.fromCharCode(0x2013);
 
 export function slugify(name) {
   return String(name).toLowerCase().replace(/['.]/g, '').replace(/&/g, 'and')

@@ -3,7 +3,7 @@
 // site under --root against the site's own evidence files and writes a report
 // OUTSIDE --root. It exits 0 whenever it ran, findings or not.
 //
-//   node scripts/gate/gate.mjs --root <checkout> --out <report.md> [--json <findings.json>] [--stale-days N]
+//   node functions/_gate/gate.mjs --root <checkout> --out <report.md> [--json <findings.json>] [--stale-days N]
 
 import fs from 'node:fs';
 import path from 'node:path';
