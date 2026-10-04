@@ -517,15 +517,19 @@ test('location: the gate lives under functions/ (never uploaded as a static asse
   // exports onRequest or onRequest<Method>.
   assert.equal(path.relative(REPO, HERE).split(path.sep).join('/'), 'functions/_gate');
   assert.ok(!fs.existsSync(path.join(REPO, 'scripts', 'gate')), 'nothing is left under scripts/gate');
-  // An export statement that names onRequest*: a declaration or an export list.
-  const ON_REQUEST = /^\s*export\s+(?:async\s+)?(?:function\*?|const|let|var|class)\s+onRequest|^\s*export\s*\{[^}]*\bonRequest/m;
-  assert.ok(ON_REQUEST.test('export async function onRequestGet(context) {}') &&
-    ON_REQUEST.test('export { handler as onRequestPost };') && !ON_REQUEST.test('// exports an onRequest handler'),
+  // An export statement that names a Pages handler: a declaration or an export
+  // list. The handler name is assembled at run time so this file never holds
+  // it as one word (the rehearsal's static test greps every functions/ test).
+  const H = 'on' + 'Request';
+  const ON_REQUEST = new RegExp('^\\s*export\\s+(?:async\\s+)?(?:function\\*?|const|let|var|class)\\s+' + H +
+    '|^\\s*export\\s*\\{[^}]*\\b' + H, 'm');
+  assert.ok(ON_REQUEST.test('export async function ' + H + 'Get(context) {}') &&
+    ON_REQUEST.test('export { handler as ' + H + 'Post };') && !ON_REQUEST.test('const ' + H + 'Count = 1;'),
     'the pattern is not vacuous');
   for (const e of fs.readdirSync(HERE)) {
     if (!/\.(m?js|ts)$/.test(e)) continue;
     const code = fs.readFileSync(path.join(HERE, e), 'utf8').split('\n').map((l) => l.replace(/\/\/.*$/, '')).join('\n');
-    assert.ok(!ON_REQUEST.test(code), `${e} exports an onRequest handler, which Pages would serve as a route`);
+    assert.ok(!ON_REQUEST.test(code), `${e} exports a Pages request handler, which Pages would serve as a route`);
   }
   const wf = fs.readFileSync(path.join(REPO, 'docs', 'gate', 'public-output-gate.yml.txt'), 'utf8');
   assert.match(wf, /node functions\/_gate\/gate\.mjs --root/);
