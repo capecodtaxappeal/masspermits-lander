@@ -1523,6 +1523,10 @@ const SEED_CODES = {
   "C20.no_seeds": "BLIND", "C20.no_bundle": "WARN",
   "C20.seed_send_failed": "WARN", "C20.seed_capped": "WARN",
   "C20.seed_is_roster": "NO-GO", "C20.seed_refused": "NO-GO", roster_unreadable: "NO-GO",
+  // A seed that is a former or current buyer (an address in feed-send-log.json
+  // or delivery-log.json); and a delivery log that could not be read, so no
+  // seed could be cleared and none was sent (the seed check is blind).
+  "C20.seed_is_buyer": "NO-GO", "C20.buyer_log_unreadable": "BLIND",
 };
 // A seed record with one of these codes blocks every later seed send that date.
 export const SEED_ATTEMPTED = new Set(["C20.sent", "C20.seed_send_failed", "C20.seed_capped", "C20.already_sent"]);

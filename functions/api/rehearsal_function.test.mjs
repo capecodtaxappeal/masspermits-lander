@@ -46,12 +46,44 @@ const stripeCalls = () => stub.calls.filter((c) => c.url.includes("api.stripe.co
   const today = new Date().toISOString().slice(0, 10);
   const good = `mode=sat&part=core&page=0&date=${today}&trigger=sched&run=42`;
   const bad = "mode=weekly&part=everything&page=99&date=1999-01-01&trigger=x;y&run=abc";
+  check("17 rehearsal.js accepts exactly monday-rehearsal.yml on this repo's main",
+    real.WORKFLOW_REF === K.WORKFLOW_REF, real.WORKFLOW_REF);
+  // Every token below is signed by the test key and carries the rehearsal
+  // workflow's claims, except for the one claim each case names.
+  const signed = (claims = {}) => kit.sign({ ...K.workflowClaims(), ...claims });
+  const WF = (file, ref = "refs/heads/main", repo = "capecodtaxappeal/masspermits-lander") =>
+    `${repo}/.github/workflows/${file}@${ref}`;
   const cases = [
     ["no Authorization header", null],
-    ["aud other", kit.sign({ aud: "other" })],
-    ["ref refs/heads/claude/x", kit.sign({ ref: "refs/heads/claude/x" })],
-    ["exp in the past", kit.sign({ exp: Math.floor(Date.now() / 1000) - 60 })],
+    ["aud other", signed({ aud: "other" })],
+    ["ref refs/heads/claude/x", signed({ ref: "refs/heads/claude/x" })],
+    ["exp in the past", signed({ exp: Math.floor(Date.now() / 1000) - 60 })],
+    // A VALID token from main that another workflow minted: the verifier
+    // accepts it (same repo, branch and audience); the workflow pin refuses it.
+    ["another workflow on main (weekly-feed.yml)", signed(K.workflowClaims(WF("weekly-feed.yml")))],
+    ["another workflow on main (weekly-refresh.yml)", signed(K.workflowClaims(WF("weekly-refresh.yml")))],
+    ["the right workflow_ref, a job_workflow_ref from a called workflow", signed({ job_workflow_ref: WF("weekly-feed.yml") })],
+    ["no workflow_ref claim", signed({ workflow_ref: undefined, job_workflow_ref: undefined })],
+    ["monday-rehearsal.yml at another ref", signed(K.workflowClaims(WF("monday-rehearsal.yml", "refs/heads/claude/x")))],
+    ["monday-rehearsal.yml in a fork", signed(K.workflowClaims(WF("monday-rehearsal.yml", "refs/heads/main", "someone/fork")))],
+    ["workflow_ref with different case", signed(K.workflowClaims(K.WORKFLOW_REF.toUpperCase()))],
   ];
+  // The verifier itself accepts the other-workflow tokens, so the 401 above
+  // comes from the workflow pin and nothing else.
+  {
+    const { verifyGitHubOIDC } = await import("./_github-oidc.js");
+    const v = await verifyGitHubOIDC(new Request("https://masspermits.com/api/rehearsal",
+      { method: "POST", headers: { authorization: "Bearer " + signed(K.workflowClaims(WF("weekly-feed.yml"))) } }));
+    check("17 the real verifier accepts a weekly-feed.yml token from main (ok:true)", v.ok === true, v.reason);
+    check("17 fromRehearsalWorkflow refuses that verdict", real.fromRehearsalWorkflow(v) === false);
+    check("17 fromRehearsalWorkflow: verdicts without the rehearsal workflow are refused",
+      [undefined, null, {}, { ok: true }, { ok: true, payload: null }, { ok: true, payload: "x" },
+        { ok: false, payload: K.workflowClaims() }, { ok: "true", payload: K.workflowClaims() }]
+        .every((x) => real.fromRehearsalWorkflow(x) === false));
+    check("17 fromRehearsalWorkflow: the rehearsal workflow, with or without job_workflow_ref, is accepted",
+      real.fromRehearsalWorkflow({ ok: true, payload: K.workflowClaims() }) === true &&
+      real.fromRehearsalWorkflow({ ok: true, payload: { workflow_ref: K.WORKFLOW_REF } }) === true);
+  }
   for (const [label, token] of cases) {
     for (const [pl, qs] of [["valid params", good], ["invalid params", bad]]) {
       const r2 = keep(K.world({ now: Date.now() }));
@@ -72,7 +104,7 @@ const stripeCalls = () => stub.calls.filter((c) => c.url.includes("api.stripe.co
   // positive control
   const r2 = keep(K.world({ now: Date.now(), log: [] }));
   const r = await real.onRequestPost({ request: new Request("https://masspermits.com/api/rehearsal?" +
-    good.replace("mode=sat", "mode=dry"), { method: "POST", headers: { authorization: "Bearer " + kit.sign() },
+    good.replace("mode=sat", "mode=dry"), { method: "POST", headers: { authorization: "Bearer " + signed() },
     body: JSON.stringify(K.facts()) }), env: K.baseEnv(r2.bucket) });
   const text = await r.text();
   responses.push({ text, status: r.status });
@@ -175,11 +207,13 @@ for (const [label, body] of [["invalid JSON", "{\"v\":1,"], ["valid JSON, wrong 
 const handle = (bucket, mail = []) => ({ data: { v: 1, records: [], mail }, run: "9",
   async save() { const r = await bucket.put("rehearsal/log.json", JSON.stringify(this.data)); if (!r) throw new Error("x"); } });
 const rosterOf = (rows) => ({ ok: true, rows, code: null });
-async function send(env, rosterObj, to, mail) {
+// The two delivery logs, read and parsed: readable and empty unless a case says otherwise.
+const buyersOf = (feed = [], delivery = []) => L.mod.buyerAddresses(feed, delivery);
+async function send(env, rosterObj, to, mail, buyers = buyersOf()) {
   const w = fakeR2({});
   const h = handle(w.bucket, mail);
   const before = rs.sent.length;
-  const r = await L.mod.outbound(env, rosterObj, h).sendInternal(to, "s", "<p>h</p>");
+  const r = await L.mod.outbound(env, rosterObj, h, buyers).sendInternal(to, "s", "<p>h</p>");
   return { r, calls: rs.sent.length - before, h, w };
 }
 const lockEnv = { REHEARSAL_MAIL: "1", REHEARSAL_TO: " Owner@Example.com ", REHEARSAL_SEEDS: " seed@example.com ,, other.seed@example.com",
@@ -241,6 +275,53 @@ const lockEnv = { REHEARSAL_MAIL: "1", REHEARSAL_TO: " Owner@Example.com ", REHE
   check("6 unreadable roster: every seed refused", x.r.result === "refused" && x.calls === 0);
   x = await send(lockEnv, rosterOf([]), "other.seed@example.com");
   check("6 a counted seed with a readable roster is accepted", x.r.result === "sent" && x.calls === 1);
+  // Former and current buyers: every address in feed-send-log.json sent[].to
+  // and delivery-log.json to, trimmed and lower-cased on both sides, whether
+  // or not subscribers.json still has a row for it.
+  const sentLog = (...to) => [{ at: "2026-09-28T14:00:00.000Z", subscribers: to.length, sent: to.map((t) => ({ to: t, ok: true })) }];
+  const dLog = (...to) => to.map((t) => ({ at: "2026-09-20T10:00:00.000Z", to: t, kind: "monthly", bundle: "latest-monthly.zip" }));
+  for (const [label, buyers] of [
+    ["feed-send-log.json sent[].to", buyersOf(sentLog(" Owner@EXAMPLE.com "), [])],
+    ["delivery-log.json to", buyersOf([], dLog("OWNER@example.com "))],
+    ["an older feed-send-log.json entry", buyersOf([...sentLog("x@example.com"), ...sentLog("owner@example.com")], [])],
+    ["\"Name <addr>\" inside a delivery-log.json to", buyersOf([], dLog("Owner Person <owner@example.com>"))],
+  ]) {
+    x = await send(lockEnv, rosterOf([]), "owner@example.com", undefined, buyers);
+    check(`6 owner address found in ${label} (on no roster row): refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+  }
+  for (const [label, buyers] of [
+    ["feed-send-log.json sent[].to", buyersOf(sentLog("SEED@example.com"), [])],
+    ["delivery-log.json to", buyersOf([], dLog(" seed@Example.com"))],
+  ]) {
+    x = await send(lockEnv, rosterOf([]), "seed@example.com", undefined, buyers);
+    check(`6 seed address found in ${label} (on no roster row): refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+  }
+  // Either log unreadable: every seed is refused, the owner digest is not.
+  for (const [label, feed, delivery] of [
+    ["feed-send-log.json missing", null, []], ["delivery-log.json missing", [], null],
+    ["feed-send-log.json not an array", { sent: [] }, []], ["delivery-log.json not an array", [], "x"],
+    ["a feed-send-log.json entry with sent not an array", [{ sent: "seed@example.com" }], []],
+    ["a delivery-log.json entry that is not an object", [], ["seed@example.com"]],
+  ]) {
+    const buyers = buyersOf(feed, delivery);
+    check(`6 ${label}: buyerAddresses says unreadable`, buyers.ok === false);
+    x = await send(lockEnv, rosterOf([]), "other.seed@example.com", undefined, buyers);
+    check(`6 ${label}: a counted seed is refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+    x = await send(lockEnv, rosterOf([]), "owner@example.com", undefined, buyers);
+    check(`6 ${label}: the owner digest is still sent`, x.r.result === "sent" && x.calls === 1);
+  }
+  x = await send(lockEnv, rosterOf([]), "seed@example.com", undefined, null);
+  check("6 outbound() given null for the buyer logs: a seed is refused", x.r.result === "refused" && x.calls === 0);
+  {
+    const b0 = rs.sent.length;
+    const r0 = await L.mod.outbound(lockEnv, rosterOf([]), handle(fakeR2({}).bucket)).sendInternal("seed@example.com", "s", "h");
+    check("6 outbound() called without the buyer logs: a seed is refused", r0.result === "refused" && rs.sent.length === b0);
+  }
+  x = await send(lockEnv, rosterOf([]), "seed@example.com", undefined, buyersOf(sentLog("buyer1.testperson@example.com"),
+    dLog("buyer2.testperson@example.com")));
+  check("6 twin: readable logs that do not hold the seed accept it", x.r.result === "sent" && x.calls === 1);
+  check("6 buyerAddresses: a skip entry (sent: []) and an entry with no sent are readable",
+    buyersOf([{ at: "x", sent: [] }, { at: "y" }], []).ok === true);
   // the cap
   const day = new Date(now).toISOString().slice(0, 10);
   const three = (kind, result = "sent") => [1, 2, 3].map((i) => ({ day, kind, run: String(i), result }));
