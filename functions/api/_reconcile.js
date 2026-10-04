@@ -141,7 +141,7 @@ export async function listStripeSubscriptions(opts = {}) {
   if (!fetchImpl) return unreadable("no-fetch", 0, null, 0, false, "no fetch implementation available");
   if (!key) {
     return unreadable("no-key", 0, null, 0, false,
-      "no Stripe read key is configured on this deployment — the control cannot " +
+      "no Stripe read key is configured on this deployment, so the control cannot " +
       "see who is paying, so it reports blocked rather than clean");
   }
 
@@ -400,7 +400,7 @@ async function pull(fetchImpl, key, version, expand, maxPages) {
   }
 
   return unreadable("page-cap", 200, requestId, pages, expand,
-    `stopped after ${maxPages} pages with has_more still true — the set is ` +
+    `stopped after ${maxPages} pages with has_more still true; the set is ` +
     "incomplete and must not be compared against the roster");
 }
 
@@ -452,12 +452,12 @@ function httpReason(status, rlReason) {
 
 function httpDetail(status, rlReason, requestId) {
   const rid = requestId ? ` (Request-Id ${requestId})` : " (no Request-Id returned)";
-  if (status === 401) return "HTTP 401 — no valid API key. The key may have been rotated or expired" + rid;
-  if (status === 403) return "HTTP 403 — the restricted key lacks a required permission; check its request logs in the Dashboard and grant the resource that 403'd" + rid;
+  if (status === 401) return "HTTP 401: no valid API key. The key may have been rotated or expired" + rid;
+  if (status === 403) return "HTTP 403: the restricted key lacks a required permission; check its request logs in the Dashboard and grant the resource that 403'd" + rid;
   if (status === 429 && rlReason) return `HTTP 429 rate limited (${rlReason})` + rid;
-  if (status === 429) return "HTTP 429 with no Stripe-Rate-Limited-Reason header — this is an object LOCK TIMEOUT, not a rate limit; Stripe did not process the request" + rid;
-  if (status === 424) return "HTTP 424 — an external dependency Stripe relies on failed" + rid;
-  if (status >= 500) return `HTTP ${status} — something went wrong on Stripe's end` + rid;
+  if (status === 429) return "HTTP 429 with no Stripe-Rate-Limited-Reason header: this is an object LOCK TIMEOUT, not a rate limit; Stripe did not process the request" + rid;
+  if (status === 424) return "HTTP 424: an external dependency Stripe relies on failed" + rid;
+  if (status >= 500) return `HTTP ${status}: something went wrong on Stripe's end` + rid;
   return `HTTP ${status}` + rid;
 }
 
@@ -773,7 +773,7 @@ export async function reconcile(input) {
           addNotice({
             type: "dropped_but_still_active", subject: maskEmail(addr),
             detail: "served in the previous run, absent from the latest one, but the roster still " +
-                    "lists them ACTIVE — this is send-status.js's roster_gap, not a roster loss",
+                    "lists them ACTIVE; this is send-status.js's roster_gap, not a roster loss",
           }, tref);
           continue;
         }
@@ -782,7 +782,7 @@ export async function reconcile(input) {
           subject: maskEmail(addr),
           detail: `received the weekly file on ${prev.at} and not on ${cur.at}, and the roster ` +
                   (row ? "row for them is no longer active" : "has no row for them at all") +
-                  ". Either they cancelled, or entitlement was revoked by mistake — check Stripe " +
+                  ". Either they cancelled, or entitlement was revoked by mistake; check Stripe " +
                   "for this customer before assuming the former.",
         }, tref);
       }
@@ -827,7 +827,7 @@ export async function reconcile(input) {
                 (activeCount > 1
                   ? ". More than one is ACTIVE, so weekly-send.js:78 mails this person " + activeCount +
                     " copies and a single cancellation deactivates only the rows it matches."
-                  : ". Only one is active; the inactive duplicates are latent — a re-subscribe can " +
+                  : ". Only one is active; the inactive duplicates are latent: a re-subscribe can " +
                     "reactivate the wrong one."),
       }, mkRef(rowOf(rows.find(isActiveRow) || rows[0]), null));
     }
@@ -896,7 +896,7 @@ export async function reconcile(input) {
         type: "no_enabled_webhook_endpoint_for_site", severity: "red", subject: siteHost,
         detail: "Stripe lists no ENABLED webhook endpoint whose host is " + siteHost + ". If that is " +
                 "accurate, no Stripe event reaches the site at all: no checkout writes a roster row, " +
-                "no cancellation removes one. Verify the host before acting — a proxy or apex/www " +
+                "no cancellation removes one. Verify the host before acting: a proxy or apex/www " +
                 "difference produces this too.",
       });
     } else if (churnCoverage.known && churnCoverage.subscribed === false) {
@@ -1045,7 +1045,7 @@ export async function reconcile(input) {
               "subscription(s) are unclassifiable and this condition is INDETERMINATE, not clean. " +
               "Run discover-prices.mjs once and set MASSPERMITS_PRICE_IDS / OTHER_PRICE_IDS. " +
               "Until then the control can still find a missing payer, but it cannot tell a " +
-              "MassPermits payer from the IRWatch sibling on this shared Stripe account.",
+              "MassPermits payer from the sibling product on this shared Stripe account.",
     });
     C.unknown_products.verdict = "indeterminate";
   } else {
@@ -1101,7 +1101,7 @@ export async function reconcile(input) {
             detail: "the same person is paying in Stripe under customer " + tag + " while their " +
                     "roster row names customer " + (await idTag(conflicting[0].customer)) + ". This " +
                     "is the 2026-08-31 mechanism exactly: a cancellation for the STALE id revokes a " +
-                    "live payer. The roster id must be replaced with the Stripe one — by hand, after " +
+                    "live payer. The roster id must be replaced with the Stripe one, by hand, after " +
                     "confirming in Stripe.",
           }, mkRef(rowOf(conflicting[0]), si));
         }
@@ -1128,7 +1128,7 @@ export async function reconcile(input) {
         stripe_id_tag: tag, stripe_status: s.status, cents, trialing: tr.trialing,
         matched_on: cl.matched_on,
         detail: "a live MassPermits subscription (matched on " + cl.matched_on + " id) with no roster row " +
-                "at all — this customer is paying and is not on the send list.",
+                "at all: this customer is paying and is not on the send list.",
       }, mkRef(null, si));
     } else if (cents >= MIN_CENTS) {
       push("missing_payers", {
@@ -1145,7 +1145,7 @@ export async function reconcile(input) {
       addNotice({
         type: "below_floor_unrostered", subject: cemail ? maskEmail(cemail) : "customer " + tag,
         detail: "a live subscription of " + cents + "c (below the " + MIN_CENTS + "c floor) with no " +
-                "roster row — consistent with the sibling product on this shared Stripe account",
+                "roster row, consistent with the sibling product on this shared Stripe account",
       }, mkRef(null, si));
     }
   }
@@ -1179,7 +1179,7 @@ export async function reconcile(input) {
       type: "stripe_returned_nothing", subject: null,
       detail: "Stripe returned zero entitled subscriptions while the roster has " + activeRows.length +
               " active row(s). Before treating the alarms below as real, check that STRIPE_READ_KEY is " +
-              "a LIVE-mode key (rk_live_, not rk_test_) on the right account — a test-mode key reads a " +
+              "a LIVE-mode key (rk_live_, not rk_test_) on the right account; a test-mode key reads a " +
               "different, usually empty, dataset and produces precisely this.",
     });
   }
@@ -1301,12 +1301,12 @@ export async function reconcile(input) {
                `active row(s); every one was matched and every price id was classified` +
                (churnCoverage.subscribed ? `; ${CHURN_EVENT} is subscribed on the endpoint for ${siteHost}` : "") + ".";
     } else if (verdict === "blocked") {
-      detail = "BLOCKED — " + indet.length + " of 5 condition(s) could not be established (" +
+      detail = "BLOCKED: " + indet.length + " of 5 condition(s) could not be established (" +
                indet.join(", ") + "), so this control is reporting blocked rather than clean. " +
                "A blocked verdict is NOT a green one: entitlement is unverified until it clears.";
     } else {
       const heads = alarms.slice(0, 6).map((a) => a.condition + "/" + a.type + " " + (a.subject || "")).join("; ");
-      detail = `RED — ${alarms.length} alarm(s) across ${alarmed.length} condition(s): ${heads}` +
+      detail = `RED: ${alarms.length} alarm(s) across ${alarmed.length} condition(s): ${heads}` +
                (alarms.length > 6 ? ` (+${alarms.length - 6} more)` : "") + ". " +
                (indet.length
                  ? "COVERAGE IS PARTIAL: " + indet.join(", ") + " could not be established, so this is " +
@@ -1412,7 +1412,7 @@ function periodNotices(sub, row, addNotice, ref) {
     addNotice({
       type: "cancel_at_period_end", subject: maskEmail(row.email),
       detail: "scheduled to end" + (t ? " at " + new Date(t * 1000).toISOString() : "") +
-              " — a known upcoming loss, not a fault (period read from items.data[].current_period_end, " +
+              ": a known upcoming loss, not a fault (period read from items.data[].current_period_end, " +
               "which is where it lives since API 2025-03-31.basil)",
     }, ref);
   }
