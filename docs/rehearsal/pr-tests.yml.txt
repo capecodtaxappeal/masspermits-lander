@@ -7,8 +7,10 @@ name: MassPermits rehearsal tests
 # checkout keeps no credentials, and no step uses a stored secret. The tests
 # make no network call (every fetch is a stub that throws on an unknown URL).
 #
-# The static test compares the pull request with origin/main, so the checkout
-# fetches full history (fetch-depth: 0), which includes origin/main.
+# The static test reads PR #1's own commit range (fixed history, not a diff
+# against origin/main), so the checkout fetches full history (fetch-depth: 0),
+# which includes those commits. A later pull request that edits a shipped
+# file is not judged by the rehearsal's "only adds files" rule.
 
 on:
   pull_request:
