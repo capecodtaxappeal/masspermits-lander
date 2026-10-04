@@ -9,6 +9,7 @@
 import * as R from "./_rehearsal.js";
 import { makeRunner, makeFetchStub, resendFixture, HTMLRewriterStub, fakeR2 } from "../../test/rehearsal/harness.mjs";
 import * as K from "../../test/rehearsal/rehearsal_kit.mjs";
+import { roBucket } from "./_ro_bucket.js";
 
 const RESEND = "https://api.resend.com/emails";
 const rs = resendFixture(RESEND);
@@ -160,6 +161,90 @@ const lastCore = (w) => w.json("rehearsal/log.json").records.find((x) => x.part 
     texts.push(JSON.stringify({ ok: r.core.json.ok, verdict: r.core.json.verdict, codes: r.core.json.codes, error: r.core.json.error }));
   }
   check("R4-21 the caller's printed core line is identical for 3 and 30 buyers", texts[0] === texts[1], texts.join(" | "));
+}
+// ── Q25: the 3-a-day mail cap under two requests at once ───────────────────
+// Found by R4 (open question Q25), fixed for go-live: the cap was read, count,
+// write on rehearsal/log.json with no conditional put, so two valid requests
+// that read the same copy could both send. Every write is now conditional on
+// the version the request read (logHandle in rehearsal.js; the pattern of
+// _manual_store.js on main), and a refused write re-reads, merges and counts
+// the cap again before any send.
+{
+  clock.set(K.at("2026-10-04T20:30:00Z"));
+  const day = "2026-10-04";
+  const env = { REHEARSAL_MAIL: "1", REHEARSAL_TO: "owner@example.com", FROM_EMAIL: "rehearsal@example.com",
+    RESEND_API_KEY: "re_test_key" };
+  const roster = { ok: true, rows: [], code: null };
+  const used2 = [1, 2].map((i) => ({ day, kind: "owner", run: "old" + i, result: "sent", at: day + "T10:00:00.000Z" }));
+  const start = () => fakeR2({ "rehearsal/log.json": { v: 1, records: [], mail: used2 } });
+  // Two requests that read the same copy of the log, as simultaneous ones do.
+  async function twoReaders(w, make) {
+    const rw = roBucket(w.bucket, { allowPrefix: "rehearsal/" });
+    const o = await rw.get("rehearsal/log.json");
+    const text = await o.text();
+    return [1, 2].map((i) => make(rw, JSON.parse(text), String(9100 + i), o.etag));
+  }
+  const attemptsOf = (log) => log.mail.filter((m) => m.day === day && m.kind === "owner" &&
+    ["pending", "sent", "failed"].includes(m.result)).length;
+  {
+    const w = start();
+    const hs = await twoReaders(w, (rw, data, run, etag) => L.mod.logHandle(rw, data, run, etag));
+    const before = rs.sent.length;
+    const res = await Promise.all(hs.map((h) => L.mod.outbound(env, roster, h).sendInternal("owner@example.com", "s", "<p>h</p>")));
+    const log = w.json("rehearsal/log.json");
+    check("Q25 two requests at once with 2 of 3 used: exactly one Resend call", rs.sent.length - before === 1, rs.sent.length - before);
+    check("Q25 ... one sent, one capped", res.map((r) => r.result).sort().join() === "capped,sent", JSON.stringify(res));
+    check("Q25 ... R2 holds 3 attempts for the day plus the capped record, none lost",
+      attemptsOf(log) === 3 && log.mail.length === 4, JSON.stringify(log.mail.map((m) => m.result)));
+    check("Q25 ... the second write was refused by its etag", w.refusals.length >= 1, w.refusals.length);
+  }
+  {
+    // Not vacuous: the old unconditional read, count, write sends twice.
+    const w = start();
+    const plain = (rw, data, run) => ({ data, run,
+      async save() { const r = await rw.put("rehearsal/log.json", JSON.stringify(data)); if (!r) throw new Error("x"); } });
+    const hs = await twoReaders(w, plain);
+    const before = rs.sent.length;
+    await Promise.all(hs.map((h) => L.mod.outbound(env, roster, h).sendInternal("owner@example.com", "s", "<p>h</p>")));
+    check("Q25 proof: without the conditional write both requests send (4 attempts against a cap of 3)",
+      rs.sent.length - before === 2, rs.sent.length - before);
+  }
+  {
+    // A stale writer merges: the other request's records survive.
+    const w = start();
+    const [a, b] = await twoReaders(w, (rw, data, run, etag) => L.mod.logHandle(rw, data, run, etag));
+    a.data.records.unshift({ date: day, mode: "sun", part: "core", trigger: "sched", run: "9101", verdict: "GO" });
+    await a.save();
+    b.data.records.unshift({ date: day, mode: "sun", part: "links", trigger: "sched", run: "9102", verdict: null });
+    await b.save();
+    const log = w.json("rehearsal/log.json");
+    const recs = log.records.map((r) => r.part + ":" + r.run).sort().join();
+    check("Q25 a stale writer keeps the other request's record and both mail records (merge, not overwrite)",
+      recs === "core:9101,links:9102" && log.mail.length === 2, recs);
+  }
+  {
+    // A log that turns unreadable between the read and the write stops the send.
+    const w = start();
+    const [a] = await twoReaders(w, (rw, data, run, etag) => L.mod.logHandle(rw, data, run, etag));
+    await w.bucket.put("rehearsal/log.json", "{truncated");
+    const before = rs.sent.length;
+    const r = await L.mod.outbound(env, roster, a).sendInternal("owner@example.com", "s", "<p>h</p>");
+    check("Q25 a log that cannot be re-read: no Resend call, reported capped", rs.sent.length === before &&
+      r.result === "capped" && r.writeFailed === true, JSON.stringify(r));
+  }
+  {
+    // First write ever: If-None-Match: * guards the create too.
+    const w = fakeR2({});
+    const rw = roBucket(w.bucket, { allowPrefix: "rehearsal/" });
+    const a = L.mod.logHandle(rw, { v: 1, records: [], mail: [] }, "9201", null);
+    const b = L.mod.logHandle(rw, { v: 1, records: [], mail: [] }, "9202", null);
+    a.data.records.unshift({ date: day, mode: "dry", part: "core", trigger: "dispatch", run: "9201", verdict: "GO" });
+    b.data.records.unshift({ date: day, mode: "dry", part: "core", trigger: "dispatch", run: "9202", verdict: "GO" });
+    await a.save();
+    await b.save();
+    const runs = w.json("rehearsal/log.json").records.map((r) => r.run).sort().join();
+    check("Q25 two first-ever writers: the second create is refused and merged, both records kept", runs === "9201,9202", runs);
+  }
 }
 check("R4-10 the fetch stub saw no unexpected URL", stub.unexpected.length === 0);
 clock.real();

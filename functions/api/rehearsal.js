@@ -132,32 +132,87 @@ async function readRoster(b) {
 
 // rehearsal/log.json = {v:1, records:[...], mail:[...]}. A MISSING object is a
 // fresh start; one that exists but cannot be read, parsed or shaped is null.
-async function readLog(b) {
+// readLogVersion also returns the etag the copy was read at (null while the
+// object does not exist), which every later write is conditional on.
+async function readLogVersion(b) {
   let o;
   try { o = await b.get(LOG_KEY); } catch { return null; }
-  if (!o) return { v: 1, records: [], mail: [] };
+  if (!o) return { data: { v: 1, records: [], mail: [] }, etag: null };
   let d;
   try { d = JSON.parse(await o.text()); } catch { return null; }
   if (!d || typeof d !== "object" || Array.isArray(d) || d.v !== 1 ||
       !Array.isArray(d.records) || !Array.isArray(d.mail) ||
       !d.records.every((r) => r && typeof r === "object") ||
       !d.mail.every((m) => m && typeof m === "object")) return null;
-  return d;
+  return { data: d, etag: typeof o.etag === "string" ? o.etag : null };
 }
-function logHandle(rw, data, run) {
-  return {
-    data, run,
-    async save() {
-      const cutoff = isoDay(Date.now() - MAIL_KEEP_DAYS * DAY);
-      const out = {
-        v: 1,
-        records: data.records.slice(0, LOG_RECORDS),
-        mail: data.mail.filter((m) => typeof m.day === "string" && m.day >= cutoff),
-      };
-      const r = await rw.put(LOG_KEY, JSON.stringify(out), { httpMetadata: { contentType: "application/json" } });
-      if (!r) throw new Error("log write failed");
-    },
+
+// Every write of rehearsal/log.json is CONDITIONAL on the version this request
+// last read or wrote, the pattern main already uses (_manual_store.js,
+// mission-outreach.js): onlyIf etagMatches, or If-None-Match: * while the
+// object does not exist yet. Two requests can run at once (a re-run, a
+// backstop cron and the workflow_run trigger), and a plain read, count, write
+// let both count the same mail and both send, past the 3-a-day cap (R4 Q25).
+// A refused write re-reads the log, keeps every record and mail entry the
+// other request wrote, puts this request's own on top and tries again; for a
+// pending mail record the cap is counted again on that newer copy first.
+const SAVE_TRIES = 6;
+const recKey = (r) => [r.date, r.mode, r.part, r.trigger, r.run].join("|");
+export function logHandle(rw, data, run, etag = null) {
+  let tag = etag;
+  // Objects that came from R2 (by identity). Anything else in data.records or
+  // data.mail was added by this request and wins a merge.
+  const foreign = new Set([...data.records, ...data.mail]);
+  const body = () => {
+    const cutoff = isoDay(Date.now() - MAIL_KEEP_DAYS * DAY);
+    return JSON.stringify({ v: 1, records: data.records.slice(0, LOG_RECORDS),
+      mail: data.mail.filter((m) => typeof m.day === "string" && m.day >= cutoff) });
   };
+  async function attempt() {
+    const r = await rw.put(LOG_KEY, body(), { httpMetadata: { contentType: "application/json" },
+      onlyIf: tag ? { etagMatches: tag } : new Headers({ "If-None-Match": "*" }) });
+    if (!r) return false;
+    tag = typeof r.etag === "string" ? r.etag : null;
+    if (!tag) { const h = await rw.head(LOG_KEY); tag = h && typeof h.etag === "string" ? h.etag : null; }
+    return true;
+  }
+  async function merge() {
+    const fresh = await readLogVersion(rw);
+    if (!fresh) throw new Error("log unreadable");
+    const ownRecs = data.records.filter((r) => !foreign.has(r));
+    const ownMail = data.mail.filter((m) => !foreign.has(m));
+    const keys = new Set(ownRecs.map(recKey));
+    const refs = new Set(ownMail.map((m) => m.ref).filter(Boolean));
+    const recs = fresh.data.records.filter((r) => !keys.has(recKey(r)));
+    const mail = fresh.data.mail.filter((m) => !(m.ref && refs.has(m.ref)));
+    for (const x of [...recs, ...mail]) foreign.add(x);
+    data.records.splice(0, data.records.length, ...ownRecs, ...recs);
+    data.mail.splice(0, data.mail.length, ...ownMail, ...mail);
+    tag = fresh.etag;
+  }
+  async function save() {
+    for (let i = 0; i < SAVE_TRIES; i++) {
+      if (await attempt()) return;
+      await merge();
+    }
+    throw new Error("log busy");
+  }
+  // The pending record `m` is already in data.mail. True: it is in R2 and the
+  // send may go ahead. False: on the newer copy the cap was already used up,
+  // so `m` is now "capped" (saved best effort) and nothing may be sent.
+  async function reserve(m, cap, counts) {
+    for (let i = 0; i < SAVE_TRIES; i++) {
+      if (await attempt()) return true;
+      await merge();
+      if (data.mail.filter((x) => x !== m && counts(x)).length >= cap) {
+        m.result = "capped";
+        await save().catch(() => {});
+        return false;
+      }
+    }
+    throw new Error("log busy");
+  }
+  return { data, run, save, reserve };
 }
 
 // ── OUTBOUND ────────────────────────────────────────────────────────────────
@@ -201,18 +256,27 @@ export function outbound(env, roster, log) {
   async function sendInternal(to, subject, html, attachments) {
     const day = isoDay(Date.now());
     const record = (kind, result) => {
-      const m = { day, kind, run: log.run, result, at: new Date(Date.now()).toISOString() };
+      // ref: this entry's own id, so a merge with a newer copy of the log
+      // (logHandle) never counts it twice.
+      const m = { day, kind, run: log.run, result, at: new Date(Date.now()).toISOString(),
+        ref: crypto.randomUUID().replace(/-/g, "").slice(0, 12) };
       log.data.mail.unshift(m);
       return m;
     };
     let who;
     try { who = lock(to); } catch { record("none", "refused"); return { result: "refused" }; }
     if (env.REHEARSAL_MAIL !== "1") { record(who.kind, "off"); return { result: "off" }; }
-    const used = log.data.mail.filter((m) => m.day === day && m.kind === who.kind && ATTEMPTS.has(m.result)).length;
+    const counts = (x) => x.day === day && x.kind === who.kind && ATTEMPTS.has(x.result);
+    const used = log.data.mail.filter(counts).length;
     if (used >= DAILY_CAP) { record(who.kind, "capped"); return { result: "capped" }; }
-    // The attempt is recorded BEFORE the call. If that write fails, no call.
+    // The attempt is recorded BEFORE the call, conditionally on the copy the
+    // cap was counted on (logHandle.reserve). If that write fails, no call;
+    // if a newer copy shows the cap already used, no call.
     const m = record(who.kind, "pending");
-    try { await log.save(); } catch {
+    try {
+      const ok = log.reserve ? await log.reserve(m, DAILY_CAP, counts) : (await log.save(), true);
+      if (!ok) return { result: "capped" };
+    } catch {
       m.result = "capped";
       return { result: "capped", writeFailed: true };
     }
@@ -256,9 +320,10 @@ async function handle(request, env) {
   const { facts, dropped } = validateRunnerFacts(raw);
 
   const rw = roBucket(env.BUNDLES, { allowPrefix: "rehearsal/" });
-  const data = await readLog(rw);
-  if (!data) return reply(500, { ok: false, error: "log_unreadable" });
-  const log = logHandle(rw, data, params.run);
+  const read = await readLogVersion(rw);
+  if (!read) return reply(500, { ok: false, error: "log_unreadable" });
+  const { data } = read;
+  const log = logHandle(rw, data, params.run, read.etag);
 
   if (shouldSkip(data.records, params)) return reply(200, { ok: true, verdict: "SKIPPED" });
 

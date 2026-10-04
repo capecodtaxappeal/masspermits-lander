@@ -56,6 +56,7 @@ export function makeRunner(fileLabel) {
 export function fakeR2(initial = {}, opts = {}) {
   const store = new Map();
   const ops = [];
+  const refusals = [];
   let seq = 0;
   const enc = new TextEncoder();
   const toBytes = (v) => {
@@ -107,6 +108,24 @@ export function fakeR2(initial = {}, opts = {}) {
     async put(key, value, o = {}) {
       ops.push({ op: "put", key });
       if (opts.failPut && opts.failPut(key)) throw new Error("fake put failure");
+      // R2's conditional put: onlyIf as {etagMatches, etagDoesNotMatch} or as
+      // Headers (If-Match, If-None-Match: *). A failed precondition writes
+      // nothing and resolves null, as R2 does.
+      const c = o.onlyIf;
+      if (c) {
+        const cur = store.get(key);
+        let refused = false;
+        if (typeof Headers !== "undefined" && c instanceof Headers) {
+          const inm = c.get("If-None-Match"), im = c.get("If-Match");
+          if (inm === "*" && cur) refused = true;
+          if (im && (!cur || cur.etag !== im.replace(/"/g, ""))) refused = true;
+        } else {
+          if (c.etagMatches !== undefined && (!cur || cur.etag !== c.etagMatches)) refused = true;
+          if (c.etagDoesNotMatch !== undefined && cur &&
+              (c.etagDoesNotMatch === "*" || cur.etag === c.etagDoesNotMatch)) refused = true;
+        }
+        if (refused) { refusals.push(key); return null; }
+      }
       write(key, value, o);
       return meta(store.get(key));
     },
@@ -117,7 +136,7 @@ export function fakeR2(initial = {}, opts = {}) {
     async resumeMultipartUpload(key) { ops.push({ op: "resumeMultipartUpload", key }); return {}; },
   };
   return {
-    bucket, ops, store,
+    bucket, ops, store, refusals,
     text: (k) => (store.has(k) ? new TextDecoder().decode(store.get(k).bytes) : null),
     json: (k) => (store.has(k) ? JSON.parse(new TextDecoder().decode(store.get(k).bytes)) : null),
     writes: () => ops.filter((o) => o.op === "put" || o.op === "delete"),
