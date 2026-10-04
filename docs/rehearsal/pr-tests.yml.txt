@@ -1,0 +1,34 @@
+name: MassPermits rehearsal tests
+# Optional. Delivered as a .txt file: the owner copies it to
+# .github/workflows/pr-tests.yml by hand if wanted.
+#
+# Runs the rehearsal test suite on pull requests that touch functions/. It
+# only reads: the token can read the repository contents and nothing else, the
+# checkout keeps no credentials, and no step uses a stored secret. The tests
+# make no network call (every fetch is a stub that throws on an unknown URL).
+#
+# The static test compares the pull request with origin/main, so the checkout
+# fetches full history (fetch-depth: 0), which includes origin/main.
+
+on:
+  pull_request:
+    paths:
+      - "functions/**"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Rehearsal tests
+        run: node functions/api/all.test.mjs
