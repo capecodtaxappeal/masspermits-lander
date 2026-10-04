@@ -106,11 +106,14 @@
   Referrer-Policy: no-referrer
   Cache-Control: private, no-store
 
-# Documentation, Worker source and the rehearsal's runner scripts are public
-# on GitHub already; they are not pages, so keep them out of search results.
+# Documentation, Worker source, the rehearsal's runner scripts and the test
+# files (synthetic fixtures only) are public on GitHub already; they are not
+# pages, so keep them out of search results.
 /docs/*
   X-Robots-Tag: noindex, nofollow
 /workers/*
   X-Robots-Tag: noindex, nofollow
 /scripts/*
+  X-Robots-Tag: noindex, nofollow
+/test/*
   X-Robots-Tag: noindex, nofollow

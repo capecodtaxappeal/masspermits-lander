@@ -49,6 +49,12 @@ export function installClock() {
 // ── the loader ──────────────────────────────────────────────────────────────
 const SPY = Symbol.for("masspermits.rehearsal.test.handlerSpy");
 const OIDC = Symbol.for("masspermits.rehearsal.test.oidcVerdict");
+// The workflow the Function accepts (rehearsal.js WORKFLOW_REF). The stub
+// verifier's default verdict carries it, as a real token from
+// monday-rehearsal.yml on main would; setVerdict() replaces the whole verdict.
+export const WORKFLOW_REF =
+  "capecodtaxappeal/masspermits-lander/.github/workflows/monday-rehearsal.yml@refs/heads/main";
+export const workflowClaims = (ref = WORKFLOW_REF) => ({ workflow_ref: ref, job_workflow_ref: ref });
 export async function loadRehearsal({ mutate } = {}) {
   const root = mkdtempSync(join(tmpdir(), "mp-rehearsal-"));
   const api = join(root, "functions", "api");
@@ -81,7 +87,7 @@ export async function loadRehearsal({ mutate } = {}) {
   writeFileSync(join(api, "_github-oidc.js"),
     "export async function verifyGitHubOIDC(_request) {\n" +
     "  const v = globalThis[Symbol.for(\"masspermits.rehearsal.test.oidcVerdict\")];\n" +
-    "  return v === undefined ? { ok: true, payload: {} } : v;\n" +
+    `  return v === undefined ? { ok: true, payload: ${JSON.stringify(workflowClaims())} } : v;\n` +
     "}\n");
   const mod = await import(pathToFileURL(join(api, "rehearsal.js")).href + "?v=" + randomUUID());
   globalThis[SPY] = [];
@@ -147,6 +153,7 @@ export function sendEntry(at, emails, extra = {}) {
 //   refreshAt: when the refresh (and its uploads) ran.
 //   subs: roster array (or a raw string for a corrupt file, or null for none)
 //   log: feed-send-log.json array
+//   dlog: delivery-log.json array (stripe-webhook.js's purchase deliveries)
 //   omit: keys to leave out; extra: more keys
 export function world(o) {
   const now = o.now;
@@ -160,6 +167,7 @@ export function world(o) {
     "inbox-watchdog-state.json": o.inbox ?? { last_live_run_at: new Date(now - 3 * HOUR).toISOString(),
       last: { waiting: 0, oldest_hours: 0, roster_armed: true, roster_active: 1, roster_cancelled: 0 } },
     "feed-send-log.json": o.log ?? [],
+    "delivery-log.json": o.dlog ?? [],
   };
   if (o.subs !== null) init["subscribers.json"] = o.subs ?? roster(3);
   for (const k of o.omit || []) delete init[k];
