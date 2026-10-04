@@ -49,6 +49,12 @@ export function installClock() {
 // ── the loader ──────────────────────────────────────────────────────────────
 const SPY = Symbol.for("masspermits.rehearsal.test.handlerSpy");
 const OIDC = Symbol.for("masspermits.rehearsal.test.oidcVerdict");
+// The workflow the Function accepts (rehearsal.js WORKFLOW_REF). The stub
+// verifier's default verdict carries it, as a real token from
+// monday-rehearsal.yml on main would; setVerdict() replaces the whole verdict.
+export const WORKFLOW_REF =
+  "capecodtaxappeal/masspermits-lander/.github/workflows/monday-rehearsal.yml@refs/heads/main";
+export const workflowClaims = (ref = WORKFLOW_REF) => ({ workflow_ref: ref, job_workflow_ref: ref });
 export async function loadRehearsal({ mutate } = {}) {
   const root = mkdtempSync(join(tmpdir(), "mp-rehearsal-"));
   const api = join(root, "functions", "api");
@@ -81,7 +87,7 @@ export async function loadRehearsal({ mutate } = {}) {
   writeFileSync(join(api, "_github-oidc.js"),
     "export async function verifyGitHubOIDC(_request) {\n" +
     "  const v = globalThis[Symbol.for(\"masspermits.rehearsal.test.oidcVerdict\")];\n" +
-    "  return v === undefined ? { ok: true, payload: {} } : v;\n" +
+    `  return v === undefined ? { ok: true, payload: ${JSON.stringify(workflowClaims())} } : v;\n` +
     "}\n");
   const mod = await import(pathToFileURL(join(api, "rehearsal.js")).href + "?v=" + randomUUID());
   globalThis[SPY] = [];

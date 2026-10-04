@@ -441,6 +441,38 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
 }
 
 // ════════════════════════════════════════════════════════════════════════════
+// auth drill: a valid OIDC token from another workflow on main
+// ════════════════════════════════════════════════════════════════════════════
+{ // A-01 The verifier says ok (same repo, main, same audience: any of main's
+  // id-token workflows can mint that), but the token's workflow is not
+  // monday-rehearsal.yml. A whole sun run (links, seed, core), seeds set and
+  // mail on: every request is 401 and the bucket sees 0 operations.
+  const other = (file) => K.workflowClaims(`capecodtaxappeal/masspermits-lander/.github/workflows/${file}@refs/heads/main`);
+  for (const [label, payload] of [
+    ["weekly-feed.yml", other("weekly-feed.yml")],
+    ["weekly-refresh.yml", other("weekly-refresh.yml")],
+    ["rehearsal workflow_ref, other job_workflow_ref", { ...K.workflowClaims(), job_workflow_ref: other("weekly-feed.yml").workflow_ref }],
+    ["no workflow claims", {}],
+  ]) {
+    L.setVerdict({ ok: true, payload });
+    const w = K.world({ now: SUN.now, subs: K.roster(3), refreshAt: SUN.refreshAt });
+    const r = await fx({ ...SUN, w, env: { REHEARSAL_SEEDS: "seed.one@example.com" } });
+    L.setVerdict(undefined);
+    const all401 = r.x.responses.every((y) => y.status === 401 && y.text === '{"ok":false,"error":"unauthorized"}');
+    const ok = all401 && r.x.responses.length === 3 && w.ops.length === 0 && r.mails.length === 0;
+    check(`A-01 ${label}: every part 401, 0 R2 ops, 0 Resend calls`, ok,
+      JSON.stringify({ statuses: r.x.responses.map((y) => y.status), ops: w.ops.length, mails: r.mails.length }));
+    row(`A-01 ${label}`.slice(0, 16), "auth", ok ? "401 on links, seed and core; 0 R2 ops" : "ACCEPTED", ok ? "Y" : "N", label);
+  }
+  // twin: the stub's default verdict is monday-rehearsal.yml on main; the same run is served
+  const w = K.world({ now: SUN.now, subs: K.roster(3), refreshAt: SUN.refreshAt });
+  const t = await fx({ ...SUN, w });
+  const served = t.x.responses.every((y) => y.status === 200) && w.ops.length > 0;
+  check("A-01 twin: a token from monday-rehearsal.yml on main is served", served, JSON.stringify(t.x.responses.map((y) => y.status)));
+  row("A-01 twin", "auth", served ? "200 on every part" : "refused", served ? "Y" : "N");
+}
+
+// ════════════════════════════════════════════════════════════════════════════
 // across every drill: mail lock, write set, leaks
 // ════════════════════════════════════════════════════════════════════════════
 {

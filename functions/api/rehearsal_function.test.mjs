@@ -46,12 +46,44 @@ const stripeCalls = () => stub.calls.filter((c) => c.url.includes("api.stripe.co
   const today = new Date().toISOString().slice(0, 10);
   const good = `mode=sat&part=core&page=0&date=${today}&trigger=sched&run=42`;
   const bad = "mode=weekly&part=everything&page=99&date=1999-01-01&trigger=x;y&run=abc";
+  check("17 rehearsal.js accepts exactly monday-rehearsal.yml on this repo's main",
+    real.WORKFLOW_REF === K.WORKFLOW_REF, real.WORKFLOW_REF);
+  // Every token below is signed by the test key and carries the rehearsal
+  // workflow's claims, except for the one claim each case names.
+  const signed = (claims = {}) => kit.sign({ ...K.workflowClaims(), ...claims });
+  const WF = (file, ref = "refs/heads/main", repo = "capecodtaxappeal/masspermits-lander") =>
+    `${repo}/.github/workflows/${file}@${ref}`;
   const cases = [
     ["no Authorization header", null],
-    ["aud other", kit.sign({ aud: "other" })],
-    ["ref refs/heads/claude/x", kit.sign({ ref: "refs/heads/claude/x" })],
-    ["exp in the past", kit.sign({ exp: Math.floor(Date.now() / 1000) - 60 })],
+    ["aud other", signed({ aud: "other" })],
+    ["ref refs/heads/claude/x", signed({ ref: "refs/heads/claude/x" })],
+    ["exp in the past", signed({ exp: Math.floor(Date.now() / 1000) - 60 })],
+    // A VALID token from main that another workflow minted: the verifier
+    // accepts it (same repo, branch and audience); the workflow pin refuses it.
+    ["another workflow on main (weekly-feed.yml)", signed(K.workflowClaims(WF("weekly-feed.yml")))],
+    ["another workflow on main (weekly-refresh.yml)", signed(K.workflowClaims(WF("weekly-refresh.yml")))],
+    ["the right workflow_ref, a job_workflow_ref from a called workflow", signed({ job_workflow_ref: WF("weekly-feed.yml") })],
+    ["no workflow_ref claim", signed({ workflow_ref: undefined, job_workflow_ref: undefined })],
+    ["monday-rehearsal.yml at another ref", signed(K.workflowClaims(WF("monday-rehearsal.yml", "refs/heads/claude/x")))],
+    ["monday-rehearsal.yml in a fork", signed(K.workflowClaims(WF("monday-rehearsal.yml", "refs/heads/main", "someone/fork")))],
+    ["workflow_ref with different case", signed(K.workflowClaims(K.WORKFLOW_REF.toUpperCase()))],
   ];
+  // The verifier itself accepts the other-workflow tokens, so the 401 above
+  // comes from the workflow pin and nothing else.
+  {
+    const { verifyGitHubOIDC } = await import("./_github-oidc.js");
+    const v = await verifyGitHubOIDC(new Request("https://masspermits.com/api/rehearsal",
+      { method: "POST", headers: { authorization: "Bearer " + signed(K.workflowClaims(WF("weekly-feed.yml"))) } }));
+    check("17 the real verifier accepts a weekly-feed.yml token from main (ok:true)", v.ok === true, v.reason);
+    check("17 fromRehearsalWorkflow refuses that verdict", real.fromRehearsalWorkflow(v) === false);
+    check("17 fromRehearsalWorkflow: verdicts without the rehearsal workflow are refused",
+      [undefined, null, {}, { ok: true }, { ok: true, payload: null }, { ok: true, payload: "x" },
+        { ok: false, payload: K.workflowClaims() }, { ok: "true", payload: K.workflowClaims() }]
+        .every((x) => real.fromRehearsalWorkflow(x) === false));
+    check("17 fromRehearsalWorkflow: the rehearsal workflow, with or without job_workflow_ref, is accepted",
+      real.fromRehearsalWorkflow({ ok: true, payload: K.workflowClaims() }) === true &&
+      real.fromRehearsalWorkflow({ ok: true, payload: { workflow_ref: K.WORKFLOW_REF } }) === true);
+  }
   for (const [label, token] of cases) {
     for (const [pl, qs] of [["valid params", good], ["invalid params", bad]]) {
       const r2 = keep(K.world({ now: Date.now() }));
@@ -72,7 +104,7 @@ const stripeCalls = () => stub.calls.filter((c) => c.url.includes("api.stripe.co
   // positive control
   const r2 = keep(K.world({ now: Date.now(), log: [] }));
   const r = await real.onRequestPost({ request: new Request("https://masspermits.com/api/rehearsal?" +
-    good.replace("mode=sat", "mode=dry"), { method: "POST", headers: { authorization: "Bearer " + kit.sign() },
+    good.replace("mode=sat", "mode=dry"), { method: "POST", headers: { authorization: "Bearer " + signed() },
     body: JSON.stringify(K.facts()) }), env: K.baseEnv(r2.bucket) });
   const text = await r.text();
   responses.push({ text, status: r.status });

@@ -8,8 +8,11 @@
 //
 // Order of work, and why:
 //   1. AUTH FIRST. verifyGitHubOIDC always returns an object, so the test is
-//      `auth.ok !== true`, never `!auth`. Nothing is parsed, read or called
-//      before it passes, and its reason is never echoed.
+//      `auth.ok !== true`, never `!auth`. Then the token must come from
+//      monday-rehearsal.yml on main itself (WORKFLOW_REF, the get-drop.js
+//      pattern): every other id-token workflow on main can mint a token with
+//      the same audience, and none of them may drive this route. Nothing is
+//      parsed, read or called before both pass, and no reason is echoed.
 //   2. Parameters, then the runner facts body (at most 4 KB).
 //   3. rehearsal/log.json. If it exists and cannot be read, the request ends
 //      here: it is the mail cap's evidence, and an "empty" log would reset it.
@@ -58,11 +61,24 @@ const UA = "MassPermits-Rehearsal/1 (monitor; headless)";
 const ERRORS = new Set(["bad_param", "unauthorized", "schema", "roster_unreadable",
   "status_unreadable", "log_unreadable", "internal"]);
 
+// The one workflow allowed to call this route. Checked exactly as get-drop.js
+// checks weekly-refresh.yml: workflow_ref must equal it, and job_workflow_ref,
+// when the token carries one, must equal it too.
+export const WORKFLOW_REF =
+  "capecodtaxappeal/masspermits-lander/.github/workflows/monday-rehearsal.yml@refs/heads/main";
+export function fromRehearsalWorkflow(auth) {
+  if (!auth || auth.ok !== true) return false;
+  const p = auth.payload && typeof auth.payload === "object" ? auth.payload : {};
+  if (p.workflow_ref !== WORKFLOW_REF) return false;
+  if (p.job_workflow_ref !== undefined && p.job_workflow_ref !== WORKFLOW_REF) return false;
+  return true;
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
   let auth;
   try { auth = await verifyGitHubOIDC(request); } catch { auth = null; }
-  if (!auth || auth.ok !== true) {
+  if (!fromRehearsalWorkflow(auth)) {
     return new Response(JSON.stringify({ ok: false, error: "unauthorized" }),
       { status: 401, headers: { "content-type": "application/json" } });
   }
