@@ -247,20 +247,65 @@ export const isBare = (s) => typeof s === "string" && BARE.test(norm(s));
 // a row holding "Name <a@example.com>" or "mailto:a@example.com" still
 // matches "a@example.com".
 const ADDR_IN = /[^\s<>",;:()]+@[^\s<>",;:()]+/g;
-const rowEmails = (r) => (r && r.email != null ? (Array.isArray(r.email) ? r.email : [r.email]) : []);
+// Adds one recipient value (a string, or an array of them) to `out`: the whole
+// value and every address-looking token inside it, trimmed and lower-cased.
+function addAddresses(out, value) {
+  for (const e of Array.isArray(value) ? value : [value]) {
+    if (e == null) continue;
+    const v = norm(e);
+    out.add(v);
+    for (const a of v.match(ADDR_IN) || []) out.add(a);
+  }
+}
 export function rosterAddresses(rows) {
   const out = new Set();
   for (const r of rows || []) {
-    for (const e of rowEmails(r)) {
-      if (e == null) continue;
-      const v = norm(e);
-      out.add(v);
-      for (const a of v.match(ADDR_IN) || []) out.add(a);
-    }
+    if (r && r.email != null) addAddresses(out, r.email);
   }
   return out;
 }
-export function outbound(env, roster, log) {
+
+// FORMER AND CURRENT BUYERS, from the two delivery logs: every `to` in
+// feed-send-log.json's sent[] (weekly-send.js) and every `to` in
+// delivery-log.json (stripe-webhook.js). A buyer whose row was deleted from
+// subscribers.json by hand is still in one of them, so the lock refuses that
+// address too. ok is true only when BOTH objects exist, parse, and have the
+// shape those writers give them (an array of objects; sent[] an array). When
+// ok is false the seeds are refused (they would carry the real paid zip) and
+// the owner digest is not: it carries no buyer data, and the addresses that
+// could be read still count. The addresses are used by the lock only; nothing
+// here reaches a response, a record, the digest or a log.
+export function buyerAddresses(feedLog, deliveryLog) {
+  const addrs = new Set();
+  let ok = true;
+  if (!Array.isArray(feedLog)) ok = false;
+  else {
+    for (const e of feedLog) {
+      if (!e || typeof e !== "object" || Array.isArray(e)) { ok = false; continue; }
+      if (e.sent === undefined) continue;
+      if (!Array.isArray(e.sent)) { ok = false; continue; }
+      for (const s of e.sent) if (s && typeof s === "object" && s.to != null) addAddresses(addrs, s.to);
+    }
+  }
+  if (!Array.isArray(deliveryLog)) ok = false;
+  else {
+    for (const e of deliveryLog) {
+      if (!e || typeof e !== "object" || Array.isArray(e)) { ok = false; continue; }
+      if (e.to != null) addAddresses(addrs, e.to);
+    }
+  }
+  return { ok, addrs };
+}
+async function readBuyers(b) {
+  const [feedLog, deliveryLog] = await Promise.all([
+    readJsonSafe(b, "feed-send-log.json"), readJsonSafe(b, "delivery-log.json")]);
+  return buyerAddresses(feedLog, deliveryLog);
+}
+
+export function outbound(env, roster, log, buyers) {
+  // Missing or malformed `buyers` counts as unreadable: seeds refused.
+  const bought = buyers && buyers.addrs instanceof Set ? buyers.addrs : new Set();
+  const boughtOk = !!(buyers && buyers.ok === true && buyers.addrs instanceof Set);
   // Stripe: GET to the API origin, nothing else. Passed as fetchImpl to every
   // _reconcile.js reader.
   async function stripeGet(url, init = {}) {
@@ -274,9 +319,11 @@ export function outbound(env, roster, log) {
   // THE RECIPIENT LOCK. `to` must be exactly one BARE address (see BARE: no
   // display name, no list) that is the owner's (REHEARSAL_TO, OWNER_EMAIL) or
   // a seed (REHEARSAL_SEEDS, at most 3), and must be no address found in any
-  // roster row, active or not (rosterAddresses). Both sides are trimmed and
-  // lower-cased; an env value counts only if it is non-empty. Anything else
-  // is refused, and a refusal never falls back to another address.
+  // roster row, active or not (rosterAddresses), nor in either delivery log
+  // (buyerAddresses: former and current buyers). Both sides are trimmed and
+  // lower-cased; an env value counts only if it is non-empty. A seed is also
+  // refused while the roster or either log cannot be read. Anything else is
+  // refused, and a refusal never falls back to another address.
   function lock(to) {
     if (typeof to !== "string") throw new Error("refused");
     const t = norm(to);
@@ -287,8 +334,9 @@ export function outbound(env, roster, log) {
       ? env.REHEARSAL_SEEDS.split(",").map(norm).filter(Boolean).slice(0, 3) : [];
     const kind = owners.includes(t) ? "owner" : seeds.includes(t) ? "seed" : null;
     if (!kind) throw new Error("refused");
-    if (kind === "seed" && !roster.ok) throw new Error("refused");
+    if (kind === "seed" && (!roster.ok || !boughtOk)) throw new Error("refused");
     if (roster.ok && rosterAddresses(roster.rows).has(t)) throw new Error("refused");
+    if (bought.has(t)) throw new Error("refused");
     return { t, kind };
   }
 
@@ -383,7 +431,8 @@ async function handle(request, env) {
   }
 
   const roster = await readRoster(rw);
-  const out = outbound(env, roster, log);
+  const buyers = await readBuyers(rw);
+  const out = outbound(env, roster, log, buyers);
 
   if (params.part === "links") {
     const r = await links(env, rw, roster, params);
@@ -392,7 +441,7 @@ async function handle(request, env) {
     return reply(200, { ok: true, more: r.more });
   }
   if (params.part === "seed") {
-    const r = await seed(env, rw, roster, params, out, data);
+    const r = await seed(env, rw, roster, buyers, params, out, data);
     upsert({ ...base, verdict: null, code: r.code });
     await log.save().catch(() => {});
     return reply(200, { ok: true, codes: r.own });
@@ -409,10 +458,12 @@ const coverageOf = (status) => (status && ((status.coverage && status.coverage.d
 // failed or capped) blocks every later run, so a failure is never retried.
 // Refused outright, before any send, if any seed is not a bare address
 // (C20.seed_refused: "Name <a@example.com>" would reach a@example.com), the
-// roster cannot be read, or any seed is an address found in a roster row
-// (active or not, trimmed and lower-cased on both sides, rosterAddresses).
-// Each seed then goes through sendInternal, whose lock and daily cap apply
-// again.
+// roster cannot be read, either delivery log cannot be read
+// (C20.buyer_log_unreadable), any seed is an address found in a roster row
+// (active or not, trimmed and lower-cased on both sides, rosterAddresses), or
+// any seed is a former or current buyer's address in either delivery log
+// (C20.seed_is_buyer, buyerAddresses). Each seed then goes through
+// sendInternal, whose lock and daily cap apply again.
 const norm1 = (s) => String(s).trim().toLowerCase();
 function base64(buf) {
   const bytes = new Uint8Array(buf);
@@ -420,7 +471,7 @@ function base64(buf) {
   for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
   return btoa(bin);
 }
-async function seed(env, rw, roster, params, out, data) {
+async function seed(env, rw, roster, buyers, params, out, data) {
   const own = [];
   if (params.mode !== "sun") return { code: "C20.not_sun", own };
   const seeds = typeof env.REHEARSAL_SEEDS === "string"
@@ -428,8 +479,10 @@ async function seed(env, rw, roster, params, out, data) {
   if (!seeds.length) return { code: "C20.no_seeds", own };
   if (!seeds.every(isBare)) return { code: "C20.seed_refused", own };
   if (!roster.ok) return { code: "roster_unreadable", own };
+  if (!buyers || buyers.ok !== true) return { code: "C20.buyer_log_unreadable", own };
   const onRoster = rosterAddresses(roster.rows);
   if (seeds.some((s) => onRoster.has(s))) return { code: "C20.seed_is_roster", own };
+  if (seeds.some((s) => buyers.addrs.has(s))) return { code: "C20.seed_is_buyer", own };
   if (data.records.some((r) => r.part === "seed" && r.date === params.date && SEED_ATTEMPTED.has(r.code))) {
     return { code: "C20.already_sent", own };
   }

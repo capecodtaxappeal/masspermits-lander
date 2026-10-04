@@ -1,7 +1,10 @@
 // Drills: one fault fixture per incident, each with a negative twin, and the
 // false-alarm drills F1-F12 (F13 and the R3a halves are drilled in
-// rehearsal_r3a_drills.test.mjs), and the recipient-lock drill L-01 (owner
-// and seed set to "Name <roster email>"). Every Function drill runs the whole
+// rehearsal_r3a_drills.test.mjs), the recipient-lock drills L-01 (owner
+// and seed set to "Name <roster email>") and L-02 to L-06 (former and current
+// buyers in feed-send-log.json and delivery-log.json, either log unreadable,
+// and the owner digest carrying no buyer data), and the auth drill A-01 (a
+// valid token from another workflow on main). Every Function drill runs the whole
 // rehearsal.js (temp copy, stubbed verifier) the way the caller drives it;
 // C7's keyed half is also drilled here through the pure
 // functions with synthetic Stripe subscriptions.
@@ -440,6 +443,108 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
   row("L-01 twin", "C18", t.mails.length === 1 ? "1 mail to the bare owner" : "missed", t.mails.length === 1 ? "Y" : "N");
 }
 
+// ── L-02 to L-06: former and current buyers in the delivery logs ───────────
+// A buyer whose subscribers.json row was deleted by hand is still in
+// feed-send-log.json (sent[].to) or delivery-log.json (to). Each drill runs a
+// whole sun run (links, seed, core) on a world whose roster does NOT hold that
+// address. Every owner digest any of them sends is kept for L-06.
+const FORMER = "former.buyer@example.com";
+const SEED_ONE = "seed.one@example.com";
+const ownerDigests = [];
+const seedSends = [];
+const seedMails = (m) => m.filter((x) => x.subject && x.subject.includes("(preview"));
+async function lockRun(label, o) {
+  const subs = K.roster(3);
+  const r = await fx({ ...SUN, subs, ...o });
+  for (const m of r.mails) {
+    if (m.to.length === 1 && m.to[0] === K.OWNER && !seedMails([m]).length) ownerDigests.push({ label, m });
+    if (seedMails([m]).length) seedSends.push({ label, to: m.to });
+  }
+  const log = r.w.json("rehearsal/log.json");
+  const seedRec = log && log.records.find((x) => x.part === "seed");
+  return { ...r, seedCode: seedRec ? seedRec.code : null, mailRec: log ? log.mail : [] };
+}
+const subsMail = K.roster(3).map((s) => s.email);
+const lastMon = at("2026-09-28T14:00:00Z");
+// a former buyer, delivered to on 09-21, gone from the roster since
+const feedWithFormer = [K.sendEntry(lastMon, subsMail),
+  K.sendEntry(at("2026-09-21T14:00:00Z"), [...subsMail, " Former.Buyer@Example.com "])];
+const delivery = (...to) => to.map((t, i) => ({ at: `2026-09-1${i}T10:00:00.000Z`, to: t, kind: "monthly",
+  bundle: "latest-monthly.zip" }));
+{ // L-02 feed-send-log.json sent[].to
+  const asOwner = await lockRun("L-02 owner", { log: feedWithFormer, env: { REHEARSAL_TO: FORMER } });
+  const okOwner = asOwner.mails.length === 0 && asOwner.mailRec.length > 0 &&
+    asOwner.mailRec.every((m) => m.result === "refused") && asOwner.codes.includes("C18.mail_refused");
+  check("L-02 owner = a former buyer found only in feed-send-log.json: refused, 0 Resend calls, C18.mail_refused",
+    okOwner, JSON.stringify({ mails: asOwner.mails.length, codes: asOwner.codes }));
+  row("L-02 owner", "C18", okOwner ? "refused, 0 Resend calls (C18.mail_refused)" : "SENT", okOwner ? "Y" : "N");
+  const asSeed = await lockRun("L-02 seed", { log: feedWithFormer, env: { REHEARSAL_SEEDS: `${FORMER}, ${SEED_ONE}` } });
+  const okSeed = seedMails(asSeed.mails).length === 0 && asSeed.seedCode === "C20.seed_is_buyer" &&
+    asSeed.codes.includes("C20.seed_is_buyer") && asSeed.v === "NO-GO";
+  check("L-02 seed = that former buyer: 0 seed sends (the bare seed beside it too), NO-GO C20.seed_is_buyer",
+    okSeed, JSON.stringify({ seedMails: seedMails(asSeed.mails).length, code: asSeed.seedCode, v: asSeed.v }));
+  row("L-02 seed", "C20", okSeed ? "NO-GO C20.seed_is_buyer, 0 seed sends" : "SENT", okSeed ? "Y" : "N");
+}
+{ // L-03 delivery-log.json to
+  const dlog = delivery("x.other@example.com", "FORMER.buyer@example.com  ");
+  const asOwner = await lockRun("L-03 owner", { worldOpts: { dlog }, env: { REHEARSAL_TO: FORMER } });
+  const okOwner = asOwner.mails.length === 0 && asOwner.mailRec.length > 0 &&
+    asOwner.mailRec.every((m) => m.result === "refused") && asOwner.codes.includes("C18.mail_refused");
+  check("L-03 owner = a buyer found only in delivery-log.json: refused, 0 Resend calls, C18.mail_refused",
+    okOwner, JSON.stringify({ mails: asOwner.mails.length, codes: asOwner.codes }));
+  row("L-03 owner", "C18", okOwner ? "refused, 0 Resend calls (C18.mail_refused)" : "SENT", okOwner ? "Y" : "N");
+  const asSeed = await lockRun("L-03 seed", { worldOpts: { dlog }, env: { REHEARSAL_SEEDS: FORMER } });
+  const okSeed = seedMails(asSeed.mails).length === 0 && asSeed.seedCode === "C20.seed_is_buyer" &&
+    asSeed.codes.includes("C20.seed_is_buyer") && asSeed.v === "NO-GO";
+  check("L-03 seed = that buyer: 0 seed sends, NO-GO C20.seed_is_buyer",
+    okSeed, JSON.stringify({ seedMails: seedMails(asSeed.mails).length, code: asSeed.seedCode, v: asSeed.v }));
+  row("L-03 seed", "C20", okSeed ? "NO-GO C20.seed_is_buyer, 0 seed sends" : "SENT", okSeed ? "Y" : "N");
+}
+// L-04 and L-05: a log that cannot be read refuses every seed; the owner
+// digest still goes, once.
+for (const [id, label, o] of [
+  ["L-04", "feed-send-log.json truncated", { log: "[{\"at\":\"2026-09-28T14:00:00Z\",\"sent\":[{\"to\":\"buyer1.te" }],
+  ["L-04", "feed-send-log.json missing", { worldOpts: { omit: ["feed-send-log.json"] } }],
+  ["L-04", "feed-send-log.json not an array", { log: { sent: [] } }],
+  ["L-05", "delivery-log.json truncated", { worldOpts: { extra: { "delivery-log.json": "[{\"to\":\"former.bu" } } }],
+  ["L-05", "delivery-log.json missing", { worldOpts: { omit: ["delivery-log.json"] } }],
+  ["L-05", "delivery-log.json not an array", { worldOpts: { dlog: { to: FORMER } } }],
+]) {
+  const r = await lockRun(`${id} ${label}`, { ...o, env: { REHEARSAL_SEEDS: SEED_ONE } });
+  const owner = r.mails.filter((m) => m.to.length === 1 && m.to[0] === K.OWNER);
+  const ok = seedMails(r.mails).length === 0 && r.seedCode === "C20.buyer_log_unreadable" &&
+    r.has("C20.buyer_log_unreadable") && owner.length === 1 && r.mails.length === 1;
+  check(`${id} ${label}: every seed refused (C20.buyer_log_unreadable, 0 seed sends), the owner digest sent once`, ok,
+    JSON.stringify({ seedMails: seedMails(r.mails).length, code: r.seedCode, owner: owner.length, mails: r.mails.length }));
+  row(`${id} ${label}`.slice(0, 16), "C20", ok ? "seeds refused, 1 owner digest" : "SEED SENT or no digest", ok ? "Y" : "N", label);
+}
+{ // twin: both logs readable, a seed that never bought gets the preview once
+  const r = await lockRun("L-04/05 twin", { log: feedWithFormer, worldOpts: { dlog: delivery("x.other@example.com") },
+    env: { REHEARSAL_SEEDS: SEED_ONE } });
+  const ok = r.seedCode === "C20.sent" && seedMails(r.mails).length === 1 && seedMails(r.mails)[0].to.join() === SEED_ONE;
+  check("L-04/05 twin: readable logs that do not hold the seed: C20.sent, one preview to the seed", ok,
+    JSON.stringify({ code: r.seedCode, seedMails: seedMails(r.mails).length }));
+  row("L-04/05 twin", "C20", ok ? "C20.sent, 1 preview to the seed" : "missed", ok ? "Y" : "N");
+}
+{ // L-06 the owner digest never carries buyer data: every digest sent above
+  // (logs unreadable included), scanned for every address in the roster and
+  // the logs (any case), the former buyer, names, cus_ ids and tokens.
+  const roster = K.roster(3);
+  const needles = [...roster.flatMap((s) => [s.email, s.name, s.token, s.customer]), FORMER, "x.other@example.com",
+    "Testperson", "cus_", "former.bu", "buyer1.te"].map((s) => s.toLowerCase());
+  const leaks = ownerDigests.filter(({ m }) => {
+    const body = JSON.stringify({ subject: m.subject, html: m.html, text: m.text }).toLowerCase();
+    return needles.some((n) => body.includes(n)) || /[0-9a-f]{32}/.test(body) || "attachments" in m;
+  });
+  const ok = ownerDigests.length >= 8 && leaks.length === 0;
+  check("L-06 every owner digest from L-02 to L-05 carries no buyer data (no address, name, cus_ id, token or attachment)", ok,
+    JSON.stringify({ digests: ownerDigests.length, leaks: leaks.map((x) => x.label) }));
+  row("L-06 digest", "C18", ok ? `${ownerDigests.length} digests, no buyer data` : "LEAK", ok ? "Y" : "N");
+  check("L-02 to L-06: the only seed preview went to the counted seed in the twin",
+    seedSends.length === 1 && seedSends[0].to.join() === SEED_ONE && seedSends[0].label === "L-04/05 twin",
+    JSON.stringify(seedSends));
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // auth drill: a valid OIDC token from another workflow on main
 // ════════════════════════════════════════════════════════════════════════════
@@ -487,7 +592,13 @@ const rosterEmails = new Set(K.roster(30).map((s) => s.email.toLowerCase()));
 const inside = (t) => String(t).toLowerCase().match(/[^\s<>",;:()]+@[^\s<>",;:()]+/g) || [];
 check("6 0 Resend calls to any roster email across every drill",
   rs.sent.every((m) => m.to.every((t) => !inside(t).some((a) => rosterEmails.has(a)))));
-check("6 every Resend call went to the owner", rs.sent.every((m) => m.to.length === 1 && m.to[0] === K.OWNER));
+// The one exception is the L-04/05 twin's preview to its counted seed, which
+// never bought (checked above to be that run's only seed send).
+check("6 every Resend call went to the owner, or to the counted seed in the L-04/05 twin",
+  rs.sent.every((m) => m.to.length === 1 && (m.to[0] === K.OWNER || (m.to[0] === SEED_ONE && seedMails([m]).length === 1))) &&
+  rs.sent.filter((m) => m.to[0] !== K.OWNER).length === 1);
+check("6 0 Resend calls to a former buyer found only in the delivery logs",
+  rs.sent.every((m) => m.to.every((t) => !inside(t).includes(FORMER))));
 check("6 0 Resend calls in any run-level WAIT", waitMail.every((n) => n === 0) && waitMail.length >= 4);
 const stray = worlds.flatMap((w) => w.writes().map((o) => o.key)).filter((k) => !k.startsWith("rehearsal/") &&
   !["refresh-status.json"].includes(k));

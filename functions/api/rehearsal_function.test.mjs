@@ -207,11 +207,13 @@ for (const [label, body] of [["invalid JSON", "{\"v\":1,"], ["valid JSON, wrong 
 const handle = (bucket, mail = []) => ({ data: { v: 1, records: [], mail }, run: "9",
   async save() { const r = await bucket.put("rehearsal/log.json", JSON.stringify(this.data)); if (!r) throw new Error("x"); } });
 const rosterOf = (rows) => ({ ok: true, rows, code: null });
-async function send(env, rosterObj, to, mail) {
+// The two delivery logs, read and parsed: readable and empty unless a case says otherwise.
+const buyersOf = (feed = [], delivery = []) => L.mod.buyerAddresses(feed, delivery);
+async function send(env, rosterObj, to, mail, buyers = buyersOf()) {
   const w = fakeR2({});
   const h = handle(w.bucket, mail);
   const before = rs.sent.length;
-  const r = await L.mod.outbound(env, rosterObj, h).sendInternal(to, "s", "<p>h</p>");
+  const r = await L.mod.outbound(env, rosterObj, h, buyers).sendInternal(to, "s", "<p>h</p>");
   return { r, calls: rs.sent.length - before, h, w };
 }
 const lockEnv = { REHEARSAL_MAIL: "1", REHEARSAL_TO: " Owner@Example.com ", REHEARSAL_SEEDS: " seed@example.com ,, other.seed@example.com",
@@ -273,6 +275,53 @@ const lockEnv = { REHEARSAL_MAIL: "1", REHEARSAL_TO: " Owner@Example.com ", REHE
   check("6 unreadable roster: every seed refused", x.r.result === "refused" && x.calls === 0);
   x = await send(lockEnv, rosterOf([]), "other.seed@example.com");
   check("6 a counted seed with a readable roster is accepted", x.r.result === "sent" && x.calls === 1);
+  // Former and current buyers: every address in feed-send-log.json sent[].to
+  // and delivery-log.json to, trimmed and lower-cased on both sides, whether
+  // or not subscribers.json still has a row for it.
+  const sentLog = (...to) => [{ at: "2026-09-28T14:00:00.000Z", subscribers: to.length, sent: to.map((t) => ({ to: t, ok: true })) }];
+  const dLog = (...to) => to.map((t) => ({ at: "2026-09-20T10:00:00.000Z", to: t, kind: "monthly", bundle: "latest-monthly.zip" }));
+  for (const [label, buyers] of [
+    ["feed-send-log.json sent[].to", buyersOf(sentLog(" Owner@EXAMPLE.com "), [])],
+    ["delivery-log.json to", buyersOf([], dLog("OWNER@example.com "))],
+    ["an older feed-send-log.json entry", buyersOf([...sentLog("x@example.com"), ...sentLog("owner@example.com")], [])],
+    ["\"Name <addr>\" inside a delivery-log.json to", buyersOf([], dLog("Owner Person <owner@example.com>"))],
+  ]) {
+    x = await send(lockEnv, rosterOf([]), "owner@example.com", undefined, buyers);
+    check(`6 owner address found in ${label} (on no roster row): refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+  }
+  for (const [label, buyers] of [
+    ["feed-send-log.json sent[].to", buyersOf(sentLog("SEED@example.com"), [])],
+    ["delivery-log.json to", buyersOf([], dLog(" seed@Example.com"))],
+  ]) {
+    x = await send(lockEnv, rosterOf([]), "seed@example.com", undefined, buyers);
+    check(`6 seed address found in ${label} (on no roster row): refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+  }
+  // Either log unreadable: every seed is refused, the owner digest is not.
+  for (const [label, feed, delivery] of [
+    ["feed-send-log.json missing", null, []], ["delivery-log.json missing", [], null],
+    ["feed-send-log.json not an array", { sent: [] }, []], ["delivery-log.json not an array", [], "x"],
+    ["a feed-send-log.json entry with sent not an array", [{ sent: "seed@example.com" }], []],
+    ["a delivery-log.json entry that is not an object", [], ["seed@example.com"]],
+  ]) {
+    const buyers = buyersOf(feed, delivery);
+    check(`6 ${label}: buyerAddresses says unreadable`, buyers.ok === false);
+    x = await send(lockEnv, rosterOf([]), "other.seed@example.com", undefined, buyers);
+    check(`6 ${label}: a counted seed is refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+    x = await send(lockEnv, rosterOf([]), "owner@example.com", undefined, buyers);
+    check(`6 ${label}: the owner digest is still sent`, x.r.result === "sent" && x.calls === 1);
+  }
+  x = await send(lockEnv, rosterOf([]), "seed@example.com", undefined, null);
+  check("6 outbound() given null for the buyer logs: a seed is refused", x.r.result === "refused" && x.calls === 0);
+  {
+    const b0 = rs.sent.length;
+    const r0 = await L.mod.outbound(lockEnv, rosterOf([]), handle(fakeR2({}).bucket)).sendInternal("seed@example.com", "s", "h");
+    check("6 outbound() called without the buyer logs: a seed is refused", r0.result === "refused" && rs.sent.length === b0);
+  }
+  x = await send(lockEnv, rosterOf([]), "seed@example.com", undefined, buyersOf(sentLog("buyer1.testperson@example.com"),
+    dLog("buyer2.testperson@example.com")));
+  check("6 twin: readable logs that do not hold the seed accept it", x.r.result === "sent" && x.calls === 1);
+  check("6 buyerAddresses: a skip entry (sent: []) and an entry with no sent are readable",
+    buyersOf([{ at: "x", sent: [] }, { at: "y" }], []).ok === true);
   // the cap
   const day = new Date(now).toISOString().slice(0, 10);
   const three = (kind, result = "sent") => [1, 2, 3].map((i) => ({ day, kind, run: String(i), result }));

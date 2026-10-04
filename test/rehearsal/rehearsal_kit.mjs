@@ -153,6 +153,7 @@ export function sendEntry(at, emails, extra = {}) {
 //   refreshAt: when the refresh (and its uploads) ran.
 //   subs: roster array (or a raw string for a corrupt file, or null for none)
 //   log: feed-send-log.json array
+//   dlog: delivery-log.json array (stripe-webhook.js's purchase deliveries)
 //   omit: keys to leave out; extra: more keys
 export function world(o) {
   const now = o.now;
@@ -166,6 +167,7 @@ export function world(o) {
     "inbox-watchdog-state.json": o.inbox ?? { last_live_run_at: new Date(now - 3 * HOUR).toISOString(),
       last: { waiting: 0, oldest_hours: 0, roster_armed: true, roster_active: 1, roster_cancelled: 0 } },
     "feed-send-log.json": o.log ?? [],
+    "delivery-log.json": o.dlog ?? [],
   };
   if (o.subs !== null) init["subscribers.json"] = o.subs ?? roster(3);
   for (const k of o.omit || []) delete init[k];
