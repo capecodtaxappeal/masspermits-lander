@@ -157,3 +157,24 @@ test("with a code on, its lines appear, their full-price twins go, and no id rep
   assert.match(visibleText(rendered(read("offer/index.html"), ["FIRST90"])), /\$9\.90/);
   assert.match(visibleText(rendered(read("offer.html"), ["FIRST90"])), /code FIRST90 auto-applied/);
 });
+
+test("_headers: browsers revalidate the switch on every page view, and no other rule caches it", () => {
+  const hdr = read("_headers");
+  const RULE = "Cache-Control: public, max-age=0, must-revalidate";
+  assert.ok(hdr.includes("\n/js/promo-switch.js\n  " + RULE + "\n"), "_headers carries the /js/promo-switch.js rule");
+  // Every rule whose path matches the switch file (an unindented line is a path, "*"
+  // matches anything, ":name" one segment). Exactly one matching rule may set
+  // Cache-Control, so no later rule for /js/* can mix another value into it.
+  const rules = [];
+  for (const line of hdr.split("\n")) {
+    if (!line.trim() || line.trim().startsWith("#")) continue;
+    if (!/^\s/.test(line)) rules.push({ path: line.trim(), headers: [] });
+    else rules[rules.length - 1].headers.push(line.trim());
+  }
+  const matches = (p, url) => new RegExp("^" + p.replace(/[.+?^${}()|[\]\\]/g, "\\$&")
+    .replace(/\*/g, ".*").replace(/:[A-Za-z]\w*/g, "[^/]+") + "$").test(url);
+  const hits = rules.filter((r) => matches(r.path, "/js/promo-switch.js"));
+  assert.ok(hits.some((r) => r.path === "/*"), "the site-wide rule matches too, so the matcher works");
+  const cc = hits.flatMap((r) => r.headers.filter((h) => /^cache-control:/i.test(h)));
+  assert.deepEqual(cc, [RULE]);
+});

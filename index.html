@@ -138,10 +138,12 @@
     .steps{gap:20px}
   }
   @media(prefers-reduced-motion:reduce){body::before{animation:none}}
-  /* Accessibility (2026-10-04): a label or heading that is read aloud but not drawn,
-     and links inside running text carry an underline, not colour alone. */
+  /* Accessibility (2026-10-04): a heading that is read aloud but not drawn, a visible
+     label in small text above each email input (its own row in the flex form), and
+     links inside running text carry an underline, not colour alone. */
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
     clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .flabel{flex:0 0 100%;text-align:left;font-size:13px;line-height:1.3;color:var(--muted)}
   a.inl{text-decoration:underline;text-underline-offset:2px}
 </style>
 <!-- Promotion codes are switched in ONE place, /js/promo-switch.js. Loaded here, before
@@ -234,7 +236,7 @@
       <div class="t" style="font-size:17px">Weekly Feed <span style="background:var(--teal);color:#04201c;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;vertical-align:middle">BEST VALUE</span></div>
       <div class="pr" style="font-size:40px">$99 <small style="font-size:14px;color:var(--muted)">/ month</small></div>
       <div style="color:var(--good);font-weight:700;font-size:14px;margin:2px 0 12px">&asymp; $23 a week, for every trade and town we cover.</div>
-      <div class="d">A new file every Monday, automatically: the full address and project type of each permit, plus the permit holder and declared value where the town lists them. Filter it to <span id="p-trade3">trade</span> permits in <span id="p-area3">your area</span>.</div>
+      <div class="d">A new file every Monday, automatically: the full address and project type of each permit, plus the permit holder and declared value where the town lists them. Filter it to <span id="p-trade3">your trade and towns</span>.</div>
       <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
       <!-- FOUNDER2026 pricing line: OFF with the banner, same switch (/js/promo-switch.js). -->
       <template data-promo="FOUNDER2026">
@@ -261,8 +263,8 @@
          to the download. -->
     <p>Drop your email for a free sample file: around a thousand recent Massachusetts permits, filterable by trade and town, that opens in any browser.</p>
     <form id="signup-form">
-      <label for="email" class="sr-only">Your email address, for the free sample</label>
-      <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" required>
+      <label for="email" class="flabel">Your email address, for the free sample</label>
+      <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" aria-describedby="signup-err" required>
       <button class="cta sm" type="submit">Send my free sample</button>
     </form>
     <div class="ok" id="signup-ok" style="display:none">&#10003; Got it! Your free sample is ready —
@@ -273,7 +275,7 @@
         <div style="color:var(--muted);font-size:12px;margin-top:7px">A new file arrives every Monday. Cancel anytime.</div>
       </div>
     </div>
-    <div class="err" id="signup-err" style="display:none"></div>
+    <div class="err" id="signup-err" role="alert" style="display:none"></div>
   </div>
 
   <h2 class="sr-only">Questions</h2>
@@ -281,7 +283,7 @@
     <h3>Where do the leads come from?</h3>
     <p>Public municipal building-permit records — the same filings towns publish, gathered and organized so you don't have to.</p>
     <h3>How recent are they?</h3>
-    <p>The weekly feed arrives every Monday, and you filter it to your trade and towns. Each town publishes on its own schedule, and some publish monthly or less often, so their permits arrive in batches when the town publishes. Every row shows its date, and <a class="inl" href="/research/coverage">what each town publishes</a> lists each town's schedule.</p>
+    <p>The weekly feed arrives every Monday, and you filter it to your trade and towns. Each town publishes on its own schedule, and some publish monthly or less often, so their permits arrive in batches when the town publishes. Every row shows its date, and <a class="inl" href="/research/coverage">the coverage page</a> names the towns that publish monthly and shows each town's date range.</p>
     <h3>Do I have to subscribe?</h3>
     <p>For the full list, yes: it comes as the $99/mo weekly feed, and you can cancel anytime. Towns keep filing permits, so the feed is a new file every Monday rather than a one-time list. Not sure yet? The free sample costs nothing and needs no card.</p>
     <h3>What if the leads don't pan out?</h3>
@@ -294,7 +296,7 @@
     <h2 style="margin:0 0 6px;font-size:21px">Free: <span style="color:var(--teal)">This Week in MA Permits</span></h2>
     <p style="color:var(--muted);margin:0 0 14px;font-size:14px">One email every Monday — which towns are surging, which trades are filing, and the week's biggest projects. No spam, one-click unsubscribe.</p>
     <form id="digest-form" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
-      <label for="digest-email" class="sr-only">Your email address, for the weekly digest</label>
+      <label for="digest-email" class="flabel">Your email address, for the weekly digest</label>
       <input type="email" id="digest-email" required placeholder="you@company.com" autocomplete="email"
         style="flex:1;min-width:220px;background:#0e1622;border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:14px">
       <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
@@ -419,8 +421,9 @@ function render(){
   $("live-area").textContent = area.label;
   if($("p-trade2")) $("p-trade2").textContent = trade ? tradeWord : "your trade";
   if($("p-area2")) $("p-area2").textContent = area.label;
-  if($("p-trade3")) $("p-trade3").textContent = trade ? tradeWord : "";
-  if($("p-area3")) $("p-area3").textContent = area.label;
+  // With no trade chosen the sentence reads "Filter it to your trade and towns." (it
+  // read "Filter it to  permits in Massachusetts." before, with an empty trade).
+  if($("p-trade3")) $("p-trade3").textContent = trade ? tradeWord + " permits in " + area.label : "your trade and towns";
   wireBuyButtons();  // refresh Stripe links with current trade/area
   $("live-count").innerHTML = `${(seg.count||0).toLocaleString()} <small>${tradeWord} permits</small>`;
   $("live-val").textContent = (seg.total_val > 0) ? fmtMoney(seg.total_val) + " in declared project value" : "";
@@ -555,7 +558,7 @@ $("signup-form").addEventListener("submit", async e=>{
     });
     const d = await resp.json();
     if(d && d.success) okMsg();
-    else { $("signup-err").style.display="block"; $("signup-err").textContent = d?.message||"Something went wrong — please email us directly."; }
+    else { $("signup-err").style.display="block"; $("signup-err").textContent = d?.message||"Something went wrong: please email us directly."; }
   }catch(err){ okMsg(); } // fail soft — never block the lead
 });
 
