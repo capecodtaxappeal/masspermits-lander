@@ -18,7 +18,12 @@
 //                     exactly one
 //   c8.events_mirror  ok|drift|error  the string literals compared with
 //                     `event.type ===` in that file, against HANDLED_EVENTS
-// The three tests run in child processes; each installs its own throwing
+//   c9.guard1_present true|false  runs functions/api/guard1_probe.test.mjs
+//                     (the SHIPPED weekly-send.js, re-run in the same delivery
+//                     week: is a subscriber who already has the email left
+//                     out?). Omitted when the probe did not run, so the text
+//                     detector in facts.mjs stands.
+// The four tests run in child processes; each installs its own throwing
 // fetch stub, so none of them can reach the network or send mail.
 
 import { readFileSync } from "node:fs";
@@ -58,17 +63,27 @@ export function purchaseFacts(run) {
   return { render: "ok", link_first: m[2] === "true", month_line: m[3] === "true" };
 }
 
+// c9.guard1_present from guard1_probe.test.mjs's GUARD1 line; undefined when
+// the probe did not run to its RESULT line.
+export function guard1Fact(run) {
+  const m = run.out.match(/^GUARD1 probe: (present|absent)$/m);
+  if (run.state === "error" || !m) return undefined;
+  return m[1] === "present";
+}
+
 export function mirrorFacts(root = REPO_ROOT) {
   const mail = runTest("functions/api/rehearsal_mirror.test.mjs", root);
   const inbox = runTest("functions/api/inbox_mirror.test.mjs", root);
   const inboxState = inbox.state === "ok" && /^INBOX mirror: ok$/m.test(inbox.out) ? "ok"
     : /^INBOX mirror: drift$/m.test(inbox.out) || inbox.state === "drift" ? "drift" : "error";
   const purchase = purchaseFacts(runTest("functions/api/purchase_render.test.mjs", root));
+  const guard1 = guard1Fact(runTest("functions/api/guard1_probe.test.mjs", root));
   return {
     mirror: mail.state,
     purchase,
     c8: c8Facts(join(root, "functions", "api", "stripe-webhook.js")),
     c17: { inbox_mirror: inboxState },
+    ...(guard1 === undefined ? {} : { c9: { guard1_present: guard1 } }),
   };
 }
 

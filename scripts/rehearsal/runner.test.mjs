@@ -30,6 +30,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const { check, done } = makeRunner("runner.test.mjs");
 const MIN = 60_000, HOUR = 60 * MIN, DAY = 24 * HOUR;
 const at = (s) => Date.parse(s);
+const NL = String.fromCharCode(10);
 
 // stdout capture for the leak test
 const printed = [];
@@ -262,6 +263,21 @@ const C22_FACTS = { c22: { dmarc: "same", spf: "same", dkim: "same", mx: "same" 
   check("api ok", facts.api === "ok");
   const noGuard = await factsFor("2026-10-03", "2026-10-03T20:30:00Z", { weeklySend: "export const x = 1;" });
   check("c9.guard1_present false when weekly-send.js lacks selectRecipients", noGuard.facts.c9.guard1_present === false);
+  // main's GUARD 1 (2199b6d77) is deliveredSince + deliveryWeekStart from _presend.js, not selectRecipients.
+  const MAIN_FORM = ['import { lastEtagEntry, deliveryWeekStart, deliveredSince, normEmail } from "./_presend.js";',
+    "const weekStart = deliveryWeekStart(nowMs);",
+    "const haveIt = deliveredSince(priorLog, weekStart, nowMs);", ""].join(NL);
+  const mainForm = await factsFor("2026-10-03", "2026-10-03T20:30:00Z", { weeklySend: MAIN_FORM });
+  check("C9 false alarm fixed: main's once-per-week guard (deliveredSince + deliveryWeekStart) reads as GUARD 1 present",
+    mainForm.facts.c9.guard1_present === true);
+  check("guard1Present: imported but never called is absent",
+    Fa.guard1Present('import { deliveryWeekStart, deliveredSince } from "./_presend.js";' + NL) === false);
+  check("guard1Present: called but not imported from ./_presend.js is absent",
+    Fa.guard1Present("deliveredSince(a, b); deliveryWeekStart(c);") === false);
+  check("guard1Present: _presend.js text given without the two exports is absent",
+    Fa.guard1Present(MAIN_FORM, "export function lastEtagEntry() {}") === false);
+  check("guard1Present on the SHIPPED weekly-send.js and _presend.js: present",
+    Fa.guard1Present(readText(join(API_DIR, "weekly-send.js")), readText(join(API_DIR, "_presend.js"))) === true);
 }
 { // refresh states and failure positions
   const f = async (refresh, refreshAt) => (await factsFor("2026-10-03", "2026-10-03T20:30:00Z", { refresh, refreshAt })).facts.refresh;
@@ -486,6 +502,16 @@ const clean = [["MassPermits-sample.csv", CSV_HEAD +
     f.mirror === "ok" && f.c17.inbox_mirror === "ok" && f.purchase.render === "ok" && f.c8.events_mirror === "ok", JSON.stringify(f));
   check("mirror step reports today's purchase copy: link_first true, month_line true (C5 NO-GO C5.purchase_copy)",
     f.purchase.link_first === true && f.purchase.month_line === true);
+  check("mirror step: the GUARD 1 behaviour probe on the shipped weekly-send.js reads present",
+    f.c9 && f.c9.guard1_present === true, JSON.stringify(f.c9));
+  check("guard1Fact: present, absent, and no line or a crashed run (undefined, the text detector stands)",
+    Mi.guard1Fact({ state: "ok", out: ["GUARD1 probe: present", "RESULT x pass=1 fail=0"].join(NL) }) === true &&
+    Mi.guard1Fact({ state: "drift", out: ["GUARD1 probe: absent", "RESULT x pass=1 fail=2"].join(NL) }) === false &&
+    Mi.guard1Fact({ state: "ok", out: "RESULT x pass=1 fail=0" }) === undefined &&
+    Mi.guard1Fact({ state: "error", out: "GUARD1 probe: present" }) === undefined);
+  const merged = Fa.merge({ v: 1, c9: { guard1_present: false, push_runs: 0 } }, { c9: { guard1_present: true } });
+  check("the probe's c9.guard1_present overrides the text detector and keeps the other c9 facts",
+    merged.c9.guard1_present === true && merged.c9.push_runs === 0);
   const v = validateRunnerFacts({ v: 1, ...f });
   check("mirror step output validates against RUNNER_SCHEMA", v.dropped.length === 0);
 }

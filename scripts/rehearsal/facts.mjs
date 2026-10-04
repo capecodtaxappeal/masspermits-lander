@@ -115,6 +115,27 @@ function readWorkflowDir(root) {
   } catch { return []; }
 }
 
+// GUARD 1 ("one weekly email per subscriber per delivery week") from the
+// text of weekly-send.js. The spec named it selectRecipients, which never
+// shipped; main shipped it as deliveredSince() and deliveryWeekStart() from
+// _presend.js (2199b6d77). Either form counts: the name, or weekly-send.js
+// importing both helpers from ./_presend.js and calling both (and, when its
+// text is given, _presend.js exporting both). This is the fallback; the
+// mirror step's behaviour probe (guard1_probe.test.mjs) overrides it.
+export function guard1Present(weeklySend, presend = null) {
+  if (typeof weeklySend !== "string") return false;
+  if (weeklySend.includes("selectRecipients")) return true;
+  const imp = /import\s*\{([^}]*)\}\s*from\s*["']\.\/_presend\.js["']/.exec(weeklySend);
+  if (!imp) return false;
+  const names = imp[1].split(",").map((x) => x.trim());
+  const rest = weeklySend.replace(imp[0], "");
+  const uses = ["deliveredSince", "deliveryWeekStart"].every((n) => names.includes(n) &&
+    new RegExp("\\b" + n + "\\s*\\(").test(rest));
+  if (!uses) return false;
+  if (typeof presend !== "string") return true;
+  return ["deliveredSince", "deliveryWeekStart"].every((n) => new RegExp("export function " + n + "\\b").test(presend));
+}
+
 // collect(opts) -> the facts object (not yet validated).
 // opts: {gh, date, mode, repository, runId, now: () => ms, sleep: (ms) => Promise,
 //        readText(relPath) -> string|null, workflowFiles: [{file, text}]}
@@ -221,6 +242,7 @@ export async function collect(opts) {
 
   // ── c9.* ───────────────────────────────────────────────────────────────
   const weeklySend = readText("functions/api/weekly-send.js");
+  const presend = readText("functions/api/_presend.js");
   const mondays = [];
   { // the last 4 Mondays strictly before DATE, newest first
     const back = new Date(d0 - DAY);
@@ -255,7 +277,7 @@ export async function collect(opts) {
     sensitive = shas.size;
   }
   facts.c9 = {
-    guard1_present: typeof weeklySend === "string" && weeklySend.includes("selectRecipients"),
+    guard1_present: guard1Present(weeklySend, presend),
     mon_refresh_start: mondays.map((m) => firstStart(refreshRuns, m)),
     mon_send_start: mondays.map((m) => firstStart(sendRuns, m)),
     mon_watchdog_start: mondays.map((m) => firstStart(watchdogRuns, m)),
