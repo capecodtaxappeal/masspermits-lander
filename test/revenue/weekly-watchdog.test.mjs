@@ -296,12 +296,24 @@ for (const fault of ['missing status', 'hash mismatch', 'invalid archive', 'stal
   }, { todo: 'C07 pre-send diagnosis is not an enforced boundary in weekly-send' });
 }
 
-scenario('I13 a failed prior-log read cannot open the duplicate guard', async (w, h) => {
-  seed(w, { log: [sendEntry()] });
+scenario('I13 C10 fail-open sends and records delivery after a prior-log read failure', async (w, h) => {
+  const prior = sendEntry();
+  seed(w, { log: [prior] });
   w.r2.failNext('get', 'feed-send-log.json');
-  await call(w, h.weeklySend, '/api/weekly-send');
-  assert.equal(w.mail.length, 0, 'unknown prior delivery is not known-safe to send');
-}, { todo: 'C10 POLICY CONFLICT: fail-closed reliability rule conflicts with main preserving sends on unreadable prior logs' });
+  const { response, body } = await call(w, h.weeklySend, '/api/weekly-send');
+  assert.equal(response.status, 200); assert.equal(body.ok, true);
+  assert.equal(body.delivered, 1); assert.equal(body.failed, 0);
+  assert.equal(body.skipped, undefined);
+  assert.deepEqual(w.mail.map(mail => mail.to), [[EMAILS[0]]],
+    'this call sends exactly once to the active subscriber despite unreadable history');
+  const attempt = w.r2.json('last-send-attempt.json');
+  assert.equal(attempt.at, NOW); assert.equal(attempt.subscribers, 1);
+  const log = w.r2.json('feed-send-log.json');
+  assert.equal(log.length, 2);
+  assert.equal(log[0].at, NOW); assert.equal(log[0].subscribers, 1);
+  assert.deepEqual(log[0].sent, [{ to: EMAILS[0], ok: true }]);
+  assert.deepEqual(log[1], prior, 'a later successful read preserves the original delivery evidence');
+});
 
 for (const timing of [
   { now: '2026-09-28T13:29:59.000Z', verdict: 'not_due', retry: false },
