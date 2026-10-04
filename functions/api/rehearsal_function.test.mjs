@@ -198,6 +198,30 @@ const lockEnv = { REHEARSAL_MAIL: "1", REHEARSAL_TO: " Owner@Example.com ", REHE
   }
   x = await send({ ...lockEnv, REHEARSAL_TO: "a@b@example.com" }, rosterOf([]), "a@b@example.com");
   check("6 \"a@b@example.com\" is refused", x.r.result === "refused" && x.calls === 0);
+  // Bare addresses only. Resend delivers "Name <a@example.com>" to a@example.com, so a
+  // display-name form must never pass the lock: as the owner, as a seed, or
+  // with a roster row that is the address inside it.
+  const BUYER = "buyer1.testperson@example.com";
+  const NOT_BARE = [`Buyer <${BUYER}>`, `"Buyer" <${BUYER}>`, `<${BUYER}>`, `${BUYER} (Buyer)`, `${BUYER}(Buyer)`,
+    `Buyer<${BUYER}>`, `${BUYER};`, `mailto:${BUYER}`, `buyer1.testperson@example`, `buyer1%testperson@example.com`];
+  for (const form of NOT_BARE) {
+    x = await send({ ...lockEnv, REHEARSAL_TO: form }, rosterOf([{ email: BUYER }]), form);
+    check(`6 owner ${JSON.stringify(form)} with that roster row: refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+    x = await send({ ...lockEnv, REHEARSAL_SEEDS: form }, rosterOf([{ email: BUYER }]), form);
+    check(`6 seed ${JSON.stringify(form)} with that roster row: refused, 0 calls`, x.r.result === "refused" && x.calls === 0);
+  }
+  x = await send({ ...lockEnv, REHEARSAL_TO: "Owner <owner@example.com>" }, rosterOf([]), "Owner <owner@example.com>");
+  check("6 a display-name owner on no roster row is still refused (bare addresses only)", x.r.result === "refused" && x.calls === 0);
+  x = await send({ ...lockEnv, REHEARSAL_TO: "Owner <owner@example.com>" }, rosterOf([]), "owner@example.com");
+  check("6 a bare send to an owner configured as \"Name <addr>\" is refused (the env value never counts)",
+    x.r.result === "refused" && x.calls === 0);
+  x = await send(lockEnv, rosterOf([{ email: "Owner <OWNER@example.com>" }]), "owner@example.com");
+  check("6 a roster row holding \"Name <owner's address>\" refuses the bare owner send", x.r.result === "refused" && x.calls === 0);
+  x = await send(lockEnv, rosterOf([{ email: ["x@example.com", "mailto:Seed@Example.com"] }]), "seed@example.com");
+  check("6 a roster row holding the seed's address inside another form refuses the seed", x.r.result === "refused" && x.calls === 0);
+  x = await send({ ...lockEnv, REHEARSAL_TO: "owner+rehearsal@example.com" }, rosterOf([{ email: BUYER }]), "owner+rehearsal@example.com");
+  check("6 a bare plus-address owner is accepted", x.r.result === "sent" && x.calls === 1 &&
+    JSON.stringify(rs.sent[rs.sent.length - 1].to) === '["owner+rehearsal@example.com"]');
   x = await send(lockEnv, rosterOf([{ email: "buyer1.testperson@example.com" }]), "owner@example.com");
   check("6 REHEARSAL_TO \" Owner@Example.com \" accepts \"owner@example.com\" (symmetric)", x.r.result === "sent" && x.calls === 1 &&
     JSON.stringify(rs.sent[rs.sent.length - 1].to) === '["owner@example.com"]');
@@ -376,5 +400,8 @@ check("10 the fetch stub saw 0 non-fixture URLs", stub.unexpected.length === 0, 
 check("10 outbound hosts are a subset of {Resend, Stripe, the JWKS host}",
   stub.calls.every((c) => ["api.resend.com", "api.stripe.com", "token.actions.githubusercontent.com"].includes(new URL(c.url).host)));
 const roster3 = K.roster(30).map((s) => s.email.toLowerCase());
-check("6 0 Resend calls to any roster email", rs.sent.every((m) => (m.to || []).every((t) => !roster3.includes(t.toLowerCase()))));
+// Every address INSIDE each recipient string, so "Name <buyer@...>" is caught too.
+const inside = (t) => String(t).toLowerCase().match(/[^\s<>",;:()]+@[^\s<>",;:()]+/g) || [];
+check("6 0 Resend calls to any roster email", rs.sent.every((m) => (m.to || []).every((t) => !inside(t).some((a) => roster3.includes(a)))));
+check("6 every Resend recipient is a bare address", rs.sent.every((m) => (m.to || []).every((t) => /^[a-z0-9._+'-]+@[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(t))));
 done();

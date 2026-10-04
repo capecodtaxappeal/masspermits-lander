@@ -389,6 +389,23 @@ const seedMails = (m) => m.filter((x) => x.subject && x.subject.includes("(previ
   check("6 a seed equal to an (inactive) roster email: 0 seed sends, C20 NO-GO C20.seed_is_roster",
     seedMails(r.mails).length === 0 && r.has("C20.seed_is_roster") && r.codes.includes("C20.seed_is_roster") && r.v === "NO-GO");
   row("seed = roster", "C20", "NO-GO C20.seed_is_roster, 0 seed sends", "Y");
+  // A seed in display-name form: Resend would deliver it to the address
+  // inside, with the real paid zip. Refused before any send, whether or not
+  // that address is on the roster, and the bare seed beside it gets nothing.
+  for (const [label, seeds, rows] of [
+    ["\"Name <roster email>\"", `Buyer Two <${K.roster(3)[1].email}>`, K.roster(3)],
+    ["\"Name <roster email>\" next to a bare seed", `seed.two@example.com, Buyer Two <${K.roster(3)[1].email}>`, K.roster(3)],
+    ["\"Name <seed>\" on no roster row", "Seed One <seed.one@example.com>", K.roster(3)],
+    ["a roster row holding \"Name <seed>\"", SEEDS.REHEARSAL_SEEDS,
+      K.roster(3, (s, i) => (i === 3 ? { ...s, email: "Seed <seed.one@example.com>" } : s))],
+  ]) {
+    const d = await fx({ ...SUN, mode: "sun", subs: rows, env: { REHEARSAL_SEEDS: seeds } });
+    const code = d.recs.find((x) => x.part === "seed").code;
+    const ok = seedMails(d.mails).length === 0 && ["C20.seed_refused", "C20.seed_is_roster"].includes(code) &&
+      d.has(code) && d.v === "NO-GO";
+    check(`6 seed ${label}: 0 seed sends, C20 NO-GO ${code}`, ok);
+    row("seed not bare", "C20", `${label}: NO-GO ${code}, 0 seed sends`, ok ? "Y" : "N");
+  }
   const bad = await fx({ ...SUN, mode: "sun", subs: "{truncated \"a@example.com\"", env: SEEDS });
   check("6 unreadable roster: 0 seed sends, C20 NO-GO roster_unreadable, no @ in any response",
     seedMails(bad.mails).length === 0 && bad.rec.findings.includes("NO-GO roster_unreadable") &&
@@ -491,8 +508,10 @@ check("5 across every R2b run, persisted writes are only under rehearsal/", stra
 check("5 no R2b run persisted a dl/ or portal-access/ object",
   worlds.every((w) => w.writes().every((o) => !/^(dl|portal-access)\//.test(o.key))));
 const rosterEmails = new Set(K.roster(30).map((s) => s.email.toLowerCase()));
+// Every address INSIDE each recipient string, so "Name <buyer@...>" is caught too.
+const inside = (t) => String(t).toLowerCase().match(/[^\s<>",;:()]+@[^\s<>",;:()]+/g) || [];
 check("6 0 Resend calls to any roster email across every R2b run",
-  rs.sent.every((m) => m.to.every((t) => !rosterEmails.has(t.toLowerCase()))));
+  rs.sent.every((m) => m.to.every((t) => !inside(t).some((a) => rosterEmails.has(a)))));
 check("6 every Resend call went to the owner or a counted seed, one recipient each",
   rs.sent.every((m) => m.to.length === 1 && ["owner@example.com", "seed.one@example.com", "seed.two@example.com"].includes(m.to[0])));
 const leaky = allResponses.filter((x) => LEAK.test(x.text));

@@ -1,6 +1,7 @@
 // Drills: one fault fixture per incident, each with a negative twin, and the
 // false-alarm drills F1-F12 (F13 and the R3a halves are drilled in
-// rehearsal_r3a_drills.test.mjs). Every Function drill runs the whole
+// rehearsal_r3a_drills.test.mjs), and the recipient-lock drill L-01 (owner
+// and seed set to "Name <roster email>"). Every Function drill runs the whole
 // rehearsal.js (temp copy, stubbed verifier) the way the caller drives it;
 // C7's keyed half is also drilled here through the pure
 // functions with synthetic Stripe subscriptions.
@@ -410,6 +411,36 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
 }
 
 // ════════════════════════════════════════════════════════════════════════════
+// lock drills: the recipient lock against owner misconfiguration
+// ════════════════════════════════════════════════════════════════════════════
+{ // L-01 REHEARSAL_TO and REHEARSAL_SEEDS set to "Name <roster email>": a whole
+  // sun run (links, seed, core) on a NO-GO-free world makes 0 Resend calls.
+  // Resend would deliver that form to the buyer; for a seed it would carry the
+  // real paid zip.
+  const subs = K.roster(3);
+  for (const [label, env] of [
+    ["owner and seed", { REHEARSAL_TO: `Buyer One <${subs[0].email}>`, REHEARSAL_SEEDS: `Buyer Two <${subs[1].email}>` }],
+    ["quoted owner, seed list", { REHEARSAL_TO: `"Buyer One" <${subs[0].email}>`,
+      REHEARSAL_SEEDS: `seed@example.com, Buyer Two <${subs[1].email}>` }],
+    ["owner only, no seeds", { REHEARSAL_TO: `Buyer One <${subs[0].email}>` }],
+  ]) {
+    const r = await fx({ ...SUN, subs, env });
+    const mailRec = r.w.json("rehearsal/log.json").mail;
+    const seedRec = r.w.json("rehearsal/log.json").records.find((x) => x.part === "seed");
+    const seedOk = !env.REHEARSAL_SEEDS || (seedRec && seedRec.code === "C20.seed_refused" && r.codes.includes("C20.seed_refused"));
+    const ok = r.mails.length === 0 && mailRec.length > 0 && mailRec.every((m) => m.result === "refused") &&
+      r.codes.includes("C18.mail_refused") && seedOk && !JSON.stringify(mailRec).includes("@");
+    check(`L-01 ${label}: "Name <roster email>" refused, 0 Resend calls`, ok, JSON.stringify({ mails: r.mails.length, codes: r.codes }));
+    row(`L-01 ${label}`, "C18 C20", ok ? `refused, 0 Resend calls (${r.codes.filter((c) => /C18|C20/.test(c)).join(",")})` : "SENT",
+      ok ? "Y" : "N");
+  }
+  // twin: the same run with bare addresses that are on no roster row mails the owner once
+  const t = await fx({ ...SUN, subs, env: { REHEARSAL_TO: K.OWNER } });
+  check("L-01 twin: a bare owner address mails exactly once", t.mails.length === 1 && t.mails[0].to.join() === K.OWNER);
+  row("L-01 twin", "C18", t.mails.length === 1 ? "1 mail to the bare owner" : "missed", t.mails.length === 1 ? "Y" : "N");
+}
+
+// ════════════════════════════════════════════════════════════════════════════
 // across every drill: mail lock, write set, leaks
 // ════════════════════════════════════════════════════════════════════════════
 {
@@ -420,7 +451,10 @@ const F = (id, ok, what, note = "") => { check(`${id}: ${what}`, ok); row(id, wh
     r.v === "NO-GO" && r.mails.length === 0 && mailRec[0].result === "off");
 }
 const rosterEmails = new Set(K.roster(30).map((s) => s.email.toLowerCase()));
-check("6 0 Resend calls to any roster email across every drill", rs.sent.every((m) => m.to.every((t) => !rosterEmails.has(t.toLowerCase()))));
+// Every address INSIDE each recipient string, so "Name <buyer@...>" is caught too.
+const inside = (t) => String(t).toLowerCase().match(/[^\s<>",;:()]+@[^\s<>",;:()]+/g) || [];
+check("6 0 Resend calls to any roster email across every drill",
+  rs.sent.every((m) => m.to.every((t) => !inside(t).some((a) => rosterEmails.has(a)))));
 check("6 every Resend call went to the owner", rs.sent.every((m) => m.to.length === 1 && m.to[0] === K.OWNER));
 check("6 0 Resend calls in any run-level WAIT", waitMail.every((n) => n === 0) && waitMail.length >= 4);
 const stray = worlds.flatMap((w) => w.writes().map((o) => o.key)).filter((k) => !k.startsWith("rehearsal/") &&

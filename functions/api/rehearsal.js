@@ -219,6 +219,31 @@ export function logHandle(rw, data, run, etag = null) {
 // Built once per request. Holds the only two network calls in this build.
 const norm = (s) => String(s).trim().toLowerCase();
 const ATTEMPTS = new Set(["pending", "sent", "failed"]);
+// A BARE address, after trim and lower-case: letters, digits and . _ + ' -
+// before the one "@", then dot-separated letters, digits and hyphens. Nothing
+// else passes: not "Name <a@example.com>", "<a@example.com>",
+// "a@example.com (Name)", a list, a "mailto:" or a "%" route. Resend delivers
+// those forms to the address inside them, which an equality test against the
+// roster would miss.
+const BARE = /^[a-z0-9._+'-]+@[a-z0-9-]+(\.[a-z0-9-]+)+$/;
+export const isBare = (s) => typeof s === "string" && BARE.test(norm(s));
+// Every address-looking token inside a roster value, plus the whole value, so
+// a row holding "Name <a@example.com>" or "mailto:a@example.com" still
+// matches "a@example.com".
+const ADDR_IN = /[^\s<>",;:()]+@[^\s<>",;:()]+/g;
+const rowEmails = (r) => (r && r.email != null ? (Array.isArray(r.email) ? r.email : [r.email]) : []);
+export function rosterAddresses(rows) {
+  const out = new Set();
+  for (const r of rows || []) {
+    for (const e of rowEmails(r)) {
+      if (e == null) continue;
+      const v = norm(e);
+      out.add(v);
+      for (const a of v.match(ADDR_IN) || []) out.add(a);
+    }
+  }
+  return out;
+}
 export function outbound(env, roster, log) {
   // Stripe: GET to the API origin, nothing else. Passed as fetchImpl to every
   // _reconcile.js reader.
@@ -230,14 +255,16 @@ export function outbound(env, roster, log) {
     return fetch(u.href, { method: "GET", headers: init.headers || {} });
   }
 
-  // THE RECIPIENT LOCK. `to` must be exactly one address that is the owner's
-  // (REHEARSAL_TO, OWNER_EMAIL) or a seed (REHEARSAL_SEEDS, at most 3), and
-  // must equal no roster row, active or not. Both sides are trimmed and
-  // lower-cased; an env value counts only if it is non-empty.
+  // THE RECIPIENT LOCK. `to` must be exactly one BARE address (see BARE: no
+  // display name, no list) that is the owner's (REHEARSAL_TO, OWNER_EMAIL) or
+  // a seed (REHEARSAL_SEEDS, at most 3), and must be no address found in any
+  // roster row, active or not (rosterAddresses). Both sides are trimmed and
+  // lower-cased; an env value counts only if it is non-empty. Anything else
+  // is refused, and a refusal never falls back to another address.
   function lock(to) {
     if (typeof to !== "string") throw new Error("refused");
     const t = norm(to);
-    if (!t || t.split("@").length !== 2) throw new Error("refused");
+    if (!t || !BARE.test(t)) throw new Error("refused");
     const counted = (v) => (typeof v === "string" && norm(v) ? norm(v) : null);
     const owners = [counted(env.REHEARSAL_TO), counted(env.OWNER_EMAIL)].filter(Boolean);
     const seeds = typeof env.REHEARSAL_SEEDS === "string"
@@ -245,11 +272,7 @@ export function outbound(env, roster, log) {
     const kind = owners.includes(t) ? "owner" : seeds.includes(t) ? "seed" : null;
     if (!kind) throw new Error("refused");
     if (kind === "seed" && !roster.ok) throw new Error("refused");
-    // Every roster row, active or not, whatever type its email field has.
-    const rowEmails = (r) => (r && r.email != null ? (Array.isArray(r.email) ? r.email : [r.email]) : []);
-    if (roster.ok && roster.rows.some((r) => rowEmails(r).some((e) => e != null && norm(e) === t))) {
-      throw new Error("refused");
-    }
+    if (roster.ok && rosterAddresses(roster.rows).has(t)) throw new Error("refused");
     return { t, kind };
   }
 
@@ -368,10 +391,12 @@ const coverageOf = (status) => (status && ((status.coverage && status.coverage.d
 // ── part=seed: C20, Sunday only ─────────────────────────────────────────────
 // Once per date: a seed record for this date that ATTEMPTED a send (sent,
 // failed or capped) blocks every later run, so a failure is never retried.
-// Refused outright, before any send, if the roster cannot be read or any seed
-// equals a roster email (active or not, trimmed and lower-cased on both
-// sides). Each seed then goes through sendInternal, whose lock and daily cap
-// apply again.
+// Refused outright, before any send, if any seed is not a bare address
+// (C20.seed_refused: "Name <a@example.com>" would reach a@example.com), the
+// roster cannot be read, or any seed is an address found in a roster row
+// (active or not, trimmed and lower-cased on both sides, rosterAddresses).
+// Each seed then goes through sendInternal, whose lock and daily cap apply
+// again.
 const norm1 = (s) => String(s).trim().toLowerCase();
 function base64(buf) {
   const bytes = new Uint8Array(buf);
@@ -385,9 +410,9 @@ async function seed(env, rw, roster, params, out, data) {
   const seeds = typeof env.REHEARSAL_SEEDS === "string"
     ? env.REHEARSAL_SEEDS.split(",").map(norm1).filter(Boolean).slice(0, 3) : [];
   if (!seeds.length) return { code: "C20.no_seeds", own };
+  if (!seeds.every(isBare)) return { code: "C20.seed_refused", own };
   if (!roster.ok) return { code: "roster_unreadable", own };
-  const rowEmails = (r) => (r && r.email != null ? (Array.isArray(r.email) ? r.email : [r.email]) : []);
-  const onRoster = new Set(roster.rows.flatMap(rowEmails).filter((e) => e != null).map(norm1));
+  const onRoster = rosterAddresses(roster.rows);
   if (seeds.some((s) => onRoster.has(s))) return { code: "C20.seed_is_roster", own };
   if (data.records.some((r) => r.part === "seed" && r.date === params.date && SEED_ATTEMPTED.has(r.code))) {
     return { code: "C20.already_sent", own };
