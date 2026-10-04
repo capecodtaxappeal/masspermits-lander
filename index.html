@@ -8,7 +8,7 @@
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MassPermits: building-permit leads for MA contractors">
-<meta property="og:description" content="Building permits from across Massachusetts, by trade and town, with the full address, project type and permit holder, plus the declared value where the town publishes one. Weekly feed $99/mo, free sample first.">
+<meta property="og:description" content="Building permits from across Massachusetts, by trade and town, with the full address and project type, plus the permit holder and declared value where the town lists them. Weekly feed $99/mo, free sample first.">
 <meta property="og:url" content="https://masspermits.com/">
 <meta property="og:site_name" content="MassPermits">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,12 +18,14 @@
      one page where entity identity matters most. -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://masspermits.com/#org", "name": "MassPermits", "url": "https://masspermits.com", "description": "Building-permit leads for Massachusetts contractors.", "logo": {"@type": "ImageObject", "url": "https://masspermits.com/logo.png"}, "email": "hello@masspermits.com", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "hello@masspermits.com", "areaServed": "US-MA", "availableLanguage": ["en"]}, "knowsAbout": ["building permits", "Massachusetts", "construction leads", "municipal public records"], "publishingPrinciples": "https://masspermits.com/research/methodology", "correctionsPolicy": "https://masspermits.com/research/corrections", "areaServed": {"@type": "State", "name": "Massachusetts"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://masspermits.com/#website", "name": "MassPermits", "url": "https://masspermits.com", "inLanguage": "en-US", "publisher": {"@id": "https://masspermits.com/#org", "@type": "Organization", "name": "MassPermits"}, "license": "https://creativecommons.org/licenses/by-nc/4.0/", "dateModified": "2026-09-07"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Massachusetts Building-Permit Leads","description":"Contractor leads built from Massachusetts building permits: full address, project type and permit holder, plus the declared project value where the town publishes one, by trade and town.","brand":{"@type":"Brand","name":"MassPermits"},"offers":[{"@type":"Offer","name":"Weekly Feed","price":"99","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","unitCode":"MON"},"availability":"https://schema.org/InStock"}]}</script>
-<!-- Count checked against /api/health on 2026-09-19: 70 live sources. It said 59, which
-     was stale by eleven towns. This is hand-maintained, so it will drift again; the durable
-     fix is to render it from live coverage at build time. "name" removed because it read as
-     owner name, which is never shipped: the contractor on file is what the lead carries. -->
-<meta name="description" content="Building permits from 70 Massachusetts towns and counting, sorted by trade and town, delivered as ready-to-work leads. Roofing, solar, HVAC, pools, remodels and more, with the full address, project type and permit holder, plus the declared value where the town publishes one. Weekly feed $99/mo, free sample first.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Massachusetts Building-Permit Leads","description":"Contractor leads built from Massachusetts building permits: the full address and project type, plus the permit holder and declared value where the town lists them, by trade and town.","brand":{"@type":"Brand","name":"MassPermits"},"offers":[{"@type":"Offer","name":"Weekly Feed","price":"99","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","unitCode":"MON"},"availability":"https://schema.org/InStock"}]}</script>
+<!-- NO TOWN COUNT HERE (2026-10-04). It read "70 Massachusetts towns and counting" while
+     the site's own pages said 94 towns and 77 sources on 2026-10-03. This file is hand-maintained
+     and no build touches it, so any number typed here drifts. Live counts belong on the
+     generated pages. "name" removed earlier because it read as owner name, which is never
+     shipped. The permit holder and the declared value are qualified because many towns
+     publish neither. -->
+<meta name="description" content="Building permits from towns across Massachusetts, sorted by trade and town, delivered as ready-to-work leads. Roofing, solar, HVAC, pools, remodels and more, with the full address and project type, plus the permit holder and declared value where the town lists them. Weekly feed $99/mo, free sample first.">
 <!-- Real files, not a data: URI. A browser renders an inline SVG emoji happily, which is
      why this looked fine on the page, but Google cannot use a data URI as a site icon and
      nothing answered /favicon.ico either, so every search result fell back to the generic
@@ -136,32 +138,53 @@
     .steps{gap:20px}
   }
   @media(prefers-reduced-motion:reduce){body::before{animation:none}}
+  /* Accessibility (2026-10-04): a label or heading that is read aloud but not drawn,
+     and links inside running text carry an underline, not colour alone. */
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  a.inl{text-decoration:underline;text-underline-offset:2px}
 </style>
+<!-- Promotion codes are switched in ONE place, /js/promo-switch.js. Loaded here, before
+     the body, so a code that is switched on shows without moving the page. -->
+<script src="/js/promo-switch.js"></script>
 <meta name="mp-schema-v" content="1">
 <meta name="mp-static-v" content="1">
 </head>
 <body>
 <div class="wrap">
 
-  <div class="nav">
+  <header class="nav">
     <div class="brand"><span class="p">Mass</span>Permits</div>
     <div class="loc">Massachusetts building-permit leads</div>
-  </div>
+  </header>
 
+  <main id="main">
+  <!-- FOUNDER2026 banner: OFF until Patrick confirms in Stripe that the code applies at
+       checkout (2026-10-04: it did not, in two sessions, while this banner said "Applied
+       automatically"). The markup is kept whole inside the template; switch it on in
+       /js/promo-switch.js, nowhere else. -->
+  <template data-promo="FOUNDER2026">
   <a id="buy-banner" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit;background:rgba(45,212,191,.10);border:1px solid var(--teal);border-radius:10px;padding:10px 16px;text-align:center;font-size:14px;margin-top:6px">
     🚀 <b style="color:var(--teal)">Founders' rate:</b> first month of the Weekly Feed for
     <b>$49</b>. Applied automatically when you start here. <b style="color:var(--teal)">Start now &rarr;</b>
   </a>
+  </template>
+  <script>window.mpPromo&&mpPromo("FOUNDER2026")</script>
 
   <div class="hero">
-    <h1>Every <span class="hl" id="h-trade">contractor</span> lead in <span id="h-area">Massachusetts</span>,<br>the week the permit is filed.</h1>
-    <p>When a building permit is filed on a home, the owner is spending on it <em>right now</em>, and your trade is next. We pull fresh permits across Greater Boston, the South Shore and Cape Cod (expanding across Massachusetts weekly) and hand you the full address, project type and permit holder, plus the declared project value where the town publishes one.</p>
+    <!-- The headline used to read "Every contractor lead in Massachusetts, the week the
+         permit is filed." Neither half was true: we cover the towns that publish, and 18
+         of 76 sources publish monthly or less often. This wording is a placeholder that
+         is true; Patrick picks the final one. The two spans are filled by render(). -->
+    <h1><span id="h-area">Massachusetts</span> building permits, sorted into <span class="hl" id="h-trade">contractor</span> leads and sent every Monday.</h1>
+    <p>When a building permit is filed on a home, the owner is spending on it <em>right now</em>, and your trade is next. We collect building permits from the Massachusetts towns we cover, sort them by trade and town, and hand you the full address and project type, plus the permit holder and declared value where the town lists them.</p>
     <div class="controls">
       <select id="sel-trade" aria-label="Trade"></select>
       <select id="sel-area" aria-label="Area"></select>
     </div>
     <a class="cta" id="buy-hero" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" target="_blank" rel="noopener">Start the Monday feed — $99/mo &rarr;</a>
-    <span class="subcta">New permits in your trade, every Monday. Cancel anytime — free sample first.</span>
+    <a class="subcta inl" id="hero-sample" href="#sample" style="color:var(--teal)">Or see a free sample first, no card needed</a>
+    <span class="subcta">A new file every Monday. Cancel anytime.</span>
     <!-- EXISTING SUBSCRIBERS HAD NO ROUTE HOME. Until 2026-09-06 this page
          contained ZERO occurrences of "already a subscriber", "my leads",
          "sign in" or "log in" - so a paying customer who came to the site
@@ -172,24 +195,29 @@
       Already subscribed? Your leads are in your Monday email &mdash; the
       <b>Download your leads</b> button in it always serves the current file.
       Can&rsquo;t find it?
-      <a href="mailto:patrick@masspermits.com?subject=Can%27t%20find%20my%20leads"
+      <a class="inl" href="mailto:patrick@masspermits.com?subject=Can%27t%20find%20my%20leads"
          style="color:var(--teal)">Email me</a> and I&rsquo;ll send your link.
     </span>
   </div>
 
   <div class="live">
-    <div class="lbl">Available right now — <span id="live-area">Massachusetts</span></div>
+    <div class="lbl">On file: <span id="live-area">Massachusetts</span></div>
     <div class="big" id="live-count">—</div>
     <div class="lbl" id="live-val"></div>
-    <div class="lbl" id="freshness" style="margin-top:6px;font-size:12px"></div>
+    <div class="lbl" id="freshness" style="margin-top:6px;font-size:12px;text-transform:none;letter-spacing:normal"></div>
+    <!-- The five-column preview is wider than a phone (484px on a 375px screen), and it
+         pushed the whole page sideways. It scrolls inside its own box now. -->
+    <div style="overflow-x:auto">
     <table>
       <thead><tr><th>Issued</th><th>Town</th><th>Address</th><th>Trade</th><th style="text-align:right">Project value</th></tr></thead>
       <tbody id="teaser"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">loading live permits…</td></tr></tbody>
     </table>
+    </div>
   </div>
 
+  <h2 class="sr-only">How it works</h2>
   <div class="steps">
-    <div class="step"><div class="n">1</div><h3>We watch the permits</h3><p>Building permits across Greater Boston, the South Shore and Cape Cod — more MA towns added weekly — pulled and sorted by trade.</p></div>
+    <div class="step"><div class="n">1</div><h3>We watch the permits</h3><p>Building permits from the Massachusetts towns we cover, pulled from public records and sorted by trade.</p></div>
     <!-- This step used to read "only the leads that fit your business", which
      promised a pre-scoped file. Delivery is one statewide bundle: an
      interactive dashboard you filter by trade and town, plus a master CSV
@@ -197,26 +225,29 @@
      old wording described a product we do not ship, so it now describes
      the one we do. -->
     <div class="step"><div class="n">2</div><h3>You filter to your trade &amp; town</h3><p>Roofing, solar, HVAC, pools, remodels — every town we cover in one file, sorted by trade and filterable to exactly your patch.</p></div>
-    <div class="step"><div class="n">3</div><h3>You reach out first</h3><p>Full address, project type and permit holder, plus the declared value where the town publishes one. You beat every competitor to the door.</p></div>
+    <div class="step"><div class="n">3</div><h3>You reach out</h3><p>Full address and project type, plus the permit holder and declared value where the town lists them. Every row shows its date.</p></div>
   </div>
 
   <div class="pricebox" id="get">
-    <p style="margin:0 0 16px;color:var(--muted);font-size:15px">A permit is only fresh for a few days — then a competitor's already knocked. The weekly feed keeps you first, every week — for <span id="p-trade2">your trade</span> in <span id="p-area2">your area</span>:</p>
+    <p style="margin:0 0 16px;color:var(--muted);font-size:15px">The weekly feed: one statewide file every Monday, which you filter to <span id="p-trade2">your trade</span> in <span id="p-area2">your area</span>.</p>
     <div class="tier buy" style="border:2px solid var(--teal);max-width:440px;margin:0 auto;text-align:center">
       <div class="t" style="font-size:17px">Weekly Feed <span style="background:var(--teal);color:#04201c;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;vertical-align:middle">BEST VALUE</span></div>
       <div class="pr" style="font-size:40px">$99 <small style="font-size:14px;color:var(--muted)">/ month</small></div>
-      <div style="color:var(--good);font-weight:700;font-size:14px;margin-top:2px">&asymp; $23/week for every fresh permit in your trade.</div>
-      <div id="feed-math" style="color:var(--muted);font-style:italic;font-size:13px;margin:2px 0 12px">Less than one job. One closed lead pays for the year.</div>
-      <div class="d">A fresh batch every week, automatically: the permit holder, full address and project type for every new <span id="p-trade3">trade</span> permit in <span id="p-area3">your area</span>, plus the declared value where the town publishes one. You reach owners before your competitors even see the permit.</div>
+      <div style="color:var(--good);font-weight:700;font-size:14px;margin:2px 0 12px">&asymp; $23 a week, for every trade and town we cover.</div>
+      <div class="d">A new file every Monday, automatically: the full address and project type of each permit, plus the permit holder and declared value where the town lists them. Filter it to <span id="p-trade3">trade</span> permits in <span id="p-area3">your area</span>.</div>
       <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
+      <!-- FOUNDER2026 pricing line: OFF with the banner, same switch (/js/promo-switch.js). -->
+      <template data-promo="FOUNDER2026">
       <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 when you start from the banner at the top</div>
+      </template>
+      <script>window.mpPromo&&mpPromo("FOUNDER2026")</script>
       <div style="color:var(--muted);font-size:12px;margin-top:7px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
     </div>
     <div style="text-align:center;margin-top:14px">
       <a href="#sample" class="buy-sample" id="buy-sample" style="color:var(--muted);font-size:13.5px;text-decoration:underline">Not sure yet? See a free sample first &rarr;</a>
     </div>
     <div style="max-width:560px;margin:20px auto 0;padding:14px 18px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:var(--muted);font-size:13px;line-height:1.55">
-      <b style="color:var(--text)">The MassPermits promise:</b> Start the weekly feed and if your first month's leads don't return more than they cost, email me for a full refund — no forms, no back-and-forth. Cancel anytime in one click; any leads already sent are yours to keep. Every lead is a real, verifiable public permit. <span style="color:var(--text)">— Pat, founder</span>
+      <b style="color:var(--text)">The MassPermits promise:</b> Start the weekly feed and if your first month's leads don't return more than they cost, email me for a full refund: no forms, no back-and-forth. Cancel anytime; any leads already sent are yours to keep. Every lead is a real, verifiable public permit. <span style="color:var(--text)">Pat, founder</span>
     </div>
     <span class="subcta" id="buy-note" style="display:block;margin-top:12px">Not ready? Grab a free sample below first.</span>
   </div>
@@ -228,8 +259,9 @@
          own trade/town filter — not "this week's batch in your trade", which is
          the paid weekly feed. Overpromising here just moves the disappointment
          to the download. -->
-    <p>Drop your email for a free sample file — around a thousand recent Massachusetts permits across 45 towns, filterable by trade and town, opens in any browser.</p>
+    <p>Drop your email for a free sample file: around a thousand recent Massachusetts permits, filterable by trade and town, that opens in any browser.</p>
     <form id="signup-form">
+      <label for="email" class="sr-only">Your email address, for the free sample</label>
       <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" required>
       <button class="cta sm" type="submit">Send my free sample</button>
     </form>
@@ -238,29 +270,31 @@
       (also check your inbox).
       <div style="margin-top:16px">
         <a class="cta sm" id="sample-feed-cta" href="#get" style="display:inline-block">Keep them coming — Weekly Feed, $99/mo &rarr;</a>
-        <div style="color:var(--muted);font-size:12px;margin-top:7px">This batch goes stale in a week. A fresh one drops every Monday — cancel anytime.</div>
+        <div style="color:var(--muted);font-size:12px;margin-top:7px">A new file arrives every Monday. Cancel anytime.</div>
       </div>
     </div>
     <div class="err" id="signup-err" style="display:none"></div>
   </div>
 
+  <h2 class="sr-only">Questions</h2>
   <div class="faq">
     <h3>Where do the leads come from?</h3>
     <p>Public municipal building-permit records — the same filings towns publish, gathered and organized so you don't have to.</p>
-    <h3>How fresh are they?</h3>
-    <p>Updated every week. The weekly feed arrives every Monday with the latest permits, and you filter it to your trade and towns.</p>
+    <h3>How recent are they?</h3>
+    <p>The weekly feed arrives every Monday, and you filter it to your trade and towns. Each town publishes on its own schedule, and some publish monthly or less often, so their permits arrive in batches when the town publishes. Every row shows its date, and <a class="inl" href="/research/coverage">what each town publishes</a> lists each town's schedule.</p>
     <h3>Do I have to subscribe?</h3>
-    <p>For the full list, yes: it comes as the $99/mo weekly feed, and you can cancel anytime. Permits are a weekly flow, not a one-time list: the feed delivers every fresh permit in your trade the week it's filed, so you reach owners first. One job off the feed covers 12 months of it. Not sure yet? The free sample costs nothing and needs no card.</p>
+    <p>For the full list, yes: it comes as the $99/mo weekly feed, and you can cancel anytime. Towns keep filing permits, so the feed is a new file every Monday rather than a one-time list. Not sure yet? The free sample costs nothing and needs no card.</p>
     <h3>What if the leads don't pan out?</h3>
-    <p>Every lead is a real, verifiable public permit. If your first paid month doesn't return more than it cost, email hello@masspermits.com and I'll refund it — no forms, no argument. Cancel anytime from your Stripe receipt; any leads already delivered are yours to keep. — Pat</p>
+    <p>Every lead is a real, verifiable public permit. If your first paid month doesn't return more than it cost, email hello@masspermits.com and I'll refund it: no forms, no argument. Cancel anytime; any leads already delivered are yours to keep. Pat</p>
     <h3>What do I actually get?</h3>
-    <p>An interactive dashboard that opens in any browser, filterable by trade and town, plus spreadsheets (one master CSV and one per trade): the permit holder, full property address and project type, plus the declared project value where the town publishes one.</p>
+    <p>An interactive dashboard that opens in any browser, filterable by trade and town, plus spreadsheets (one master CSV and one per trade): the full property address and project type, plus the permit holder and declared value where the town lists them.</p>
   </div>
 
   <div id="digest" style="background:rgba(20,31,45,.68);border:1px solid var(--border);border-radius:14px;padding:24px 22px;margin:30px 0;text-align:center;backdrop-filter:blur(16px)">
     <h2 style="margin:0 0 6px;font-size:21px">Free: <span style="color:var(--teal)">This Week in MA Permits</span></h2>
     <p style="color:var(--muted);margin:0 0 14px;font-size:14px">One email every Monday — which towns are surging, which trades are filing, and the week's biggest projects. No spam, one-click unsubscribe.</p>
     <form id="digest-form" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+      <label for="digest-email" class="sr-only">Your email address, for the weekly digest</label>
       <input type="email" id="digest-email" required placeholder="you@company.com" autocomplete="email"
         style="flex:1;min-width:220px;background:#0e1622;border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:14px">
       <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
@@ -338,6 +372,7 @@
       <a href="/permits/">all project types &rarr;</a>
     </div>
   </section>
+  </main>
 
   <footer>
     <strong style="color:var(--text)">MassPermits</strong> · Building-permit lead intelligence · Massachusetts<br>
@@ -355,6 +390,8 @@ const WEB3FORMS_KEY = "640c8bca-d620-496e-8db6-da6fbdef1bf5";
 // Stripe Payment Links. Paste the buy.stripe.com/... URLs here when created.
 // Until set, the Buy buttons fall back to the free-sample form (fails-soft).
 // The $49 first month rides ONLY on the founders banner. Every other feed button is full price.
+// The banner exists only while FOUNDER2026 is switched on in /js/promo-switch.js; while it is
+// off there is no #buy-banner and wireBuyButtons() leaves this link unused.
 const STRIPE_LINK_FOUNDER = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026";
 const STRIPE_LINK_FEED = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01";   // $99/mo        "MassPermits Weekly Feed"
 // ─────────────────────────────────────────────────────────────────────────────
@@ -363,6 +400,12 @@ const $ = id => document.getElementById(id);
 let DATA = null, SELTRADE = "", SELAREA = "";
 
 const fmtMoney = n => "$" + Math.round(n||0).toLocaleString();
+// "Recent" on this page has one definition: a selection whose newest permit is within
+// RECENT_DAYS of the newest permit in the whole build (data.json "newest"). The count is
+// every permit on file for 2025-07 onward, so it is never called fresh. Each segment of
+// data.json carries its own "newest" date, and that is what the line under the count shows.
+const RECENT_DAYS = 14;
+const dayMs = d => Date.parse(String(d||"").slice(0,10) + "T00:00:00Z");
 
 function render(){
   if(!DATA) return;
@@ -370,7 +413,7 @@ function render(){
   const trade = SELTRADE;
   // pull the matching teaser set + count
   const seg = (area.trades && area.trades[trade]) || area.all;
-  const tradeWord = trade ? trade.toLowerCase() : "";
+  const tradeWord = trade ? (trade === trade.toUpperCase() ? trade : trade.toLowerCase()) : "";
   $("h-trade").textContent = trade ? tradeWord : "contractor";
   $("h-area").textContent = area.label;
   $("live-area").textContent = area.label;
@@ -378,17 +421,16 @@ function render(){
   if($("p-area2")) $("p-area2").textContent = area.label;
   if($("p-trade3")) $("p-trade3").textContent = trade ? tradeWord : "";
   if($("p-area3")) $("p-area3").textContent = area.label;
-  if($("feed-math")) $("feed-math").textContent = trade
-    ? `Less than one ${tradeWord} job. One closed lead pays for the year.`
-    : "Less than one job. One closed lead pays for the year.";
   wireBuyButtons();  // refresh Stripe links with current trade/area
-  $("live-count").innerHTML = `${(seg.count||0).toLocaleString()} <small>fresh ${tradeWord} permits available</small>`;
+  $("live-count").innerHTML = `${(seg.count||0).toLocaleString()} <small>${tradeWord} permits</small>`;
   $("live-val").textContent = (seg.total_val > 0) ? fmtMoney(seg.total_val) + " in declared project value" : "";
-  const g = DATA.generated ? new Date(DATA.generated) : null;
-  if($("freshness") && g){
-    const hrs = Math.round((Date.now() - g.getTime()) / 3.6e6);
-    $("freshness").textContent = "Sourced from public municipal building-permit records · Updated "
-      + (hrs < 24 ? hrs + " hours" : Math.round(hrs/24) + " days") + " ago · New batch every Monday";
+  if($("freshness")){
+    const newest = seg.newest || "", fileNewest = DATA.newest || "";
+    const lag = (newest && fileNewest) ? Math.round((dayMs(fileNewest) - dayMs(newest)) / 864e5) : NaN;
+    let line = newest ? "Newest permit here: " + newest + ". " : "";
+    if (lag > RECENT_DAYS) line += "None newer through " + fileNewest
+      + ", the newest permit in the file. Some towns publish monthly, and some have stopped. ";
+    $("freshness").textContent = line + "From public municipal building-permit records. New file every Monday.";
   }
   const tb = $("teaser");
   const rows = seg.teaser || [];
@@ -422,8 +464,20 @@ function initSelectors(){
     if (qt && DATA.trade_list.includes(qt)) { SELTRADE = qt; st.value = qt; }
     if (qa && DATA.areas.some(a => a.key === qa)) { SELAREA = qa; sa.value = qa; }
   } catch (_e) {}
-  st.onchange = ()=>{ SELTRADE = st.value; render(); };
-  sa.onchange = ()=>{ SELAREA = sa.value; render(); };
+  st.onchange = ()=>{ SELTRADE = st.value; render(); keepInUrl(); };
+  sa.onchange = ()=>{ SELAREA = sa.value; render(); keepInUrl(); };
+}
+
+// Write the chosen trade and area back into the address bar (?trade=&area=, the same
+// parameters initSelectors() reads), so a copied link, a reload or the "#sample" link
+// keeps the selection. Every other parameter and the #hash are left as they are.
+function keepInUrl(){
+  try{
+    const u = new URL(location.href);
+    if (SELTRADE) u.searchParams.set("trade", SELTRADE); else u.searchParams.delete("trade");
+    if (SELAREA && SELAREA !== DATA.areas[0].key) u.searchParams.set("area", SELAREA); else u.searchParams.delete("area");
+    history.replaceState(history.state, "", u.pathname + u.search + u.hash);
+  }catch(_e){}
 }
 
 // Build a Stripe link carrying the buyer's trade+area so fulfillment knows

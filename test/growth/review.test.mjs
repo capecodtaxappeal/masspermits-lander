@@ -104,11 +104,22 @@ test("/ops page view counts are unchanged: the /offer CTA beacon is kept exactly
     try { base = git("merge-base", ref, "HEAD").trim(); break; } catch (_) { /* next */ }
   }
   assert.ok(base);
+  // The page's WORDING may change (2026-10-04: owner-name and promo wording came out,
+  // and the $9.90 lines went behind the FIRST90 switch). What /ops counts may not: the
+  // lines that log the /offer page view and the /offer/click CTA beacon, and the two
+  // CTA ids the beacon listens on.
   const diff = git("diff", "--unified=0", base, "--", "offer/index.html");
   const removed = diff.split("\n").filter((l) => l.startsWith("-") && !l.startsWith("---"));
-  assert.deepEqual(removed, [], "no line of the old /offer page is removed");
+  const beaconLines = removed.filter((l) => /\/api\/hit|\/offer\/click|'\/offer'|addEventListener|getElementById\('cta[12]'\)|function src\(\)|function click\(\)/.test(l));
+  assert.deepEqual(beaconLines, [], "no line of the /offer page view or /offer/click beacon is removed");
   const html = fs.readFileSync(path.join(H.REPO, "offer", "index.html"), "utf8");
   assert.ok(html.includes("'/offer/click'"), "CTA clicks still log the /offer/click page view /ops has always counted");
+  // Whichever way FIRST90 is switched, each CTA id is on the page once: outside the
+  // templates (the full-price CTA), and inside a template only beside a full-price twin.
+  const outside = html.replace(/<!--[\s\S]*?-->/g, "").replace(/<template\b[\s\S]*?<\/template>/g, "");
+  for (const id of ["cta1", "cta2"]) {
+    assert.equal(outside.split(`id="${id}"`).length, 2, `${id} is on the page with every promo switched off`);
+  }
 });
 
 // ── the owner notes ─────────────────────────────────────────────────────────
