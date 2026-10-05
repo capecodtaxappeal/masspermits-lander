@@ -1,11 +1,11 @@
 {
  "slug": "friday-permit-gap",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-10-04T15:06:40.223956+00:00",
- "corpus_rows": 79122,
- "corpus_sources": 76,
+ "corpus_fetched_at": "2026-10-05T18:25:14.268372+00:00",
+ "corpus_rows": 79881,
+ "corpus_sources": 77,
  "corpus_first": "2025-07-01",
- "corpus_last": "2026-10-04",
+ "corpus_last": "2026-10-05",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -43,55 +43,55 @@
   ]
  },
  "stats": {
-  "n_dated": 79122,
-  "n_sources": 76,
-  "n_shown": 61,
+  "n_dated": 79881,
+  "n_sources": 77,
+  "n_shown": 62,
   "vendor_split": {
    "shared": {
-    "n": 38052,
+    "n": 37995,
     "sources": 33,
     "fri_pct": 12.8,
-    "weekday_mean": 21.3,
+    "weekday_mean": 21.2,
     "ratio": 0.6
    },
    "other": {
-    "n": 41070,
-    "sources": 43,
+    "n": 41886,
+    "sources": 44,
     "fri_pct": 14.2,
     "weekday_mean": 21.2,
     "ratio": 0.67
    },
-   "other_below_avg": 26,
-   "other_shown": 28
+   "other_below_avg": 27,
+   "other_shown": 29
   },
-  "capped_sources": 3,
-  "row_cap": 20,
+  "capped_sources": 4,
+  "row_cap": 21,
   "zero_friday_capped": false,
-  "mon_pct": 19.9,
-  "tue_pct": 22.8,
+  "mon_pct": 20.4,
+  "tue_pct": 22.2,
   "wed_pct": 21.4,
-  "thu_pct": 21.0,
+  "thu_pct": 20.9,
   "fri_pct": 13.6,
   "sat_pct": 0.7,
   "sun_pct": 0.8,
-  "weekend_rows": 1199,
-  "weekend_sources": 40,
+  "weekend_rows": 1230,
+  "weekend_sources": 42,
   "weekend_pct": 1.5,
   "zero_friday_town": "Hingham, MA",
-  "zero_friday_weekday": 1763,
+  "zero_friday_weekday": 1765,
   "zero_friday_days": 99,
-  "zero_friday_from": "2026-04-07",
-  "zero_friday_to": "2026-10-01",
-  "zero_friday_cal_fridays": 25,
+  "zero_friday_from": "2026-04-08",
+  "zero_friday_to": "2026-10-05",
+  "zero_friday_cal_fridays": 26,
   "lowest": [
    {
     "source": "Hingham, MA",
-    "weekday": 1763,
+    "weekday": 1765,
     "friday": 0,
     "friday_pct": 0.0,
     "issue_days": 99,
-    "first": "2026-04-07",
-    "last": "2026-10-01",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -106,12 +106,12 @@
    },
    {
     "source": "Boylston, MA",
-    "weekday": 305,
+    "weekday": 304,
     "friday": 5,
     "friday_pct": 1.6,
     "issue_days": 87,
-    "first": "2026-04-07",
-    "last": "2026-09-30",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    }
   ],
@@ -138,24 +138,24 @@
    },
    {
     "source": "Norwood, MA",
-    "weekday": 1650,
+    "weekday": 1658,
     "friday": 323,
-    "friday_pct": 19.6,
+    "friday_pct": 19.5,
     "issue_days": 123,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    }
   ],
   "table": [
    {
     "source": "Hingham, MA",
-    "weekday": 1763,
+    "weekday": 1765,
     "friday": 0,
     "friday_pct": 0.0,
     "issue_days": 99,
-    "first": "2026-04-07",
-    "last": "2026-10-01",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -170,21 +170,21 @@
    },
    {
     "source": "Boylston, MA",
-    "weekday": 305,
+    "weekday": 304,
     "friday": 5,
     "friday_pct": 1.6,
     "issue_days": 87,
-    "first": "2026-04-07",
-    "last": "2026-09-30",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Carlisle, MA",
-    "weekday": 497,
+    "weekday": 491,
     "friday": 9,
     "friday_pct": 1.8,
-    "issue_days": 90,
-    "first": "2026-04-07",
+    "issue_days": 89,
+    "first": "2026-04-08",
     "last": "2026-10-02",
     "capped": false
    },
@@ -210,32 +210,32 @@
    },
    {
     "source": "Nahant, MA",
-    "weekday": 322,
+    "weekday": 323,
     "friday": 24,
-    "friday_pct": 7.5,
-    "issue_days": 83,
+    "friday_pct": 7.4,
+    "issue_days": 84,
     "first": "2026-04-08",
-    "last": "2026-10-02",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Mansfield, MA",
-    "weekday": 1174,
+    "weekday": 1183,
     "friday": 99,
     "friday_pct": 8.4,
-    "issue_days": 116,
+    "issue_days": 117,
     "first": "2026-04-08",
-    "last": "2026-10-02",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Rehoboth, MA",
-    "weekday": 711,
+    "weekday": 716,
     "friday": 65,
     "friday_pct": 9.1,
     "issue_days": 114,
-    "first": "2026-04-07",
-    "last": "2026-10-01",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -260,72 +260,82 @@
    },
    {
     "source": "Ludlow, MA",
-    "weekday": 965,
+    "weekday": 967,
     "friday": 94,
     "friday_pct": 9.7,
     "issue_days": 116,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
-    "capped": false
-   },
-   {
-    "source": "Somerville, MA",
-    "weekday": 2519,
-    "friday": 253,
-    "friday_pct": 10.0,
-    "issue_days": 125,
     "first": "2026-04-08",
-    "last": "2026-10-01",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Ipswich, MA",
-    "weekday": 1029,
+    "weekday": 1026,
     "friday": 104,
     "friday_pct": 10.1,
     "issue_days": 122,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Easthampton, MA",
-    "weekday": 908,
+    "weekday": 901,
     "friday": 94,
     "friday_pct": 10.4,
     "issue_days": 120,
-    "first": "2026-04-07",
-    "last": "2026-10-03",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
+    "capped": false
+   },
+   {
+    "source": "Somerville, MA",
+    "weekday": 2502,
+    "friday": 265,
+    "friday_pct": 10.6,
+    "issue_days": 125,
+    "first": "2026-04-09",
+    "last": "2026-10-02",
     "capped": false
    },
    {
     "source": "Milton, MA",
-    "weekday": 1464,
+    "weekday": 1469,
     "friday": 157,
     "friday_pct": 10.7,
     "issue_days": 123,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "North Reading, MA",
-    "weekday": 1034,
+    "weekday": 1025,
     "friday": 112,
-    "friday_pct": 10.8,
+    "friday_pct": 10.9,
     "issue_days": 122,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Foxborough, MA",
-    "weekday": 1315,
+    "weekday": 1298,
     "friday": 143,
-    "friday_pct": 10.9,
+    "friday_pct": 11.0,
     "issue_days": 122,
-    "first": "2026-04-07",
-    "last": "2026-10-03",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
+    "capped": false
+   },
+   {
+    "source": "Fairhaven, MA",
+    "weekday": 1020,
+    "friday": 112,
+    "friday_pct": 11.0,
+    "issue_days": 123,
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -349,16 +359,6 @@
     "capped": false
    },
    {
-    "source": "Fairhaven, MA",
-    "weekday": 1012,
-    "friday": 114,
-    "friday_pct": 11.3,
-    "issue_days": 123,
-    "first": "2026-04-07",
-    "last": "2026-10-04",
-    "capped": false
-   },
-   {
     "source": "Lexington, MA",
     "weekday": 1119,
     "friday": 129,
@@ -370,51 +370,71 @@
    },
    {
     "source": "Cohasset, MA",
-    "weekday": 748,
+    "weekday": 738,
     "friday": 92,
-    "friday_pct": 12.3,
+    "friday_pct": 12.5,
     "issue_days": 115,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
+    "capped": false
+   },
+   {
+    "source": "Duxbury, MA",
+    "weekday": 506,
+    "friday": 63,
+    "friday_pct": 12.5,
+    "issue_days": 146,
+    "first": "2026-01-02",
+    "last": "2026-08-31",
     "capped": false
    },
    {
     "source": "Lenox, MA",
-    "weekday": 549,
+    "weekday": 541,
     "friday": 70,
-    "friday_pct": 12.8,
-    "issue_days": 118,
-    "first": "2026-04-07",
+    "friday_pct": 12.9,
+    "issue_days": 117,
+    "first": "2026-04-08",
     "last": "2026-10-02",
     "capped": false
    },
    {
     "source": "Taunton, MA",
-    "weekday": 2189,
+    "weekday": 2168,
     "friday": 291,
-    "friday_pct": 13.3,
+    "friday_pct": 13.4,
     "issue_days": 125,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Worcester, MA",
-    "weekday": 6397,
-    "friday": 851,
-    "friday_pct": 13.3,
-    "issue_days": 123,
-    "first": "2026-04-07",
-    "last": "2026-09-26",
+    "weekday": 6622,
+    "friday": 891,
+    "friday_pct": 13.5,
+    "issue_days": 127,
+    "first": "2026-04-08",
+    "last": "2026-10-03",
+    "capped": false
+   },
+   {
+    "source": "Rockland, MA",
+    "weekday": 829,
+    "friday": 113,
+    "friday_pct": 13.6,
+    "issue_days": 126,
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Lee, MA",
-    "weekday": 404,
+    "weekday": 403,
     "friday": 55,
     "friday_pct": 13.6,
-    "issue_days": 108,
-    "first": "2026-04-07",
+    "issue_days": 107,
+    "first": "2026-04-08",
     "last": "2026-10-02",
     "capped": false
    },
@@ -429,43 +449,33 @@
     "capped": false
    },
    {
-    "source": "Rockland, MA",
-    "weekday": 827,
-    "friday": 113,
-    "friday_pct": 13.7,
-    "issue_days": 126,
-    "first": "2026-04-07",
-    "last": "2026-10-04",
-    "capped": false
-   },
-   {
     "source": "Hopedale, MA",
-    "weekday": 454,
+    "weekday": 455,
     "friday": 63,
-    "friday_pct": 13.9,
-    "issue_days": 98,
+    "friday_pct": 13.8,
+    "issue_days": 99,
     "first": "2026-04-08",
-    "last": "2026-10-02",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "West Bridgewater, MA",
-    "weekday": 473,
+    "weekday": 470,
     "friday": 66,
     "friday_pct": 14.0,
-    "issue_days": 116,
-    "first": "2026-04-07",
+    "issue_days": 115,
+    "first": "2026-04-08",
     "last": "2026-10-01",
     "capped": false
    },
    {
     "source": "Sandwich, MA",
-    "weekday": 1588,
+    "weekday": 1589,
     "friday": 226,
     "friday_pct": 14.2,
     "issue_days": 129,
-    "first": "2026-04-07",
-    "last": "2026-10-03",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -480,22 +490,32 @@
    },
    {
     "source": "Stoughton, MA",
-    "weekday": 1690,
-    "friday": 246,
-    "friday_pct": 14.6,
+    "weekday": 1685,
+    "friday": 245,
+    "friday_pct": 14.5,
     "issue_days": 129,
-    "first": "2026-04-07",
-    "last": "2026-10-04",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
+    "capped": false
+   },
+   {
+    "source": "Mashpee, MA",
+    "weekday": 2378,
+    "friday": 349,
+    "friday_pct": 14.7,
+    "issue_days": 116,
+    "first": "2026-04-21",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Easton, MA",
-    "weekday": 1374,
-    "friday": 201,
-    "friday_pct": 14.6,
+    "weekday": 1364,
+    "friday": 200,
+    "friday_pct": 14.7,
     "issue_days": 128,
-    "first": "2026-04-07",
-    "last": "2026-10-03",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -509,13 +529,13 @@
     "capped": false
    },
    {
-    "source": "Mashpee, MA",
-    "weekday": 2376,
-    "friday": 352,
-    "friday_pct": 14.8,
-    "issue_days": 115,
-    "first": "2026-04-21",
-    "last": "2026-10-03",
+    "source": "Bellingham, MA",
+    "weekday": 1258,
+    "friday": 187,
+    "friday_pct": 14.9,
+    "issue_days": 123,
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -524,18 +544,8 @@
     "friday": 73,
     "friday_pct": 15.0,
     "issue_days": 122,
-    "first": "2026-04-07",
-    "last": "2026-10-03",
-    "capped": false
-   },
-   {
-    "source": "Bellingham, MA",
-    "weekday": 1250,
-    "friday": 187,
-    "friday_pct": 15.0,
-    "issue_days": 123,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -544,8 +554,8 @@
     "friday": 41,
     "friday_pct": 15.1,
     "issue_days": 92,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -560,22 +570,22 @@
    },
    {
     "source": "Braintree, MA",
-    "weekday": 2017,
+    "weekday": 2002,
     "friday": 306,
-    "friday_pct": 15.2,
+    "friday_pct": 15.3,
     "issue_days": 126,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
-    "source": "New Marlborough, MA",
-    "weekday": 143,
-    "friday": 22,
+    "source": "Concord, MA",
+    "weekday": 1534,
+    "friday": 237,
     "friday_pct": 15.4,
-    "issue_days": 80,
-    "first": "2026-04-07",
-    "last": "2026-09-24",
+    "issue_days": 124,
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -589,33 +599,23 @@
     "capped": false
    },
    {
-    "source": "Concord, MA",
-    "weekday": 1533,
-    "friday": 237,
-    "friday_pct": 15.5,
-    "issue_days": 124,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
-    "capped": false
-   },
-   {
-    "source": "Great Barrington, MA",
-    "weekday": 620,
-    "friday": 97,
-    "friday_pct": 15.6,
-    "issue_days": 121,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
-    "capped": false
-   },
-   {
     "source": "Cambridge, MA",
     "weekday": 2893,
     "friday": 450,
     "friday_pct": 15.6,
     "issue_days": 82,
-    "first": "2026-06-06",
+    "first": "2026-06-07",
     "last": "2026-10-02",
+    "capped": false
+   },
+   {
+    "source": "New Marlborough, MA",
+    "weekday": 141,
+    "friday": 22,
+    "friday_pct": 15.6,
+    "issue_days": 79,
+    "first": "2026-04-08",
+    "last": "2026-09-24",
     "capped": false
    },
    {
@@ -629,23 +629,33 @@
     "capped": false
    },
    {
+    "source": "Great Barrington, MA",
+    "weekday": 619,
+    "friday": 97,
+    "friday_pct": 15.7,
+    "issue_days": 121,
+    "first": "2026-04-08",
+    "last": "2026-10-05",
+    "capped": false
+   },
+   {
     "source": "Attleboro, MA",
-    "weekday": 2310,
+    "weekday": 2309,
     "friday": 365,
     "friday_pct": 15.8,
     "issue_days": 123,
-    "first": "2026-04-15",
-    "last": "2026-10-04",
+    "first": "2026-04-16",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Chicopee, MA",
-    "weekday": 1798,
+    "weekday": 1789,
     "friday": 284,
-    "friday_pct": 15.8,
+    "friday_pct": 15.9,
     "issue_days": 123,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
@@ -660,42 +670,52 @@
    },
    {
     "source": "Randolph, MA",
-    "weekday": 1382,
+    "weekday": 1387,
     "friday": 227,
     "friday_pct": 16.4,
     "issue_days": 128,
-    "first": "2026-04-07",
-    "last": "2026-10-04",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Pittsfield, MA",
-    "weekday": 2511,
+    "weekday": 2508,
     "friday": 412,
     "friday_pct": 16.4,
     "issue_days": 124,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Stockbridge, MA",
-    "weekday": 377,
+    "weekday": 379,
     "friday": 66,
-    "friday_pct": 17.5,
+    "friday_pct": 17.4,
     "issue_days": 112,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
     "source": "Falmouth, MA",
     "weekday": 2400,
-    "friday": 429,
+    "friday": 430,
     "friday_pct": 17.9,
     "issue_days": 75,
-    "first": "2026-06-17",
-    "last": "2026-10-02",
+    "first": "2026-06-18",
+    "last": "2026-10-05",
+    "capped": false
+   },
+   {
+    "source": "Waltham, MA",
+    "weekday": 1025,
+    "friday": 187,
+    "friday_pct": 18.2,
+    "issue_days": 122,
+    "first": "2026-04-01",
+    "last": "2026-09-30",
     "capped": false
    },
    {
@@ -719,23 +739,13 @@
     "capped": false
    },
    {
-    "source": "Waltham, MA",
-    "weekday": 944,
-    "friday": 183,
-    "friday_pct": 19.4,
-    "issue_days": 123,
-    "first": "2026-02-02",
-    "last": "2026-07-31",
-    "capped": false
-   },
-   {
     "source": "Norwood, MA",
-    "weekday": 1650,
+    "weekday": 1658,
     "friday": 323,
-    "friday_pct": 19.6,
+    "friday_pct": 19.5,
     "issue_days": 123,
-    "first": "2026-04-07",
-    "last": "2026-10-02",
+    "first": "2026-04-08",
+    "last": "2026-10-05",
     "capped": false
    },
    {
