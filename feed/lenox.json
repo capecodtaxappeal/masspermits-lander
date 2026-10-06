@@ -26,9 +26,36 @@
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
  "_window_total": 70,
- "_window_from": "2026-09-07",
- "_window_to": "2026-10-02",
+ "_window_from": "2026-09-08",
+ "_window_to": "2026-10-06",
  "items": [
+  {
+   "id": "d1224659fa377627",
+   "url": "https://masspermits.com/permits/lenox-electrical",
+   "title": "Electrical permit \u2014 Kemble St, Lenox",
+   "content_text": "Electrical permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Lenox",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f80e0398789b8f82",
+   "url": "https://masspermits.com/permits/lenox-other",
+   "title": "Other permit \u2014 Delafield Dr, Lenox",
+   "content_text": "Other permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Lenox",
+   "_trade": "Other"
+  },
+  {
+   "id": "57b8959befd70320",
+   "url": "https://masspermits.com/permits/lenox-building",
+   "title": "Building permit \u2014 Pittsfield Road, Lenox",
+   "content_text": "Building permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Lenox",
+   "_trade": "Building"
+  },
   {
    "id": "967eef805d04747f",
    "url": "https://masspermits.com/permits/lenox-building",
@@ -48,15 +75,6 @@
    "_trade": "Renovation/Remodel"
   },
   {
-   "id": "5559821cb43de891",
-   "url": "https://masspermits.com/permits/lenox-building",
-   "title": "Building permit \u2014 Pittsfield Road, Lenox",
-   "content_text": "Building permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-02T00:00:00Z",
-   "_town": "Lenox",
-   "_trade": "Building"
-  },
-  {
    "id": "8025bd67099e60c6",
    "url": "https://masspermits.com/permits/lenox-renovation-remodel",
    "title": "Renovation/Remodel permit \u2014 Stone Ledge Rd, Lenox",
@@ -64,24 +82,6 @@
    "date_published": "2026-10-02T00:00:00Z",
    "_town": "Lenox",
    "_trade": "Renovation/Remodel"
-  },
-  {
-   "id": "f80e0398789b8f82",
-   "url": "https://masspermits.com/permits/lenox-other",
-   "title": "Other permit \u2014 Delafield Dr, Lenox",
-   "content_text": "Other permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-02T00:00:00Z",
-   "_town": "Lenox",
-   "_trade": "Other"
-  },
-  {
-   "id": "d11feee54ef2c39a",
-   "url": "https://masspermits.com/permits/lenox-electrical",
-   "title": "Electrical permit \u2014 Morgan Manor, Lenox",
-   "content_text": "Electrical permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-01T00:00:00Z",
-   "_town": "Lenox",
-   "_trade": "Electrical"
   },
   {
    "id": "a3ca304cae1c7809",
@@ -136,6 +136,15 @@
    "date_published": "2026-10-01T00:00:00Z",
    "_town": "Lenox",
    "_trade": "Plumbing"
+  },
+  {
+   "id": "d11feee54ef2c39a",
+   "url": "https://masspermits.com/permits/lenox-electrical",
+   "title": "Electrical permit \u2014 Morgan Manor, Lenox",
+   "content_text": "Electrical permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Lenox",
+   "_trade": "Electrical"
   },
   {
    "id": "11e2caa3d9b2f744",
@@ -273,15 +282,6 @@
    "_trade": "Electrical"
   },
   {
-   "id": "e3e515af4a399020",
-   "url": "https://masspermits.com/permits/lenox-electrical",
-   "title": "Electrical permit \u2014 Reservoir Road, Lenox",
-   "content_text": "Electrical permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "Lenox",
-   "_trade": "Electrical"
-  },
-  {
    "id": "860d61557acbb2af",
    "url": "https://masspermits.com/permits/lenox-building",
    "title": "Building permit \u2014 Golden Hill Rd, Lenox",
@@ -291,13 +291,13 @@
    "_trade": "Building"
   },
   {
-   "id": "30fc00ee8e6fbc43",
-   "url": "https://masspermits.com/permits/lenox-plumbing",
-   "title": "Plumbing permit \u2014 Old Stockbridge Rd, Lenox",
-   "content_text": "Plumbing permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-25T00:00:00Z",
+   "id": "e3e515af4a399020",
+   "url": "https://masspermits.com/permits/lenox-electrical",
+   "title": "Electrical permit \u2014 Reservoir Road, Lenox",
+   "content_text": "Electrical permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
    "_town": "Lenox",
-   "_trade": "Plumbing"
+   "_trade": "Electrical"
   },
   {
    "id": "d8c17d8668558de1",
@@ -336,13 +336,13 @@
    "_trade": "Renovation/Remodel"
   },
   {
-   "id": "0edf86a60b1e6742",
-   "url": "https://masspermits.com/permits/lenox-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Kemble St, Lenox",
-   "content_text": "Renovation/Remodel permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-23T00:00:00Z",
+   "id": "30fc00ee8e6fbc43",
+   "url": "https://masspermits.com/permits/lenox-plumbing",
+   "title": "Plumbing permit \u2014 Old Stockbridge Rd, Lenox",
+   "content_text": "Plumbing permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
    "_town": "Lenox",
-   "_trade": "Renovation/Remodel"
+   "_trade": "Plumbing"
   },
   {
    "id": "ef9430a6e181979c",
@@ -354,7 +354,25 @@
    "_trade": "Renovation/Remodel"
   },
   {
-   "id": "a9bfa88e555c2573",
+   "id": "0edf86a60b1e6742",
+   "url": "https://masspermits.com/permits/lenox-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Kemble St, Lenox",
+   "content_text": "Renovation/Remodel permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Lenox",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "6a22e4ca818e9643",
+   "url": "https://masspermits.com/permits/lenox-building",
+   "title": "Building permit \u2014 Auchmuty Way Building Clubhouse, Lenox",
+   "content_text": "Building permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Lenox",
+   "_trade": "Building"
+  },
+  {
+   "id": "22e62f508fc3ed44",
    "url": "https://masspermits.com/permits/lenox-building",
    "title": "Building permit \u2014 Auchmuty Way Building Apts, Lenox",
    "content_text": "Building permit in Lenox, MA. Full lead at masspermits.com.",
@@ -372,13 +390,13 @@
    "_trade": "Renovation/Remodel"
   },
   {
-   "id": "6a22e4ca818e9643",
-   "url": "https://masspermits.com/permits/lenox-building",
-   "title": "Building permit \u2014 Auchmuty Way Building Clubhouse, Lenox",
-   "content_text": "Building permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-22T00:00:00Z",
+   "id": "1d7fa406ac70a770",
+   "url": "https://masspermits.com/permits/lenox-electrical",
+   "title": "Electrical permit \u2014 East Dugway Rd, Lenox",
+   "content_text": "Electrical permit in Lenox, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
    "_town": "Lenox",
-   "_trade": "Building"
+   "_trade": "Electrical"
   },
   {
    "id": "d068dd2a432797e0",
@@ -415,15 +433,6 @@
    "date_published": "2026-09-21T00:00:00Z",
    "_town": "Lenox",
    "_trade": "Other"
-  },
-  {
-   "id": "1d7fa406ac70a770",
-   "url": "https://masspermits.com/permits/lenox-electrical",
-   "title": "Electrical permit \u2014 East Dugway Rd, Lenox",
-   "content_text": "Electrical permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-21T00:00:00Z",
-   "_town": "Lenox",
-   "_trade": "Electrical"
   },
   {
    "id": "3ef8a457264a7b8b",
@@ -559,15 +568,6 @@
    "date_published": "2026-09-11T00:00:00Z",
    "_town": "Lenox",
    "_trade": "Other"
-  },
-  {
-   "id": "ac2d26dcf47250ad",
-   "url": "https://masspermits.com/permits/lenox-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Galway Ct, Lenox",
-   "content_text": "Renovation/Remodel permit in Lenox, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-10T00:00:00Z",
-   "_town": "Lenox",
-   "_trade": "Renovation/Remodel"
   }
  ]
 }

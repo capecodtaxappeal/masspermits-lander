@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-10-05T18:25:14.268372+00:00",
- "corpus_rows": 79881,
+ "corpus_fetched_at": "2026-10-06T16:11:42.130528+00:00",
+ "corpus_rows": 79852,
  "corpus_sources": 77,
- "corpus_first": "2025-07-01",
- "corpus_last": "2026-10-05",
+ "corpus_first": "2025-10-01",
+ "corpus_last": "2026-10-06",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -39,19 +39,19 @@
   "adu_towns": 32,
   "eligible_sources": 56,
   "n_sources": 77,
-  "garage": 65,
-  "garage_share": 19.1,
-  "conversion": 69,
+  "garage": 67,
+  "garage_share": 19.7,
+  "conversion": 73,
   "new_build": 167,
-  "unclassified": 104,
-  "garage_conversion": 27,
+  "unclassified": 100,
+  "garage_conversion": 29,
   "garage_new_build": 26,
   "form_leader": "new construction",
-  "pooled_rate": 61.2,
+  "pooled_rate": 60.8,
   "raw_first": 3,
   "raw_peak": 63,
-  "rate_min": 35.6,
-  "rate_max": 98.7,
+  "rate_min": 41.7,
+  "rate_max": 100.9,
   "n_months": 11,
   "series": [
    {
@@ -81,18 +81,18 @@
    {
     "month": "2026-03",
     "raw": 14,
-    "base": 1418,
+    "base": 1387,
     "sources": 10,
     "partial": false,
-    "rate": 98.7
+    "rate": 100.9
    },
    {
     "month": "2026-04",
-    "raw": 43,
-    "base": 5338,
+    "raw": 40,
+    "base": 5099,
     "sources": 32,
     "partial": false,
-    "rate": 80.6
+    "rate": 78.4
    },
    {
     "month": "2026-05",
@@ -105,46 +105,46 @@
    {
     "month": "2026-06",
     "raw": 63,
-    "base": 9182,
+    "base": 9146,
     "sources": 39,
     "partial": false,
-    "rate": 68.6
+    "rate": 68.9
    },
    {
     "month": "2026-07",
     "raw": 52,
-    "base": 9061,
-    "sources": 38,
+    "base": 9172,
+    "sources": 39,
     "partial": false,
-    "rate": 57.4
+    "rate": 56.7
    },
    {
     "month": "2026-08",
     "raw": 48,
-    "base": 11081,
+    "base": 11193,
     "sources": 41,
     "partial": false,
-    "rate": 43.3
+    "rate": 42.9
    },
    {
     "month": "2026-09",
-    "raw": 41,
-    "base": 10176,
-    "sources": 41,
+    "raw": 43,
+    "base": 10315,
+    "sources": 42,
     "partial": false,
-    "rate": 40.3
+    "rate": 41.7
    },
    {
     "month": "2026-10",
-    "raw": 4,
-    "base": 1123,
-    "sources": 35,
+    "raw": 8,
+    "base": 1382,
+    "sources": 36,
     "partial": true,
-    "rate": 35.6
+    "rate": 57.9
    }
   ],
   "src_first": 4,
-  "src_peak": 41,
+  "src_peak": 42,
   "partial_month": "2026-10",
   "town_list": [
    "Amherst, MA",
