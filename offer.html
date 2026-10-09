@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>90% off your first month — MassPermits Weekly Feed</title>
-<meta name="description" content="Limited founder offer: your first month of Massachusetts building-permit leads for $9.90.">
+<title>MassPermits Weekly Feed: Massachusetts building-permit leads</title>
+<meta name="description" content="Massachusetts building-permit leads for contractors, in a new file every Monday: the full address and project type, plus the permit holder and declared value where the town lists them. $99 a month.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
 <style>
@@ -36,35 +36,51 @@
   .guarantee{border-color:rgba(74,222,128,.35)}
   a.plain{color:var(--teal)}
 </style>
+<!-- Promotion codes are switched in ONE place, /js/promo-switch.js (FIRST90 is OFF). -->
+<script src="/js/promo-switch.js"></script>
 </head>
 <body>
 <div class="wrap">
   <div class="brand">Mass<b>Permits</b></div>
 
+  <!-- FIRST90 is OFF (see /js/promo-switch.js): the full-price lines show, and the
+       $9.90 lines wait in the template below, unchanged. -->
+  <div class="tag" data-promo-off="FIRST90">The MassPermits Weekly Feed</div>
+  <h1 data-promo-off="FIRST90">Massachusetts permit leads,<br>every Monday: <span class="now">$99</span> a month</h1>
+  <template data-promo="FIRST90">
   <div class="tag">Limited offer · code FIRST90 auto-applied</div>
   <h1>Your first month of permit leads:<br><span class="strike">$99</span> <span class="now">$9.90</span></h1>
-  <p class="lead">Every building permit filed in Massachusetts is a homeowner who just got approved to spend money — a fresh job for whoever reaches them first. That's you, every Monday.</p>
+  </template>
+  <script>window.mpPromo&&mpPromo("FIRST90")</script>
+  <p class="lead">A building permit is a public record that a property owner was just approved for work. We collect permits from the Massachusetts towns we cover, sort them by trade and town, and send them to you every Monday.</p>
 
   <div class="panel">
     <ul class="what">
-      <li><b>Fresh weekly leads</b> — every new permit in your trade &amp; towns, the week it's filed</li>
-      <li><b>Full contact detail</b> — homeowner name, exact address, project type &amp; declared value</li>
+      <li><b>A new file every Monday</b>: every town we cover, filterable to your trade and towns</li>
+      <li><b>Full lead detail</b>: exact address and project type, plus the permit holder and declared value where the town lists them</li>
       <li><b>Sortable file + live dashboard</b> — filter by trade, town, project size</li>
-      <li><b>9,000+ active MA permits</b> in the current dataset, growing weekly</li>
     </ul>
+    <a class="cta" id="buy" data-promo-off="FIRST90" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01">Start the weekly feed: $99/mo →</a>
+    <template data-promo="FIRST90">
     <a class="cta" id="buy" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FIRST90">Start for $9.90 — then $99/mo →</a>
-    <p class="fine">Cancel anytime in one click · no contract · leads already delivered are yours to keep</p>
+    </template>
+    <script>window.mpPromo&&mpPromo("FIRST90")</script>
+    <p class="fine">Cancel anytime · no contract · leads already delivered are yours to keep</p>
   </div>
 
   <div class="row">
+    <div class="chip" data-promo-off="FIRST90"><div class="n">$99</div><div class="l">a month</div></div>
+    <template data-promo="FIRST90">
     <div class="chip"><div class="n">$9.90</div><div class="l">month one</div></div>
-    <div class="chip"><div class="n">Monday</div><div class="l">fresh delivery</div></div>
+    </template>
+    <script>window.mpPromo&&mpPromo("FIRST90")</script>
+    <div class="chip"><div class="n">Monday</div><div class="l">delivery</div></div>
     <div class="chip guarantee"><div class="n">100%</div><div class="l">refund if month 1 doesn't pay for itself</div></div>
   </div>
 
   <div class="panel" style="margin-top:26px">
-    <p style="margin:0;color:#c7d3e0;font-size:14.5px"><b style="color:var(--text)">The math:</b> one average kitchen remodel is a $25,000+ job. The feed costs $9.90 this month. If a single lead turns into a single job, you've paid for years of it. Sourced from public municipal permit records — every lead is a real, verifiable permit.</p>
-    <p style="margin:12px 0 0;color:var(--muted);font-size:13px">Questions first? <a class="plain" href="https://masspermits.com">See a free sample</a> or just reply to any of our emails — a real person reads them. — Pat</p>
+    <p style="margin:0;color:#c7d3e0;font-size:14.5px"><b style="color:var(--text)">Where it comes from:</b> public municipal permit records. Every lead is a real, verifiable permit.</p>
+    <p style="margin:12px 0 0;color:var(--muted);font-size:13px">Questions first? <a class="plain" href="/#sample">See a free sample</a> or just reply to any of our emails; a real person reads them. Pat</p>
   </div>
 </div>
 <script>try{var u=new URL(location.href),s=u.searchParams.get('utm_source')||u.searchParams.get('ref')||'';var b='/api/hit?p='+encodeURIComponent(location.pathname)+'&s='+encodeURIComponent(s)+'&r='+encodeURIComponent(document.referrer||'');navigator.sendBeacon?navigator.sendBeacon(b):(new Image().src=b);}catch(e){}</script>

@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Chestnut Hill, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Chestnut Hill, MA",
+ "home_page_url": "https://masspermits.com/permits/chestnut-hill",
  "feed_url": "https://masspermits.com/feed/chestnut-hill.json",
- "description": "Recent building permits in Chestnut Hill, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Chestnut Hill, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-14. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,53 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-09-14",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 3,
- "_window_from": "2026-09-08",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-09-14",
- "items": [
-  {
-   "id": "adb2740414ab54b7",
-   "url": "https://masspermits.com/permits/chestnut-hill-electrical",
-   "title": "Electrical permit \u2014 Thornton Rd, Chestnut Hill ($1,000)",
-   "content_text": "Electrical permit in Chestnut Hill, MA. Value $1,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-14T00:00:00Z",
-   "_town": "Chestnut Hill",
-   "_trade": "Electrical",
-   "_value": 1000.0
-  },
-  {
-   "id": "0bf1f3552b27f072",
-   "url": "https://masspermits.com/permits/chestnut-hill",
-   "title": "Windows/Doors/Siding permit \u2014 Hackensack Rd, Chestnut Hill ($8,802)",
-   "content_text": "Windows/Doors/Siding permit in Chestnut Hill, MA. Value $8,802. Full lead at masspermits.com.",
-   "date_published": "2026-09-12T00:00:00Z",
-   "_town": "Chestnut Hill",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 8802.0
-  },
-  {
-   "id": "2e4733b09ed78a52",
-   "url": "https://masspermits.com/permits/chestnut-hill-electrical",
-   "title": "Electrical permit \u2014 Crehore Rd, Chestnut Hill ($1,500)",
-   "content_text": "Electrical permit in Chestnut Hill, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-08T00:00:00Z",
-   "_town": "Chestnut Hill",
-   "_trade": "Electrical",
-   "_value": 1500.0
-  }
- ]
+ "items": []
 }

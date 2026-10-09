@@ -57,6 +57,10 @@ export async function onRequest(context) {
     // customer their own subscription has now cost goodwill twice. The abort
     // returns an explicit error so a silent non-send is never mistaken for a
     // clean run.
+    //
+    // "Paying" uses weekly-send.js's own rule: every row except active:false.
+    // It used to be active === true, so a row with no active field (or null)
+    // got the paid file from weekly-send AND this pitch for it.
     let payers;
     try {
       const so = await env.BUNDLES.get("subscribers.json");
@@ -64,7 +68,7 @@ export async function onRequest(context) {
       const subs = JSON.parse(await so.text());
       if (!Array.isArray(subs)) throw new Error("subscribers.json is not an array");
       payers = new Set(
-        subs.filter(s => s && s.email && s.active === true)
+        subs.filter(s => s && s.email && s.active !== false)
             .map(s => String(s.email).trim().toLowerCase())
       );
     } catch (e) {
@@ -218,6 +222,7 @@ async function sendDigest(env, reader, d) {
       <p style="margin:10px 0 0;font-size:12px;color:#667">or grab a <a href="https://masspermits.com" style="color:#0e7c6b">free sample</a> first</p>
     </div>
     <p style="color:#9aa;font-size:12px;margin-top:22px">MassPermits · masspermits.com · compiled from public municipal permit records<br>
+    MassPermits, PO Box 781, West Falmouth, MA 02574<br>
     <a href="${unsub}" style="color:#9aa">Unsubscribe</a>: one click, no questions.</p></div>`;
 
   const resp = await fetch("https://api.resend.com/emails", {

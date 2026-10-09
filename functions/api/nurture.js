@@ -44,6 +44,10 @@ export async function onRequest(context) {
   // we send nothing rather than risk mailing a customer. A skipped nurture day
   // costs almost nothing; pitching a paying customer their own subscription is
   // the thing we are trying to stop.
+  //
+  // "Paying" uses weekly-send.js's own rule: every row except active:false.
+  // It used to be active === true, so a row with no active field (or null)
+  // got the paid file from weekly-send AND these pitches for it.
   let payers;
   try {
     const so = await env.BUNDLES.get("subscribers.json");
@@ -51,7 +55,7 @@ export async function onRequest(context) {
     const subs = JSON.parse(await so.text());
     if (!Array.isArray(subs)) throw new Error("subscribers.json is not an array");
     payers = new Set(
-      subs.filter((s) => s && s.email && s.active === true)
+      subs.filter((s) => s && s.email && s.active !== false)
           .map((s) => String(s.email).trim().toLowerCase())
     );
   } catch (e) {
@@ -129,6 +133,7 @@ function wrap(inner) {
   return `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:560px;margin:0 auto;color:#0e1622">
     ${inner}
     <p style="color:#9aa;font-size:12px;margin-top:26px">MassPermits · masspermits.com · public municipal permit records<br>
+    MassPermits, PO Box 781, West Falmouth, MA 02574<br>
     You're getting this because you requested our free sample. Reply "stop" to opt out.</p></div>`;
 }
 

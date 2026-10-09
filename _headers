@@ -35,6 +35,13 @@
 /ops
   X-Robots-Tag: noindex, nofollow
 
+# The promo switch (js/promo-switch.js) decides whether a promotion shows on the
+# homepage, /offer and /offer/. A browser must check it again on every page view,
+# so a code that is switched off goes off for returning visitors too, not only
+# for new ones. test/promo-switch.test.mjs holds this rule.
+/js/promo-switch.js
+  Cache-Control: public, max-age=0, must-revalidate
+
 # >>> widget tier (widget_build.py) — do not hand-edit inside this block
 #
 # /widget/v1/embed is a RENDERING FRAGMENT, not a page. Indexing it would mint
@@ -106,9 +113,14 @@
   Referrer-Policy: no-referrer
   Cache-Control: private, no-store
 
-# Documentation and Worker source are public on GitHub already; they are not
+# Documentation, Worker source, the rehearsal's runner scripts and the test
+# files (synthetic fixtures only) are public on GitHub already; they are not
 # pages, so keep them out of search results.
 /docs/*
   X-Robots-Tag: noindex, nofollow
 /workers/*
+  X-Robots-Tag: noindex, nofollow
+/scripts/*
+  X-Robots-Tag: noindex, nofollow
+/test/*
   X-Robots-Tag: noindex, nofollow

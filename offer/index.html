@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MassPermits — First month 90% off ($9.90)</title>
-<meta name="description" content="Massachusetts building-permit leads for contractors — name, address & project value, delivered weekly. First month 90% off: $9.90.">
+<title>MassPermits Weekly Feed: Massachusetts building-permit leads</title>
+<meta name="description" content="Massachusetts building-permit leads for contractors: the full address and project type, plus the permit holder and declared value where the town lists them, in a new file every Monday. $99 a month.">
 <meta name="robots" content="noindex,nofollow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Your first month of MA permit leads — $9.90">
-<meta property="og:description" content="Every new Massachusetts building permit is a homeowner ready to hire. Reach them first. First month 90% off.">
+<meta property="og:title" content="Massachusetts building-permit leads, every Monday">
+<meta property="og:description" content="Building permits from the Massachusetts towns we cover, sorted by trade and town, in a new file every Monday. $99 a month.">
 <meta property="og:url" content="https://masspermits.com/offer">
 <meta property="og:site_name" content="MassPermits">
 <meta name="twitter:card" content="summary_large_image">
@@ -76,6 +76,8 @@
   footer{border-top:1px solid var(--border);margin-top:44px;padding:22px 0 40px;color:var(--muted);font-size:12.5px;text-align:center}
   footer b{color:var(--muted)}
 </style>
+<!-- Promotion codes are switched in ONE place, /js/promo-switch.js (FIRST90 is OFF). -->
+<script src="/js/promo-switch.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -85,12 +87,25 @@
   </header>
 
   <p class="eyebrow">For Massachusetts contractors</p>
-  <h1>This week, homeowners across MA are pulling permits. <span class="hl">Reach them before your competition does.</span></h1>
-  <p class="lead">Every new building permit is a homeowner who was just approved to spend money on their property — the earliest, warmest lead there is. MassPermits hands you each one with the <b style="color:#eaf0f7">name, full address, and project value</b>, fresh every week.</p>
+  <h1>This week, homeowners across MA are pulling permits. <span class="hl">Get those permits in one file every Monday.</span></h1>
+  <p class="lead">A building permit means a property owner was just approved for work on their property. MassPermits sends you the permits from the towns we cover with the <b style="color:#eaf0f7">full address and project type</b>, plus the permit holder and declared value where the town lists them, in a new file every Monday.</p>
 
-  <div class="livestrip"><span class="dot"></span> <span id="live"><b>9,000+</b> active MA permits · refreshed weekly</span></div>
+  <div class="livestrip"><span class="dot"></span> <span id="live">Permits from towns across Massachusetts · new file every Monday</span></div>
 
   <div class="offer">
+    <!-- FIRST90 is OFF (see /js/promo-switch.js): the full-price block shows, and the
+         $9.90 block waits in the template below, unchanged. Both CTAs keep the cta1 id, so
+         the /offer/click beacon counts whichever one is on the page. -->
+    <div data-promo-off="FIRST90">
+    <div class="tag">Weekly Feed</div>
+    <div class="price">
+      <span class="now">$99</span>
+      <span class="per">a month</span>
+    </div>
+    <p class="then">A new file every Monday · cancel anytime</p>
+    <a class="cta" id="cta1" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" rel="nofollow">Start the weekly feed: $99/mo &rarr;</a>
+    </div>
+    <template data-promo="FIRST90">
     <div class="tag">New customer offer</div>
     <div class="price">
       <span class="was">$99</span>
@@ -99,33 +114,41 @@
     </div>
     <p class="then">90% off your first month, then $99/mo · cancel anytime</p>
     <a class="cta" id="cta1" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FIRST90" rel="nofollow">Start for $9.90 &rarr;</a>
+    </template>
+    <script>window.mpPromo&&mpPromo("FIRST90")</script>
     <p class="guarantee"><b>Founder guarantee:</b> if your first month doesn't pay for itself, I refund it. No forms, no argument. — Pat</p>
   </div>
 
   <h2>Why a permit is the best lead you can get</h2>
   <div class="grid">
     <div class="card"><div class="n">01</div><h3>Funded intent</h3><p>A permit means the homeowner is approved and about to spend. Not a tire-kicker — a real, dated project.</p></div>
-    <div class="card"><div class="n">02</div><h3>Everything to win it</h3><p>Name, full address, project type and declared value — so you reach out first and personalize the pitch.</p></div>
-    <div class="card"><div class="n">03</div><h3>Fresh &amp; targeted</h3><p>Delivered weekly, filterable by trade &amp; town. Reach owners the week they file — before five others show up.</p></div>
+    <div class="card"><div class="n">02</div><h3>Everything to win it</h3><p>Full address and project type, plus the permit holder and declared value where the town lists them, so you can reach out and personalize the pitch.</p></div>
+    <div class="card"><div class="n">03</div><h3>Weekly and filterable</h3><p>A new file every Monday, filterable by trade and town. Every row shows its date.</p></div>
   </div>
 
   <h2>What's in every lead</h2>
   <ul class="get">
-    <li>Homeowner name</li>
     <li>Full property address</li>
     <li>Project type &amp; scope</li>
-    <li>Declared project value</li>
-    <li>Permit holder / contractor on file</li>
-    <li>Sortable spreadsheet + clean report</li>
+    <li>Declared project value, where the town publishes one</li>
+    <li>Permit holder, where the town lists one</li>
+    <li>Browser dashboard + spreadsheets</li>
   </ul>
 
   <div class="why">
-    <p>On pay-per-lead sites, <b>five contractors chase the same homeowner.</b> A building permit is different — it's a public record of real, funded work, and you're the one who reaches them first. That's the whole game.</p>
+    <p>A building permit is a <b>public record of real, approved work</b>: a dated project at a real address. That is what every lead in the file is.</p>
   </div>
 
   <div class="final">
+    <div data-promo-off="FIRST90">
+    <a class="cta sm" id="cta2" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" rel="nofollow">Start the weekly feed: $99/mo &rarr;</a>
+    <p class="guarantee" style="margin-top:12px">cancel anytime · month-one money-back</p>
+    </div>
+    <template data-promo="FIRST90">
     <a class="cta sm" id="cta2" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FIRST90" rel="nofollow">Get this week's leads — $9.90 &rarr;</a>
     <p class="guarantee" style="margin-top:12px">then $99/mo · cancel anytime · month-one money-back</p>
+    </template>
+    <script>window.mpPromo&&mpPromo("FIRST90")</script>
   </div>
 
   <footer>
@@ -141,7 +164,7 @@
   try{
     fetch("/data.json?v="+Date.now()).then(function(r){return r.json();}).then(function(d){
       var a=d.areas&&d.areas[0], n=a&&a.all&&a.all.count;
-      if(n){ document.getElementById("live").innerHTML="<b>"+n.toLocaleString()+"</b> active MA permits · refreshed weekly"; }
+      if(n){ document.getElementById("live").innerHTML="<b>"+n.toLocaleString()+"</b> MA permits on file · new file every Monday"; }
     }).catch(function(){});
   }catch(e){}
 })();
