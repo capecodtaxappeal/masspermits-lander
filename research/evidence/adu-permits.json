@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-10-09T16:18:18.260700+00:00",
- "corpus_rows": 79925,
- "corpus_sources": 76,
- "corpus_first": "2025-10-01",
- "corpus_last": "2026-10-09",
+ "corpus_fetched_at": "2026-10-10T15:31:53.935595+00:00",
+ "corpus_rows": 73312,
+ "corpus_sources": 75,
+ "corpus_first": "2024-09-03",
+ "corpus_last": "2026-10-10",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,116 +35,212 @@
   ]
  },
  "stats": {
-  "adu_rows": 336,
-  "adu_towns": 32,
-  "eligible_sources": 55,
-  "n_sources": 76,
+  "adu_rows": 328,
+  "adu_towns": 31,
+  "eligible_sources": 54,
+  "n_sources": 75,
   "garage": 64,
-  "garage_share": 19.0,
+  "garage_share": 19.5,
   "conversion": 72,
   "new_build": 162,
-  "unclassified": 102,
+  "unclassified": 94,
   "garage_conversion": 27,
   "garage_new_build": 23,
   "form_leader": "new construction",
-  "pooled_rate": 60.3,
+  "pooled_rate": 67.3,
   "raw_first": 0,
   "raw_peak": 62,
   "rate_min": 0.0,
-  "rate_max": 90.7,
-  "n_months": 11,
+  "rate_max": 98.4,
+  "n_months": 23,
   "series": [
+   {
+    "month": "2024-09",
+    "raw": 0,
+    "base": 250,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2024-10",
+    "raw": 0,
+    "base": 221,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2024-12",
+    "raw": 0,
+    "base": 200,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-03",
+    "raw": 0,
+    "base": 219,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-04",
+    "raw": 0,
+    "base": 224,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-05",
+    "raw": 0,
+    "base": 231,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-06",
+    "raw": 0,
+    "base": 231,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-07",
+    "raw": 0,
+    "base": 259,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-08",
+    "raw": 0,
+    "base": 243,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-09",
+    "raw": 0,
+    "base": 240,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-10",
+    "raw": 0,
+    "base": 393,
+    "sources": 2,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-11",
+    "raw": 0,
+    "base": 315,
+    "sources": 2,
+    "partial": false,
+    "rate": 0.0
+   },
    {
     "month": "2025-12",
     "raw": 0,
-    "base": 218,
-    "sources": 3,
+    "base": 411,
+    "sources": 4,
     "partial": false,
     "rate": 0.0
    },
    {
     "month": "2026-01",
     "raw": 8,
-    "base": 887,
-    "sources": 6,
+    "base": 1062,
+    "sources": 7,
     "partial": false,
-    "rate": 90.2
+    "rate": 75.3
    },
    {
     "month": "2026-02",
     "raw": 6,
-    "base": 819,
-    "sources": 6,
+    "base": 1035,
+    "sources": 7,
     "partial": false,
-    "rate": 73.3
+    "rate": 58.0
    },
    {
     "month": "2026-03",
     "raw": 9,
-    "base": 1239,
-    "sources": 8,
+    "base": 1455,
+    "sources": 9,
     "partial": false,
-    "rate": 72.6
+    "rate": 61.9
    },
    {
     "month": "2026-04",
-    "raw": 35,
-    "base": 4653,
+    "raw": 31,
+    "base": 4126,
     "sources": 31,
     "partial": false,
-    "rate": 75.2
+    "rate": 75.1
    },
    {
     "month": "2026-05",
-    "raw": 54,
-    "base": 5951,
+    "raw": 50,
+    "base": 5080,
     "sources": 31,
     "partial": false,
-    "rate": 90.7
+    "rate": 98.4
    },
    {
     "month": "2026-06",
     "raw": 62,
-    "base": 8828,
+    "base": 7914,
     "sources": 38,
     "partial": false,
-    "rate": 70.2
+    "rate": 78.3
    },
    {
     "month": "2026-07",
     "raw": 52,
-    "base": 9092,
+    "base": 8134,
     "sources": 38,
     "partial": false,
-    "rate": 57.2
+    "rate": 63.9
    },
    {
     "month": "2026-08",
     "raw": 48,
-    "base": 10751,
-    "sources": 40,
+    "base": 7970,
+    "sources": 39,
     "partial": false,
-    "rate": 44.6
+    "rate": 60.2
    },
    {
     "month": "2026-09",
     "raw": 43,
-    "base": 10432,
-    "sources": 41,
+    "base": 6456,
+    "sources": 40,
     "partial": false,
-    "rate": 41.2
+    "rate": 66.6
    },
    {
     "month": "2026-10",
     "raw": 19,
-    "base": 2850,
-    "sources": 39,
+    "base": 2059,
+    "sources": 38,
     "partial": true,
-    "rate": 66.7
+    "rate": 92.3
    }
   ],
-  "src_first": 3,
-  "src_peak": 41,
+  "src_first": 1,
+  "src_peak": 40,
   "partial_month": "2026-10",
   "town_list": [
    "Amherst, MA",
@@ -177,8 +273,7 @@
    "Wakefield, MA",
    "Waltham, MA",
    "West Bridgewater, MA",
-   "Westhampton, MA",
-   "Worcester, MA"
+   "Westhampton, MA"
   ]
  }
 }
