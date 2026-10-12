@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Duxbury, MA",
- "home_page_url": "https://masspermits.com/permits/duxbury",
+ "title": "MassPermits \u2014 building permits in Duxbury, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/duxbury.json",
- "description": "MassPermits no longer receives building-permit records for Duxbury, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-08-31. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Duxbury, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,621 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-08-31",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-08-31",
- "items": []
+ "_window_total": 67,
+ "_window_from": "2026-09-14",
+ "_window_to": "2026-09-30",
+ "items": [
+  {
+   "id": "0328bab793ef47d9",
+   "url": "https://masspermits.com/permits/duxbury-new-construction",
+   "title": "New Construction permit \u2014 Tremont St, Duxbury ($10,000)",
+   "content_text": "New Construction permit in Duxbury, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "New Construction",
+   "_value": 10000.0
+  },
+  {
+   "id": "b5500176bb61cf5c",
+   "url": "https://masspermits.com/permits/duxbury-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Chandler St, Duxbury ($16,740)",
+   "content_text": "Kitchen/Bath permit in Duxbury, MA. Value $16,740. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Kitchen/Bath",
+   "_value": 16740.0
+  },
+  {
+   "id": "9d9ccba3f20f2918",
+   "url": "https://masspermits.com/permits/duxbury-other",
+   "title": "Other permit \u2014 Duxborough Trl, Duxbury ($5,029)",
+   "content_text": "Other permit in Duxbury, MA. Value $5,029. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Other",
+   "_value": 5029.11
+  },
+  {
+   "id": "b11f0b71c83ea8bd",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Forge Way, Duxbury ($14,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $14,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 14000.0
+  },
+  {
+   "id": "d177ce197bee4852",
+   "url": "https://masspermits.com/permits/duxbury-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Hawkins Pl, Duxbury ($30,000)",
+   "content_text": "Kitchen/Bath permit in Duxbury, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Kitchen/Bath",
+   "_value": 30000.0
+  },
+  {
+   "id": "0a7a9e18facfb6d4",
+   "url": "https://masspermits.com/permits/duxbury-demolition",
+   "title": "Demolition permit \u2014 River Ln, Duxbury ($10,000)",
+   "content_text": "Demolition permit in Duxbury, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Demolition",
+   "_value": 10000.0
+  },
+  {
+   "id": "cd0994cbf34f869c",
+   "url": "https://masspermits.com/permits/duxbury-solar",
+   "title": "Solar permit \u2014 Starboard Way, Duxbury ($21,508)",
+   "content_text": "Solar permit in Duxbury, MA. Value $21,508. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Solar",
+   "_value": 21508.0
+  },
+  {
+   "id": "f7dd96854af84f59",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Simmons Dr, Duxbury ($84,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $84,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 84000.0
+  },
+  {
+   "id": "f1a1afc99b667cb6",
+   "url": "https://masspermits.com/permits/duxbury-other",
+   "title": "Other permit \u2014 Tremont St, Duxbury ($4,286)",
+   "content_text": "Other permit in Duxbury, MA. Value $4,286. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Other",
+   "_value": 4285.53
+  },
+  {
+   "id": "d835b55abcc4781d",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Trout Farm Ln, Duxbury ($105,700)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $105,700. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 105700.0
+  },
+  {
+   "id": "c268e5a9f071e086",
+   "url": "https://masspermits.com/permits/duxbury-demolition",
+   "title": "Demolition permit \u2014 Tremont St, Unit Duxbury Dpw, Duxbury ($23,000,447)",
+   "content_text": "Demolition permit in Duxbury, MA. Value $23,000,447. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Demolition",
+   "_value": 23000447.0
+  },
+  {
+   "id": "3f6094deedab99a0",
+   "url": "https://masspermits.com/permits/duxbury-new-construction",
+   "title": "New Construction permit \u2014 Harlow Brook Way- Bldg C, Duxbury ($60,000)",
+   "content_text": "New Construction permit in Duxbury, MA. Value $60,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "New Construction",
+   "_value": 60000.0
+  },
+  {
+   "id": "e6f758dc212d6362",
+   "url": "https://masspermits.com/permits/duxbury-addition",
+   "title": "Addition permit \u2014 Enterprise St, Duxbury ($133,000)",
+   "content_text": "Addition permit in Duxbury, MA. Value $133,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Addition",
+   "_value": 133000.0
+  },
+  {
+   "id": "5cb26c652c560859",
+   "url": "https://masspermits.com/permits/duxbury-deck-porch",
+   "title": "Deck/Porch permit \u2014 Tremont St, Duxbury ($337,595)",
+   "content_text": "Deck/Porch permit in Duxbury, MA. Value $337,595. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Deck/Porch",
+   "_value": 337595.25
+  },
+  {
+   "id": "42609e0824e3b9c0",
+   "url": "https://masspermits.com/permits/duxbury-deck-porch",
+   "title": "Deck/Porch permit \u2014 Pioneer Dr, Duxbury ($10,000)",
+   "content_text": "Deck/Porch permit in Duxbury, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Deck/Porch",
+   "_value": 10000.0
+  },
+  {
+   "id": "2d8e4c1dc7303cfb",
+   "url": "https://masspermits.com/permits/duxbury-building",
+   "title": "Building permit \u2014 Dogwood Dr, Duxbury ($36,000)",
+   "content_text": "Building permit in Duxbury, MA. Value $36,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Building",
+   "_value": 36000.0
+  },
+  {
+   "id": "ce848d1d428680c9",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Congress St, Duxbury ($12,200)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $12,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 12200.0
+  },
+  {
+   "id": "d3718862f01130b6",
+   "url": "https://masspermits.com/permits/duxbury-deck-porch",
+   "title": "Deck/Porch permit \u2014 King Caesar Rd, Duxbury ($500,000)",
+   "content_text": "Deck/Porch permit in Duxbury, MA. Value $500,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-25T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Deck/Porch",
+   "_value": 500000.0
+  },
+  {
+   "id": "20cfc4da6fa6e5b3",
+   "url": "https://masspermits.com/permits/duxbury-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Stockade Path, Duxbury ($16,600)",
+   "content_text": "Kitchen/Bath permit in Duxbury, MA. Value $16,600. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Kitchen/Bath",
+   "_value": 16600.0
+  },
+  {
+   "id": "5a92efab2b6cf027",
+   "url": "https://masspermits.com/permits/duxbury-deck-porch",
+   "title": "Deck/Porch permit \u2014 Ingalls Grove, Duxbury ($1,000)",
+   "content_text": "Deck/Porch permit in Duxbury, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Deck/Porch",
+   "_value": 1000.0
+  },
+  {
+   "id": "79b8af359c4ab7fd",
+   "url": "https://masspermits.com/permits/duxbury-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Lincoln St, Unit J, Duxbury ($48,025)",
+   "content_text": "Kitchen/Bath permit in Duxbury, MA. Value $48,025. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Kitchen/Bath",
+   "_value": 48025.0
+  },
+  {
+   "id": "1ea855ce767516e3",
+   "url": "https://masspermits.com/permits/duxbury",
+   "title": "Electrical permit \u2014 High St, Duxbury ($160,000)",
+   "content_text": "Electrical permit in Duxbury, MA. Value $160,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Electrical",
+   "_value": 160000.0
+  },
+  {
+   "id": "e8b868757b6570c2",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Elis Ln, Duxbury ($3,729)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $3,729. Full lead at masspermits.com.",
+   "date_published": "2026-09-24T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3729.0
+  },
+  {
+   "id": "c1d1fc524a94cd56",
+   "url": "https://masspermits.com/permits/duxbury-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Tremont St, Duxbury ($28,750)",
+   "content_text": "Renovation/Remodel permit in Duxbury, MA. Value $28,750. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Renovation/Remodel",
+   "_value": 28750.0
+  },
+  {
+   "id": "fe98995d241bbe37",
+   "url": "https://masspermits.com/permits/duxbury-demolition",
+   "title": "Demolition permit \u2014 Gurnet Rd, Duxbury ($10,000)",
+   "content_text": "Demolition permit in Duxbury, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Demolition",
+   "_value": 10000.0
+  },
+  {
+   "id": "a7982599ee5b0e48",
+   "url": "https://masspermits.com/permits/duxbury-other",
+   "title": "Other permit \u2014 Glass Ter, Duxbury ($9,901)",
+   "content_text": "Other permit in Duxbury, MA. Value $9,901. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Other",
+   "_value": 9901.0
+  },
+  {
+   "id": "616a45c8410d78f0",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Powder Point Ave, Duxbury ($100,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-23T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 100000.0
+  },
+  {
+   "id": "f6b8d83f05fb4b13",
+   "url": "https://masspermits.com/permits/duxbury-building",
+   "title": "Building permit \u2014 Parks St, Duxbury ($7,500)",
+   "content_text": "Building permit in Duxbury, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Building",
+   "_value": 7500.0
+  },
+  {
+   "id": "01403b39393cf683",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Wadsworth Rd, Duxbury ($294,870)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $294,870. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 294870.0
+  },
+  {
+   "id": "7f291e08dc8b6296",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Gurnet Rd, Duxbury ($700,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $700,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 700000.0
+  },
+  {
+   "id": "e19eda6b594cb1d0",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Winter St, Duxbury ($3,000)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3000.0
+  },
+  {
+   "id": "2c730816ee9aa515",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Standish St, Duxbury ($20,950)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $20,950. Full lead at masspermits.com.",
+   "date_published": "2026-09-22T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 20950.0
+  },
+  {
+   "id": "475975d553c205fd",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Parks St, Unit, Duxbury ($7,300)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $7,300. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7300.0
+  },
+  {
+   "id": "29b38e41c709d519",
+   "url": "https://masspermits.com/permits/duxbury-building",
+   "title": "Building permit \u2014 Kings Town Way, Duxbury ($16,000)",
+   "content_text": "Building permit in Duxbury, MA. Value $16,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Building",
+   "_value": 16000.0
+  },
+  {
+   "id": "07812fcd71bf8814",
+   "url": "https://masspermits.com/permits/duxbury-building",
+   "title": "Building permit \u2014 Wendell Pond Rd, Duxbury ($3,700)",
+   "content_text": "Building permit in Duxbury, MA. Value $3,700. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Building",
+   "_value": 3700.0
+  },
+  {
+   "id": "e51ed45c24869860",
+   "url": "https://masspermits.com/permits/duxbury-pool-spa",
+   "title": "Pool/Spa permit \u2014 West St, Duxbury ($7,451)",
+   "content_text": "Pool/Spa permit in Duxbury, MA. Value $7,451. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Pool/Spa",
+   "_value": 7451.0
+  },
+  {
+   "id": "eec4f865ace21404",
+   "url": "https://masspermits.com/permits/duxbury-deck-porch",
+   "title": "Deck/Porch permit \u2014 Washington St, Duxbury ($15,000)",
+   "content_text": "Deck/Porch permit in Duxbury, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Deck/Porch",
+   "_value": 15000.0
+  },
+  {
+   "id": "68ddede649fdeecd",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 River Ln, Duxbury ($300,000)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $300,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 300000.0
+  },
+  {
+   "id": "0bd6db34a4752de0",
+   "url": "https://masspermits.com/permits/duxbury",
+   "title": "Fire/Sprinkler permit \u2014 Hillside Ln, Duxbury ($33,933)",
+   "content_text": "Fire/Sprinkler permit in Duxbury, MA. Value $33,933. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Fire/Sprinkler",
+   "_value": 33933.0
+  },
+  {
+   "id": "9e073afcf6325c00",
+   "url": "https://masspermits.com/permits/duxbury-deck-porch",
+   "title": "Deck/Porch permit \u2014 Oakwood Rd, Duxbury ($475,000)",
+   "content_text": "Deck/Porch permit in Duxbury, MA. Value $475,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Deck/Porch",
+   "_value": 475000.0
+  },
+  {
+   "id": "1e9eb839b8028369",
+   "url": "https://masspermits.com/permits/duxbury-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Peach Tree Ln, Duxbury ($38,000)",
+   "content_text": "Kitchen/Bath permit in Duxbury, MA. Value $38,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Kitchen/Bath",
+   "_value": 38000.0
+  },
+  {
+   "id": "85d5d8f7a8bf2f37",
+   "url": "https://masspermits.com/permits/duxbury-building",
+   "title": "Building permit \u2014 Trout Farm Ln, Duxbury ($5,000)",
+   "content_text": "Building permit in Duxbury, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Building",
+   "_value": 5000.0
+  },
+  {
+   "id": "74dc77d95655332c",
+   "url": "https://masspermits.com/permits/duxbury-addition",
+   "title": "Addition permit \u2014 Lincoln St, Duxbury ($70,000)",
+   "content_text": "Addition permit in Duxbury, MA. Value $70,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Addition",
+   "_value": 70000.0
+  },
+  {
+   "id": "c5f988c4cd91215d",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Plantation Dr, Duxbury ($20,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-21T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 20000.0
+  },
+  {
+   "id": "64cd81b3fcd8c39f",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Chapel St, Duxbury ($47,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $47,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-18T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 47000.0
+  },
+  {
+   "id": "c9372cd718ef17f5",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Autumn Ave, Duxbury ($29,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $29,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-18T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 29000.0
+  },
+  {
+   "id": "aa3b16024b065f84",
+   "url": "https://masspermits.com/permits/duxbury-other",
+   "title": "Other permit \u2014 Enterprise St, Duxbury ($7,000)",
+   "content_text": "Other permit in Duxbury, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-18T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Other",
+   "_value": 7000.0
+  },
+  {
+   "id": "de606d97c787c48d",
+   "url": "https://masspermits.com/permits/duxbury-new-construction",
+   "title": "New Construction permit \u2014 Washington St, Duxbury",
+   "content_text": "New Construction permit in Duxbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-18T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "New Construction"
+  },
+  {
+   "id": "558f6774cff7fc7c",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Lewis Farm Rd, Duxbury ($26,500)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $26,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-18T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 26500.0
+  },
+  {
+   "id": "936fad637ad0779a",
+   "url": "https://masspermits.com/permits/duxbury-other",
+   "title": "Other permit \u2014 King Caesar Rd, Duxbury",
+   "content_text": "Other permit in Duxbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-18T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Other"
+  },
+  {
+   "id": "ee58515d89373f61",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Tussock Brook Rd, Unit, Duxbury ($18,904)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $18,904. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 18904.0
+  },
+  {
+   "id": "8265bc9b0b1f5d39",
+   "url": "https://masspermits.com/permits/duxbury-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Tussock Brook Rd, Unit F, Duxbury ($25,420)",
+   "content_text": "Kitchen/Bath permit in Duxbury, MA. Value $25,420. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Kitchen/Bath",
+   "_value": 25420.0
+  },
+  {
+   "id": "60f83d06e1173149",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Trout Farm Ln, Duxbury ($109,000)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $109,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-17T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 109000.0
+  },
+  {
+   "id": "80e153c12304949a",
+   "url": "https://masspermits.com/permits/duxbury-demolition",
+   "title": "Demolition permit \u2014 King Caesar Rd, Duxbury ($5,000)",
+   "content_text": "Demolition permit in Duxbury, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Demolition",
+   "_value": 5000.0
+  },
+  {
+   "id": "054233391b03444e",
+   "url": "https://masspermits.com/permits/duxbury-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Bay Rd, Duxbury ($230,000)",
+   "content_text": "Kitchen/Bath permit in Duxbury, MA. Value $230,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Kitchen/Bath",
+   "_value": 230000.0
+  },
+  {
+   "id": "536cbbfcb1754516",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Brick Hill Ln, Duxbury ($19,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $19,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 19000.0
+  },
+  {
+   "id": "dd74551542b4d44b",
+   "url": "https://masspermits.com/permits/duxbury-other",
+   "title": "Other permit \u2014 Abrams Hill, Duxbury ($5,000)",
+   "content_text": "Other permit in Duxbury, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Other",
+   "_value": 5000.0
+  },
+  {
+   "id": "0f2a1075628062ae",
+   "url": "https://masspermits.com/permits/duxbury-roofing",
+   "title": "Roofing permit \u2014 Crosscreek Ln, Duxbury ($7,000)",
+   "content_text": "Roofing permit in Duxbury, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Roofing",
+   "_value": 7000.0
+  },
+  {
+   "id": "5d92bfdf975cd28e",
+   "url": "https://masspermits.com/permits/duxbury-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Franklin St, Duxbury ($16,033)",
+   "content_text": "Windows/Doors/Siding permit in Duxbury, MA. Value $16,033. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 16033.0
+  },
+  {
+   "id": "8fd95ba36c29a7b9",
+   "url": "https://masspermits.com/permits/duxbury-other",
+   "title": "Other permit \u2014 Tussock Brook Rd, Unit, Duxbury ($3,988)",
+   "content_text": "Other permit in Duxbury, MA. Value $3,988. Full lead at masspermits.com.",
+   "date_published": "2026-09-16T00:00:00Z",
+   "_town": "Duxbury",
+   "_trade": "Other",
+   "_value": 3988.25
+  }
+ ]
 }

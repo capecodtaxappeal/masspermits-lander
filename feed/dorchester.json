@@ -25,10 +25,20 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 21,
- "_window_from": "2026-09-11",
- "_window_to": "2026-10-09",
+ "_window_total": 20,
+ "_window_from": "2026-09-15",
+ "_window_to": "2026-10-12",
  "items": [
+  {
+   "id": "04ebc0513467456b",
+   "url": "https://masspermits.com/permits/dorchester-other",
+   "title": "Other permit \u2014 Howard Av, Dorchester ($5,587)",
+   "content_text": "Other permit in Dorchester, MA. Value $5,587. Full lead at masspermits.com.",
+   "date_published": "2026-10-12T00:00:00Z",
+   "_town": "Dorchester",
+   "_trade": "Other",
+   "_value": 5587.08
+  },
   {
    "id": "a74a1155858ffcf4",
    "url": "https://masspermits.com/permits/dorchester-roofing",
@@ -218,26 +228,6 @@
    "_town": "Dorchester",
    "_trade": "Electrical",
    "_value": 2200.0
-  },
-  {
-   "id": "c011d975de8cb08d",
-   "url": "https://masspermits.com/permits/dorchester-plumbing",
-   "title": "Plumbing permit \u2014 Atherstone St, Dorchester ($1,700)",
-   "content_text": "Plumbing permit in Dorchester, MA. Value $1,700. Full lead at masspermits.com.",
-   "date_published": "2026-09-11T00:00:00Z",
-   "_town": "Dorchester",
-   "_trade": "Plumbing",
-   "_value": 1700.0
-  },
-  {
-   "id": "535efcf8be175bff",
-   "url": "https://masspermits.com/permits/dorchester-electrical",
-   "title": "Electrical permit \u2014 Edwin St, Dorchester ($1,200)",
-   "content_text": "Electrical permit in Dorchester, MA. Value $1,200. Full lead at masspermits.com.",
-   "date_published": "2026-09-11T00:00:00Z",
-   "_town": "Dorchester",
-   "_trade": "Electrical",
-   "_value": 1200.0
   }
  ]
 }
