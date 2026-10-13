@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-10-12T19:00:56.932528+00:00",
- "corpus_rows": 80055,
+ "corpus_fetched_at": "2026-10-13T17:18:36.320267+00:00",
+ "corpus_rows": 79985,
  "corpus_sources": 77,
  "corpus_first": "2024-09-03",
- "corpus_last": "2026-10-12",
+ "corpus_last": "2026-10-13",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,21 +35,21 @@
   ]
  },
  "stats": {
-  "adu_rows": 339,
+  "adu_rows": 336,
   "adu_towns": 33,
   "eligible_sources": 56,
   "n_sources": 77,
-  "garage": 67,
-  "garage_share": 19.8,
+  "garage": 66,
+  "garage_share": 19.6,
   "conversion": 72,
-  "new_build": 166,
-  "unclassified": 101,
+  "new_build": 165,
+  "unclassified": 99,
   "garage_conversion": 28,
-  "garage_new_build": 25,
+  "garage_new_build": 24,
   "form_leader": "new construction",
-  "pooled_rate": 60.8,
+  "pooled_rate": 60.3,
   "raw_first": 0,
-  "raw_peak": 62,
+  "raw_peak": 61,
   "rate_min": 0.0,
   "rate_max": 86.4,
   "n_months": 23,
@@ -184,11 +184,11 @@
    },
    {
     "month": "2026-04",
-    "raw": 31,
-    "base": 4461,
+    "raw": 29,
+    "base": 4239,
     "sources": 33,
     "partial": false,
-    "rate": 69.5
+    "rate": 68.4
    },
    {
     "month": "2026-05",
@@ -200,11 +200,11 @@
    },
    {
     "month": "2026-06",
-    "raw": 62,
-    "base": 9040,
+    "raw": 61,
+    "base": 8998,
     "sources": 40,
     "partial": false,
-    "rate": 68.6
+    "rate": 67.8
    },
    {
     "month": "2026-07",
@@ -225,7 +225,7 @@
    {
     "month": "2026-09",
     "raw": 45,
-    "base": 7749,
+    "base": 7742,
     "sources": 39,
     "partial": false,
     "rate": 58.1
@@ -233,10 +233,10 @@
    {
     "month": "2026-10",
     "raw": 19,
-    "base": 2481,
+    "base": 2706,
     "sources": 39,
     "partial": true,
-    "rate": 76.6
+    "rate": 70.2
    }
   ],
   "src_first": 1,

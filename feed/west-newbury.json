@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: West Newbury, MA",
- "home_page_url": "https://masspermits.com/permits/west-newbury",
+ "title": "MassPermits \u2014 building permits in West Newbury, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/west-newbury.json",
- "description": "MassPermits no longer receives building-permit records for West Newbury, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-06. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in West Newbury, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,176 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-10-06",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-10-06",
- "items": []
+ "_window_total": 17,
+ "_window_from": "2026-09-28",
+ "_window_to": "2026-10-13",
+ "items": [
+  {
+   "id": "ed0fcdc020ea524f",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "HVAC permit \u2014 Kimball Rd, West Newbury",
+   "content_text": "HVAC permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "5393a4e3d7472c42",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Electrical permit \u2014 River Rd, West Newbury",
+   "content_text": "Electrical permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "14dc6b0622d77325",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "HVAC permit \u2014 Indian Hill St, West Newbury",
+   "content_text": "HVAC permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "2bfc8eab8354bae5",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "HVAC permit \u2014 Garden St, West Newbury",
+   "content_text": "HVAC permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "a6291780903cd1a1",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Building permit \u2014 Parsons Rd, West Newbury",
+   "content_text": "Building permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Building"
+  },
+  {
+   "id": "25f8112d03046bb6",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Windows/Doors/Siding permit \u2014 Maple St, West Newbury",
+   "content_text": "Windows/Doors/Siding permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "f106f54b1f388a7d",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Electrical permit \u2014 Farm Ln, West Newbury",
+   "content_text": "Electrical permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "cd26f40c9a3500fb",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Solar permit \u2014 Follinsbee Ln, West Newbury",
+   "content_text": "Solar permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Solar"
+  },
+  {
+   "id": "5a4d47c616d14e94",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Windows/Doors/Siding permit \u2014 Indian Hill St, West Newbury",
+   "content_text": "Windows/Doors/Siding permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "e798790681787630",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Windows/Doors/Siding permit \u2014 Prospect St, West Newbury",
+   "content_text": "Windows/Doors/Siding permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "388e932232c762d4",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Roofing permit \u2014 Hilltop Cir, West Newbury",
+   "content_text": "Roofing permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "aaefdb65f6ae11b8",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Electrical permit \u2014 Old Wharf Ln, West Newbury",
+   "content_text": "Electrical permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b203e2095a345b12",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Windows/Doors/Siding permit \u2014 Meadow Sweet Rd, West Newbury",
+   "content_text": "Windows/Doors/Siding permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "f0743bc861e1447f",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Kitchen/Bath permit \u2014 Indian Hill St, West Newbury",
+   "content_text": "Kitchen/Bath permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "8f27e695fe71cbff",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Plumbing permit \u2014 Maple St, West Newbury",
+   "content_text": "Plumbing permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "1d37cc6d9a38dbf5",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Plumbing permit \u2014 Indian Hill St, West Newbury",
+   "content_text": "Plumbing permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "3c9184c2da733042",
+   "url": "https://masspermits.com/permits/west-newbury",
+   "title": "Plumbing permit \u2014 Albion Ln, West Newbury",
+   "content_text": "Plumbing permit in West Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "West Newbury",
+   "_trade": "Plumbing"
+  }
+ ]
 }
