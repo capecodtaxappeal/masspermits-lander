@@ -58,16 +58,29 @@
 //    the expiry or serve one prospect's page to another.
 //  * nosniff, X-Frame-Options DENY and CSP frame-ancestors 'none': the page
 //    cannot be framed by anyone else's site.
-//  * NO script-src. The sample is an interactive page: the table, the trade
-//    filters and the detail sheet are one inline <script>. It loads nothing
-//    external (no src=, no <link>, no fonts, no fetch, no beacon; checked
-//    against a real sample on 2026-10-13). A script policy would break the
-//    page and protect nothing that is not already ours.
+//  * A strict CSP (SAMPLE_CSP below), the same shape as the /widget/v1/embed
+//    policy in _headers but with connect-src 'none'. The sample is an
+//    interactive page whose table and filters are one inline <script> and
+//    one inline <style>, so 'unsafe-inline' is allowed for those two and
+//    nothing else loads: no external script, stylesheet, font, image (data:
+//    only), frame, form target or base URL, and NO network request from
+//    script at all. That last part is load-bearing. This route is
+//    same-origin with /leads, and the portal cookie (mp_sess, HttpOnly,
+//    SameSite=Lax, Path=/leads) WOULD be sent with a fetch("/leads") made
+//    from this page, so any script on /s/<code> could otherwise read a
+//    visitor's paid file. connect-src 'none' also blocks a page-view
+//    beacon (fetch or sendBeacon) mechanically, not just by the rule below.
+//    Checked on 2026-10-13 against all 101 wf6 samples: none has an <img>,
+//    url(), src=, <link>, font, fetch, sendBeacon, eval or inline on* handler;
+//    the only external URL is the google.com map link, which is a plain
+//    <a target=_blank> navigation and is not governed by this policy.
+//    The 404/410/405/503 pages use one inline <style> and fit it too.
 //
-// DO NOT ADD THE SITE PAGE-VIEW BEACON TO THE SAMPLE. traffic.js and live.js
-// are unauthenticated and echo the beacon's path verbatim into public JSON,
-// so instrumenting this page that way would publish every live code. The view
-// counter below is the instrumentation, and it is private.
+// DO NOT ADD THE SITE PAGE-VIEW BEACON TO THE SAMPLE (the CSP above would
+// block it anyway). traffic.js and live.js are unauthenticated and echo the
+// beacon's path verbatim into public JSON, so instrumenting this page that way
+// would publish every live code. The view counter below is the
+// instrumentation, and it is private.
 //
 // THE ONE THING THIS FILE WRITES: prospect-sample-views/<code>.json
 // -----------------------------------------------------------------
@@ -103,6 +116,10 @@ const VIEWS_PREFIX = "prospect-sample-views/";
 const TTL_MS = 30 * 86400_000;
 const SCANNER_RE = /bot|crawl|spider|preview|scan|barracuda|proofpoint|mimecast|cudasvc|linkprotect|safelinks|python|curl|wget|headless|go-http|java|okhttp|facebookexternalhit|slackbot|google-?inspection/i;
 const ISO_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z$/;
+// See HEADERS in the comment above. connect-src 'none' is the line that keeps
+// a script on this page from reading /leads with the visitor's cookie.
+const SAMPLE_CSP = "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; " +
+  "img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'";
 
 const MAIL = "<a href=\"mailto:patrick@masspermits.com\">patrick@masspermits.com</a>";
 const MSG_NOT_FOUND = "This link isn't valid. For a sample, email " + MAIL + ".";
@@ -185,10 +202,13 @@ async function bump(bucket, key, scanner, at) {
     const o = await bucket.get(key);
     if (o) {
       // Unparseable means start again: a corrupt counter that can never be
-      // rewritten would stop counting for good. A get() that THROWS is
-      // different and falls to the outer catch, so an R2 blip never resets
-      // real counts to zero.
-      try { prev = JSON.parse(await o.text()); } catch (_) { prev = null; }
+      // rewritten would stop counting for good. A read that FAILS is
+      // different: a get() that throws, or a body stream that breaks partway
+      // (text() rejects), falls to the outer catch and writes nothing, so an
+      // R2 blip never resets real counts to zero. Only JSON.parse is inside
+      // the inner catch.
+      const txt = await o.text();
+      try { prev = JSON.parse(txt); } catch (_) { prev = null; }
     }
     const v = clean(prev, at);
     if (scanner) {
@@ -233,7 +253,7 @@ function headers(extra) {
     "Cache-Control": "private, no-store",
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
-    "Content-Security-Policy": "frame-ancestors 'none'",
+    "Content-Security-Policy": SAMPLE_CSP,
   };
   if (extra) for (const k of Object.keys(extra)) h[k] = extra[k];
   return h;

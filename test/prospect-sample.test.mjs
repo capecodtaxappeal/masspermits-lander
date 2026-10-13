@@ -62,8 +62,14 @@ const SECURITY = {
   "cache-control": "private, no-store",
   "x-content-type-options": "nosniff",
   "x-frame-options": "DENY",
-  "content-security-policy": "frame-ancestors 'none'",
+  "content-security-policy": "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; " +
+    "img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
 };
+
+// The CSP as a map of directive -> sources, so a test can name the directive
+// it cares about rather than compare one long string.
+const cspOf = (res) => Object.fromEntries((res.headers.get("content-security-policy") || "").split(";")
+  .map((d) => d.trim().split(/\s+/)).filter((d) => d[0]).map((d) => [d[0], d.slice(1).join(" ")]));
 
 // ---- fake R2 -----------------------------------------------------------------
 class FakeBucket {
@@ -198,13 +204,45 @@ test("a live code: 200, the stored bytes unchanged, every header, one read of th
   assert.equal(res.status, 200);
   assert.equal(body, SAMPLE);
   assertSecurityHeaders(res, "200");
-  assert.equal(res.headers.get("content-security-policy").includes("script-src"), false,
-    "the sample is interactive: no script policy");
+  const csp = cspOf(res);
+  assert.equal(csp["frame-ancestors"], "'none'", "never framed");
+  assert.equal(csp["default-src"], "'none'", "nothing loads unless a directive below allows it");
+  assert.equal(csp["script-src"], "'unsafe-inline'", "the sample's own inline script runs, nothing external");
+  assert.equal(csp["style-src"], "'unsafe-inline'");
+  assert.equal(csp["img-src"], "data:");
+  assert.equal(csp["base-uri"], "'none'");
+  assert.equal(csp["form-action"], "'none'");
   assert.equal(res.headers.get("allow"), null);
   const sampleReads = bucket.ops.filter((o) => o[1] === sampleKey(code));
   assert.deepEqual(sampleReads, [["get", sampleKey(code)]]);
   assert.ok(bucket.ops.every((o) => o[1] === sampleKey(code) || o[1] === viewsKey(code)),
     "no other key is reached: " + JSON.stringify(bucket.ops));
+});
+
+test("CSP connect-src 'none' on every response: a script on /s/<code> can make no request at all", async () => {
+  // Same origin as /leads, whose portal cookie (Path=/leads, SameSite=Lax) a
+  // fetch("/leads") from this page would carry. connect-src 'none' is what
+  // stops a sample, or a beacon added to one, from reading the paid file.
+  const { bucket, code } = live();
+  const old = live(31 * DAY);
+  const e = live();
+  e.bucket.failGet = () => true;
+  const runs = [
+    await call(code, { bucket }),
+    await call(code, { bucket, method: "HEAD" }),
+    await call("bad"),
+    await call(newCode()),
+    await call(old.code, { bucket: old.bucket }),
+    await call(e.code, { bucket: e.bucket }),
+    await call(code, { bucket, method: "POST", handler: fn.onRequest }),
+  ];
+  for (const r of runs) {
+    const csp = cspOf(r.res);
+    assert.equal(csp["connect-src"], "'none'", "status " + r.res.status);
+    assert.equal(csp["default-src"], "'none'", "status " + r.res.status);
+    assert.ok(!/\*|https?:|'self'|'unsafe-eval'/.test(r.res.headers.get("content-security-policy")),
+      "no host, wildcard, self or eval source anywhere in the policy");
+  }
 });
 
 test("HEAD on a live code: 200, same headers as GET, no body, stream released", async () => {
@@ -399,6 +437,26 @@ test("counter: a failing put or get never changes the response", async () => {
   assert.deepEqual(rg.settled.map((s) => s.status), ["fulfilled"]);
   assert.equal(g.bucket.puts().length, 0, "an unreadable counter is left alone, never reset to zero");
   assert.equal(g.bucket.json(viewsKey(g.code)).scanner_hits, 7);
+});
+
+test("counter: a views body that breaks partway (text() rejects) is left alone, never reset", async () => {
+  const { bucket, code } = live();
+  const stored = { first_open: "2026-10-01T00:00:00.000Z", last_open: "2026-10-02T00:00:00.000Z", opens: 9,
+    scanner_hits: 4, first_hit: "2026-10-01T00:00:00.000Z", last_hit: "2026-10-02T00:00:00.000Z" };
+  bucket.seed(viewsKey(code), JSON.stringify(stored), Date.now());
+  // get() resolves, the body stream then fails (a dropped connection mid-read)
+  const realGet = bucket.get.bind(bucket);
+  bucket.get = async (key) => {
+    const o = await realGet(key);
+    if (o && key === viewsKey(code)) o.text = async () => { throw new Error("network connection lost"); };
+    return o;
+  };
+  const r = await call(code, { bucket });
+  assert.equal(r.res.status, 200);
+  assert.equal(r.body, SAMPLE);
+  assert.deepEqual(r.settled.map((s) => s.status), ["fulfilled"], "the waitUntil promise never rejects");
+  assert.equal(bucket.puts().length, 0, "a failed read writes nothing");
+  assert.deepEqual(bucket.json(viewsKey(code)), stored, "history and first_open survive");
 });
 
 test("counter: no waitUntil on the context still serves the page", async () => {
