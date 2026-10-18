@@ -85,7 +85,10 @@
 // THE ONE THING THIS FILE WRITES: prospect-sample-views/<code>.json
 // -----------------------------------------------------------------
 //   {"first_open": iso|null, "last_open": iso|null, "opens": int,
-//    "scanner_hits": int, "first_hit": iso, "last_hit": iso}
+//    "scanner_hits": int, "first_hit": iso, "last_hit": iso,
+//    "alerted_first"?: iso, "alerted_again"?: iso}
+// The two alerted_ fields appear only once an owner alert has been claimed
+// (see OWNER ALERT below).
 // It answers the one question an attachment never could: did they look?
 // Rules, in priority order:
 //  1. Only a 200 serve counts. A 404, 410, 405 or 503 writes nothing, so a
@@ -93,11 +96,14 @@
 //  2. It runs in waitUntil, after the response object exists, inside
 //     try/catch. A slow or failed write loses a count; it can never delay,
 //     change or fail the page.
-//  3. Read-modify-write on one object per code. Two hits in the same instant
-//     can lose one count. At a few dozen links that is accepted, and it keeps
-//     the reading side to a single get().
-//  4. It stores NO IP, NO user-agent string, NO referrer, NO email: four
-//     timestamps and two integers. Only the six known fields are ever written
+//  3. Read-modify-write on one object per code, written with a conditional
+//     put (onlyIf etagMatches the etag that was read, or If-None-Match: *
+//     when there was no object yet, the _manual_store.js pattern). On a
+//     conflict it re-reads and decides again, up to PUT_TRIES times; only
+//     after that many straight conflicts is a count lost. The reading side
+//     is still a single get().
+//  4. It stores NO IP, NO user-agent string, NO referrer, NO email: at most
+//     six timestamps and two integers. Only the known fields are ever written
 //     back, so anything else found in an existing object is dropped. The
 //     user-agent and Accept-Language headers are read to classify the hit and
 //     are not kept.
@@ -109,12 +115,48 @@
 //     SCANNER_RE. Otherwise it is an open. A scanner that fully imitates a
 //     browser still counts as an open; first_hit beside first_open shows how
 //     soon after delivery that happened, which is the tell.
+//
+// OWNER ALERT: ONE EMAIL TO US WHEN A PERSON OPENS THE LINK
+// ---------------------------------------------------------
+// A warm prospect is answered within the hour, so a human open sends the
+// owner one short email through Resend (the request-sample.js call shape,
+// RESEND_API_KEY and FROM_EMAIL). Rules:
+//  * Only an open (rule 5) on a 200 GET can alert. A scanner hit, a HEAD, a
+//    404, 410, 405 or 503 never does.
+//  * "first": the open that takes opens from 0 to 1. Subject
+//    "Sample link opened: <first 6 characters of the code>".
+//  * "again": at most one more per code, on an open 3 or more days
+//    (AGAIN_MS) after the previous open. Subject "Sample link opened again:
+//    <first 6>". After that the code never alerts again.
+//  * The recipient is the OWNER_EMAIL constant, the same address
+//    request-sample.js uses. No environment value, header, query or path
+//    can change it.
+//  * The body is the time of the open in America/New_York and one line
+//    telling the owner to search Sent mail for the 6-character prefix.
+//    Nothing else: no IP, no user-agent, no location, no full code.
+//  * At most once, not at least once. The alert is claimed by writing
+//    alerted_first or alerted_again in the SAME conditional put that bumps
+//    the counter, and the email goes out only after that put wins. Two first
+//    opens in the same instant: one put wins and mails, the other conflicts,
+//    re-reads, sees opens 1 and alerted_first, and counts without mailing.
+//    A failed send is not retried (the claim stands), so a Resend outage can
+//    lose an alert but never doubles one.
+//  * It runs in the same waitUntil promise as the counter, after the put,
+//    inside the same try/catch: a failed alert never changes the page, its
+//    status or its headers, and never stops the count.
+//  * No RESEND_API_KEY or FROM_EMAIL in the environment: no alert, nothing
+//    claimed, the counter works as before.
 
 const CODE_RE = /^[a-z2-7]{20}$/;
 const SAMPLE_PREFIX = "prospect-samples/";
 const VIEWS_PREFIX = "prospect-sample-views/";
 const TTL_MS = 30 * 86400_000;
 const SCANNER_RE = /bot|crawl|spider|preview|scan|barracuda|proofpoint|mimecast|cudasvc|linkprotect|safelinks|python|curl|wget|headless|go-http|java|okhttp|facebookexternalhit|slackbot|google-?inspection/i;
+const AGAIN_MS = 3 * 86400_000;
+const PUT_TRIES = 3;
+// Same constant as request-sample.js OWNER_EMAIL. Hard-coded on purpose: see
+// OWNER ALERT above.
+const OWNER_EMAIL = "patrick@masspermits.com";
 const ISO_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z$/;
 // See HEADERS in the comment above. connect-src 'none' is the line that keeps
 // a script on this page from reading /leads with the visitor's cookie.
@@ -188,7 +230,7 @@ function count(context, code, head, now) {
     const { request, env } = context;
     const ua = request.headers.get("user-agent") || "";
     const scanner = head || !request.headers.get("accept-language") || SCANNER_RE.test(ua);
-    const p = bump(env.BUNDLES, VIEWS_PREFIX + code + ".json", scanner, new Date(now).toISOString());
+    const p = bump(env, code, scanner, new Date(now).toISOString());
     if (typeof context.waitUntil === "function") context.waitUntil(p);
     else p.catch(() => {});
   } catch (_) {
@@ -196,43 +238,65 @@ function count(context, code, head, now) {
   }
 }
 
-async function bump(bucket, key, scanner, at) {
+async function bump(env, code, scanner, at) {
   try {
-    let prev = null;
-    const o = await bucket.get(key);
-    if (o) {
-      // Unparseable means start again: a corrupt counter that can never be
-      // rewritten would stop counting for good. A read that FAILS is
-      // different: a get() that throws, or a body stream that breaks partway
-      // (text() rejects), falls to the outer catch and writes nothing, so an
-      // R2 blip never resets real counts to zero. Only JSON.parse is inside
-      // the inner catch.
-      const txt = await o.text();
-      try { prev = JSON.parse(txt); } catch (_) { prev = null; }
+    const bucket = env.BUNDLES;
+    const key = VIEWS_PREFIX + code + ".json";
+    const mail = !scanner && !!env.RESEND_API_KEY && !!env.FROM_EMAIL;
+    for (let attempt = 0; attempt < PUT_TRIES; attempt++) {
+      let prev = null;
+      const o = await bucket.get(key);
+      if (o) {
+        // Unparseable means start again: a corrupt counter that can never be
+        // rewritten would stop counting for good. A read that FAILS is
+        // different: a get() that throws, or a body stream that breaks partway
+        // (text() rejects), falls to the outer catch and writes nothing, so an
+        // R2 blip never resets real counts to zero. Only JSON.parse is inside
+        // the inner catch.
+        const txt = await o.text();
+        try { prev = JSON.parse(txt); } catch (_) { prev = null; }
+      }
+      const v = clean(prev, at);
+      let alert = null;
+      if (scanner) {
+        v.scanner_hits += 1;
+      } else {
+        if (mail) alert = due(v, at);
+        v.opens += 1;
+        if (!v.first_open) v.first_open = at;
+        v.last_open = at;
+        if (alert === "first") v.alerted_first = at;
+        if (alert === "again") v.alerted_again = at;
+      }
+      const put = await bucket.put(key, JSON.stringify(v), {
+        onlyIf: o ? { etagMatches: o.etag } : new Headers({ "If-None-Match": "*" }),
+        httpMetadata: { contentType: "application/json" },
+      });
+      // null: someone else wrote first. Re-read and decide again.
+      if (!put) continue;
+      if (alert) await notifyOwner(env, code, alert, at);
+      return;
     }
-    const v = clean(prev, at);
-    if (scanner) {
-      v.scanner_hits += 1;
-    } else {
-      v.opens += 1;
-      if (!v.first_open) v.first_open = at;
-      v.last_open = at;
-    }
-    await bucket.put(key, JSON.stringify(v), {
-      httpMetadata: { contentType: "application/json" },
-    });
   } catch (_) {
-    // A lost count is the designed failure mode.
+    // A lost count, or a lost alert, is the designed failure mode.
   }
 }
 
-// Rebuilds the record from the six known fields only, type-checked. Anything
-// else in a stored object (an older shape, a hand edit) is dropped here.
+// Which alert, if any, this open claims. v is the record BEFORE this open.
+function due(v, at) {
+  if (v.opens === 0 && !v.alerted_first) return "first";
+  if (!v.alerted_again && v.last_open && Date.parse(at) - Date.parse(v.last_open) >= AGAIN_MS) return "again";
+  return null;
+}
+
+// Rebuilds the record from the known fields only, type-checked. Anything
+// else in a stored object (an older shape, a hand edit) is dropped here. The
+// alerted_ fields are kept only when present and well formed.
 function clean(p, at) {
   const ok = p !== null && typeof p === "object" && !Array.isArray(p);
   const iso = (x) => (typeof x === "string" && ISO_RE.test(x) ? x : null);
   const int = (x) => (Number.isSafeInteger(x) && x >= 0 ? x : 0);
-  return {
+  const v = {
     first_open: ok ? iso(p.first_open) : null,
     last_open: ok ? iso(p.last_open) : null,
     opens: ok ? int(p.opens) : 0,
@@ -240,6 +304,29 @@ function clean(p, at) {
     first_hit: (ok && iso(p.first_hit)) || at,
     last_hit: at,
   };
+  if (ok && iso(p.alerted_first)) v.alerted_first = p.alerted_first;
+  if (ok && iso(p.alerted_again)) v.alerted_again = p.alerted_again;
+  return v;
+}
+
+// ---------------------------------------------------------------------------
+// THE OWNER ALERT (see OWNER ALERT in the header)
+// ---------------------------------------------------------------------------
+async function notifyOwner(env, code, kind, at) {
+  const tag = code.slice(0, 6);
+  const when = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York", weekday: "short", year: "numeric", month: "short", day: "numeric",
+    hour: "numeric", minute: "2-digit", timeZoneName: "short",
+  }).format(new Date(at));
+  const subject = (kind === "first" ? "Sample link opened: " : "Sample link opened again: ") + tag;
+  const html = "<p>" + (kind === "first" ? "First opened: " : "Opened again: ") + when + "</p>" +
+    "<p>Search your Sent mail for " + tag + " to find the thread.</p>";
+  const resp = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { "Authorization": `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: env.FROM_EMAIL, to: [OWNER_EMAIL], subject, html }),
+  });
+  if (!resp.ok) throw new Error("resend " + resp.status);
 }
 
 // ---------------------------------------------------------------------------
