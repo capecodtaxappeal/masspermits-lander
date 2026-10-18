@@ -8,12 +8,17 @@
 //  * 30 days from the R2 upload time, then 410; an R2 error is a 503 with no
 //    stack trace; any other method is a 405 that names GET and HEAD;
 //  * the view counter: only on a 200, classified open or scanner, written in
-//    waitUntil, failure-silent, and storing no IP, user-agent, referrer or
-//    email;
+//    waitUntil with a conditional put, failure-silent, and storing no IP,
+//    user-agent, referrer or email;
+//  * the owner alert: one email on the first human open, at most one more on
+//    a re-open 3 or more days later, always to the owner constant, never on a
+//    scanner hit, HEAD or refusal, exactly once under a write race, and a
+//    failed send never touches the page or the count;
 //  * no em or en dash in anything a visitor can read.
 //
-// Safety: nothing leaves this machine. R2 is an in-memory Map, there is no
-// fetch, and the Function is imported from a temp copy (the shipped file is
+// Safety: nothing leaves this machine. R2 is an in-memory Map, fetch is
+// replaced for the whole file by a stub that records and never sends, and
+// the Function is imported from a temp copy (the shipped file is
 // never touched). Every code here is made up. Addresses are assembled at run
 // time from neutral parts, so no literal address sits in this file.
 //
@@ -34,6 +39,9 @@ const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "prospect-sample-"));
 fs.mkdirSync(path.join(tmp, "functions", "s"), { recursive: true });
 fs.copyFileSync(path.join(REPO, SHIPPED), path.join(tmp, "functions", "s", "code.js"));
 fs.writeFileSync(path.join(tmp, "package.json"), '{"type":"module"}');
+// No test in this file may reach the network. The alert tests swap in a
+// recorder; anything else that calls fetch fails loudly.
+globalThis.fetch = async (url) => { throw new Error("test fetch refused: " + url); };
 const fn = await import(pathToFileURL(path.join(tmp, "functions", "s", "code.js")).href);
 test.after(() => fs.rmSync(tmp, { recursive: true, force: true }));
 
@@ -79,9 +87,12 @@ class FakeBucket {
     this.failGet = null; // (key) => boolean
     this.failPut = null;
     this.cancelled = 0;
+    this.putGate = null; // a promise every put waits on, to line up two writers
+    this.conflicts = 0;
+    this.etags = 0;
   }
   seed(key, body, uploadedMs) {
-    this.objects.set(key, { body: String(body), uploaded: new Date(uploadedMs) });
+    this.objects.set(key, { body: String(body), uploaded: new Date(uploadedMs), etag: "e" + ++this.etags });
   }
   json(key) {
     const o = this.objects.get(key);
@@ -98,7 +109,7 @@ class FakeBucket {
       cancel() { self.cancelled++; },
     });
     return {
-      key, size: Buffer.byteLength(o.body), uploaded: o.uploaded, body: stream,
+      key, size: Buffer.byteLength(o.body), uploaded: o.uploaded, etag: o.etag, body: stream,
       text: async () => o.body,
     };
   }
@@ -109,9 +120,19 @@ class FakeBucket {
   }
   async put(key, value, opts) {
     this.ops.push(["put", key]);
+    if (this.putGate) await this.putGate;
     if (this.failPut && this.failPut(key)) throw new Error("R2 put refused");
-    this.objects.set(key, { body: String(value), uploaded: new Date(), opts });
-    return { key };
+    // R2 onlyIf: a failed precondition resolves to null and writes nothing.
+    const cur = this.objects.get(key);
+    const c = opts && opts.onlyIf;
+    if (c instanceof Headers && c.get("if-none-match") === "*" && cur) { this.conflicts++; return null; }
+    if (c && !(c instanceof Headers) && c.etagMatches && (!cur || cur.etag !== c.etagMatches)) {
+      this.conflicts++;
+      return null;
+    }
+    const etag = "e" + ++this.etags;
+    this.objects.set(key, { body: String(value), uploaded: new Date(), opts, etag });
+    return { key, etag };
   }
   puts() { return this.ops.filter((o) => o[0] === "put"); }
 }
@@ -124,11 +145,11 @@ const BROWSER = {
 };
 
 async function call(code, { method = "GET", headers = BROWSER, bucket = new FakeBucket(), handler,
-  waitUntil = true, params } = {}) {
-  const request = new Request("https://masspermits.com/s/" + encodeURIComponent(String(code)),
+  waitUntil = true, params, env = {}, query = "" } = {}) {
+  const request = new Request("https://masspermits.com/s/" + encodeURIComponent(String(code)) + query,
     { method, headers });
   const waits = [];
-  const context = { request, env: { BUNDLES: bucket }, params: params || { code }, next: async () => null };
+  const context = { request, env: { ...env, BUNDLES: bucket }, params: params || { code }, next: async () => null };
   if (waitUntil) context.waitUntil = (p) => { waits.push(p); };
   const h = handler || (method === "GET" ? fn.onRequestGet : method === "HEAD" ? fn.onRequestHead : fn.onRequest);
   const res = await h(context);
@@ -524,6 +545,228 @@ test("counter: a corrupt or wrong-shaped object is rebuilt from scratch", async 
     assert.match(v.first_open, ISO, junk);
     assert.match(v.first_hit, ISO, junk);
   }
+});
+
+// ---- the owner alert ----------------------------------------------------------
+// Invented values only. The key and sender are placeholders, never real.
+const MAIL_ENV = { RESEND_API_KEY: "re_test_placeholder", FROM_EMAIL: "Test Sender <alerts" + AT + "example.com>" };
+const T0 = Date.parse("2026-10-14T13:00:00.000Z"); // 9:00 AM in New York (EDT)
+const HOUR = 3_600_000;
+
+// Records every Resend call. status 0 means the fetch itself throws.
+function mailbox(t, status = 200) {
+  const sent = [];
+  t.mock.method(globalThis, "fetch", async (url, init = {}) => {
+    assert.equal(String(url), "https://api.resend.com/emails");
+    sent.push({ init, body: JSON.parse(init.body) });
+    if (status === 0) throw new Error("network down");
+    return new Response(status === 200 ? "{\"id\":\"test\"}" : "error", { status });
+  });
+  return sent;
+}
+
+function liveAt(t, startMs) {
+  const clock = { now: startMs };
+  t.mock.method(Date, "now", () => clock.now);
+  const { bucket, code } = live();
+  bucket.seed(sampleKey(code), SAMPLE, startMs - DAY);
+  return { bucket, code, clock };
+}
+
+test("alert: a scanner hit, a HEAD, a 404, a 410, a 405 and a 503 send nothing", async (t) => {
+  const sent = mailbox(t);
+  const { bucket, code } = live();
+  await call(code, { bucket, env: MAIL_ENV, headers: { "user-agent": "Microsoft SafeLinks", "accept-language": "en-US" } });
+  await call(code, { bucket, env: MAIL_ENV, headers: { "user-agent": BROWSER["user-agent"] } });
+  await call(code, { bucket, env: MAIL_ENV, method: "HEAD" });
+  assert.equal(bucket.json(viewsKey(code)).scanner_hits, 3);
+  assert.equal(bucket.json(viewsKey(code)).opens, 0);
+  await call("bad", { env: MAIL_ENV });
+  await call(newCode(), { env: MAIL_ENV });
+  const old = live(31 * DAY);
+  assert.equal((await call(old.code, { bucket: old.bucket, env: MAIL_ENV })).res.status, 410);
+  assert.equal((await call(old.code, { bucket: old.bucket, env: MAIL_ENV, method: "HEAD" })).res.status, 410);
+  const p = live();
+  assert.equal((await call(p.code, { bucket: p.bucket, env: MAIL_ENV, method: "POST", handler: fn.onRequest })).res.status, 405);
+  const e = live();
+  e.bucket.failGet = () => true;
+  assert.equal((await call(e.code, { bucket: e.bucket, env: MAIL_ENV })).res.status, 503);
+  assert.equal(sent.length, 0);
+  assert.equal(bucket.json(viewsKey(code)).alerted_first, undefined, "a scanner hit claims nothing");
+});
+
+test("alert: the first human open sends exactly one email, to the owner, with only the prefix and the time", async (t) => {
+  const sent = mailbox(t);
+  const { bucket, code } = liveAt(t, T0);
+  // A first scanner hit does not count as the first open.
+  await call(code, { bucket, env: MAIL_ENV, headers: { "user-agent": "Proofpoint URL Defense", "accept-language": "en-US" } });
+  assert.equal(sent.length, 0);
+  const ip = "198.51.100.23";
+  const ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) UniqueAgentMarker/9.9";
+  const r = await call(code, { bucket, env: MAIL_ENV, headers: { "user-agent": ua, "accept-language": "en-US",
+    "cf-connecting-ip": ip, "cf-ipcity": "Exampleville" } });
+  assert.equal(r.res.status, 200);
+  assert.equal(r.waits.length, 1, "counter and alert share one waitUntil");
+  assert.equal(sent.length, 1);
+  const m = sent[0];
+  assert.deepEqual(Object.keys(m.body).sort(), ["from", "html", "subject", "to"]);
+  assert.deepEqual(m.body.to, [CONTACT]);
+  assert.equal(m.body.from, MAIL_ENV.FROM_EMAIL);
+  assert.equal(m.init.method, "POST");
+  assert.equal(m.init.headers.Authorization, "Bearer " + MAIL_ENV.RESEND_API_KEY);
+  const tag = code.slice(0, 6);
+  assert.equal(m.body.subject, "Sample link opened: " + tag);
+  assert.equal(textOf(m.body.html), "First opened: Wed, Oct 14, 2026, 9:00 AM EDT " +
+    "Search your Sent mail for " + tag + " to find the thread.");
+  const raw = JSON.stringify(m.body);
+  for (const leak of [code, code.slice(0, 7), ip, ua, "UniqueAgentMarker", "Exampleville", "en-US"]) {
+    assert.ok(!raw.includes(leak), "the alert carries " + leak);
+  }
+  const v = bucket.json(viewsKey(code));
+  assert.equal(v.opens, 1);
+  assert.equal(v.scanner_hits, 1);
+  assert.equal(v.alerted_first, "2026-10-14T13:00:00.000Z");
+  assert.equal(v.alerted_again, undefined);
+});
+
+test("alert: same-day re-open sends nothing, 3 days later sends one 'opened again', then never again", async (t) => {
+  const sent = mailbox(t);
+  const { bucket, code, clock } = liveAt(t, T0);
+  const tag = code.slice(0, 6);
+  await call(code, { bucket, env: MAIL_ENV });
+  assert.equal(sent.length, 1);
+  clock.now = T0 + HOUR;
+  await call(code, { bucket, env: MAIL_ENV });
+  assert.equal(sent.length, 1, "a second open the same day sends nothing");
+  clock.now = T0 + HOUR + 3 * DAY - 1;
+  await call(code, { bucket, env: MAIL_ENV });
+  assert.equal(sent.length, 1, "a millisecond short of 3 days after the previous open sends nothing");
+  clock.now = T0 + 2 * HOUR + 6 * DAY;
+  await call(code, { bucket, env: MAIL_ENV });
+  assert.equal(sent.length, 2, "3 or more days after the previous open: one more");
+  assert.equal(sent[1].body.subject, "Sample link opened again: " + tag);
+  assert.deepEqual(sent[1].body.to, [CONTACT]);
+  assert.equal(textOf(sent[1].body.html), "Opened again: Tue, Oct 20, 2026, 11:00 AM EDT " +
+    "Search your Sent mail for " + tag + " to find the thread.");
+  clock.now = T0 + 20 * DAY;
+  await call(code, { bucket, env: MAIL_ENV });
+  assert.equal(sent.length, 2, "the next open, even weeks later, sends nothing");
+  const v = bucket.json(viewsKey(code));
+  assert.equal(v.opens, 5);
+  assert.equal(v.alerted_first, new Date(T0).toISOString());
+  assert.equal(v.alerted_again, new Date(T0 + 2 * HOUR + 6 * DAY).toISOString());
+});
+
+test("alert: a failing Resend call leaves the page at 200, its headers unchanged, and the counter bumped", async (t) => {
+  const base = live();
+  const clean = await call(base.code, { bucket: base.bucket });
+  for (const status of [500, 0]) {
+    await t.test("resend " + (status || "throws"), async (st) => {
+      const sent = mailbox(st, status);
+      const { bucket, code } = live();
+      const r = await call(code, { bucket, env: MAIL_ENV });
+      assert.equal(sent.length, 1);
+      assert.equal(r.res.status, 200);
+      assert.equal(r.body, SAMPLE);
+      assert.deepEqual(headerMap(r.res), headerMap(clean.res));
+      assert.deepEqual(r.settled.map((s) => s.status), ["fulfilled"], "the waitUntil promise never rejects");
+      assert.equal(bucket.json(viewsKey(code)).opens, 1);
+      // the claim stands: a failed send is not retried on the next open
+      await call(code, { bucket, env: MAIL_ENV });
+      assert.equal(sent.length, 1);
+      assert.equal(bucket.json(viewsKey(code)).opens, 2);
+    });
+  }
+});
+
+test("alert: no header, query, path or environment value can steer the recipient", async (t) => {
+  const sent = mailbox(t);
+  const evil = "attacker" + AT + "example.net";
+  const { bucket, code } = live();
+  const headers = { ...BROWSER, "to": evil, "x-owner-email": evil, "reply-to": evil, "from": evil,
+    "x-forwarded-for": evil, "cookie": "to=" + evil };
+  const env = { ...MAIL_ENV, OWNER_EMAIL: evil, TO_EMAIL: evil, ALERT_EMAIL: evil, NOTIFY_EMAIL: evil };
+  const r = await call(code, { bucket, env, headers, query: "?to=" + encodeURIComponent(evil) + "&email=" + evil,
+    params: { code, to: evil } });
+  assert.equal(r.res.status, 200);
+  assert.equal(sent.length, 1);
+  assert.deepEqual(sent[0].body.to, [CONTACT]);
+  assert.ok(!JSON.stringify(sent[0].body).includes("attacker"));
+  // a path with anything after the code is not a code, so it is a 404 and sends nothing
+  await call(code + "/" + evil, { env: MAIL_ENV, bucket });
+  assert.equal(sent.length, 1);
+});
+
+test("alert: two first opens racing on the etag still send exactly one email", async (t) => {
+  const sent = mailbox(t);
+  const { bucket, code } = live();
+  let release;
+  bucket.putGate = new Promise((r) => { release = r; });
+  const both = Promise.all([call(code, { bucket, env: MAIL_ENV }), call(code, { bucket, env: MAIL_ENV })]);
+  // Hold every put until both writers have read the (missing) views object.
+  while (bucket.ops.filter((o) => o[0] === "get" && o[1] === viewsKey(code)).length < 2) {
+    await new Promise((r) => setImmediate(r));
+  }
+  release();
+  const [a, b] = await both;
+  assert.equal(a.res.status, 200);
+  assert.equal(b.res.status, 200);
+  assert.ok(bucket.conflicts >= 1, "the second writer hit the precondition");
+  assert.equal(sent.length, 1, "exactly one alert");
+  const v = bucket.json(viewsKey(code));
+  assert.equal(v.opens, 2, "the loser re-read and still counted");
+  assert.match(v.alerted_first, ISO);
+});
+
+test("alert: a conflict from a scanner write is re-read and the open still alerts once", async (t) => {
+  const sent = mailbox(t);
+  const { bucket, code } = live();
+  const realPut = bucket.put.bind(bucket);
+  let injected = false;
+  bucket.put = async (key, value, opts) => {
+    if (!injected && key === viewsKey(code)) {
+      injected = true;
+      // another request's scanner hit lands between our read and our write
+      await realPut(key, JSON.stringify({ first_open: null, last_open: null, opens: 0, scanner_hits: 1,
+        first_hit: "2026-10-01T00:00:00.000Z", last_hit: "2026-10-01T00:00:00.000Z" }), {});
+    }
+    return realPut(key, value, opts);
+  };
+  await call(code, { bucket, env: MAIL_ENV });
+  assert.equal(bucket.conflicts, 1);
+  assert.equal(sent.length, 1);
+  const v = bucket.json(viewsKey(code));
+  assert.equal(v.opens, 1);
+  assert.equal(v.scanner_hits, 1, "the other writer's count survived");
+  assert.match(v.alerted_first, ISO);
+  // every views write is conditional
+  const opts = bucket.objects.get(viewsKey(code)).opts;
+  assert.equal(typeof opts.onlyIf.etagMatches, "string");
+});
+
+test("alert: without RESEND_API_KEY or FROM_EMAIL nothing is sent or claimed", async (t) => {
+  const sent = mailbox(t);
+  for (const env of [{}, { RESEND_API_KEY: MAIL_ENV.RESEND_API_KEY }, { FROM_EMAIL: MAIL_ENV.FROM_EMAIL }]) {
+    const { bucket, code } = live();
+    await call(code, { bucket, env });
+    const v = bucket.json(viewsKey(code));
+    assert.deepEqual(Object.keys(v), FIELDS);
+    assert.equal(v.opens, 1);
+  }
+  assert.equal(sent.length, 0);
+});
+
+test("alert: clean() keeps well-formed alert times and drops malformed ones", async (t) => {
+  const sent = mailbox(t);
+  const { bucket, code } = liveAt(t, T0);
+  bucket.seed(viewsKey(code), JSON.stringify({ first_open: "2026-10-01T00:00:00.000Z",
+    last_open: "2026-10-13T00:00:00.000Z", opens: 3, scanner_hits: 0, first_hit: "2026-10-01T00:00:00.000Z",
+    last_hit: "2026-10-13T00:00:00.000Z", alerted_first: "2026-10-01T00:00:00.000Z", alerted_again: "soon" }), T0);
+  await call(code, { bucket, env: MAIL_ENV });
+  const v = bucket.json(viewsKey(code));
+  assert.equal(v.alerted_first, "2026-10-01T00:00:00.000Z");
+  assert.equal(v.alerted_again, undefined, "a malformed time is dropped");
+  assert.equal(sent.length, 0, "13 hours after the previous open is not a re-open alert");
 });
 
 // ---- copy rules ----------------------------------------------------------------
