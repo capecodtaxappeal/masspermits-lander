@@ -1,9 +1,9 @@
-// MassPermits — free-sample signup + instant email delivery (Pages Function).
+// MassPermits: free-sample signup + instant email delivery (Pages Function).
 //
 // The lander's form POSTs here: we store the prospect as its OWN R2 object
-// (prospects/<email> — no shared-file read-modify-write races) and email them
+// (prospects/<email>, no shared-file read-modify-write races) and email them
 // the sample via Resend. /api/nurture (daily cron) sends two opted-in
-// follow-ups. Requested mail only — never cold outreach.
+// follow-ups. Requested mail only, never cold outreach.
 //
 // Abuse hardening (public endpoint that triggers email):
 //   - trade/area strictly whitelisted (kills HTML/content injection into email)
@@ -13,12 +13,20 @@
 //     (legit volume is a handful/day; a bomber can't generate a bounce storm
 //     that would burn the Resend domain the paying customers depend on)
 
+import { MA_TOWN_NAMES } from "./_ma_towns.js";
+
 const TRADES = new Set(["Solar","Roofing","HVAC","Electrical","Plumbing","Gas",
   "Kitchen/Bath","Windows/Doors/Siding","Pool/Spa","Deck/Porch","Addition",
   "New Construction","Demolition","Fire/Sprinkler","Sign/Awning",
   "Renovation/Remodel","Other","all"]);
 const AREAS = new Set(["all","capecod","boston","southshore","Massachusetts",
   "Cape Cod","Greater Boston","South Shore"]);
+// Optional "which towns, which role" fields from the homepage form. Towns must
+// match a canonical name in _ma_towns.js exactly (generated from the Census list
+// by scripts/build-ma-towns.mjs); anything else is dropped without a word.
+const TOWNS = new Set(MA_TOWN_NAMES);
+const MAX_TOWNS = 10;
+const ROLES = new Set(["Owner or on the tools", "Office, sales or estimating", "Supplier or distributor"]);
 const DAILY_CAP = 50;          // new enrollments per UTC day
 const IP_CAP = 5;              // per IP per isolate lifetime (~hours)
 const ipCounts = new Map();    // per-isolate; imperfect by design, raises attack cost
@@ -35,8 +43,10 @@ export async function onRequestPost(context) {
   }
   const trade = TRADES.has(b.trade) ? String(b.trade) : "";
   const area = AREAS.has(b.area) ? String(b.area) : "";
+  const towns = pickTowns(b.towns);
+  const role = typeof b.role === "string" && ROLES.has(b.role) ? b.role : "";
 
-  // per-IP brake (in-isolate — approximate, but makes bursts expensive)
+  // per-IP brake (in-isolate, approximate, but makes bursts expensive)
   const ip = request.headers.get("cf-connecting-ip") || "?";
   const n = (ipCounts.get(ip) || 0) + 1;
   ipCounts.set(ip, n);
@@ -44,7 +54,7 @@ export async function onRequestPost(context) {
 
   const key = "prospects/" + encodeURIComponent(email);
   try {
-    if (await env.BUNDLES.head(key)) return json({ ok: true }); // already enrolled — never re-email
+    if (await env.BUNDLES.head(key)) return json({ ok: true }); // already enrolled, never re-email
 
     // hard daily cap on NEW enrollments
     const day = new Date().toISOString().slice(0, 10);
@@ -55,7 +65,8 @@ export async function onRequestPost(context) {
     await env.BUNDLES.put(capKey, String(used + 1));
 
     const ts = new Date().toISOString();
-    await env.BUNDLES.put(key, JSON.stringify({ email, trade, area, ts, stage: 1 }), {
+    await env.BUNDLES.put(key, JSON.stringify({ email, trade, area, ts, stage: 1,
+      ...(towns.length ? { towns } : {}), ...(role ? { role } : {}) }), {
       httpMetadata: { contentType: "application/json" },
       // stage/ts/trade mirrored into metadata so /api/nurture can scan the whole
       // list WITHOUT a body-read per prospect (Workers subrequest budget)
@@ -68,17 +79,32 @@ export async function onRequestPost(context) {
   try { await sendSample(env, email, trade); } catch (e) { /* enrolled; nurture continues */ }
   // Notify the owner in the BUSINESS inbox (mirrors agent-sample.js). Contractor
   // sample requests used to only reach the owner's personal Gmail via Web3Forms,
-  // so they were invisible in the masspermits inbox — this closes that blind spot.
-  try { await notifyOwner(env, email, trade, area); } catch (e) { /* non-fatal */ }
+  // so they were invisible in the masspermits inbox; this closes that blind spot.
+  try { await notifyOwner(env, email, trade, area, towns, role); } catch (e) { /* non-fatal */ }
   return json({ ok: true });
 }
 
+// Up to MAX_TOWNS distinct names, each an exact match for the Census list.
+function pickTowns(raw) {
+  if (!Array.isArray(raw)) return [];
+  const out = [];
+  for (const t of raw.slice(0, 50)) {
+    if (out.length >= MAX_TOWNS) break;
+    if (typeof t === "string" && t.length <= 40 && TOWNS.has(t) && !out.includes(t)) out.push(t);
+  }
+  return out;
+}
+
 const OWNER_EMAIL = "patrick@masspermits.com";
-async function notifyOwner(env, email, trade, area) {
+async function notifyOwner(env, email, trade, area, towns = [], role = "") {
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  await send(env, OWNER_EMAIL, `Free-sample request: ${trade || "Building"} / ${area || "all"}`,
+  const where = towns.length
+    ? towns.slice(0, 2).join(", ") + (towns.length > 2 ? ` (+${towns.length - 2} more)` : "")
+    : (area || "all");
+  await send(env, OWNER_EMAIL, `Free-sample request: ${trade || "Building"} / ${where}`,
     wrap(`<p><b>${esc(email)}</b> requested a free sample on masspermits.com.</p>
       <p>Trade: <b>${esc(trade || "(none)")}</b> &nbsp; Area: <b>${esc(area || "(none)")}</b></p>
+      <p>Towns: <b>${esc(towns.length ? towns.join(", ") : "(none)")}</b> &nbsp; Role: <b>${esc(role || "(none)")}</b></p>
       <p>They already got the masked sample + are in the nurture drip. Reply from your
       inbox if you want to follow up personally.</p>`));
 }

@@ -254,6 +254,44 @@
     <span class="subcta" id="buy-note" style="display:block;margin-top:12px">Not ready? Grab a free sample below first.</span>
   </div>
 
+  <!-- ===== TOWN CHECK: begin. Self-contained block; logic in /js/town-check.js.
+       Hidden until /js/ma-towns.json and /research/evidence/coverage.json both load. ===== -->
+  <style>
+    #town-check[hidden],#sx[hidden]{display:none}
+    #tc-form{display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap}
+    #tc-results{list-style:none;margin:14px auto 0;padding:0;max-width:520px;text-align:left}
+    .tc-row{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin:8px 0;overflow-wrap:anywhere}
+    .tc-row b{display:block;font-size:15px}
+    .tc-status{display:block;font-size:14px;margin-top:2px}
+    .tc-weekly .tc-status{color:var(--good)}.tc-monthly .tc-status{color:var(--teal)}
+    .tc-paused .tc-status,.tc-absent .tc-status{color:var(--muted)}
+    .tc-near{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+    .tc-go{margin-top:8px;background:none;border:0;padding:0;color:var(--teal);font:inherit;font-size:13.5px;text-decoration:underline;cursor:pointer;text-align:left}
+    #tc-msg{color:#f87171;font-size:13px;margin-top:8px;min-height:0}
+    #sx{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px;text-align:left}
+    #sx .flabel{flex-basis:100%}
+    .sx-chips{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%}
+    .sx-chips:empty{display:none}
+    .sx-chip{background:var(--panel);border:1px solid var(--teal);color:var(--text);border-radius:16px;padding:4px 10px;font:inherit;font-size:13px;cursor:pointer}
+    #sx-add{background:var(--panel);border:1px solid var(--border);color:var(--text);border-radius:9px;padding:0 16px;font:inherit;font-size:14px;cursor:pointer}
+    #sx select{flex:1;min-width:210px;padding:13px 15px;border-radius:9px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit;font-size:15px}
+    #sx-note{flex-basis:100%;color:var(--muted);font-size:12px}
+    #sx-note:empty{display:none}
+  </style>
+  <div class="capture" id="town-check" hidden>
+    <h2>Check your towns</h2>
+    <p>Type a Massachusetts town or city to see how its building permits reach the file.</p>
+    <form id="tc-form">
+      <label for="tc-input" class="flabel">Town or city</label>
+      <input id="tc-input" list="mp-ma-towns" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Start typing a town">
+      <button class="cta sm" type="submit">Check</button>
+    </form>
+    <div id="tc-msg" role="alert"></div>
+    <ul id="tc-results" aria-live="polite"></ul>
+  </div>
+  <script src="/js/town-check.js" defer></script>
+  <!-- ===== TOWN CHECK: end ===== -->
+
   <div class="capture" id="sample">
     <h2>See the data first — free sample</h2>
     <!-- Describes what the file ACTUALLY is. It is a ~1,000-lead browser file
@@ -265,6 +303,23 @@
     <form id="signup-form">
       <label for="email" class="flabel">Your email address, for the free sample</label>
       <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" aria-describedby="signup-err" required>
+      <!-- ===== TOWN CHECK sample extras: begin. Optional towns and role; sent only to
+           /api/request-sample (see mpSampleExtras in /js/town-check.js). ===== -->
+      <div id="sx" hidden>
+        <label for="sx-town" class="flabel">Your towns (optional, up to 10)</label>
+        <div id="sx-chips" class="sx-chips"></div>
+        <input id="sx-town" list="mp-ma-towns" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Add a town">
+        <button id="sx-add" type="button">Add</button>
+        <div id="sx-note" aria-live="polite"></div>
+        <label for="sx-role" class="flabel">Your role (optional)</label>
+        <select id="sx-role">
+          <option value="">Choose one</option>
+          <option value="Owner or on the tools">Owner or on the tools</option>
+          <option value="Office, sales or estimating">Office, sales or estimating</option>
+          <option value="Supplier or distributor">Supplier or distributor</option>
+        </select>
+      </div>
+      <!-- ===== TOWN CHECK sample extras: end ===== -->
       <button class="cta sm" type="submit">Send my free sample</button>
     </form>
     <div class="ok" id="signup-ok" style="display:none">&#10003; Got it! Your free sample is ready —
@@ -544,7 +599,8 @@ $("signup-form").addEventListener("submit", async e=>{
   // Nurture funnel: register the prospect + email them the sample (fire-and-forget;
   // Web3Forms below stays as the owner-notification channel).
   try{ fetch("/api/request-sample",{method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({email, trade:SELTRADE||"", area:SELAREA||"", company:""})}); }catch(_e){}
+    body:JSON.stringify({email, trade:SELTRADE||"", area:SELAREA||"", company:"",
+      ...(window.mpSampleExtras ? window.mpSampleExtras() : {})})}); }catch(_e){} // TOWN CHECK: optional towns and role
   if(!WEB3FORMS_KEY){
     // No key yet — still acknowledge so the page never looks broken.
     okMsg(); return;
