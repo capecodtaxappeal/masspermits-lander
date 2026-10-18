@@ -39,7 +39,8 @@ test("a good answer renders the headline, the goal line, both funnels and 13 wee
   assert.equal(g.render.render(root, { status: 200, json: res.body }), "ok");
   const all = texts(root).join(" | ");
   const head = root.byPart("headline")[0];
-  assert.equal(head.textContent, "5 of 100");
+  assert.equal(head.textContent, "5 of 10");
+  assert.equal(root.byPart("to-go")[0].textContent, "5 to go to 10");
   const chart = root.byPart("chart")[0];
   assert.ok(chart.all((n) => n.localName === "line" && n.getAttribute("class") === "goal").length === 1);
   assert.ok(chart.all((n) => n.localName === "polyline").length === 1);

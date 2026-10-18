@@ -201,8 +201,8 @@ test("the Stripe projection keeps no id, customer, email, name or amount", async
   g.stripe.resetGrowthCaches();
   stub.stripe = H.stripeServer({ sessions: [H.session(NOW - H.DAY, "complete")], subscriptions: [H.sub(NOW - 9 * H.DAY, "active")] });
   const snap = await g.stripe.growthStripe(H.stripeEnv(), NOW, WEEK_START);
-  assert.deepEqual(Object.keys(snap.sessions.items[0]).sort(), ["created", "status"]);
-  assert.deepEqual(Object.keys(snap.subscriptions.items[0]).sort(), ["ended", "start", "status"]);
+  assert.deepEqual(Object.keys(snap.sessions.items[0]).sort(), ["created", "source", "status"]);
+  assert.deepEqual(Object.keys(snap.subscriptions.items[0]).sort(), ["ended", "leaving", "leaving_at", "start", "status"]);
   const text = JSON.stringify(snap);
   for (const bad of ["cs_live_a1TEST", "cs_", "cus_TEST", "sub_TEST", "@example.com", "Testwood", "9900", "price_"]) assert.ok(!text.includes(bad), bad);
 });

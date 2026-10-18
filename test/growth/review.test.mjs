@@ -183,7 +183,7 @@ test("a buyer who abandoned one checkout and paid on a second is not counted as 
   assert.equal(w.abandoned, 1);
   assert.ok(!res.text.includes("example.com") && !res.text.includes("cus_TEST"));
   const snap = await g.stripe.growthStripe(H.stripeEnv(), NOW + 11 * 60000, g.data.weekGrid(NOW).start);
-  for (const s of snap.sessions.items) assert.deepEqual(Object.keys(s).sort(), ["created", "status"]);
+  for (const s of snap.sessions.items) assert.deepEqual(Object.keys(s).sort(), ["created", "source", "status"]);
 });
 
 test("a completed checkout with no charge (100% coupon, trial) or an unpaid delayed method is not Paid", async () => {
@@ -268,7 +268,7 @@ test("the headline keeps the \"at least\" mark when the subscriptions list was c
   assert.equal(res.body.paying_at_least, true);
   const root = mount();
   g.render.render(root, { status: 200, json: res.body });
-  assert.equal(root.byPart("headline")[0].textContent, "≥ 5 of 100");
+  assert.equal(root.byPart("headline")[0].textContent, "≥ 5 of 10");
   const ok = await route({ sessions: [], subscriptions: subs.slice(0, 2) });
   assert.equal(ok.body.paying_at_least, false);
 });

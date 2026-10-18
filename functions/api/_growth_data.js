@@ -1,4 +1,5 @@
-// MassPermits: the pure rules behind the Road to 100 page (GET /admin/api/growth).
+// MassPermits: the pure rules behind the Road to 20 page (GET /admin/api/growth).
+// The page is titled "Road to 20" while paying is under 20, then "Road to 100".
 //
 // No I/O in this file. The route reads R2 and Stripe, hands plain values in,
 // and gets back a payload of COUNTS ONLY: no email, no name, no Stripe id, no
@@ -16,7 +17,10 @@
 
 export const TZ = "America/New_York";
 export const WEEKS = 13;
-export const GOAL = 100;
+// The owner's milestones, in order: the next 10 paying, then 20 by the
+// deadline below, then 100 as the long-run goal.
+export const MILESTONES = Object.freeze([10, 20, 100]);
+export const DEADLINES = Object.freeze({ 20: "2026-12-31" });
 export const DAY_MS = 86400000;
 export const WEEK_MS = 7 * DAY_MS;
 // A checkout still open MORE than this long after it was opened counts as
@@ -47,6 +51,46 @@ const PAYING = new Set(["active", "trialing", "past_due"]);
 // Never counted in any week: never paid, or stopped paying at a moment Stripe
 // does not give us (unpaid and paused carry no timestamp for the change).
 const NEVER_COUNTED = new Set(["incomplete", "incomplete_expired", "unpaid", "paused"]);
+
+// ── milestones ──────────────────────────────────────────────────────────────
+// The first milestone above `paying`, how many to go, and its deadline if it
+// has one. At or past the last milestone: that one, 0 to go, reached.
+export function nextMilestone(paying) {
+  if (typeof paying !== "number" || !Number.isFinite(paying)) return null;
+  const last = MILESTONES[MILESTONES.length - 1];
+  const target = MILESTONES.find((m) => paying < m) || last;
+  return { target, to_go: Math.max(0, target - paying), deadline: DEADLINES[target] || null, reached: paying >= last };
+}
+
+// The page title: "Road to 20" while paying is under 20 (or not known), then 100.
+export function roadOf(paying) {
+  return typeof paying === "number" && paying >= 20 ? 100 : 20;
+}
+
+// ── checkout source ─────────────────────────────────────────────────────────
+// Where a paid checkout came from, from its client_reference_id, as one of
+// SOURCES. Only the bucket leaves the Stripe reader; the raw value is dropped.
+// The formats in use today (index.html, refCode() and stripeWith()):
+//   "ref-<4 to 24 lowercase letters or digits>"  a referral (the mp_ref cookie
+//                                                  set by /r/<code>, or ?ref=)
+//   "<trade>__<area>"  the homepage trade and area picker, each part "all" when
+//                      nothing is picked, anything else in it replaced by "-"
+// RESERVED: "ps-<lowercase letters, digits or ->" is kept for future prospect
+// sample links. Nothing writes it yet; a sample link that adds it is counted
+// as "prospect_sample" here without any change to this file.
+// Anything else, or none (a buy link without the picker), is "unknown".
+export const SOURCES = Object.freeze(["referral", "picker", "prospect_sample", "unknown"]);
+const REF_SHAPE = /^ref-[a-z0-9]{4,24}$/;
+const PS_SHAPE = /^ps-[a-z0-9][a-z0-9-]{0,39}$/;
+const PICKER_SHAPE = /^[A-Za-z0-9-]{1,80}__[A-Za-z0-9_-]{1,80}$/;
+
+export function sourceOf(ref) {
+  if (typeof ref !== "string") return "unknown";
+  if (REF_SHAPE.test(ref)) return "referral";
+  if (PS_SHAPE.test(ref)) return "prospect_sample";
+  if (PICKER_SHAPE.test(ref)) return "picker";
+  return "unknown";
+}
 
 // ── clock ───────────────────────────────────────────────────────────────────
 const FMT = new Intl.DateTimeFormat("en-US", {
@@ -130,22 +174,71 @@ export function classifySession(s, now) {
 }
 
 // ── subscribers ─────────────────────────────────────────────────────────────
+// When a subscription stops paying, in seconds: Stripe's ended_at, or, for one
+// still in a paying status that is set to cancel ("leaving"), its scheduled
+// end once that is at or before `t`. A scheduled end still ahead is not an end.
+function endOf(s, t) {
+  if (typeof s.ended === "number") return s.ended;
+  if (s.leaving === true && PAYING.has(s.status) && typeof s.leaving_at === "number" && s.leaving_at * 1000 <= t) return s.leaving_at;
+  return null;
+}
+
+const counted = (s) => s && typeof s.start === "number" && !NEVER_COUNTED.has(s.status);
+
 // Paying at instant t: started at or before t, not ended at or before t, and
 // not a status that is never counted. A subscription that has not ended must
 // be in a paying status now.
 export function payingAt(subs, t) {
   let n = 0;
   for (const s of subs || []) {
-    if (!s || typeof s.start !== "number" || NEVER_COUNTED.has(s.status)) continue;
+    if (!counted(s)) continue;
     if (s.start * 1000 > t) continue;
-    if (typeof s.ended === "number") {
-      if (s.ended * 1000 <= t) continue;
+    const end = endOf(s, t);
+    if (end !== null) {
+      if (end * 1000 <= t) continue;
     } else if (!PAYING.has(s.status)) {
       continue;
     }
     n++;
   }
   return n;
+}
+
+// Paying at `now` and set to cancel at a later moment: the "leaving" ones.
+// Each end as a New York calendar date ("unknown" when Stripe gave none).
+export function leavingAt(subs, now) {
+  const dates = new Map();
+  let n = 0;
+  for (const s of subs || []) {
+    if (!counted(s) || s.start * 1000 > now || !PAYING.has(s.status) || s.leaving !== true) continue;
+    if (endOf(s, now) !== null) continue;
+    n++;
+    let date = "unknown";
+    if (typeof s.leaving_at === "number") {
+      const p = localParts(s.leaving_at * 1000);
+      date = ymd(Date.UTC(p.y, p.m - 1, p.d));
+    }
+    dates.set(date, (dates.get(date) || 0) + 1);
+  }
+  const ends = [...dates].map(([date, k]) => ({ date, n: k }))
+    .sort((a, b) => (a.date === "unknown") - (b.date === "unknown") || (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  return { n, ends };
+}
+
+// Started and ended inside [start, end), counting only up to `upTo` (the
+// current week stops at now). Same instants as payingAt, so a week's change
+// in paying is exactly new minus ended.
+export function flowIn(subs, start, end, upTo) {
+  let started = 0, ended = 0;
+  const stop = Math.min(end, upTo + 1);
+  for (const s of subs || []) {
+    if (!counted(s)) continue;
+    const a = s.start * 1000;
+    if (a >= start && a < stop) started++;
+    const e = endOf(s, upTo);
+    if (e !== null && e * 1000 >= start && e * 1000 < stop && e >= s.start) ended++;
+  }
+  return { started, ended };
 }
 
 // ── free sign ups (funnel-metrics.json, newest first, one per day) ──────────
@@ -288,6 +381,7 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
   const sessOk = sess && (sess.state === "ok" || sess.state === "partial");
   const subsOk = subs && (subs.state === "ok" || subs.state === "partial");
   const per = rows.map(() => ({ checkouts: 0, abandoned: 0, paid: 0, in_progress: 0 }));
+  const bySource = rows.map(() => Object.fromEntries(SOURCES.map((k) => [k, 0])));
   if (sessOk) {
     for (const s of sess.items || []) {
       const i = weekIndex(grid, typeof s.created === "number" ? s.created * 1000 : NaN);
@@ -295,6 +389,7 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
       per[i].checkouts++;
       const c = classifySession(s, now);
       if (c === "paid" || c === "abandoned" || c === "in_progress") per[i][c]++;
+      if (c === "paid") bySource[i][SOURCES.includes(s.source) ? s.source : "unknown"]++;
     }
   }
   rows.forEach((w, i) => {
@@ -302,19 +397,27 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
     if (!sessOk) {
       const word = sess ? WORDS.unavailable : stripeWord(st);
       for (const k of ["checkouts", "abandoned", "paid", "in_progress"]) w[k] = word;
+      w.paid_by_source = word;
     } else {
       Object.assign(w, per[i]);
+      w.paid_by_source = bySource[i];
       if (sess.state === "partial" && (typeof sess.complete_from !== "number" || g.start < sess.complete_from)) {
-        for (const k of ["checkouts", "abandoned", "paid", "in_progress"]) flag(w, k);
+        for (const k of ["checkouts", "abandoned", "paid", "in_progress", "paid_by_source"]) flag(w, k);
       }
     }
     if (!subsOk) {
-      w.subscribers = subs ? WORDS.unavailable : stripeWord(st);
+      const word = subs ? WORDS.unavailable : stripeWord(st);
+      for (const k of ["subscribers", "new_paid", "ended", "net"]) w[k] = word;
     } else {
       // A past week is measured at its last instant (end minus 1 ms): g.end is
       // already the first instant of the next week, as weekIndex has it.
-      w.subscribers = payingAt(subs.items, g.current ? now : g.end - 1);
-      if (subs.state === "partial") flag(w, "subscribers");
+      const at = g.current ? now : g.end - 1;
+      w.subscribers = payingAt(subs.items, at);
+      const f = flowIn(subs.items, g.start, g.end, at);
+      w.new_paid = f.started;
+      w.ended = f.ended;
+      w.net = f.started - f.ended;
+      if (subs.state === "partial") for (const k of ["subscribers", "new_paid", "ended", "net"]) flag(w, k);
     }
   });
 
@@ -339,6 +442,17 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
   const current = rows[rows.length - 1];
   const paying = typeof current.subscribers === "number" ? current.subscribers : null;
   const full = rows.slice(0, -1);
+  const next = nextMilestone(paying);
+  let retention;
+  if (subsOk && paying !== null) {
+    const l = leavingAt(subs.items, now);
+    retention = { state: "ok", at_least: subs.state === "partial", paying_now: paying, leaving: l.n,
+      paying_after: paying - l.n, ends: l.ends };
+  } else {
+    retention = { state: paying === null ? current.subscribers : WORDS.unavailable };
+  }
+  const sourceTotals = Object.fromEntries(SOURCES.map((k) => [k, 0]));
+  for (const w of rows) if (w.paid_by_source && typeof w.paid_by_source === "object") for (const k of SOURCES) sourceTotals[k] += w.paid_by_source[k];
   const dataStart = (src) => {
     if (!src || typeof src.first !== "number") return null;
     const p = localParts(src.first);
@@ -348,7 +462,11 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
   return {
     as_of: new Date(now).toISOString(),
     timezone: TZ,
-    goal: GOAL,
+    // goal: the next milestone (the headline reads "<paying> of <goal>").
+    goal: next ? next.target : MILESTONES[0],
+    milestones: MILESTONES.slice(),
+    next_milestone: next,
+    road: roadOf(paying),
     paying_now: paying,
     paying_at_least: paying !== null && current.at_least.includes("subscribers"),
     paying_state: paying === null ? current.subscribers : "ok",
@@ -364,6 +482,9 @@ export function buildGrowth({ now, grid, visits, clicks, stripe, funnel }) {
       free: { state: fstate },
     },
     weeks: rows,
+    retention,
+    sources_paid: sessOk ? { state: "ok", at_least: sess.state === "partial", totals: sourceTotals }
+      : { state: sess ? WORDS.unavailable : stripeWord(st) },
     funnel: {
       this_week: funnelOf([current]),
       last_4_weeks: funnelOf(full.slice(-4)),
