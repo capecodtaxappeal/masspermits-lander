@@ -1,4 +1,4 @@
-// Road to 100: the only page file that makes a request. One GET to the
+// Road to 20: the only page file that makes a request. One GET to the
 // owner-only data route, painted by growth-render.js. Nothing is stored on
 // the phone. Refresh re-asks; so does coming back after 10 minutes away.
 

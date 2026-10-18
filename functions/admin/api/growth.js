@@ -1,4 +1,4 @@
-// MassPermits: Road to 100 data route (GET /admin/api/growth).
+// MassPermits: Road to 20 data route (GET /admin/api/growth).
 //
 // The owner's page admin/growth.html reads this. Per week (this week so far
 // plus the 12 before it, New York time): visits, Buy clicks, checkouts

@@ -1,4 +1,4 @@
-// MassPermits: GET-only Stripe reader for the Road to 100 page.
+// MassPermits: GET-only Stripe reader for the Road to 20 page.
 //
 // Same rules as Mission Control's reader (_mission_stripe.js), and the same
 // outbound door: every request goes through its stripeGet(), which refuses
@@ -17,9 +17,16 @@
 //
 // Two lists: checkout sessions opened since the first week on the page (any
 // status), and subscriptions (all statuses). Only a PROJECTION leaves:
-//   session:      { created, status }
-//   subscription: { start, ended, status }
+//   session:      { created, status, source }
+//   subscription: { start, ended, status, leaving, leaving_at }
 // No id, customer, email, name, amount or card detail is kept or cached.
+// source: the bucket of the session's client_reference_id (sourceOf() in
+// _growth_data.js); the raw value is read here and dropped. leaving: set to
+// cancel (cancel_at_period_end, or a cancel_at); leaving_at: when, from
+// cancel_at, else the period end (items.data[].current_period_end, the same
+// rule as _mission_stripe.js, or the older top-level current_period_end).
+// All of these are plain fields of the objects already listed: no field or
+// expansion was added to either request for them.
 // The projection is cached per isolate for 10 minutes.
 //
 // A session's projected status is one of:
@@ -36,6 +43,7 @@
 //   "expired", "open"     as Stripe says.
 
 import { stripeGet } from "./_mission_stripe.js";
+import { sourceOf } from "./_growth_data.js";
 
 const API_ORIGIN = "https://api.stripe.com";
 const PAGE_LIMIT = 100;
@@ -161,14 +169,24 @@ function projectSession(cs, prices, completedBy) {
   } else if ((status === "expired" || status === "open") && buyerKeys(cs).some((k) => completedBy.has(k))) {
     status = "superseded";
   }
-  return { created, status };
+  return { created, status, source: sourceOf(cs.client_reference_id) };
+}
+
+function periodEnd(s) {
+  const items = s.items && Array.isArray(s.items.data) ? s.items.data : [];
+  const ends = items.map((it) => num(it && it.current_period_end)).filter((n) => n !== null);
+  if (ends.length) return Math.min(...ends);
+  return num(s.current_period_end);
 }
 
 function projectSubscription(s, prices) {
   if (!carries(s, "items", prices)) return null;
   const start = num(s.start_date) !== null ? num(s.start_date) : num(s.created);
   if (start === null) return null;
-  return { start, ended: num(s.ended_at), status: str(s.status) };
+  const cancelAt = num(s.cancel_at);
+  const leaving = s.cancel_at_period_end === true || cancelAt !== null;
+  return { start, ended: num(s.ended_at), status: str(s.status), leaving,
+    leaving_at: !leaving ? null : cancelAt !== null ? cancelAt : periodEnd(s) };
 }
 
 export async function growthStripe(env, now, sinceMs) {

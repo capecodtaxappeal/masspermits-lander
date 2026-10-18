@@ -13,6 +13,10 @@ const ALLOWED_KEYS = new Set([
   "at_least", "buy_clicks", "other_buy_clicks", "checkouts", "abandoned", "paid", "in_progress", "subscribers",
   "free_signups", "free_readers", "funnel", "this_week", "last_4_weeks", "all_weeks", "totals", "covered", "rates",
   "visit_to_click", "click_to_checkout", "checkout_to_paid", "checkout_abandoned", "visit_to_paid", "n", "d", "pct",
+  // Road to 20: milestones, retention, and paid checkouts by source (counts only)
+  "milestones", "next_milestone", "target", "to_go", "deadline", "reached", "road", "new_paid", "ended", "net",
+  "paid_by_source", "referral", "picker", "prospect_sample", "unknown", "retention", "leaving", "paying_after", "ends",
+  "date", "sources_paid",
 ]);
 
 async function richWorld() {
