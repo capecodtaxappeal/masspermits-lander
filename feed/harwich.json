@@ -1,0 +1,303 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Harwich, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/harwich.json",
+ "description": "Recent building permits in Harwich, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 27,
+ "_window_from": "2026-09-28",
+ "_window_to": "2026-09-30",
+ "items": [
+  {
+   "id": "43c23dd63fe4711d",
+   "url": "https://masspermits.com/permits/harwich-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 North Rd, Harwich ($7,039)",
+   "content_text": "Windows/Doors/Siding permit in Harwich, MA. Value $7,039. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7039.0
+  },
+  {
+   "id": "1392149760372d70",
+   "url": "https://masspermits.com/permits/harwich-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Charles Rd, Harwich ($27,043)",
+   "content_text": "Kitchen/Bath permit in Harwich, MA. Value $27,043. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Kitchen/Bath",
+   "_value": 27043.0
+  },
+  {
+   "id": "09a901af0f2bfe0d",
+   "url": "https://masspermits.com/permits/harwich-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 George Holbrook Way, Harwich ($33,500)",
+   "content_text": "Kitchen/Bath permit in Harwich, MA. Value $33,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Kitchen/Bath",
+   "_value": 33500.0
+  },
+  {
+   "id": "82dfcef8dda5b12b",
+   "url": "https://masspermits.com/permits/harwich-building",
+   "title": "Building permit \u2014 Vacation Ln, Harwich ($7,793)",
+   "content_text": "Building permit in Harwich, MA. Value $7,793. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Building",
+   "_value": 7793.44
+  },
+  {
+   "id": "7a0d309e0333c448",
+   "url": "https://masspermits.com/permits/harwich-building",
+   "title": "Building permit \u2014 Route, Harwich ($837)",
+   "content_text": "Building permit in Harwich, MA. Value $837. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Building",
+   "_value": 837.46
+  },
+  {
+   "id": "102d9a149478658d",
+   "url": "https://masspermits.com/permits/harwich-gas",
+   "title": "Gas permit \u2014 Route, Harwich ($48,000)",
+   "content_text": "Gas permit in Harwich, MA. Value $48,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Gas",
+   "_value": 48000.0
+  },
+  {
+   "id": "733ea25f16bdd752",
+   "url": "https://masspermits.com/permits/harwich-solar",
+   "title": "Solar permit \u2014 Route, Harwich ($21,000)",
+   "content_text": "Solar permit in Harwich, MA. Value $21,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Solar",
+   "_value": 21000.0
+  },
+  {
+   "id": "f7fc2cb873929b2a",
+   "url": "https://masspermits.com/permits/harwich-building",
+   "title": "Building permit \u2014 Deacons Folly Rd, Unit, Harwich ($7,571)",
+   "content_text": "Building permit in Harwich, MA. Value $7,571. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Building",
+   "_value": 7570.68
+  },
+  {
+   "id": "3bf76e6f5c739192",
+   "url": "https://masspermits.com/permits/harwich-roofing",
+   "title": "Roofing permit \u2014 Clearwater Dr, Harwich ($14,600)",
+   "content_text": "Roofing permit in Harwich, MA. Value $14,600. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Roofing",
+   "_value": 14600.0
+  },
+  {
+   "id": "87912031f8cff895",
+   "url": "https://masspermits.com/permits/harwich-building",
+   "title": "Building permit \u2014 Hillcrest Dr, Harwich ($6,000)",
+   "content_text": "Building permit in Harwich, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Building",
+   "_value": 6000.0
+  },
+  {
+   "id": "9159b3f383ab8e49",
+   "url": "https://masspermits.com/permits/harwich-roofing",
+   "title": "Roofing permit \u2014 Harbor Rd, Harwich ($17,000)",
+   "content_text": "Roofing permit in Harwich, MA. Value $17,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Roofing",
+   "_value": 17000.0
+  },
+  {
+   "id": "750f1f787208d6c6",
+   "url": "https://masspermits.com/permits/harwich-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Connecticut Av, Harwich ($17,588)",
+   "content_text": "Windows/Doors/Siding permit in Harwich, MA. Value $17,588. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 17588.0
+  },
+  {
+   "id": "4bf837f4f33b668c",
+   "url": "https://masspermits.com/permits/harwich-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Partridge Ln, Harwich ($10,488)",
+   "content_text": "Windows/Doors/Siding permit in Harwich, MA. Value $10,488. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 10488.0
+  },
+  {
+   "id": "9793d5c766f0c077",
+   "url": "https://masspermits.com/permits/harwich-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Wilmas Way, Harwich ($13,376)",
+   "content_text": "Kitchen/Bath permit in Harwich, MA. Value $13,376. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Kitchen/Bath",
+   "_value": 13376.0
+  },
+  {
+   "id": "b3b73c1a708fdbf3",
+   "url": "https://masspermits.com/permits/harwich-building",
+   "title": "Building permit \u2014 Harwich Pines, Harwich ($20,000)",
+   "content_text": "Building permit in Harwich, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Building",
+   "_value": 20000.0
+  },
+  {
+   "id": "a4a7a734c78a361f",
+   "url": "https://masspermits.com/permits/harwich-roofing",
+   "title": "Roofing permit \u2014 Elliott Way, Harwich ($15,861)",
+   "content_text": "Roofing permit in Harwich, MA. Value $15,861. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Roofing",
+   "_value": 15861.01
+  },
+  {
+   "id": "49ca6fe0c9ec6b81",
+   "url": "https://masspermits.com/permits/harwich-solar",
+   "title": "Solar permit \u2014 Rainbow Way, Harwich ($38,187)",
+   "content_text": "Solar permit in Harwich, MA. Value $38,187. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Solar",
+   "_value": 38187.0
+  },
+  {
+   "id": "19b57376c5d27346",
+   "url": "https://masspermits.com/permits/harwich-solar",
+   "title": "Solar permit \u2014 Cedardale Rd, Harwich ($78,675)",
+   "content_text": "Solar permit in Harwich, MA. Value $78,675. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Solar",
+   "_value": 78675.0
+  },
+  {
+   "id": "b344e2837720d5dd",
+   "url": "https://masspermits.com/permits/harwich-building",
+   "title": "Building permit \u2014 Bentley Rd, Harwich ($600,000)",
+   "content_text": "Building permit in Harwich, MA. Value $600,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Building",
+   "_value": 600000.0
+  },
+  {
+   "id": "2609070e38437f0f",
+   "url": "https://masspermits.com/permits/harwich-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Marthas Ln, Harwich ($55,000)",
+   "content_text": "Renovation/Remodel permit in Harwich, MA. Value $55,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Renovation/Remodel",
+   "_value": 55000.0
+  },
+  {
+   "id": "417445bab446df8f",
+   "url": "https://masspermits.com/permits/harwich-roofing",
+   "title": "Roofing permit \u2014 Purmackene Ln, Harwich ($30,800)",
+   "content_text": "Roofing permit in Harwich, MA. Value $30,800. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Roofing",
+   "_value": 30800.0
+  },
+  {
+   "id": "6f00f2ca3763e178",
+   "url": "https://masspermits.com/permits/harwich-building",
+   "title": "Building permit \u2014 Quail Nest Run, Harwich ($9,000)",
+   "content_text": "Building permit in Harwich, MA. Value $9,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Building",
+   "_value": 9000.0
+  },
+  {
+   "id": "937678c9b3cc1174",
+   "url": "https://masspermits.com/permits/harwich-roofing",
+   "title": "Roofing permit \u2014 Tupelo Dr, Harwich ($14,050)",
+   "content_text": "Roofing permit in Harwich, MA. Value $14,050. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Roofing",
+   "_value": 14050.0
+  },
+  {
+   "id": "46574c6e8fa36899",
+   "url": "https://masspermits.com/permits/harwich-roofing",
+   "title": "Roofing permit \u2014 Pheasant Run, Harwich ($13,640)",
+   "content_text": "Roofing permit in Harwich, MA. Value $13,640. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Roofing",
+   "_value": 13640.0
+  },
+  {
+   "id": "9115620ef20914c2",
+   "url": "https://masspermits.com/permits/harwich-hvac",
+   "title": "HVAC permit \u2014 Belmont Rd, Harwich ($108,977)",
+   "content_text": "HVAC permit in Harwich, MA. Value $108,977. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "HVAC",
+   "_value": 108977.0
+  },
+  {
+   "id": "8b35233e98f640b9",
+   "url": "https://masspermits.com/permits/harwich-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Bank St, Harwich ($17,880)",
+   "content_text": "Windows/Doors/Siding permit in Harwich, MA. Value $17,880. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 17880.0
+  },
+  {
+   "id": "0e4dcaedf995364f",
+   "url": "https://masspermits.com/permits/harwich-new-construction",
+   "title": "New Construction permit \u2014 Harvest Hollow Dr, Harwich ($1,020,000)",
+   "content_text": "New Construction permit in Harwich, MA. Value $1,020,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Harwich",
+   "_trade": "New Construction",
+   "_value": 1020000.0
+  }
+ ]
+}

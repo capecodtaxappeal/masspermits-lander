@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-10-19T16:37:52.926442+00:00",
- "corpus_rows": 80597,
- "corpus_sources": 77,
- "corpus_first": "2024-09-06",
- "corpus_last": "2026-10-19",
+ "corpus_fetched_at": "2026-10-26T19:37:04.900648+00:00",
+ "corpus_rows": 83443,
+ "corpus_sources": 88,
+ "corpus_first": "2024-09-10",
+ "corpus_last": "2026-10-26",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,33 +35,25 @@
   ]
  },
  "stats": {
-  "adu_rows": 336,
-  "adu_towns": 33,
-  "eligible_sources": 56,
-  "n_sources": 77,
-  "garage": 64,
-  "garage_share": 19.0,
-  "conversion": 71,
-  "new_build": 166,
+  "adu_rows": 343,
+  "adu_towns": 41,
+  "eligible_sources": 67,
+  "n_sources": 88,
+  "garage": 71,
+  "garage_share": 20.7,
+  "conversion": 76,
+  "new_build": 168,
   "unclassified": 99,
   "garage_conversion": 26,
-  "garage_new_build": 23,
+  "garage_new_build": 27,
   "form_leader": "new construction",
-  "pooled_rate": 59.9,
+  "pooled_rate": 58.5,
   "raw_first": 0,
-  "raw_peak": 57,
+  "raw_peak": 56,
   "rate_min": 0.0,
-  "rate_max": 86.4,
-  "n_months": 23,
+  "rate_max": 81.9,
+  "n_months": 22,
   "series": [
-   {
-    "month": "2024-09",
-    "raw": 0,
-    "base": 205,
-    "sources": 1,
-    "partial": false,
-    "rate": 0.0
-   },
    {
     "month": "2024-10",
     "raw": 0,
@@ -160,87 +152,87 @@
    },
    {
     "month": "2026-01",
-    "raw": 8,
-    "base": 1100,
-    "sources": 8,
+    "raw": 6,
+    "base": 891,
+    "sources": 6,
     "partial": false,
-    "rate": 72.7
+    "rate": 67.3
    },
    {
     "month": "2026-02",
-    "raw": 7,
-    "base": 1073,
-    "sources": 8,
+    "raw": 6,
+    "base": 1035,
+    "sources": 7,
     "partial": false,
-    "rate": 65.2
+    "rate": 58.0
    },
    {
     "month": "2026-03",
-    "raw": 12,
-    "base": 1527,
-    "sources": 10,
+    "raw": 9,
+    "base": 1455,
+    "sources": 9,
     "partial": false,
-    "rate": 78.6
+    "rate": 61.9
    },
    {
     "month": "2026-04",
-    "raw": 27,
-    "base": 3556,
-    "sources": 33,
+    "raw": 17,
+    "base": 2519,
+    "sources": 41,
     "partial": false,
-    "rate": 75.9
+    "rate": 67.5
    },
    {
     "month": "2026-05",
     "raw": 54,
-    "base": 6250,
-    "sources": 33,
+    "base": 6596,
+    "sources": 44,
     "partial": false,
-    "rate": 86.4
+    "rate": 81.9
    },
    {
     "month": "2026-06",
-    "raw": 57,
-    "base": 7863,
-    "sources": 38,
+    "raw": 56,
+    "base": 8085,
+    "sources": 48,
     "partial": false,
-    "rate": 72.5
+    "rate": 69.3
    },
    {
     "month": "2026-07",
-    "raw": 52,
-    "base": 9325,
-    "sources": 40,
+    "raw": 54,
+    "base": 9639,
+    "sources": 52,
     "partial": false,
-    "rate": 55.8
+    "rate": 56.0
    },
    {
     "month": "2026-08",
-    "raw": 49,
-    "base": 9218,
-    "sources": 41,
+    "raw": 51,
+    "base": 9756,
+    "sources": 53,
     "partial": false,
-    "rate": 53.2
+    "rate": 52.3
    },
    {
     "month": "2026-09",
-    "raw": 46,
-    "base": 8597,
-    "sources": 36,
+    "raw": 55,
+    "base": 9793,
+    "sources": 49,
     "partial": false,
-    "rate": 53.5
+    "rate": 56.2
    },
    {
     "month": "2026-10",
-    "raw": 24,
-    "base": 4203,
-    "sources": 39,
+    "raw": 35,
+    "base": 5652,
+    "sources": 49,
     "partial": true,
-    "rate": 57.1
+    "rate": 61.9
    }
   ],
   "src_first": 1,
-  "src_peak": 41,
+  "src_peak": 53,
   "partial_month": "2026-10",
   "town_list": [
    "Amherst, MA",
@@ -253,14 +245,17 @@
    "Cambridge, MA",
    "Carlisle, MA",
    "Concord, MA",
-   "Duxbury, MA",
    "Easthampton, MA",
    "Falmouth, MA",
-   "Georgetown, MA",
    "Hanson, MA",
+   "Harwich, MA",
    "Hingham, MA",
+   "Holden, MA",
+   "Holliston, MA",
    "Lowell, MA",
    "Mansfield, MA",
+   "Medway, MA",
+   "Milford, MA",
    "Milton, MA",
    "Nahant, MA",
    "Needham, MA",
@@ -269,13 +264,18 @@
    "Randolph, MA",
    "Reading, MA",
    "Rockland, MA",
+   "Sherborn, MA",
    "Somerville, MA",
-   "Taunton, MA",
+   "Sterling, MA",
+   "Sutton, MA",
    "Truro, MA",
+   "Uxbridge, MA",
    "Wakefield, MA",
    "Waltham, MA",
    "West Bridgewater, MA",
-   "Worcester, MA"
+   "Worcester, MA",
+   "Wrentham, MA",
+   "Yarmouth, MA"
   ]
  }
 }

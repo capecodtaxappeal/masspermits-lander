@@ -1,0 +1,632 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Holliston, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/holliston.json",
+ "description": "Recent building permits in Holliston, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 66,
+ "_window_from": "2026-09-27",
+ "_window_to": "2026-10-13",
+ "items": [
+  {
+   "id": "51182c6574732cd2",
+   "url": "https://masspermits.com/permits/holliston-gas",
+   "title": "Gas permit \u2014 Donna Rd, Holliston ($6,036)",
+   "content_text": "Gas permit in Holliston, MA. Value $6,036. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Gas",
+   "_value": 6036.0
+  },
+  {
+   "id": "f3bee118ebc707ac",
+   "url": "https://masspermits.com/permits/holliston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Roberta Cr, Holliston",
+   "content_text": "Renovation/Remodel permit in Holliston, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "14ea22e50c1ec73e",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Concord St, Holliston ($750)",
+   "content_text": "HVAC permit in Holliston, MA. Value $750. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 750.0
+  },
+  {
+   "id": "b0ca7b988922de18",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Fiske St, Holliston ($1,500)",
+   "content_text": "HVAC permit in Holliston, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-11T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 1500.0
+  },
+  {
+   "id": "73665a8a895025ab",
+   "url": "https://masspermits.com/permits/holliston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Underwood St, Holliston ($7,848)",
+   "content_text": "Windows/Doors/Siding permit in Holliston, MA. Value $7,848. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7848.0
+  },
+  {
+   "id": "dc08aad7303f4632",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Briarcliff Ln, Holliston ($13,800)",
+   "content_text": "Roofing permit in Holliston, MA. Value $13,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 13800.0
+  },
+  {
+   "id": "b27e69efe002ea0a",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Bradford Jay Rd, Holliston ($10,800)",
+   "content_text": "Roofing permit in Holliston, MA. Value $10,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 10800.0
+  },
+  {
+   "id": "dff81977a80179f5",
+   "url": "https://masspermits.com/permits/holliston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Sawyer Circle, Holliston ($19,282)",
+   "content_text": "Renovation/Remodel permit in Holliston, MA. Value $19,282. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Renovation/Remodel",
+   "_value": 19282.0
+  },
+  {
+   "id": "2e90afe425ff8061",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Bonney Dr, Holliston ($17,077)",
+   "content_text": "HVAC permit in Holliston, MA. Value $17,077. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 17077.0
+  },
+  {
+   "id": "5ea9ff3cbd7bfac3",
+   "url": "https://masspermits.com/permits/holliston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Washington St, Holliston ($2,682)",
+   "content_text": "Windows/Doors/Siding permit in Holliston, MA. Value $2,682. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2682.0
+  },
+  {
+   "id": "cf59ecbbfd303db7",
+   "url": "https://masspermits.com/permits/holliston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Morgans Way, Holliston ($9,946)",
+   "content_text": "Renovation/Remodel permit in Holliston, MA. Value $9,946. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Renovation/Remodel",
+   "_value": 9946.0
+  },
+  {
+   "id": "a73ec8f64cb0526d",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Union St, Holliston ($20,537)",
+   "content_text": "Roofing permit in Holliston, MA. Value $20,537. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 20537.0
+  },
+  {
+   "id": "e82c2730d8edd7f1",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Westfield Dr, Holliston ($3,500)",
+   "content_text": "Electrical permit in Holliston, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 3500.0
+  },
+  {
+   "id": "26f4d89c18e3699c",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Norfolk St, Holliston ($15,000)",
+   "content_text": "Electrical permit in Holliston, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 15000.0
+  },
+  {
+   "id": "f0f1f5e06e7b323d",
+   "url": "https://masspermits.com/permits/holliston-solar",
+   "title": "Solar permit \u2014 Westfield Dr, Holliston ($28,293)",
+   "content_text": "Solar permit in Holliston, MA. Value $28,293. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Solar",
+   "_value": 28293.0
+  },
+  {
+   "id": "467054d8c6ff3499",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Fiske St, Holliston ($129,000)",
+   "content_text": "Roofing permit in Holliston, MA. Value $129,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 129000.0
+  },
+  {
+   "id": "dd784d367e7102a2",
+   "url": "https://masspermits.com/permits/holliston-gas",
+   "title": "Gas permit \u2014 Roberta Cr, Holliston ($8,320)",
+   "content_text": "Gas permit in Holliston, MA. Value $8,320. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Gas",
+   "_value": 8320.0
+  },
+  {
+   "id": "c221eb7d9ad6ae40",
+   "url": "https://masspermits.com/permits/holliston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pilgrim Rd, Holliston ($2,824)",
+   "content_text": "Windows/Doors/Siding permit in Holliston, MA. Value $2,824. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2824.0
+  },
+  {
+   "id": "5b5a4772fdffba6f",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Brook St, Holliston ($12,000)",
+   "content_text": "HVAC permit in Holliston, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 12000.0
+  },
+  {
+   "id": "5671feed3ae421c6",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Old Cart Path, Holliston ($675)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $675. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 675.0
+  },
+  {
+   "id": "0c2bc75fd22c4bc2",
+   "url": "https://masspermits.com/permits/holliston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Chamberlain St, Holliston ($3,770)",
+   "content_text": "Windows/Doors/Siding permit in Holliston, MA. Value $3,770. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3770.0
+  },
+  {
+   "id": "5805f393f721208c",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Fairview St, Holliston ($11,780)",
+   "content_text": "Roofing permit in Holliston, MA. Value $11,780. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 11780.0
+  },
+  {
+   "id": "022d9e656507fed3",
+   "url": "https://masspermits.com/permits/holliston-building",
+   "title": "Building permit \u2014 Morgans Way, Holliston ($7,000)",
+   "content_text": "Building permit in Holliston, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Building",
+   "_value": 7000.0
+  },
+  {
+   "id": "06cd7fd81902f2a4",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Northway St, Holliston ($96,137)",
+   "content_text": "Roofing permit in Holliston, MA. Value $96,137. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 96137.0
+  },
+  {
+   "id": "195010d97b9aaea4",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Mitchell Rd, Holliston ($2,000)",
+   "content_text": "Electrical permit in Holliston, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 2000.0
+  },
+  {
+   "id": "300440bfba0a4ed2",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Mitchell Rd, Holliston ($4,500)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $4,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 4500.0
+  },
+  {
+   "id": "1e52b36ae6a2266a",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Bonney Dr, Holliston ($1,800)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $1,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 1800.0
+  },
+  {
+   "id": "2c82e7820461eb98",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Shaw Farm Rd, Holliston ($18,000)",
+   "content_text": "Roofing permit in Holliston, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 18000.0
+  },
+  {
+   "id": "771653596a567d45",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Elm St, Holliston ($14,772)",
+   "content_text": "Roofing permit in Holliston, MA. Value $14,772. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 14772.0
+  },
+  {
+   "id": "95421b481ed97f74",
+   "url": "https://masspermits.com/permits/holliston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Mohawk Path, Holliston ($21,250)",
+   "content_text": "Renovation/Remodel permit in Holliston, MA. Value $21,250. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Renovation/Remodel",
+   "_value": 21250.0
+  },
+  {
+   "id": "c812663dbee3a595",
+   "url": "https://masspermits.com/permits/holliston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Mill Street, Holliston ($227,700)",
+   "content_text": "Renovation/Remodel permit in Holliston, MA. Value $227,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Renovation/Remodel",
+   "_value": 227700.0
+  },
+  {
+   "id": "2ce0e5abbb022d29",
+   "url": "https://masspermits.com/permits/holliston-demolition",
+   "title": "Demolition permit \u2014 Jeffrey Ave, Holliston ($8,000)",
+   "content_text": "Demolition permit in Holliston, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Demolition",
+   "_value": 8000.0
+  },
+  {
+   "id": "14edc1576a31b35f",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Lone Oak Circle, Holliston ($1,500)",
+   "content_text": "HVAC permit in Holliston, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 1500.0
+  },
+  {
+   "id": "d85eef0fe0fd314f",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Northway St, Holliston ($900)",
+   "content_text": "Electrical permit in Holliston, MA. Value $900. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 900.0
+  },
+  {
+   "id": "b18ff91a19aa4529",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Willow Gate Rise, Holliston ($3,200)",
+   "content_text": "Electrical permit in Holliston, MA. Value $3,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 3200.0
+  },
+  {
+   "id": "e4eb3fa3381a511e",
+   "url": "https://masspermits.com/permits/holliston-gas",
+   "title": "Gas permit \u2014 Norfolk St, Holliston ($12,349)",
+   "content_text": "Gas permit in Holliston, MA. Value $12,349. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Gas",
+   "_value": 12349.0
+  },
+  {
+   "id": "e891a401dccf8a0b",
+   "url": "https://masspermits.com/permits/holliston",
+   "title": "Pool/Spa permit \u2014 Chamberlain St, Holliston ($8,000)",
+   "content_text": "Pool/Spa permit in Holliston, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Pool/Spa",
+   "_value": 8000.0
+  },
+  {
+   "id": "afb03d7c92a9e51e",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Union St, Holliston ($1,500)",
+   "content_text": "Electrical permit in Holliston, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 1500.0
+  },
+  {
+   "id": "79755188b869455b",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Union St, Holliston ($7,000)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 7000.0
+  },
+  {
+   "id": "e292e58cb7278f6c",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Underwood St, Holliston ($1,000)",
+   "content_text": "HVAC permit in Holliston, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 1000.0
+  },
+  {
+   "id": "39226858ccd80ff6",
+   "url": "https://masspermits.com/permits/holliston-building",
+   "title": "Building permit \u2014 Jarrbrook Rd, Holliston ($5,000)",
+   "content_text": "Building permit in Holliston, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Building",
+   "_value": 5000.0
+  },
+  {
+   "id": "eb80d547d9579227",
+   "url": "https://masspermits.com/permits/holliston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Winthrop St, Holliston ($111,881)",
+   "content_text": "Kitchen/Bath permit in Holliston, MA. Value $111,881. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Kitchen/Bath",
+   "_value": 111881.0
+  },
+  {
+   "id": "30e5a1c711bfc264",
+   "url": "https://masspermits.com/permits/holliston-demolition",
+   "title": "Demolition permit \u2014 Norfolk St, Holliston ($5,000)",
+   "content_text": "Demolition permit in Holliston, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Demolition",
+   "_value": 5000.0
+  },
+  {
+   "id": "a324f6caa23fd6b5",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Washington St, Holliston ($25,331)",
+   "content_text": "Roofing permit in Holliston, MA. Value $25,331. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 25331.0
+  },
+  {
+   "id": "d0f36718755c1517",
+   "url": "https://masspermits.com/permits/holliston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Gorwin Dr, Holliston ($42,132)",
+   "content_text": "Kitchen/Bath permit in Holliston, MA. Value $42,132. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Kitchen/Bath",
+   "_value": 42132.0
+  },
+  {
+   "id": "b5292ff8ec655a59",
+   "url": "https://masspermits.com/permits/holliston",
+   "title": "Fire/Sprinkler permit \u2014 Washington St, Holliston ($6,000)",
+   "content_text": "Fire/Sprinkler permit in Holliston, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Fire/Sprinkler",
+   "_value": 6000.0
+  },
+  {
+   "id": "a28462be17321ebc",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Rocky Woods Trail, Holliston ($11,800)",
+   "content_text": "HVAC permit in Holliston, MA. Value $11,800. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 11800.0
+  },
+  {
+   "id": "55fdc02237346ec5",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Underwood St, Holliston ($3,500)",
+   "content_text": "Electrical permit in Holliston, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 3500.0
+  },
+  {
+   "id": "bc907d79d1280fbd",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Washington St, Holliston ($10,000)",
+   "content_text": "Electrical permit in Holliston, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 10000.0
+  },
+  {
+   "id": "14670a97527636c0",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Gorwin Dr, Holliston ($8,000)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 8000.0
+  },
+  {
+   "id": "50b3aa57f49cf953",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Pleasant St, Holliston ($2,000)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 2000.0
+  },
+  {
+   "id": "4cf7e22acd917af3",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Richard Rd, Holliston ($1,000)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 1000.0
+  },
+  {
+   "id": "88e94c94e238f56c",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Cross St, Holliston ($136,000)",
+   "content_text": "HVAC permit in Holliston, MA. Value $136,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 136000.0
+  },
+  {
+   "id": "cb9397fbf1082bde",
+   "url": "https://masspermits.com/permits/holliston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pleasant St, Holliston ($6,700)",
+   "content_text": "Windows/Doors/Siding permit in Holliston, MA. Value $6,700. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 6700.0
+  },
+  {
+   "id": "03646232e16abedf",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Stagecoach Rd, Holliston ($15,650)",
+   "content_text": "Roofing permit in Holliston, MA. Value $15,650. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 15650.0
+  },
+  {
+   "id": "c4e8b942fdf7f336",
+   "url": "https://masspermits.com/permits/holliston-roofing",
+   "title": "Roofing permit \u2014 Gregory Rd, Holliston ($19,798)",
+   "content_text": "Roofing permit in Holliston, MA. Value $19,798. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Roofing",
+   "_value": 19798.0
+  },
+  {
+   "id": "04aabe6b2c161a77",
+   "url": "https://masspermits.com/permits/holliston-electrical",
+   "title": "Electrical permit \u2014 Goulding St, Holliston ($1,000)",
+   "content_text": "Electrical permit in Holliston, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Electrical",
+   "_value": 1000.0
+  },
+  {
+   "id": "cf5d14d7181a9643",
+   "url": "https://masspermits.com/permits/holliston-hvac",
+   "title": "HVAC permit \u2014 Wingate Rd, Holliston ($1,050)",
+   "content_text": "HVAC permit in Holliston, MA. Value $1,050. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "HVAC",
+   "_value": 1050.0
+  },
+  {
+   "id": "737f43aaea6be241",
+   "url": "https://masspermits.com/permits/holliston-plumbing",
+   "title": "Plumbing permit \u2014 Goulding St, Holliston ($2,000)",
+   "content_text": "Plumbing permit in Holliston, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Plumbing",
+   "_value": 2000.0
+  },
+  {
+   "id": "5e8ebd8272caafe2",
+   "url": "https://masspermits.com/permits/holliston-building",
+   "title": "Building permit \u2014 Concord St, Holliston ($6,752)",
+   "content_text": "Building permit in Holliston, MA. Value $6,752. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Holliston",
+   "_trade": "Building",
+   "_value": 6752.0
+  }
+ ]
+}

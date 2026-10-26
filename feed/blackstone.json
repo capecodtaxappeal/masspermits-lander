@@ -1,0 +1,173 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Blackstone, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/blackstone.json",
+ "description": "Recent building permits in Blackstone, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 14,
+ "_window_from": "2026-09-27",
+ "_window_to": "2026-10-09",
+ "items": [
+  {
+   "id": "c0093be471ed9b1a",
+   "url": "https://masspermits.com/permits/blackstone-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Lakeshore Dr, Blackstone ($6,991)",
+   "content_text": "Windows/Doors/Siding permit in Blackstone, MA. Value $6,991. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 6991.0
+  },
+  {
+   "id": "bdd15e736fcfa619",
+   "url": "https://masspermits.com/permits/blackstone-solar",
+   "title": "Solar permit \u2014 Summer St, Blackstone ($78,630)",
+   "content_text": "Solar permit in Blackstone, MA. Value $78,630. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Solar",
+   "_value": 78630.0
+  },
+  {
+   "id": "1c8a3d5c32fdecb2",
+   "url": "https://masspermits.com/permits/blackstone-building",
+   "title": "Building permit \u2014 Carter Ave, Blackstone ($3,000)",
+   "content_text": "Building permit in Blackstone, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Building",
+   "_value": 3000.0
+  },
+  {
+   "id": "658c5286178836a5",
+   "url": "https://masspermits.com/permits/blackstone-roofing",
+   "title": "Roofing permit \u2014 Reilly Ave, Blackstone ($4,000)",
+   "content_text": "Roofing permit in Blackstone, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Roofing",
+   "_value": 4000.0
+  },
+  {
+   "id": "16d53973a0f94991",
+   "url": "https://masspermits.com/permits/blackstone-roofing",
+   "title": "Roofing permit \u2014 Lakeshore Dr, Blackstone ($100,000)",
+   "content_text": "Roofing permit in Blackstone, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Roofing",
+   "_value": 100000.0
+  },
+  {
+   "id": "e2667dab9f2e5dbf",
+   "url": "https://masspermits.com/permits/blackstone-roofing",
+   "title": "Roofing permit \u2014 Federal St, Blackstone ($60,000)",
+   "content_text": "Roofing permit in Blackstone, MA. Value $60,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Roofing",
+   "_value": 60000.0
+  },
+  {
+   "id": "9672403a70ebacc6",
+   "url": "https://masspermits.com/permits/blackstone-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Liberty Hill Dr, Blackstone ($15,000)",
+   "content_text": "Windows/Doors/Siding permit in Blackstone, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 15000.0
+  },
+  {
+   "id": "e5dd1a8c37bad694",
+   "url": "https://masspermits.com/permits/blackstone-roofing",
+   "title": "Roofing permit \u2014 Laurel Rd, Blackstone ($14,000)",
+   "content_text": "Roofing permit in Blackstone, MA. Value $14,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Roofing",
+   "_value": 14000.0
+  },
+  {
+   "id": "a9bdb5877788abe2",
+   "url": "https://masspermits.com/permits/blackstone-roofing",
+   "title": "Roofing permit \u2014 Mendon St, Blackstone ($15,000)",
+   "content_text": "Roofing permit in Blackstone, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-03T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Roofing",
+   "_value": 15000.0
+  },
+  {
+   "id": "1475c434eaee9b3f",
+   "url": "https://masspermits.com/permits/blackstone-solar",
+   "title": "Solar permit \u2014 Lakeshore Dr, Blackstone ($103,200)",
+   "content_text": "Solar permit in Blackstone, MA. Value $103,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Solar",
+   "_value": 103200.0
+  },
+  {
+   "id": "d5c45c1c43935027",
+   "url": "https://masspermits.com/permits/blackstone-solar",
+   "title": "Solar permit \u2014 Warfield Ln, Blackstone ($57,000)",
+   "content_text": "Solar permit in Blackstone, MA. Value $57,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Solar",
+   "_value": 57000.0
+  },
+  {
+   "id": "1e9e9fcd74faaa20",
+   "url": "https://masspermits.com/permits/blackstone-roofing",
+   "title": "Roofing permit \u2014 Elm St, Blackstone ($8,000)",
+   "content_text": "Roofing permit in Blackstone, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Roofing",
+   "_value": 8000.0
+  },
+  {
+   "id": "49a7604bc2e68ca3",
+   "url": "https://masspermits.com/permits/blackstone-roofing",
+   "title": "Roofing permit \u2014 Rathbun St, Blackstone ($10,000)",
+   "content_text": "Roofing permit in Blackstone, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Roofing",
+   "_value": 10000.0
+  },
+  {
+   "id": "3677f2f4a9eeb40a",
+   "url": "https://masspermits.com/permits/blackstone-deck-porch",
+   "title": "Deck/Porch permit \u2014 Main St, Blackstone ($12,000)",
+   "content_text": "Deck/Porch permit in Blackstone, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-27T00:00:00Z",
+   "_town": "Blackstone",
+   "_trade": "Deck/Porch",
+   "_value": 12000.0
+  }
+ ]
+}

@@ -1,0 +1,323 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Sutton, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/sutton.json",
+ "description": "Recent building permits in Sutton, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 29,
+ "_window_from": "2026-09-28",
+ "_window_to": "2026-10-15",
+ "items": [
+  {
+   "id": "3f84c854f129be90",
+   "url": "https://masspermits.com/permits/sutton-other",
+   "title": "Other permit \u2014 Central Tpke, Sutton ($7,000)",
+   "content_text": "Other permit in Sutton, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Other",
+   "_value": 7000.0
+  },
+  {
+   "id": "7e4c2e90faaca0a7",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Hillside Dr, Sutton ($12,000)",
+   "content_text": "Roofing permit in Sutton, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 12000.0
+  },
+  {
+   "id": "7b632d56ac549069",
+   "url": "https://masspermits.com/permits/sutton-new-construction",
+   "title": "New Construction permit \u2014 Southwick Rd, Sutton ($129,000)",
+   "content_text": "New Construction permit in Sutton, MA. Value $129,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "New Construction",
+   "_value": 129000.0
+  },
+  {
+   "id": "dc80541bb68dc9cb",
+   "url": "https://masspermits.com/permits/sutton-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Maple Ln, Sutton ($32,485)",
+   "content_text": "Kitchen/Bath permit in Sutton, MA. Value $32,485. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Kitchen/Bath",
+   "_value": 32485.0
+  },
+  {
+   "id": "628917505355da67",
+   "url": "https://masspermits.com/permits/sutton-building",
+   "title": "Building permit \u2014 Putnam Hill Rd, Sutton ($5,355)",
+   "content_text": "Building permit in Sutton, MA. Value $5,355. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Building",
+   "_value": 5354.86
+  },
+  {
+   "id": "9ffecc22ac85e767",
+   "url": "https://masspermits.com/permits/sutton-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Eight Lots Rd, Sutton ($90,000)",
+   "content_text": "Kitchen/Bath permit in Sutton, MA. Value $90,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Kitchen/Bath",
+   "_value": 90000.0
+  },
+  {
+   "id": "fdedc5a091f33a81",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Wildflower Dr, Sutton ($12,650)",
+   "content_text": "Roofing permit in Sutton, MA. Value $12,650. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 12650.0
+  },
+  {
+   "id": "6a43c44365c30b35",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Stone School Rd, Sutton ($25,475)",
+   "content_text": "Roofing permit in Sutton, MA. Value $25,475. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 25475.0
+  },
+  {
+   "id": "0a84b12d948bf26e",
+   "url": "https://masspermits.com/permits/sutton-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Mumford Rd, Sutton ($9,893)",
+   "content_text": "Windows/Doors/Siding permit in Sutton, MA. Value $9,893. Full lead at masspermits.com.",
+   "date_published": "2026-10-12T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 9893.0
+  },
+  {
+   "id": "e56d8d1bef75cdca",
+   "url": "https://masspermits.com/permits/sutton-solar",
+   "title": "Solar permit \u2014 Highland View Dr, Sutton ($87,633)",
+   "content_text": "Solar permit in Sutton, MA. Value $87,633. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Solar",
+   "_value": 87633.0
+  },
+  {
+   "id": "84f68b41bb8cdb00",
+   "url": "https://masspermits.com/permits/sutton-solar",
+   "title": "Solar permit \u2014 Central Tpke, Sutton ($51,432)",
+   "content_text": "Solar permit in Sutton, MA. Value $51,432. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Solar",
+   "_value": 51432.0
+  },
+  {
+   "id": "865991e3b94f346a",
+   "url": "https://masspermits.com/permits/sutton-other",
+   "title": "Other permit \u2014 Town Farm Rd, Sutton ($12,000)",
+   "content_text": "Other permit in Sutton, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Other",
+   "_value": 12000.0
+  },
+  {
+   "id": "57611e53afc5c83e",
+   "url": "https://masspermits.com/permits/sutton-other",
+   "title": "Other permit \u2014 Singletary Ave, Sutton ($2,258)",
+   "content_text": "Other permit in Sutton, MA. Value $2,258. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Other",
+   "_value": 2258.16
+  },
+  {
+   "id": "34a267c7f7be7b27",
+   "url": "https://masspermits.com/permits/sutton",
+   "title": "Demolition permit \u2014 Gilmore Dr, Sutton ($125,390)",
+   "content_text": "Demolition permit in Sutton, MA. Value $125,390. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Demolition",
+   "_value": 125390.0
+  },
+  {
+   "id": "7798ff19698ee0ed",
+   "url": "https://masspermits.com/permits/sutton-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Central Tpke, Sutton ($31,150)",
+   "content_text": "Windows/Doors/Siding permit in Sutton, MA. Value $31,150. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 31150.0
+  },
+  {
+   "id": "61de183d1e984fd3",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Mendon Rd, Sutton ($12,875)",
+   "content_text": "Roofing permit in Sutton, MA. Value $12,875. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 12875.0
+  },
+  {
+   "id": "47414bb573f0c7a9",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Eight Lots Rd, Sutton ($20,000)",
+   "content_text": "Roofing permit in Sutton, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 20000.0
+  },
+  {
+   "id": "0fb6fc90717304c6",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Fuller Rd, Sutton ($13,575)",
+   "content_text": "Roofing permit in Sutton, MA. Value $13,575. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 13575.0
+  },
+  {
+   "id": "190d8a5bbd4173c2",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Whitins Rd, Sutton ($2,895)",
+   "content_text": "Roofing permit in Sutton, MA. Value $2,895. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 2895.0
+  },
+  {
+   "id": "9bc265d9613c7cbb",
+   "url": "https://masspermits.com/permits/sutton-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Dodge Hill Rd, Sutton ($518,836)",
+   "content_text": "Kitchen/Bath permit in Sutton, MA. Value $518,836. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Kitchen/Bath",
+   "_value": 518836.0
+  },
+  {
+   "id": "5892941c6d694a58",
+   "url": "https://masspermits.com/permits/sutton-solar",
+   "title": "Solar permit \u2014 Singletary Ave, Sutton ($3,770)",
+   "content_text": "Solar permit in Sutton, MA. Value $3,770. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Solar",
+   "_value": 3770.0
+  },
+  {
+   "id": "0d276dc326a3dc36",
+   "url": "https://masspermits.com/permits/sutton-deck-porch",
+   "title": "Deck/Porch permit \u2014 W Sutton Rd, Sutton ($10,000)",
+   "content_text": "Deck/Porch permit in Sutton, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Deck/Porch",
+   "_value": 10000.0
+  },
+  {
+   "id": "b6ecfecb9d6c79ef",
+   "url": "https://masspermits.com/permits/sutton-solar",
+   "title": "Solar permit \u2014 Mendon Rd, Sutton ($49,752)",
+   "content_text": "Solar permit in Sutton, MA. Value $49,752. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Solar",
+   "_value": 49752.0
+  },
+  {
+   "id": "97a529007a4a2f6a",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Mcguire Rd, Sutton ($95,080)",
+   "content_text": "Roofing permit in Sutton, MA. Value $95,080. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 95080.0
+  },
+  {
+   "id": "4d6651a8b902be69",
+   "url": "https://masspermits.com/permits/sutton",
+   "title": "Electrical permit \u2014 Eight Lots Rd, Sutton ($38,750)",
+   "content_text": "Electrical permit in Sutton, MA. Value $38,750. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Electrical",
+   "_value": 38750.0
+  },
+  {
+   "id": "144d9500c9b52180",
+   "url": "https://masspermits.com/permits/sutton-deck-porch",
+   "title": "Deck/Porch permit \u2014 Wildflower Dr, Sutton ($29,900)",
+   "content_text": "Deck/Porch permit in Sutton, MA. Value $29,900. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Deck/Porch",
+   "_value": 29900.0
+  },
+  {
+   "id": "3cbc598ab780647d",
+   "url": "https://masspermits.com/permits/sutton-other",
+   "title": "Other permit \u2014 Mumford Rd, Sutton ($4,769)",
+   "content_text": "Other permit in Sutton, MA. Value $4,769. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Other",
+   "_value": 4769.0
+  },
+  {
+   "id": "9aac122622f86a8f",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Singletary Ave, Sutton ($14,975)",
+   "content_text": "Roofing permit in Sutton, MA. Value $14,975. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 14975.0
+  },
+  {
+   "id": "b2b6cc9017197358",
+   "url": "https://masspermits.com/permits/sutton-roofing",
+   "title": "Roofing permit \u2014 Peach Tree Dr, Sutton ($18,675)",
+   "content_text": "Roofing permit in Sutton, MA. Value $18,675. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Sutton",
+   "_trade": "Roofing",
+   "_value": 18675.0
+  }
+ ]
+}

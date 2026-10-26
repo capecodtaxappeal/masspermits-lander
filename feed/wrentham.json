@@ -1,0 +1,113 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Wrentham, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/wrentham.json",
+ "description": "Recent building permits in Wrentham, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 8,
+ "_window_from": "2026-09-28",
+ "_window_to": "2026-09-29",
+ "items": [
+  {
+   "id": "08c48ca302d2fe0b",
+   "url": "https://masspermits.com/permits/wrentham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Amber Dr, Wrentham ($719,000)",
+   "content_text": "Kitchen/Bath permit in Wrentham, MA. Value $719,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Kitchen/Bath",
+   "_value": 719000.0
+  },
+  {
+   "id": "84a53b783c858374",
+   "url": "https://masspermits.com/permits/wrentham-building",
+   "title": "Building permit \u2014 South St, Wrentham ($14,509)",
+   "content_text": "Building permit in Wrentham, MA. Value $14,509. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Building",
+   "_value": 14508.77
+  },
+  {
+   "id": "69bc56e255245967",
+   "url": "https://masspermits.com/permits/wrentham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Grant Ave, Wrentham ($40,200)",
+   "content_text": "Kitchen/Bath permit in Wrentham, MA. Value $40,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Kitchen/Bath",
+   "_value": 40200.0
+  },
+  {
+   "id": "9fcdc29ead8443f0",
+   "url": "https://masspermits.com/permits/wrentham-roofing",
+   "title": "Roofing permit \u2014 Bennett St, Wrentham ($29,809)",
+   "content_text": "Roofing permit in Wrentham, MA. Value $29,809. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Roofing",
+   "_value": 29809.0
+  },
+  {
+   "id": "143b2394693386ed",
+   "url": "https://masspermits.com/permits/wrentham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Manchester Dr, Wrentham ($36,200)",
+   "content_text": "Windows/Doors/Siding permit in Wrentham, MA. Value $36,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 36200.0
+  },
+  {
+   "id": "f319c55b78eb2903",
+   "url": "https://masspermits.com/permits/wrentham-solar",
+   "title": "Solar permit \u2014 Lealand Peck Dr, Wrentham ($3,500)",
+   "content_text": "Solar permit in Wrentham, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Solar",
+   "_value": 3500.0
+  },
+  {
+   "id": "7d6bc17156095b83",
+   "url": "https://masspermits.com/permits/wrentham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Elysium St, Wrentham ($20,000)",
+   "content_text": "Deck/Porch permit in Wrentham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Deck/Porch",
+   "_value": 20000.0
+  },
+  {
+   "id": "c3478d72f6639c17",
+   "url": "https://masspermits.com/permits/wrentham-building",
+   "title": "Building permit \u2014 Elysium St, Wrentham ($120,000)",
+   "content_text": "Building permit in Wrentham, MA. Value $120,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Wrentham",
+   "_trade": "Building",
+   "_value": 120000.0
+  }
+ ]
+}

@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Hamilton, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Hamilton, MA",
+ "home_page_url": "https://masspermits.com/permits/hamilton",
  "feed_url": "https://masspermits.com/feed/hamilton.json",
- "description": "Recent building permits in Hamilton, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Hamilton, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-19. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,230 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-10-19",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 23,
- "_window_from": "2026-10-05",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-10-19",
- "items": [
-  {
-   "id": "3b8185926262d620",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Echo Cove Rd, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-19T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "54b6e144057ba4e0",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Plumbing permit \u2014 Gardner St, Hamilton",
-   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-16T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "69ee87704f4e3c38",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Roofing permit \u2014 Chebacco Rd, Hamilton",
-   "content_text": "Roofing permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Roofing"
-  },
-  {
-   "id": "d5cc99c42790ca81",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Windows/Doors/Siding permit \u2014 Cutler Rd, Hamilton",
-   "content_text": "Windows/Doors/Siding permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "afe5f6e06dff4e7e",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Bay Rd, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "fc093c92ff004f98",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Windows/Doors/Siding permit \u2014 Bay Rd, Hamilton",
-   "content_text": "Windows/Doors/Siding permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "ae6b2edab866f534",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Roofing permit \u2014 Asbury St, Hamilton",
-   "content_text": "Roofing permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Roofing"
-  },
-  {
-   "id": "27ae51c61ccb924f",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Building permit \u2014 Patton Dr, Hamilton",
-   "content_text": "Building permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Building"
-  },
-  {
-   "id": "39cfeab63106569f",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Building permit \u2014 Bay Rd, Hamilton",
-   "content_text": "Building permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Building"
-  },
-  {
-   "id": "cdaf8417d6a44ad7",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Deck/Porch permit \u2014 Sagamore St, Hamilton",
-   "content_text": "Deck/Porch permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Deck/Porch"
-  },
-  {
-   "id": "ff8a319114ac52e2",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "HVAC permit \u2014 Sharon Rd, Hamilton",
-   "content_text": "HVAC permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "7258a8062ff07cb4",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Building permit \u2014 Alan Rd, Hamilton",
-   "content_text": "Building permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-15T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Building"
-  },
-  {
-   "id": "193c7ecc5d4de749",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Winthrop St, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-14T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "7407bb90f9a85008",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 School St, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-14T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "8a35d763c1ed7d64",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Gas permit \u2014 Patton Dr, Hamilton",
-   "content_text": "Gas permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-14T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Gas"
-  },
-  {
-   "id": "d499760135def11d",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Railroad Av, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-14T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "c31740d70e7a7421",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Plumbing permit \u2014 Railroad Av, Hamilton",
-   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-14T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "4d92a23f3573b0e8",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Sharon Rd, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-13T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "56e5a06f786c179c",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Building permit \u2014 Park St, Hamilton",
-   "content_text": "Building permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-08T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Building"
-  },
-  {
-   "id": "bb8053bfa08489c6",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Asbury St, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-07T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "41a2cf4c80a66b6f",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Honeysuckle Rd, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-06T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "b033520391ef153a",
-   "url": "https://masspermits.com/permits/hamilton-electrical",
-   "title": "Electrical permit \u2014 Linden St, Hamilton",
-   "content_text": "Electrical permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-06T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "be8886dbc8a0347b",
-   "url": "https://masspermits.com/permits/hamilton",
-   "title": "Plumbing permit \u2014 Cutler Rd, Hamilton",
-   "content_text": "Plumbing permit in Hamilton, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-05T00:00:00Z",
-   "_town": "Hamilton",
-   "_trade": "Plumbing"
-  }
- ]
+ "items": []
 }

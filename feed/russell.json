@@ -1,0 +1,123 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Russell, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/russell.json",
+ "description": "Recent building permits in Russell, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 10,
+ "_window_from": "2026-10-06",
+ "_window_to": "2026-10-23",
+ "items": [
+  {
+   "id": "390204b4d941587f",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Roofing permit \u2014 Main St, Russell",
+   "content_text": "Roofing permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "5d01e4c9642ca579",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Solar permit \u2014 Blandford Rd, Russell",
+   "content_text": "Solar permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Solar"
+  },
+  {
+   "id": "a176b496b2cc3d42",
+   "url": "https://masspermits.com/permits/russell-electrical",
+   "title": "Electrical permit \u2014 Huntington Rd, Russell",
+   "content_text": "Electrical permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "00e56e37d9b202d3",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Gas permit \u2014 Westfield Rd, Russell",
+   "content_text": "Gas permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Gas"
+  },
+  {
+   "id": "567199aad5417934",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Solar permit \u2014 Laurel Rd, Russell",
+   "content_text": "Solar permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Solar"
+  },
+  {
+   "id": "8cbe0134ef1ac7e2",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Building permit \u2014 Westwood Dr, Russell",
+   "content_text": "Building permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-18T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Building"
+  },
+  {
+   "id": "68cfcc911cafadad",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Kitchen/Bath permit \u2014 Huntington Rd, Russell",
+   "content_text": "Kitchen/Bath permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-18T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "973bcd212b9dd327",
+   "url": "https://masspermits.com/permits/russell-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pine Hill Rd, Russell",
+   "content_text": "Windows/Doors/Siding permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "0374e3ed16b97757",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Plumbing permit \u2014 Huntington Rd, Russell",
+   "content_text": "Plumbing permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "d8615aadf9465de9",
+   "url": "https://masspermits.com/permits/russell",
+   "title": "Building permit \u2014 Riverview Ter, Russell",
+   "content_text": "Building permit in Russell, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Russell",
+   "_trade": "Building"
+  }
+ ]
+}

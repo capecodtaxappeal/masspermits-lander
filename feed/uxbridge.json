@@ -1,0 +1,573 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Uxbridge, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/uxbridge.json",
+ "description": "Recent building permits in Uxbridge, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 139,
+ "_window_from": "2026-09-28",
+ "_window_to": "2026-10-26",
+ "items": [
+  {
+   "id": "ff6762f501674988",
+   "url": "https://masspermits.com/permits/uxbridge",
+   "title": "Fire/Sprinkler permit \u2014 Campanelli Drive, Uxbridge",
+   "content_text": "Fire/Sprinkler permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "998a63e2e36370c0",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 Linwood St, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "3aafe029255f7d88",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Blackstone St, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "071d3ac1bcb5bc09",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Carrington Ln, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "bb9cb510947bff86",
+   "url": "https://masspermits.com/permits/uxbridge-gas",
+   "title": "Gas permit \u2014 D Crownshield Ave, Uxbridge",
+   "content_text": "Gas permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-25T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "341940210d4d171d",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 D Crownshield Ave, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-25T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "91fae2775a9a07dd",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 Yale Street, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-24T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "11982677ccf735da",
+   "url": "https://masspermits.com/permits/uxbridge-gas",
+   "title": "Gas permit \u2014 Kettle Hill Rd, Uxbridge",
+   "content_text": "Gas permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "26901bf5abb6d29e",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 Hartford Ave East, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "624ad45487fbc1cc",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Johnson Rd, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "904b1df02a4f85de",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 C Crownshield Ave, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "57e036300ef93544",
+   "url": "https://masspermits.com/permits/uxbridge-roofing",
+   "title": "Roofing permit \u2014 Hecla St, Uxbridge",
+   "content_text": "Roofing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "9196ae6333d52868",
+   "url": "https://masspermits.com/permits/uxbridge-roofing",
+   "title": "Roofing permit \u2014 Chocolog Rd, Uxbridge",
+   "content_text": "Roofing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "0b29ce9b6ed5e9b8",
+   "url": "https://masspermits.com/permits/uxbridge-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Susan Pkwy, Uxbridge",
+   "content_text": "Windows/Doors/Siding permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "a9a74564f96b2af4",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 S Main St, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3691e1eb490d7556",
+   "url": "https://masspermits.com/permits/uxbridge-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 C Crownshield Ave, Uxbridge",
+   "content_text": "Kitchen/Bath permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "8dd529dc505bf1fb",
+   "url": "https://masspermits.com/permits/uxbridge-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 D Crownshield Ave, Uxbridge",
+   "content_text": "Kitchen/Bath permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "ec6f3eb11cd24c77",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Waucantuck Drive, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f8044eba749ba80e",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 Rogerson Crossing, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "08957ddecb04d616",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 Kettle Hill Rd, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "aa2adf53d51b7d92",
+   "url": "https://masspermits.com/permits/uxbridge-gas",
+   "title": "Gas permit \u2014 Crownshield Ave C, Uxbridge",
+   "content_text": "Gas permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "950884f353a5213f",
+   "url": "https://masspermits.com/permits/uxbridge-other",
+   "title": "Other permit \u2014 Rogerson Crossing, Uxbridge",
+   "content_text": "Other permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Other"
+  },
+  {
+   "id": "d22f2b681be06300",
+   "url": "https://masspermits.com/permits/uxbridge-other",
+   "title": "Other permit \u2014 N Main Street, Uxbridge",
+   "content_text": "Other permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Other"
+  },
+  {
+   "id": "08495c6f13e3c1f7",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 D Crownshield Ave, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "be6ded4c4d0f8379",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 Eber Taft Rd, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "b0a11ead4b161b7a",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 C Crownshield Ave, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "e37bd499a8a77162",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 B Crownshield Ave, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "092b870a92606881",
+   "url": "https://masspermits.com/permits/uxbridge-solar",
+   "title": "Solar permit \u2014 Lake Street, Uxbridge",
+   "content_text": "Solar permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Solar"
+  },
+  {
+   "id": "f1384ffe93006511",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 Harvest Rd, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "8312a96e92c75ba0",
+   "url": "https://masspermits.com/permits/uxbridge-other",
+   "title": "Other permit \u2014 Country Squire Rd, Uxbridge",
+   "content_text": "Other permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Other"
+  },
+  {
+   "id": "fc0069d27b79c8da",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 West St, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "59ca16a9ee6af7b8",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 Quaker Highway, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "361915af5219d59c",
+   "url": "https://masspermits.com/permits/uxbridge",
+   "title": "Demolition permit \u2014 Rivulet Street, Uxbridge",
+   "content_text": "Demolition permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Demolition"
+  },
+  {
+   "id": "1853961a7463dffd",
+   "url": "https://masspermits.com/permits/uxbridge-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Seagrave Street, Uxbridge",
+   "content_text": "Windows/Doors/Siding permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "3677d68d9187fb95",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 Hartford Ave West, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "594c9ee54e1fd336",
+   "url": "https://masspermits.com/permits/uxbridge-other",
+   "title": "Other permit \u2014 Aldrich St, Uxbridge",
+   "content_text": "Other permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Other"
+  },
+  {
+   "id": "ea5c1df2b8d0268c",
+   "url": "https://masspermits.com/permits/uxbridge-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Garden St, Uxbridge",
+   "content_text": "Windows/Doors/Siding permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "ade724797d598873",
+   "url": "https://masspermits.com/permits/uxbridge-roofing",
+   "title": "Roofing permit \u2014 Mendon Street, Uxbridge",
+   "content_text": "Roofing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "9e4ceb0b47c99bec",
+   "url": "https://masspermits.com/permits/uxbridge-roofing",
+   "title": "Roofing permit \u2014 South Main Street, Uxbridge",
+   "content_text": "Roofing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "38786fbb3609a82d",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Elm Street, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "8c4a224a84d515ad",
+   "url": "https://masspermits.com/permits/uxbridge-roofing",
+   "title": "Roofing permit \u2014 Seagrave Street, Uxbridge",
+   "content_text": "Roofing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "36de35ef7f24bd4f",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Oak St, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "4d53f3216c7eff60",
+   "url": "https://masspermits.com/permits/uxbridge-pool-spa",
+   "title": "Pool/Spa permit \u2014 High St, Uxbridge",
+   "content_text": "Pool/Spa permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Pool/Spa"
+  },
+  {
+   "id": "d45dfa2f1d587c53",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 S Main St, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "32c821e2c168346e",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Hartford Ave East, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "f79a775400373933",
+   "url": "https://masspermits.com/permits/uxbridge-solar",
+   "title": "Solar permit \u2014 Hartford Avenue East, Uxbridge",
+   "content_text": "Solar permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Solar"
+  },
+  {
+   "id": "821104287b3956e8",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 B Crownshield Ave, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "21eae0410b18dd14",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 D Crownshield Ave, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "8299edeeb87153f2",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Taft Hill Ln, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "041a104e6b32ee80",
+   "url": "https://masspermits.com/permits/uxbridge-gas",
+   "title": "Gas permit \u2014 Elizabeth St, Uxbridge",
+   "content_text": "Gas permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "dbc77e1d2d9471fb",
+   "url": "https://masspermits.com/permits/uxbridge-gas",
+   "title": "Gas permit \u2014 Chamberlain Rd, Uxbridge",
+   "content_text": "Gas permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Gas"
+  },
+  {
+   "id": "49dbc22aca75d50a",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 Chamberlain Road, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "94b7accf80efe73d",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 Summerfield Drive, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "9717111acc49739b",
+   "url": "https://masspermits.com/permits/uxbridge-plumbing",
+   "title": "Plumbing permit \u2014 St Andre Dr, Uxbridge",
+   "content_text": "Plumbing permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "091d0c6d310285f6",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Rockmeadow Rd Ext, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "fea647063867a7bb",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Longmeadow Rd, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "dd1955797fe9089d",
+   "url": "https://masspermits.com/permits/uxbridge-hvac",
+   "title": "HVAC permit \u2014 Douglas St, Uxbridge",
+   "content_text": "HVAC permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "7eed3001b1a4a8b0",
+   "url": "https://masspermits.com/permits/uxbridge-electrical",
+   "title": "Electrical permit \u2014 Richardson St, Uxbridge",
+   "content_text": "Electrical permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "cfff281571893589",
+   "url": "https://masspermits.com/permits/uxbridge-solar",
+   "title": "Solar permit \u2014 Blackstone St, Uxbridge",
+   "content_text": "Solar permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Solar"
+  },
+  {
+   "id": "90d6e15673190cee",
+   "url": "https://masspermits.com/permits/uxbridge-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Rogerson Crossing, Uxbridge",
+   "content_text": "Renovation/Remodel permit in Uxbridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Uxbridge",
+   "_trade": "Renovation/Remodel"
+  }
+ ]
+}

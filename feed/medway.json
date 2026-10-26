@@ -1,0 +1,534 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Medway, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/medway.json",
+ "description": "Recent building permits in Medway, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 51,
+ "_window_from": "2026-09-28",
+ "_window_to": "2026-10-13",
+ "items": [
+  {
+   "id": "389eaca82d356268",
+   "url": "https://masspermits.com/permits/medway-building",
+   "title": "Building permit \u2014 Main St, Medway ($17,500)",
+   "content_text": "Building permit in Medway, MA. Value $17,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Building",
+   "_value": 17500.0
+  },
+  {
+   "id": "9d10ed87c16daa13",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Deerfield Rd, Medway ($350)",
+   "content_text": "Electrical permit in Medway, MA. Value $350. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 350.0
+  },
+  {
+   "id": "6837b3a1f1c68acd",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Main St, Medway ($500)",
+   "content_text": "Electrical permit in Medway, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 500.0
+  },
+  {
+   "id": "7f06d72c1ef0b510",
+   "url": "https://masspermits.com/permits/medway-gas",
+   "title": "Gas permit \u2014 Coffee St, Medway",
+   "content_text": "Gas permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Gas"
+  },
+  {
+   "id": "8e4a1b340481f6ad",
+   "url": "https://masspermits.com/permits/medway-gas",
+   "title": "Gas permit \u2014 Applegate Rd, Medway ($4,500)",
+   "content_text": "Gas permit in Medway, MA. Value $4,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Gas",
+   "_value": 4500.0
+  },
+  {
+   "id": "c97f97540294ec0b",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Bullard Cir, Medway ($25,500)",
+   "content_text": "HVAC permit in Medway, MA. Value $25,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 25500.0
+  },
+  {
+   "id": "824bef585b0b0aa1",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Oakview Cir, Medway ($675)",
+   "content_text": "Plumbing permit in Medway, MA. Value $675. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 675.0
+  },
+  {
+   "id": "bd03dc1684e715a2",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Paddock Ln, Medway ($7,000)",
+   "content_text": "Plumbing permit in Medway, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 7000.0
+  },
+  {
+   "id": "bf97b968161e9e1e",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Applegate Rd, Medway ($4,900)",
+   "content_text": "Electrical permit in Medway, MA. Value $4,900. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 4900.0
+  },
+  {
+   "id": "cdff79388ab8db6e",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Sun Valley Dr, Medway ($8,000)",
+   "content_text": "Electrical permit in Medway, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 8000.0
+  },
+  {
+   "id": "9a81ed145c6d11be",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Hemlock Dr, Medway",
+   "content_text": "HVAC permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "12c83b4b35745398",
+   "url": "https://masspermits.com/permits/medway-solar",
+   "title": "Solar permit \u2014 Chestnut St, Medway ($57,590)",
+   "content_text": "Solar permit in Medway, MA. Value $57,590. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Solar",
+   "_value": 57590.0
+  },
+  {
+   "id": "3c6465cf21c3b05b",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Broad Acres Farm Rd, Medway ($2,000)",
+   "content_text": "Electrical permit in Medway, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 2000.0
+  },
+  {
+   "id": "8de94ac6ad9888fc",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Summer Hill Rd, Medway ($1,000)",
+   "content_text": "HVAC permit in Medway, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 1000.0
+  },
+  {
+   "id": "128c4424743f4c91",
+   "url": "https://masspermits.com/permits/medway-gas",
+   "title": "Gas permit \u2014 Lilly St, Medway ($1,652)",
+   "content_text": "Gas permit in Medway, MA. Value $1,652. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Gas",
+   "_value": 1652.0
+  },
+  {
+   "id": "1c24aaeabe3702cf",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Malloy St, Medway ($10,000)",
+   "content_text": "HVAC permit in Medway, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 10000.0
+  },
+  {
+   "id": "b8c194952c0b339a",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Dover Ln, Medway ($10,000)",
+   "content_text": "Plumbing permit in Medway, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 10000.0
+  },
+  {
+   "id": "279aae9a4e605b93",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Main St, Medway ($2,400)",
+   "content_text": "Plumbing permit in Medway, MA. Value $2,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 2400.0
+  },
+  {
+   "id": "700726482b706513",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Tulip Way, Medway ($900)",
+   "content_text": "Plumbing permit in Medway, MA. Value $900. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 900.0
+  },
+  {
+   "id": "a71cc3594ba2a3e4",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Candlewood Dr, Medway ($675)",
+   "content_text": "Plumbing permit in Medway, MA. Value $675. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 675.0
+  },
+  {
+   "id": "896fa6bee98e31b5",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Dean St, Medway",
+   "content_text": "HVAC permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "9a6ccf071e1a6392",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Buttercup Ln, Medway",
+   "content_text": "HVAC permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "56fd12a6790712d4",
+   "url": "https://masspermits.com/permits/medway-fire-sprinkler",
+   "title": "Fire/Sprinkler permit \u2014 Alder St, Medway",
+   "content_text": "Fire/Sprinkler permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "296131c7dea5aacf",
+   "url": "https://masspermits.com/permits/medway-gas",
+   "title": "Gas permit \u2014 Memory Ln, Medway",
+   "content_text": "Gas permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Gas"
+  },
+  {
+   "id": "9b4208234e74875b",
+   "url": "https://masspermits.com/permits/medway-new-construction",
+   "title": "New Construction permit \u2014 Mockingbird Ln, Medway ($30,000)",
+   "content_text": "New Construction permit in Medway, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "New Construction",
+   "_value": 30000.0
+  },
+  {
+   "id": "352593d55c546855",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Milford St, Medway ($500)",
+   "content_text": "Electrical permit in Medway, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 500.0
+  },
+  {
+   "id": "43b3ec9b955b78c1",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Ellis St, Medway ($7,000)",
+   "content_text": "Electrical permit in Medway, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 7000.0
+  },
+  {
+   "id": "c3c6692ae1b677f9",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Fisher St, Medway ($2,000)",
+   "content_text": "Electrical permit in Medway, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 2000.0
+  },
+  {
+   "id": "bf713946873cade3",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Curtis Ln, Medway ($5,500)",
+   "content_text": "Electrical permit in Medway, MA. Value $5,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 5500.0
+  },
+  {
+   "id": "29ac197a6a520266",
+   "url": "https://masspermits.com/permits/medway-fire-sprinkler",
+   "title": "Fire/Sprinkler permit \u2014 High St, Medway",
+   "content_text": "Fire/Sprinkler permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "2867946d5d528463",
+   "url": "https://masspermits.com/permits/medway-gas",
+   "title": "Gas permit \u2014 Main St, Medway ($1,500)",
+   "content_text": "Gas permit in Medway, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Gas",
+   "_value": 1500.0
+  },
+  {
+   "id": "01bfc1a6241fb629",
+   "url": "https://masspermits.com/permits/medway-gas",
+   "title": "Gas permit \u2014 Winthrop St, Medway ($3,000)",
+   "content_text": "Gas permit in Medway, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Gas",
+   "_value": 3000.0
+  },
+  {
+   "id": "83acc33654ef8c7f",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Winthrop St, Medway ($8,000)",
+   "content_text": "Plumbing permit in Medway, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 8000.0
+  },
+  {
+   "id": "2e965cab121efa13",
+   "url": "https://masspermits.com/permits/medway",
+   "title": "Demolition permit \u2014 Village St, Medway ($8,400)",
+   "content_text": "Demolition permit in Medway, MA. Value $8,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Demolition",
+   "_value": 8400.0
+  },
+  {
+   "id": "446172e67c9a9798",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Walnut Ln, Medway ($2,500)",
+   "content_text": "HVAC permit in Medway, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 2500.0
+  },
+  {
+   "id": "92dcfc8ee9a9d2cc",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Holliston St, Medway ($2,300)",
+   "content_text": "Plumbing permit in Medway, MA. Value $2,300. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 2300.0
+  },
+  {
+   "id": "d92123eb38bb8302",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Fairway Ln, Medway ($7,500)",
+   "content_text": "Plumbing permit in Medway, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 7500.0
+  },
+  {
+   "id": "77aeb25179b6abf9",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Cottage St, Medway",
+   "content_text": "Plumbing permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "a0c27b2eb1474228",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Granite St, Medway ($7,500)",
+   "content_text": "Electrical permit in Medway, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 7500.0
+  },
+  {
+   "id": "970f454361119748",
+   "url": "https://masspermits.com/permits/medway-solar",
+   "title": "Solar permit \u2014 Franklin St, Medway ($50,081)",
+   "content_text": "Solar permit in Medway, MA. Value $50,081. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Solar",
+   "_value": 50081.0
+  },
+  {
+   "id": "ffa945c3f4b269bd",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Waterview Dr, Medway ($3,500)",
+   "content_text": "HVAC permit in Medway, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 3500.0
+  },
+  {
+   "id": "2f1824dbfc7e5885",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Curtis Ln, Medway ($10,000)",
+   "content_text": "Plumbing permit in Medway, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 10000.0
+  },
+  {
+   "id": "fd8e61ec7b645531",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Coffee St, Medway ($3,000)",
+   "content_text": "Electrical permit in Medway, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 3000.0
+  },
+  {
+   "id": "9a51c3006263e66e",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Ohlson Cir, Medway ($1,800)",
+   "content_text": "Electrical permit in Medway, MA. Value $1,800. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 1800.0
+  },
+  {
+   "id": "8ff15dc5918f359a",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Sun Valley Dr, Medway ($600)",
+   "content_text": "HVAC permit in Medway, MA. Value $600. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 600.0
+  },
+  {
+   "id": "cc1ffa9aaad8e166",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Broad Acres Farm Rd, Medway ($2,900)",
+   "content_text": "Plumbing permit in Medway, MA. Value $2,900. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing",
+   "_value": 2900.0
+  },
+  {
+   "id": "014392b44de9c62b",
+   "url": "https://masspermits.com/permits/medway-plumbing",
+   "title": "Plumbing permit \u2014 Village St, Medway",
+   "content_text": "Plumbing permit in Medway, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-29T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "70a570f5f41fedf4",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Patriot Way, Medway ($65,000)",
+   "content_text": "Electrical permit in Medway, MA. Value $65,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 65000.0
+  },
+  {
+   "id": "1e00cff43bd92199",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Millstone Dr, Medway ($500)",
+   "content_text": "HVAC permit in Medway, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 500.0
+  },
+  {
+   "id": "70aea82789db14e2",
+   "url": "https://masspermits.com/permits/medway-electrical",
+   "title": "Electrical permit \u2014 Highland St, Medway ($5,400)",
+   "content_text": "Electrical permit in Medway, MA. Value $5,400. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "Electrical",
+   "_value": 5400.0
+  },
+  {
+   "id": "90d1aa6d78dd4619",
+   "url": "https://masspermits.com/permits/medway-hvac",
+   "title": "HVAC permit \u2014 Lilly St, Medway ($5,000)",
+   "content_text": "HVAC permit in Medway, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-28T00:00:00Z",
+   "_town": "Medway",
+   "_trade": "HVAC",
+   "_value": 5000.0
+  }
+ ]
+}

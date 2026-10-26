@@ -2,7 +2,7 @@
 
 > MassPermits turns Massachusetts building-permit records into ready-to-work leads for contractors.
 > Each lead includes the full address and project type, plus the permit holder and declared value where the town lists them, organized
-> by trade and town. Coverage: 93 towns and neighbourhoods across Cape Cod & Islands, Greater Boston, South Shore & South Coast, MetroWest & 495, North Shore & Merrimack, Central MA and Western MA (80597+ recent permits), drawn from 77 municipal permit sources.
+> by trade and town. Coverage: 103 towns and neighbourhoods across Cape Cod & Islands, Greater Boston, South Shore & South Coast, MetroWest & 495, North Shore & Merrimack, Central MA and Western MA (83443+ recent permits), drawn from 88 municipal permit sources.
 > Massachusetts has 351 municipalities: this is a partial, named subset, itemised source by source
 > at https://masspermits.com/research/coverage.
 
@@ -13,7 +13,6 @@
 ## Research (original analysis, method published)
 - Research index: https://masspermits.com/research/
 - The Friday gap in Massachusetts permit records: https://masspermits.com/research/friday-permit-gap
-- Heat-pump share of heating permits, in the towns whose records can answer: https://masspermits.com/research/heat-pump-share
 - Accessory dwelling units, and why the apparent boom is not real: https://masspermits.com/research/adu-permits
 - What permit follows what at the same address, and how long after: https://masspermits.com/research/permit-sequence
 - Coverage: what each municipal source publishes and what it omits: https://masspermits.com/research/coverage
@@ -31,8 +30,8 @@
 - Building permits in Falmouth, MA: https://masspermits.com/permits/falmouth
 - Building permits in Attleboro, MA: https://masspermits.com/permits/attleboro
 - Building permits in Mashpee, MA: https://masspermits.com/permits/mashpee
-- Building permits in Taunton, MA: https://masspermits.com/permits/taunton
 - Building permits in Braintree, MA: https://masspermits.com/permits/braintree
+- Building permits in Bourne, MA: https://masspermits.com/permits/bourne
 - Building permits in Chicopee, MA: https://masspermits.com/permits/chicopee
 
 ## Leads by trade (Massachusetts)
@@ -72,6 +71,6 @@
 - Coverage — what each source publishes and what it omits: https://masspermits.com/research/coverage
 - Corrections and analyses we killed: https://masspermits.com/research/corrections
 - Figures behind each research page, as JSON: https://masspermits.com/research/evidence/<slug>.json
-- Data as of: 2026-10-19 (newest permit in the corpus behind this build; not the build date).
-- Scope of this snapshot: 80597 permits, drawn from 77 municipal permit sources, across 93 towns and neighbourhoods. Massachusetts has 351 municipalities; we do not cover most of them, and https://masspermits.com/research/coverage says exactly which and what each one omits.
+- Data as of: 2026-10-26 (newest permit in the corpus behind this build; not the build date).
+- Scope of this snapshot: 83443 permits, drawn from 88 municipal permit sources, across 103 towns and neighbourhoods. Massachusetts has 351 municipalities; we do not cover most of them, and https://masspermits.com/research/coverage says exactly which and what each one omits.
 - Suggested form: MassPermits. "<page title>". Updated <dateModified from the page's JSON-LD>. <page URL>.

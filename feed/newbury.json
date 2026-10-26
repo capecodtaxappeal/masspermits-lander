@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Newbury, MA",
- "home_page_url": "https://masspermits.com/permits/newbury",
+ "title": "MassPermits \u2014 building permits in Newbury, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/newbury.json",
- "description": "MassPermits no longer receives building-permit records for Newbury, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-15. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Newbury, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,176 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-10-15",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-10-15",
- "items": []
+ "_window_total": 17,
+ "_window_from": "2026-10-19",
+ "_window_to": "2026-10-26",
+ "items": [
+  {
+   "id": "4dba504a7553be88",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Windows/Doors/Siding permit \u2014 Exeter Wy, Newbury",
+   "content_text": "Windows/Doors/Siding permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "4f4c1fc11d3d017c",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Building permit \u2014 Greentree Ln, Newbury",
+   "content_text": "Building permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Building"
+  },
+  {
+   "id": "14127cff41f03202",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Deck/Porch permit \u2014 Smith St, Newbury",
+   "content_text": "Deck/Porch permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Deck/Porch"
+  },
+  {
+   "id": "f5d329a4a6421e7c",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Plumbing permit \u2014 Cinder Av, Newbury",
+   "content_text": "Plumbing permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "e681d6bb20a6eb71",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Electrical permit \u2014 Cricket Lane, Newbury",
+   "content_text": "Electrical permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b97aca3e4401d938",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Gas permit \u2014 Boston Rd, Newbury",
+   "content_text": "Gas permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Gas"
+  },
+  {
+   "id": "14b0470c28760e87",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Roofing permit \u2014 Elm St, Newbury",
+   "content_text": "Roofing permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "2ff44737b9c66a82",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Electrical permit \u2014 Adams Ln, Newbury",
+   "content_text": "Electrical permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "121353f37dc39dd6",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Roofing permit \u2014 Courser Brook Dr, Newbury",
+   "content_text": "Roofing permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "5d78bdba788cbc70",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "HVAC permit \u2014 St, Newbury",
+   "content_text": "HVAC permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "3c7d6523ac3bb7bf",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "HVAC permit \u2014 Main St, Newbury",
+   "content_text": "HVAC permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "06448912892e39d6",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Electrical permit \u2014 Gadsden Lane, Newbury",
+   "content_text": "Electrical permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "eb860b6ba6066a09",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Gas permit \u2014 Elm St, Newbury",
+   "content_text": "Gas permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Gas"
+  },
+  {
+   "id": "811700cb5b0edd79",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Electrical permit \u2014 Withington St, Newbury",
+   "content_text": "Electrical permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "cd1ef304bcdd1da5",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Roofing permit \u2014 St, Newbury",
+   "content_text": "Roofing permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "2e388b3a6290a2d3",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Electrical permit \u2014 Middle Rd, Newbury",
+   "content_text": "Electrical permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "3ff6bd831aef45cb",
+   "url": "https://masspermits.com/permits/newbury",
+   "title": "Other permit \u2014 School St, Newbury",
+   "content_text": "Other permit in Newbury, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Newbury",
+   "_trade": "Other"
+  }
+ ]
 }
