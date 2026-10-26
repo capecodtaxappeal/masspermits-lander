@@ -143,6 +143,10 @@ test("weekly-refresh.yml: the two carry steps sit where the design says, and nev
     assert.ok(!/always\(\)/.test(s.run));
   }
   assert.match(steps[fetchI].run, /get-object\?key=carry-store\.json\.gz/);
+  // "ok" only for a 200 that IS the store: gzip magic bytes and the gzip content type
+  // (review fix: an HTML 200 must read as unavailable, never as a corrupt store)
+  assert.match(steps[fetchI].run, /\[ "\$magic" = "1f8b" \] && \[ "\$\{ctype%%;\*\}" = "application\/gzip" \]/);
+  assert.ok(!/echo[^\n]*\$magic/.test(steps[fetchI].run), "the magic bytes are never echoed");
   assert.match(steps[carryI].run, /upload-bundle\?key=carry-store\.json\.gz/);
   assert.match(steps[carryI].run, /--data-binary @carry-store\.out\.json\.gz/);
   // the uploaded file is the engine's OUT file, never the downloaded one

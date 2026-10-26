@@ -1082,10 +1082,12 @@ jobs:
       # bundles only; see carry_forward.py in the engine). It is the same class
       # of data as latest-monthly.zip: NEVER print it, cat it or upload it
       # anywhere else. This step only saves the bytes to a file and writes ONE
-      # word to carry-store.state: ok (HTTP 200), absent (404, the first run) or
-      # unavailable (anything else). On unavailable the engine carries nothing
-      # AND writes no new store, so a store in R2 can never be overwritten after
-      # a failed read. An engine older than round 8 ignores both files.
+      # word to carry-store.state: ok (HTTP 200 served as application/gzip whose
+      # body starts with the gzip magic bytes 1f 8b), absent (404, the first run)
+      # or unavailable (anything else, including a 200 that is not the store, such
+      # as an HTML interstitial). On unavailable the engine carries nothing AND
+      # writes no new store, so a store in R2 can never be overwritten after a
+      # failed or wrong read. An engine older than round 8 ignores both files.
       # continue-on-error and no retry: a missing store only means no carry.
       - name: Fetch carry-forward store (private; never printed)
         continue-on-error: true
@@ -1093,20 +1095,27 @@ jobs:
           rm -f carry-store.json.gz carry-store.state carry-store.part
           OIDC=$(curl -fsS --max-time 30 -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r '.value // empty') || OIDC=""
-          code=000
+          code=000; ctype=""; note=""
           if [ -n "$OIDC" ]; then
-            code=$(curl -sS --max-time 120 -o carry-store.part -w '%{http_code}' \
+            meta=$(curl -sS --max-time 120 -o carry-store.part -w '%{http_code} %{content_type}' \
               -H "Authorization: Bearer $OIDC" \
-              "https://masspermits.com/api/get-object?key=carry-store.json.gz") || code=000
+              "https://masspermits.com/api/get-object?key=carry-store.json.gz") || meta=000
+            code=${meta%% *}; ctype=""; [ "$meta" != "$code" ] && ctype=${meta#* }
           fi
+          # Two bytes, compared in a variable and never echoed.
+          magic=""; [ -s carry-store.part ] && magic=$(head -c 2 carry-store.part | od -An -tx1 | tr -d ' \n')
           case "$code" in
-            200) { mv carry-store.part carry-store.json.gz && echo ok > carry-store.state; } || echo unavailable > carry-store.state ;;
+            200) if [ "$magic" = "1f8b" ] && [ "${ctype%%;*}" = "application/gzip" ]; then
+                   { mv carry-store.part carry-store.json.gz && echo ok > carry-store.state; } || echo unavailable > carry-store.state
+                 else
+                   echo unavailable > carry-store.state; note=", not the gzip store"
+                 fi ;;
             404) echo absent > carry-store.state ;;
             *)   echo unavailable > carry-store.state ;;
           esac
           rm -f carry-store.part
           bytes=0; [ -f carry-store.json.gz ] && bytes=$(wc -c < carry-store.json.gz)
-          echo "carry store: $(cat carry-store.state) (HTTP $code, $bytes bytes)"
+          echo "carry store: $(cat carry-store.state) (HTTP $code$note, $bytes bytes)"
 
       - name: Scrape, quality-gate, build bundles
         run: |
