@@ -922,12 +922,15 @@ concurrency:
 
 jobs:
   refresh:
-    runs-on: ubuntu-latest
-    # Raised 45 -> 90 (refresh-budget BUDGET_MEMO, 2026-09-25). A job killed
-    # here ships NO bundle: "Ship bundles to R2" has no always(). Projected
-    # with Kit A: 30.0-43.6 min; with Orleans' document scan at its
-    # 400-id cap, up to 52.1. The timeout only caps; a normal run is unchanged.
-    timeout-minutes: 90
+    # Pinned 2026-10-26. ubuntu-latest began moving to Ubuntu 26 on 10-19
+    # (actions/runner-images#14748). Runs went from 29-41 min to 87-88 min,
+    # and four refreshes (10-22, 10-23, 10-26 x2) were killed at 90 with no
+    # bundle shipped. 24.04 is the image every good run before 10-19 used.
+    runs-on: ubuntu-24.04
+    # Raised 45 -> 90 (refresh-budget BUDGET_MEMO, 2026-09-25), then 90 -> 180
+    # (2026-10-26). A job killed here ships NO bundle: "Ship bundles to R2"
+    # has no always(). The timeout only caps; a normal run is unchanged.
+    timeout-minutes: 180
     steps:
       - name: Fetch scraper engine (OIDC — engine is not in this repo)
         run: |
