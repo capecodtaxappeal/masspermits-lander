@@ -123,14 +123,17 @@ test("a later branch that edits a money-path file does not fail the PR #7 guard"
   }
 });
 
+// The pinned lists below changed ONCE since this test was written: on 2026-10-26
+// Patrick decided to add exactly one key, "carry-store.json.gz" (engine round 8,
+// the carry-forward store), to both. Any other change still fails here.
 test("get-object READABLE and upload-bundle ALLOWED_KEYS are exactly as before", () => {
   const readable = read("functions/api/get-object.js").match(/const READABLE = new Set\(\[([\s\S]*?)\]\)/)[1];
   assert.deepEqual([...readable.matchAll(/"([^"]+)"/g)].map((m) => m[1]),
-    ["cold-queue.json", "cold-state.json", "suppression.json", "source-health.json"]);
+    ["cold-queue.json", "cold-state.json", "suppression.json", "source-health.json", "carry-store.json.gz"]);
   const allowed = read("functions/api/upload-bundle.js").match(/const ALLOWED_KEYS = \{([\s\S]*?)\n\};/)[1];
   assert.deepEqual([...allowed.matchAll(/^\s*"([^"]+)":/gm)].map((m) => m[1]),
     ["latest-monthly.zip", "latest-weekly.zip", "latest-sample.zip", "refresh-status.json", "run-log.txt",
-      "cold-state.json", "cold-log.txt", "source-health.json", "latest-weekly.html"]);
+      "cold-state.json", "cold-log.txt", "source-health.json", "latest-weekly.html", "carry-store.json.gz"]);
 });
 
 test("the new code reaches the bucket only through _manual_store.js, never lists, never logs", () => {

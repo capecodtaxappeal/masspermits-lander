@@ -1049,7 +1049,9 @@ jobs:
           # a run immediately (see the paths-filtered push trigger) -- so on the
           # first deploy the tarball legitimately does not have it yet. Promote
           # it into the hard list above once a run reports it present.
-          for f in source_health.py bundle_manifest.py; do
+          # carry_forward.py (engine round 8) joins this tier: without it the
+          # engine carries nothing and writes no carry store, exactly as before.
+          for f in source_health.py bundle_manifest.py carry_forward.py; do
             [ -f "$f" ] || echo "::warning::engine is missing $f -- observability degraded this run (see OPERATIONS.md 5.9)"
           done
 
@@ -1070,6 +1072,41 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      # ---- CARRY-FORWARD STORE, read (engine round 8, 2026-10-26) -------------
+      # carry-store.json.gz is the ONE private key Patrick approved on 2026-10-26
+      # (get-object.js READABLE and upload-bundle.js ALLOWED_KEYS each gained
+      # exactly this key, both pinned to this workflow). Per town it holds the
+      # PAID rows of that town's last good pull, so a town that errors later in
+      # the week keeps shipping the latest permits we pulled from it (paid
+      # bundles only; see carry_forward.py in the engine). It is the same class
+      # of data as latest-monthly.zip: NEVER print it, cat it or upload it
+      # anywhere else. This step only saves the bytes to a file and writes ONE
+      # word to carry-store.state: ok (HTTP 200), absent (404, the first run) or
+      # unavailable (anything else). On unavailable the engine carries nothing
+      # AND writes no new store, so a store in R2 can never be overwritten after
+      # a failed read. An engine older than round 8 ignores both files.
+      # continue-on-error and no retry: a missing store only means no carry.
+      - name: Fetch carry-forward store (private; never printed)
+        continue-on-error: true
+        run: |
+          rm -f carry-store.json.gz carry-store.state carry-store.part
+          OIDC=$(curl -fsS --max-time 30 -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r '.value // empty') || OIDC=""
+          code=000
+          if [ -n "$OIDC" ]; then
+            code=$(curl -sS --max-time 120 -o carry-store.part -w '%{http_code}' \
+              -H "Authorization: Bearer $OIDC" \
+              "https://masspermits.com/api/get-object?key=carry-store.json.gz") || code=000
+          fi
+          case "$code" in
+            200) { mv carry-store.part carry-store.json.gz && echo ok > carry-store.state; } || echo unavailable > carry-store.state ;;
+            404) echo absent > carry-store.state ;;
+            *)   echo unavailable > carry-store.state ;;
+          esac
+          rm -f carry-store.part
+          bytes=0; [ -f carry-store.json.gz ] && bytes=$(wc -c < carry-store.json.gz)
+          echo "carry store: $(cat carry-store.state) (HTTP $code, $bytes bytes)"
 
       - name: Scrape, quality-gate, build bundles
         run: |
@@ -1101,6 +1138,34 @@ jobs:
           fi
           up "$(ls -t data/bundles/MassPermits-*-MONTHLY.zip | head -1)" latest-monthly.zip application/zip
           up "$(ls -t data/bundles/MassPermits-*-SAMPLE.zip  | head -1)" latest-sample.zip  application/zip
+
+      # ---- CARRY-FORWARD STORE, write (engine round 8) -----------------------
+      # The engine writes carry-store.out.json.gz only after the bundles are
+      # built, only when it knew what R2 held (store ok, absent or unreadable),
+      # and only after re-reading it. No file = nothing to ship = R2 keeps the
+      # previous store. Default if (success()): it never runs after a failed
+      # build or bundle upload. continue-on-error: the customers' bundles are
+      # already in R2; a store that did not land only means the next run reads
+      # the previous one. Never printed: curl reads the file, the receipt goes
+      # to put.carry, and only the byte count is echoed.
+      - name: Ship carry-forward store (private; never printed)
+        continue-on-error: true
+        run: |
+          if [ ! -s carry-store.out.json.gz ]; then
+            echo "engine wrote no carry store this run - R2 keeps the previous one"
+            exit 0
+          fi
+          OIDC=$(curl -fsS --max-time 30 -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=masspermits-cron" | jq -r '.value // empty') || OIDC=""
+          if [ -n "$OIDC" ] && curl -fsS --max-time 120 -o put.carry -X PUT \
+              -H "Authorization: Bearer $OIDC" -H "Content-Type: application/gzip" \
+              --data-binary @carry-store.out.json.gz \
+              "https://masspermits.com/api/upload-bundle?key=carry-store.json.gz"; then
+            echo "  shipped carry-store.json.gz ($(wc -c < carry-store.out.json.gz) bytes)"
+          else
+            echo "::warning::carry store did not upload; R2 keeps the previous one"
+          fi
+          rm -f put.carry
 
       # ---- BUNDLE FINGERPRINT ------------------------------------------
       # THE ONE FACT NOTHING IN THIS PIPELINE HAS EVER RECORDED: whether the

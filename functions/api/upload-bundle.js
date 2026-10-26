@@ -44,7 +44,20 @@ const ALLOWED_KEYS = {
   // amber past a 15-minute gap. That check only works while this object is
   // shipped by an `up` line immediately next to the WEEKLY zip's.
   "latest-weekly.html": "text/html",
+  // carry-store.json.gz (2026-10-26, engine round 8):
+  // PATRICK'S EXPLICIT DECISION, the ONE key added for the carry-forward
+  // fail-safe. Per town, the paid rows of its last good pull (gzipped JSON,
+  // ~1.5-3 MB, the same class of data as latest-monthly.zip), written by
+  // weekly-refresh.yml after the bundles ship and read back by it through
+  // get-object.js at the start of the next run. Writable ONLY from
+  // weekly-refresh.yml on main (the workflow pin below), so no other workflow
+  // can plant rows in it. The 25 MB cap below is unchanged; the engine refuses
+  // to write more than 20 MB.
+  "carry-store.json.gz": "application/gzip",
 };
+const CARRY_KEY = "carry-store.json.gz";
+const CARRY_WORKFLOW_REF =
+  "capecodtaxappeal/masspermits-lander/.github/workflows/weekly-refresh.yml@refs/heads/main";
 // STILL EXCLUDED, deliberately and permanently: subscribers.json,
 // cold-queue.json, suppression.json, the engine tarball. A valid OIDC
 // caller must not be able to replace the subscriber list.
@@ -60,6 +73,13 @@ export async function onRequest(context) {
 
   const key = new URL(request.url).searchParams.get("key") || "";
   if (!(key in ALLOWED_KEYS)) return json({ error: "key not allowed" }, 400);
+  if (key === CARRY_KEY) {
+    const p = auth.payload || {};
+    if (p.workflow_ref !== CARRY_WORKFLOW_REF
+        || (p.job_workflow_ref !== undefined && p.job_workflow_ref !== CARRY_WORKFLOW_REF)) {
+      return json({ error: "unauthorized", reason: "workflow" }, 401);
+    }
+  }
 
   try {
     const body = await request.arrayBuffer();
