@@ -41,6 +41,8 @@ MassPermits-*.csv
 # the authoritative store and the Pages Functions read it through the BUNDLES
 # binding, never from disk.
 subscribers.json
+# Round 8 carry-forward store: paid-class rows. Never in this public repo.
+carry-store*
 delivery-log.json
 feed-send-log.json
 last-send-attempt.json
