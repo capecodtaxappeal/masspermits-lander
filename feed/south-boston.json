@@ -25,10 +25,370 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 9,
+ "_window_total": 90,
  "_window_from": "2026-09-28",
- "_window_to": "2026-10-13",
+ "_window_to": "2026-10-23",
  "items": [
+  {
+   "id": "e5a5858a1c709aed",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 O St, South Boston ($5,000)",
+   "content_text": "Electrical permit in South Boston, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 5000.0
+  },
+  {
+   "id": "d30898832e551657",
+   "url": "https://masspermits.com/permits/south-boston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 O St, South Boston ($5,000)",
+   "content_text": "Renovation/Remodel permit in South Boston, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Renovation/Remodel",
+   "_value": 5000.0
+  },
+  {
+   "id": "a6eb4eaf491f47a1",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 Mercer St, South Boston ($40,000)",
+   "content_text": "Electrical permit in South Boston, MA. Value $40,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 40000.0
+  },
+  {
+   "id": "15740f10a15c6950",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 E Fifth St, South Boston ($10,000)",
+   "content_text": "Roofing permit in South Boston, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 10000.0
+  },
+  {
+   "id": "f7e08c98fa25ac1f",
+   "url": "https://masspermits.com/permits/south-boston-gas",
+   "title": "Gas permit \u2014 Gold St, South Boston ($800)",
+   "content_text": "Gas permit in South Boston, MA. Value $800. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Gas",
+   "_value": 800.0
+  },
+  {
+   "id": "8220d14d121085e5",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 Gold St, South Boston ($3,000)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 3000.0
+  },
+  {
+   "id": "0f554a838e834c93",
+   "url": "https://masspermits.com/permits/south-boston-hvac",
+   "title": "HVAC permit \u2014 E Second St, South Boston ($1,000)",
+   "content_text": "HVAC permit in South Boston, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "HVAC",
+   "_value": 1000.0
+  },
+  {
+   "id": "323b89042dab74f1",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 I St, South Boston ($2,000)",
+   "content_text": "Roofing permit in South Boston, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 2000.0
+  },
+  {
+   "id": "226bc1b7ab6242e8",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 W First St, South Boston ($500)",
+   "content_text": "Electrical permit in South Boston, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 500.0
+  },
+  {
+   "id": "5f13d4b504214d69",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 W Ninth St, South Boston ($1,400)",
+   "content_text": "Electrical permit in South Boston, MA. Value $1,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 1400.0
+  },
+  {
+   "id": "cd1b2698f5667824",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 W Second St, South Boston ($3,500)",
+   "content_text": "Electrical permit in South Boston, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 3500.0
+  },
+  {
+   "id": "6a11b235eeb76263",
+   "url": "https://masspermits.com/permits/south-boston-hvac",
+   "title": "HVAC permit \u2014 E Sixth St, South Boston ($1,000)",
+   "content_text": "HVAC permit in South Boston, MA. Value $1,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "HVAC",
+   "_value": 1000.0
+  },
+  {
+   "id": "513256fd11c7382d",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 B St, South Boston ($10,000)",
+   "content_text": "Electrical permit in South Boston, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 10000.0
+  },
+  {
+   "id": "3f1d925b459bc0d2",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 W Third St, South Boston ($23,000)",
+   "content_text": "Electrical permit in South Boston, MA. Value $23,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 23000.0
+  },
+  {
+   "id": "1a2baf4d5cd57686",
+   "url": "https://masspermits.com/permits/south-boston-hvac",
+   "title": "HVAC permit \u2014 E St, South Boston ($10,000)",
+   "content_text": "HVAC permit in South Boston, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "HVAC",
+   "_value": 10000.0
+  },
+  {
+   "id": "417fdbbeaab12e9f",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 Grimes St, South Boston ($18,734)",
+   "content_text": "Roofing permit in South Boston, MA. Value $18,734. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 18734.0
+  },
+  {
+   "id": "c0112e9c0dd67b84",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 Old Colony Av, South Boston ($29,000)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $29,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 29000.0
+  },
+  {
+   "id": "0702ae1631bedfbc",
+   "url": "https://masspermits.com/permits/south-boston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 W Second St, South Boston ($141,710)",
+   "content_text": "Kitchen/Bath permit in South Boston, MA. Value $141,710. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Kitchen/Bath",
+   "_value": 141710.0
+  },
+  {
+   "id": "e3919ae93af0f1a2",
+   "url": "https://masspermits.com/permits/south-boston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 E Fourth St, South Boston ($15,000)",
+   "content_text": "Windows/Doors/Siding permit in South Boston, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 15000.0
+  },
+  {
+   "id": "ae0c6b5e7e5d77b0",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 N St, South Boston ($223,750)",
+   "content_text": "Roofing permit in South Boston, MA. Value $223,750. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 223750.0
+  },
+  {
+   "id": "9414fff9fe2644fc",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 Old Colony Av, South Boston ($85,000)",
+   "content_text": "Electrical permit in South Boston, MA. Value $85,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 85000.0
+  },
+  {
+   "id": "e85fd8b5180c659b",
+   "url": "https://masspermits.com/permits/south-boston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 E Second St, South Boston ($15,000)",
+   "content_text": "Kitchen/Bath permit in South Boston, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Kitchen/Bath",
+   "_value": 15000.0
+  },
+  {
+   "id": "86b3ceed26e6e1fa",
+   "url": "https://masspermits.com/permits/south-boston-gas",
+   "title": "Gas permit \u2014 W Third St, South Boston ($20,000)",
+   "content_text": "Gas permit in South Boston, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Gas",
+   "_value": 20000.0
+  },
+  {
+   "id": "75341bf4824eb839",
+   "url": "https://masspermits.com/permits/south-boston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 W Third St, South Boston ($32,789)",
+   "content_text": "Kitchen/Bath permit in South Boston, MA. Value $32,789. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Kitchen/Bath",
+   "_value": 32789.0
+  },
+  {
+   "id": "9ae5c77a3f338853",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 E Sixth St, South Boston ($204,500)",
+   "content_text": "Roofing permit in South Boston, MA. Value $204,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 204500.0
+  },
+  {
+   "id": "30b4ed09bb289f87",
+   "url": "https://masspermits.com/permits/south-boston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Dorchester St, South Boston ($30,000)",
+   "content_text": "Kitchen/Bath permit in South Boston, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Kitchen/Bath",
+   "_value": 30000.0
+  },
+  {
+   "id": "6b021963c6d12443",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 Thomas Pk, South Boston ($3,500)",
+   "content_text": "Electrical permit in South Boston, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 3500.0
+  },
+  {
+   "id": "a14921ae0ad563af",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 E Eighth St, South Boston ($137,060)",
+   "content_text": "Roofing permit in South Boston, MA. Value $137,060. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 137060.0
+  },
+  {
+   "id": "f6991068ac88bb24",
+   "url": "https://masspermits.com/permits/south-boston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 E Seventh St, South Boston ($35,000)",
+   "content_text": "Kitchen/Bath permit in South Boston, MA. Value $35,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Kitchen/Bath",
+   "_value": 35000.0
+  },
+  {
+   "id": "782e28d74bdac60a",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 E First St, South Boston ($10,680)",
+   "content_text": "Roofing permit in South Boston, MA. Value $10,680. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 10680.0
+  },
+  {
+   "id": "c6b678a12530f452",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 Beckler Av, South Boston ($2,500)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 2500.0
+  },
+  {
+   "id": "38778fc1fc413214",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 E Seventh St, South Boston ($2,500)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 2500.0
+  },
+  {
+   "id": "40472feb3615a220",
+   "url": "https://masspermits.com/permits/south-boston-hvac",
+   "title": "HVAC permit \u2014 Telegraph St, South Boston ($20,000)",
+   "content_text": "HVAC permit in South Boston, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "HVAC",
+   "_value": 20000.0
+  },
+  {
+   "id": "b5fc4eb2d49d2d88",
+   "url": "https://masspermits.com/permits/south-boston-other",
+   "title": "Other permit \u2014 E Eighth St, South Boston ($12,000)",
+   "content_text": "Other permit in South Boston, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Other",
+   "_value": 12000.0
+  },
+  {
+   "id": "558c6d2a5435a921",
+   "url": "https://masspermits.com/permits/south-boston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 M St, South Boston ($4,857)",
+   "content_text": "Windows/Doors/Siding permit in South Boston, MA. Value $4,857. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4857.0
+  },
+  {
+   "id": "4080d5c73cf19fdd",
+   "url": "https://masspermits.com/permits/south-boston-hvac",
+   "title": "HVAC permit \u2014 Glover Ct, South Boston ($200,000)",
+   "content_text": "HVAC permit in South Boston, MA. Value $200,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "HVAC",
+   "_value": 200000.0
+  },
   {
    "id": "70810aab3c118f34",
    "url": "https://masspermits.com/permits/south-boston-roofing",
@@ -38,6 +398,136 @@
    "_town": "South Boston",
    "_trade": "Roofing",
    "_value": 9020.0
+  },
+  {
+   "id": "0317b7226cf908c5",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 Glover Ct, South Boston ($48,000)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $48,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 48000.0
+  },
+  {
+   "id": "9428ce60650cf5b7",
+   "url": "https://masspermits.com/permits/south-boston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 E Fifth St, South Boston ($295,365)",
+   "content_text": "Renovation/Remodel permit in South Boston, MA. Value $295,365. Full lead at masspermits.com.",
+   "date_published": "2026-10-11T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Renovation/Remodel",
+   "_value": 295365.0
+  },
+  {
+   "id": "f1876e69fabb4c67",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 Emerson St, South Boston ($14,075)",
+   "content_text": "Roofing permit in South Boston, MA. Value $14,075. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 14075.0
+  },
+  {
+   "id": "20f3866ba1dcc9b4",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 Farragut Rd, South Boston ($6,000)",
+   "content_text": "Electrical permit in South Boston, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 6000.0
+  },
+  {
+   "id": "ea509b9b075e8782",
+   "url": "https://masspermits.com/permits/south-boston-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Old Colony Av, South Boston ($30,000)",
+   "content_text": "Kitchen/Bath permit in South Boston, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Kitchen/Bath",
+   "_value": 30000.0
+  },
+  {
+   "id": "6a18a6fa97933449",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 B St, South Boston ($102,700)",
+   "content_text": "Roofing permit in South Boston, MA. Value $102,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 102700.0
+  },
+  {
+   "id": "3c8850cb908107c5",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 Bolton St, South Boston ($6,800)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $6,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 6800.0
+  },
+  {
+   "id": "38944f2cb2c42295",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 E Third St, South Boston ($27,700)",
+   "content_text": "Roofing permit in South Boston, MA. Value $27,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Roofing",
+   "_value": 27700.0
+  },
+  {
+   "id": "50d45bbf02193cf8",
+   "url": "https://masspermits.com/permits/south-boston-other",
+   "title": "Other permit \u2014 M St, South Boston ($4,000)",
+   "content_text": "Other permit in South Boston, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Other",
+   "_value": 4000.0
+  },
+  {
+   "id": "ddcc4c2896061d50",
+   "url": "https://masspermits.com/permits/south-boston-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Emerson St, South Boston ($15,304)",
+   "content_text": "Renovation/Remodel permit in South Boston, MA. Value $15,304. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Renovation/Remodel",
+   "_value": 15304.08
+  },
+  {
+   "id": "c002cb6fd79370c5",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 E Second St, South Boston ($12,000)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 12000.0
+  },
+  {
+   "id": "70e72aa1ab10ea03",
+   "url": "https://masspermits.com/permits/south-boston-plumbing",
+   "title": "Plumbing permit \u2014 W Second St, South Boston ($9,000)",
+   "content_text": "Plumbing permit in South Boston, MA. Value $9,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Plumbing",
+   "_value": 9000.0
+  },
+  {
+   "id": "42aff753fd9bbe38",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 Dorchester St, South Boston ($2,000)",
+   "content_text": "Electrical permit in South Boston, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 2000.0
   },
   {
    "id": "fd49270a4920d97b",
@@ -60,9 +550,9 @@
    "_value": 400.0
   },
   {
-   "id": "5066e8b04d7aeda7",
+   "id": "e2933bb4aae319f3",
    "url": "https://masspermits.com/permits/south-boston-plumbing",
-   "title": "Plumbing permit \u2014 W Second St, South Boston ($400)",
+   "title": "Plumbing permit \u2014 E Third St, South Boston ($400)",
    "content_text": "Plumbing permit in South Boston, MA. Value $400. Full lead at masspermits.com.",
    "date_published": "2026-10-07T00:00:00Z",
    "_town": "South Boston",
@@ -80,6 +570,16 @@
    "_value": 400.0
   },
   {
+   "id": "c8e1b3dea569baaa",
+   "url": "https://masspermits.com/permits/south-boston-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 D St, South Boston ($96,500)",
+   "content_text": "Windows/Doors/Siding permit in South Boston, MA. Value $96,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 96500.0
+  },
+  {
    "id": "2963d6c0d7adb6d4",
    "url": "https://masspermits.com/permits/south-boston-roofing",
    "title": "Roofing permit \u2014 G St, South Boston ($27,800)",
@@ -90,34 +590,44 @@
    "_value": 27800.0
   },
   {
-   "id": "8538ac4506fea815",
-   "url": "https://masspermits.com/permits/south-boston-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 W Third St, South Boston ($300,000)",
-   "content_text": "Windows/Doors/Siding permit in South Boston, MA. Value $300,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
+   "id": "3139975d693e7beb",
+   "url": "https://masspermits.com/permits/south-boston-roofing",
+   "title": "Roofing permit \u2014 P St, South Boston ($14,250)",
+   "content_text": "Roofing permit in South Boston, MA. Value $14,250. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
    "_town": "South Boston",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 300000.0
+   "_trade": "Roofing",
+   "_value": 14250.0
   },
   {
-   "id": "6a169ee625c1f81c",
-   "url": "https://masspermits.com/permits/south-boston-deck-porch",
-   "title": "Deck/Porch permit \u2014 E Sixth St, South Boston ($14,825)",
-   "content_text": "Deck/Porch permit in South Boston, MA. Value $14,825. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "South Boston",
-   "_trade": "Deck/Porch",
-   "_value": 14825.0
-  },
-  {
-   "id": "da2bf37646c175dc",
+   "id": "dc4b193b8861ef75",
    "url": "https://masspermits.com/permits/south-boston-electrical",
-   "title": "Electrical permit \u2014 E Fifth St, South Boston ($5,000)",
-   "content_text": "Electrical permit in South Boston, MA. Value $5,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
+   "title": "Electrical permit \u2014 Athens St, South Boston ($5,500)",
+   "content_text": "Electrical permit in South Boston, MA. Value $5,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
    "_town": "South Boston",
    "_trade": "Electrical",
-   "_value": 5000.0
+   "_value": 5500.0
+  },
+  {
+   "id": "c2018f0b09d3d0c1",
+   "url": "https://masspermits.com/permits/south-boston-electrical",
+   "title": "Electrical permit \u2014 E Third St, South Boston ($1,200)",
+   "content_text": "Electrical permit in South Boston, MA. Value $1,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "Electrical",
+   "_value": 1200.0
+  },
+  {
+   "id": "847bf4861754d670",
+   "url": "https://masspermits.com/permits/south-boston-hvac",
+   "title": "HVAC permit \u2014 Dorchester Av, South Boston ($55,000)",
+   "content_text": "HVAC permit in South Boston, MA. Value $55,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "South Boston",
+   "_trade": "HVAC",
+   "_value": 55000.0
   }
  ]
 }

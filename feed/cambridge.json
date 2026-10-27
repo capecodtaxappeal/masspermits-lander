@@ -25,8 +25,8 @@
   "methodology": "https://masspermits.com/research/methodology",
   "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 548,
- "_window_from": "2026-09-26",
+ "_window_total": 547,
+ "_window_from": "2026-09-28",
  "_window_to": "2026-10-24",
  "items": [
   {
@@ -70,16 +70,6 @@
    "_value": 100000.0
   },
   {
-   "id": "bcf0f070a08a913c",
-   "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Acorn Park Dr, Cambridge ($6,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $6,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Electrical",
-   "_value": 6000.0
-  },
-  {
    "id": "2e02f0b26d021093",
    "url": "https://masspermits.com/permits/cambridge-electrical",
    "title": "Electrical permit \u2014 Bowdoin St, Cambridge ($2,200)",
@@ -90,54 +80,14 @@
    "_value": 2200.0
   },
   {
-   "id": "4cfeead3cb4a4db2",
-   "url": "https://masspermits.com/permits/cambridge-hvac",
-   "title": "HVAC permit \u2014 Memorial Dr, Cambridge ($15,000)",
-   "content_text": "HVAC permit in Cambridge, MA. Value $15,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "HVAC",
-   "_value": 15000.0
-  },
-  {
-   "id": "48ee457a6e5c83b0",
+   "id": "bcf0f070a08a913c",
    "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Massachusetts Ave, Unit, Cambridge ($18,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $18,000. Full lead at masspermits.com.",
+   "title": "Electrical permit \u2014 Acorn Park Dr, Cambridge ($6,000)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $6,000. Full lead at masspermits.com.",
    "date_published": "2026-10-23T00:00:00Z",
    "_town": "Cambridge",
    "_trade": "Electrical",
-   "_value": 18000.0
-  },
-  {
-   "id": "d4919b11bb900db4",
-   "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Upland Rd, Unit, Cambridge ($7,800)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $7,800. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Electrical",
-   "_value": 7800.0
-  },
-  {
-   "id": "697be43486af785d",
-   "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Follen St, Cambridge ($200,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $200,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Electrical",
-   "_value": 200000.0
-  },
-  {
-   "id": "0206426d9984d534",
-   "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Reed St, Cambridge ($5,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $5,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Electrical",
-   "_value": 5000.0
+   "_value": 6000.0
   },
   {
    "id": "d35036853e5ea8c5",
@@ -150,18 +100,68 @@
    "_value": 7250.0
   },
   {
-   "id": "6bd5cb783c952547",
+   "id": "0206426d9984d534",
+   "url": "https://masspermits.com/permits/cambridge-electrical",
+   "title": "Electrical permit \u2014 Reed St, Cambridge ($5,000)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Electrical",
+   "_value": 5000.0
+  },
+  {
+   "id": "697be43486af785d",
+   "url": "https://masspermits.com/permits/cambridge-electrical",
+   "title": "Electrical permit \u2014 Follen St, Cambridge ($200,000)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $200,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Electrical",
+   "_value": 200000.0
+  },
+  {
+   "id": "d4919b11bb900db4",
+   "url": "https://masspermits.com/permits/cambridge-electrical",
+   "title": "Electrical permit \u2014 Upland Rd, Unit, Cambridge ($7,800)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $7,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Electrical",
+   "_value": 7800.0
+  },
+  {
+   "id": "1176cc9fc8cde7c2",
+   "url": "https://masspermits.com/permits/cambridge-electrical",
+   "title": "Electrical permit \u2014 Massachusetts Ave, Unit, Cambridge ($1,500)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Electrical",
+   "_value": 1500.0
+  },
+  {
+   "id": "4cfeead3cb4a4db2",
+   "url": "https://masspermits.com/permits/cambridge-hvac",
+   "title": "HVAC permit \u2014 Memorial Dr, Cambridge ($15,000)",
+   "content_text": "HVAC permit in Cambridge, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "HVAC",
+   "_value": 15000.0
+  },
+  {
+   "id": "2e964b6c3f679f15",
    "url": "https://masspermits.com/permits/cambridge-plumbing",
-   "title": "Plumbing permit \u2014 Mead St, Cambridge",
+   "title": "Plumbing permit \u2014 Cambridge St, Unit, Cambridge",
    "content_text": "Plumbing permit in Cambridge, MA. Full lead at masspermits.com.",
    "date_published": "2026-10-23T00:00:00Z",
    "_town": "Cambridge",
    "_trade": "Plumbing"
   },
   {
-   "id": "2e964b6c3f679f15",
+   "id": "6bd5cb783c952547",
    "url": "https://masspermits.com/permits/cambridge-plumbing",
-   "title": "Plumbing permit \u2014 Cambridge St, Unit, Cambridge",
+   "title": "Plumbing permit \u2014 Mead St, Cambridge",
    "content_text": "Plumbing permit in Cambridge, MA. Full lead at masspermits.com.",
    "date_published": "2026-10-23T00:00:00Z",
    "_town": "Cambridge",
@@ -187,16 +187,6 @@
    "_value": 3000.0
   },
   {
-   "id": "6610ebb9c2a90dc9",
-   "url": "https://masspermits.com/permits/cambridge-roofing",
-   "title": "Roofing permit \u2014 Brattle St, Cambridge ($21,400)",
-   "content_text": "Roofing permit in Cambridge, MA. Value $21,400. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Roofing",
-   "_value": 21400.0
-  },
-  {
    "id": "9f988d2b0f10845c",
    "url": "https://masspermits.com/permits/cambridge-asbestos",
    "title": "Asbestos permit \u2014 Concord Ave, Cambridge ($12,750)",
@@ -205,6 +195,16 @@
    "_town": "Cambridge",
    "_trade": "Asbestos",
    "_value": 12750.0
+  },
+  {
+   "id": "6610ebb9c2a90dc9",
+   "url": "https://masspermits.com/permits/cambridge-roofing",
+   "title": "Roofing permit \u2014 Brattle St, Cambridge ($21,400)",
+   "content_text": "Roofing permit in Cambridge, MA. Value $21,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Roofing",
+   "_value": 21400.0
   },
   {
    "id": "274624ae19e9dffd",
@@ -297,24 +297,34 @@
    "_value": 12960.0
   },
   {
-   "id": "df8cb4ba038242e1",
+   "id": "9574966f8ce57409",
    "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Memorial Dr, Unit, Cambridge ($600)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $600. Full lead at masspermits.com.",
+   "title": "Electrical permit \u2014 Sidney St, Cambridge ($6,000)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $6,000. Full lead at masspermits.com.",
    "date_published": "2026-10-22T00:00:00Z",
    "_town": "Cambridge",
    "_trade": "Electrical",
-   "_value": 600.0
+   "_value": 6000.0
   },
   {
-   "id": "35d8826de4b2e3a2",
+   "id": "cdbafc65afc03340",
    "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Temple St, Cambridge ($3,800)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $3,800. Full lead at masspermits.com.",
+   "title": "Electrical permit \u2014 Oxford St, Cambridge ($195,000)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $195,000. Full lead at masspermits.com.",
    "date_published": "2026-10-22T00:00:00Z",
    "_town": "Cambridge",
    "_trade": "Electrical",
-   "_value": 3800.0
+   "_value": 195000.0
+  },
+  {
+   "id": "f9c24733fd520125",
+   "url": "https://masspermits.com/permits/cambridge-electrical",
+   "title": "Electrical permit \u2014 Main St, Cambridge ($34,000)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $34,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Electrical",
+   "_value": 34000.0
   },
   {
    "id": "fd939831a5db1c57",
@@ -327,14 +337,24 @@
    "_value": 899505.0
   },
   {
-   "id": "f9c24733fd520125",
+   "id": "35d8826de4b2e3a2",
    "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Main St, Cambridge ($34,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $34,000. Full lead at masspermits.com.",
+   "title": "Electrical permit \u2014 Temple St, Cambridge ($3,800)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $3,800. Full lead at masspermits.com.",
    "date_published": "2026-10-22T00:00:00Z",
    "_town": "Cambridge",
    "_trade": "Electrical",
-   "_value": 34000.0
+   "_value": 3800.0
+  },
+  {
+   "id": "df8cb4ba038242e1",
+   "url": "https://masspermits.com/permits/cambridge-electrical",
+   "title": "Electrical permit \u2014 Memorial Dr, Unit, Cambridge ($600)",
+   "content_text": "Electrical permit in Cambridge, MA. Value $600. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Electrical",
+   "_value": 600.0
   },
   {
    "id": "4e4c5b568ff48eee",
@@ -477,38 +497,9 @@
    "_value": 59000.0
   },
   {
-   "id": "9574966f8ce57409",
-   "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Sidney St, Cambridge ($6,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $6,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-22T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Electrical",
-   "_value": 6000.0
-  },
-  {
-   "id": "cdbafc65afc03340",
-   "url": "https://masspermits.com/permits/cambridge-electrical",
-   "title": "Electrical permit \u2014 Oxford St, Cambridge ($195,000)",
-   "content_text": "Electrical permit in Cambridge, MA. Value $195,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-22T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Electrical",
-   "_value": 195000.0
-  },
-  {
    "id": "46304341a427aa13",
    "url": "https://masspermits.com/permits/cambridge-plumbing",
    "title": "Plumbing permit \u2014 Technology Sq, Cambridge",
-   "content_text": "Plumbing permit in Cambridge, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-22T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "fcb61865f12f59ee",
-   "url": "https://masspermits.com/permits/cambridge-plumbing",
-   "title": "Plumbing permit \u2014 One Kendall Square Complex, Cambridge",
    "content_text": "Plumbing permit in Cambridge, MA. Full lead at masspermits.com.",
    "date_published": "2026-10-22T00:00:00Z",
    "_town": "Cambridge",
@@ -569,6 +560,24 @@
    "_trade": "Plumbing"
   },
   {
+   "id": "95ac0b55e6a91ec0",
+   "url": "https://masspermits.com/permits/cambridge-plumbing",
+   "title": "Plumbing permit \u2014 Grove St, Cambridge",
+   "content_text": "Plumbing permit in Cambridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "fcb61865f12f59ee",
+   "url": "https://masspermits.com/permits/cambridge-plumbing",
+   "title": "Plumbing permit \u2014 One Kendall Square Complex, Cambridge",
+   "content_text": "Plumbing permit in Cambridge, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Cambridge",
+   "_trade": "Plumbing"
+  },
+  {
    "id": "b103a6e5605c587d",
    "url": "https://masspermits.com/permits/cambridge-plumbing",
    "title": "Plumbing permit \u2014 Massachusetts Ave, Unit, Cambridge",
@@ -587,27 +596,18 @@
    "_trade": "Plumbing"
   },
   {
-   "id": "95ac0b55e6a91ec0",
-   "url": "https://masspermits.com/permits/cambridge-plumbing",
-   "title": "Plumbing permit \u2014 Grove St, Cambridge",
-   "content_text": "Plumbing permit in Cambridge, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-22T00:00:00Z",
-   "_town": "Cambridge",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "4f1b777eb5fea6d2",
+   "id": "f738dfc8ba3c9082",
    "url": "https://masspermits.com/permits/cambridge-gas",
-   "title": "Gas permit \u2014 Pearl St, Unit, Cambridge",
+   "title": "Gas permit \u2014 Rindge Ave, Cambridge",
    "content_text": "Gas permit in Cambridge, MA. Full lead at masspermits.com.",
    "date_published": "2026-10-22T00:00:00Z",
    "_town": "Cambridge",
    "_trade": "Gas"
   },
   {
-   "id": "c3c7a15e5901f208",
+   "id": "34e5fbb76aa8bd0c",
    "url": "https://masspermits.com/permits/cambridge-gas",
-   "title": "Gas permit \u2014 Seagrave Rd, Cambridge",
+   "title": "Gas permit \u2014 Concord Ave, Cambridge",
    "content_text": "Gas permit in Cambridge, MA. Full lead at masspermits.com.",
    "date_published": "2026-10-22T00:00:00Z",
    "_town": "Cambridge",

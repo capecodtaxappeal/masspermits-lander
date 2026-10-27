@@ -3,21 +3,21 @@ Cambridge,Solar,2026-10-24,Reed St,19000.0
 Cambridge,HVAC,2026-10-23,Arlington St,187123.2
 Cambridge,Building,2026-10-23,"Harvey St, Unit",1700.0
 Cambridge,New Construction,2026-10-23,Massachusetts Ave,100000.0
-Cambridge,Electrical,2026-10-23,Acorn Park Dr,6000.0
 Cambridge,Electrical,2026-10-23,Bowdoin St,2200.0
-Cambridge,HVAC,2026-10-23,Memorial Dr,15000.0
-Cambridge,Electrical,2026-10-23,"Massachusetts Ave, Unit",18000.0
-Cambridge,Electrical,2026-10-23,"Massachusetts Ave, Unit",1500.0
-Cambridge,Electrical,2026-10-23,"Upland Rd, Unit",7800.0
-Cambridge,Electrical,2026-10-23,Follen St,200000.0
-Cambridge,Electrical,2026-10-23,Reed St,5000.0
+Cambridge,Electrical,2026-10-23,Acorn Park Dr,6000.0
 Cambridge,HVAC,2026-10-23,Lexington Ave,7250.0
-Cambridge,Plumbing,2026-10-23,Mead St,
+Cambridge,Electrical,2026-10-23,Reed St,5000.0
+Cambridge,Electrical,2026-10-23,Follen St,200000.0
+Cambridge,Electrical,2026-10-23,"Upland Rd, Unit",7800.0
+Cambridge,Electrical,2026-10-23,"Massachusetts Ave, Unit",1500.0
+Cambridge,Electrical,2026-10-23,"Massachusetts Ave, Unit",18000.0
+Cambridge,HVAC,2026-10-23,Memorial Dr,15000.0
 Cambridge,Plumbing,2026-10-23,"Cambridge St, Unit",
+Cambridge,Plumbing,2026-10-23,Mead St,
 Cambridge,Gas,2026-10-23,Ellery St,
 Cambridge,Sign/Awning,2026-10-23,Massachusetts Ave,3000.0
-Cambridge,Roofing,2026-10-23,Brattle St,21400.0
 Cambridge,Asbestos,2026-10-23,Concord Ave,12750.0
+Cambridge,Roofing,2026-10-23,Brattle St,21400.0
 Cambridge,Roofing,2026-10-22,Bennett St,13105753.0
 Cambridge,Addition,2026-10-22,Antrim St,275000.0
 Cambridge,Addition,2026-10-22,Mt Auburn St,1535525.0
@@ -27,10 +27,12 @@ Cambridge,Deck/Porch,2026-10-22,Fayerweather St,47000.0
 Cambridge,Kitchen/Bath,2026-10-22,"Massachusetts Ave, Unit",150000.0
 Cambridge,Windows/Doors/Siding,2026-10-22,Leonard Ave,21183.0
 Cambridge,Demolition,2026-10-22,Bellis Cir,12960.0
-Cambridge,Electrical,2026-10-22,"Memorial Dr, Unit",600.0
-Cambridge,Electrical,2026-10-22,Temple St,3800.0
-Cambridge,Electrical,2026-10-22,"One Kendall Square Complex, Unit",899505.0
+Cambridge,Electrical,2026-10-22,Sidney St,6000.0
+Cambridge,Electrical,2026-10-22,Oxford St,195000.0
 Cambridge,Electrical,2026-10-22,Main St,34000.0
+Cambridge,Electrical,2026-10-22,"One Kendall Square Complex, Unit",899505.0
+Cambridge,Electrical,2026-10-22,Temple St,3800.0
+Cambridge,Electrical,2026-10-22,"Memorial Dr, Unit",600.0
 Cambridge,Electrical,2026-10-22,Main St,21000.0
 Cambridge,Electrical,2026-10-22,Maple Ave,1000.0
 Cambridge,Electrical,2026-10-22,Pleasant St,300.0
@@ -48,29 +50,27 @@ Cambridge,HVAC,2026-10-22,Hutchinson St,35000.0
 Cambridge,Electrical,2026-10-22,Cambridgepark Dr,40000.0
 Cambridge,Electrical,2026-10-22,Main St,17750.0
 Cambridge,Electrical,2026-10-22,Church St,59000.0
-Cambridge,Electrical,2026-10-22,Sidney St,6000.0
-Cambridge,Electrical,2026-10-22,Oxford St,195000.0
 Cambridge,Plumbing,2026-10-22,Technology Sq,
-Cambridge,Plumbing,2026-10-22,One Kendall Square Complex,
 Cambridge,Plumbing,2026-10-22,"Cambridge Pkwy, Unit",
 Cambridge,Plumbing,2026-10-22,"Memorial Dr, Unit",
 Cambridge,Plumbing,2026-10-22,Berkshire St,
 Cambridge,Plumbing,2026-10-22,Hubbard Park Rd,
 Cambridge,Plumbing,2026-10-22,"Pearl St, Unit",
 Cambridge,Plumbing,2026-10-22,Concord Tpke,
+Cambridge,Plumbing,2026-10-22,Grove St,
+Cambridge,Plumbing,2026-10-22,One Kendall Square Complex,
 Cambridge,Plumbing,2026-10-22,"Massachusetts Ave, Unit",
 Cambridge,Plumbing,2026-10-22,Ellery St,
-Cambridge,Plumbing,2026-10-22,Grove St,
-Cambridge,Gas,2026-10-22,"Pearl St, Unit",
-Cambridge,Gas,2026-10-22,Seagrave Rd,
-Cambridge,Gas,2026-10-22,Concord Tpke,
-Cambridge,Gas,2026-10-22,Rutland St,
-Cambridge,Gas,2026-10-22,Prescott St,
-Cambridge,Gas,2026-10-22,Cambridge St,
-Cambridge,Gas,2026-10-22,"Saville St, Unit",
-Cambridge,Gas,2026-10-22,Berkshire St,
-Cambridge,Gas,2026-10-22,Concord Ave,
 Cambridge,Gas,2026-10-22,Rindge Ave,
+Cambridge,Gas,2026-10-22,Concord Ave,
+Cambridge,Gas,2026-10-22,Berkshire St,
+Cambridge,Gas,2026-10-22,"Saville St, Unit",
+Cambridge,Gas,2026-10-22,Cambridge St,
+Cambridge,Gas,2026-10-22,Prescott St,
+Cambridge,Gas,2026-10-22,Rutland St,
+Cambridge,Gas,2026-10-22,Concord Tpke,
+Cambridge,Gas,2026-10-22,Seagrave Rd,
+Cambridge,Gas,2026-10-22,"Pearl St, Unit",
 Cambridge,HVAC,2026-10-22,Park Ave,
 Cambridge,HVAC,2026-10-22,Alewife Pk,
 Cambridge,HVAC,2026-10-22,Grozier Rd,
@@ -81,28 +81,22 @@ Cambridge,HVAC,2026-10-22,"Orchard St, Unit",46375.0
 Cambridge,HVAC,2026-10-22,Granville Rd,23720.0
 Cambridge,HVAC,2026-10-22,Park Ave,35000.0
 Cambridge,HVAC,2026-10-22,Moulton St,126100.0
-Cambridge,Fire/Sprinkler,2026-10-22,Binney St,
 Cambridge,Fire/Sprinkler,2026-10-22,Cambridgepark Dr,
+Cambridge,Fire/Sprinkler,2026-10-22,Binney St,
 Cambridge,Roofing,2026-10-22,Prentiss St,7000.0
 Cambridge,Roofing,2026-10-22,Michael Way,12719.5
 Cambridge,Other,2026-10-22,Fresh Pond Pkwy,7500.0
 Cambridge,Asbestos,2026-10-22,Howard St,6500.0
 Cambridge,Roofing,2026-10-21,Griswold St,553000.0
-Cambridge,Kitchen/Bath,2026-10-21,Bristol St,189000.0
 Cambridge,Addition,2026-10-21,"One Kendall Square Complex, Unit",536547.0
 Cambridge,Kitchen/Bath,2026-10-21,"Pemberton St, Unit",25000.0
 Cambridge,Roofing,2026-10-21,Fayerweather St,447046.0
 Cambridge,Addition,2026-10-21,Myrtle Ave,3379999.0
+Cambridge,Kitchen/Bath,2026-10-21,Bristol St,189000.0
 Cambridge,Kitchen/Bath,2026-10-21,"Windsor St, Unit",38000.0
 Cambridge,Windows/Doors/Siding,2026-10-21,Irving St,7500.0
 Cambridge,Windows/Doors/Siding,2026-10-21,Winter St,8227.0
 Cambridge,Gas,2026-10-21,"Cambridge St, Unit",6000.0
-Cambridge,Electrical,2026-10-21,Third St,100000.0
-Cambridge,Electrical,2026-10-21,Technology Sq,60000.0
-Cambridge,HVAC,2026-10-21,Technology Sq,62448.0
-Cambridge,Solar,2026-10-21,Henry St,12325.0
-Cambridge,Electrical,2026-10-21,"Arlington St, Unit",13000.0
-Cambridge,Electrical,2026-10-21,Appleton St,975.0
 Cambridge,Electrical,2026-10-21,"Watson St, Unit",1900.0
 Cambridge,Electrical,2026-10-21,"Brattle St, Unit",15000.0
 Cambridge,HVAC,2026-10-21,"One Kendall Square Complex, Unit",90000.0
@@ -111,6 +105,12 @@ Cambridge,Electrical,2026-10-21,Massachusetts Ave,3300.0
 Cambridge,Electrical,2026-10-21,Broadway,1000.0
 Cambridge,Solar,2026-10-21,Bolton St,78044.89
 Cambridge,Electrical,2026-10-21,"Franklin St, Unit",1600.0
+Cambridge,Electrical,2026-10-21,Third St,100000.0
+Cambridge,Electrical,2026-10-21,Technology Sq,60000.0
+Cambridge,HVAC,2026-10-21,Technology Sq,62448.0
+Cambridge,Solar,2026-10-21,Henry St,12325.0
+Cambridge,Electrical,2026-10-21,"Arlington St, Unit",13000.0
+Cambridge,Electrical,2026-10-21,Appleton St,975.0
 Cambridge,Plumbing,2026-10-21,"Newport Rd, Unit",
 Cambridge,Plumbing,2026-10-21,"Cherry St, Unit Bldg C",
 Cambridge,Plumbing,2026-10-21,Inman St,
@@ -120,20 +120,20 @@ Cambridge,Plumbing,2026-10-21,Harvey St,
 Cambridge,Plumbing,2026-10-21,Linnaean St,
 Cambridge,Plumbing,2026-10-21,"Arlington St, Unit",
 Cambridge,Plumbing,2026-10-21,"Donnell St, Unit",
+Cambridge,Plumbing,2026-10-21,"Cherry St, Unit Bldg A",
 Cambridge,Plumbing,2026-10-21,Memorial Dr,
 Cambridge,Plumbing,2026-10-21,"Cherry St, Unit Bldg B",
 Cambridge,Plumbing,2026-10-21,Antrim St,
-Cambridge,Plumbing,2026-10-21,"Cherry St, Unit Bldg A",
-Cambridge,Gas,2026-10-21,Massachusetts Ave,
-Cambridge,Gas,2026-10-21,Antrim St,
-Cambridge,Gas,2026-10-21,Magazine St,
-Cambridge,Gas,2026-10-21,Main St,
-Cambridge,Gas,2026-10-21,Sherman St,
-Cambridge,Gas,2026-10-21,"Donnell St, Unit",
-Cambridge,Gas,2026-10-21,Harvey St,
-Cambridge,Gas,2026-10-21,"Newport Rd, Unit",
-Cambridge,Gas,2026-10-21,Bowdoin St,
 Cambridge,Gas,2026-10-21,Concord Ave,
+Cambridge,Gas,2026-10-21,Bowdoin St,
+Cambridge,Gas,2026-10-21,"Newport Rd, Unit",
+Cambridge,Gas,2026-10-21,Harvey St,
+Cambridge,Gas,2026-10-21,"Donnell St, Unit",
+Cambridge,Gas,2026-10-21,Sherman St,
+Cambridge,Gas,2026-10-21,Main St,
+Cambridge,Gas,2026-10-21,Magazine St,
+Cambridge,Gas,2026-10-21,Antrim St,
+Cambridge,Gas,2026-10-21,Massachusetts Ave,
 Cambridge,HVAC,2026-10-21,Newell St,
 Cambridge,HVAC,2026-10-21,"Orchard St, Unit",
 Cambridge,HVAC,2026-10-21,"One Kendall Square Complex, Unit",
@@ -144,21 +144,21 @@ Cambridge,HVAC,2026-10-21,Park Ave,35000.0
 Cambridge,HVAC,2026-10-21,Memorial Dr,10000.0
 Cambridge,HVAC,2026-10-21,Mt Auburn St,110000.0
 Cambridge,Roofing,2026-10-21,"Dudley St, Unit",21900.0
+Cambridge,Kitchen/Bath,2026-10-21,"Walden St, Unit",2600.0
+Cambridge,HVAC,2026-10-21,Dewolfe St,2500.0
+Cambridge,Asbestos,2026-10-21,Church St,2500.0
 Cambridge,Windows/Doors/Siding,2026-10-21,Seagrave Rd,2500.0
 Cambridge,Roofing,2026-10-21,Mt Auburn St,8775.0
-Cambridge,Asbestos,2026-10-21,Church St,2500.0
 Cambridge,Kitchen/Bath,2026-10-21,Gray Gdns W,4300.0
-Cambridge,HVAC,2026-10-21,Dewolfe St,2500.0
-Cambridge,Kitchen/Bath,2026-10-21,"Walden St, Unit",2600.0
 Cambridge,Roofing,2026-10-21,Huron Ave,63000.0
-Cambridge,Addition,2026-10-20,Massachusetts Ave,418008.33
 Cambridge,Addition,2026-10-20,Sherman St,50001.0
+Cambridge,Addition,2026-10-20,Massachusetts Ave,418008.33
+Cambridge,Electrical,2026-10-20,Antrim St,500.0
 Cambridge,Electrical,2026-10-20,Avon Hill St,3500.0
 Cambridge,Solar,2026-10-20,Woodrow Wilson Ct,64780.43
 Cambridge,Electrical,2026-10-20,Binney St,32000.0
 Cambridge,Electrical,2026-10-20,Canal Pk,120000.0
 Cambridge,Solar,2026-10-20,Woodrow Wilson Ct,67094.01
-Cambridge,Electrical,2026-10-20,Antrim St,500.0
 Cambridge,Gas,2026-10-20,Massachusetts Ave,
 Cambridge,HVAC,2026-10-20,Oxford St,
 Cambridge,Roofing,2026-10-20,Garden St,2019600.0
@@ -181,8 +181,8 @@ Cambridge,New Construction,2026-10-19,Fresh Pond Pkwy,680000.0
 Cambridge,Deck/Porch,2026-10-19,"Winter St, Unit",6200.0
 Cambridge,Kitchen/Bath,2026-10-19,"Cherry St, Unit",88000.0
 Cambridge,Windows/Doors/Siding,2026-10-19,Harvey St,3971.0
-Cambridge,Electrical,2026-10-19,Brattle St,39000.0
 Cambridge,HVAC,2026-10-19,Bent St,5060.0
+Cambridge,Electrical,2026-10-19,Brattle St,39000.0
 Cambridge,Solar,2026-10-19,Broadway,9000.0
 Cambridge,HVAC,2026-10-19,Brookline St,44600.0
 Cambridge,Electrical,2026-10-19,"Pearl St, Unit",5000.0
@@ -190,9 +190,9 @@ Cambridge,Electrical,2026-10-19,Porter Rd,2000.0
 Cambridge,Electrical,2026-10-19,Sidney St,15000.0
 Cambridge,Electrical,2026-10-19,Prospect St,1000.0
 Cambridge,Plumbing,2026-10-19,Binney St,
-Cambridge,Plumbing,2026-10-19,Columbia St,
 Cambridge,Plumbing,2026-10-19,"Earhart St, Unit",
 Cambridge,Plumbing,2026-10-19,"Pemberton St, Unit",
+Cambridge,Plumbing,2026-10-19,Columbia St,
 Cambridge,Gas,2026-10-19,Columbia St,
 Cambridge,HVAC,2026-10-19,Rockingham St,
 Cambridge,HVAC,2026-10-19,Kinnaird St,
@@ -207,23 +207,23 @@ Cambridge,Windows/Doors/Siding,2026-10-19,Cambridge St,50000.0
 Cambridge,Other,2026-10-19,Sidney St,10000.0
 Cambridge,Electrical,2026-10-18,Crescent St,300.0
 Cambridge,Electrical,2026-10-18,Fenno St,300.0
-Cambridge,Addition,2026-10-16,Massachusetts Ave,22500.0
 Cambridge,Roofing,2026-10-16,"Worcester St, Unit",61700.0
+Cambridge,Addition,2026-10-16,Massachusetts Ave,22500.0
 Cambridge,Building,2026-10-16,Michael Way,6000.0
 Cambridge,Roofing,2026-10-16,Myrtle Ave,70000.0
 Cambridge,Demolition,2026-10-16,Larch Rd,26000.0
 Cambridge,Roofing,2026-10-16,Hawthorne Pk,12000.0
+Cambridge,Electrical,2026-10-16,Jfk St,4000.0
+Cambridge,Electrical,2026-10-16,Brattle St,4000.0
 Cambridge,Electrical,2026-10-16,Cambridge St,5000.0
 Cambridge,Electrical,2026-10-16,Bent St,3000.0
 Cambridge,HVAC,2026-10-16,Rockingham St,4875.0
 Cambridge,HVAC,2026-10-16,Massachusetts Ave,8000.0
-Cambridge,Electrical,2026-10-16,Jfk St,4000.0
-Cambridge,Electrical,2026-10-16,Brattle St,4000.0
 Cambridge,Plumbing,2026-10-16,Fayette St,
 Cambridge,Gas,2026-10-16,Fayette St,
+Cambridge,HVAC,2026-10-16,Massachusetts Ave,
 Cambridge,HVAC,2026-10-16,Technology Sq,
 Cambridge,HVAC,2026-10-16,Moulton St,
-Cambridge,HVAC,2026-10-16,Massachusetts Ave,
 Cambridge,Solar,2026-10-16,Woodrow Wilson Ct,97170.64
 Cambridge,Other,2026-10-16,Highland St,5110.64
 Cambridge,Kitchen/Bath,2026-10-15,Columbia St,86000.0
@@ -235,7 +235,17 @@ Cambridge,Windows/Doors/Siding,2026-10-15,Maple Ave,9000.0
 Cambridge,Kitchen/Bath,2026-10-15,"Avon Hill St, Unit A",206520.0
 Cambridge,Kitchen/Bath,2026-10-15,Fayette St,74756.67
 Cambridge,Kitchen/Bath,2026-10-15,"Reservoir St, Unit",49987.0
+Cambridge,Electrical,2026-10-15,Kendall St,750.0
+Cambridge,HVAC,2026-10-15,One Kendall Square Complex,6800.0
+Cambridge,Electrical,2026-10-15,"Tremont St, Unit",2000.0
+Cambridge,Roofing,2026-10-15,Banks St,50000.0
 Cambridge,Electrical,2026-10-15,Mellen St,1200.0
+Cambridge,Electrical,2026-10-15,Cambridgepark Dr,30000.0
+Cambridge,HVAC,2026-10-15,"Granville Rd, Unit",500.0
+Cambridge,Electrical,2026-10-15,Norumbega St,250.0
+Cambridge,Electrical,2026-10-15,"West St, Unit",2500.0
+Cambridge,Electrical,2026-10-15,Church St,15000.0
+Cambridge,Electrical,2026-10-15,Brookline St,100000.0
 Cambridge,Electrical,2026-10-15,Massachusetts Ave,8000.0
 Cambridge,HVAC,2026-10-15,Columbia St,15141.0
 Cambridge,Electrical,2026-10-15,Memorial Dr,8000.0
@@ -243,7 +253,6 @@ Cambridge,Electrical,2026-10-15,"Massachusetts Ave, Unit",6000.0
 Cambridge,Electrical,2026-10-15,Leighton St,300000.0
 Cambridge,Electrical,2026-10-15,Franklin St,1000.0
 Cambridge,HVAC,2026-10-15,Arlington St,3000.0
-Cambridge,Electrical,2026-10-15,Kendall St,750.0
 Cambridge,Electrical,2026-10-15,Lee St,7500.0
 Cambridge,Electrical,2026-10-15,Hutchinson St,4000.0
 Cambridge,Electrical,2026-10-15,Technology Sq,300000.0
@@ -251,29 +260,20 @@ Cambridge,Electrical,2026-10-15,Main St,100000.0
 Cambridge,Electrical,2026-10-15,Main St,3000.0
 Cambridge,Electrical,2026-10-15,Coolidge Ave,45000.0
 Cambridge,Electrical,2026-10-15,"Concord Ave, Unit",1500.0
-Cambridge,HVAC,2026-10-15,One Kendall Square Complex,6800.0
-Cambridge,Electrical,2026-10-15,"Tremont St, Unit",2000.0
-Cambridge,Roofing,2026-10-15,Banks St,50000.0
-Cambridge,Electrical,2026-10-15,Cambridgepark Dr,30000.0
-Cambridge,HVAC,2026-10-15,"Granville Rd, Unit",500.0
-Cambridge,Electrical,2026-10-15,Norumbega St,250.0
-Cambridge,Electrical,2026-10-15,"West St, Unit",2500.0
-Cambridge,Electrical,2026-10-15,Church St,15000.0
-Cambridge,Electrical,2026-10-15,Brookline St,100000.0
 Cambridge,Plumbing,2026-10-15,"Hurlbut St, Unit",
 Cambridge,Plumbing,2026-10-15,Moulton St,
 Cambridge,Plumbing,2026-10-15,Massachusetts Ave,
 Cambridge,Plumbing,2026-10-15,Kirkland St,
+Cambridge,Plumbing,2026-10-15,"Hamilton St, Unit",
 Cambridge,Plumbing,2026-10-15,Belmont St,
 Cambridge,Plumbing,2026-10-15,Hubbard Park Rd,
 Cambridge,Plumbing,2026-10-15,Garden St,
-Cambridge,Plumbing,2026-10-15,"Hamilton St, Unit",
 Cambridge,Plumbing,2026-10-15,"Pearl St, Unit",
 Cambridge,Plumbing,2026-10-15,Cambridgepark Dr,
-Cambridge,Gas,2026-10-15,Hubbard Park Rd,
-Cambridge,Gas,2026-10-15,Belmont St,
-Cambridge,Gas,2026-10-15,Hampshire St,
 Cambridge,Gas,2026-10-15,Dana St,
+Cambridge,Gas,2026-10-15,Hampshire St,
+Cambridge,Gas,2026-10-15,Belmont St,
+Cambridge,Gas,2026-10-15,Hubbard Park Rd,
 Cambridge,HVAC,2026-10-15,Massachusetts Ave,45000.0
 Cambridge,HVAC,2026-10-15,Kinnaird St,41000.0
 Cambridge,Roofing,2026-10-15,Donnell St,18500.0
@@ -291,6 +291,11 @@ Cambridge,Windows/Doors/Siding,2026-10-14,Technology Sq,79460.0
 Cambridge,Addition,2026-10-14,"Buena Vista Pk, Unit",10267.0
 Cambridge,Electrical,2026-10-14,"Newton St, Unit",44670.0
 Cambridge,Windows/Doors/Siding,2026-10-14,Pemberton St,12900.0
+Cambridge,Electrical,2026-10-14,Park Ave,70000.0
+Cambridge,Electrical,2026-10-14,"Follen St, Unit",5000.0
+Cambridge,Electrical,2026-10-14,"Western Ave, Unit",10800.0
+Cambridge,Roofing,2026-10-14,Alewife Pk,40000.0
+Cambridge,Electrical,2026-10-14,Mt Auburn St,20000.0
 Cambridge,Electrical,2026-10-14,Kinnaird St,8000.0
 Cambridge,Electrical,2026-10-14,"Follen St, Unit",15000.0
 Cambridge,Electrical,2026-10-14,Green St,30000.0
@@ -298,11 +303,6 @@ Cambridge,Electrical,2026-10-14,Massachusetts Ave,35000.0
 Cambridge,Electrical,2026-10-14,Park Ave,3800.0
 Cambridge,Electrical,2026-10-14,Mellen St,2500.0
 Cambridge,HVAC,2026-10-14,Bellis Cir,4358.0
-Cambridge,Electrical,2026-10-14,Park Ave,70000.0
-Cambridge,Electrical,2026-10-14,"Follen St, Unit",5000.0
-Cambridge,Electrical,2026-10-14,"Western Ave, Unit",10800.0
-Cambridge,Roofing,2026-10-14,Alewife Pk,40000.0
-Cambridge,Electrical,2026-10-14,Mt Auburn St,20000.0
 Cambridge,Plumbing,2026-10-14,Harvard St,
 Cambridge,Plumbing,2026-10-14,"Massachusetts Ave, Unit",
 Cambridge,Plumbing,2026-10-14,South Normandy Ave,
@@ -315,16 +315,16 @@ Cambridge,Plumbing,2026-10-14,Seven Pines Ave,
 Cambridge,Plumbing,2026-10-14,Grove St,
 Cambridge,Plumbing,2026-10-14,"Cambridge St, Unit",
 Cambridge,Plumbing,2026-10-14,Lakeview Ave,
-Cambridge,Gas,2026-10-14,"Milton St, Unit",
-Cambridge,Gas,2026-10-14,Seven Pines Ave,
-Cambridge,Gas,2026-10-14,Ellery Sq,
-Cambridge,Gas,2026-10-14,"Franklin St, Unit",
-Cambridge,Gas,2026-10-14,Memorial Dr,
-Cambridge,Gas,2026-10-14,Lakeview Ave,
-Cambridge,Gas,2026-10-14,Cambridge St,
 Cambridge,Gas,2026-10-14,Harvard St,
-Cambridge,HVAC,2026-10-14,Gerrys Landing Rd,
+Cambridge,Gas,2026-10-14,Cambridge St,
+Cambridge,Gas,2026-10-14,Lakeview Ave,
+Cambridge,Gas,2026-10-14,Memorial Dr,
+Cambridge,Gas,2026-10-14,"Franklin St, Unit",
+Cambridge,Gas,2026-10-14,Ellery Sq,
+Cambridge,Gas,2026-10-14,Seven Pines Ave,
+Cambridge,Gas,2026-10-14,"Milton St, Unit",
 Cambridge,HVAC,2026-10-14,Lilac Ct,
+Cambridge,HVAC,2026-10-14,Gerrys Landing Rd,
 Cambridge,HVAC,2026-10-14,Gerrys Landing Rd,15000.0
 Cambridge,Fire/Sprinkler,2026-10-14,Memorial Dr,
 Cambridge,Roofing,2026-10-14,Saville St,18840.0
@@ -339,25 +339,25 @@ Cambridge,Windows/Doors/Siding,2026-10-13,Massachusetts Ave,15328.0
 Cambridge,HVAC,2026-10-13,Banks St,470850.0
 Cambridge,Windows/Doors/Siding,2026-10-13,Soden St,14784.0
 Cambridge,Windows/Doors/Siding,2026-10-13,Stearns St,12603.55
-Cambridge,Electrical,2026-10-13,Larch Rd,2000.0
 Cambridge,Electrical,2026-10-13,Massachusetts Ave,9000.0
 Cambridge,Electrical,2026-10-13,Divinity Ave,9000.0
 Cambridge,Electrical,2026-10-13,"Harvey St, Unit",1500.0
+Cambridge,Electrical,2026-10-13,Larch Rd,2000.0
 Cambridge,Plumbing,2026-10-13,"Earhart St, Unit",
 Cambridge,Plumbing,2026-10-13,"Kinnaird St, Unit",
 Cambridge,Plumbing,2026-10-13,Porter Rd,
 Cambridge,Plumbing,2026-10-13,"Russell St, Unit",
 Cambridge,Plumbing,2026-10-13,Massachusetts Ave,
 Cambridge,Plumbing,2026-10-13,Columbia St,
-Cambridge,Gas,2026-10-13,Vassal Ln,
-Cambridge,Gas,2026-10-13,Church St,
-Cambridge,Gas,2026-10-13,"Kinnaird St, Unit",
 Cambridge,Gas,2026-10-13,Columbia St,
+Cambridge,Gas,2026-10-13,"Kinnaird St, Unit",
+Cambridge,Gas,2026-10-13,Church St,
+Cambridge,Gas,2026-10-13,Vassal Ln,
 Cambridge,Fire/Sprinkler,2026-10-13,Technology Sq,
 Cambridge,Roofing,2026-10-13,River St,19000.0
+Cambridge,Asbestos,2026-10-13,Park Ave,2800.0
 Cambridge,Kitchen/Bath,2026-10-13,"Massachusetts Ave, Unit",10000.0
 Cambridge,Roofing,2026-10-13,Holworthy St,15000.0
-Cambridge,Asbestos,2026-10-13,Park Ave,2800.0
 Cambridge,Building,2026-10-12,Sunset Rd,9000.0
 Cambridge,Addition,2026-10-09,Cushing St,1970000.0
 Cambridge,Kitchen/Bath,2026-10-09,Porter Pk,48230.0
@@ -367,16 +367,16 @@ Cambridge,Kitchen/Bath,2026-10-09,"Hurlbut St, Unit",23500.0
 Cambridge,Building,2026-10-09,Grant St,5000.0
 Cambridge,Roofing,2026-10-09,Stearns St,33900.0
 Cambridge,Electrical,2026-10-09,West Bellevue Ave,22000.0
+Cambridge,Electrical,2026-10-09,Mt Auburn St,3000.0
 Cambridge,HVAC,2026-10-09,Cherry St,61168.0
 Cambridge,Electrical,2026-10-09,"Hancock St, Unit",6000.0
 Cambridge,Electrical,2026-10-09,Green St,50000.0
 Cambridge,Electrical,2026-10-09,"Rice St, Unit",12000.0
 Cambridge,Electrical,2026-10-09,"Chestnut St, Unit",200.0
-Cambridge,Electrical,2026-10-09,Mt Auburn St,3000.0
 Cambridge,Plumbing,2026-10-09,South William Way,
-Cambridge,Gas,2026-10-09,South William Way,
-Cambridge,Gas,2026-10-09,Western Ave,
 Cambridge,Gas,2026-10-09,Magazine St,
+Cambridge,Gas,2026-10-09,Western Ave,
+Cambridge,Gas,2026-10-09,South William Way,
 Cambridge,Fire/Sprinkler,2026-10-09,"One Kendall Square Complex, Unit",
 Cambridge,Roofing,2026-10-09,Divinity Ave,805000.0
 Cambridge,Roofing,2026-10-09,Land Blvd,870000.0
@@ -393,11 +393,11 @@ Cambridge,Plumbing,2026-10-08,Pearl St,
 Cambridge,Plumbing,2026-10-08,Gore St,
 Cambridge,Plumbing,2026-10-08,Hampshire St,
 Cambridge,Plumbing,2026-10-08,Watson St,
-Cambridge,Gas,2026-10-08,Pearl St,
-Cambridge,Gas,2026-10-08,Main St,
-Cambridge,Gas,2026-10-08,Shepard St,
-Cambridge,Gas,2026-10-08,Inman St,
 Cambridge,Gas,2026-10-08,First St,
+Cambridge,Gas,2026-10-08,Inman St,
+Cambridge,Gas,2026-10-08,Shepard St,
+Cambridge,Gas,2026-10-08,Main St,
+Cambridge,Gas,2026-10-08,Pearl St,
 Cambridge,Roofing,2026-10-08,Garfield St,40300.0
 Cambridge,Roofing,2026-10-08,Jay St,10800.0
 Cambridge,Kitchen/Bath,2026-10-08,"Hawthorne Pk, Unit",4600.0
@@ -410,6 +410,7 @@ Cambridge,Demolition,2026-10-07,Concord Tpke,15000.0
 Cambridge,Windows/Doors/Siding,2026-10-07,Seventh St,3713.13
 Cambridge,Demolition,2026-10-07,Upland Rd,660895.0
 Cambridge,Windows/Doors/Siding,2026-10-07,"Highland Ave, Unit",14014.0
+Cambridge,Electrical,2026-10-07,"Amory St, Unit",1500.0
 Cambridge,Electrical,2026-10-07,"Henry St, Unit",6000.0
 Cambridge,Electrical,2026-10-07,Acorn Park Dr,4800.0
 Cambridge,Electrical,2026-10-07,Kendall St,207000.0
@@ -417,7 +418,6 @@ Cambridge,Electrical,2026-10-07,Cardinal Medeiros Ave,8000.0
 Cambridge,Electrical,2026-10-07,Cambridgepark Dr,2000.0
 Cambridge,Electrical,2026-10-07,Technology Sq,168000.0
 Cambridge,Electrical,2026-10-07,Acorn Park Dr,36000.0
-Cambridge,Electrical,2026-10-07,"Amory St, Unit",1500.0
 Cambridge,Plumbing,2026-10-07,Donnell St,
 Cambridge,Plumbing,2026-10-07,Mt Auburn St,
 Cambridge,Plumbing,2026-10-07,"Western Ave, Unit",
@@ -426,10 +426,10 @@ Cambridge,Plumbing,2026-10-07,Huron Ave,
 Cambridge,Plumbing,2026-10-07,Dunster St,
 Cambridge,Plumbing,2026-10-07,Reservoir St,
 Cambridge,Plumbing,2026-10-07,Gerrys Landing Rd,
-Cambridge,Gas,2026-10-07,Huron Ave,
-Cambridge,Gas,2026-10-07,Donnell St,
-Cambridge,Gas,2026-10-07,Lee St,
 Cambridge,Gas,2026-10-07,Reservoir St,
+Cambridge,Gas,2026-10-07,Lee St,
+Cambridge,Gas,2026-10-07,Donnell St,
+Cambridge,Gas,2026-10-07,Huron Ave,
 Cambridge,HVAC,2026-10-07,Main St,
 Cambridge,HVAC,2026-10-07,"Broadway, Flr",
 Cambridge,HVAC,2026-10-07,"Russell St, Unit",
@@ -445,17 +445,19 @@ Cambridge,Roofing,2026-10-07,Magazine St,12500.0
 Cambridge,Roofing,2026-10-07,May St,15000.0
 Cambridge,Roofing,2026-10-07,Sixth St,5000.0
 Cambridge,Roofing,2026-10-07,Gold Star Rd,28500.0
-Cambridge,Other,2026-10-07,Alewife Brook Pkwy,11000.0
 Cambridge,Sign/Awning,2026-10-07,Kendall St,40000.0
 Cambridge,Windows/Doors/Siding,2026-10-07,Massachusetts Ave,650.0
 Cambridge,Other,2026-10-07,"Cambridge St, Unit",300.0
-Cambridge,Asbestos,2026-10-07,Everett St,2500.0
+Cambridge,Other,2026-10-07,Alewife Brook Pkwy,11000.0
 Cambridge,Asbestos,2026-10-07,Oxford St,2500.0
+Cambridge,Asbestos,2026-10-07,Everett St,2500.0
 Cambridge,Other,2026-10-07,Binney St,10998.0
 Cambridge,New Construction,2026-10-07,Massachusetts Ave,3000.0
 Cambridge,Addition,2026-10-06,Broadway,261873.0
 Cambridge,Building,2026-10-06,Porter St,14000.0
 Cambridge,Renovation/Remodel,2026-10-06,"Inman St, Unit",6150.0
+Cambridge,Electrical,2026-10-06,Ames St,2500.0
+Cambridge,Electrical,2026-10-06,Concord Ave,625000.0
 Cambridge,Solar,2026-10-06,"Edmunds St, Unit B",6571.0
 Cambridge,Electrical,2026-10-06,Columbia St,175000.0
 Cambridge,Electrical,2026-10-06,Oxford St,170000.0
@@ -467,18 +469,16 @@ Cambridge,HVAC,2026-10-06,Gold Star Rd,574.0
 Cambridge,Electrical,2026-10-06,Concord Ave,18000.0
 Cambridge,Electrical,2026-10-06,"Washington Ave, Unit",3000.0
 Cambridge,Electrical,2026-10-06,Cambridge St,1000000.0
-Cambridge,Electrical,2026-10-06,Ames St,2500.0
-Cambridge,Electrical,2026-10-06,Concord Ave,625000.0
 Cambridge,Plumbing,2026-10-06,"Tremont St, Unit",
 Cambridge,Plumbing,2026-10-06,Coolidge Hill,
-Cambridge,Gas,2026-10-06,Coolidge Hill,
 Cambridge,Gas,2026-10-06,"Garden St, Unit",
+Cambridge,Gas,2026-10-06,Coolidge Hill,
 Cambridge,Fire/Sprinkler,2026-10-06,Kirkland St,
 Cambridge,Solar,2026-10-06,Gray Gdns E,68238.0
-Cambridge,Roofing,2026-10-06,Garden St,38500.0
-Cambridge,Asbestos,2026-10-06,Linnaean St,10100.0
-Cambridge,Windows/Doors/Siding,2026-10-06,Kirkland St,49750.0
 Cambridge,Asbestos,2026-10-06,Kirkland St,11438.0
+Cambridge,Windows/Doors/Siding,2026-10-06,Kirkland St,49750.0
+Cambridge,Asbestos,2026-10-06,Linnaean St,10100.0
+Cambridge,Roofing,2026-10-06,Garden St,38500.0
 Cambridge,Building,2026-10-06,Crescent St,
 Cambridge,Addition,2026-10-05,Massachusetts Ave,69575.0
 Cambridge,New Construction,2026-10-05,Garden St,1898000.0
@@ -490,10 +490,10 @@ Cambridge,Building,2026-10-05,Jfk St,9860.0
 Cambridge,Windows/Doors/Siding,2026-10-05,Jfk St,15254.0
 Cambridge,Windows/Doors/Siding,2026-10-05,Chestnut St,18910.0
 Cambridge,Windows/Doors/Siding,2026-10-05,Memorial Dr,40000.0
-Cambridge,Electrical,2026-10-05,"Cambridge St, Unit",5000.0
 Cambridge,Electrical,2026-10-05,Russell St,2000.0
 Cambridge,Electrical,2026-10-05,"Newport Rd, Unit",5000.0
 Cambridge,HVAC,2026-10-05,Memorial Dr,20800.0
+Cambridge,Electrical,2026-10-05,"Cambridge St, Unit",5000.0
 Cambridge,Plumbing,2026-10-05,Lilac Ct,
 Cambridge,Plumbing,2026-10-05,Jacobs St,
 Cambridge,Plumbing,2026-10-05,Crescent St,
