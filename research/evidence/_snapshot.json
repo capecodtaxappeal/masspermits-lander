@@ -1,20 +1,20 @@
 {
  "corpus": {
-  "n_rows": 84343,
+  "n_rows": 84355,
   "first": "2025-10-01",
-  "last": "2026-10-27",
-  "fetched_at": "2026-10-27T16:50:32.483541+00:00"
+  "last": "2026-10-28",
+  "fetched_at": "2026-10-28T17:40:34.217920+00:00"
  },
  "watch": {
   "friday-permit-gap.fri_pct": 13.3,
-  "friday-permit-gap.tue_pct": 22.6,
+  "friday-permit-gap.tue_pct": 22.9,
   "friday-permit-gap.mon_pct": 20.1,
-  "friday-permit-gap.weekend_rows": 1281,
-  "friday-permit-gap.n_dated": 84343,
-  "friday-permit-gap.zero_friday_cal_fridays": 26,
+  "friday-permit-gap.weekend_rows": 1277,
+  "friday-permit-gap.n_dated": 84355,
+  "friday-permit-gap.zero_friday_cal_fridays": 25,
   "heat-pump-share.eligible_towns": 20,
-  "heat-pump-share.eligible_n": 2066,
-  "heat-pump-share.pooled_share": 38.5,
+  "heat-pump-share.eligible_n": 2074,
+  "heat-pump-share.pooled_share": 38.3,
   "heat-pump-share.excluded_towns": 7,
   "heat-pump-share.spread": 6.5,
   "adu-permits.adu_rows": 349,
@@ -22,7 +22,7 @@
   "adu-permits.garage_share": 21.8,
   "adu-permits.n_months": 11,
   "permit-sequence.sequences": 18,
-  "permit-sequence.multi_trade_addresses": 14645,
-  "permit-sequence.n_addresses": 54081
+  "permit-sequence.multi_trade_addresses": 14643,
+  "permit-sequence.n_addresses": 54102
  }
 }

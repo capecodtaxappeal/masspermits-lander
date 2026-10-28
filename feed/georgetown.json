@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Georgetown, MA",
- "home_page_url": "https://masspermits.com/permits/georgetown",
+ "title": "MassPermits \u2014 building permits in Georgetown, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/georgetown.json",
- "description": "MassPermits no longer receives building-permit records for Georgetown, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-19. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Georgetown, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,185 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-10-19",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-10-19",
- "items": []
+ "_window_total": 18,
+ "_window_from": "2026-10-19",
+ "_window_to": "2026-10-28",
+ "items": [
+  {
+   "id": "b57f029731bac5d6",
+   "url": "https://masspermits.com/permits/georgetown-roofing",
+   "title": "Roofing permit \u2014 Mohawk Cr, Georgetown",
+   "content_text": "Roofing permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "a0b2b987b8a3b7af",
+   "url": "https://masspermits.com/permits/georgetown-roofing",
+   "title": "Roofing permit \u2014 Thurlow St, Georgetown",
+   "content_text": "Roofing permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "b2c68a4b19b1f6ad",
+   "url": "https://masspermits.com/permits/georgetown",
+   "title": "Building permit \u2014 Wells Ct, Georgetown",
+   "content_text": "Building permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Building"
+  },
+  {
+   "id": "f25920e0aea44019",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 Long Hill Rd, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "5547d8aa28fe9fc9",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 Cedar Ln, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "1b8b925a8ab9cc77",
+   "url": "https://masspermits.com/permits/georgetown",
+   "title": "Renovation/Remodel permit \u2014 Searle St, Georgetown",
+   "content_text": "Renovation/Remodel permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "a981c769849eff7e",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 Molloy Rd, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "d9c2cb2a85254837",
+   "url": "https://masspermits.com/permits/georgetown",
+   "title": "Plumbing permit \u2014 Reynard Ln, Georgetown",
+   "content_text": "Plumbing permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "257c34ceb28f114a",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 Ilene Cr, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "a5052369095dd8de",
+   "url": "https://masspermits.com/permits/georgetown-roofing",
+   "title": "Roofing permit \u2014 Pillsbury St, Georgetown",
+   "content_text": "Roofing permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "bacb6fe3c0b2f8dc",
+   "url": "https://masspermits.com/permits/georgetown-roofing",
+   "title": "Roofing permit \u2014 Lake Shore Dr, Georgetown",
+   "content_text": "Roofing permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "d6dace0630b6488f",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 Central St, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "09c7a3f869f3fa4a",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 Thurlow St, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "31bb55084c7f58a2",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 W Main St, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "2a9066bb59d16854",
+   "url": "https://masspermits.com/permits/georgetown-roofing",
+   "title": "Roofing permit \u2014 Linden Cr, Georgetown",
+   "content_text": "Roofing permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "e9021567b2c9701b",
+   "url": "https://masspermits.com/permits/georgetown-roofing",
+   "title": "Roofing permit \u2014 North St, Georgetown",
+   "content_text": "Roofing permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "4a7a3af6c9a1da6c",
+   "url": "https://masspermits.com/permits/georgetown-electrical",
+   "title": "Electrical permit \u2014 North St, Georgetown",
+   "content_text": "Electrical permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "734f1d2fe1490307",
+   "url": "https://masspermits.com/permits/georgetown",
+   "title": "Gas permit \u2014 Andover St, Georgetown",
+   "content_text": "Gas permit in Georgetown, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Georgetown",
+   "_trade": "Gas"
+  }
+ ]
 }
