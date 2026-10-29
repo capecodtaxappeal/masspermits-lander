@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Orleans, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Orleans, MA",
+ "home_page_url": "https://masspermits.com/permits/orleans",
  "feed_url": "https://masspermits.com/feed/orleans.json",
- "description": "Recent building permits in Orleans, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Orleans, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,162 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 14,
- "_window_from": "2026-09-28",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-09-30",
- "items": [
-  {
-   "id": "a12fe2f73ce610d9",
-   "url": "https://masspermits.com/permits/orleans-hvac",
-   "title": "HVAC permit \u2014 Bambi Wy, Orleans",
-   "content_text": "HVAC permit in Orleans, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "1a230e76cb4943cd",
-   "url": "https://masspermits.com/permits/orleans-building",
-   "title": "Building permit \u2014 Pleasant View Dr, Orleans ($40,000)",
-   "content_text": "Building permit in Orleans, MA. Value $40,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Building",
-   "_value": 40000.0
-  },
-  {
-   "id": "aec69c69e3479df1",
-   "url": "https://masspermits.com/permits/orleans-roofing",
-   "title": "Roofing permit \u2014 Bramblewood Ln, Orleans ($11,789)",
-   "content_text": "Roofing permit in Orleans, MA. Value $11,789. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Roofing",
-   "_value": 11789.0
-  },
-  {
-   "id": "05f03b2be57ce46e",
-   "url": "https://masspermits.com/permits/orleans-building",
-   "title": "Building permit \u2014 Portanimicut Rd, Orleans ($5,139)",
-   "content_text": "Building permit in Orleans, MA. Value $5,139. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Building",
-   "_value": 5138.8
-  },
-  {
-   "id": "7b5e66b3f0d6bb72",
-   "url": "https://masspermits.com/permits/orleans-building",
-   "title": "Building permit \u2014 Snow Wy, Orleans ($22,000)",
-   "content_text": "Building permit in Orleans, MA. Value $22,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Building",
-   "_value": 22000.0
-  },
-  {
-   "id": "a912f6f8e1693628",
-   "url": "https://masspermits.com/permits/orleans-roofing",
-   "title": "Roofing permit \u2014 Callanans Pass, Orleans ($14,000)",
-   "content_text": "Roofing permit in Orleans, MA. Value $14,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Roofing",
-   "_value": 14000.0
-  },
-  {
-   "id": "17cbe80b3b8e0e35",
-   "url": "https://masspermits.com/permits/orleans-solar",
-   "title": "Solar permit \u2014 Crystal Lake Dr, Orleans ($22,760)",
-   "content_text": "Solar permit in Orleans, MA. Value $22,760. Full lead at masspermits.com.",
-   "date_published": "2026-09-29T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Solar",
-   "_value": 22760.0
-  },
-  {
-   "id": "4446f59691edd08c",
-   "url": "https://masspermits.com/permits/orleans-solar",
-   "title": "Solar permit \u2014 Locust Rd, Orleans ($38,302)",
-   "content_text": "Solar permit in Orleans, MA. Value $38,302. Full lead at masspermits.com.",
-   "date_published": "2026-09-29T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Solar",
-   "_value": 38302.0
-  },
-  {
-   "id": "664258eeb6bc4ae4",
-   "url": "https://masspermits.com/permits/orleans-building",
-   "title": "Building permit \u2014 Briar Spring Rd, Orleans ($150,000)",
-   "content_text": "Building permit in Orleans, MA. Value $150,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Building",
-   "_value": 150000.0
-  },
-  {
-   "id": "3bf5d69c0c7d978a",
-   "url": "https://masspermits.com/permits/orleans-building",
-   "title": "Building permit \u2014 Spinnaker Trail, Orleans ($270,500)",
-   "content_text": "Building permit in Orleans, MA. Value $270,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Building",
-   "_value": 270500.0
-  },
-  {
-   "id": "b8b8d9ad06ffd229",
-   "url": "https://masspermits.com/permits/orleans-building",
-   "title": "Building permit \u2014 Viking Rd, Orleans ($340,000)",
-   "content_text": "Building permit in Orleans, MA. Value $340,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Building",
-   "_value": 340000.0
-  },
-  {
-   "id": "65ca5a964a0ea6b9",
-   "url": "https://masspermits.com/permits/orleans-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 West Rd, Unit, Orleans ($3,689)",
-   "content_text": "Windows/Doors/Siding permit in Orleans, MA. Value $3,689. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 3689.0
-  },
-  {
-   "id": "c79c2ba03cd6e9d3",
-   "url": "https://masspermits.com/permits/orleans-roofing",
-   "title": "Roofing permit \u2014 Clayton Cr, Orleans ($30,000)",
-   "content_text": "Roofing permit in Orleans, MA. Value $30,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Roofing",
-   "_value": 30000.0
-  },
-  {
-   "id": "cb72a8a46b7f8cb2",
-   "url": "https://masspermits.com/permits/orleans-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Giddiah Hill Rd, Orleans ($39,000)",
-   "content_text": "Windows/Doors/Siding permit in Orleans, MA. Value $39,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-28T00:00:00Z",
-   "_town": "Orleans",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 39000.0
-  }
- ]
+ "items": []
 }

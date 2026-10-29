@@ -1,11 +1,11 @@
 {
  "slug": "adu-permits",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-10-28T17:40:34.217920+00:00",
- "corpus_rows": 84355,
- "corpus_sources": 89,
- "corpus_first": "2025-10-01",
- "corpus_last": "2026-10-28",
+ "corpus_fetched_at": "2026-10-29T16:30:21.228916+00:00",
+ "corpus_rows": 69549,
+ "corpus_sources": 74,
+ "corpus_first": "2024-09-11",
+ "corpus_last": "2026-10-29",
  "method": {
   "heat_pump": "heat\\s*pump|mini[\\s-]?split|minisplit|ductless|\\bashp\\b",
   "fossil": "\\bfurnace(s)?\\b|\\bboiler(s)?\\b|forced hot air|\\bgas heat\\b|oil burner",
@@ -35,123 +35,201 @@
   ]
  },
  "stats": {
-  "adu_rows": 349,
-  "adu_towns": 43,
-  "eligible_sources": 68,
-  "n_sources": 89,
-  "garage": 76,
-  "garage_share": 21.8,
-  "conversion": 77,
-  "new_build": 174,
-  "unclassified": 98,
-  "garage_conversion": 27,
-  "garage_new_build": 31,
+  "adu_rows": 261,
+  "adu_towns": 34,
+  "eligible_sources": 53,
+  "n_sources": 74,
+  "garage": 63,
+  "garage_share": 24.1,
+  "conversion": 49,
+  "new_build": 139,
+  "unclassified": 73,
+  "garage_conversion": 21,
+  "garage_new_build": 28,
   "form_leader": "new construction",
-  "pooled_rate": 58.1,
+  "pooled_rate": 58.7,
   "raw_first": 0,
-  "raw_peak": 56,
+  "raw_peak": 50,
   "rate_min": 0.0,
-  "rate_max": 91.5,
-  "n_months": 11,
+  "rate_max": 101.0,
+  "n_months": 21,
   "series": [
    {
-    "month": "2025-12",
+    "month": "2024-10",
     "raw": 0,
-    "base": 218,
-    "sources": 3,
+    "base": 221,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2024-12",
+    "raw": 0,
+    "base": 200,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-03",
+    "raw": 0,
+    "base": 219,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-04",
+    "raw": 0,
+    "base": 224,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-05",
+    "raw": 0,
+    "base": 231,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-06",
+    "raw": 0,
+    "base": 231,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-07",
+    "raw": 0,
+    "base": 259,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-08",
+    "raw": 0,
+    "base": 243,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-09",
+    "raw": 0,
+    "base": 240,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-10",
+    "raw": 0,
+    "base": 275,
+    "sources": 1,
+    "partial": false,
+    "rate": 0.0
+   },
+   {
+    "month": "2025-11",
+    "raw": 0,
+    "base": 209,
+    "sources": 1,
     "partial": false,
     "rate": 0.0
    },
    {
     "month": "2026-01",
-    "raw": 6,
-    "base": 754,
-    "sources": 6,
+    "raw": 1,
+    "base": 233,
+    "sources": 3,
     "partial": false,
-    "rate": 79.6
+    "rate": 42.9
    },
    {
     "month": "2026-02",
-    "raw": 7,
-    "base": 857,
-    "sources": 7,
+    "raw": 1,
+    "base": 260,
+    "sources": 3,
     "partial": false,
-    "rate": 81.7
+    "rate": 38.5
    },
    {
     "month": "2026-03",
-    "raw": 12,
-    "base": 1311,
-    "sources": 9,
+    "raw": 3,
+    "base": 297,
+    "sources": 3,
     "partial": false,
-    "rate": 91.5
+    "rate": 101.0
    },
    {
     "month": "2026-04",
-    "raw": 14,
-    "base": 1943,
-    "sources": 13,
+    "raw": 1,
+    "base": 578,
+    "sources": 5,
     "partial": false,
-    "rate": 72.1
+    "rate": 17.3
    },
    {
     "month": "2026-05",
-    "raw": 54,
-    "base": 6408,
-    "sources": 44,
+    "raw": 34,
+    "base": 4984,
+    "sources": 36,
     "partial": false,
-    "rate": 84.3
+    "rate": 68.2
    },
    {
     "month": "2026-06",
-    "raw": 56,
-    "base": 7896,
-    "sources": 48,
+    "raw": 42,
+    "base": 6146,
+    "sources": 37,
     "partial": false,
-    "rate": 70.9
+    "rate": 68.3
    },
    {
     "month": "2026-07",
-    "raw": 53,
-    "base": 9433,
-    "sources": 51,
+    "raw": 44,
+    "base": 7315,
+    "sources": 40,
     "partial": false,
-    "rate": 56.2
+    "rate": 60.2
    },
    {
     "month": "2026-08",
-    "raw": 52,
-    "base": 9883,
-    "sources": 54,
+    "raw": 42,
+    "base": 7513,
+    "sources": 41,
     "partial": false,
-    "rate": 52.6
+    "rate": 55.9
    },
    {
     "month": "2026-09",
-    "raw": 56,
-    "base": 12665,
-    "sources": 50,
+    "raw": 50,
+    "base": 7807,
+    "sources": 41,
     "partial": false,
-    "rate": 44.2
+    "rate": 64.0
    },
    {
     "month": "2026-10",
-    "raw": 39,
-    "base": 8659,
-    "sources": 49,
+    "raw": 43,
+    "base": 6772,
+    "sources": 47,
     "partial": true,
-    "rate": 45.0
+    "rate": 63.5
    }
   ],
-  "src_first": 3,
-  "src_peak": 54,
+  "src_first": 1,
+  "src_peak": 47,
   "partial_month": "2026-10",
   "town_list": [
-   "Amherst, MA",
    "Barnstable, MA",
    "Barre, MA",
    "Bellingham, MA",
-   "Bourne, MA",
    "Boylston, MA",
    "Braintree, MA",
    "Cambridge, MA",
@@ -165,26 +243,19 @@
    "Hingham, MA",
    "Holden, MA",
    "Holliston, MA",
-   "Lowell, MA",
    "Mansfield, MA",
    "Medway, MA",
    "Milford, MA",
    "Milton, MA",
    "Nahant, MA",
-   "Needham, MA",
-   "Plymouth, MA",
-   "Provincetown, MA",
    "Randolph, MA",
-   "Reading, MA",
    "Rockland, MA",
    "Sherborn, MA",
    "Somerville, MA",
    "Sterling, MA",
    "Sutton, MA",
-   "Truro, MA",
    "Uxbridge, MA",
    "Wakefield, MA",
-   "Waltham, MA",
    "West Bridgewater, MA",
    "Westhampton, MA",
    "Worcester, MA",
