@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Needham, MA",
- "home_page_url": "https://masspermits.com/permits/needham",
+ "title": "MassPermits \u2014 building permits in Needham, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/needham.json",
- "description": "MassPermits no longer receives building-permit records for Needham, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Needham, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,83 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
+ "_window_total": 6,
+ "_window_from": "2026-09-30",
  "_window_to": "2026-09-30",
- "items": []
+ "items": [
+  {
+   "id": "ca07c7fd2bf727de",
+   "url": "https://masspermits.com/permits/needham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Powder House Cir, Needham ($16,000)",
+   "content_text": "Windows/Doors/Siding permit in Needham, MA. Value $16,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 16000.0
+  },
+  {
+   "id": "d5e602c3310fc59b",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Petrini Cir, Needham ($6,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 6000.0
+  },
+  {
+   "id": "db61ffbfe9228f1e",
+   "url": "https://masspermits.com/permits/needham-roofing",
+   "title": "Roofing permit \u2014 Wilshire Park, Needham ($16,000)",
+   "content_text": "Roofing permit in Needham, MA. Value $16,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Roofing",
+   "_value": 16000.0
+  },
+  {
+   "id": "2874079eac35f1e3",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 Brookside Rd, Needham ($30,000)",
+   "content_text": "Addition permit in Needham, MA. Value $30,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 30000.0
+  },
+  {
+   "id": "738207039367fcca",
+   "url": "https://masspermits.com/permits/needham-addition",
+   "title": "Addition permit \u2014 Edgewater Dr, Needham ($13,000)",
+   "content_text": "Addition permit in Needham, MA. Value $13,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Addition",
+   "_value": 13000.0
+  },
+  {
+   "id": "c8c5155118847288",
+   "url": "https://masspermits.com/permits/needham-other",
+   "title": "Other permit \u2014 Central Ave, Needham ($4,000)",
+   "content_text": "Other permit in Needham, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Needham",
+   "_trade": "Other",
+   "_value": 4000.0
+  }
+ ]
 }

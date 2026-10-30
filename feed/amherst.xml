@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- masspermits:coverage-ended -->
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel>
-<title>MassPermits — coverage ended: Amherst, MA</title>
-<link>https://masspermits.com/permits/amherst</link>
-<description>MassPermits no longer receives building-permit records for Amherst, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.</description><language>en-us</language>
+<title>MassPermits — building permits in Amherst, MA</title>
+<link>https://masspermits.com/permits/</link>
+<description>Latest building permits in Amherst, MA. Full leads at masspermits.com. House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.</description><language>en-us</language>
 <atom:link href="https://masspermits.com/feed/amherst.xml" rel="self" type="application/rss+xml"/>
-<atom:link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
+<atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
 <copyright>MassPermits (masspermits.com) — licensed CC BY-NC 4.0</copyright>
+<atom:link rel="license" type="text/html" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
+<atom:link rel="describedby" type="application/json" href="https://masspermits.com/catalog.json"/>
+<dc:rights>MassPermits (masspermits.com) — CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)</dc:rights>
 <dc:source>Compiled from public municipal building-permit records published by Massachusetts cities and towns.</dc:source>
+<managingEditor>hello@masspermits.com (MassPermits)</managingEditor>
 <docs>https://www.rssboard.org/rss-specification</docs>
 <generator>MassPermits seo_build</generator>
-<ttl>10080</ttl>
+<ttl>1440</ttl>
 <lastBuildDate>Wed, 30 Sep 2026 00:00:00 GMT</lastBuildDate>
-<item><title>Coverage ended — Amherst, MA</title>
-<link>https://masspermits.com/permits/amherst</link>
-<description>MassPermits no longer receives building-permit records for Amherst, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.</description>
-<pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
-<guid isPermaLink="false">coverage-ended-amherst</guid></item>
+<item><title>Building permit — East Leverett Road, Amherst ($4,000)</title><link>https://masspermits.com/permits/amherst-building</link><description>Building building permit issued 2026-09-30 in Amherst. Project value $4,000. Full lead — exact address and the contractor on file — at masspermits.com.</description><pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">27ef52bd387d77b4</guid></item>
+<item><title>Building permit — Foxglove Lane, Amherst ($55,000)</title><link>https://masspermits.com/permits/amherst-building</link><description>Building building permit issued 2026-09-30 in Amherst. Project value $55,000. Full lead — exact address and the contractor on file — at masspermits.com.</description><pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">84954ab38bb7e719</guid></item>
+<item><title>Windows/Doors/Siding permit — West Pomeroy Lane, Amherst ($6,033)</title><link>https://masspermits.com/permits/amherst-windows-doors-siding</link><description>Windows/Doors/Siding building permit issued 2026-09-30 in Amherst. Project value $6,033. Full lead — exact address and the contractor on file — at masspermits.com.</description><pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">4ff08089b9b83a65</guid></item>
+<item><title>Roofing permit — Pelham Road, Amherst ($20,000)</title><link>https://masspermits.com/permits/amherst-roofing</link><description>Roofing building permit issued 2026-09-30 in Amherst. Project value $20,000. Full lead — exact address and the contractor on file — at masspermits.com.</description><pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">68be34b8fa5ada43</guid></item>
+<item><title>Building permit — Teaberry Lane, Amherst ($5,000)</title><link>https://masspermits.com/permits/amherst-building</link><description>Building building permit issued 2026-09-30 in Amherst. Project value $5,000. Full lead — exact address and the contractor on file — at masspermits.com.</description><pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate><guid isPermaLink="false">b6292b412cdeb3a6</guid></item>
 </channel></rss>

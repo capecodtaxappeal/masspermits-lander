@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Truro, MA",
- "home_page_url": "https://masspermits.com/permits/truro",
+ "title": "MassPermits \u2014 building permits in Truro, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/truro.json",
- "description": "MassPermits no longer receives building-permit records for Truro, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Truro, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,63 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
+ "_window_total": 4,
+ "_window_from": "2026-09-30",
  "_window_to": "2026-09-30",
- "items": []
+ "items": [
+  {
+   "id": "50d2ba07f2d2cb40",
+   "url": "https://masspermits.com/permits/truro-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Shore Rd, Truro ($25,000)",
+   "content_text": "Windows/Doors/Siding permit in Truro, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 25000.0
+  },
+  {
+   "id": "2ec34ff9ba6c04e8",
+   "url": "https://masspermits.com/permits/truro-roofing",
+   "title": "Roofing permit \u2014 Whale Watch Dr, Truro ($200,000)",
+   "content_text": "Roofing permit in Truro, MA. Value $200,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Roofing",
+   "_value": 200000.0
+  },
+  {
+   "id": "0c737ed917fc8c2f",
+   "url": "https://masspermits.com/permits/truro-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Daniel Ln, Truro ($43,724)",
+   "content_text": "Kitchen/Bath permit in Truro, MA. Value $43,724. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "Kitchen/Bath",
+   "_value": 43724.0
+  },
+  {
+   "id": "2ca22cb83eb1bca8",
+   "url": "https://masspermits.com/permits/truro-hvac",
+   "title": "HVAC permit \u2014 Old County Rd, Truro ($175,000)",
+   "content_text": "HVAC permit in Truro, MA. Value $175,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Truro",
+   "_trade": "HVAC",
+   "_value": 175000.0
+  }
+ ]
 }

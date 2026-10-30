@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Stow, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Stow, MA",
+ "home_page_url": "https://masspermits.com/permits/stow",
  "feed_url": "https://masspermits.com/feed/stow.json",
- "description": "Recent building permits in Stow, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Stow, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-29. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,176 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-10-29",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 17,
- "_window_from": "2026-10-20",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-10-29",
- "items": [
-  {
-   "id": "9014421f03e07443",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "Gas permit \u2014 Walcott Street, Stow",
-   "content_text": "Gas permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-29T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Gas"
-  },
-  {
-   "id": "95a38e60c551f0da",
-   "url": "https://masspermits.com/permits/stow-electrical",
-   "title": "Electrical permit \u2014 Whispering Way, Stow",
-   "content_text": "Electrical permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-28T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "229ecb7339d2cc6e",
-   "url": "https://masspermits.com/permits/stow-electrical",
-   "title": "Electrical permit \u2014 Frances Circle, Stow",
-   "content_text": "Electrical permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-28T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "339107a22f4e164e",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "Gas permit \u2014 Boon Road, Stow",
-   "content_text": "Gas permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-28T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Gas"
-  },
-  {
-   "id": "c4370ebb61569aed",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "HVAC permit \u2014 Davis Road, Stow",
-   "content_text": "HVAC permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-28T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "60c543bbbb872f72",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "Plumbing permit \u2014 Harvard Road, Stow",
-   "content_text": "Plumbing permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-26T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "8f8bb290b709cc73",
-   "url": "https://masspermits.com/permits/stow-electrical",
-   "title": "Electrical permit \u2014 Hudson Road, Stow",
-   "content_text": "Electrical permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-26T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "09eb2ad78c3e4f6e",
-   "url": "https://masspermits.com/permits/stow-electrical",
-   "title": "Electrical permit \u2014 Great Road, Stow",
-   "content_text": "Electrical permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-26T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "3c2cc07e6b0093a5",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "HVAC permit \u2014 Boxboro Road, Stow",
-   "content_text": "HVAC permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "7c1b108737daeb7a",
-   "url": "https://masspermits.com/permits/stow-electrical",
-   "title": "Electrical permit \u2014 Pompositticut Street, Stow",
-   "content_text": "Electrical permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "26116c26203f2782",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "Windows/Doors/Siding permit \u2014 Kirkland Drive, Stow",
-   "content_text": "Windows/Doors/Siding permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Windows/Doors/Siding"
-  },
-  {
-   "id": "49d29239611e919d",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "Roofing permit \u2014 Wedgewood Road, Stow",
-   "content_text": "Roofing permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Roofing"
-  },
-  {
-   "id": "7c681e263481bd26",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "Roofing permit \u2014 Taylor Road, Stow",
-   "content_text": "Roofing permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-23T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Roofing"
-  },
-  {
-   "id": "450797cc04290877",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "HVAC permit \u2014 Gleasondale Road, Stow",
-   "content_text": "HVAC permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-22T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "HVAC"
-  },
-  {
-   "id": "cbbe93f72607aab8",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "Plumbing permit \u2014 Great Road, Stow",
-   "content_text": "Plumbing permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-22T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "f044b598e91e2e14",
-   "url": "https://masspermits.com/permits/stow-electrical",
-   "title": "Electrical permit \u2014 Center Place, Stow",
-   "content_text": "Electrical permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-21T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "Electrical"
-  },
-  {
-   "id": "dcb16a1f8f83c4c0",
-   "url": "https://masspermits.com/permits/stow",
-   "title": "HVAC permit \u2014 Great Road, Stow",
-   "content_text": "HVAC permit in Stow, MA. Full lead at masspermits.com.",
-   "date_published": "2026-10-20T00:00:00Z",
-   "_town": "Stow",
-   "_trade": "HVAC"
-  }
- ]
+ "items": []
 }

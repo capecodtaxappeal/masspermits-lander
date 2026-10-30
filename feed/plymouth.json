@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Plymouth, MA",
- "home_page_url": "https://masspermits.com/permits/plymouth",
+ "title": "MassPermits \u2014 building permits in Plymouth, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/plymouth.json",
- "description": "MassPermits no longer receives building-permit records for Plymouth, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Plymouth, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,474 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
+ "_window_total": 47,
+ "_window_from": "2026-09-30",
  "_window_to": "2026-09-30",
- "items": []
+ "items": [
+  {
+   "id": "a58b0dafb497a032",
+   "url": "https://masspermits.com/permits/plymouth-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Hall St, Plymouth ($12,900)",
+   "content_text": "Kitchen/Bath permit in Plymouth, MA. Value $12,900. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Kitchen/Bath",
+   "_value": 12900.0
+  },
+  {
+   "id": "870d5593672eb7fb",
+   "url": "https://masspermits.com/permits/plymouth-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Nicks Rock Rd, Plymouth ($60,000)",
+   "content_text": "Kitchen/Bath permit in Plymouth, MA. Value $60,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Kitchen/Bath",
+   "_value": 60000.0
+  },
+  {
+   "id": "c49fd08a5a93061d",
+   "url": "https://masspermits.com/permits/plymouth-roofing",
+   "title": "Roofing permit \u2014 Sandwich Rd, Plymouth ($50,000)",
+   "content_text": "Roofing permit in Plymouth, MA. Value $50,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Roofing",
+   "_value": 50000.0
+  },
+  {
+   "id": "69f49f13a28316f7",
+   "url": "https://masspermits.com/permits/plymouth-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 R Kingfisher Ln, Plymouth ($10,000)",
+   "content_text": "Kitchen/Bath permit in Plymouth, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Kitchen/Bath",
+   "_value": 10000.0
+  },
+  {
+   "id": "38b1efca2a18fc18",
+   "url": "https://masspermits.com/permits/plymouth-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Trask Rd, Plymouth ($10,848)",
+   "content_text": "Windows/Doors/Siding permit in Plymouth, MA. Value $10,848. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 10848.0
+  },
+  {
+   "id": "8227fe677f1feeb4",
+   "url": "https://masspermits.com/permits/plymouth-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Gate Rd, Plymouth ($2,350)",
+   "content_text": "Windows/Doors/Siding permit in Plymouth, MA. Value $2,350. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2350.0
+  },
+  {
+   "id": "c488348ef3b9440c",
+   "url": "https://masspermits.com/permits/plymouth-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Forest Edge, Plymouth ($101,230)",
+   "content_text": "Windows/Doors/Siding permit in Plymouth, MA. Value $101,230. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 101230.0
+  },
+  {
+   "id": "6376f8b9af0a6e73",
+   "url": "https://masspermits.com/permits/plymouth-roofing",
+   "title": "Roofing permit \u2014 Ellisville Rd, Plymouth ($29,500)",
+   "content_text": "Roofing permit in Plymouth, MA. Value $29,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Roofing",
+   "_value": 29500.0
+  },
+  {
+   "id": "cd0725d3fd586174",
+   "url": "https://masspermits.com/permits/plymouth-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Citation Dr, Plymouth ($8,277)",
+   "content_text": "Windows/Doors/Siding permit in Plymouth, MA. Value $8,277. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 8277.0
+  },
+  {
+   "id": "8949d02df9430b3d",
+   "url": "https://masspermits.com/permits/plymouth-building",
+   "title": "Building permit \u2014 Oar + Line Rd, Plymouth ($5,500)",
+   "content_text": "Building permit in Plymouth, MA. Value $5,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Building",
+   "_value": 5500.0
+  },
+  {
+   "id": "b54b82fca8b2dee2",
+   "url": "https://masspermits.com/permits/plymouth-building",
+   "title": "Building permit \u2014 Billington Sea Rd, Plymouth ($6,000)",
+   "content_text": "Building permit in Plymouth, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Building",
+   "_value": 6000.0
+  },
+  {
+   "id": "2c97c110099dc710",
+   "url": "https://masspermits.com/permits/plymouth-building",
+   "title": "Building permit \u2014 Woodvale Ave, Plymouth ($5,799)",
+   "content_text": "Building permit in Plymouth, MA. Value $5,799. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Building",
+   "_value": 5799.38
+  },
+  {
+   "id": "e2a08a80fda87c33",
+   "url": "https://masspermits.com/permits/plymouth-solar",
+   "title": "Solar permit \u2014 Flint Locke Dr, Plymouth ($15,200)",
+   "content_text": "Solar permit in Plymouth, MA. Value $15,200. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Solar",
+   "_value": 15200.0
+  },
+  {
+   "id": "33c57e0c9a461820",
+   "url": "https://masspermits.com/permits/plymouth-deck-porch",
+   "title": "Deck/Porch permit \u2014 Wildrye, Plymouth ($95,000)",
+   "content_text": "Deck/Porch permit in Plymouth, MA. Value $95,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Deck/Porch",
+   "_value": 95000.0
+  },
+  {
+   "id": "ec3e37a4d42241da",
+   "url": "https://masspermits.com/permits/plymouth-deck-porch",
+   "title": "Deck/Porch permit \u2014 Yellowcress, Plymouth ($95,000)",
+   "content_text": "Deck/Porch permit in Plymouth, MA. Value $95,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Deck/Porch",
+   "_value": 95000.0
+  },
+  {
+   "id": "8d73c6f1942308e9",
+   "url": "https://masspermits.com/permits/plymouth-new-construction",
+   "title": "New Construction permit \u2014 Gunners Exchange Rd, Plymouth ($40,000)",
+   "content_text": "New Construction permit in Plymouth, MA. Value $40,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "New Construction",
+   "_value": 40000.0
+  },
+  {
+   "id": "0358b1006f6fc44e",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Jones Pond Way, Plymouth",
+   "content_text": "Electrical permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "d20c750c66473ebb",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Firefly Point, Plymouth",
+   "content_text": "Electrical permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c4f95d62e2c037f1",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Brigantine Cir, Plymouth ($2,000)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 2000.0
+  },
+  {
+   "id": "ad43a2fea906e6d4",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Huntington Rd, Plymouth ($1,500)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 1500.0
+  },
+  {
+   "id": "eca22b3d89091cde",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 State Road, Plymouth ($3,000)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 3000.0
+  },
+  {
+   "id": "5eb79b6ac425c5bc",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Priscilla Beach Rd, Plymouth",
+   "content_text": "Electrical permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "ef7aeba30fdc8b09",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Plaza Way, Plymouth ($4,000)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 4000.0
+  },
+  {
+   "id": "99ab8572bdbc84f7",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Manomet Ave, Plymouth ($1,400)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $1,400. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 1400.0
+  },
+  {
+   "id": "bc900afd0c180ce7",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Federal Furnace Rd, Plymouth ($1,400)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $1,400. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 1400.0
+  },
+  {
+   "id": "e24524c63bc2d6c1",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Sandwich Rd, Plymouth ($900)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $900. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 900.0
+  },
+  {
+   "id": "5618155e496e1ecb",
+   "url": "https://masspermits.com/permits/plymouth-electrical",
+   "title": "Electrical permit \u2014 Warren Ave, Plymouth ($500)",
+   "content_text": "Electrical permit in Plymouth, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Electrical",
+   "_value": 500.0
+  },
+  {
+   "id": "3edb9c36932b20f7",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Owls Nest, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "20d3fcf9ff640ab4",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Arlington Rd, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "a0c5261afd1c7d91",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Sandwich St, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "36275d08e421e8ba",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Silver Birch Ave, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "752c92de54e64c7e",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Scarlet Dr, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "9fe456fb019a7b80",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Seal Cove Rd, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "e838b438728339fd",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Daylily Dr, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "5605269fdfd09d08",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Rocky Hill Rd, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "37460751e7b11d54",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Bournehurst Dr, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "f5a95ad2a40350cd",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Sandwich Rd, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "374f9f4fe9483970",
+   "url": "https://masspermits.com/permits/plymouth-gas",
+   "title": "Gas permit \u2014 Lafayette Rd, Plymouth",
+   "content_text": "Gas permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Gas"
+  },
+  {
+   "id": "9d3cad1c74d660bb",
+   "url": "https://masspermits.com/permits/plymouth-plumbing",
+   "title": "Plumbing permit \u2014 Shore Dr, Plymouth",
+   "content_text": "Plumbing permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "9729c883ac81e15f",
+   "url": "https://masspermits.com/permits/plymouth-plumbing",
+   "title": "Plumbing permit \u2014 Manomet Ave, Plymouth",
+   "content_text": "Plumbing permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "7dadd0f94813232f",
+   "url": "https://masspermits.com/permits/plymouth-plumbing",
+   "title": "Plumbing permit \u2014 Seal Cove Rd, Plymouth",
+   "content_text": "Plumbing permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "bd9add3bba6ea770",
+   "url": "https://masspermits.com/permits/plymouth-plumbing",
+   "title": "Plumbing permit \u2014 Bradford St Unit, Plymouth",
+   "content_text": "Plumbing permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "78528e7736e428d9",
+   "url": "https://masspermits.com/permits/plymouth-plumbing",
+   "title": "Plumbing permit \u2014 Beach St, Plymouth",
+   "content_text": "Plumbing permit in Plymouth, MA. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "4454f8718678c436",
+   "url": "https://masspermits.com/permits/plymouth-hvac",
+   "title": "HVAC permit \u2014 Bartlett Ave, Plymouth ($10,000)",
+   "content_text": "HVAC permit in Plymouth, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "HVAC",
+   "_value": 10000.0
+  },
+  {
+   "id": "eb520f89d39ba532",
+   "url": "https://masspermits.com/permits/plymouth-solar",
+   "title": "Solar permit \u2014 Long Pond Rd, Plymouth ($499)",
+   "content_text": "Solar permit in Plymouth, MA. Value $499. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Solar",
+   "_value": 499.0
+  },
+  {
+   "id": "ce19b21d35e261e0",
+   "url": "https://masspermits.com/permits/plymouth-solar",
+   "title": "Solar permit \u2014 Brigantine Cir, Plymouth ($20,416)",
+   "content_text": "Solar permit in Plymouth, MA. Value $20,416. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Solar",
+   "_value": 20416.0
+  },
+  {
+   "id": "f183453720eba6bc",
+   "url": "https://masspermits.com/permits/plymouth-pool-spa",
+   "title": "Pool/Spa permit \u2014 Sandwich St, Plymouth ($100,000)",
+   "content_text": "Pool/Spa permit in Plymouth, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-30T00:00:00Z",
+   "_town": "Plymouth",
+   "_trade": "Pool/Spa",
+   "_value": 100000.0
+  }
+ ]
 }
