@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Waltham, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Waltham, MA",
+ "home_page_url": "https://masspermits.com/permits/waltham",
  "feed_url": "https://masspermits.com/feed/waltham.json",
- "description": "Recent building permits in Waltham, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Waltham, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,153 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 13,
- "_window_from": "2026-09-30",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-09-30",
- "items": [
-  {
-   "id": "7476cdda15804528",
-   "url": "https://masspermits.com/permits/waltham-roofing",
-   "title": "Roofing permit \u2014 Albemarle Rd, Waltham ($5,450)",
-   "content_text": "Roofing permit in Waltham, MA. Value $5,450. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Roofing",
-   "_value": 5450.0
-  },
-  {
-   "id": "f4d8cfd4d8222c33",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Beal Rd, Waltham ($15,000)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $15,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 15000.0
-  },
-  {
-   "id": "ce22990a090f0e2f",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Clematis Ave, Waltham ($32,790)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $32,790. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 32790.0
-  },
-  {
-   "id": "4bd76ed5231a82f1",
-   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
-   "title": "Kitchen/Bath permit \u2014 Gale St Unit, Waltham ($500,027)",
-   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $500,027. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Kitchen/Bath",
-   "_value": 500027.0
-  },
-  {
-   "id": "e1edc28ed0700f14",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Indian Rd, Waltham ($7,145)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $7,145. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 7145.0
-  },
-  {
-   "id": "26a87408bc6d27b9",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Livingstone Ln, Waltham ($5,025)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $5,025. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 5025.0
-  },
-  {
-   "id": "a655a9f71293b623",
-   "url": "https://masspermits.com/permits/waltham-renovation-remodel",
-   "title": "Renovation/Remodel permit \u2014 Main St, Waltham ($29,606)",
-   "content_text": "Renovation/Remodel permit in Waltham, MA. Value $29,606. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Renovation/Remodel",
-   "_value": 29605.63
-  },
-  {
-   "id": "bdd293fe26702423",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Marlborough Rd, Waltham ($19,560)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $19,560. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 19560.0
-  },
-  {
-   "id": "2117fa5fc7850ea5",
-   "url": "https://masspermits.com/permits/waltham-kitchen-bath",
-   "title": "Kitchen/Bath permit \u2014 Newton St, Waltham ($95,500)",
-   "content_text": "Kitchen/Bath permit in Waltham, MA. Value $95,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Kitchen/Bath",
-   "_value": 95500.0
-  },
-  {
-   "id": "6af0fd03683e821c",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Riverview Ave, Waltham ($37,040)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $37,040. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 37040.0
-  },
-  {
-   "id": "281a333775ea49e1",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Stow St, Waltham ($3,389)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $3,389. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 3389.0
-  },
-  {
-   "id": "156fc12905c0c288",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Trapelo Rd, Waltham ($12,310)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $12,310. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 12310.0
-  },
-  {
-   "id": "c18d244602734a3e",
-   "url": "https://masspermits.com/permits/waltham-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Wampum Ave, Waltham ($12,800)",
-   "content_text": "Windows/Doors/Siding permit in Waltham, MA. Value $12,800. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Waltham",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 12800.0
-  }
- ]
+ "items": []
 }

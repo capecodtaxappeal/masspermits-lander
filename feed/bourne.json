@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Bourne, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Bourne, MA",
+ "home_page_url": "https://masspermits.com/permits/bourne",
  "feed_url": "https://masspermits.com/feed/bourne.json",
- "description": "Recent building permits in Bourne, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Bourne, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-05. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,213 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-10-05",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 19,
- "_window_from": "2026-09-30",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-10-05",
- "items": [
-  {
-   "id": "efdf4bc11dc2fe2d",
-   "url": "https://masspermits.com/permits/bourne-electrical",
-   "title": "Electrical permit \u2014 Pasture Rd, Bourne ($36,000)",
-   "content_text": "Electrical permit in Bourne, MA. Value $36,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-05T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Electrical",
-   "_value": 36000.0
-  },
-  {
-   "id": "280146afdc4711fb",
-   "url": "https://masspermits.com/permits/bourne-electrical",
-   "title": "Electrical permit \u2014 Sea Knoll Ct, Bourne ($1,000)",
-   "content_text": "Electrical permit in Bourne, MA. Value $1,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Electrical",
-   "_value": 1000.0
-  },
-  {
-   "id": "7a839c89f9d55c28",
-   "url": "https://masspermits.com/permits/bourne-hvac",
-   "title": "HVAC permit \u2014 Hillside Ave, Bourne ($6,000)",
-   "content_text": "HVAC permit in Bourne, MA. Value $6,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "HVAC",
-   "_value": 6000.0
-  },
-  {
-   "id": "bc0056fd9e59fb15",
-   "url": "https://masspermits.com/permits/bourne-electrical",
-   "title": "Electrical permit \u2014 Harbor View Rd, Bourne ($2,250)",
-   "content_text": "Electrical permit in Bourne, MA. Value $2,250. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Electrical",
-   "_value": 2250.0
-  },
-  {
-   "id": "f3fd06adbdf8c550",
-   "url": "https://masspermits.com/permits/bourne-solar",
-   "title": "Solar permit \u2014 Head Of The Bay Rd, Bourne ($29,000)",
-   "content_text": "Solar permit in Bourne, MA. Value $29,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Solar",
-   "_value": 29000.0
-  },
-  {
-   "id": "30b769686200c8ca",
-   "url": "https://masspermits.com/permits/bourne-electrical",
-   "title": "Electrical permit \u2014 Oak Ave, Bourne ($4,000)",
-   "content_text": "Electrical permit in Bourne, MA. Value $4,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Electrical",
-   "_value": 4000.0
-  },
-  {
-   "id": "7999a512b52cf004",
-   "url": "https://masspermits.com/permits/bourne-solar",
-   "title": "Solar permit \u2014 Cedar Point Dr, Bourne ($10,000)",
-   "content_text": "Solar permit in Bourne, MA. Value $10,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Solar",
-   "_value": 10000.0
-  },
-  {
-   "id": "a92f9f60efdcee06",
-   "url": "https://masspermits.com/permits/bourne-electrical",
-   "title": "Electrical permit \u2014 Clark Rd, Bourne ($2,500)",
-   "content_text": "Electrical permit in Bourne, MA. Value $2,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Electrical",
-   "_value": 2500.0
-  },
-  {
-   "id": "315a1e4c64ad0a50",
-   "url": "https://masspermits.com/permits/bourne-electrical",
-   "title": "Electrical permit \u2014 Wings Neck Rd, Bourne ($1,500)",
-   "content_text": "Electrical permit in Bourne, MA. Value $1,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Electrical",
-   "_value": 1500.0
-  },
-  {
-   "id": "6ce45b73db38df81",
-   "url": "https://masspermits.com/permits/bourne-hvac",
-   "title": "HVAC permit \u2014 Bourne Bridge Approach, Bourne ($2,000)",
-   "content_text": "HVAC permit in Bourne, MA. Value $2,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "HVAC",
-   "_value": 2000.0
-  },
-  {
-   "id": "8238b0a14bb50ca8",
-   "url": "https://masspermits.com/permits/bourne-gas",
-   "title": "Gas permit \u2014 Fieldwood Dr, Bourne ($2,500)",
-   "content_text": "Gas permit in Bourne, MA. Value $2,500. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Gas",
-   "_value": 2500.0
-  },
-  {
-   "id": "49a20e7c8eda81a7",
-   "url": "https://masspermits.com/permits/bourne-gas",
-   "title": "Gas permit \u2014 Oak Ave, Bourne ($14,440)",
-   "content_text": "Gas permit in Bourne, MA. Value $14,440. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Gas",
-   "_value": 14440.0
-  },
-  {
-   "id": "c8995b8e3f7f11e2",
-   "url": "https://masspermits.com/permits/bourne-gas",
-   "title": "Gas permit \u2014 Chartwell Dr, Bourne ($2,000)",
-   "content_text": "Gas permit in Bourne, MA. Value $2,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Gas",
-   "_value": 2000.0
-  },
-  {
-   "id": "f08107d9e351bbd1",
-   "url": "https://masspermits.com/permits/bourne-gas",
-   "title": "Gas permit \u2014 Norris Rd, Bourne ($800)",
-   "content_text": "Gas permit in Bourne, MA. Value $800. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Gas",
-   "_value": 800.0
-  },
-  {
-   "id": "f4f14963b7b114eb",
-   "url": "https://masspermits.com/permits/bourne-hvac",
-   "title": "HVAC permit \u2014 Vickerson Ave, Bourne ($1,000)",
-   "content_text": "HVAC permit in Bourne, MA. Value $1,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "HVAC",
-   "_value": 1000.0
-  },
-  {
-   "id": "dae4982550941b26",
-   "url": "https://masspermits.com/permits/bourne-plumbing",
-   "title": "Plumbing permit \u2014 Sandwich Rd, Bourne ($5,400)",
-   "content_text": "Plumbing permit in Bourne, MA. Value $5,400. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Plumbing",
-   "_value": 5400.0
-  },
-  {
-   "id": "5f8d918af266e90f",
-   "url": "https://masspermits.com/permits/bourne-plumbing",
-   "title": "Plumbing permit \u2014 Nairn Rd, Bourne ($80,000)",
-   "content_text": "Plumbing permit in Bourne, MA. Value $80,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Plumbing",
-   "_value": 80000.0
-  },
-  {
-   "id": "760b55744b1c55b9",
-   "url": "https://masspermits.com/permits/bourne-plumbing",
-   "title": "Plumbing permit \u2014 Spinnaker Ln, Bourne ($4,000)",
-   "content_text": "Plumbing permit in Bourne, MA. Value $4,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Plumbing",
-   "_value": 4000.0
-  },
-  {
-   "id": "26211091c890b0c9",
-   "url": "https://masspermits.com/permits/bourne-plumbing",
-   "title": "Plumbing permit \u2014 Baxendale Rd, Bourne ($3,000)",
-   "content_text": "Plumbing permit in Bourne, MA. Value $3,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Plumbing",
-   "_value": 3000.0
-  }
- ]
+ "items": []
 }

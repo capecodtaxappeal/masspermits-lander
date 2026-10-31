@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Lexington, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Lexington, MA",
+ "home_page_url": "https://masspermits.com/permits/lexington",
  "feed_url": "https://masspermits.com/feed/lexington.json",
- "description": "Recent building permits in Lexington, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Lexington, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,158 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 14,
- "_window_from": "2026-09-30",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-09-30",
- "items": [
-  {
-   "id": "01c4cbaaff53bebc",
-   "url": "https://masspermits.com/permits/lexington-other",
-   "title": "Other permit \u2014 Massachusetts Ave, Lexington",
-   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Other"
-  },
-  {
-   "id": "431f3822d6230652",
-   "url": "https://masspermits.com/permits/lexington-other",
-   "title": "Other permit \u2014 Lowell St, Lexington",
-   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Other"
-  },
-  {
-   "id": "1e6e0532e4953ea9",
-   "url": "https://masspermits.com/permits/lexington-roofing",
-   "title": "Roofing permit \u2014 Lincoln St, Lexington ($36,780)",
-   "content_text": "Roofing permit in Lexington, MA. Value $36,780. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Roofing",
-   "_value": 36780.0
-  },
-  {
-   "id": "b2adf3dcc89f592d",
-   "url": "https://masspermits.com/permits/lexington-gas",
-   "title": "Gas permit \u2014 Courtyard Pl, Lexington",
-   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Gas"
-  },
-  {
-   "id": "7e65608689bc3006",
-   "url": "https://masspermits.com/permits/lexington-windows-doors-siding",
-   "title": "Windows/Doors/Siding permit \u2014 Freemont St, Lexington ($21,508)",
-   "content_text": "Windows/Doors/Siding permit in Lexington, MA. Value $21,508. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Windows/Doors/Siding",
-   "_value": 21508.0
-  },
-  {
-   "id": "47eaa834f6c8268c",
-   "url": "https://masspermits.com/permits/lexington-plumbing",
-   "title": "Plumbing permit \u2014 Grove St, Lexington",
-   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "910ee03be422f532",
-   "url": "https://masspermits.com/permits/lexington-electrical",
-   "title": "Electrical permit \u2014 Fairland St, Lexington ($1,000)",
-   "content_text": "Electrical permit in Lexington, MA. Value $1,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Electrical",
-   "_value": 1000.0
-  },
-  {
-   "id": "f330c0167b707856",
-   "url": "https://masspermits.com/permits/lexington-roofing",
-   "title": "Roofing permit \u2014 Solomon Pierce Rd, Lexington ($4,899)",
-   "content_text": "Roofing permit in Lexington, MA. Value $4,899. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Roofing",
-   "_value": 4899.0
-  },
-  {
-   "id": "07f7564fcf3727ce",
-   "url": "https://masspermits.com/permits/lexington-solar",
-   "title": "Solar permit \u2014 Buckman Dr, Lexington ($50,000)",
-   "content_text": "Solar permit in Lexington, MA. Value $50,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Solar",
-   "_value": 50000.0
-  },
-  {
-   "id": "162f514d70bb2bf9",
-   "url": "https://masspermits.com/permits/lexington-electrical",
-   "title": "Electrical permit \u2014 Stimson Ave, Lexington ($1,000)",
-   "content_text": "Electrical permit in Lexington, MA. Value $1,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Electrical",
-   "_value": 1000.0
-  },
-  {
-   "id": "1926df735a272b3a",
-   "url": "https://masspermits.com/permits/lexington-building",
-   "title": "Building permit \u2014 Adams St, Lexington ($9,316)",
-   "content_text": "Building permit in Lexington, MA. Value $9,316. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Building",
-   "_value": 9316.0
-  },
-  {
-   "id": "0a3692ef1b8cf4ef",
-   "url": "https://masspermits.com/permits/lexington-plumbing",
-   "title": "Plumbing permit \u2014 Massachusetts Ave, Lexington",
-   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Plumbing"
-  },
-  {
-   "id": "107bde71952e35b4",
-   "url": "https://masspermits.com/permits/lexington-electrical",
-   "title": "Electrical permit \u2014 Young St, Lexington ($86,700)",
-   "content_text": "Electrical permit in Lexington, MA. Value $86,700. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Electrical",
-   "_value": 86700.0
-  },
-  {
-   "id": "4a232ace706cf892",
-   "url": "https://masspermits.com/permits/lexington-demolition",
-   "title": "Demolition permit \u2014 Grove St, Lexington ($10,000)",
-   "content_text": "Demolition permit in Lexington, MA. Value $10,000. Full lead at masspermits.com.",
-   "date_published": "2026-09-30T00:00:00Z",
-   "_town": "Lexington",
-   "_trade": "Demolition",
-   "_value": 10000.0
-  }
- ]
+ "items": []
 }
