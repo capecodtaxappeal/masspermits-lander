@@ -1,0 +1,323 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Mendon, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/mendon.json",
+ "description": "Recent building permits in Mendon, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 29,
+ "_window_from": "2026-10-02",
+ "_window_to": "2026-10-21",
+ "items": [
+  {
+   "id": "f60ecc65ba73cc65",
+   "url": "https://masspermits.com/permits/mendon-new-construction",
+   "title": "New Construction permit \u2014 North Avenue, Mendon ($685,000)",
+   "content_text": "New Construction permit in Mendon, MA. Value $685,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "New Construction",
+   "_value": 685000.0
+  },
+  {
+   "id": "2a383e9d6d25020d",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Uxbridge Road, Mendon ($32,410)",
+   "content_text": "Roofing permit in Mendon, MA. Value $32,410. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 32410.5
+  },
+  {
+   "id": "b663d129d87c4eac",
+   "url": "https://masspermits.com/permits/mendon-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Colonial Drive, Mendon ($39,000)",
+   "content_text": "Kitchen/Bath permit in Mendon, MA. Value $39,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Kitchen/Bath",
+   "_value": 39000.0
+  },
+  {
+   "id": "b36294b2a0808c14",
+   "url": "https://masspermits.com/permits/mendon-building",
+   "title": "Building permit \u2014 Crestview Drive, Mendon ($17,515)",
+   "content_text": "Building permit in Mendon, MA. Value $17,515. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Building",
+   "_value": 17514.94
+  },
+  {
+   "id": "da5b1f2e613b584f",
+   "url": "https://masspermits.com/permits/mendon-building",
+   "title": "Building permit \u2014 Sandra Circle, Mendon ($4,000)",
+   "content_text": "Building permit in Mendon, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Building",
+   "_value": 4000.0
+  },
+  {
+   "id": "310a035adc1119ad",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Thayer Road, Mendon ($51,000)",
+   "content_text": "Roofing permit in Mendon, MA. Value $51,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 51000.0
+  },
+  {
+   "id": "459ab08532909b84",
+   "url": "https://masspermits.com/permits/mendon-new-construction",
+   "title": "New Construction permit \u2014 Neck Hill Road, Mendon ($18,000)",
+   "content_text": "New Construction permit in Mendon, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "New Construction",
+   "_value": 18000.0
+  },
+  {
+   "id": "aa11445bc51af08d",
+   "url": "https://masspermits.com/permits/mendon-deck-porch",
+   "title": "Deck/Porch permit \u2014 Crestview Drive, Mendon ($3,000)",
+   "content_text": "Deck/Porch permit in Mendon, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Deck/Porch",
+   "_value": 3000.0
+  },
+  {
+   "id": "b54c2338a6ef30d6",
+   "url": "https://masspermits.com/permits/mendon-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Hartford Ave West, Mendon ($4,001)",
+   "content_text": "Windows/Doors/Siding permit in Mendon, MA. Value $4,001. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4000.55
+  },
+  {
+   "id": "4c0be3fecb1a092c",
+   "url": "https://masspermits.com/permits/mendon-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Washington Street, Mendon ($38,937)",
+   "content_text": "Windows/Doors/Siding permit in Mendon, MA. Value $38,937. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 38937.0
+  },
+  {
+   "id": "c87c9b0b3512a3d3",
+   "url": "https://masspermits.com/permits/mendon-building",
+   "title": "Building permit \u2014 Dudley Road, Mendon ($10,820)",
+   "content_text": "Building permit in Mendon, MA. Value $10,820. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Building",
+   "_value": 10820.0
+  },
+  {
+   "id": "ea85f4887555c952",
+   "url": "https://masspermits.com/permits/mendon",
+   "title": "Solar permit \u2014 Mowry Street, Mendon ($38,000)",
+   "content_text": "Solar permit in Mendon, MA. Value $38,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Solar",
+   "_value": 38000.0
+  },
+  {
+   "id": "08100c34a950d515",
+   "url": "https://masspermits.com/permits/mendon-building",
+   "title": "Building permit \u2014 North Avenue, Mendon ($7,000)",
+   "content_text": "Building permit in Mendon, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Building",
+   "_value": 7000.0
+  },
+  {
+   "id": "f9109de0710bc58d",
+   "url": "https://masspermits.com/permits/mendon-building",
+   "title": "Building permit \u2014 Colonial Drive, Mendon ($5,700)",
+   "content_text": "Building permit in Mendon, MA. Value $5,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Building",
+   "_value": 5700.0
+  },
+  {
+   "id": "eb1a8d28f66498ce",
+   "url": "https://masspermits.com/permits/mendon-building",
+   "title": "Building permit \u2014 Washington Street, Mendon ($500)",
+   "content_text": "Building permit in Mendon, MA. Value $500. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Building",
+   "_value": 500.0
+  },
+  {
+   "id": "f1d8f9cac0c6f3ac",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 George Street, Mendon ($24,600)",
+   "content_text": "Roofing permit in Mendon, MA. Value $24,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-11T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 24600.0
+  },
+  {
+   "id": "0a2f559971e43839",
+   "url": "https://masspermits.com/permits/mendon-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Bates Street, Mendon ($14,926)",
+   "content_text": "Windows/Doors/Siding permit in Mendon, MA. Value $14,926. Full lead at masspermits.com.",
+   "date_published": "2026-10-11T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 14926.0
+  },
+  {
+   "id": "2ce2595264e6297c",
+   "url": "https://masspermits.com/permits/mendon-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Forest Park Drive, Mendon ($15,054)",
+   "content_text": "Windows/Doors/Siding permit in Mendon, MA. Value $15,054. Full lead at masspermits.com.",
+   "date_published": "2026-10-11T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 15054.0
+  },
+  {
+   "id": "5e754df46e721437",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Park Street, Mendon ($21,293)",
+   "content_text": "Roofing permit in Mendon, MA. Value $21,293. Full lead at masspermits.com.",
+   "date_published": "2026-10-11T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 21293.13
+  },
+  {
+   "id": "f2681b6bcb7799fc",
+   "url": "https://masspermits.com/permits/mendon",
+   "title": "Solar permit \u2014 Bates Street, Mendon ($15,600)",
+   "content_text": "Solar permit in Mendon, MA. Value $15,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Solar",
+   "_value": 15600.0
+  },
+  {
+   "id": "5e8d0842ea1bc499",
+   "url": "https://masspermits.com/permits/mendon",
+   "title": "Septic permit \u2014 North Avenue, Mendon ($100,000)",
+   "content_text": "Septic permit in Mendon, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Septic",
+   "_value": 100000.0
+  },
+  {
+   "id": "5c61ed8a98319d42",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Mowry Street, Mendon ($1,500)",
+   "content_text": "Roofing permit in Mendon, MA. Value $1,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 1500.0
+  },
+  {
+   "id": "ed660b659483aa22",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Cape Road, Mendon ($108,000)",
+   "content_text": "Roofing permit in Mendon, MA. Value $108,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 108000.0
+  },
+  {
+   "id": "52c501ee65c5723d",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Kinsley Lane, Mendon ($10,916)",
+   "content_text": "Roofing permit in Mendon, MA. Value $10,916. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 10916.0
+  },
+  {
+   "id": "b6f8f6bb410b45d2",
+   "url": "https://masspermits.com/permits/mendon",
+   "title": "Gas permit \u2014 Miscoe Road, Mendon ($5,182)",
+   "content_text": "Gas permit in Mendon, MA. Value $5,182. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Gas",
+   "_value": 5182.0
+  },
+  {
+   "id": "78af2b6758a6c495",
+   "url": "https://masspermits.com/permits/mendon-deck-porch",
+   "title": "Deck/Porch permit \u2014 North Avenue, Mendon ($68,000)",
+   "content_text": "Deck/Porch permit in Mendon, MA. Value $68,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-04T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Deck/Porch",
+   "_value": 68000.0
+  },
+  {
+   "id": "0eb7a299b98962ff",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Butler Road, Mendon ($17,160)",
+   "content_text": "Roofing permit in Mendon, MA. Value $17,160. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 17160.0
+  },
+  {
+   "id": "746e7a122db84e07",
+   "url": "https://masspermits.com/permits/mendon-roofing",
+   "title": "Roofing permit \u2014 Vincent Road, Mendon ($8,500)",
+   "content_text": "Roofing permit in Mendon, MA. Value $8,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Roofing",
+   "_value": 8500.0
+  },
+  {
+   "id": "cc14f43626e562df",
+   "url": "https://masspermits.com/permits/mendon-building",
+   "title": "Building permit \u2014 Cape Road, Mendon ($9,313)",
+   "content_text": "Building permit in Mendon, MA. Value $9,313. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Mendon",
+   "_trade": "Building",
+   "_value": 9312.55
+  }
+ ]
+}

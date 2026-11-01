@@ -1,0 +1,53 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Dudley, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/dudley.json",
+ "description": "Recent building permits in Dudley, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 2,
+ "_window_from": "2026-10-02",
+ "_window_to": "2026-10-02",
+ "items": [
+  {
+   "id": "bf7571293c68c31d",
+   "url": "https://masspermits.com/permits/dudley-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Blackmer Road, Dudley ($78,000)",
+   "content_text": "Renovation/Remodel permit in Dudley, MA. Value $78,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Dudley",
+   "_trade": "Renovation/Remodel",
+   "_value": 78000.0
+  },
+  {
+   "id": "86776dfc3b1340c1",
+   "url": "https://masspermits.com/permits/dudley-building",
+   "title": "Building permit \u2014 Grace Lane, Dudley ($10,000)",
+   "content_text": "Building permit in Dudley, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Dudley",
+   "_trade": "Building",
+   "_value": 10000.0
+  }
+ ]
+}

@@ -1,0 +1,193 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Marlborough, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/marlborough.json",
+ "description": "Recent building permits in Marlborough, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 16,
+ "_window_from": "2026-10-02",
+ "_window_to": "2026-10-15",
+ "items": [
+  {
+   "id": "7cf638736f8081d0",
+   "url": "https://masspermits.com/permits/marlborough-building",
+   "title": "Building permit \u2014 Elm St, Marlborough ($32,679)",
+   "content_text": "Building permit in Marlborough, MA. Value $32,679. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Building",
+   "_value": 32679.0
+  },
+  {
+   "id": "b3f6386d5bf51cfd",
+   "url": "https://masspermits.com/permits/marlborough-roofing",
+   "title": "Roofing permit \u2014 Kelber Dr, Marlborough ($19,710)",
+   "content_text": "Roofing permit in Marlborough, MA. Value $19,710. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Roofing",
+   "_value": 19710.0
+  },
+  {
+   "id": "09a6ac107e4aadb9",
+   "url": "https://masspermits.com/permits/marlborough-deck-porch",
+   "title": "Deck/Porch permit \u2014 Fuller Dr, Marlborough ($3,000)",
+   "content_text": "Deck/Porch permit in Marlborough, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Deck/Porch",
+   "_value": 3000.0
+  },
+  {
+   "id": "89c085422eaac400",
+   "url": "https://masspermits.com/permits/marlborough-deck-porch",
+   "title": "Deck/Porch permit \u2014 Greenwood St, Marlborough ($7,500)",
+   "content_text": "Deck/Porch permit in Marlborough, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Deck/Porch",
+   "_value": 7500.0
+  },
+  {
+   "id": "8dd0f6ffb9c6819a",
+   "url": "https://masspermits.com/permits/marlborough-electrical",
+   "title": "Electrical permit \u2014 Farrington Ln, Marlborough ($29,000)",
+   "content_text": "Electrical permit in Marlborough, MA. Value $29,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Electrical",
+   "_value": 29000.0
+  },
+  {
+   "id": "f33daf765c40b42b",
+   "url": "https://masspermits.com/permits/marlborough-building",
+   "title": "Building permit \u2014 Littlefield Ln, Marlborough ($3,429)",
+   "content_text": "Building permit in Marlborough, MA. Value $3,429. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Building",
+   "_value": 3428.96
+  },
+  {
+   "id": "eedb26a14d2b2160",
+   "url": "https://masspermits.com/permits/marlborough-roofing",
+   "title": "Roofing permit \u2014 Dudley St, Marlborough ($10,650)",
+   "content_text": "Roofing permit in Marlborough, MA. Value $10,650. Full lead at masspermits.com.",
+   "date_published": "2026-10-07T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Roofing",
+   "_value": 10650.0
+  },
+  {
+   "id": "b685be8f88859e3a",
+   "url": "https://masspermits.com/permits/marlborough-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Forest St, Marlborough ($91,750)",
+   "content_text": "Windows/Doors/Siding permit in Marlborough, MA. Value $91,750. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 91750.0
+  },
+  {
+   "id": "55234fa4905ce97e",
+   "url": "https://masspermits.com/permits/marlborough",
+   "title": "Demolition permit \u2014 Redbud Way, Marlborough ($15,000)",
+   "content_text": "Demolition permit in Marlborough, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Demolition",
+   "_value": 15000.0
+  },
+  {
+   "id": "b7877defcf01c374",
+   "url": "https://masspermits.com/permits/marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Campus Dr, Marlborough ($260,500)",
+   "content_text": "Renovation/Remodel permit in Marlborough, MA. Value $260,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Renovation/Remodel",
+   "_value": 260500.0
+  },
+  {
+   "id": "822f6638cddd5e0b",
+   "url": "https://masspermits.com/permits/marlborough-building",
+   "title": "Building permit \u2014 Broadmeadow St, Marlborough ($30,790)",
+   "content_text": "Building permit in Marlborough, MA. Value $30,790. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Building",
+   "_value": 30790.0
+  },
+  {
+   "id": "90af0d408350befb",
+   "url": "https://masspermits.com/permits/marlborough-deck-porch",
+   "title": "Deck/Porch permit \u2014 Graham Path, Marlborough ($33,000)",
+   "content_text": "Deck/Porch permit in Marlborough, MA. Value $33,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Deck/Porch",
+   "_value": 33000.0
+  },
+  {
+   "id": "27c80c3eb9d9535d",
+   "url": "https://masspermits.com/permits/marlborough-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Fitchburg St, Marlborough ($39,682)",
+   "content_text": "Renovation/Remodel permit in Marlborough, MA. Value $39,682. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Renovation/Remodel",
+   "_value": 39682.0
+  },
+  {
+   "id": "bb5fc443525b858c",
+   "url": "https://masspermits.com/permits/marlborough-building",
+   "title": "Building permit \u2014 Oleary Rd, Marlborough ($295,000)",
+   "content_text": "Building permit in Marlborough, MA. Value $295,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Building",
+   "_value": 295000.0
+  },
+  {
+   "id": "8c7628c21c2f93e4",
+   "url": "https://masspermits.com/permits/marlborough-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Lakeshore Dr, Marlborough ($9,850)",
+   "content_text": "Kitchen/Bath permit in Marlborough, MA. Value $9,850. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Kitchen/Bath",
+   "_value": 9850.0
+  },
+  {
+   "id": "dfa65336575cae98",
+   "url": "https://masspermits.com/permits/marlborough-electrical",
+   "title": "Electrical permit \u2014 Nashoba Dr, Marlborough ($12,500)",
+   "content_text": "Electrical permit in Marlborough, MA. Value $12,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Marlborough",
+   "_trade": "Electrical",
+   "_value": 12500.0
+  }
+ ]
+}

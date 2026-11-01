@@ -1,0 +1,113 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Oxford, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/oxford.json",
+ "description": "Recent building permits in Oxford, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 8,
+ "_window_from": "2026-10-02",
+ "_window_to": "2026-10-14",
+ "items": [
+  {
+   "id": "d3a77c38c1a506c4",
+   "url": "https://masspermits.com/permits/oxford-building",
+   "title": "Building permit \u2014 Westgate Dr, Oxford ($8,625)",
+   "content_text": "Building permit in Oxford, MA. Value $8,625. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Building",
+   "_value": 8625.0
+  },
+  {
+   "id": "1d4de869f7c7639f",
+   "url": "https://masspermits.com/permits/oxford-deck-porch",
+   "title": "Deck/Porch permit \u2014 Bacon St, Oxford ($4,800)",
+   "content_text": "Deck/Porch permit in Oxford, MA. Value $4,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Deck/Porch",
+   "_value": 4800.0
+  },
+  {
+   "id": "f0ee920ec594001a",
+   "url": "https://masspermits.com/permits/oxford-roofing",
+   "title": "Roofing permit \u2014 Old Depot Rd, Oxford ($5,513)",
+   "content_text": "Roofing permit in Oxford, MA. Value $5,513. Full lead at masspermits.com.",
+   "date_published": "2026-10-08T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Roofing",
+   "_value": 5513.39
+  },
+  {
+   "id": "bcb34f97b30a10cd",
+   "url": "https://masspermits.com/permits/oxford-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Holly St, Oxford ($63,500)",
+   "content_text": "Windows/Doors/Siding permit in Oxford, MA. Value $63,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 63500.0
+  },
+  {
+   "id": "6ee4222fa23b0252",
+   "url": "https://masspermits.com/permits/oxford-deck-porch",
+   "title": "Deck/Porch permit \u2014 History Dr, Oxford ($54,875)",
+   "content_text": "Deck/Porch permit in Oxford, MA. Value $54,875. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Deck/Porch",
+   "_value": 54875.0
+  },
+  {
+   "id": "11f44d8d7046345a",
+   "url": "https://masspermits.com/permits/oxford-building",
+   "title": "Building permit \u2014 Douglas Rd, Oxford ($31,000)",
+   "content_text": "Building permit in Oxford, MA. Value $31,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Building",
+   "_value": 31000.0
+  },
+  {
+   "id": "118cc8c409d876f5",
+   "url": "https://masspermits.com/permits/oxford-roofing",
+   "title": "Roofing permit \u2014 Russell Ln, Oxford ($25,000)",
+   "content_text": "Roofing permit in Oxford, MA. Value $25,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-05T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Roofing",
+   "_value": 25000.0
+  },
+  {
+   "id": "6630312da5f9c182",
+   "url": "https://masspermits.com/permits/oxford-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Pine Ridge Dr, Oxford ($19,800)",
+   "content_text": "Kitchen/Bath permit in Oxford, MA. Value $19,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-02T00:00:00Z",
+   "_town": "Oxford",
+   "_trade": "Kitchen/Bath",
+   "_value": 19800.0
+  }
+ ]
+}

@@ -1,0 +1,633 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Natick, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/natick.json",
+ "description": "Recent building permits in Natick, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 103,
+ "_window_from": "2026-10-02",
+ "_window_to": "2026-10-20",
+ "items": [
+  {
+   "id": "3748fe6c272ffff6",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Langdon Rd, Natick ($12,344)",
+   "content_text": "Roofing permit in Natick, MA. Value $12,344. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 12344.0
+  },
+  {
+   "id": "bf5841454a7201ae",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Elmwood Ave, Natick ($28,103)",
+   "content_text": "Roofing permit in Natick, MA. Value $28,103. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 28102.91
+  },
+  {
+   "id": "1a21e41df798ae43",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Vesta Rd, Unit (R), Natick ($16,625)",
+   "content_text": "Roofing permit in Natick, MA. Value $16,625. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 16625.18
+  },
+  {
+   "id": "1c2c577919051712",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Hartford St, Natick ($22,962)",
+   "content_text": "Roofing permit in Natick, MA. Value $22,962. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 22962.0
+  },
+  {
+   "id": "b0648562b265871e",
+   "url": "https://masspermits.com/permits/natick-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Hudson St, Natick ($27,500)",
+   "content_text": "Kitchen/Bath permit in Natick, MA. Value $27,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Kitchen/Bath",
+   "_value": 27500.0
+  },
+  {
+   "id": "ee3416d6f9bf11ca",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pinewood Ave, Natick ($11,000)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 11000.0
+  },
+  {
+   "id": "6f041eef426ea1bc",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Wilogreen Rd, Natick ($27,869)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $27,869. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 27869.0
+  },
+  {
+   "id": "2723439f8d70138b",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Maple St, Unit, Natick ($41,840)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $41,840. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 41840.0
+  },
+  {
+   "id": "9b8181f00cf58eeb",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Maple St, Natick ($15,000)",
+   "content_text": "Roofing permit in Natick, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 15000.0
+  },
+  {
+   "id": "7f7cb174f6b5cb29",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Indian Ridge Rd, Natick ($13,480)",
+   "content_text": "Roofing permit in Natick, MA. Value $13,480. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 13480.0
+  },
+  {
+   "id": "001fbcacac9bbfb5",
+   "url": "https://masspermits.com/permits/natick-hvac",
+   "title": "HVAC permit \u2014 Worcester St, Natick ($18,000)",
+   "content_text": "HVAC permit in Natick, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "HVAC",
+   "_value": 18000.0
+  },
+  {
+   "id": "956e40c05d099dcd",
+   "url": "https://masspermits.com/permits/natick-hvac",
+   "title": "HVAC permit \u2014 School St Ext, Natick ($10,012)",
+   "content_text": "HVAC permit in Natick, MA. Value $10,012. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "HVAC",
+   "_value": 10012.5
+  },
+  {
+   "id": "8a05e65bf6d05653",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Donovan Ln, Natick ($5,000)",
+   "content_text": "Building permit in Natick, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 5000.0
+  },
+  {
+   "id": "b471b33e32794d5c",
+   "url": "https://masspermits.com/permits/natick-deck-porch",
+   "title": "Deck/Porch permit \u2014 Wilson St, Unit, Natick ($13,500)",
+   "content_text": "Deck/Porch permit in Natick, MA. Value $13,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-18T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Deck/Porch",
+   "_value": 13500.0
+  },
+  {
+   "id": "71bb08eeeb5868fe",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Macarthur Rd, Natick ($20,250)",
+   "content_text": "Building permit in Natick, MA. Value $20,250. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 20250.0
+  },
+  {
+   "id": "8345aebf208146a0",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Greenleaf Rd, Natick ($670,000)",
+   "content_text": "Building permit in Natick, MA. Value $670,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 670000.0
+  },
+  {
+   "id": "d37072716326982b",
+   "url": "https://masspermits.com/permits/natick-electrical",
+   "title": "Electrical permit \u2014 Arrow Path, Natick ($87,073)",
+   "content_text": "Electrical permit in Natick, MA. Value $87,073. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Electrical",
+   "_value": 87073.0
+  },
+  {
+   "id": "9e9e7a570b7c0bb1",
+   "url": "https://masspermits.com/permits/natick-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Proctor St, Unit, Natick ($32,456)",
+   "content_text": "Kitchen/Bath permit in Natick, MA. Value $32,456. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Kitchen/Bath",
+   "_value": 32456.0
+  },
+  {
+   "id": "d90051cac7b681a2",
+   "url": "https://masspermits.com/permits/natick-solar",
+   "title": "Solar permit \u2014 D St, Natick ($42,108)",
+   "content_text": "Solar permit in Natick, MA. Value $42,108. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Solar",
+   "_value": 42108.0
+  },
+  {
+   "id": "3bf97982bd869e51",
+   "url": "https://masspermits.com/permits/natick-electrical",
+   "title": "Electrical permit \u2014 Elwin Rd, Natick ($15,500)",
+   "content_text": "Electrical permit in Natick, MA. Value $15,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Electrical",
+   "_value": 15500.0
+  },
+  {
+   "id": "201d5920013f4dd4",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 East Evergreen Rd, Natick ($11,120)",
+   "content_text": "Roofing permit in Natick, MA. Value $11,120. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 11120.0
+  },
+  {
+   "id": "59cb629fae4978da",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Morse St, Natick ($6,259)",
+   "content_text": "Building permit in Natick, MA. Value $6,259. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 6259.0
+  },
+  {
+   "id": "f9e19f0c8877e1f0",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Craft Rd, Natick ($7,625)",
+   "content_text": "Building permit in Natick, MA. Value $7,625. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 7624.58
+  },
+  {
+   "id": "963ff07564fbda0a",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Hartford St, Natick ($10,000)",
+   "content_text": "Building permit in Natick, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 10000.0
+  },
+  {
+   "id": "6bbb1fe1c6661081",
+   "url": "https://masspermits.com/permits/natick-addition",
+   "title": "Addition permit \u2014 Cabot St, Natick ($1,652)",
+   "content_text": "Addition permit in Natick, MA. Value $1,652. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Addition",
+   "_value": 1652.0
+  },
+  {
+   "id": "3285614f6f41fa29",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 West Central St, Natick ($600,000)",
+   "content_text": "Building permit in Natick, MA. Value $600,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 600000.0
+  },
+  {
+   "id": "1bf5304dd9a2c8b6",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Windsor Ave, Natick ($70,000)",
+   "content_text": "Building permit in Natick, MA. Value $70,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 70000.0
+  },
+  {
+   "id": "1566ba370fdce372",
+   "url": "https://masspermits.com/permits/natick-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Beverly Rd, Natick ($18,500)",
+   "content_text": "Kitchen/Bath permit in Natick, MA. Value $18,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Kitchen/Bath",
+   "_value": 18500.0
+  },
+  {
+   "id": "3f3a4b8eafdfc8cd",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Marion St, Natick ($40,000)",
+   "content_text": "Building permit in Natick, MA. Value $40,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 40000.0
+  },
+  {
+   "id": "70eed9ceaaf25041",
+   "url": "https://masspermits.com/permits/natick-electrical",
+   "title": "Electrical permit \u2014 Pine St, Natick ($85,000)",
+   "content_text": "Electrical permit in Natick, MA. Value $85,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Electrical",
+   "_value": 85000.0
+  },
+  {
+   "id": "28b1181b0bb388af",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Hopewell Farm Rd, Natick ($4,997)",
+   "content_text": "Building permit in Natick, MA. Value $4,997. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 4997.0
+  },
+  {
+   "id": "d8941f01611ad5f4",
+   "url": "https://masspermits.com/permits/natick-electrical",
+   "title": "Electrical permit \u2014 Strathmore Rd, Natick ($40,100)",
+   "content_text": "Electrical permit in Natick, MA. Value $40,100. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Electrical",
+   "_value": 40100.0
+  },
+  {
+   "id": "b335b0ad55aa257e",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Nimitz Cir, Natick ($41,600)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $41,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 41600.0
+  },
+  {
+   "id": "9f971f7164c0006d",
+   "url": "https://masspermits.com/permits/natick-hvac",
+   "title": "HVAC permit \u2014 North Main St, Natick ($36,000)",
+   "content_text": "HVAC permit in Natick, MA. Value $36,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "HVAC",
+   "_value": 36000.0
+  },
+  {
+   "id": "a15671a8ed23cd5e",
+   "url": "https://masspermits.com/permits/natick-solar",
+   "title": "Solar permit \u2014 Stagg Dr, Natick ($5,200)",
+   "content_text": "Solar permit in Natick, MA. Value $5,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Solar",
+   "_value": 5200.0
+  },
+  {
+   "id": "8e61da33e76ce656",
+   "url": "https://masspermits.com/permits/natick-demolition",
+   "title": "Demolition permit \u2014 Nimitz Cir, Natick ($15,000)",
+   "content_text": "Demolition permit in Natick, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Demolition",
+   "_value": 15000.0
+  },
+  {
+   "id": "5768a85d1e4a4de2",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Frost St, Natick ($18,960)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $18,960. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 18960.14
+  },
+  {
+   "id": "67120bc555465b69",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Evergreen Rd, Natick ($17,600)",
+   "content_text": "Roofing permit in Natick, MA. Value $17,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 17599.8
+  },
+  {
+   "id": "633658fc844954a3",
+   "url": "https://masspermits.com/permits/natick-hvac",
+   "title": "HVAC permit \u2014 Meadow Pond Ln, Natick ($17,500)",
+   "content_text": "HVAC permit in Natick, MA. Value $17,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "HVAC",
+   "_value": 17500.0
+  },
+  {
+   "id": "39bcbe5a7fece0be",
+   "url": "https://masspermits.com/permits/natick-hvac",
+   "title": "HVAC permit \u2014 East Central St, Unit, Natick ($18,000)",
+   "content_text": "HVAC permit in Natick, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "HVAC",
+   "_value": 18000.0
+  },
+  {
+   "id": "4ef44afb175c9792",
+   "url": "https://masspermits.com/permits/natick-demolition",
+   "title": "Demolition permit \u2014 Shore Rd, Natick ($20,000)",
+   "content_text": "Demolition permit in Natick, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Demolition",
+   "_value": 20000.0
+  },
+  {
+   "id": "73c840bea3bf19da",
+   "url": "https://masspermits.com/permits/natick-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Valley Rd, Natick ($45,000)",
+   "content_text": "Kitchen/Bath permit in Natick, MA. Value $45,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Kitchen/Bath",
+   "_value": 45000.0
+  },
+  {
+   "id": "c5c59d4bbd3c9101",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Fairway Cir, Natick ($88,375)",
+   "content_text": "Building permit in Natick, MA. Value $88,375. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 88375.0
+  },
+  {
+   "id": "3ac6075be1f4348a",
+   "url": "https://masspermits.com/permits/natick-deck-porch",
+   "title": "Deck/Porch permit \u2014 High St, Natick ($60,000)",
+   "content_text": "Deck/Porch permit in Natick, MA. Value $60,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Deck/Porch",
+   "_value": 60000.0
+  },
+  {
+   "id": "444b24d6cd84009c",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Bolser Ave, Natick ($15,620)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $15,620. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 15620.0
+  },
+  {
+   "id": "ba54a2e5566feaa9",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Worcester St, Unit - Old Navy Sport, Natick ($8,379)",
+   "content_text": "Building permit in Natick, MA. Value $8,379. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 8379.0
+  },
+  {
+   "id": "ba2a80efaeb39c4e",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Algonquian Dr, Natick ($50,705)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $50,705. Full lead at masspermits.com.",
+   "date_published": "2026-10-12T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 50705.05
+  },
+  {
+   "id": "6f3485f39257c106",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Lookout Farm Rd, Natick ($5,000)",
+   "content_text": "Building permit in Natick, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-12T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 5000.0
+  },
+  {
+   "id": "cf0c56daf390043f",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Travis Rd, Natick ($7,126)",
+   "content_text": "Roofing permit in Natick, MA. Value $7,126. Full lead at masspermits.com.",
+   "date_published": "2026-10-10T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 7125.56
+  },
+  {
+   "id": "f7c676471f64fd25",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Westlake Rd, Natick ($670,000)",
+   "content_text": "Building permit in Natick, MA. Value $670,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 670000.0
+  },
+  {
+   "id": "018299344f0049d6",
+   "url": "https://masspermits.com/permits/natick-demolition",
+   "title": "Demolition permit \u2014 Westlake Rd, Natick ($15,000)",
+   "content_text": "Demolition permit in Natick, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Demolition",
+   "_value": 15000.0
+  },
+  {
+   "id": "416a5a494fbdbe32",
+   "url": "https://masspermits.com/permits/natick-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 West Central St, Natick ($15,000)",
+   "content_text": "Kitchen/Bath permit in Natick, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Kitchen/Bath",
+   "_value": 15000.0
+  },
+  {
+   "id": "b6c5b60e168ffbed",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Winter St, Natick ($102,710)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $102,710. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 102710.0
+  },
+  {
+   "id": "ada8fe363820a8ef",
+   "url": "https://masspermits.com/permits/natick-building",
+   "title": "Building permit \u2014 Florence St, Natick ($4,700)",
+   "content_text": "Building permit in Natick, MA. Value $4,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Building",
+   "_value": 4700.0
+  },
+  {
+   "id": "5f68d26b588d14b1",
+   "url": "https://masspermits.com/permits/natick-roofing",
+   "title": "Roofing permit \u2014 Pond St, Natick ($11,440)",
+   "content_text": "Roofing permit in Natick, MA. Value $11,440. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Roofing",
+   "_value": 11440.0
+  },
+  {
+   "id": "76cae8c6d6665a60",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Redmen Dr, Natick ($19,408)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $19,408. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 19408.0
+  },
+  {
+   "id": "fbb26d48223b6270",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Countryside Rd, Natick ($28,335)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $28,335. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 28335.0
+  },
+  {
+   "id": "425600c26120d5a4",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Lena Rd, Natick ($23,695)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $23,695. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 23695.0
+  },
+  {
+   "id": "7b2fafb377648c3d",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Richard Rd, Natick ($5,045)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $5,045. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5045.0
+  },
+  {
+   "id": "27628683e857f5fb",
+   "url": "https://masspermits.com/permits/natick-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Union St, Unit, Natick ($3,342)",
+   "content_text": "Windows/Doors/Siding permit in Natick, MA. Value $3,342. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Natick",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3342.0
+  }
+ ]
+}

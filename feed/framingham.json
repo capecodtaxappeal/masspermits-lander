@@ -1,0 +1,632 @@
+{
+ "version": "https://jsonfeed.org/version/1.1",
+ "title": "MassPermits \u2014 building permits in Framingham, MA",
+ "home_page_url": "https://masspermits.com",
+ "feed_url": "https://masspermits.com/feed/framingham.json",
+ "description": "Recent building permits in Framingham, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "authors": [
+  {
+   "name": "MassPermits",
+   "url": "https://masspermits.com"
+  }
+ ],
+ "_masspermits": {
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "license_name": "CC BY-NC 4.0",
+  "attribution": "MassPermits (masspermits.com)",
+  "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+ },
+ "_window_total": 167,
+ "_window_from": "2026-10-02",
+ "_window_to": "2026-10-26",
+ "items": [
+  {
+   "id": "06fad45bc3be5d4d",
+   "url": "https://masspermits.com/permits/framingham-hvac",
+   "title": "HVAC permit \u2014 Nobscot Dr, Framingham ($154,000)",
+   "content_text": "HVAC permit in Framingham, MA. Value $154,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "HVAC",
+   "_value": 154000.0
+  },
+  {
+   "id": "b23741e86abfe7e5",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Central St, Framingham ($4,251)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $4,251. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 4251.0
+  },
+  {
+   "id": "bd762f0be0b4dcbf",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Simpson Dr, Framingham ($11,700)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $11,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 11700.0
+  },
+  {
+   "id": "5ef270b2afff0610",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Swanson Rd, Framingham ($43,000)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $43,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 43000.0
+  },
+  {
+   "id": "12a65a55170b1b4f",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Central St, Framingham ($13,500)",
+   "content_text": "Roofing permit in Framingham, MA. Value $13,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 13500.0
+  },
+  {
+   "id": "5ef0f6d8534a1bf3",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Cedar St, Framingham ($13,900)",
+   "content_text": "Roofing permit in Framingham, MA. Value $13,900. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 13900.0
+  },
+  {
+   "id": "c7ff3818d8aa5983",
+   "url": "https://masspermits.com/permits/framingham-addition",
+   "title": "Addition permit \u2014 South St, Framingham ($28,000)",
+   "content_text": "Addition permit in Framingham, MA. Value $28,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Addition",
+   "_value": 28000.0
+  },
+  {
+   "id": "6c4c9a64de2248e5",
+   "url": "https://masspermits.com/permits/framingham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Apple D`Or Rd, Framingham ($2,500)",
+   "content_text": "Deck/Porch permit in Framingham, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Deck/Porch",
+   "_value": 2500.0
+  },
+  {
+   "id": "dd3f205164d3cf3c",
+   "url": "https://masspermits.com/permits/framingham-electrical",
+   "title": "Electrical permit \u2014 Worcester Rd, Unit, Framingham ($26,226)",
+   "content_text": "Electrical permit in Framingham, MA. Value $26,226. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Electrical",
+   "_value": 26226.06
+  },
+  {
+   "id": "de30f2fbeab75358",
+   "url": "https://masspermits.com/permits/framingham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Arlene Dr, Framingham ($80,000)",
+   "content_text": "Kitchen/Bath permit in Framingham, MA. Value $80,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Kitchen/Bath",
+   "_value": 80000.0
+  },
+  {
+   "id": "36d8fa6e00675a50",
+   "url": "https://masspermits.com/permits/framingham-building",
+   "title": "Building permit \u2014 Carter Dr, Framingham ($9,100)",
+   "content_text": "Building permit in Framingham, MA. Value $9,100. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Building",
+   "_value": 9100.0
+  },
+  {
+   "id": "a3a50908d8f209b8",
+   "url": "https://masspermits.com/permits/framingham-solar",
+   "title": "Solar permit \u2014 Beaver St, Framingham ($43,931)",
+   "content_text": "Solar permit in Framingham, MA. Value $43,931. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Solar",
+   "_value": 43931.0
+  },
+  {
+   "id": "75c95e1ca461087b",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Whitney Ave, Framingham ($33,300)",
+   "content_text": "Roofing permit in Framingham, MA. Value $33,300. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 33300.0
+  },
+  {
+   "id": "b810ce849fcf83e8",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pleasant St, Framingham ($10,000)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 10000.0
+  },
+  {
+   "id": "a445e30d29d7ae9b",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Parker Rd, Framingham ($13,000)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $13,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 13000.0
+  },
+  {
+   "id": "d3fa4be335faaf66",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Croydon Rd, Framingham ($3,000)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 3000.0
+  },
+  {
+   "id": "d823074fcfa94407",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Nixon Rd, Framingham ($11,297)",
+   "content_text": "Roofing permit in Framingham, MA. Value $11,297. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 11296.52
+  },
+  {
+   "id": "7dd94e5c7245e952",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Leigh St, Framingham ($7,800)",
+   "content_text": "Roofing permit in Framingham, MA. Value $7,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 7800.0
+  },
+  {
+   "id": "a4397cb13ccc3d5f",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Juniper Ln, Framingham ($33,695)",
+   "content_text": "Roofing permit in Framingham, MA. Value $33,695. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 33695.0
+  },
+  {
+   "id": "99bfcc437c44a578",
+   "url": "https://masspermits.com/permits/framingham-electrical",
+   "title": "Electrical permit \u2014 Willis St, Unit, Framingham ($15,000)",
+   "content_text": "Electrical permit in Framingham, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Electrical",
+   "_value": 15000.0
+  },
+  {
+   "id": "a6130149facf9be4",
+   "url": "https://masspermits.com/permits/framingham-solar",
+   "title": "Solar permit \u2014 Bent Hill Dr, Framingham ($46,000)",
+   "content_text": "Solar permit in Framingham, MA. Value $46,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Solar",
+   "_value": 46000.0
+  },
+  {
+   "id": "0ad5386912e1b378",
+   "url": "https://masspermits.com/permits/framingham-solar",
+   "title": "Solar permit \u2014 Canterbury Pl, Framingham ($129,330)",
+   "content_text": "Solar permit in Framingham, MA. Value $129,330. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Solar",
+   "_value": 129330.0
+  },
+  {
+   "id": "bd2e23f498e38200",
+   "url": "https://masspermits.com/permits/framingham-solar",
+   "title": "Solar permit \u2014 Joseph Rd, Framingham ($41,381)",
+   "content_text": "Solar permit in Framingham, MA. Value $41,381. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Solar",
+   "_value": 41381.0
+  },
+  {
+   "id": "be9d602ca76c8dcb",
+   "url": "https://masspermits.com/permits/framingham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Union Ave, Framingham",
+   "content_text": "Kitchen/Bath permit in Framingham, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Kitchen/Bath"
+  },
+  {
+   "id": "607c4a33de7d7294",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Prior Dr, Framingham ($8,845)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $8,845. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 8845.0
+  },
+  {
+   "id": "5c7768725e32736f",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Brook St, Framingham ($16,300)",
+   "content_text": "Roofing permit in Framingham, MA. Value $16,300. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 16300.0
+  },
+  {
+   "id": "5f036d2faf0c42cf",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Fenwood St, Framingham ($26,187)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $26,187. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 26187.49
+  },
+  {
+   "id": "c694426be67360af",
+   "url": "https://masspermits.com/permits/framingham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Angelica Dr, Framingham ($37,700)",
+   "content_text": "Kitchen/Bath permit in Framingham, MA. Value $37,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Kitchen/Bath",
+   "_value": 37700.0
+  },
+  {
+   "id": "5acf3e9da3ec8c21",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Potter Rd, Framingham ($5,441)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $5,441. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5441.0
+  },
+  {
+   "id": "af666e52143c0901",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Woodward Rd, Framingham ($10,000)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 10000.0
+  },
+  {
+   "id": "1637885377d60c57",
+   "url": "https://masspermits.com/permits/framingham-hvac",
+   "title": "HVAC permit \u2014 State St, Framingham ($51,500)",
+   "content_text": "HVAC permit in Framingham, MA. Value $51,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "HVAC",
+   "_value": 51500.0
+  },
+  {
+   "id": "c35e549cc2d41e1d",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Salem End Ln, Framingham ($46,475)",
+   "content_text": "Roofing permit in Framingham, MA. Value $46,475. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 46475.0
+  },
+  {
+   "id": "121db4ea544a859f",
+   "url": "https://masspermits.com/permits/framingham-addition",
+   "title": "Addition permit \u2014 Aleda St, Framingham ($348,000)",
+   "content_text": "Addition permit in Framingham, MA. Value $348,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Addition",
+   "_value": 348000.0
+  },
+  {
+   "id": "9af689eebddb3ac6",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Bethany Rd, Framingham ($7,000)",
+   "content_text": "Roofing permit in Framingham, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 7000.0
+  },
+  {
+   "id": "b37e33864ef5996f",
+   "url": "https://masspermits.com/permits/framingham-solar",
+   "title": "Solar permit \u2014 Doyle Cir, Framingham ($56,650)",
+   "content_text": "Solar permit in Framingham, MA. Value $56,650. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Solar",
+   "_value": 56649.7
+  },
+  {
+   "id": "be122558b014488f",
+   "url": "https://masspermits.com/permits/framingham-solar",
+   "title": "Solar permit \u2014 Bradford Rd, Framingham ($63,857)",
+   "content_text": "Solar permit in Framingham, MA. Value $63,857. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Solar",
+   "_value": 63857.0
+  },
+  {
+   "id": "a5ca6ffd4691fd8c",
+   "url": "https://masspermits.com/permits/framingham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Baldwin Ave, Framingham ($14,641)",
+   "content_text": "Kitchen/Bath permit in Framingham, MA. Value $14,641. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Kitchen/Bath",
+   "_value": 14641.0
+  },
+  {
+   "id": "f223942350ea5e62",
+   "url": "https://masspermits.com/permits/framingham-building",
+   "title": "Building permit \u2014 Parmenter Rd, Framingham ($10,873)",
+   "content_text": "Building permit in Framingham, MA. Value $10,873. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Building",
+   "_value": 10873.0
+  },
+  {
+   "id": "499968c71f875519",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Mt Wayte Ave, Framingham ($7,000)",
+   "content_text": "Roofing permit in Framingham, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 7000.0
+  },
+  {
+   "id": "2966992a97656db2",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Emily Rd, Framingham ($20,300)",
+   "content_text": "Roofing permit in Framingham, MA. Value $20,300. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 20300.0
+  },
+  {
+   "id": "75d85a1997e44a55",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Fairbrook Rd, Framingham ($2,421)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $2,421. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2421.0
+  },
+  {
+   "id": "e9d1be4048511566",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Paxton Rd, Framingham ($2,963)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $2,963. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2962.84
+  },
+  {
+   "id": "c92776466dc96b02",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Claflin St, Framingham ($18,200)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $18,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 18200.0
+  },
+  {
+   "id": "fae9c6c8e2b97af2",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Yorks Rd, Framingham ($11,500)",
+   "content_text": "Roofing permit in Framingham, MA. Value $11,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 11500.0
+  },
+  {
+   "id": "8fef0d0172934f7a",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Williams St, Framingham ($14,032)",
+   "content_text": "Roofing permit in Framingham, MA. Value $14,032. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 14032.0
+  },
+  {
+   "id": "69185002093d34ff",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Paxton Rd, Framingham ($5,700)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $5,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 5700.0
+  },
+  {
+   "id": "4cb4b9304d629362",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Cove Ave, Framingham ($16,950)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $16,950. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 16950.0
+  },
+  {
+   "id": "d013486cad9063f3",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Chouteau Ave, Framingham ($7,000)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 7000.0
+  },
+  {
+   "id": "2ba9b0cc41811e08",
+   "url": "https://masspermits.com/permits/framingham-building",
+   "title": "Building permit \u2014 William J Hgts, Framingham ($6,930)",
+   "content_text": "Building permit in Framingham, MA. Value $6,930. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Building",
+   "_value": 6930.49
+  },
+  {
+   "id": "f51ab9c8037fcbe5",
+   "url": "https://masspermits.com/permits/framingham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Aaron St, Framingham ($20,000)",
+   "content_text": "Kitchen/Bath permit in Framingham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Kitchen/Bath",
+   "_value": 20000.0
+  },
+  {
+   "id": "b13a10512ec9f4e3",
+   "url": "https://masspermits.com/permits/framingham-solar",
+   "title": "Solar permit \u2014 Gates St, Framingham ($61,248)",
+   "content_text": "Solar permit in Framingham, MA. Value $61,248. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Solar",
+   "_value": 61248.0
+  },
+  {
+   "id": "685c8c8ba720e7cf",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Grove St, Framingham ($12,950)",
+   "content_text": "Roofing permit in Framingham, MA. Value $12,950. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 12950.0
+  },
+  {
+   "id": "7dca177df45fb397",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Harrington Rd, Framingham ($4,709)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $4,709. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4709.2
+  },
+  {
+   "id": "eb1b20ff0d91f53c",
+   "url": "https://masspermits.com/permits/framingham-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Millwood Cir, Framingham ($11,500)",
+   "content_text": "Renovation/Remodel permit in Framingham, MA. Value $11,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Renovation/Remodel",
+   "_value": 11500.0
+  },
+  {
+   "id": "c8ff6ce421324d51",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Edmands Rd, Framingham ($13,950)",
+   "content_text": "Roofing permit in Framingham, MA. Value $13,950. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 13950.0
+  },
+  {
+   "id": "27702756e0f32da9",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 Amy Rd, Framingham ($11,180)",
+   "content_text": "Roofing permit in Framingham, MA. Value $11,180. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 11180.0
+  },
+  {
+   "id": "0bd91a3788eb6925",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Fay Rd, Framingham ($28,483)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $28,483. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 28483.0
+  },
+  {
+   "id": "d816a031ffbc149f",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Henry St, Framingham ($6,065)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $6,065. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 6065.0
+  },
+  {
+   "id": "e62f0f7e72ffbd97",
+   "url": "https://masspermits.com/permits/framingham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Newton Park Rd, Framingham ($4,115)",
+   "content_text": "Windows/Doors/Siding permit in Framingham, MA. Value $4,115. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4115.0
+  },
+  {
+   "id": "b0a284b3b23b67f3",
+   "url": "https://masspermits.com/permits/framingham-roofing",
+   "title": "Roofing permit \u2014 C St, Framingham ($8,800)",
+   "content_text": "Roofing permit in Framingham, MA. Value $8,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Framingham",
+   "_trade": "Roofing",
+   "_value": 8800.0
+  }
+ ]
+}
