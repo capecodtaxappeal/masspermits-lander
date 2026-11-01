@@ -1,8 +1,8 @@
 {
  "slug": "friday-permit-gap",
  "computed_from": "masspermits.com build",
- "corpus_fetched_at": "2026-11-01T04:27:01.288204+00:00",
- "corpus_rows": 85447,
+ "corpus_fetched_at": "2026-11-01T17:26:41.366085+00:00",
+ "corpus_rows": 85477,
  "corpus_sources": 91,
  "corpus_first": "2024-09-16",
  "corpus_last": "2026-11-01",
@@ -43,22 +43,22 @@
   ]
  },
  "stats": {
-  "n_dated": 85447,
+  "n_dated": 85477,
   "n_sources": 91,
   "n_shown": 78,
   "vendor_split": {
    "shared": {
-    "n": 36650,
+    "n": 36658,
     "sources": 32,
     "fri_pct": 13.1,
     "weekday_mean": 21.2,
     "ratio": 0.62
    },
    "other": {
-    "n": 48797,
+    "n": 48819,
     "sources": 59,
     "fri_pct": 13.9,
-    "weekday_mean": 21.3,
+    "weekday_mean": 21.2,
     "ratio": 0.65
    },
    "other_below_avg": 42,
@@ -74,7 +74,7 @@
   "fri_pct": 13.6,
   "sat_pct": 0.7,
   "sun_pct": 0.8,
-  "weekend_rows": 1264,
+  "weekend_rows": 1275,
   "weekend_sources": 51,
   "weekend_pct": 1.5,
   "zero_friday_town": "Hingham, MA",
@@ -280,8 +280,8 @@
    },
    {
     "source": "Somerville, MA",
-    "weekday": 2489,
-    "friday": 210,
+    "weekday": 2498,
+    "friday": 211,
     "friday_pct": 8.4,
     "issue_days": 124,
     "first": "2026-05-06",
@@ -415,7 +415,7 @@
     "friday_pct": 11.3,
     "issue_days": 125,
     "first": "2026-05-05",
-    "last": "2026-10-31",
+    "last": "2026-11-01",
     "capped": false
    },
    {
@@ -515,7 +515,7 @@
     "friday_pct": 13.0,
     "issue_days": 127,
     "first": "2026-05-05",
-    "last": "2026-10-30",
+    "last": "2026-11-01",
     "capped": false
    },
    {
@@ -535,7 +535,7 @@
     "friday_pct": 13.4,
     "issue_days": 128,
     "first": "2026-05-05",
-    "last": "2026-10-31",
+    "last": "2026-11-01",
     "capped": false
    },
    {
@@ -549,21 +549,21 @@
     "capped": false
    },
    {
-    "source": "North Reading, MA",
-    "weekday": 1005,
-    "friday": 137,
-    "friday_pct": 13.6,
-    "issue_days": 122,
-    "first": "2026-05-05",
-    "last": "2026-10-30",
-    "capped": false
-   },
-   {
     "source": "Lenox, MA",
     "weekday": 558,
     "friday": 76,
     "friday_pct": 13.6,
     "issue_days": 116,
+    "first": "2026-05-05",
+    "last": "2026-11-01",
+    "capped": false
+   },
+   {
+    "source": "North Reading, MA",
+    "weekday": 1005,
+    "friday": 137,
+    "friday_pct": 13.6,
+    "issue_days": 122,
     "first": "2026-05-05",
     "last": "2026-10-30",
     "capped": false
@@ -640,12 +640,12 @@
    },
    {
     "source": "Mashpee, MA",
-    "weekday": 2380,
+    "weekday": 2378,
     "friday": 357,
     "friday_pct": 15.0,
     "issue_days": 123,
     "first": "2026-05-07",
-    "last": "2026-10-31",
+    "last": "2026-11-01",
     "capped": false
    },
    {
@@ -709,16 +709,6 @@
     "capped": false
    },
    {
-    "source": "Cambridge, MA",
-    "weekday": 2902,
-    "friday": 470,
-    "friday_pct": 16.2,
-    "issue_days": 84,
-    "first": "2026-07-06",
-    "last": "2026-10-30",
-    "capped": false
-   },
-   {
     "source": "Barnstable, MA",
     "weekday": 595,
     "friday": 97,
@@ -746,6 +736,16 @@
     "issue_days": 124,
     "first": "2026-05-05",
     "last": "2026-10-30",
+    "capped": false
+   },
+   {
+    "source": "Cambridge, MA",
+    "weekday": 2914,
+    "friday": 482,
+    "friday_pct": 16.5,
+    "issue_days": 84,
+    "first": "2026-07-06",
+    "last": "2026-10-31",
     "capped": false
    },
    {
