@@ -76,8 +76,7 @@
   footer{border-top:1px solid var(--border);margin-top:44px;padding:22px 0 40px;color:var(--muted);font-size:12.5px;text-align:center}
   footer b{color:var(--muted)}
 </style>
-<!-- Promotion codes are switched in ONE place, /js/promo-switch.js (FIRST90 is OFF). -->
-<script src="/js/promo-switch.js"></script>
+<!-- No promotion markup on this page (2026-11-02): $99 a month only. -->
 </head>
 <body>
 <div class="wrap">
@@ -87,16 +86,15 @@
   </header>
 
   <p class="eyebrow">For Massachusetts contractors</p>
-  <h1>This week, homeowners across MA are pulling permits. <span class="hl">Get those permits in one file every Monday.</span></h1>
-  <p class="lead">A building permit means a property owner was just approved for work on their property. MassPermits sends you the permits from the towns we cover with the <b style="color:#eaf0f7">full address and project type</b>, plus the permit holder and declared value where the town lists them, in a new file every Monday.</p>
+  <h1>This week, Massachusetts towns are issuing building permits. <span class="hl">Get those permits in one file every Monday.</span></h1>
+  <p class="lead">A building permit is a dated public record of approved work at a real address. MassPermits sends you the permits from the towns we cover with the <b style="color:#eaf0f7">full address and project type</b>, plus the permit holder and declared value where the town lists them, in a new file every Monday.</p>
 
   <div class="livestrip"><span class="dot"></span> <span id="live">Permits from towns across Massachusetts · new file every Monday</span></div>
 
   <div class="offer">
-    <!-- FIRST90 is OFF (see /js/promo-switch.js): the full-price block shows, and the
-         $9.90 block waits in the template below, unchanged. Both CTAs keep the cta1 id, so
+    <!-- Each CTA keeps its id (cta1 here, cta2 below), so
          the /offer/click beacon counts whichever one is on the page. -->
-    <div data-promo-off="FIRST90">
+    <div>
     <div class="tag">Weekly Feed</div>
     <div class="price">
       <span class="now">$99</span>
@@ -105,23 +103,12 @@
     <p class="then">A new file every Monday · cancel anytime</p>
     <a class="cta" id="cta1" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" rel="nofollow">Start the weekly feed: $99/mo &rarr;</a>
     </div>
-    <template data-promo="FIRST90">
-    <div class="tag">New customer offer</div>
-    <div class="price">
-      <span class="was">$99</span>
-      <span class="now">$9.90</span>
-      <span class="per">first month</span>
-    </div>
-    <p class="then">90% off your first month, then $99/mo · cancel anytime</p>
-    <a class="cta" id="cta1" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FIRST90" rel="nofollow">Start for $9.90 &rarr;</a>
-    </template>
-    <script>window.mpPromo&&mpPromo("FIRST90")</script>
     <p class="guarantee"><b>Founder guarantee:</b> if your first month doesn't pay for itself, I refund it. No forms, no argument. — Pat</p>
   </div>
 
   <h2>Why a permit is the best lead you can get</h2>
   <div class="grid">
-    <div class="card"><div class="n">01</div><h3>Funded intent</h3><p>A permit means the homeowner is approved and about to spend. Not a tire-kicker — a real, dated project.</p></div>
+    <div class="card"><div class="n">01</div><h3>Real, dated work</h3><p>A permit is approved work at a real address, with a date. The trade named on it is usually hired already; the trades and suppliers who come next are not.</p></div>
     <div class="card"><div class="n">02</div><h3>Everything to win it</h3><p>Full address and project type, plus the permit holder and declared value where the town lists them, so you can reach out and personalize the pitch.</p></div>
     <div class="card"><div class="n">03</div><h3>Weekly and filterable</h3><p>A new file every Monday, filterable by trade and town. Every row shows its date.</p></div>
   </div>
@@ -140,15 +127,10 @@
   </div>
 
   <div class="final">
-    <div data-promo-off="FIRST90">
+    <div>
     <a class="cta sm" id="cta2" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" rel="nofollow">Start the weekly feed: $99/mo &rarr;</a>
     <p class="guarantee" style="margin-top:12px">cancel anytime · month-one money-back</p>
     </div>
-    <template data-promo="FIRST90">
-    <a class="cta sm" id="cta2" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FIRST90" rel="nofollow">Get this week's leads — $9.90 &rarr;</a>
-    <p class="guarantee" style="margin-top:12px">then $99/mo · cancel anytime · month-one money-back</p>
-    </template>
-    <script>window.mpPromo&&mpPromo("FIRST90")</script>
   </div>
 
   <footer>

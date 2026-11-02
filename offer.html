@@ -36,23 +36,15 @@
   .guarantee{border-color:rgba(74,222,128,.35)}
   a.plain{color:var(--teal)}
 </style>
-<!-- Promotion codes are switched in ONE place, /js/promo-switch.js (FIRST90 is OFF). -->
-<script src="/js/promo-switch.js"></script>
+<!-- No promotion markup on this page (2026-11-02): $99 a month only. -->
 </head>
 <body>
 <div class="wrap">
   <div class="brand">Mass<b>Permits</b></div>
 
-  <!-- FIRST90 is OFF (see /js/promo-switch.js): the full-price lines show, and the
-       $9.90 lines wait in the template below, unchanged. -->
-  <div class="tag" data-promo-off="FIRST90">The MassPermits Weekly Feed</div>
-  <h1 data-promo-off="FIRST90">Massachusetts permit leads,<br>every Monday: <span class="now">$99</span> a month</h1>
-  <template data-promo="FIRST90">
-  <div class="tag">Limited offer · code FIRST90 auto-applied</div>
-  <h1>Your first month of permit leads:<br><span class="strike">$99</span> <span class="now">$9.90</span></h1>
-  </template>
-  <script>window.mpPromo&&mpPromo("FIRST90")</script>
-  <p class="lead">A building permit is a public record that a property owner was just approved for work. We collect permits from the Massachusetts towns we cover, sort them by trade and town, and send them to you every Monday.</p>
+  <div class="tag">The MassPermits Weekly Feed</div>
+  <h1>Massachusetts permit leads,<br>every Monday: <span class="now">$99</span> a month</h1>
+  <p class="lead">A building permit is a dated public record of approved work at a real address. We collect permits from the Massachusetts towns we cover, sort them by trade and town, and send them to you every Monday.</p>
 
   <div class="panel">
     <ul class="what">
@@ -60,20 +52,12 @@
       <li><b>Full lead detail</b>: exact address and project type, plus the permit holder and declared value where the town lists them</li>
       <li><b>Sortable file + live dashboard</b> — filter by trade, town, project size</li>
     </ul>
-    <a class="cta" id="buy" data-promo-off="FIRST90" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01">Start the weekly feed: $99/mo →</a>
-    <template data-promo="FIRST90">
-    <a class="cta" id="buy" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FIRST90">Start for $9.90 — then $99/mo →</a>
-    </template>
-    <script>window.mpPromo&&mpPromo("FIRST90")</script>
+    <a class="cta" id="buy" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01">Start the weekly feed: $99/mo →</a>
     <p class="fine">Cancel anytime · no contract · leads already delivered are yours to keep</p>
   </div>
 
   <div class="row">
-    <div class="chip" data-promo-off="FIRST90"><div class="n">$99</div><div class="l">a month</div></div>
-    <template data-promo="FIRST90">
-    <div class="chip"><div class="n">$9.90</div><div class="l">month one</div></div>
-    </template>
-    <script>window.mpPromo&&mpPromo("FIRST90")</script>
+    <div class="chip"><div class="n">$99</div><div class="l">a month</div></div>
     <div class="chip"><div class="n">Monday</div><div class="l">delivery</div></div>
     <div class="chip guarantee"><div class="n">100%</div><div class="l">refund if month 1 doesn't pay for itself</div></div>
   </div>

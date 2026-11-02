@@ -2,7 +2,7 @@
 //
 // 2026-10-04: the homepage said a $49 first month was "Applied automatically", and
 // FOUNDER2026 did not apply at checkout in two separate sessions. Every promo line on
-// index.html, offer.html and offer/index.html now sits in <template data-promo="CODE">
+// index.html, offer.html and offer/index.html sat in <template data-promo="CODE">
 // and shows only while that code is true in js/promo-switch.js. These tests hold in
 // BOTH switch states, so turning a code back on stays a one-line edit:
 //
@@ -32,31 +32,6 @@ function runSwitch(src, doc) {
 }
 const CODES = Object.keys(runSwitch(SWITCH, {}).MP_PROMO_ON);
 
-// What a browser shows with the given codes ON (all others off): templates of an ON
-// code are unwrapped, every element marked data-promo-off for it is removed, and
-// every other template stays inert (dropped here, as a browser never renders it).
-function removeElements(html, attr) {
-  const open = new RegExp(`<([a-z][a-z0-9]*)\\b[^>]*\\s${attr}[^>]*>`, "i");
-  for (let m = open.exec(html); m; m = open.exec(html)) {
-    const tagRe = new RegExp(`<(/?)${m[1]}\\b[^>]*>`, "gi");
-    tagRe.lastIndex = m.index;
-    let depth = 0, end = -1;
-    for (let t = tagRe.exec(html); t; t = tagRe.exec(html)) {
-      depth += t[1] ? -1 : 1;
-      if (depth === 0) { end = tagRe.lastIndex; break; }
-    }
-    assert.ok(end > m.index, `unbalanced <${m[1]} ${attr}>`);
-    html = html.slice(0, m.index) + html.slice(end);
-  }
-  return html;
-}
-function rendered(html, on = []) {
-  for (const code of on) {
-    html = html.replace(new RegExp(`<template data-promo="${code}">([\\s\\S]*?)</template>`, "g"), "$1");
-    html = removeElements(html, `data-promo-off="${code}"`);
-  }
-  return html.replace(/<template\b[\s\S]*?<\/template>/g, "");
-}
 const noComments = (h) => h.replace(/<!--[\s\S]*?-->/g, "");
 const noScripts = (h) => h.replace(/<script\b[\s\S]*?<\/script>/gi, "").replace(/<style\b[\s\S]*?<\/style>/gi, "");
 const visibleText = (h) => noScripts(noComments(h)).replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ");
@@ -98,64 +73,38 @@ test("mpPromo: OFF leaves the page alone; ON unwraps the templates and removes t
   assert.equal(done.length, 2, "anything but the literal true counts as off");
 });
 
-test("each page loads the switch once, in <head>, without async or defer", () => {
+// 2026-11-02: the promo markup was removed from the pages outright (price is $99 a
+// month only), so no edit to the switch can put a promotion back on a page. The
+// switch file itself stays, with every code false; the tests above still hold it.
+test("no page loads the switch or carries promo markup", () => {
   for (const f of PAGES) {
     const h = read(f);
-    assert.equal(h.split(TAG).length, 2, f);
-    assert.ok(h.indexOf(TAG) < h.indexOf("</head>"), f + ": before the body, so an ON code does not move the layout");
+    assert.ok(!h.includes(TAG), `${f}: loads the switch`);
+    assert.ok(!/<template\b/.test(h), `${f}: has a <template>`);
+    assert.ok(!/data-promo/.test(h), `${f}: has a data-promo attribute`);
+    assert.ok(!/mpPromo\(/.test(h), `${f}: calls mpPromo`);
+    assert.ok(!/STRIPE_LINK_FOUNDER|buy-banner/.test(h), `${f}: founders banner wiring left`);
   }
 });
 
-test("every promo template names a known code and is followed at once by its mpPromo call", () => {
-  let templates = 0;
+test("nothing a visitor sees or follows names a promotion", () => {
+  const SAID = [/\$49\b/, /\$9\.90/, /90% off/i, /founders?'? rate/i, /FOUNDER2026|FIRST90/, /auto-applied|applied automatically/i, /\bpromo/i, /best value/i];
   for (const f of PAGES) {
     const h = read(f);
-    for (const m of h.matchAll(/data-promo(?:-off)?="([^"]*)"/g)) assert.ok(CODES.includes(m[1]), `${f}: unknown code ${m[1]}`);
-    const all = [...h.matchAll(/<template\b[^>]*>/g)];
-    const wired = [...h.matchAll(/<template data-promo="(\w+)">[\s\S]*?<\/template>\s*(<script>[^<]*<\/script>)/g)];
-    assert.equal(wired.length, all.length, `${f}: every <template> is a promo template`);
-    for (const m of wired) assert.equal(m[2], call(m[1]), `${f}: ${m[1]} template is followed by its call`);
-    templates += all.length;
+    const text = visibleText(h);
+    for (const re of SAID) assert.ok(!re.test(text), `${f} says ${re}`);
+    assert.ok(!/prefilled_promo_code/.test(h), `${f}: a promo checkout link is on the page`);
   }
-  assert.ok(templates >= 6, "the banner, the pricing line and the offer-page blocks are all switched");
 });
 
-test("with every code off, nothing a visitor sees or follows names a promotion", () => {
-  const SAID = [/\$49\b/, /\$9\.90/, /90% off/i, /founders?'? rate/i, /FOUNDER2026|FIRST90/, /auto-applied|applied automatically/i, /\bpromo/i];
+test("the checkout buttons are still on each page, once each", () => {
+  const want = { "index.html": ["buy-hero", "buy-feed"], "offer.html": ["buy"], "offer/index.html": ["cta1", "cta2"] };
   for (const f of PAGES) {
-    const off = rendered(read(f));
-    const text = visibleText(off);
-    for (const re of SAID) assert.ok(!re.test(text), `${f} says ${re} with every code off`);
-    // links and buttons: no checkout link carries a promotion code
-    assert.ok(!/prefilled_promo_code/.test(noScripts(noComments(off))), `${f}: a promo checkout link is live with every code off`);
-    // the head is never switched, so it may not promise one either
-    const head = off.slice(0, off.indexOf("</head>"));
-    for (const re of SAID) assert.ok(!re.test(head.replace(/<!--[\s\S]*?-->/g, "").replace(/<script\b[\s\S]*?<\/script>/gi, "")), `${f} <head> says ${re}`);
+    const list = ids(read(f));
+    const dup = list.filter((x, i) => list.indexOf(x) !== i);
+    assert.deepEqual(dup, [], `${f}: repeated ids`);
+    for (const id of want[f]) assert.ok(list.includes(id), `${f}: #${id} missing`);
   }
-  // the homepage's only promo link outside a template is the script constant that the
-  // banner (inside the template) uses; it is applied to #buy-banner and nothing else
-  const js = read("index.html").match(/<script>\s*\/\/ ── CONFIG[\s\S]*?<\/script>/)[0];
-  assert.equal(js.split("STRIPE_LINK_FOUNDER").length - 1, 2, "STRIPE_LINK_FOUNDER is declared once and used once, for the banner");
-  assert.ok(/banner = \$\("buy-banner"\), founderUrl = stripeWith\(STRIPE_LINK_FOUNDER\); if \(banner && founderUrl\)/.test(js));
-});
-
-test("with a code on, its lines appear, their full-price twins go, and no id repeats", () => {
-  const want = { "index.html": ["buy-banner", "buy-hero", "buy-feed"], "offer.html": ["buy"], "offer/index.html": ["cta1", "cta2"] };
-  for (const f of PAGES) {
-    for (const on of [[], ["FOUNDER2026"], ["FIRST90"], CODES]) {
-      const h = rendered(read(f), on);
-      const list = ids(h);
-      const dup = list.filter((x, i) => list.indexOf(x) !== i);
-      assert.deepEqual(dup, [], `${f} with ${on.join("+") || "nothing"} on: repeated ids`);
-      for (const id of want[f]) {
-        if (id === "buy-banner" && !on.includes("FOUNDER2026")) { assert.ok(!list.includes(id)); continue; }
-        assert.ok(list.includes(id), `${f} with ${on.join("+") || "nothing"} on: #${id} missing`);
-      }
-    }
-  }
-  assert.match(visibleText(rendered(read("index.html"), ["FOUNDER2026"])), /first month of the Weekly Feed for \$49/);
-  assert.match(visibleText(rendered(read("offer/index.html"), ["FIRST90"])), /\$9\.90/);
-  assert.match(visibleText(rendered(read("offer.html"), ["FIRST90"])), /code FIRST90 auto-applied/);
 });
 
 test("_headers: browsers revalidate the switch on every page view, and no other rule caches it", () => {
