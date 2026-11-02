@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Colrain, MA",
- "home_page_url": "https://masspermits.com/permits/colrain",
+ "title": "MassPermits \u2014 building permits in Colrain, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/colrain.json",
- "description": "MassPermits no longer receives building-permit records for Colrain, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-28. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Colrain, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,110 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-10-28",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
+ "_window_total": 9,
+ "_window_from": "2026-10-06",
  "_window_to": "2026-10-28",
- "items": []
+ "items": [
+  {
+   "id": "325f014faae62f47",
+   "url": "https://masspermits.com/permits/colrain-building",
+   "title": "Building permit \u2014 Main Rd, Colrain ($15,766)",
+   "content_text": "Building permit in Colrain, MA. Value $15,766. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Building",
+   "_value": 15766.21
+  },
+  {
+   "id": "81867cbe74df4cf7",
+   "url": "https://masspermits.com/permits/colrain-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Reils Ln, Colrain ($11,071)",
+   "content_text": "Windows/Doors/Siding permit in Colrain, MA. Value $11,071. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 11071.0
+  },
+  {
+   "id": "299a18c3cd8161e3",
+   "url": "https://masspermits.com/permits/colrain-building",
+   "title": "Building permit \u2014 Shelburne Line Rd, Colrain ($4,000)",
+   "content_text": "Building permit in Colrain, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Building",
+   "_value": 4000.0
+  },
+  {
+   "id": "2bf6ef287ed6e810",
+   "url": "https://masspermits.com/permits/colrain",
+   "title": "HVAC permit \u2014 Ed Clark Rd, Colrain ($40,000)",
+   "content_text": "HVAC permit in Colrain, MA. Value $40,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "HVAC",
+   "_value": 40000.0
+  },
+  {
+   "id": "7249977561545d40",
+   "url": "https://masspermits.com/permits/colrain-solar",
+   "title": "Solar permit \u2014 Van Nuys Rd, Colrain ($54,000)",
+   "content_text": "Solar permit in Colrain, MA. Value $54,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Solar",
+   "_value": 54000.0
+  },
+  {
+   "id": "ae8c90bb1a8fb620",
+   "url": "https://masspermits.com/permits/colrain-electrical",
+   "title": "Electrical permit \u2014 Main Rd, Colrain",
+   "content_text": "Electrical permit in Colrain, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-17T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "55cf7d03306c110a",
+   "url": "https://masspermits.com/permits/colrain-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Main Rd, Colrain ($14,408)",
+   "content_text": "Windows/Doors/Siding permit in Colrain, MA. Value $14,408. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 14408.0
+  },
+  {
+   "id": "6599ee7aa87281b0",
+   "url": "https://masspermits.com/permits/colrain",
+   "title": "Deck/Porch permit \u2014 Church St, Colrain",
+   "content_text": "Deck/Porch permit in Colrain, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Deck/Porch"
+  },
+  {
+   "id": "7508947d60984fdd",
+   "url": "https://masspermits.com/permits/colrain-other",
+   "title": "Other permit \u2014 Main Rd, Colrain",
+   "content_text": "Other permit in Colrain, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-06T00:00:00Z",
+   "_town": "Colrain",
+   "_trade": "Other"
+  }
+ ]
 }

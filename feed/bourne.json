@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 building permits in Bourne, MA",
- "home_page_url": "https://masspermits.com",
+ "title": "MassPermits \u2014 coverage ended: Bourne, MA",
+ "home_page_url": "https://masspermits.com/permits/bourne",
  "feed_url": "https://masspermits.com/feed/bourne.json",
- "description": "Recent building permits in Bourne, Massachusetts. Masked public preview; full leads at masspermits.com.",
+ "description": "MassPermits no longer receives building-permit records for Bourne, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-10-05. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,33 +11,16 @@
   }
  ],
  "_masspermits": {
+  "coverage_ended": true,
+  "last_permit_issued": "2026-10-05",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "withheld": [
-   "house number",
-   "owner name",
-   "contractor name"
-  ],
-  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
-  "catalog": "https://masspermits.com/catalog.json",
-  "methodology": "https://masspermits.com/research/methodology",
-  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
+  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 1,
- "_window_from": "2026-10-05",
+ "_window_total": 0,
+ "_window_from": null,
  "_window_to": "2026-10-05",
- "items": [
-  {
-   "id": "efdf4bc11dc2fe2d",
-   "url": "https://masspermits.com/permits/bourne-electrical",
-   "title": "Electrical permit \u2014 Pasture Rd, Bourne ($36,000)",
-   "content_text": "Electrical permit in Bourne, MA. Value $36,000. Full lead at masspermits.com.",
-   "date_published": "2026-10-05T00:00:00Z",
-   "_town": "Bourne",
-   "_trade": "Electrical",
-   "_value": 36000.0
-  }
- ]
+ "items": []
 }
