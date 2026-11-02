@@ -146,9 +146,8 @@
   .flabel{flex:0 0 100%;text-align:left;font-size:13px;line-height:1.3;color:var(--muted)}
   a.inl{text-decoration:underline;text-underline-offset:2px}
 </style>
-<!-- Promotion codes are switched in ONE place, /js/promo-switch.js. Loaded here, before
-     the body, so a code that is switched on shows without moving the page. -->
-<script src="/js/promo-switch.js"></script>
+<!-- No promotion markup on this page (2026-11-02): the price is $99 a month only. The
+     FOUNDER2026 banner and pricing line were removed, so no switch can put a promo back. -->
 <meta name="mp-schema-v" content="1">
 <meta name="mp-static-v" content="1">
 </head>
@@ -161,25 +160,16 @@
   </header>
 
   <main id="main">
-  <!-- FOUNDER2026 banner: OFF until Patrick confirms in Stripe that the code applies at
-       checkout (2026-10-04: it did not, in two sessions, while this banner said "Applied
-       automatically"). The markup is kept whole inside the template; switch it on in
-       /js/promo-switch.js, nowhere else. -->
-  <template data-promo="FOUNDER2026">
-  <a id="buy-banner" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit;background:rgba(45,212,191,.10);border:1px solid var(--teal);border-radius:10px;padding:10px 16px;text-align:center;font-size:14px;margin-top:6px">
-    🚀 <b style="color:var(--teal)">Founders' rate:</b> first month of the Weekly Feed for
-    <b>$49</b>. Applied automatically when you start here. <b style="color:var(--teal)">Start now &rarr;</b>
-  </a>
-  </template>
-  <script>window.mpPromo&&mpPromo("FOUNDER2026")</script>
-
   <div class="hero">
     <!-- The headline used to read "Every contractor lead in Massachusetts, the week the
          permit is filed." Neither half was true: we cover the towns that publish, and 18
          of 76 sources publish monthly or less often. This wording is a placeholder that
          is true; Patrick picks the final one. The two spans are filled by render(). -->
     <h1><span id="h-area">Massachusetts</span> building permits, sorted into <span class="hl" id="h-trade">contractor</span> leads and sent every Monday.</h1>
-    <p>When a building permit is filed on a home, the owner is spending on it <em>right now</em>, and your trade is next. We collect building permits from the Massachusetts towns we cover, sort them by trade and town, and hand you the full address and project type, plus the permit holder and declared value where the town lists them.</p>
+    <!-- 2026-11-02: this used to say "your trade is next". For the trade named on a permit
+         the job is usually already sold, so the pitch is for the trades and suppliers who
+         sell to the job after the permit. -->
+    <p>A building permit is a dated public record of approved work at a real address. The trade named on it is usually already hired. The trades and suppliers who come after are not: insulation, drywall, flooring, cabinets, roofing, solar, sitework, and the lumber and supply yards that stock the job. We collect building permits from the Massachusetts towns we cover, sort them by trade and town, and hand you the full address and project type, plus the permit holder and declared value where the town lists them.</p>
     <div class="controls">
       <select id="sel-trade" aria-label="Trade"></select>
       <select id="sel-area" aria-label="Area"></select>
@@ -194,11 +184,11 @@
          upsell for it. a tile contractor raised exactly this on 2026-07-21 and
          it went unaddressed for 47 days. Keep this line. -->
     <span class="subcta" style="margin-top:14px">
-      Already subscribed? Your leads are in your Monday email &mdash; the
+      Already subscribed? Your leads are in your Monday email. The
       <b>Download your leads</b> button in it always serves the current file.
       Can&rsquo;t find it?
-      <a class="inl" href="mailto:patrick@masspermits.com?subject=Can%27t%20find%20my%20leads"
-         style="color:var(--teal)">Email me</a> and I&rsquo;ll send your link.
+      <a class="inl" href="mailto:hello@masspermits.com?subject=Can%27t%20find%20my%20leads"
+         style="color:var(--teal)">Email hello@masspermits.com</a> and we&rsquo;ll send your link.
     </span>
   </div>
 
@@ -233,16 +223,11 @@
   <div class="pricebox" id="get">
     <p style="margin:0 0 16px;color:var(--muted);font-size:15px">The weekly feed: one statewide file every Monday, which you filter to <span id="p-trade2">your trade</span> in <span id="p-area2">your area</span>.</p>
     <div class="tier buy" style="border:2px solid var(--teal);max-width:440px;margin:0 auto;text-align:center">
-      <div class="t" style="font-size:17px">Weekly Feed <span style="background:var(--teal);color:#04201c;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;vertical-align:middle">BEST VALUE</span></div>
+      <div class="t" style="font-size:17px">Weekly Feed</div>
       <div class="pr" style="font-size:40px">$99 <small style="font-size:14px;color:var(--muted)">/ month</small></div>
       <div style="color:var(--good);font-weight:700;font-size:14px;margin:2px 0 12px">&asymp; $23 a week, for every trade and town we cover.</div>
       <div class="d">A new file every Monday, automatically: the full address and project type of each permit, plus the permit holder and declared value where the town lists them. Filter it to <span id="p-trade3">your trade and towns</span>.</div>
       <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
-      <!-- FOUNDER2026 pricing line: OFF with the banner, same switch (/js/promo-switch.js). -->
-      <template data-promo="FOUNDER2026">
-      <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 when you start from the banner at the top</div>
-      </template>
-      <script>window.mpPromo&&mpPromo("FOUNDER2026")</script>
       <div style="color:var(--muted);font-size:12px;margin-top:7px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
     </div>
     <div style="text-align:center;margin-top:14px">
@@ -256,12 +241,14 @@
 
   <div class="capture" id="sample">
     <h2>See the data first — free sample</h2>
-    <!-- Describes what the file ACTUALLY is. It is a ~1,000-lead browser file
-         covering ~45 towns and every trade over a rolling few months, with its
-         own trade/town filter — not "this week's batch in your trade", which is
-         the paid weekly feed. Overpromising here just moves the disappointment
-         to the download. -->
-    <p>Drop your email for a free sample file: around a thousand recent Massachusetts permits, filterable by trade and town, that opens in any browser.</p>
+    <!-- Describes what the file ACTUALLY is: a browser file of recent permits across
+         the towns we cover and every trade, with its own trade/town filter, not
+         "this week's batch in your trade", which is the paid weekly feed. No count
+         is typed here: the sample build sets its size and town list, and any number
+         written in this hand-maintained file drifts (it once said ~45 towns while the
+         coverage page said 91 sources). Overpromising here just moves the
+         disappointment to the download. -->
+    <p>Drop your email for a free sample file: recent Massachusetts permits, filterable by trade and town, that opens in any browser.</p>
     <form id="signup-form">
       <label for="email" class="flabel">Your email address, for the free sample</label>
       <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" aria-describedby="signup-err" required>
@@ -288,6 +275,8 @@
     <p>For the full list, yes: it comes as the $99/mo weekly feed, and you can cancel anytime. Towns keep filing permits, so the feed is a new file every Monday rather than a one-time list. Not sure yet? The free sample costs nothing and needs no card.</p>
     <h3>What if the leads don't pan out?</h3>
     <p>Every lead is a real, verifiable public permit. If your first paid month doesn't return more than it cost, email hello@masspermits.com and I'll refund it: no forms, no argument. Cancel anytime; any leads already delivered are yours to keep. Pat</p>
+    <h3>If a permit is filed, isn't the job already sold?</h3>
+    <p>Often, for the trade named on the permit. The rest of the job usually is not. An addition or a gut remodel still needs insulation, drywall, flooring and cabinets after the framing permit. A new house needs sitework, a roof and often solar. Every one of those jobs buys lumber and materials from a supply yard. The file gives you the address, project type and date, plus the permit holder (usually the contractor or applicant) where the town lists one, so you can reach the job or the contractor who pulled it before the next trade is picked.</p>
     <h3>What do I actually get?</h3>
     <p>An interactive dashboard that opens in any browser, filterable by trade and town, plus spreadsheets (one master CSV and one per trade): the full property address and project type, plus the permit holder and declared value where the town lists them.</p>
   </div>
@@ -391,10 +380,7 @@
 const WEB3FORMS_KEY = "640c8bca-d620-496e-8db6-da6fbdef1bf5";
 // Stripe Payment Links. Paste the buy.stripe.com/... URLs here when created.
 // Until set, the Buy buttons fall back to the free-sample form (fails-soft).
-// The $49 first month rides ONLY on the founders banner. Every other feed button is full price.
-// The banner exists only while FOUNDER2026 is switched on in /js/promo-switch.js; while it is
-// off there is no #buy-banner and wireBuyButtons() leaves this link unused.
-const STRIPE_LINK_FOUNDER = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026";
+// One price, $99 a month. No button on this page carries a promotion code.
 const STRIPE_LINK_FEED = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01";   // $99/mo        "MassPermits Weekly Feed"
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -516,9 +502,8 @@ function wireBuyButtons(){
   // the post-sample "keep them coming" CTA also deep-links to the $99 feed checkout
   const sc = $("sample-feed-cta");
   if(sc){ if(feedUrl){ sc.href = feedUrl; sc.target = "_blank"; } else sc.href = "#get"; }
-  // hero and banner already carry a live href in the served HTML; only enrich them
+  // the hero button already carries a live href in the served HTML; only enrich it
   var hero = $("buy-hero"); if (hero && feedUrl) hero.href = feedUrl;
-  var banner = $("buy-banner"), founderUrl = stripeWith(STRIPE_LINK_FOUNDER); if (banner && founderUrl) banner.href = founderUrl;
   const live = !!feedUrl;
   $("buy-note").textContent = live
     ? "Secure checkout via Stripe."
