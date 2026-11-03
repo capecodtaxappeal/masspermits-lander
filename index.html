@@ -699,6 +699,12 @@ function initSelectors(){
     const qt = qp.get("trade") || "", qa = qp.get("area") || "";
     if (qt && (DATA.trade_list.includes(qt) || isFollow(qt))) { SELTRADE = qt; st.value = qt; }
     if (qa && DATA.areas.some(a => a.key === qa)) { SELAREA = qa; sa.value = qa; }
+    // ?town= (2026-11-03): a generated town page can pass its town, so the sample form opens
+    // with it filled in and the town check answers "is my town in it?" before anything is typed.
+    // Tidied by cleanTowns() and written as a field value, never as HTML.
+    const qtown = cleanTowns(qp.get("town") || "");
+    const ti = $("sample-towns");
+    if (qtown && ti && !ti.value) { ti.value = qtown; townCheck(); }
   } catch (_e) {}
   st.onchange = ()=>{ SELTRADE = st.value; render(); keepInUrl(); };
   sa.onchange = ()=>{ SELAREA = sa.value; render(); keepInUrl(); };
