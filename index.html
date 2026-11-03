@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>MassPermits: building-permit leads for MA contractors</title>
+<title>MassPermits: Massachusetts building-permit leads for trades and suppliers</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="canonical" href="https://masspermits.com/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="MassPermits: building-permit leads for MA contractors">
-<meta property="og:description" content="Building permits from across Massachusetts, by trade and town, with the full address and project type, plus the permit holder and declared value where the town lists them. Weekly feed $99/mo, free sample first.">
+<meta property="og:title" content="MassPermits: Massachusetts building-permit leads for trades and suppliers">
+<meta property="og:description" content="New building permits from the Massachusetts towns we cover, sorted by trade and town, in one file every Monday. Full address, date and project type, plus the permit holder and declared value where the town lists them. Free sample first, then $99 a month.">
 <meta property="og:url" content="https://masspermits.com/">
 <meta property="og:site_name" content="MassPermits">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,13 +19,15 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://masspermits.com/#org", "name": "MassPermits", "url": "https://masspermits.com", "description": "Building-permit leads for Massachusetts contractors.", "logo": {"@type": "ImageObject", "url": "https://masspermits.com/logo.png"}, "email": "hello@masspermits.com", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "hello@masspermits.com", "areaServed": "US-MA", "availableLanguage": ["en"]}, "knowsAbout": ["building permits", "Massachusetts", "construction leads", "municipal public records"], "publishingPrinciples": "https://masspermits.com/research/methodology", "correctionsPolicy": "https://masspermits.com/research/corrections", "areaServed": {"@type": "State", "name": "Massachusetts"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://masspermits.com/#website", "name": "MassPermits", "url": "https://masspermits.com", "inLanguage": "en-US", "publisher": {"@id": "https://masspermits.com/#org", "@type": "Organization", "name": "MassPermits"}, "license": "https://creativecommons.org/licenses/by-nc/4.0/", "dateModified": "2026-09-07"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Massachusetts Building-Permit Leads","description":"Contractor leads built from Massachusetts building permits: the full address and project type, plus the permit holder and declared value where the town lists them, by trade and town.","brand":{"@type":"Brand","name":"MassPermits"},"offers":[{"@type":"Offer","name":"Weekly Feed","price":"99","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"99","priceCurrency":"USD","unitCode":"MON"},"availability":"https://schema.org/InStock"}]}</script>
-<!-- NO TOWN COUNT HERE (2026-10-04). It read "70 Massachusetts towns and counting" while
+<!-- NO TOWN COUNT TYPED HERE (2026-10-04). It read "70 Massachusetts towns and counting" while
      the site's own pages said 94 towns and 77 sources on 2026-10-03. This file is hand-maintained
      and no build touches it, so any number typed here drifts. Live counts belong on the
-     generated pages. "name" removed earlier because it read as owner name, which is never
-     shipped. The permit holder and the declared value are qualified because many towns
-     publish neither. -->
-<meta name="description" content="Building permits from towns across Massachusetts, sorted by trade and town, delivered as ready-to-work leads. Roofing, solar, HVAC, pools, remodels and more, with the full address and project type, plus the permit holder and declared value where the town lists them. Weekly feed $99/mo, free sample first.">
+     generated pages, or are read at run time from files the build writes (2026-11-03: the
+     coverage numbers and the town check read /research/evidence/coverage.json, and fall
+     back to plain words if it cannot be read). "name" removed earlier because it read as
+     owner name, which is never shipped. The permit holder and the declared value are
+     qualified because many towns publish neither. -->
+<meta name="description" content="New Massachusetts building permits, sorted by trade and town, in one file every Monday, for the trades and suppliers who sell after the permit. Full address, date and project type, plus the permit holder and declared value where the town lists them. Free sample first, then $99 a month.">
 <!-- Real files, not a data: URI. A browser renders an inline SVG emoji happily, which is
      why this looked fine on the page, but Google cannot use a data URI as a site icon and
      nothing answered /favicon.ico either, so every search result fell back to the generic
@@ -38,75 +40,156 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
   :root{--bg:#0e1622;--panel:#16212f;--panel2:#1d2a3a;--border:#2a3a4f;
-    --text:#e8eef5;--muted:#8aa0b6;--teal:#2dd4bf;--teal2:#14b8a6;--good:#4ade80}
+    --text:#e8eef5;--muted:#8aa0b6;--soft:#c7d3e0;--teal:#2dd4bf;--teal2:#14b8a6;--good:#4ade80;--warn:#fbbf24}
   *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   body{margin:0;background:var(--bg);color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
   a{color:var(--teal);text-decoration:none}
-  .wrap{max-width:780px;margin:0 auto;padding:0 20px}
-  .nav{display:flex;align-items:center;padding:18px 0}
+  .wrap{max-width:780px;margin:0 auto;padding:0 16px}
+  .nav{display:flex;align-items:center;padding:14px 0}
   .brand{font-size:21px;font-weight:800;letter-spacing:-.3px}.brand .p{color:var(--teal)}
-  .nav .loc{margin-left:auto;color:var(--muted);font-size:13px}
+  /* The route home for paying customers, one tap from the first screen. */
+  .nav .navlink{margin-left:auto;color:var(--muted);font-size:14px;padding:12px 0 12px 12px;
+    text-decoration:underline;text-underline-offset:3px}
 
-  .hero{text-align:center;padding:46px 0 26px}
-  .hero h1{font-size:36px;line-height:1.12;margin:0 0 16px;font-weight:800;letter-spacing:-.5px}
-  .hero h1 .hl{color:var(--teal)}
-  .hero p{font-size:18px;color:var(--muted);margin:0 auto 24px;max-width:580px}
   .cta{display:inline-block;background:var(--teal);color:#04201c;font-weight:800;
-    font-size:17px;padding:15px 32px;border-radius:10px;border:0;cursor:pointer}
+    font-family:inherit;font-size:17px;padding:15px 28px;border-radius:10px;border:0;cursor:pointer;text-align:center}
   .cta:hover{background:var(--teal2);text-decoration:none}
   .cta.sm{font-size:15px;padding:12px 24px}
+  /* Secondary action: same size and tap target, outlined, so the free sample reads as the first step. */
+  .cta.ghost{background:transparent;color:var(--teal);border:2px solid var(--teal);box-shadow:none}
+  .cta.ghost:hover{background:rgba(45,212,191,.10);box-shadow:none}
+  .cta[disabled]{opacity:.65;cursor:wait}
   .subcta{display:block;margin-top:11px;color:var(--muted);font-size:13px}
 
-  .controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0 18px}
-  .controls select{background:var(--panel2);border:1px solid var(--border);border-radius:8px;
-    color:var(--text);padding:9px 12px;font:inherit;font-size:14px;min-width:150px}
+  /* ============ 2026-11-03 conversion: first screen ============
+     Phone order: eyebrow, headline, the two actions, the sample form, then the facts.
+     From 900px wide the form sits beside the copy and the "Get a free sample" button
+     (which only scrolls to the form) is hidden, because the form itself is in view. */
+  .hero2{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;padding:14px 0 10px;
+    grid-template-areas:"copy" "card" "facts"}
+  .hero-copy{grid-area:copy;min-width:0}
+  .samplecard{grid-area:card;min-width:0}
+  .facts{grid-area:facts;min-width:0}
+  .eyebrow{margin:0 0 10px;color:var(--teal);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .hero2 h1{font-size:31px;line-height:1.1;margin:0 0 12px;font-weight:800;letter-spacing:-.5px}
+  .hero2 h1 .hl{color:var(--teal)}
+  .lede{font-size:17px;color:var(--soft);margin:0 0 18px}
+  .ctas{display:flex;flex-direction:column;gap:10px}
+  .ctas .cta{display:block;min-height:52px}
+  .ctanote{color:var(--muted);font-size:14px;margin:10px 0 0;text-align:center}
+  .facts{list-style:none;margin:0;padding:0}
+  .facts li{position:relative;padding:5px 0 5px 26px;color:var(--soft);font-size:15px}
+  .facts li:before{content:"\2713";position:absolute;left:4px;color:var(--good);font-weight:800}
 
-  .live{background:var(--panel);border:1px solid var(--border);border-radius:14px;margin:14px 0;padding:20px 22px}
+  .samplecard{background:rgba(20,31,45,.82);border:2px solid var(--teal);border-radius:16px;padding:20px 16px;scroll-margin-top:10px}
+  .samplecard h2{margin:0 0 4px;font-size:22px}
+  .cardsub{color:var(--soft);font-size:15px;margin:0 0 14px}
+  .samplecard form{display:flex;flex-direction:column;gap:12px}
+  .frow{display:flex;gap:10px;flex-wrap:wrap}
+  .fld{display:flex;flex-direction:column;gap:5px;flex:none;min-width:0}
+  .frow .fld{flex:1 1 140px}
+  .samplecard .flabel{flex:none;font-size:14px;line-height:1.3;color:var(--soft)}
+  .opt{color:var(--muted);font-weight:400}
+  /* 16px on every field: iOS Safari zooms the page when a field under 16px takes focus. */
+  .samplecard select,.samplecard input{width:100%;min-width:0;font:inherit;font-size:16px;padding:12px;border-radius:9px;
+    border:1px solid var(--border);background:var(--bg);color:var(--text);min-height:48px}
+  .samplecard select:focus,.samplecard input:focus{outline:2px solid var(--teal);outline-offset:1px}
+  .samplecard button.cta{width:100%;min-height:52px}
+  .towncheck{font-size:14px;line-height:1.4;color:var(--muted);margin-top:-4px}
+  .towncheck:empty{display:none}
+  .towncheck div{padding:2px 0}
+  .towncheck .yes{color:var(--good)}
+  .towncheck .quiet{color:var(--warn)}
+  .fine{color:var(--muted);font-size:13px;line-height:1.45;margin:0}
+  .samplecard .ok{color:var(--text)}
+  .samplecard .ok .okhead{color:var(--good);font-weight:800;font-size:17px;margin:0 0 12px}
+  .samplecard .ok .cta{display:block;width:100%;min-height:52px}
+  .samplecard .ok .okfeed{margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+  .samplecard .ok .okfeed p{margin:0 0 10px;color:var(--soft);font-size:15px}
+  .samplecard .err{color:#f87171;font-size:14px;margin-top:10px}
+  @media(min-width:900px){
+    .hero2{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);column-gap:44px;row-gap:22px;align-items:start;
+      padding:44px 0 20px;grid-template-rows:auto 1fr;grid-template-areas:"copy card" "facts card"}
+    .hero2 h1{font-size:50px}
+    .lede{font-size:19px}
+    .ctas{flex-direction:row;flex-wrap:wrap}
+    .ctas .cta{display:inline-block}
+    #hero-sample{display:none}
+    .ctanote{text-align:left}
+    .samplecard{padding:26px 24px}
+  }
+
+  .sec{font-size:22px;margin:34px 0 4px}
+  .secsub{color:var(--muted);margin:0 0 14px;font-size:15px}
+  .live{background:var(--panel);border:1px solid var(--border);border-radius:14px;margin:14px 0;padding:18px 16px;min-width:0}
   .live .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
   .live .big{font-size:32px;font-weight:800;color:var(--teal);margin:3px 0}
   .live .big small{font-size:15px;color:var(--text);font-weight:600}
+  .live .types{font-size:13px;color:var(--muted);margin:2px 0 4px}
   table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px}
   th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;
     padding:7px 8px;border-bottom:1px solid var(--border)}
   td{padding:8px 8px;border-bottom:1px solid #1c2737}
+  #teaser td:first-child{white-space:nowrap}
   .badge{background:var(--teal);color:#04201c;border-radius:5px;padding:1px 7px;font-size:11px;font-weight:700}
   .townlink{color:inherit;text-decoration:underline;text-decoration-color:var(--teal);text-underline-offset:3px}
   .townlink:hover{color:var(--teal)}
   .val{color:var(--good);font-weight:700;text-align:right;white-space:nowrap}
   .blur{filter:blur(4.5px);user-select:none;color:var(--muted)}
-  .lockrow td{text-align:center;color:var(--muted);font-style:italic;padding:13px}
+  .lockline{text-align:center;color:var(--muted);font-style:italic;font-size:13.5px;margin:12px 0 0}
+  .lockline:empty{display:none}
+
+  /* One real row from the current build, field by field: what the weekly file holds and
+     what this free page hides. Values come from data.json at run time. */
+  .proof{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+  .rowcard{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 16px;min-width:0}
+  .rowcard h3{margin:0 0 4px;font-size:17px}
+  .rowcard dl{margin:12px 0 0;display:grid;grid-template-columns:minmax(0,7.5em) minmax(0,1fr);gap:8px 12px;font-size:14.5px}
+  .rowcard dt{color:var(--muted)}
+  .rowcard dd{margin:0;color:var(--text);overflow-wrap:anywhere}
+  .rowcard dd.paid{color:var(--soft)}
+  .mask{display:inline-block;background:var(--panel2);border:1px dashed var(--border);border-radius:5px;padding:0 6px;
+    color:var(--muted);font-size:12.5px;margin-right:4px}
+  .pgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:14px 0}
+  .pcard{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .pcard h3{margin:0 0 6px;font-size:16px}
+  .pcard p{margin:0 0 8px;color:var(--soft);font-size:14.5px}
+  .pcard p:last-child{margin-bottom:0}
+  @media(min-width:760px){
+    .proof{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}
+    .proof .live{margin:0}
+    .pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  }
 
   .steps{display:flex;gap:14px;margin:30px 0}
   .step{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
   .step .n{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#04201c;
     font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:9px}
-  .step h3{margin:0 0 5px;font-size:15px}.step p{margin:0;color:var(--muted);font-size:13px}
+  .step h3{margin:0 0 5px;font-size:15px}.step p{margin:0;color:var(--muted);font-size:14px}
 
-  .pricebox{background:var(--panel);border:2px solid var(--teal);border-radius:14px;padding:26px;text-align:center;margin:26px 0}
-  .pricebox .price{font-size:44px;font-weight:800;letter-spacing:-1px}
-  .pricebox .price small{font-size:16px;color:var(--muted);font-weight:600}
-  .pricebox ul{text-align:left;max-width:400px;margin:16px auto;padding:0;list-style:none}
-  .pricebox li{padding:6px 0;color:var(--text)}.pricebox li:before{content:"\2713  ";color:var(--good);font-weight:800}
-  .tierrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-  .tier{flex:1;min-width:200px;background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px}
+  .pricebox{background:var(--panel);border:2px solid var(--teal);border-radius:14px;padding:22px 16px;text-align:center;margin:26px 0;scroll-margin-top:10px}
+  .tier{flex:1;min-width:0;background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:14px}
   .tier .t{font-weight:800;font-size:15px}.tier .pr{color:var(--teal);font-weight:800;font-size:22px;margin:4px 0}
-  .tier .d{color:var(--muted);font-size:12.5px}
+  .tier .d{color:var(--muted);font-size:13.5px}
 
-  .capture{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:24px;margin:26px 0;text-align:center}
-  .capture h2{margin:0 0 6px;font-size:21px}.capture p{color:var(--muted);margin:0 0 16px;font-size:14px}
-  .capture form{display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap}
-  .capture input{flex:1;min-width:210px;padding:13px 15px;border-radius:9px;border:1px solid var(--border);
-    background:var(--bg);color:var(--text);font:inherit;font-size:15px}
-  .capture .ok{color:var(--good);font-weight:700;margin-top:12px}
-  .capture .err{color:#f87171;font-size:13px;margin-top:10px}
+  .subs{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin:20px 0;scroll-margin-top:10px}
+  .subs h2{font-size:17px;margin:0 0 6px}
+  .subs p{margin:0;color:var(--soft);font-size:14.5px}
 
-  .faq{margin:30px 0}.faq h3{font-size:15px;margin:18px 0 4px}.faq p{color:var(--muted);margin:0;font-size:14px}
+  .faq{margin:30px 0}
+  .faq details{border-bottom:1px solid var(--border)}
+  .faq summary{cursor:pointer;list-style:none;padding:14px 28px 14px 0;font-weight:700;font-size:16px;position:relative;min-height:44px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:after{content:"+";position:absolute;right:4px;top:12px;color:var(--teal);font-size:20px;font-weight:700}
+  .faq details[open] summary:after{content:"\2212"}
+  .faq details p{color:var(--soft);margin:0 0 14px;font-size:15px}
   footer{text-align:center;color:var(--muted);font-size:12px;padding:34px 0;border-top:1px solid var(--border);margin-top:32px}
-  @media(max-width:600px){.steps{flex-direction:column}.hero h1{font-size:28px}}
+  @media(max-width:600px){.steps{flex-direction:column}}
 
   /* ============ 2026 refresh: aurora bg · glass panels · desktop width ============ */
-  /* Drifting teal aurora behind everything — subtle, GPU-cheap, on-brand. */
+  /* Drifting teal aurora behind everything: subtle, GPU-cheap, on-brand. */
   body::before{content:"";position:fixed;inset:-12%;z-index:-2;pointer-events:none;
     background:
       radial-gradient(38% 48% at 18% 16%, rgba(45,212,191,.22), transparent 62%),
@@ -125,22 +208,22 @@
     -webkit-mask-image:radial-gradient(ellipse 85% 55% at 50% 0%,#000,transparent 78%);
     mask-image:radial-gradient(ellipse 85% 55% at 50% 0%,#000,transparent 78%)}
   .wrap{max-width:1060px}
-  /* frosted-glass panels so the aurora glows through — the premium depth cue */
-  .live,.pricebox,.step,.capture,.tier{
+  /* frosted-glass panels so the aurora glows through: the premium depth cue */
+  .live,.pricebox,.step,.tier,.rowcard,.pcard,.subs{
     background:rgba(20,31,45,.68)!important;
     backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2)}
   .cta{box-shadow:0 8px 26px rgba(45,212,191,.30);transition:box-shadow .2s ease,transform .2s ease}
   .cta:hover{box-shadow:0 12px 38px rgba(45,212,191,.48);transform:translateY(-1px)}
+  .cta.ghost,.cta.ghost:hover{box-shadow:none}
   @media(min-width:820px){
-    .hero{padding:66px 0 30px}
-    .hero h1{font-size:52px}
-    .hero p{font-size:19px;max-width:660px}
+    .wrap{padding:0 20px}
     .steps{gap:20px}
+    .pricebox{padding:26px}
   }
   @media(prefers-reduced-motion:reduce){body::before{animation:none}}
   /* Accessibility (2026-10-04): a heading that is read aloud but not drawn, a visible
-     label in small text above each email input (its own row in the flex form), and
-     links inside running text carry an underline, not colour alone. */
+     label above each field, and links inside running text carry an underline, not
+     colour alone. */
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
     clip:rect(0,0,0,0);white-space:nowrap;border:0}
   .flabel{flex:0 0 100%;text-align:left;font-size:13px;line-height:1.3;color:var(--muted)}
@@ -157,7 +240,7 @@
 
   <header class="nav">
     <div class="brand"><span class="p">Mass</span>Permits</div>
-    <div class="loc">Massachusetts building-permit leads</div>
+    <a class="navlink" href="#subscribers">Already subscribed?</a>
   </header>
 
   <main id="main">
@@ -173,134 +256,213 @@
   </template>
   <script>window.mpPromo&&mpPromo("FOUNDER2026")</script>
 
-  <div class="hero">
-    <!-- The headline used to read "Every contractor lead in Massachusetts, the week the
-         permit is filed." Neither half was true: we cover the towns that publish, and 18
-         of 76 sources publish monthly or less often. This wording is a placeholder that
-         is true; Patrick picks the final one. The two spans are filled by render(). -->
-    <h1><span id="h-area">Massachusetts</span> building permits, sorted into <span class="hl" id="h-trade">contractor</span> leads and sent every Monday.</h1>
-    <p>When a building permit is filed on a home, the owner is spending on it <em>right now</em>, and your trade is next. We collect building permits from the Massachusetts towns we cover, sort them by trade and town, and hand you the full address and project type, plus the permit holder and declared value where the town lists them.</p>
-    <div class="controls">
-      <select id="sel-trade" aria-label="Trade"></select>
-      <select id="sel-area" aria-label="Area"></select>
+  <!-- FIRST SCREEN (2026-11-03). One primary action, the free sample, because most visitors
+       arrive cold and the sample is how most buyers decided; one secondary, the $99 a month
+       subscription, for those who are ready. The hero used to say the owner "is spending on it
+       right now, and your trade is next"; for the trade named on a permit the job is usually
+       already sold, so the pitch is to the trades and suppliers who sell after the permit.
+       The eyebrow is filled by render() from the trade and area the visitor picked (or that a
+       generated page passed in ?trade=&area=). -->
+  <div class="hero2">
+    <div class="hero-copy">
+      <p class="eyebrow"><span id="h-area">Massachusetts</span> <span id="h-trade">building permits</span>, every Monday</p>
+      <h1>Sell to the job <span class="hl">after the permit is filed.</span></h1>
+      <p class="lede">The trade named on a permit is usually hired already. Insulation, drywall, flooring, cabinets, gutters, sitework, dumpsters and the supply yard usually are not. Every Monday you get one file of new permits from the towns we cover, sorted by trade and town.</p>
+      <div class="ctas">
+        <a class="cta" id="hero-sample" href="#sample">Get a free sample</a>
+        <a class="cta ghost" id="buy-hero" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" target="_blank" rel="noopener">Subscribe: $99 a month</a>
+      </div>
+      <p class="ctanote">The sample needs no card. The subscription is month to month: cancel anytime.</p>
     </div>
-    <a class="cta" id="buy-hero" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" target="_blank" rel="noopener">Start the Monday feed — $99/mo &rarr;</a>
-    <a class="subcta inl" id="hero-sample" href="#sample" style="color:var(--teal)">Or see a free sample first, no card needed</a>
-    <span class="subcta">A new file every Monday. Cancel anytime.</span>
-    <!-- EXISTING SUBSCRIBERS HAD NO ROUTE HOME. Until 2026-09-06 this page
-         contained ZERO occurrences of "already a subscriber", "my leads",
-         "sign in" or "log in" - so a paying customer who came to the site
-         looking for the product he had already bought was shown only a $99
-         upsell for it. a tile contractor raised exactly this on 2026-07-21 and
-         it went unaddressed for 47 days. Keep this line. -->
-    <span class="subcta" style="margin-top:14px">
-      Already subscribed? Your leads are in your Monday email &mdash; the
-      <b>Download your leads</b> button in it always serves the current file.
-      Can&rsquo;t find it?
-      <a class="inl" href="mailto:patrick@masspermits.com?subject=Can%27t%20find%20my%20leads"
-         style="color:var(--teal)">Email me</a> and I&rsquo;ll send your link.
-    </span>
+
+    <!-- THE FREE-SAMPLE FORM. It posts to /api/request-sample with the same field names as
+         before (email, trade, area, company) and sends the owner notification through
+         Web3Forms as before. "towns" is new: the Web3Forms notification carries it today;
+         /api/request-sample ignores it until the function is taught to store it (see
+         docs/conversion/CONVERSION_2026-11-03.md, server changes). What the sample is: recent
+         permits across the towns we cover and every trade, house numbers hidden, with its own
+         trade and town filter. It is not cut to the visitor's towns, so the copy never says so. -->
+    <div class="samplecard" id="sample">
+      <h2>Get a free sample</h2>
+      <p class="cardsub">Recent permits from the file, house numbers hidden, so you can judge it on your own trade and towns before you pay. No card.</p>
+      <form id="signup-form" novalidate>
+        <div class="frow">
+          <div class="fld"><label for="sel-trade" class="flabel">Your trade</label><select id="sel-trade" name="trade"><option value="">All permits</option></select></div>
+          <div class="fld"><label for="sel-area" class="flabel">Your area</label><select id="sel-area" name="area"><option value="all">Massachusetts</option></select></div>
+        </div>
+        <div class="fld">
+          <label for="sample-towns" class="flabel">Towns you work in <span class="opt">(optional)</span></label>
+          <input type="text" id="sample-towns" name="towns" maxlength="160" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="e.g. Falmouth, Mashpee" aria-describedby="town-check">
+        </div>
+        <div class="towncheck" id="town-check" aria-live="polite"></div>
+        <div class="fld">
+          <label for="email" class="flabel">Your email, for the sample</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" aria-describedby="signup-err" required>
+        </div>
+        <button class="cta" type="submit" id="sample-submit">Send my free sample</button>
+        <p class="fine">You get a download link right here and a copy by email, then two short follow-ups over the next week. Reply stop to end them.</p>
+      </form>
+      <div class="ok" id="signup-ok" tabindex="-1" style="display:none">
+        <p class="okhead">&#10003; Got it. Your free sample is ready.</p>
+        <a class="cta" id="sample-dl" href="/api/sample">Download the free sample</a>
+        <p class="fine" style="margin-top:10px">It is a ZIP file. Open MassPermits-Leads.html inside it in any web browser; that is easiest on a computer. The same link is in your inbox.</p>
+        <div class="okfeed">
+          <p>The weekly file has every full address, every Monday.</p>
+          <a class="cta ghost" id="sample-feed-cta" href="#get">Subscribe: $99 a month</a>
+          <p class="fine" style="margin-top:8px">Month to month. Cancel anytime.</p>
+        </div>
+      </div>
+      <div class="err" id="signup-err" role="alert" style="display:none"></div>
+    </div>
+
+    <ul class="facts">
+      <li>Street address, permit date and project type on every row</li>
+      <li>The permit holder (usually the contractor or applicant), the town's description of the work and the declared value, where the town lists them</li>
+      <li>A dashboard that opens in your web browser, plus spreadsheets you can sort and filter</li>
+      <li>No homeowner names</li>
+    </ul>
   </div>
 
-  <div class="live">
-    <div class="lbl">On file: <span id="live-area">Massachusetts</span></div>
-    <div class="big" id="live-count">—</div>
-    <div class="lbl" id="live-val"></div>
-    <div class="lbl" id="freshness" style="margin-top:6px;font-size:12px;text-transform:none;letter-spacing:normal"></div>
-    <!-- The five-column preview is wider than a phone (484px on a 375px screen), and it
-         pushed the whole page sideways. It scrolls inside its own box now. -->
-    <div style="overflow-x:auto">
-    <table>
-      <thead><tr><th>Issued</th><th>Town</th><th>Address</th><th>Trade</th><th style="text-align:right">Project value</th></tr></thead>
-      <tbody id="teaser"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">loading live permits…</td></tr></tbody>
-    </table>
+  <h2 class="sec">What is in the file</h2>
+  <p class="secsub">Live from the current build. The free page hides house numbers; the weekly file shows them.</p>
+  <div class="proof">
+    <div class="live">
+      <div class="lbl">On file: <span id="live-area">Massachusetts</span></div>
+      <div class="big" id="live-count">&hellip;</div>
+      <div class="types" id="live-types"></div>
+      <div class="lbl" id="live-val"></div>
+      <div class="lbl" id="freshness" style="margin-top:6px;font-size:12px;text-transform:none;letter-spacing:normal"></div>
+      <!-- The five-column preview is wider than a phone (484px on a 375px screen), and it
+           pushed the whole page sideways. It scrolls inside its own box now. -->
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+      <table>
+        <thead><tr><th>Issued</th><th>Town</th><th>Address</th><th>Trade</th><th style="text-align:right">Project value</th></tr></thead>
+        <tbody id="teaser"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">loading live permits&hellip;</td></tr></tbody>
+      </table>
+      </div>
+      <p class="lockline" id="lockline"></p>
     </div>
+
+    <div class="rowcard" id="row-example">
+      <h3>One row, field by field</h3>
+      <p class="fine">A real permit from the current build for your selection.</p>
+      <dl>
+        <dt>Permit date</dt><dd id="ex-d">&hellip;</dd>
+        <dt>Town</dt><dd id="ex-town">&hellip;</dd>
+        <dt>Address</dt><dd><span class="mask">house no.</span><span id="ex-addr">&hellip;</span></dd>
+        <dt>Project type</dt><dd id="ex-trade">&hellip;</dd>
+        <dt>Declared value</dt><dd id="ex-val">&hellip;</dd>
+        <dt>Work description</dt><dd class="paid">In the weekly file, in the town's own words, where the town publishes one</dd>
+        <dt>Permit holder</dt><dd class="paid">In the weekly file where the town lists one: usually the contractor or the applicant</dd>
+        <dt>Homeowner name</dt><dd class="paid">Never included</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="pgrid">
+    <div class="pcard"><h3>How fresh</h3><p id="fresh-line">A new file every Monday. Some towns publish monthly or less often, so their permits arrive in batches. Every row shows its permit date.</p></div>
+    <div class="pcard"><h3>Which towns</h3><p id="cov-line">Cities and towns from Cape Cod and the Islands to Western Massachusetts. Not every town publishes permit records we can include, so check yours in the sample form.</p><p><a class="inl" href="/research/coverage">Every town in the file, with its dates</a></p></div>
+    <div class="pcard"><h3>What it costs</h3><p>$99 a month for the whole file, every trade and every town we cover. Month to month, no contract, cancel anytime. Files already sent are yours to keep.</p></div>
   </div>
 
   <h2 class="sr-only">How it works</h2>
   <div class="steps">
-    <div class="step"><div class="n">1</div><h3>We watch the permits</h3><p>Building permits from the Massachusetts towns we cover, pulled from public records and sorted by trade.</p></div>
+    <div class="step"><div class="n">1</div><h3>We watch the permits</h3><p>New building permits from the Massachusetts towns we cover, from public municipal permit records, sorted by trade and town.</p></div>
     <!-- This step used to read "only the leads that fit your business", which
      promised a pre-scoped file. Delivery is one statewide bundle: an
      interactive dashboard you filter by trade and town, plus a master CSV
      and one CSV per trade. That is a superset, not a shortfall - but the
      old wording described a product we do not ship, so it now describes
      the one we do. -->
-    <div class="step"><div class="n">2</div><h3>You filter to your trade &amp; town</h3><p>Roofing, solar, HVAC, pools, remodels — every town we cover in one file, sorted by trade and filterable to exactly your patch.</p></div>
-    <div class="step"><div class="n">3</div><h3>You reach out</h3><p>Full address and project type, plus the permit holder and declared value where the town lists them. Every row shows its date.</p></div>
+    <div class="step"><div class="n">2</div><h3>You filter to your trade &amp; towns</h3><p>Roofing, solar, HVAC, remodels, additions, new houses: every town we cover in one file, sorted by trade and filterable to exactly your patch.</p></div>
+    <div class="step"><div class="n">3</div><h3>You reach out</h3><p>Trades: reach the property before the next trade is picked. Suppliers: reach the contractor on the permit, where the town lists one, while the job is new. Every row shows its date.</p></div>
   </div>
 
   <div class="pricebox" id="get">
-    <p style="margin:0 0 16px;color:var(--muted);font-size:15px">The weekly feed: one statewide file every Monday, which you filter to <span id="p-trade2">your trade</span> in <span id="p-area2">your area</span>.</p>
+    <p style="margin:0 0 16px;color:var(--muted);font-size:15px">The weekly file: one statewide file every Monday, which you filter to <span id="p-trade2">your trade</span> in <span id="p-area2">your area</span>.</p>
     <div class="tier buy" style="border:2px solid var(--teal);max-width:440px;margin:0 auto;text-align:center">
-      <div class="t" style="font-size:17px">Weekly Feed <span style="background:var(--teal);color:#04201c;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;vertical-align:middle">BEST VALUE</span></div>
+      <div class="t" style="font-size:17px">Weekly Feed</div>
       <div class="pr" style="font-size:40px">$99 <small style="font-size:14px;color:var(--muted)">/ month</small></div>
       <div style="color:var(--good);font-weight:700;font-size:14px;margin:2px 0 12px">&asymp; $23 a week, for every trade and town we cover.</div>
       <div class="d">A new file every Monday, automatically: the full address and project type of each permit, plus the permit holder and declared value where the town lists them. Filter it to <span id="p-trade3">your trade and towns</span>.</div>
-      <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="display:block;margin-top:16px">Start my weekly feed — $99/mo &rarr;</a>
+      <a class="cta buy-feed" id="buy-feed" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" style="display:block;margin-top:16px">Subscribe: $99 a month</a>
       <!-- FOUNDER2026 pricing line: OFF with the banner, same switch (/js/promo-switch.js). -->
       <template data-promo="FOUNDER2026">
       <div style="color:var(--good);font-weight:700;font-size:13px;margin-top:9px">Founders' rate: first month $49 when you start from the banner at the top</div>
       </template>
       <script>window.mpPromo&&mpPromo("FOUNDER2026")</script>
-      <div style="color:var(--muted);font-size:12px;margin-top:7px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:9px">&#10003; Cancel anytime &nbsp; &#10003; Keep every lead you've received &nbsp; &#10003; Refund if month one doesn't pay for itself</div>
     </div>
     <div style="text-align:center;margin-top:14px">
-      <a href="#sample" class="buy-sample" id="buy-sample" style="color:var(--muted);font-size:13.5px;text-decoration:underline">Not sure yet? See a free sample first &rarr;</a>
+      <a href="#sample" class="buy-sample" id="buy-sample" style="display:inline-block;padding:10px 4px;color:var(--teal);font-size:15px;text-decoration:underline">Not sure yet? Get a free sample first</a>
     </div>
-    <div style="max-width:560px;margin:20px auto 0;padding:14px 18px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:var(--muted);font-size:13px;line-height:1.55">
+    <div style="max-width:560px;margin:14px auto 0;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:var(--muted);font-size:13.5px;line-height:1.55">
       <b style="color:var(--text)">The MassPermits promise:</b> Start the weekly feed and if your first month's leads don't return more than they cost, email me for a full refund: no forms, no back-and-forth. Cancel anytime; any leads already sent are yours to keep. Every lead is a real, verifiable public permit. <span style="color:var(--text)">Pat, founder</span>
     </div>
-    <span class="subcta" id="buy-note" style="display:block;margin-top:12px">Not ready? Grab a free sample below first.</span>
+    <span class="subcta" id="buy-note" style="display:block;margin-top:12px">Secure checkout via Stripe.</span>
   </div>
 
-  <div class="capture" id="sample">
-    <h2>See the data first — free sample</h2>
-    <!-- Describes what the file ACTUALLY is. It is a ~1,000-lead browser file
-         covering ~45 towns and every trade over a rolling few months, with its
-         own trade/town filter — not "this week's batch in your trade", which is
-         the paid weekly feed. Overpromising here just moves the disappointment
-         to the download. -->
-    <p>Drop your email for a free sample file: around a thousand recent Massachusetts permits, filterable by trade and town, that opens in any browser.</p>
-    <form id="signup-form">
-      <label for="email" class="flabel">Your email address, for the free sample</label>
-      <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" aria-describedby="signup-err" required>
-      <button class="cta sm" type="submit">Send my free sample</button>
-    </form>
-    <div class="ok" id="signup-ok" style="display:none">&#10003; Got it! Your free sample is ready —
-      <a id="sample-dl" href="/api/sample" style="font-weight:800;text-decoration:underline">download it here</a>
-      (also check your inbox).
-      <div style="margin-top:16px">
-        <a class="cta sm" id="sample-feed-cta" href="#get" style="display:inline-block">Keep them coming — Weekly Feed, $99/mo &rarr;</a>
-        <div style="color:var(--muted);font-size:12px;margin-top:7px">A new file arrives every Monday. Cancel anytime.</div>
-      </div>
-    </div>
-    <div class="err" id="signup-err" role="alert" style="display:none"></div>
+  <!-- EXISTING SUBSCRIBERS HAD NO ROUTE HOME. Until 2026-09-06 this page
+       contained ZERO occurrences of "already a subscriber", "my leads",
+       "sign in" or "log in" - so a paying customer who came to the site
+       looking for the product he had already bought was shown only a $99
+       upsell for it. a tile contractor raised exactly this on 2026-07-21 and
+       it went unaddressed for 47 days. Keep this block, and keep the
+       "Already subscribed?" link in the header that points here. -->
+  <div class="subs" id="subscribers">
+    <h2>Already subscribed?</h2>
+    <p>Your leads are in your Monday email. The <b>Download your leads</b> button in it always serves the current file. Can&rsquo;t find it? <a class="inl" href="mailto:hello@masspermits.com?subject=Can%27t%20find%20my%20leads">Email hello@masspermits.com</a> and we&rsquo;ll send your link.</p>
   </div>
 
-  <h2 class="sr-only">Questions</h2>
+  <h2 class="sec" id="faq">Questions</h2>
   <div class="faq">
-    <h3>Where do the leads come from?</h3>
-    <p>Public municipal building-permit records — the same filings towns publish, gathered and organized so you don't have to.</p>
-    <h3>How recent are they?</h3>
-    <p>The weekly feed arrives every Monday, and you filter it to your trade and towns. Each town publishes on its own schedule, and some publish monthly or less often, so their permits arrive in batches when the town publishes. Every row shows its date, and <a class="inl" href="/research/coverage">the coverage page</a> names the towns that publish monthly and shows each town's date range.</p>
-    <h3>Do I have to subscribe?</h3>
-    <p>For the full list, yes: it comes as the $99/mo weekly feed, and you can cancel anytime. Towns keep filing permits, so the feed is a new file every Monday rather than a one-time list. Not sure yet? The free sample costs nothing and needs no card.</p>
-    <h3>What if the leads don't pan out?</h3>
-    <p>Every lead is a real, verifiable public permit. If your first paid month doesn't return more than it cost, email hello@masspermits.com and I'll refund it: no forms, no argument. Cancel anytime; any leads already delivered are yours to keep. Pat</p>
-    <h3>What do I actually get?</h3>
-    <p>An interactive dashboard that opens in any browser, filterable by trade and town, plus spreadsheets (one master CSV and one per trade): the full property address and project type, plus the permit holder and declared value where the town lists them.</p>
+    <details open>
+      <summary>If a permit is filed, isn't the job already sold?</summary>
+      <p>Often, for the trade named on the permit. The rest of the job usually is not. An addition or a gut remodel still needs insulation, drywall, flooring and cabinets after the framing permit. A new house needs sitework, gutters and often solar. Every one of those jobs buys lumber and materials from a supply yard. The file gives you the address, project type and date, plus the permit holder (usually the contractor or applicant) where the town lists one, so you can reach the job, or the contractor who pulled the permit, before the next trade is picked.</p>
+    </details>
+    <details>
+      <summary>Which towns are in it?</summary>
+      <p>Massachusetts cities and towns from Cape Cod and the Islands to Western Massachusetts. <span id="faq-cov"></span>Not every town publishes permit records we can include, so check yours before you pay: type it into the sample form above, or see <a class="inl" href="/research/coverage">every town in the file, with its dates</a>.</p>
+    </details>
+    <details>
+      <summary>How fresh is it?</summary>
+      <p>A new file arrives every Monday. Most towns publish as they issue permits. Some publish monthly or less often, so their permits arrive in batches when the town publishes. Every row shows its permit date, so you always know how old a lead is. <span id="faq-fresh"></span></p>
+    </details>
+    <details>
+      <summary>What if my town is missing?</summary>
+      <p>Then check before you pay, not after: the sample form shows which of your towns are in the file. Look at the towns around it too, since the subscription is the whole statewide file and many trades work a radius. Leave your towns in the form either way; it tells us where people want coverage. New towns show up on the <a class="inl" href="/research/coverage">coverage page</a> and in the Monday file as they are added.</p>
+    </details>
+    <details>
+      <summary>Do I get homeowner names?</summary>
+      <p>No. There is no homeowner name column. Where the town lists one, the file carries the permit holder, which is usually the contractor or whoever applied for the permit.</p>
+    </details>
+    <details>
+      <summary>What exactly do I get?</summary>
+      <p>Every Monday, by email: a dashboard that opens in your web browser (search it, filter by trade and town, sort by project value) and spreadsheets, one master CSV and one per trade. Each row has the full street address, the permit date and the project type, plus the town's description of the work, the permit holder and the declared value where the town publishes them. The email's download button always serves the current file.</p>
+    </details>
+    <details>
+      <summary>What does it cost, and can I cancel?</summary>
+      <p>$99 a month for the whole statewide file, every trade and every town we cover. It is month to month with no contract, and you can cancel anytime by writing to hello@masspermits.com. Files you already received are yours to keep. The sample is free and needs no card.</p>
+    </details>
+    <details>
+      <summary>What if the leads don't pan out?</summary>
+      <p>Every lead is a real, verifiable public permit. If your first paid month doesn't return more than it cost, email hello@masspermits.com and I'll refund it: no forms, no argument. Cancel anytime; any leads already delivered are yours to keep. Pat</p>
+    </details>
+    <details>
+      <summary>Where do the permits come from?</summary>
+      <p>Public municipal permit records. Every row shows its town and date, so you can check any permit against the town's own records.</p>
+    </details>
   </div>
 
-  <div id="digest" style="background:rgba(20,31,45,.68);border:1px solid var(--border);border-radius:14px;padding:24px 22px;margin:30px 0;text-align:center;backdrop-filter:blur(16px)">
+  <div id="digest" style="background:rgba(20,31,45,.68);border:1px solid var(--border);border-radius:14px;padding:22px 16px;margin:30px 0;text-align:center;backdrop-filter:blur(16px)">
     <h2 style="margin:0 0 6px;font-size:21px">Free: <span style="color:var(--teal)">This Week in MA Permits</span></h2>
-    <p style="color:var(--muted);margin:0 0 14px;font-size:14px">One email every Monday — which towns are surging, which trades are filing, and the week's biggest projects. No spam, one-click unsubscribe.</p>
+    <p style="color:var(--muted);margin:0 0 14px;font-size:14px">One email every Monday: which towns are surging, which trades are filing, and the week's biggest projects. No spam, one-click unsubscribe.</p>
     <form id="digest-form" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
       <label for="digest-email" class="flabel">Your email address, for the weekly digest</label>
       <input type="email" id="digest-email" required placeholder="you@company.com" autocomplete="email"
-        style="flex:1;min-width:220px;background:#0e1622;border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:14px">
+        style="flex:1 1 220px;min-width:0;background:#0e1622;border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:16px;min-height:48px">
       <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-      <button type="submit" style="background:var(--teal);color:#04201c;font-weight:800;border:0;border-radius:8px;padding:11px 20px;font-size:14px;cursor:pointer">Get the digest</button>
+      <button type="submit" style="background:var(--teal);color:#04201c;font-weight:800;border:0;border-radius:8px;padding:12px 20px;font-size:15px;cursor:pointer;min-height:48px">Get the digest</button>
     </form>
     <p id="digest-msg" style="color:var(--teal);font-size:13px;margin:10px 0 0;display:none"></p>
   </div>
@@ -308,7 +470,7 @@
   <!-- Homepage internal-link block: the root is the site's highest-authority
        page; pass equity directly to money pages (trade leads, top towns, guides)
        instead of bottlenecking everything through the /permits/ hub. -->
-  <section style="max-width:1000px;margin:40px auto 0;padding:0 20px;font-size:14px;line-height:2">
+  <section style="max-width:1000px;margin:40px auto 0;font-size:14px;line-height:2">
     <h2 style="font-size:18px;color:var(--text);margin-bottom:8px">Massachusetts contractor leads by trade</h2>
     <div style="color:var(--muted)">
       <a href="/roofing-leads-massachusetts">Roofing leads</a> ·
@@ -349,7 +511,7 @@
 
     <!-- The homepage is the highest-authority page on the site (2,818 inbound
          internal links, measured on the built link graph 2026-08-20) and it
-         linked ZERO research and ZERO project pages — so the two tiers that
+         linked ZERO research and ZERO project pages, so the two tiers that
          most need authority got none from the one page best able to pass it.
          Hand-maintained: keep it short, and keep it pointed at pages that earn
          their place. -->
@@ -377,7 +539,7 @@
   </main>
 
   <footer>
-    <strong style="color:var(--text)">MassPermits</strong> · Building-permit lead intelligence · Massachusetts<br>
+    <strong style="color:var(--text)">MassPermits</strong> · Building-permit leads for Massachusetts trades and suppliers · From public municipal permit records<br>
     <a href="/permits/" style="color:var(--teal)">Browse building permits by town &amp; trade →</a> ·
     <a href="/feed.xml" style="color:var(--teal)">RSS</a> ·
     <a href="#digest" style="color:var(--teal)">Weekly digest</a><br>
@@ -387,7 +549,7 @@
 
 <script>
 // ── CONFIG ───────────────────────────────────────────────────────────────────
-// Web3Forms key powers the free-sample capture (no server, client-side only).
+// Web3Forms key powers the owner notification for free-sample requests (client side only).
 const WEB3FORMS_KEY = "640c8bca-d620-496e-8db6-da6fbdef1bf5";
 // Stripe Payment Links. Paste the buy.stripe.com/... URLs here when created.
 // Until set, the Buy buttons fall back to the free-sample form (fails-soft).
@@ -396,36 +558,85 @@ const WEB3FORMS_KEY = "640c8bca-d620-496e-8db6-da6fbdef1bf5";
 // off there is no #buy-banner and wireBuyButtons() leaves this link unused.
 const STRIPE_LINK_FOUNDER = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FOUNDER2026";
 const STRIPE_LINK_FEED = "https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01";   // $99/mo        "MassPermits Weekly Feed"
+// Generated by the daily build next to data.json. Read for the coverage numbers and the
+// town check; if it cannot be read, the page keeps its plain-words fallback.
+const COVERAGE_URL = "/research/evidence/coverage.json";
 // ─────────────────────────────────────────────────────────────────────────────
 
 const $ = id => document.getElementById(id);
-let DATA = null, SELTRADE = "", SELAREA = "";
+let DATA = null, SELTRADE = "", SELAREA = "", COV = null;
 
 const fmtMoney = n => "$" + Math.round(n||0).toLocaleString();
+const fmtNum = n => Number(n||0).toLocaleString();
+const escHtml = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+const joinAnd = a => a.length <= 1 ? (a[0] || "") : a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
 // "Recent" on this page has one definition: a selection whose newest permit is within
 // RECENT_DAYS of the newest permit in the whole build (data.json "newest"). The count is
-// every permit on file for 2025-07 onward, so it is never called fresh. Each segment of
-// data.json carries its own "newest" date, and that is what the line under the count shows.
+// every permit on file, so it is never called fresh. Each segment of data.json carries its
+// own "newest" date, and that is what the line under the count shows.
 const RECENT_DAYS = 14;
 const dayMs = d => Date.parse(String(d||"").slice(0,10) + "T00:00:00Z");
+
+// TRADES AND SUPPLIERS WITH NO PERMIT TYPE OF THEIR OWN (2026-11-03). Insulation, drywall,
+// flooring, a lumber yard: none of them is a permit type, so a visitor in one of them used to
+// find nothing that named them. Each maps to the permit types its work follows. The count shown
+// is the sum of those types (a permit carries one type), and the page names the types it summed,
+// so it never claims that every one of those permits needs the trade. Values must be keys of
+// data.json "trade_list"; a missing type is skipped.
+const FOLLOW = {
+  "Insulation": ["Addition", "Renovation/Remodel", "New Construction"],
+  "Drywall and plaster": ["Addition", "Renovation/Remodel", "New Construction"],
+  "Flooring and tile": ["Renovation/Remodel", "Kitchen/Bath", "Addition", "New Construction"],
+  "Cabinets and countertops": ["Kitchen/Bath", "Renovation/Remodel", "New Construction"],
+  "Painting": ["Renovation/Remodel", "Addition", "New Construction"],
+  "Gutters": ["Roofing", "New Construction"],
+  "Sitework and excavation": ["New Construction", "Septic", "Pool/Spa", "Addition", "Demolition"],
+  "Dumpsters and hauling": ["Demolition", "Renovation/Remodel", "Roofing", "New Construction"],
+  "Lumber and building supply": ["New Construction", "Addition", "Renovation/Remodel", "Deck/Porch"],
+};
+const isFollow = t => Object.prototype.hasOwnProperty.call(FOLLOW, t);
+const lowerWord = t => t === t.toUpperCase() ? t : t.toLowerCase();
+
+// The permits for one area and one trade choice. kind: "all", "type" (a permit type in
+// data.json) or "follow" (a FOLLOW entry, summed over its permit types).
+function segFor(area, trade){
+  if (!trade) return { kind: "all", seg: area.all };
+  if (area.trades && area.trades[trade]) return { kind: "type", seg: area.trades[trade] };
+  if (isFollow(trade) && area.trades) {
+    const types = FOLLOW[trade].filter(t => area.trades[t]);
+    const parts = types.map(t => area.trades[t]);
+    const teaser = parts.flatMap(p => p.teaser || []).sort((a, b) => String(b.d||"").localeCompare(String(a.d||""))).slice(0, 6);
+    return { kind: "follow", types, seg: {
+      count: parts.reduce((n, p) => n + (p.count || 0), 0),
+      total_val: parts.reduce((n, p) => n + (p.total_val || 0), 0),
+      newest: parts.map(p => p.newest || "").sort().pop() || "",
+      teaser } };
+  }
+  return { kind: "all", seg: area.all };
+}
 
 function render(){
   if(!DATA) return;
   const area = DATA.areas.find(a=>a.key===SELAREA) || DATA.areas[0];
   const trade = SELTRADE;
-  // pull the matching teaser set + count
-  const seg = (area.trades && area.trades[trade]) || area.all;
-  const tradeWord = trade ? (trade === trade.toUpperCase() ? trade : trade.toLowerCase()) : "";
-  $("h-trade").textContent = trade ? tradeWord : "contractor";
+  const pick = segFor(area, trade);
+  const seg = pick.seg;
+  const word = trade ? lowerWord(trade) : "";
+  const typeWords = (pick.types || []).map(lowerWord);
   $("h-area").textContent = area.label;
+  $("h-trade").textContent = pick.kind === "type" ? word + " permits" : pick.kind === "follow" ? "permits for " + word : "building permits";
   $("live-area").textContent = area.label;
-  if($("p-trade2")) $("p-trade2").textContent = trade ? tradeWord : "your trade";
+  if($("p-trade2")) $("p-trade2").textContent = trade ? word : "your trade";
   if($("p-area2")) $("p-area2").textContent = area.label;
   // With no trade chosen the sentence reads "Filter it to your trade and towns." (it
   // read "Filter it to  permits in Massachusetts." before, with an empty trade).
-  if($("p-trade3")) $("p-trade3").textContent = trade ? tradeWord + " permits in " + area.label : "your trade and towns";
+  if($("p-trade3")) $("p-trade3").textContent = pick.kind === "type" ? word + " permits in " + area.label
+    : pick.kind === "follow" ? "the " + joinAnd(typeWords) + " permits in " + area.label : "your trade and towns";
   wireBuyButtons();  // refresh Stripe links with current trade/area
-  $("live-count").innerHTML = `${(seg.count||0).toLocaleString()} <small>${tradeWord} permits</small>`;
+  const unit = escHtml(pick.kind === "type" ? word + " permits" : pick.kind === "follow" ? "permits for " + word : "permits");
+  $("live-count").innerHTML = `${(seg.count||0).toLocaleString()} <small>${unit}</small>`;
+  $("live-types").textContent = pick.kind === "follow"
+    ? "Counted from " + joinAnd(typeWords) + " permits: the work " + word + " follows." : "";
   $("live-val").textContent = (seg.total_val > 0) ? fmtMoney(seg.total_val) + " in declared project value" : "";
   if($("freshness")){
     const newest = seg.newest || "", fileNewest = DATA.newest || "";
@@ -433,38 +644,60 @@ function render(){
     let line = newest ? "Newest permit here: " + newest + ". " : "";
     if (lag > RECENT_DAYS) line += "None newer through " + fileNewest
       + ", the newest permit in the file. Some towns publish monthly, and some have stopped. ";
-    $("freshness").textContent = line + "From public municipal building-permit records. New file every Monday.";
+    $("freshness").textContent = line + "From public municipal permit records. New file every Monday.";
   }
   const tb = $("teaser");
   const rows = seg.teaser || [];
   if(rows.length){
     // t.s = slug of that town's live /permits/ page (set server-side only when
-    // the page exists — villages like Hyannis carry their own slug). Rows
+    // the page exists; villages like Hyannis carry their own slug). Rows
     // without it (older data.json, sub-threshold towns) render as plain text.
     tb.innerHTML = rows.map(t=>`<tr>
       <td style="color:var(--muted)">${t.d}</td><td>${t.s?`<a class="townlink" href="/permits/${t.s}">${t.city}</a>`:t.city}</td>
       <td><span class="blur">${t.addr}</span></td>
       <td><span class="badge">${t.trade}</span></td>
-      <td class="val">${t.val}</td></tr>`).join("")
-      + `<tr class="lockrow"><td colspan="5">+ ${Math.max(0,(seg.count||0)-rows.length).toLocaleString()} more — full addresses unlocked in the weekly feed &#128274;</td></tr>`;
+      <td class="val">${t.val}</td></tr>`).join("");
+    // Outside the table, so a phone reads it without scrolling the table sideways.
+    $("lockline").textContent = "+ " + Math.max(0,(seg.count||0)-rows.length).toLocaleString() + " more. Full addresses are in the weekly file. \u{1F512}";
   } else {
-    tb.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">No permits in this selection yet — try another trade or area.</td></tr>`;
+    tb.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">No permits in this selection yet. Try another trade or area.</td></tr>`;
+    $("lockline").textContent = "";
   }
+  renderExample(rows);
+  renderCoverage();
+}
+
+// One row, field by field: the first row in the selection that carries a declared value
+// (the field a buyer most wants to see), else the newest row.
+function renderExample(rows){
+  const box = $("row-example");
+  if (!box) return;
+  const r = rows.find(t => t.val && t.val !== "-") || rows[0];
+  if (!r) { box.style.display = "none"; return; }
+  box.style.display = "";
+  $("ex-d").textContent = r.d || "";
+  $("ex-town").textContent = r.city || "";
+  $("ex-addr").textContent = r.addr || "";
+  $("ex-trade").textContent = r.trade || "";
+  $("ex-val").textContent = (r.val && r.val !== "-") ? r.val : "Not published by this town";
 }
 
 function initSelectors(){
   const st = $("sel-trade"), sa = $("sel-area");
-  st.innerHTML = `<option value="">All trades</option>` + DATA.trade_list.map(t=>`<option value="${t}">${t}</option>`).join("");
-  sa.innerHTML = DATA.areas.map(a=>`<option value="${a.key}">${a.label}</option>`).join("");
+  const opt = t => `<option value="${escHtml(t)}">${escHtml(t)}</option>`;
+  st.innerHTML = `<option value="">All permits</option>`
+    + `<optgroup label="Trades and suppliers after the permit">` + Object.keys(FOLLOW).map(opt).join("") + `</optgroup>`
+    + `<optgroup label="Permit types">` + DATA.trade_list.map(opt).join("") + `</optgroup>`;
+  sa.innerHTML = DATA.areas.map(a=>`<option value="${escHtml(a.key)}">${escHtml(a.label)}</option>`).join("");
   SELAREA = DATA.areas[0].key;
-  // Prefill from ?trade=&area= — the 2,000+ SEO pages now carry the visitor's
+  // Prefill from ?trade=&area=: the 2,000+ SEO pages carry the visitor's
   // trade and region on every CTA, so a roofer arriving from /permits/plymouth-roofing
   // lands already filtered instead of re-declaring who he is. Validated against
   // the real option lists so nothing arbitrary can reach client_reference_id.
   try {
     const qp = new URL(location.href).searchParams;
     const qt = qp.get("trade") || "", qa = qp.get("area") || "";
-    if (qt && DATA.trade_list.includes(qt)) { SELTRADE = qt; st.value = qt; }
+    if (qt && (DATA.trade_list.includes(qt) || isFollow(qt))) { SELTRADE = qt; st.value = qt; }
     if (qa && DATA.areas.some(a => a.key === qa)) { SELAREA = qa; sa.value = qa; }
   } catch (_e) {}
   st.onchange = ()=>{ SELTRADE = st.value; render(); keepInUrl(); };
@@ -485,7 +718,7 @@ function keepInUrl(){
 
 // Build a Stripe link carrying the buyer's trade+area so fulfillment knows
 // exactly what to send (Stripe records it as client_reference_id on the payment).
-// referral cookie/param (set by /r/<code>) — rides checkout as client_reference_id
+// referral cookie/param (set by /r/<code>) rides checkout as client_reference_id
 // so the webhook can credit the referrer ("give a month, get a month")
 function refCode(){
   try{
@@ -513,7 +746,7 @@ function wireBuyButtons(){
     if(feedUrl){ feed.href = feedUrl; feed.target = "_blank"; }
     else feed.href = "#sample";
   }
-  // the post-sample "keep them coming" CTA also deep-links to the $99 feed checkout
+  // the post-sample "subscribe" button also deep-links to the $99 feed checkout
   const sc = $("sample-feed-cta");
   if(sc){ if(feedUrl){ sc.href = feedUrl; sc.target = "_blank"; } else sc.href = "#get"; }
   // hero and banner already carry a live href in the served HTML; only enrich them
@@ -522,7 +755,103 @@ function wireBuyButtons(){
   const live = !!feedUrl;
   $("buy-note").textContent = live
     ? "Secure checkout via Stripe."
-    : "Checkout opening soon — grab a free sample below in the meantime.";
+    : "Checkout opening soon. Get a free sample above in the meantime.";
+}
+
+// ── COVERAGE AND THE TOWN CHECK (2026-11-03) ────────────────────────────────
+// "Which towns?" is the first question a buyer asks. The answer comes from the build's
+// own coverage file, the one /research/coverage is made from: every town that reported on
+// the latest run (with its permit count and newest date), the towns that publish monthly or
+// less often, and the towns that returned nothing on the latest run. Nothing is typed here
+// except the neighbourhood and village names below, which are filed under their town.
+const ALIAS = {
+  "allston": "boston", "brighton": "boston", "charlestown": "boston", "dorchester": "boston",
+  "east boston": "boston", "hyde park": "boston", "jamaica plain": "boston", "mattapan": "boston",
+  "mission hill": "boston", "roslindale": "boston", "roxbury": "boston", "south boston": "boston",
+  "west roxbury": "boston", "back bay": "boston", "south end": "boston", "north end": "boston",
+  "hyannis": "barnstable", "osterville": "barnstable", "centerville": "barnstable", "cotuit": "barnstable",
+  "marstons mills": "barnstable", "west barnstable": "barnstable", "barnstable village": "barnstable",
+};
+const normTown = s => String(s || "").toLowerCase().replace(/,?\s*(ma|mass|massachusetts)\.?$/, "")
+  .replace(/[^a-z' -]/g, " ").replace(/\s+/g, " ").trim();
+function parseCoverage(j){
+  try{
+    const s = j && j.stats;
+    if (!s || !Array.isArray(s.table) || !s.table.length) return null;
+    const live = new Map();
+    for (const r of s.table) {
+      const name = String(r.source || "").replace(/, MA$/, "");
+      if (name) live.set(normTown(name), { name, rows: +r.rows || 0, last: String(r.last || "").slice(0, 10) });
+    }
+    const monthly = new Set((s.monthly || []).map(x => normTown(String(x).replace(/, MA$/, ""))));
+    const quiet = new Map((s.errors || []).map(x => { const n = String(x).replace(/, MA$/, ""); return [normTown(n), n]; }));
+    return { live, monthly, quiet, n: live.size, rows: +s.n_rows || 0 };
+  }catch(_e){ return null; }
+}
+let covAsked = false;
+function loadCoverage(){
+  if (covAsked) return; covAsked = true;
+  fetch(COVERAGE_URL).then(r => r.ok ? r.json() : null).then(j => { COV = parseCoverage(j); renderCoverage(); townCheck(); }).catch(() => {});
+}
+function renderCoverage(){
+  const newest = DATA && DATA.newest ? DATA.newest : "";
+  const monthlyN = COV ? COV.monthly.size : 0;
+  if ($("fresh-line")) $("fresh-line").textContent = "A new file every Monday."
+    + (newest ? " The newest permit on file is dated " + newest + "." : "")
+    + (monthlyN ? " " + monthlyN + (monthlyN === 1 ? " town publishes" : " towns publish") + " monthly or less often, so theirs arrive in batches."
+                : " Some towns publish monthly or less often, so theirs arrive in batches.")
+    + " Every row shows its permit date.";
+  if ($("faq-fresh")) $("faq-fresh").textContent = newest ? "The newest permit on file is dated " + newest + "." : "";
+  if (!COV) return;
+  const quietN = COV.quiet.size;
+  if ($("cov-line")) $("cov-line").textContent = COV.n + " Massachusetts cities and towns reported in the latest build, with "
+    + fmtNum(COV.rows) + " permits on file."
+    + (quietN ? " " + quietN + " more returned nothing on the latest run." : "")
+    + " Massachusetts has 351 cities and towns, so check yours in the sample form.";
+  if ($("faq-cov")) $("faq-cov").textContent = COV.n + " of them reported in the latest build. ";
+}
+function lookupTown(typed){
+  const k = normTown(typed);
+  if (!k || k.length < 2) return null;
+  const k2 = ALIAS[k] || k;
+  const via = ALIAS[k] ? typed : "";
+  if (COV.live.has(k2)) return { kind: "live", via, ...COV.live.get(k2), monthly: COV.monthly.has(k2) };
+  if (COV.quiet.has(k2)) return { kind: "quiet", via, name: COV.quiet.get(k2) };
+  if (k2.length >= 4) {   // "Foxboro" finds Foxborough, but only when exactly one town starts that way
+    const hits = [...COV.live.keys()].filter(x => x.startsWith(k2));
+    if (hits.length === 1) return { kind: "live", via: "", ...COV.live.get(hits[0]), monthly: COV.monthly.has(hits[0]) };
+  }
+  return { kind: "none", name: typed.trim() };
+}
+let townTimer = null;
+function townCheck(){
+  const box = $("town-check"), inp = $("sample-towns");
+  if (!box || !inp) return;
+  const parts = inp.value.split(/[,;\n]+/).map(s => s.trim()).filter(s => s.length >= 2).slice(0, 6);
+  box.textContent = "";
+  if (!parts.length) return;
+  if (!COV) {
+    const d = document.createElement("div");
+    d.innerHTML = 'Checking towns&hellip; or see <a class="inl" href="/research/coverage">every town in the file</a>.';
+    box.appendChild(d); loadCoverage(); return;
+  }
+  for (const p of parts) {
+    const r = lookupTown(p);
+    if (!r) continue;
+    const d = document.createElement("div");
+    if (r.kind === "live") {
+      d.className = "yes";
+      d.textContent = "✓ " + (r.via ? r.via + " is filed under " + r.name : r.name) + ": " + fmtNum(r.rows)
+        + " permits on file, newest dated " + r.last + "."
+        + (r.monthly ? " Publishes monthly or less often, so new permits arrive in batches." : "");
+    } else if (r.kind === "quiet") {
+      d.className = "quiet";
+      d.textContent = (r.via ? r.via + " is filed under " + r.name : r.name) + ": listed, but it returned nothing on the latest run.";
+    } else {
+      d.textContent = r.name + ": not in the file yet. Leave it in the box; it tells us where people want coverage.";
+    }
+    box.appendChild(d);
+  }
 }
 
 async function load(){
@@ -534,32 +863,66 @@ async function load(){
     $("teaser").innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Live data loading shortly.</td></tr>`;
   }
   wireBuyButtons();
+  loadCoverage();
 }
 
+(function(){
+  const inp = $("sample-towns");
+  if (!inp) return;
+  inp.addEventListener("focus", loadCoverage);
+  inp.addEventListener("input", () => { clearTimeout(townTimer); townTimer = setTimeout(townCheck, 350); });
+  inp.addEventListener("blur", townCheck);
+})();
+
+// The towns as typed, tidied for the notification: letters, spaces, apostrophes, hyphens,
+// periods and commas only, at most ten towns and 160 characters.
+const cleanTowns = s => String(s || "").split(/[,;\n]+/).map(x => x.replace(/[^A-Za-z' .-]/g, " ").replace(/\s+/g, " ").trim())
+  .filter(Boolean).slice(0, 10).join(", ").slice(0, 160);
+// The same rule /api/request-sample applies, so a typo is caught here and not by a silent 400.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+// SUCCESS FOLLOWS THE SYSTEM THAT SENDS THE SAMPLE (2026-11-03). /api/request-sample enrols
+// the address and emails the sample; Web3Forms only notifies the owner. The page used to wait
+// on Web3Forms alone and could show an error after the sample had already gone out, and a
+// retry then did nothing (an address is only ever enrolled once). Now either one confirming
+// is a success, an invalid address is said plainly, and the error shows only when neither
+// confirmed.
 $("signup-form").addEventListener("submit", async e=>{
   e.preventDefault();
+  const err = $("signup-err"), btn = $("sample-submit");
+  const showErr = msg => { err.textContent = msg; err.style.display = "block"; };
+  err.style.display = "none";
   const email = $("email").value.trim();
-  if(!email) return;
-  const okMsg=()=>{ $("signup-form").style.display="none"; $("signup-ok").style.display="block"; };
-  // Nurture funnel: register the prospect + email them the sample (fire-and-forget;
-  // Web3Forms below stays as the owner-notification channel).
-  try{ fetch("/api/request-sample",{method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({email, trade:SELTRADE||"", area:SELAREA||"", company:""})}); }catch(_e){}
-  if(!WEB3FORMS_KEY){
-    // No key yet — still acknowledge so the page never looks broken.
-    okMsg(); return;
-  }
-  try{
-    const resp = await fetch("https://api.web3forms.com/submit",{
+  if(!EMAIL_RE.test(email)){ showErr("Please check the email address."); $("email").focus(); return; }
+  const towns = cleanTowns($("sample-towns") ? $("sample-towns").value : "");
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = "Sending...";
+  let done = false;
+  const okMsg = ()=>{
+    if (done) return; done = true;
+    $("signup-form").style.display = "none";
+    const ok = $("signup-ok"); ok.style.display = "block";
+    try { ok.focus({ preventScroll: true }); ok.scrollIntoView({ block: "nearest" }); } catch (_e) {}
+  };
+  // Field names unchanged: email, trade, area, company. "towns" is extra and is ignored by
+  // the function until it is taught to store it.
+  const api = fetch("/api/request-sample",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email, trade:SELTRADE||"", area:SELAREA||"", towns, company:""})})
+    .then(r => r.json().then(d => ({ status: r.status, d }), () => ({ status: r.status, d: null })))
+    .catch(() => null);
+  const owner = !WEB3FORMS_KEY ? Promise.resolve(null) : fetch("https://api.web3forms.com/submit",{
       method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
       body:JSON.stringify({access_key:WEB3FORMS_KEY,
-        subject:`MassPermits free-sample request — ${SELTRADE||"all"} / ${SELAREA||"all"}`,
-        from_name:"masspermits.com", email, trade:SELTRADE, area:SELAREA, botcheck:""})
-    });
-    const d = await resp.json();
-    if(d && d.success) okMsg();
-    else { $("signup-err").style.display="block"; $("signup-err").textContent = d?.message||"Something went wrong: please email us directly."; }
-  }catch(err){ okMsg(); } // fail soft — never block the lead
+        subject:`MassPermits free-sample request: ${SELTRADE||"all"} / ${SELAREA||"all"}`,
+        from_name:"masspermits.com", email, trade:SELTRADE, area:SELAREA, towns, botcheck:""})
+    }).then(r => r.json()).catch(() => null);
+  api.then(a => { if (a && a.d && a.d.ok) okMsg(); });
+  owner.then(o => { if (o && o.success) okMsg(); });
+  const [a] = await Promise.all([api, owner]);
+  if (done) return;
+  btn.disabled = false; btn.textContent = label;
+  if (a && a.status === 400) { showErr("Please check the email address."); $("email").focus(); return; }
+  showErr("That did not go through. Please try again, or write to hello@masspermits.com for the sample.");
 });
 
 // weekly-digest signup (double opt-in via /api/newsletter)
@@ -570,22 +933,22 @@ $("signup-form").addEventListener("submit", async e=>{
     e.preventDefault();
     const msg = $("digest-msg"), email = ($("digest-email").value||"").trim();
     const hp = f.querySelector('input[name="company"]');
-    msg.style.display = "block"; msg.textContent = "Sending…";
+    msg.style.display = "block"; msg.textContent = "Sending...";
     try{
       const r = await fetch("/api/newsletter", { method:"POST",
         headers:{ "Content-Type":"application/json" },
         body: JSON.stringify({ email, company: hp ? hp.value : "" }) });
       const d = await r.json();
       msg.textContent = d && d.ok !== false
-        ? "Check your inbox — click the confirm link and you're in. 📬"
-        : "Hmm, that didn't work — double-check the email?";
-    }catch(err){ msg.textContent = "Network hiccup — try again in a second."; }
+        ? "Check your inbox and click the confirm link to finish. 📬"
+        : "That didn't work. Please check the email address.";
+    }catch(err){ msg.textContent = "Network hiccup. Please try again in a second."; }
   });
 })();
 
 load();
 
-// First-party analytics beacon — logs the visit + its source (no cookies/PII).
+// First-party analytics beacon: logs the visit + its source (no cookies/PII).
 try{
   var _u=new URL(location.href);
   var _s=_u.searchParams.get('utm_source')||_u.searchParams.get('ref')||'';
