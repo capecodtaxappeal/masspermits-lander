@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Chatham, MA",
- "home_page_url": "https://masspermits.com/permits/chatham",
+ "title": "MassPermits \u2014 building permits in Chatham, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/chatham.json",
- "description": "MassPermits no longer receives building-permit records for Chatham, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-08-31. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Chatham, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,623 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-08-31",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-08-31",
- "items": []
+ "_window_total": 140,
+ "_window_from": "2026-10-05",
+ "_window_to": "2026-10-30",
+ "items": [
+  {
+   "id": "538efce2c0358197",
+   "url": "https://masspermits.com/permits/chatham-electrical",
+   "title": "Electrical permit \u2014 Wentworth Ln, Chatham ($171,331)",
+   "content_text": "Electrical permit in Chatham, MA. Value $171,331. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Electrical",
+   "_value": 171331.0
+  },
+  {
+   "id": "3cc7765e40ea6a81",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Crosstree Hlw, Chatham ($369,404)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $369,404. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 369404.01
+  },
+  {
+   "id": "65df8ea5a6bcef19",
+   "url": "https://masspermits.com/permits/chatham-solar",
+   "title": "Solar permit \u2014 Seastrand Way, Chatham ($5,880)",
+   "content_text": "Solar permit in Chatham, MA. Value $5,880. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Solar",
+   "_value": 5880.0
+  },
+  {
+   "id": "61282904db88bbbb",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Water St, Chatham ($29,800)",
+   "content_text": "Roofing permit in Chatham, MA. Value $29,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 29800.0
+  },
+  {
+   "id": "10c045a3ea8a0726",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Pine Tree Rd, Chatham ($4,000)",
+   "content_text": "Building permit in Chatham, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 4000.0
+  },
+  {
+   "id": "d7b11b8888962bad",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Stage Harbor Rd, Chatham ($18,400)",
+   "content_text": "Roofing permit in Chatham, MA. Value $18,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 18400.0
+  },
+  {
+   "id": "deacd1a010321c5a",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Crowell Rd, Chatham ($43,220)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $43,220. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 43220.0
+  },
+  {
+   "id": "fb76907c025d5ce4",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Sky Way, Chatham ($2,000)",
+   "content_text": "Building permit in Chatham, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 2000.0
+  },
+  {
+   "id": "f9edf944e107de1a",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Silver Leaf Ave, Chatham ($12,500)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $12,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 12500.0
+  },
+  {
+   "id": "3f79a6d3b69b7273",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Eddie Ln, Chatham ($15,000)",
+   "content_text": "Building permit in Chatham, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 15000.0
+  },
+  {
+   "id": "3f8a23534ababa6e",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Rowland Dr, Chatham ($45,000)",
+   "content_text": "Roofing permit in Chatham, MA. Value $45,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 45000.0
+  },
+  {
+   "id": "96efde07f51b8870",
+   "url": "https://masspermits.com/permits/chatham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Captain Kendrick Dr, Chatham ($150,000)",
+   "content_text": "Kitchen/Bath permit in Chatham, MA. Value $150,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Kitchen/Bath",
+   "_value": 150000.0
+  },
+  {
+   "id": "916e60e6be4fd9be",
+   "url": "https://masspermits.com/permits/chatham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Captain Richards Way, Chatham ($74,112)",
+   "content_text": "Kitchen/Bath permit in Chatham, MA. Value $74,112. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Kitchen/Bath",
+   "_value": 74112.0
+  },
+  {
+   "id": "c791e8f50de5e748",
+   "url": "https://masspermits.com/permits/chatham-demolition",
+   "title": "Demolition permit \u2014 Marsh View Rd, Chatham ($5,500)",
+   "content_text": "Demolition permit in Chatham, MA. Value $5,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Demolition",
+   "_value": 5500.0
+  },
+  {
+   "id": "11a3f5062e77f28c",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Cod Ln, Chatham ($9,200)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $9,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 9200.0
+  },
+  {
+   "id": "677ebafb1e272530",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Samoset Ln, Chatham ($24,030)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $24,030. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 24030.0
+  },
+  {
+   "id": "8552be899153980f",
+   "url": "https://masspermits.com/permits/chatham-fire-sprinkler",
+   "title": "Fire/Sprinkler permit \u2014 Bridge St, Chatham ($3,820)",
+   "content_text": "Fire/Sprinkler permit in Chatham, MA. Value $3,820. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Fire/Sprinkler",
+   "_value": 3819.62
+  },
+  {
+   "id": "a834072662a12e2b",
+   "url": "https://masspermits.com/permits/chatham-solar",
+   "title": "Solar permit \u2014 Fox Hill Rd, Chatham ($23,000)",
+   "content_text": "Solar permit in Chatham, MA. Value $23,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Solar",
+   "_value": 23000.0
+  },
+  {
+   "id": "d494b48c5b8ac6d5",
+   "url": "https://masspermits.com/permits/chatham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Oak Hill Rd, Chatham ($20,000)",
+   "content_text": "Kitchen/Bath permit in Chatham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Kitchen/Bath",
+   "_value": 20000.0
+  },
+  {
+   "id": "295b7c7f0da79697",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Salt Marsh Way, Chatham ($100,000)",
+   "content_text": "Building permit in Chatham, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 100000.0
+  },
+  {
+   "id": "ca93d7923c1be674",
+   "url": "https://masspermits.com/permits/chatham-hvac",
+   "title": "HVAC permit \u2014 Main St, Chatham ($1,400,000)",
+   "content_text": "HVAC permit in Chatham, MA. Value $1,400,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "HVAC",
+   "_value": 1400000.0
+  },
+  {
+   "id": "ee3e6447a23d81f1",
+   "url": "https://masspermits.com/permits/chatham-gas",
+   "title": "Gas permit \u2014 Woodland Way, Chatham ($160,700)",
+   "content_text": "Gas permit in Chatham, MA. Value $160,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Gas",
+   "_value": 160700.0
+  },
+  {
+   "id": "e9242a4489c14705",
+   "url": "https://masspermits.com/permits/chatham-demolition",
+   "title": "Demolition permit \u2014 Bay Ln, Chatham ($224,863)",
+   "content_text": "Demolition permit in Chatham, MA. Value $224,863. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Demolition",
+   "_value": 224863.0
+  },
+  {
+   "id": "00f0f0a74bbe25a1",
+   "url": "https://masspermits.com/permits/chatham",
+   "title": "Renovation/Remodel permit \u2014 Cockle Cove Rd, Chatham ($200,000)",
+   "content_text": "Renovation/Remodel permit in Chatham, MA. Value $200,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Renovation/Remodel",
+   "_value": 200000.0
+  },
+  {
+   "id": "fbb70223a76c9959",
+   "url": "https://masspermits.com/permits/chatham-solar",
+   "title": "Solar permit \u2014 Orleans Rd, Chatham ($20,427)",
+   "content_text": "Solar permit in Chatham, MA. Value $20,427. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Solar",
+   "_value": 20427.0
+  },
+  {
+   "id": "c7fba4e8192e3790",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Silver Leaf Ave, Chatham ($46,500)",
+   "content_text": "Roofing permit in Chatham, MA. Value $46,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 46500.0
+  },
+  {
+   "id": "53ee3d64634a38f1",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Lady Slipper Ln, Chatham ($6,000)",
+   "content_text": "Building permit in Chatham, MA. Value $6,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 6000.0
+  },
+  {
+   "id": "6107b9ec19171b4d",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Round Cove Rd, Chatham ($2,100)",
+   "content_text": "Building permit in Chatham, MA. Value $2,100. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 2100.0
+  },
+  {
+   "id": "715b8f757c10e333",
+   "url": "https://masspermits.com/permits/chatham-hvac",
+   "title": "HVAC permit \u2014 Bridge St, Chatham ($79,900)",
+   "content_text": "HVAC permit in Chatham, MA. Value $79,900. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "HVAC",
+   "_value": 79900.0
+  },
+  {
+   "id": "35642472aa18a1a2",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Mill Pond Rd, Chatham ($7,228)",
+   "content_text": "Building permit in Chatham, MA. Value $7,228. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 7228.0
+  },
+  {
+   "id": "881e2b47434935f1",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Deer Meadow Ln, Chatham ($21,450)",
+   "content_text": "Roofing permit in Chatham, MA. Value $21,450. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 21450.0
+  },
+  {
+   "id": "4f915e0576063f5a",
+   "url": "https://masspermits.com/permits/chatham-hvac",
+   "title": "HVAC permit \u2014 Sachemas Way, Chatham ($31,527)",
+   "content_text": "HVAC permit in Chatham, MA. Value $31,527. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "HVAC",
+   "_value": 31527.0
+  },
+  {
+   "id": "70b3bbf7294c1b31",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Riverview Dr, Chatham ($36,000)",
+   "content_text": "Roofing permit in Chatham, MA. Value $36,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 36000.0
+  },
+  {
+   "id": "59085f127039a740",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pleasant St, Chatham ($29,807)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $29,807. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 29807.0
+  },
+  {
+   "id": "592ed9478148c692",
+   "url": "https://masspermits.com/permits/chatham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Tirrells Way, Chatham ($20,000)",
+   "content_text": "Deck/Porch permit in Chatham, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Deck/Porch",
+   "_value": 20000.0
+  },
+  {
+   "id": "844ecbb3eb998f54",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Munson Meeting Way, Chatham ($300,000)",
+   "content_text": "Roofing permit in Chatham, MA. Value $300,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 300000.0
+  },
+  {
+   "id": "0018976ffdc75900",
+   "url": "https://masspermits.com/permits/chatham-pool-spa",
+   "title": "Pool/Spa permit \u2014 Middle Rd, Chatham ($65,000)",
+   "content_text": "Pool/Spa permit in Chatham, MA. Value $65,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Pool/Spa",
+   "_value": 65000.0
+  },
+  {
+   "id": "95235fe8c4a714ed",
+   "url": "https://masspermits.com/permits/chatham-demolition",
+   "title": "Demolition permit \u2014 Crosby Ln, Chatham ($1,315,000)",
+   "content_text": "Demolition permit in Chatham, MA. Value $1,315,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Demolition",
+   "_value": 1315000.0
+  },
+  {
+   "id": "e088a927f5fd6075",
+   "url": "https://masspermits.com/permits/chatham-demolition",
+   "title": "Demolition permit \u2014 Main St, Chatham ($10,000)",
+   "content_text": "Demolition permit in Chatham, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Demolition",
+   "_value": 10000.0
+  },
+  {
+   "id": "8ea59193e022c680",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Shattuck Pl, Chatham ($5,800)",
+   "content_text": "Roofing permit in Chatham, MA. Value $5,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 5800.0
+  },
+  {
+   "id": "c2a59bc1674f401f",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Depot Rd, Chatham ($25,475)",
+   "content_text": "Roofing permit in Chatham, MA. Value $25,475. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 25475.0
+  },
+  {
+   "id": "ffe67f706a16d78b",
+   "url": "https://masspermits.com/permits/chatham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Eel River Rd, Chatham ($122,000)",
+   "content_text": "Deck/Porch permit in Chatham, MA. Value $122,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Deck/Porch",
+   "_value": 122000.0
+  },
+  {
+   "id": "e869d273991ca7b1",
+   "url": "https://masspermits.com/permits/chatham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Perch Pond Rd, Chatham ($17,547)",
+   "content_text": "Deck/Porch permit in Chatham, MA. Value $17,547. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Deck/Porch",
+   "_value": 17547.0
+  },
+  {
+   "id": "c122c681285f41ab",
+   "url": "https://masspermits.com/permits/chatham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Fox Hill Rd, Chatham ($325,500)",
+   "content_text": "Kitchen/Bath permit in Chatham, MA. Value $325,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Kitchen/Bath",
+   "_value": 325500.0
+  },
+  {
+   "id": "9dfa620d730426dc",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 North Rd, Chatham ($5,000)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5000.0
+  },
+  {
+   "id": "7a5ace19448b7dc9",
+   "url": "https://masspermits.com/permits/chatham-electrical",
+   "title": "Electrical permit \u2014 Hitching Post Rd, Chatham ($22,600)",
+   "content_text": "Electrical permit in Chatham, MA. Value $22,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Electrical",
+   "_value": 22600.0
+  },
+  {
+   "id": "0159f2ec9b434530",
+   "url": "https://masspermits.com/permits/chatham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Stage Harbor Rd, Chatham ($150,000)",
+   "content_text": "Kitchen/Bath permit in Chatham, MA. Value $150,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Kitchen/Bath",
+   "_value": 150000.0
+  },
+  {
+   "id": "1a32ccf30fb8de30",
+   "url": "https://masspermits.com/permits/chatham-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Middle Road, Chatham ($299,998)",
+   "content_text": "Kitchen/Bath permit in Chatham, MA. Value $299,998. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Kitchen/Bath",
+   "_value": 299998.0
+  },
+  {
+   "id": "c9b151d390fe347f",
+   "url": "https://masspermits.com/permits/chatham-gas",
+   "title": "Gas permit \u2014 Frost Fish Hill, Chatham ($254,600)",
+   "content_text": "Gas permit in Chatham, MA. Value $254,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Gas",
+   "_value": 254600.0
+  },
+  {
+   "id": "4962b97c9b51d6cf",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Taylors Pond Rd, Chatham ($675,000)",
+   "content_text": "Roofing permit in Chatham, MA. Value $675,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 675000.0
+  },
+  {
+   "id": "baf35b9a61811f6d",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Orleans Rd, Chatham ($50,000)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $50,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 50000.0
+  },
+  {
+   "id": "2c158326659ad010",
+   "url": "https://masspermits.com/permits/chatham-building",
+   "title": "Building permit \u2014 Old Mail Rd, Chatham ($7,500)",
+   "content_text": "Building permit in Chatham, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Building",
+   "_value": 7500.0
+  },
+  {
+   "id": "791cc7abeaf023b8",
+   "url": "https://masspermits.com/permits/chatham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Stage Harbor Rd, Chatham ($92,000)",
+   "content_text": "Deck/Porch permit in Chatham, MA. Value $92,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Deck/Porch",
+   "_value": 92000.0
+  },
+  {
+   "id": "04ccba3b37b8a76e",
+   "url": "https://masspermits.com/permits/chatham-new-construction",
+   "title": "New Construction permit \u2014 Champlain Rd, Chatham ($85,000)",
+   "content_text": "New Construction permit in Chatham, MA. Value $85,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "New Construction",
+   "_value": 85000.0
+  },
+  {
+   "id": "46c2494526fb40c5",
+   "url": "https://masspermits.com/permits/chatham-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Taylors Pond Rd, Chatham ($13,285)",
+   "content_text": "Windows/Doors/Siding permit in Chatham, MA. Value $13,285. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 13285.0
+  },
+  {
+   "id": "e29ec21bb085beca",
+   "url": "https://masspermits.com/permits/chatham",
+   "title": "Renovation/Remodel permit \u2014 Deer Meadow Ln, Chatham ($22,991)",
+   "content_text": "Renovation/Remodel permit in Chatham, MA. Value $22,991. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Renovation/Remodel",
+   "_value": 22991.0
+  },
+  {
+   "id": "89d77a5ddfcaf308",
+   "url": "https://masspermits.com/permits/chatham-pool-spa",
+   "title": "Pool/Spa permit \u2014 Old Harbor Rd, Chatham ($135,200)",
+   "content_text": "Pool/Spa permit in Chatham, MA. Value $135,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Pool/Spa",
+   "_value": 135200.0
+  },
+  {
+   "id": "34132d0670d6d23f",
+   "url": "https://masspermits.com/permits/chatham-pool-spa",
+   "title": "Pool/Spa permit \u2014 Waveland Ave, Chatham ($113,905)",
+   "content_text": "Pool/Spa permit in Chatham, MA. Value $113,905. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Pool/Spa",
+   "_value": 113905.0
+  },
+  {
+   "id": "0947fac03af3a94f",
+   "url": "https://masspermits.com/permits/chatham-deck-porch",
+   "title": "Deck/Porch permit \u2014 Joshua Jethro Rd, Chatham ($30,200)",
+   "content_text": "Deck/Porch permit in Chatham, MA. Value $30,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Deck/Porch",
+   "_value": 30200.0
+  },
+  {
+   "id": "aa7bcf91d571f5ea",
+   "url": "https://masspermits.com/permits/chatham-roofing",
+   "title": "Roofing permit \u2014 Colonial Dr, Chatham ($35,218)",
+   "content_text": "Roofing permit in Chatham, MA. Value $35,218. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Chatham",
+   "_trade": "Roofing",
+   "_value": 35218.0
+  }
+ ]
 }

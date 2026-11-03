@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Amherst, MA",
- "home_page_url": "https://masspermits.com/permits/amherst",
+ "title": "MassPermits \u2014 building permits in Amherst, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/amherst.json",
- "description": "MassPermits no longer receives building-permit records for Amherst, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Amherst, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,617 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-09-30",
- "items": []
+ "_window_total": 68,
+ "_window_from": "2026-10-05",
+ "_window_to": "2026-10-30",
+ "items": [
+  {
+   "id": "6bb70f4065130e94",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Fearing Street, Amherst ($59,000)",
+   "content_text": "Roofing permit in Amherst, MA. Value $59,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 59000.0
+  },
+  {
+   "id": "bf8517e16c434747",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 North Pleasant Street, Amherst ($12,000)",
+   "content_text": "Building permit in Amherst, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 12000.0
+  },
+  {
+   "id": "09ea9668d075c112",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "New Construction permit \u2014 Pomeroy Lane, Amherst ($10,000)",
+   "content_text": "New Construction permit in Amherst, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "New Construction",
+   "_value": 10000.0
+  },
+  {
+   "id": "a24bfacc4eab697c",
+   "url": "https://masspermits.com/permits/amherst-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Aubinwood Road, Amherst ($60,589)",
+   "content_text": "Kitchen/Bath permit in Amherst, MA. Value $60,589. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Kitchen/Bath",
+   "_value": 60589.37
+  },
+  {
+   "id": "100a85b60cde9ebd",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Station Road, Amherst ($2,600)",
+   "content_text": "Building permit in Amherst, MA. Value $2,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 2600.0
+  },
+  {
+   "id": "54f1c6b9cbbf3e69",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 South East Street, Amherst ($26,191)",
+   "content_text": "Roofing permit in Amherst, MA. Value $26,191. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 26191.0
+  },
+  {
+   "id": "53157122edc39027",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Pelham Road, Amherst ($6,200)",
+   "content_text": "Building permit in Amherst, MA. Value $6,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 6200.0
+  },
+  {
+   "id": "87ff0996de2d3913",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Belchertown Road, Amherst ($22,865)",
+   "content_text": "Roofing permit in Amherst, MA. Value $22,865. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 22865.0
+  },
+  {
+   "id": "2ce1c789f73840d6",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Mcintosh Drive, Amherst ($1,700)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $1,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 1699.91
+  },
+  {
+   "id": "cbb2a0fdbe0fde85",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Electrical permit \u2014 North Whitney Street, Amherst ($135,000)",
+   "content_text": "Electrical permit in Amherst, MA. Value $135,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Electrical",
+   "_value": 135000.0
+  },
+  {
+   "id": "1870e4dab9d68e58",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 South Pleasant Street, Amherst ($3,500)",
+   "content_text": "Building permit in Amherst, MA. Value $3,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 3500.0
+  },
+  {
+   "id": "2d77bc8d8f803bb0",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Spring Street, Unit Spring House, Amherst ($7,260)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $7,260. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7259.52
+  },
+  {
+   "id": "0b75a52a05eba434",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Dayton Lane, Amherst ($21,250)",
+   "content_text": "Roofing permit in Amherst, MA. Value $21,250. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 21250.0
+  },
+  {
+   "id": "705b9dd53110ab98",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Ridgecrest Road, Amherst ($6,700)",
+   "content_text": "Building permit in Amherst, MA. Value $6,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 6700.0
+  },
+  {
+   "id": "9664b1bc184c92e0",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Chapel Road, Amherst ($13,775)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $13,775. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 13775.0
+  },
+  {
+   "id": "2ec26945d367e33f",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pulpit Hill Road, Unit, Amherst ($2,400)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $2,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2400.0
+  },
+  {
+   "id": "3565e1e4ca1d5887",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Webster Court, Amherst ($2,205)",
+   "content_text": "Building permit in Amherst, MA. Value $2,205. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 2205.3
+  },
+  {
+   "id": "f431cab40017e3b4",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Electrical permit \u2014 East Hadley Road, Amherst ($46,554)",
+   "content_text": "Electrical permit in Amherst, MA. Value $46,554. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Electrical",
+   "_value": 46553.75
+  },
+  {
+   "id": "67da3ee5c5c4fa9a",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Plumbing permit \u2014 Owen Drive, Amherst ($64,094)",
+   "content_text": "Plumbing permit in Amherst, MA. Value $64,094. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Plumbing",
+   "_value": 64094.0
+  },
+  {
+   "id": "40e3b4787da47965",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Electrical permit \u2014 Webster Court, Amherst ($23,000)",
+   "content_text": "Electrical permit in Amherst, MA. Value $23,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Electrical",
+   "_value": 23000.0
+  },
+  {
+   "id": "2ccd794c5202d0c4",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 West Street, Amherst ($10,000)",
+   "content_text": "Roofing permit in Amherst, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 10000.0
+  },
+  {
+   "id": "fdbb7f96bc92727e",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Belchertown Road, Amherst ($65,000)",
+   "content_text": "Building permit in Amherst, MA. Value $65,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 65000.0
+  },
+  {
+   "id": "a15cee7ccbe13573",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Hawthorn Road, Amherst ($21,000)",
+   "content_text": "Building permit in Amherst, MA. Value $21,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 21000.0
+  },
+  {
+   "id": "a46f8cb7c81a24e7",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Blue Hills Road, Amherst ($11,000)",
+   "content_text": "Roofing permit in Amherst, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 11000.0
+  },
+  {
+   "id": "70c3c16d75cac355",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Newell Court, Amherst ($14,950)",
+   "content_text": "Roofing permit in Amherst, MA. Value $14,950. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 14950.0
+  },
+  {
+   "id": "fbc3edeee68ff0be",
+   "url": "https://masspermits.com/permits/amherst-solar",
+   "title": "Solar permit \u2014 Justice Drive, Amherst",
+   "content_text": "Solar permit in Amherst, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Solar"
+  },
+  {
+   "id": "3045ab4d74d99eb3",
+   "url": "https://masspermits.com/permits/amherst-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 North Pleasant Street, Amherst ($8,000)",
+   "content_text": "Kitchen/Bath permit in Amherst, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Kitchen/Bath",
+   "_value": 8000.0
+  },
+  {
+   "id": "c9ceef9cfb8aa5e1",
+   "url": "https://masspermits.com/permits/amherst-solar",
+   "title": "Solar permit \u2014 Hop Brook Road, Amherst",
+   "content_text": "Solar permit in Amherst, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Solar"
+  },
+  {
+   "id": "118e1dccf6313297",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Maplewood Circle, Amherst ($31,100)",
+   "content_text": "Building permit in Amherst, MA. Value $31,100. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 31100.0
+  },
+  {
+   "id": "35f6a163a1397036",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Shays Street, Amherst ($26,250)",
+   "content_text": "Roofing permit in Amherst, MA. Value $26,250. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 26250.0
+  },
+  {
+   "id": "e7faebb18eded856",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Emily Lane, Amherst ($20,909)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $20,909. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 20909.0
+  },
+  {
+   "id": "e8cda07d3447726c",
+   "url": "https://masspermits.com/permits/amherst-solar",
+   "title": "Solar permit \u2014 The Hollow, Amherst",
+   "content_text": "Solar permit in Amherst, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Solar"
+  },
+  {
+   "id": "261c5985ad4cb5d5",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Farmington Road, Amherst ($3,400)",
+   "content_text": "Roofing permit in Amherst, MA. Value $3,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 3400.0
+  },
+  {
+   "id": "01c5334990abbf62",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Kestrel Lane, Amherst ($36,450)",
+   "content_text": "Roofing permit in Amherst, MA. Value $36,450. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 36450.0
+  },
+  {
+   "id": "0a1860743ad161c0",
+   "url": "https://masspermits.com/permits/amherst-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Glendale Road, Amherst ($42,000)",
+   "content_text": "Kitchen/Bath permit in Amherst, MA. Value $42,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Kitchen/Bath",
+   "_value": 42000.0
+  },
+  {
+   "id": "8cc3af09f94bc18d",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Aubinwood Road, Amherst ($29,036)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $29,036. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 29036.0
+  },
+  {
+   "id": "800085d33b1d7111",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Willow Lane, Amherst ($21,921)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $21,921. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 21921.0
+  },
+  {
+   "id": "27b13b6017e35442",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 State Street, Amherst ($4,411)",
+   "content_text": "Building permit in Amherst, MA. Value $4,411. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 4411.15
+  },
+  {
+   "id": "f59b7620089ec8ec",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Shutesbury Road, Amherst ($11,742)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $11,742. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 11742.0
+  },
+  {
+   "id": "0d3cf919df080bf8",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Wildflower Drive, Amherst ($5,243)",
+   "content_text": "Building permit in Amherst, MA. Value $5,243. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 5243.0
+  },
+  {
+   "id": "14dce6a8dd6ba6ec",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Teawaddle Lane, Amherst ($20,873)",
+   "content_text": "Roofing permit in Amherst, MA. Value $20,873. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 20873.0
+  },
+  {
+   "id": "3ac9f77bcd4323fc",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Plumbing permit \u2014 Wildflower Drive, Amherst ($134,482)",
+   "content_text": "Plumbing permit in Amherst, MA. Value $134,482. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Plumbing",
+   "_value": 134482.0
+  },
+  {
+   "id": "d5cee267aa6f4d13",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Blue Hills Road, Amherst ($40,565)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $40,565. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 40565.0
+  },
+  {
+   "id": "58868f7f85d1b6be",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Renovation/Remodel permit \u2014 Amity Street, Amherst ($784,000)",
+   "content_text": "Renovation/Remodel permit in Amherst, MA. Value $784,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Renovation/Remodel",
+   "_value": 784000.0
+  },
+  {
+   "id": "cf0258bdcfdd7833",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Electrical permit \u2014 West Street, Amherst ($13,750)",
+   "content_text": "Electrical permit in Amherst, MA. Value $13,750. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Electrical",
+   "_value": 13750.0
+  },
+  {
+   "id": "94cf06d68aa10098",
+   "url": "https://masspermits.com/permits/amherst-deck-porch",
+   "title": "Deck/Porch permit \u2014 Montague Road, Amherst ($11,775)",
+   "content_text": "Deck/Porch permit in Amherst, MA. Value $11,775. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Deck/Porch",
+   "_value": 11775.0
+  },
+  {
+   "id": "b4a356ef0f3cbe0b",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Adams Street, Amherst ($25,992)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $25,992. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 25992.0
+  },
+  {
+   "id": "2680284555b15458",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "New Construction permit \u2014 Barrett Hill Road, Unit Chapin Hall, Amherst",
+   "content_text": "New Construction permit in Amherst, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "New Construction"
+  },
+  {
+   "id": "7a6b7e6b02dd6942",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Montague Road, Amherst ($12,000)",
+   "content_text": "Roofing permit in Amherst, MA. Value $12,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 12000.0
+  },
+  {
+   "id": "0088bacfbc9f4e0f",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Poet'S Corner, Amherst ($17,079)",
+   "content_text": "Roofing permit in Amherst, MA. Value $17,079. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 17079.39
+  },
+  {
+   "id": "70e804de25676a8a",
+   "url": "https://masspermits.com/permits/amherst-solar",
+   "title": "Solar permit \u2014 Pulpit Hill Road, Amherst",
+   "content_text": "Solar permit in Amherst, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Solar"
+  },
+  {
+   "id": "35d5e5fe141eef77",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 South East Street, Amherst ($3,059)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $3,059. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3059.0
+  },
+  {
+   "id": "b6b2be3885146cf3",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 North Whitney Street, Amherst ($19,760)",
+   "content_text": "Roofing permit in Amherst, MA. Value $19,760. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 19760.0
+  },
+  {
+   "id": "76ff5ee2f18d3364",
+   "url": "https://masspermits.com/permits/amherst",
+   "title": "Fire/Sprinkler permit \u2014 Gray Street, Amherst",
+   "content_text": "Fire/Sprinkler permit in Amherst, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Fire/Sprinkler"
+  },
+  {
+   "id": "d1451387281890c9",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Berkshire Terrace, Amherst ($13,500)",
+   "content_text": "Roofing permit in Amherst, MA. Value $13,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 13500.0
+  },
+  {
+   "id": "67e800742d13e86a",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Webster Street, Amherst ($5,800)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $5,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5800.0
+  },
+  {
+   "id": "98c554733df9c6b0",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Alpine Drive, Amherst ($21,824)",
+   "content_text": "Roofing permit in Amherst, MA. Value $21,824. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 21824.0
+  },
+  {
+   "id": "3a78ba725e12b43f",
+   "url": "https://masspermits.com/permits/amherst-roofing",
+   "title": "Roofing permit \u2014 Hartman Road, Amherst ($17,250)",
+   "content_text": "Roofing permit in Amherst, MA. Value $17,250. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Roofing",
+   "_value": 17250.0
+  },
+  {
+   "id": "92a66f7ef7e5412b",
+   "url": "https://masspermits.com/permits/amherst-building",
+   "title": "Building permit \u2014 Eames Avenue, Amherst ($11,571)",
+   "content_text": "Building permit in Amherst, MA. Value $11,571. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Building",
+   "_value": 11570.66
+  },
+  {
+   "id": "fa4e703520cb73c5",
+   "url": "https://masspermits.com/permits/amherst-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Echo Hill Road, Amherst ($75,000)",
+   "content_text": "Windows/Doors/Siding permit in Amherst, MA. Value $75,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-09T00:00:00Z",
+   "_town": "Amherst",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 75000.0
+  }
+ ]
 }

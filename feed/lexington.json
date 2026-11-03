@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Lexington, MA",
- "home_page_url": "https://masspermits.com/permits/lexington",
+ "title": "MassPermits \u2014 building permits in Lexington, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/lexington.json",
- "description": "MassPermits no longer receives building-permit records for Lexington, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-30. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Lexington, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,563 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-30",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-09-30",
- "items": []
+ "_window_total": 340,
+ "_window_from": "2026-10-05",
+ "_window_to": "2026-10-31",
+ "items": [
+  {
+   "id": "6e34da533c097b60",
+   "url": "https://masspermits.com/permits/lexington-other",
+   "title": "Other permit \u2014 Meriam St, Lexington",
+   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-31T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Other"
+  },
+  {
+   "id": "2924af16f50cd519",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Dee Rd, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "1c32062bf9d53361",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Vine Brook Rd, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "af05fa5e76e2d177",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Solly'S Way, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "3dbdae54dc0c1d06",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Sherburne Rd, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "0ea9ba2704808193",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Massachusetts Ave, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "abb0af7a108400dd",
+   "url": "https://masspermits.com/permits/lexington-other",
+   "title": "Other permit \u2014 Nickerson Rd, Lexington",
+   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Other"
+  },
+  {
+   "id": "8965b7c0c4a3c954",
+   "url": "https://masspermits.com/permits/lexington-other",
+   "title": "Other permit \u2014 Woodcliffe Rd, Lexington",
+   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Other"
+  },
+  {
+   "id": "ee4a9a01aa376fe3",
+   "url": "https://masspermits.com/permits/lexington-roofing",
+   "title": "Roofing permit \u2014 Bedford St, Lexington",
+   "content_text": "Roofing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "b00f7085487efa3f",
+   "url": "https://masspermits.com/permits/lexington-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Massachusetts Ave, Lexington",
+   "content_text": "Windows/Doors/Siding permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "8a32850c5f904561",
+   "url": "https://masspermits.com/permits/lexington-roofing",
+   "title": "Roofing permit \u2014 Burlington St, Lexington",
+   "content_text": "Roofing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "4f0d291b2dca3a42",
+   "url": "https://masspermits.com/permits/lexington-demolition",
+   "title": "Demolition permit \u2014 Ivan St, Lexington",
+   "content_text": "Demolition permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Demolition"
+  },
+  {
+   "id": "f7584cfb528cd225",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Katahdin Dr, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "db4811a05fd81c3d",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Harding Rd, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "544ad5f4a1113520",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Massachusetts Ave, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "18f2ac30418fe6d6",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Douglas Rd, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "b259ffe82eb39afe",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Hill St, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "2881ef505bd99942",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Hathaway Rd, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "12328ec544afe81b",
+   "url": "https://masspermits.com/permits/lexington-other",
+   "title": "Other permit \u2014 Essex St, Lexington",
+   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Other"
+  },
+  {
+   "id": "fe0d946e12168623",
+   "url": "https://masspermits.com/permits/lexington-other",
+   "title": "Other permit \u2014 Burlington St, Lexington",
+   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Other"
+  },
+  {
+   "id": "2fad81c50e9ee196",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Parker St, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "38d1c520574dbda1",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Fairfield Dr, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "641f42a1aca155de",
+   "url": "https://masspermits.com/permits/lexington-hvac",
+   "title": "HVAC permit \u2014 Fifer Ln, Lexington",
+   "content_text": "HVAC permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "b38034c4b9ad3e0e",
+   "url": "https://masspermits.com/permits/lexington-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pleasant St, Lexington",
+   "content_text": "Windows/Doors/Siding permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "c904dffcab0ac49c",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Fairlawn Ln, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "158a4a610f6c384b",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Bedford St, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "c2bf7c05f0595d8e",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Independence Ave, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "56286190a3636ed3",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Orchard Ln, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "ebc3fdb8d22cf269",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Waltham St, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "d058c7e8cc7a7851",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Massachusetts Ave, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "7960a3683bef3a3a",
+   "url": "https://masspermits.com/permits/lexington-hvac",
+   "title": "HVAC permit \u2014 Ellen Dana Ct, Lexington",
+   "content_text": "HVAC permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "de0bcb9957fa8ce0",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 White Ter, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "4157f342066b2dfb",
+   "url": "https://masspermits.com/permits/lexington-roofing",
+   "title": "Roofing permit \u2014 Turning Mill Rd, Lexington",
+   "content_text": "Roofing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Roofing"
+  },
+  {
+   "id": "9931a35451b8dcf1",
+   "url": "https://masspermits.com/permits/lexington-hvac",
+   "title": "HVAC permit \u2014 Sunny Knoll Ter, Lexington",
+   "content_text": "HVAC permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "77bebf8508569f26",
+   "url": "https://masspermits.com/permits/lexington-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Rolling Ln, Lexington",
+   "content_text": "Windows/Doors/Siding permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Windows/Doors/Siding"
+  },
+  {
+   "id": "35f32323b3f82583",
+   "url": "https://masspermits.com/permits/lexington-hvac",
+   "title": "HVAC permit \u2014 Sanderson Rd, Lexington",
+   "content_text": "HVAC permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "HVAC"
+  },
+  {
+   "id": "75fb4c48381d910e",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Keeler Farm Way, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "40f0dcbe866b3376",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Coolidge Ave, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "28ef9f2834f58c02",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Waltham St, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "dd924bce529bb379",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Bicentennial Dr, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "84f0ebe715fca604",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Concord Ave, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "aa3a3c58c8f5c6b1",
+   "url": "https://masspermits.com/permits/lexington-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Cedar St, Lexington",
+   "content_text": "Renovation/Remodel permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Renovation/Remodel"
+  },
+  {
+   "id": "d2862ae57a4a2cf7",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Sunny Knoll Ter, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "8cd2fb947a39a1b9",
+   "url": "https://masspermits.com/permits/lexington-addition",
+   "title": "Addition permit \u2014 Bedford St, Lexington",
+   "content_text": "Addition permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Addition"
+  },
+  {
+   "id": "9ed73d1ae7a8d7b4",
+   "url": "https://masspermits.com/permits/lexington-other",
+   "title": "Other permit \u2014 Paul Revere Rd, Lexington",
+   "content_text": "Other permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Other"
+  },
+  {
+   "id": "6fd5ea04d8f4d1f8",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Richard Rd, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "75fef1fd71451b7c",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Bow St, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "8678503eff661b11",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Grapevine Ave, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "800c127c8baed485",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Grapevine Ave, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "27ba3017eb67e16e",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Hilltop Ave, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "7d584c4cb9f7525c",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Muster Ct, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "45977bf2f3957892",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Reed St, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "aa4b297b9373bfc1",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Lowell St, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "2b7b251defb1a38d",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Locke Ln, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "555c6e59695000a8",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Burroughs Rd, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "2bb54dd6bb7b9aa2",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Burroughs Rd, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "27c07a30710300b5",
+   "url": "https://masspermits.com/permits/lexington-electrical",
+   "title": "Electrical permit \u2014 Marrett Rd, Lexington",
+   "content_text": "Electrical permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Electrical"
+  },
+  {
+   "id": "e099755256726550",
+   "url": "https://masspermits.com/permits/lexington-gas",
+   "title": "Gas permit \u2014 Webster Rd, Lexington",
+   "content_text": "Gas permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Gas"
+  },
+  {
+   "id": "7948146ec4dc4e80",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Larchmont Ln, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  },
+  {
+   "id": "acf32c20d8e2175a",
+   "url": "https://masspermits.com/permits/lexington-plumbing",
+   "title": "Plumbing permit \u2014 Grassland St, Lexington",
+   "content_text": "Plumbing permit in Lexington, MA. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Lexington",
+   "_trade": "Plumbing"
+  }
+ ]
 }

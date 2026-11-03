@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Reading, MA",
- "home_page_url": "https://masspermits.com/permits/reading",
+ "title": "MassPermits \u2014 building permits in Reading, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/reading.json",
- "description": "MassPermits no longer receives building-permit records for Reading, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-08-31. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Reading, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,623 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-08-31",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-08-31",
- "items": []
+ "_window_total": 96,
+ "_window_from": "2026-10-04",
+ "_window_to": "2026-10-30",
+ "items": [
+  {
+   "id": "709bbc9b783ad09e",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Hancock Street, Reading ($25,798)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $25,798. Full lead at masspermits.com.",
+   "date_published": "2026-10-30T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 25798.0
+  },
+  {
+   "id": "24a403640efecea9",
+   "url": "https://masspermits.com/permits/reading-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Haven Street, Reading ($20,410)",
+   "content_text": "Renovation/Remodel permit in Reading, MA. Value $20,410. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Renovation/Remodel",
+   "_value": 20410.0
+  },
+  {
+   "id": "5586c7f5a4b60eb8",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Summer Avenue, Reading ($8,900)",
+   "content_text": "HVAC permit in Reading, MA. Value $8,900. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 8900.0
+  },
+  {
+   "id": "3b1df583b844685a",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Dustin Road, Reading ($40,000)",
+   "content_text": "HVAC permit in Reading, MA. Value $40,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 40000.0
+  },
+  {
+   "id": "bbe26b043be99ea4",
+   "url": "https://masspermits.com/permits/reading-building",
+   "title": "Building permit \u2014 Orchard Park Drive, Reading ($11,000)",
+   "content_text": "Building permit in Reading, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Building",
+   "_value": 11000.0
+  },
+  {
+   "id": "99cb32b07af0feca",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Willard Road, Reading ($31,470)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $31,470. Full lead at masspermits.com.",
+   "date_published": "2026-10-29T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 31470.0
+  },
+  {
+   "id": "4fa9dd72f3412b94",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Winter Street, Reading ($5,462)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $5,462. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5462.0
+  },
+  {
+   "id": "c0571a8704ed205e",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Main Street, Reading ($3,000)",
+   "content_text": "Roofing permit in Reading, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 3000.0
+  },
+  {
+   "id": "e161ca8da039dd67",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Old Mill Lane, Reading ($23,200)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $23,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 23200.0
+  },
+  {
+   "id": "9eb6aad3a1dc07f2",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Grove Street, Reading ($100,000)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $100,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 100000.0
+  },
+  {
+   "id": "215fe077dc66b534",
+   "url": "https://masspermits.com/permits/reading-building",
+   "title": "Building permit \u2014 Willard Road, Reading ($10,000)",
+   "content_text": "Building permit in Reading, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Building",
+   "_value": 10000.0
+  },
+  {
+   "id": "b76b2f79e27b01eb",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Causeway Road, Reading ($271,400)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $271,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-28T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 271400.0
+  },
+  {
+   "id": "5d6303a93a4ab7d6",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Beaver Road, Reading ($110,000)",
+   "content_text": "HVAC permit in Reading, MA. Value $110,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 110000.0
+  },
+  {
+   "id": "dc79da5f448b88ff",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Green Street, Reading ($31,700)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $31,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 31700.0
+  },
+  {
+   "id": "6f40d3cbd6519457",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 West Street, Reading ($16,400)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $16,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 16400.0
+  },
+  {
+   "id": "a7fa3b5c554740d8",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 West Street, Reading ($559,000)",
+   "content_text": "Roofing permit in Reading, MA. Value $559,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 559000.0
+  },
+  {
+   "id": "45452f5885f41172",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Pleasant Street, Reading ($36,000)",
+   "content_text": "Roofing permit in Reading, MA. Value $36,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 36000.0
+  },
+  {
+   "id": "cb07074545bf6791",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Lowell Street, Reading ($9,550)",
+   "content_text": "Roofing permit in Reading, MA. Value $9,550. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 9550.0
+  },
+  {
+   "id": "116f525722cca13e",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Summer Avenue, Reading ($965,407)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $965,407. Full lead at masspermits.com.",
+   "date_published": "2026-10-27T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 965407.0
+  },
+  {
+   "id": "dce65885bb0ab952",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Johnson Woods Drive, Reading ($11,000)",
+   "content_text": "HVAC permit in Reading, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 11000.0
+  },
+  {
+   "id": "1bcca7976b68bd79",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Sturges Road, Reading ($80,700)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $80,700. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 80700.0
+  },
+  {
+   "id": "4be7cbba7f75d82a",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Hanscom Avenue, Reading ($734,596)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $734,596. Full lead at masspermits.com.",
+   "date_published": "2026-10-26T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 734596.0
+  },
+  {
+   "id": "22175001081217b5",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Summer Avenue, Reading ($41,000)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $41,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-24T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 41000.0
+  },
+  {
+   "id": "dd507f844579bfff",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Mark Avenue, Reading ($4,850)",
+   "content_text": "Roofing permit in Reading, MA. Value $4,850. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 4850.0
+  },
+  {
+   "id": "92422676f79725eb",
+   "url": "https://masspermits.com/permits/reading-building",
+   "title": "Building permit \u2014 Gavin Circle, Reading ($2,547)",
+   "content_text": "Building permit in Reading, MA. Value $2,547. Full lead at masspermits.com.",
+   "date_published": "2026-10-23T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Building",
+   "_value": 2547.0
+  },
+  {
+   "id": "69128243bf43ccd5",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Woburn Street, Reading ($10,595)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $10,595. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 10595.0
+  },
+  {
+   "id": "30e2e61c6cb84030",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Martin Road, Reading ($14,500)",
+   "content_text": "HVAC permit in Reading, MA. Value $14,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 14500.0
+  },
+  {
+   "id": "d821a23332672b3b",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Federal Street, Reading ($3,000)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-22T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 3000.0
+  },
+  {
+   "id": "563ef83936945789",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Charles Street, Reading ($15,800)",
+   "content_text": "Roofing permit in Reading, MA. Value $15,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 15800.0
+  },
+  {
+   "id": "feb641099c8550b8",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Willow Street, Reading ($97,000)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $97,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 97000.0
+  },
+  {
+   "id": "a1795a5934fbd8de",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Louanis Drive, Reading ($26,350)",
+   "content_text": "Roofing permit in Reading, MA. Value $26,350. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 26350.0
+  },
+  {
+   "id": "03336ea73523fec5",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Hanscom Avenue, Reading ($39,100)",
+   "content_text": "HVAC permit in Reading, MA. Value $39,100. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 39100.0
+  },
+  {
+   "id": "175f18fa12adadf7",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 General Way, Reading ($75,000)",
+   "content_text": "HVAC permit in Reading, MA. Value $75,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-21T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 75000.0
+  },
+  {
+   "id": "27108888fffac0bf",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 John Street, Reading ($35,508)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $35,508. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 35508.0
+  },
+  {
+   "id": "d57e7ca4b333e5be",
+   "url": "https://masspermits.com/permits/reading",
+   "title": "Sign/Awning permit \u2014 Main Street, Reading ($1,050)",
+   "content_text": "Sign/Awning permit in Reading, MA. Value $1,050. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Sign/Awning",
+   "_value": 1050.0
+  },
+  {
+   "id": "0dc88fc46f7acb05",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Lowell Street, Reading ($19,807)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $19,807. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 19807.0
+  },
+  {
+   "id": "d01202ec43830596",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Selfridge Road, Reading ($14,000)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $14,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 14000.0
+  },
+  {
+   "id": "1ac89875778ef0b5",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Longwood Road, Reading ($15,000)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 15000.0
+  },
+  {
+   "id": "27fadab316015f33",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Perkins Avenue, Reading ($74,500)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $74,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 74500.0
+  },
+  {
+   "id": "76454aac756eef6d",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 South Street, Reading ($296,997)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $296,997. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 296997.0
+  },
+  {
+   "id": "6728c5113ad71aae",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Whitehall Lane, Reading ($53,966)",
+   "content_text": "HVAC permit in Reading, MA. Value $53,966. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 53965.59
+  },
+  {
+   "id": "64d592a09aaeaed3",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Temple Street, Reading ($13,500)",
+   "content_text": "HVAC permit in Reading, MA. Value $13,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 13500.0
+  },
+  {
+   "id": "2295ecb37720cecd",
+   "url": "https://masspermits.com/permits/reading-renovation-remodel",
+   "title": "Renovation/Remodel permit \u2014 Salem Street, Reading ($8,000)",
+   "content_text": "Renovation/Remodel permit in Reading, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Renovation/Remodel",
+   "_value": 8000.0
+  },
+  {
+   "id": "aabfb9fe8a3ad2b9",
+   "url": "https://masspermits.com/permits/reading-building",
+   "title": "Building permit \u2014 John Street, Reading ($700)",
+   "content_text": "Building permit in Reading, MA. Value $700. Full lead at masspermits.com.",
+   "date_published": "2026-10-20T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Building",
+   "_value": 700.0
+  },
+  {
+   "id": "202de968126c03b6",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Belmont Street, Reading ($20,000)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $20,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 20000.0
+  },
+  {
+   "id": "be98f034b1d5f7f7",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Fremont Street, Reading ($71,664)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $71,664. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 71664.0
+  },
+  {
+   "id": "a1863452d4781106",
+   "url": "https://masspermits.com/permits/reading-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Audubon Road, Reading ($16,337)",
+   "content_text": "Kitchen/Bath permit in Reading, MA. Value $16,337. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Kitchen/Bath",
+   "_value": 16336.8
+  },
+  {
+   "id": "e8e8be7b17490f70",
+   "url": "https://masspermits.com/permits/reading",
+   "title": "Addition permit \u2014 Summer Avenue, Reading ($270,000)",
+   "content_text": "Addition permit in Reading, MA. Value $270,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Addition",
+   "_value": 270000.0
+  },
+  {
+   "id": "29344899fc82c2cb",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Temple Street, Reading ($57,400)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $57,400. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 57400.0
+  },
+  {
+   "id": "ddbec6eccee63cb4",
+   "url": "https://masspermits.com/permits/reading",
+   "title": "Plumbing permit \u2014 Walkers Brook Drive, Reading ($512,212)",
+   "content_text": "Plumbing permit in Reading, MA. Value $512,212. Full lead at masspermits.com.",
+   "date_published": "2026-10-19T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Plumbing",
+   "_value": 512212.0
+  },
+  {
+   "id": "55cd178affc8e9b5",
+   "url": "https://masspermits.com/permits/reading-building",
+   "title": "Building permit \u2014 Franklin Street, Reading ($3,000)",
+   "content_text": "Building permit in Reading, MA. Value $3,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-16T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Building",
+   "_value": 3000.0
+  },
+  {
+   "id": "91ea1710cab3eedc",
+   "url": "https://masspermits.com/permits/reading-electrical",
+   "title": "Electrical permit \u2014 Virginia Road, Reading ($74,000)",
+   "content_text": "Electrical permit in Reading, MA. Value $74,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Electrical",
+   "_value": 74000.0
+  },
+  {
+   "id": "08f0612b4dd777ba",
+   "url": "https://masspermits.com/permits/reading-deck-porch",
+   "title": "Deck/Porch permit \u2014 Oak Ridge Road, Reading ($101,140)",
+   "content_text": "Deck/Porch permit in Reading, MA. Value $101,140. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Deck/Porch",
+   "_value": 101140.0
+  },
+  {
+   "id": "e37d37eadfb6feb7",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Enos Circle, Reading ($8,775)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $8,775. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 8775.0
+  },
+  {
+   "id": "14f13608ac658de6",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Red Gate Lane, Reading ($16,229)",
+   "content_text": "Roofing permit in Reading, MA. Value $16,229. Full lead at masspermits.com.",
+   "date_published": "2026-10-15T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 16228.69
+  },
+  {
+   "id": "01277de34f34b75a",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Bartlett Circle, Reading ($11,000)",
+   "content_text": "Roofing permit in Reading, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 11000.0
+  },
+  {
+   "id": "5dd6ef543b3006b0",
+   "url": "https://masspermits.com/permits/reading-hvac",
+   "title": "HVAC permit \u2014 Haverhill Street, Reading ($19,000)",
+   "content_text": "HVAC permit in Reading, MA. Value $19,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "HVAC",
+   "_value": 19000.0
+  },
+  {
+   "id": "4e22a61c846962ee",
+   "url": "https://masspermits.com/permits/reading-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Covey Hill Road, Reading ($5,957)",
+   "content_text": "Windows/Doors/Siding permit in Reading, MA. Value $5,957. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5957.0
+  },
+  {
+   "id": "93140a940c856b8b",
+   "url": "https://masspermits.com/permits/reading",
+   "title": "New Construction permit \u2014 Main Street, Reading ($36,300)",
+   "content_text": "New Construction permit in Reading, MA. Value $36,300. Full lead at masspermits.com.",
+   "date_published": "2026-10-14T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "New Construction",
+   "_value": 36300.0
+  },
+  {
+   "id": "33dfd3bce22e9998",
+   "url": "https://masspermits.com/permits/reading-roofing",
+   "title": "Roofing permit \u2014 Deering Street, Reading ($17,250)",
+   "content_text": "Roofing permit in Reading, MA. Value $17,250. Full lead at masspermits.com.",
+   "date_published": "2026-10-13T00:00:00Z",
+   "_town": "Reading",
+   "_trade": "Roofing",
+   "_value": 17250.0
+  }
+ ]
 }

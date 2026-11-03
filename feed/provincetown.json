@@ -1,9 +1,9 @@
 {
  "version": "https://jsonfeed.org/version/1.1",
- "title": "MassPermits \u2014 coverage ended: Provincetown, MA",
- "home_page_url": "https://masspermits.com/permits/provincetown",
+ "title": "MassPermits \u2014 building permits in Provincetown, MA",
+ "home_page_url": "https://masspermits.com",
  "feed_url": "https://masspermits.com/feed/provincetown.json",
- "description": "MassPermits no longer receives building-permit records for Provincetown, MA. This feed has stopped and is kept only so its address does not break. The last permit this feed carried was issued 2026-09-01. It is not a current feed and must not be read as one. Live coverage is listed at https://masspermits.com/permits/ and the sources still publishing are itemised at https://masspermits.com/research/coverage.",
+ "description": "Recent building permits in Provincetown, Massachusetts. Masked public preview; full leads at masspermits.com.",
  "authors": [
   {
    "name": "MassPermits",
@@ -11,16 +11,623 @@
   }
  ],
  "_masspermits": {
-  "coverage_ended": true,
-  "last_permit_issued": "2026-09-01",
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "license_name": "CC BY-NC 4.0",
   "attribution": "MassPermits (masspermits.com)",
   "source": "Compiled from public municipal building-permit records published by Massachusetts cities and towns.",
-  "live_coverage": "https://masspermits.com/research/evidence/coverage.json"
+  "withheld": [
+   "house number",
+   "owner name",
+   "contractor name"
+  ],
+  "masking": "House numbers, owner names and contractor names are withheld; the street field is masked to the street name only.",
+  "catalog": "https://masspermits.com/catalog.json",
+  "methodology": "https://masspermits.com/research/methodology",
+  "coverage_evidence": "https://masspermits.com/research/evidence/coverage.json"
  },
- "_window_total": 0,
- "_window_from": null,
- "_window_to": "2026-09-01",
- "items": []
+ "_window_total": 150,
+ "_window_from": "2026-04-01",
+ "_window_to": "2026-10-01",
+ "items": [
+  {
+   "id": "2302a57e476856bd",
+   "url": "https://masspermits.com/permits/provincetown-other",
+   "title": "Other permit \u2014 Commercial St, Unit, Provincetown ($4,000)",
+   "content_text": "Other permit in Provincetown, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Other",
+   "_value": 4000.0
+  },
+  {
+   "id": "d73bf490aa3425af",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Pilgrim Hgts Rd, Provincetown ($5,000)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 5000.0
+  },
+  {
+   "id": "99009acea6930eec",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Commercial St, Unit, Provincetown ($6,313)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $6,313. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 6313.0
+  },
+  {
+   "id": "7c1a23a2a6596a63",
+   "url": "https://masspermits.com/permits/provincetown-roofing",
+   "title": "Roofing permit \u2014 Commercial St, Provincetown ($850)",
+   "content_text": "Roofing permit in Provincetown, MA. Value $850. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Roofing",
+   "_value": 850.0
+  },
+  {
+   "id": "0702a8c62f891fba",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Miller Hill Rd, Unit, Provincetown ($2,800)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $2,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2800.0
+  },
+  {
+   "id": "6910949efff1faa2",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Bradford St, Unit, Provincetown ($44,000)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $44,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 44000.0
+  },
+  {
+   "id": "892e5daa844cef2f",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Bayberry Ave, Provincetown ($85,000)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $85,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 85000.0
+  },
+  {
+   "id": "509d9721c0799a32",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Bradford St, Provincetown ($14,000)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $14,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 14000.0
+  },
+  {
+   "id": "15c379430ff61d13",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Cottage St, Unit, Provincetown ($4,200)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $4,200. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4200.0
+  },
+  {
+   "id": "e989be4444d6026e",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Winslow St, Provincetown ($81,000)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $81,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 81000.0
+  },
+  {
+   "id": "0f971a3b55578f86",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Conwell St, Unit, Provincetown ($7,500)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 7500.0
+  },
+  {
+   "id": "95ac9f6ff9fb919b",
+   "url": "https://masspermits.com/permits/provincetown-electrical",
+   "title": "Electrical permit \u2014 Bradford Acres Rd, Unit Uc, Provincetown ($60,178)",
+   "content_text": "Electrical permit in Provincetown, MA. Value $60,178. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Electrical",
+   "_value": 60178.0
+  },
+  {
+   "id": "5493cc8473abf785",
+   "url": "https://masspermits.com/permits/provincetown-electrical",
+   "title": "Electrical permit \u2014 Bradford St Ext, Provincetown ($101,138)",
+   "content_text": "Electrical permit in Provincetown, MA. Value $101,138. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Electrical",
+   "_value": 101138.0
+  },
+  {
+   "id": "3d7df425ca6a3133",
+   "url": "https://masspermits.com/permits/provincetown-roofing",
+   "title": "Roofing permit \u2014 Commercial St, Unit Uc, Provincetown ($7,000)",
+   "content_text": "Roofing permit in Provincetown, MA. Value $7,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Roofing",
+   "_value": 7000.0
+  },
+  {
+   "id": "cb068f498a8c8676",
+   "url": "https://masspermits.com/permits/provincetown-other",
+   "title": "Other permit \u2014 Commercial St, Provincetown ($2,000)",
+   "content_text": "Other permit in Provincetown, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Other",
+   "_value": 2000.0
+  },
+  {
+   "id": "fc042dd4853963de",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Alden St, Unit, Provincetown ($19,600)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $19,600. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 19600.0
+  },
+  {
+   "id": "93789bf5c6034c8d",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Meadow Rd, Unit, Provincetown ($42,800)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $42,800. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 42800.0
+  },
+  {
+   "id": "a32e6157cf320c2c",
+   "url": "https://masspermits.com/permits/provincetown-roofing",
+   "title": "Roofing permit \u2014 Commercial St, Unit, Provincetown ($15,000)",
+   "content_text": "Roofing permit in Provincetown, MA. Value $15,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Roofing",
+   "_value": 15000.0
+  },
+  {
+   "id": "3766bdf0d6d0f866",
+   "url": "https://masspermits.com/permits/provincetown",
+   "title": "Gas permit \u2014 Commercial St, Unit, Provincetown ($8,650)",
+   "content_text": "Gas permit in Provincetown, MA. Value $8,650. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Gas",
+   "_value": 8650.0
+  },
+  {
+   "id": "f6e2a54f57e1290d",
+   "url": "https://masspermits.com/permits/provincetown-other",
+   "title": "Other permit \u2014 Race Rd, Unit, Provincetown ($5,000)",
+   "content_text": "Other permit in Provincetown, MA. Value $5,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Other",
+   "_value": 5000.0
+  },
+  {
+   "id": "8b8199ef140e9b4e",
+   "url": "https://masspermits.com/permits/provincetown",
+   "title": "Plumbing permit \u2014 Commercial St, Unit, Provincetown ($80,000)",
+   "content_text": "Plumbing permit in Provincetown, MA. Value $80,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Plumbing",
+   "_value": 80000.0
+  },
+  {
+   "id": "58192008de325019",
+   "url": "https://masspermits.com/permits/provincetown-electrical",
+   "title": "Electrical permit \u2014 Franklin St, Unit, Provincetown ($18,000)",
+   "content_text": "Electrical permit in Provincetown, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Electrical",
+   "_value": 18000.0
+  },
+  {
+   "id": "e9f3bece0f7341fd",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Franklin St, Unit, Provincetown ($7,500)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $7,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 7500.0
+  },
+  {
+   "id": "9fc6137d06d6aadb",
+   "url": "https://masspermits.com/permits/provincetown",
+   "title": "Sign/Awning permit \u2014 Commercial St, Unit Uctg, Provincetown ($4,090)",
+   "content_text": "Sign/Awning permit in Provincetown, MA. Value $4,090. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Sign/Awning",
+   "_value": 4090.0
+  },
+  {
+   "id": "5415f455a55b5af1",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Commercial St, Provincetown ($900)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $900. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 900.0
+  },
+  {
+   "id": "179311d9d79ad631",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Brewster St, Provincetown ($65,000)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $65,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 65000.0
+  },
+  {
+   "id": "3dd32fc49c9733cd",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Commercial St, Unit Uf, Provincetown ($4,000)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $4,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 4000.0
+  },
+  {
+   "id": "ab8fd874df069bc6",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Seashore Park Dr, Unit, Provincetown ($2,500)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $2,500. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 2500.0
+  },
+  {
+   "id": "f93747a67817044e",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Bradford St Ext, Unit Ug, Provincetown ($10,000)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 10000.0
+  },
+  {
+   "id": "f8499e1cd4bc0747",
+   "url": "https://masspermits.com/permits/provincetown-electrical",
+   "title": "Electrical permit \u2014 West Vine St, Unit, Provincetown ($137,826)",
+   "content_text": "Electrical permit in Provincetown, MA. Value $137,826. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Electrical",
+   "_value": 137825.88
+  },
+  {
+   "id": "156dc3c38a84c1cd",
+   "url": "https://masspermits.com/permits/provincetown-roofing",
+   "title": "Roofing permit \u2014 Bradford St, Provincetown ($12,150)",
+   "content_text": "Roofing permit in Provincetown, MA. Value $12,150. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Roofing",
+   "_value": 12150.0
+  },
+  {
+   "id": "7b7c2aeafaaa5243",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Creek Rd, Unit, Provincetown ($18,968)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $18,968. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 18968.2
+  },
+  {
+   "id": "ad8a4ecabf0eae43",
+   "url": "https://masspermits.com/permits/provincetown-electrical",
+   "title": "Electrical permit \u2014 Shank Painter Rd, Unit, Provincetown ($50,000)",
+   "content_text": "Electrical permit in Provincetown, MA. Value $50,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Electrical",
+   "_value": 50000.0
+  },
+  {
+   "id": "8575acdf13b6a2a5",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Bradford St, Unit, Provincetown ($390,000)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $390,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 390000.0
+  },
+  {
+   "id": "ebbbb48bcc926901",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Commercial St, Unit, Provincetown ($50,000)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $50,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 50000.0
+  },
+  {
+   "id": "7759c93e8ab90b13",
+   "url": "https://masspermits.com/permits/provincetown-building",
+   "title": "Building permit \u2014 Fishburn Ct, Unit, Provincetown ($8,000)",
+   "content_text": "Building permit in Provincetown, MA. Value $8,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Building",
+   "_value": 8000.0
+  },
+  {
+   "id": "51697fae893bf944",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Bradford St, Provincetown ($215,000)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $215,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 215000.0
+  },
+  {
+   "id": "489decd2f293502f",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Shank Painter Rd, Provincetown ($12,300)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $12,300. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 12300.0
+  },
+  {
+   "id": "49fbc54bcdc15624",
+   "url": "https://masspermits.com/permits/provincetown-other",
+   "title": "Other permit \u2014 Franklin St, Provincetown ($1,500,000)",
+   "content_text": "Other permit in Provincetown, MA. Value $1,500,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Other",
+   "_value": 1500000.0
+  },
+  {
+   "id": "219c675dd0d4b837",
+   "url": "https://masspermits.com/permits/provincetown",
+   "title": "New Construction permit \u2014 Conant St, Provincetown ($275,000)",
+   "content_text": "New Construction permit in Provincetown, MA. Value $275,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "New Construction",
+   "_value": 275000.0
+  },
+  {
+   "id": "e4142370175d4a0e",
+   "url": "https://masspermits.com/permits/provincetown-roofing",
+   "title": "Roofing permit \u2014 Baker Ave, Provincetown ($1,200,000)",
+   "content_text": "Roofing permit in Provincetown, MA. Value $1,200,000. Full lead at masspermits.com.",
+   "date_published": "2026-10-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Roofing",
+   "_value": 1200000.0
+  },
+  {
+   "id": "4b0210b54e137137",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Pleasant St, Provincetown ($27,380)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $27,380. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 27380.0
+  },
+  {
+   "id": "bfcb5529cdbc2762",
+   "url": "https://masspermits.com/permits/provincetown",
+   "title": "Demolition permit \u2014 Willow Dr, Unit, Provincetown ($3,811)",
+   "content_text": "Demolition permit in Provincetown, MA. Value $3,811. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Demolition",
+   "_value": 3810.61
+  },
+  {
+   "id": "ba8f0d6729703dad",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Freeman St, Unit, Provincetown ($2,000)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $2,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 2000.0
+  },
+  {
+   "id": "2c47597bfa921664",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Harbor Hill Rd, Unit, Provincetown ($25,680)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $25,680. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 25680.0
+  },
+  {
+   "id": "9ac37feb2fd58dca",
+   "url": "https://masspermits.com/permits/provincetown",
+   "title": "Solar permit \u2014 Commercial St, Provincetown ($15,199)",
+   "content_text": "Solar permit in Provincetown, MA. Value $15,199. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Solar",
+   "_value": 15199.0
+  },
+  {
+   "id": "53efb96e072e59de",
+   "url": "https://masspermits.com/permits/provincetown-other",
+   "title": "Other permit \u2014 Commercial St, Unit Ub, Provincetown ($10,000)",
+   "content_text": "Other permit in Provincetown, MA. Value $10,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Other",
+   "_value": 10000.0
+  },
+  {
+   "id": "717251d36e91d758",
+   "url": "https://masspermits.com/permits/provincetown-electrical",
+   "title": "Electrical permit \u2014 Court St, Provincetown ($5,403)",
+   "content_text": "Electrical permit in Provincetown, MA. Value $5,403. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Electrical",
+   "_value": 5403.13
+  },
+  {
+   "id": "b7823f7ede037ffa",
+   "url": "https://masspermits.com/permits/provincetown-electrical",
+   "title": "Electrical permit \u2014 Commercial St, Provincetown ($87,742)",
+   "content_text": "Electrical permit in Provincetown, MA. Value $87,742. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Electrical",
+   "_value": 87741.63
+  },
+  {
+   "id": "0908ff62a05bc072",
+   "url": "https://masspermits.com/permits/provincetown",
+   "title": "Demolition permit \u2014 Commercial St, Provincetown ($3,800)",
+   "content_text": "Demolition permit in Provincetown, MA. Value $3,800. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Demolition",
+   "_value": 3800.0
+  },
+  {
+   "id": "963a44b9103dc5be",
+   "url": "https://masspermits.com/permits/provincetown-building",
+   "title": "Building permit \u2014 Bradford St, Unit, Provincetown ($9,700)",
+   "content_text": "Building permit in Provincetown, MA. Value $9,700. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Building",
+   "_value": 9700.0
+  },
+  {
+   "id": "6f8de1e9bc7826b7",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Creek Rnd Hill Rd, Provincetown ($11,000)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $11,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 11000.0
+  },
+  {
+   "id": "2ad86fffa6caf3be",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Winslow St, Provincetown ($2,714)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $2,714. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 2714.1
+  },
+  {
+   "id": "a959c300ba23c91b",
+   "url": "https://masspermits.com/permits/provincetown-deck-porch",
+   "title": "Deck/Porch permit \u2014 Commercial St, Provincetown ($236,000)",
+   "content_text": "Deck/Porch permit in Provincetown, MA. Value $236,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Deck/Porch",
+   "_value": 236000.0
+  },
+  {
+   "id": "caa02c3c76af8e70",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Mayflower St, Provincetown ($90,942)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $90,942. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 90942.0
+  },
+  {
+   "id": "82655dbe6dcf0694",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Youngs Ct, Provincetown ($22,242)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $22,242. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 22242.0
+  },
+  {
+   "id": "2564bceb000f4a8d",
+   "url": "https://masspermits.com/permits/provincetown-kitchen-bath",
+   "title": "Kitchen/Bath permit \u2014 Creek Rnd Hill Rd, Provincetown ($18,000)",
+   "content_text": "Kitchen/Bath permit in Provincetown, MA. Value $18,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Kitchen/Bath",
+   "_value": 18000.0
+  },
+  {
+   "id": "ee3ef3dccaa8c2e5",
+   "url": "https://masspermits.com/permits/provincetown-other",
+   "title": "Other permit \u2014 Conwell St, Provincetown ($700,000)",
+   "content_text": "Other permit in Provincetown, MA. Value $700,000. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Other",
+   "_value": 700000.0
+  },
+  {
+   "id": "ff77cfc7ea5d431d",
+   "url": "https://masspermits.com/permits/provincetown-roofing",
+   "title": "Roofing permit \u2014 Lovetts Ct, Provincetown ($229,613)",
+   "content_text": "Roofing permit in Provincetown, MA. Value $229,613. Full lead at masspermits.com.",
+   "date_published": "2026-09-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Roofing",
+   "_value": 229613.0
+  },
+  {
+   "id": "3c81ff391d574d5c",
+   "url": "https://masspermits.com/permits/provincetown-windows-doors-siding",
+   "title": "Windows/Doors/Siding permit \u2014 Somerset Rd, Provincetown ($9,052)",
+   "content_text": "Windows/Doors/Siding permit in Provincetown, MA. Value $9,052. Full lead at masspermits.com.",
+   "date_published": "2026-07-01T00:00:00Z",
+   "_town": "Provincetown",
+   "_trade": "Windows/Doors/Siding",
+   "_value": 9052.0
+  }
+ ]
 }

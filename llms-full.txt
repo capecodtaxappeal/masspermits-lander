@@ -2,7 +2,7 @@
 
 > MassPermits turns Massachusetts building-permit records into ready-to-work leads for contractors.
 > Each lead includes the full address and project type, plus the permit holder and declared value where the town lists them, organized
-> by trade and town. Coverage: 97 towns and neighbourhoods across Cape Cod & Islands, Greater Boston, South Shore & South Coast, MetroWest & 495, North Shore & Merrimack, Central MA and Western MA (72166+ recent permits), drawn from 81 municipal permit sources.
+> by trade and town. Coverage: 113 towns and neighbourhoods across Cape Cod & Islands, Greater Boston, South Shore & South Coast, MetroWest & 495, North Shore & Merrimack, Central MA and Western MA (86999+ recent permits), drawn from 96 municipal permit sources.
 > Massachusetts has 351 municipalities: this is a partial, named subset, itemised source by source
 > at https://masspermits.com/research/coverage.
 
@@ -13,7 +13,6 @@
 ## Research (original analysis, method published)
 - Research index: https://masspermits.com/research/
 - The Friday gap in Massachusetts permit records: https://masspermits.com/research/friday-permit-gap
-- Heat-pump share of heating permits, in the towns whose records can answer: https://masspermits.com/research/heat-pump-share
 - Accessory dwelling units, and why the apparent boom is not real: https://masspermits.com/research/adu-permits
 - What permit follows what at the same address, and how long after: https://masspermits.com/research/permit-sequence
 - Coverage: what each municipal source publishes and what it omits: https://masspermits.com/research/coverage
@@ -23,17 +22,17 @@
 ## Browse permit data
 - All towns & trades: https://masspermits.com/permits/
 - Building permits in Worcester, MA: https://masspermits.com/permits/worcester
+- Building permits in Lowell, MA: https://masspermits.com/permits/lowell
 - Building permits in Cambridge, MA: https://masspermits.com/permits/cambridge
 - Building permits in Pittsfield, MA: https://masspermits.com/permits/pittsfield
 - Building permits in Somerville, MA: https://masspermits.com/permits/somerville
+- Building permits in Plymouth, MA: https://masspermits.com/permits/plymouth
 - Building permits in Falmouth, MA: https://masspermits.com/permits/falmouth
 - Building permits in Attleboro, MA: https://masspermits.com/permits/attleboro
 - Building permits in Mashpee, MA: https://masspermits.com/permits/mashpee
 - Building permits in Braintree, MA: https://masspermits.com/permits/braintree
 - Building permits in Chicopee, MA: https://masspermits.com/permits/chicopee
-- Building permits in Stoughton, MA: https://masspermits.com/permits/stoughton
-- Building permits in Hingham, MA: https://masspermits.com/permits/hingham
-- Building permits in Norwood, MA: https://masspermits.com/permits/norwood
+- Building permits in Bourne, MA: https://masspermits.com/permits/bourne
 
 ## Leads by trade (Massachusetts)
 - Roofing leads: https://masspermits.com/roofing-leads-massachusetts
@@ -72,105 +71,121 @@
 - Coverage — what each source publishes and what it omits: https://masspermits.com/research/coverage
 - Corrections and analyses we killed: https://masspermits.com/research/corrections
 - Figures behind each research page, as JSON: https://masspermits.com/research/evidence/<slug>.json
-- Data as of: 2026-11-02 (newest permit in the corpus behind this build; not the build date).
-- Scope of this snapshot: 72166 permits, drawn from 81 municipal permit sources, across 97 towns and neighbourhoods. Massachusetts has 351 municipalities; we do not cover most of them, and https://masspermits.com/research/coverage says exactly which and what each one omits.
+- Data as of: 2026-11-03 (newest permit in the corpus behind this build; not the build date).
+- Scope of this snapshot: 86999 permits, drawn from 96 municipal permit sources, across 113 towns and neighbourhoods. Massachusetts has 351 municipalities; we do not cover most of them, and https://masspermits.com/research/coverage says exactly which and what each one omits.
 - Suggested form: MassPermits. "<page title>". Updated <dateModified from the page's JSON-LD>. <page URL>.
 
 ## Full town index
-- Worcester (7001 permits): https://masspermits.com/permits/worcester
+- Worcester (6958 permits): https://masspermits.com/permits/worcester
+- Lowell (3332 permits): https://masspermits.com/permits/lowell
 - Cambridge (2928 permits): https://masspermits.com/permits/cambridge
-- Pittsfield (2532 permits): https://masspermits.com/permits/pittsfield
-- Somerville (2501 permits): https://masspermits.com/permits/somerville
+- Pittsfield (2533 permits): https://masspermits.com/permits/pittsfield
+- Somerville (2467 permits): https://masspermits.com/permits/somerville
+- Plymouth (2451 permits): https://masspermits.com/permits/plymouth
 - Falmouth (2400 permits): https://masspermits.com/permits/falmouth
 - Attleboro (2400 permits): https://masspermits.com/permits/attleboro
 - Mashpee (2398 permits): https://masspermits.com/permits/mashpee
-- Braintree (2129 permits): https://masspermits.com/permits/braintree
-- Chicopee (1954 permits): https://masspermits.com/permits/chicopee
-- Stoughton (1769 permits): https://masspermits.com/permits/stoughton
-- Hingham (1741 permits): https://masspermits.com/permits/hingham
-- Norwood (1729 permits): https://masspermits.com/permits/norwood
-- Sandwich (1666 permits): https://masspermits.com/permits/sandwich
-- Concord (1622 permits): https://masspermits.com/permits/concord
-- Randolph (1545 permits): https://masspermits.com/permits/randolph
-- Boston (1542 permits): https://masspermits.com/permits/boston
-- Milton (1481 permits): https://masspermits.com/permits/milton
-- Easton (1476 permits): https://masspermits.com/permits/easton
-- Foxborough (1350 permits): https://masspermits.com/permits/foxborough
-- Bellingham (1275 permits): https://masspermits.com/permits/bellingham
-- Mansfield (1189 permits): https://masspermits.com/permits/mansfield
-- Fairhaven (1061 permits): https://masspermits.com/permits/fairhaven
-- Ludlow (1051 permits): https://masspermits.com/permits/ludlow
-- Easthampton (1045 permits): https://masspermits.com/permits/easthampton
-- Ipswich (1026 permits): https://masspermits.com/permits/ipswich
-- North Reading (1013 permits): https://masspermits.com/permits/north-reading
-- Dorchester (1003 permits): https://masspermits.com/permits/dorchester
-- Framingham (933 permits): https://masspermits.com/permits/framingham
-- Rockland (920 permits): https://masspermits.com/permits/rockland
-- Natick (859 permits): https://masspermits.com/permits/natick
-- Rehoboth (790 permits): https://masspermits.com/permits/rehoboth
-- Yarmouth (751 permits): https://masspermits.com/permits/yarmouth
-- Cohasset (740 permits): https://masspermits.com/permits/cohasset
-- Uxbridge (710 permits): https://masspermits.com/permits/uxbridge
-- Medway (680 permits): https://masspermits.com/permits/medway
+- Braintree (2131 permits): https://masspermits.com/permits/braintree
+- Chicopee (1933 permits): https://masspermits.com/permits/chicopee
+- Bourne (1922 permits): https://masspermits.com/permits/bourne
+- Stoughton (1764 permits): https://masspermits.com/permits/stoughton
+- Boston (1763 permits): https://masspermits.com/permits/boston
+- Hingham (1734 permits): https://masspermits.com/permits/hingham
+- Norwood (1715 permits): https://masspermits.com/permits/norwood
+- Sandwich (1673 permits): https://masspermits.com/permits/sandwich
+- Concord (1619 permits): https://masspermits.com/permits/concord
+- Randolph (1547 permits): https://masspermits.com/permits/randolph
+- Milton (1490 permits): https://masspermits.com/permits/milton
+- Easton (1480 permits): https://masspermits.com/permits/easton
+- Foxborough (1353 permits): https://masspermits.com/permits/foxborough
+- Needham (1306 permits): https://masspermits.com/permits/needham
+- Wareham (1294 permits): https://masspermits.com/permits/wareham
+- Bellingham (1272 permits): https://masspermits.com/permits/bellingham
+- Lexington (1196 permits): https://masspermits.com/permits/lexington
+- Mansfield (1194 permits): https://masspermits.com/permits/mansfield
+- Fairhaven (1054 permits): https://masspermits.com/permits/fairhaven
+- Ludlow (1045 permits): https://masspermits.com/permits/ludlow
+- Easthampton (1044 permits): https://masspermits.com/permits/easthampton
+- North Reading (1027 permits): https://masspermits.com/permits/north-reading
+- Waltham (1025 permits): https://masspermits.com/permits/waltham
+- Ipswich (1022 permits): https://masspermits.com/permits/ipswich
+- Framingham (925 permits): https://masspermits.com/permits/framingham
+- Rockland (916 permits): https://masspermits.com/permits/rockland
+- Natick (857 permits): https://masspermits.com/permits/natick
+- Rehoboth (795 permits): https://masspermits.com/permits/rehoboth
+- Yarmouth (749 permits): https://masspermits.com/permits/yarmouth
+- Cohasset (741 permits): https://masspermits.com/permits/cohasset
+- Uxbridge (713 permits): https://masspermits.com/permits/uxbridge
+- Dorchester (675 permits): https://masspermits.com/permits/dorchester
+- Medway (665 permits): https://masspermits.com/permits/medway
 - Harwich (663 permits): https://masspermits.com/permits/harwich
-- Holliston (652 permits): https://masspermits.com/permits/holliston
-- Great Barrington (615 permits): https://masspermits.com/permits/great-barrington
-- Lenox (587 permits): https://masspermits.com/permits/lenox
+- Holliston (650 permits): https://masspermits.com/permits/holliston
+- Great Barrington (618 permits): https://masspermits.com/permits/great-barrington
+- Lenox (585 permits): https://masspermits.com/permits/lenox
 - Duxbury (582 permits): https://masspermits.com/permits/duxbury
-- Hanson (539 permits): https://masspermits.com/permits/hanson
+- Orleans (545 permits): https://masspermits.com/permits/orleans
+- Hanson (540 permits): https://masspermits.com/permits/hanson
 - Wakefield (532 permits): https://masspermits.com/permits/wakefield
-- Hopedale (520 permits): https://masspermits.com/permits/hopedale
-- Carlisle (516 permits): https://masspermits.com/permits/carlisle
-- West Bridgewater (473 permits): https://masspermits.com/permits/west-bridgewater
-- Lee (448 permits): https://masspermits.com/permits/lee
-- Roxbury (427 permits): https://masspermits.com/permits/roxbury
+- Hopedale (521 permits): https://masspermits.com/permits/hopedale
+- North Attleborough (514 permits): https://masspermits.com/permits/north-attleborough
+- Carlisle (510 permits): https://masspermits.com/permits/carlisle
+- West Bridgewater (470 permits): https://masspermits.com/permits/west-bridgewater
+- Lee (450 permits): https://masspermits.com/permits/lee
+- Roxbury (444 permits): https://masspermits.com/permits/roxbury
 - Milford (412 permits): https://masspermits.com/permits/milford
-- Stockbridge (396 permits): https://masspermits.com/permits/stockbridge
-- Roslindale (358 permits): https://masspermits.com/permits/roslindale
-- Jamaica Plain (331 permits): https://masspermits.com/permits/jamaica-plain
-- Holden (321 permits): https://masspermits.com/permits/holden
-- Nahant (309 permits): https://masspermits.com/permits/nahant
-- West Roxbury (304 permits): https://masspermits.com/permits/west-roxbury
-- Boylston (303 permits): https://masspermits.com/permits/boylston
+- Stockbridge (394 permits): https://masspermits.com/permits/stockbridge
+- Jamaica Plain (385 permits): https://masspermits.com/permits/jamaica-plain
+- Chatham (369 permits): https://masspermits.com/permits/chatham
+- Roslindale (366 permits): https://masspermits.com/permits/roslindale
+- East Boston (324 permits): https://masspermits.com/permits/east-boston
+- Reading (318 permits): https://masspermits.com/permits/reading
+- Holden (317 permits): https://masspermits.com/permits/holden
+- Nahant (305 permits): https://masspermits.com/permits/nahant
+- Boylston (304 permits): https://masspermits.com/permits/boylston
+- Amherst (285 permits): https://masspermits.com/permits/amherst
 - Sudbury (284 permits): https://masspermits.com/permits/sudbury
-- Avon (277 permits): https://masspermits.com/permits/avon
-- South Boston (277 permits): https://masspermits.com/permits/south-boston
-- Brighton (264 permits): https://masspermits.com/permits/brighton
-- East Boston (257 permits): https://masspermits.com/permits/east-boston
-- Hyde Park (253 permits): https://masspermits.com/permits/hyde-park
-- Mattapan (240 permits): https://masspermits.com/permits/mattapan
-- Sutton (218 permits): https://masspermits.com/permits/sutton
-- Dudley (217 permits): https://masspermits.com/permits/dudley
-- Wrentham (210 permits): https://masspermits.com/permits/wrentham
-- Marlborough (207 permits): https://masspermits.com/permits/marlborough
+- Avon (275 permits): https://masspermits.com/permits/avon
+- West Roxbury (274 permits): https://masspermits.com/permits/west-roxbury
+- Mattapan (243 permits): https://masspermits.com/permits/mattapan
+- Truro (239 permits): https://masspermits.com/permits/truro
+- Hyde Park (233 permits): https://masspermits.com/permits/hyde-park
+- Provincetown (232 permits): https://masspermits.com/permits/provincetown
+- South Boston (229 permits): https://masspermits.com/permits/south-boston
+- Brighton (224 permits): https://masspermits.com/permits/brighton
+- Sutton (215 permits): https://masspermits.com/permits/sutton
+- Dudley (213 permits): https://masspermits.com/permits/dudley
+- Marlborough (206 permits): https://masspermits.com/permits/marlborough
 - Barre (204 permits): https://masspermits.com/permits/barre
-- Charlestown (203 permits): https://masspermits.com/permits/charlestown
+- Wrentham (204 permits): https://masspermits.com/permits/wrentham
 - Hyannis (202 permits): https://masspermits.com/permits/hyannis
-- Otis (195 permits): https://masspermits.com/permits/otis
-- Norfolk (181 permits): https://masspermits.com/permits/norfolk
+- Otis (201 permits): https://masspermits.com/permits/otis
+- Charlestown (179 permits): https://masspermits.com/permits/charlestown
+- Norfolk (179 permits): https://masspermits.com/permits/norfolk
+- Allston (169 permits): https://masspermits.com/permits/allston
 - Mendon (161 permits): https://masspermits.com/permits/mendon
-- Sterling (157 permits): https://masspermits.com/permits/sterling
-- Blackstone (153 permits): https://masspermits.com/permits/blackstone
+- Sterling (156 permits): https://masspermits.com/permits/sterling
+- Blackstone (151 permits): https://masspermits.com/permits/blackstone
 - Centerville (148 permits): https://masspermits.com/permits/centerville
-- New Marlborough (143 permits): https://masspermits.com/permits/new-marlborough
-- Oak Bluffs (140 permits): https://masspermits.com/permits/oak-bluffs
-- Allston (131 permits): https://masspermits.com/permits/allston
+- New Marlborough (141 permits): https://masspermits.com/permits/new-marlborough
+- Oak Bluffs (139 permits): https://masspermits.com/permits/oak-bluffs
 - Oxford (118 permits): https://masspermits.com/permits/oxford
 - Sherborn (113 permits): https://masspermits.com/permits/sherborn
-- Mission Hill (80 permits): https://masspermits.com/permits/mission-hill
 - Marstons Mills (70 permits): https://masspermits.com/permits/marstons-mills
+- Mission Hill (66 permits): https://masspermits.com/permits/mission-hill
 - Colrain (61 permits): https://masspermits.com/permits/colrain
 - Cotuit (60 permits): https://masspermits.com/permits/cotuit
 - Osterville (52 permits): https://masspermits.com/permits/osterville
 - Barnstable (41 permits): https://masspermits.com/permits/barnstable
-- Merrimac (33 permits): https://masspermits.com/permits/merrimac
-- Russell (33 permits): https://masspermits.com/permits/russell
-- Wenham (32 permits): https://masspermits.com/permits/wenham
-- Westhampton (32 permits): https://masspermits.com/permits/westhampton
-- Townsend (27 permits): https://masspermits.com/permits/townsend
+- Wenham (35 permits): https://masspermits.com/permits/wenham
+- Russell (34 permits): https://masspermits.com/permits/russell
+- Westhampton (31 permits): https://masspermits.com/permits/westhampton
+- Townsend (28 permits): https://masspermits.com/permits/townsend
+- Merrimac (28 permits): https://masspermits.com/permits/merrimac
+- Southampton (26 permits): https://masspermits.com/permits/southampton
 - West Barnstable (24 permits): https://masspermits.com/permits/west-barnstable
-- West Newbury (22 permits): https://masspermits.com/permits/west-newbury
+- Stow (22 permits): https://masspermits.com/permits/stow
+- Hamilton (22 permits): https://masspermits.com/permits/hamilton
 - Groveland (20 permits): https://masspermits.com/permits/groveland
-- Hamilton (19 permits): https://masspermits.com/permits/hamilton
-- Southampton (19 permits): https://masspermits.com/permits/southampton
 - Newbury (18 permits): https://masspermits.com/permits/newbury
+- Hadley (18 permits): https://masspermits.com/permits/hadley
+- West Newbury (17 permits): https://masspermits.com/permits/west-newbury
