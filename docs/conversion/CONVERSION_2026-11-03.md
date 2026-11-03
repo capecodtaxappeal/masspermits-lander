@@ -10,7 +10,7 @@ The home page now opens on the trades and suppliers who sell **after** a permit 
 
 ## Rules kept
 
-- Edited only hand-maintained pages: `index.html`, `offer.html`, `offer/index.html`, `agents.html` (one line), `404.html` (two lines). Plus this document and its screenshots under `docs/conversion/`.
+- Edited only hand-maintained pages: `index.html`, `offer.html`, `offer/index.html`, `agents.html` (two small edits), `404.html` (two lines). Plus this document and its screenshots under `docs/conversion/`.
 - Nothing under `functions/`, `.github/` or `data/`; no bot-generated page; no test file. `js/promo-switch.js` untouched, every code still `false`, and the dormant promo templates are left exactly as they were (see "Not changed").
 - The free-sample form posts to `/api/request-sample` with the same field names as before (`email`, `trade`, `area`, `company`). One field is added (`towns`); the function ignores unknown fields, so this needs no server change to be safe. Storing and using it is listed under server changes.
 - Visitor copy: no em or en dashes, no exclamation marks, $99 a month is the only price, no promos or discounts, no homeowner-name promise (the page now says plainly there is no homeowner name column), nothing about how data is collected beyond "public municipal permit records", no call or Zoom offers.
