@@ -125,8 +125,8 @@
   .secsub{color:var(--muted);margin:0 0 14px;font-size:15px}
   .live{background:var(--panel);border:1px solid var(--border);border-radius:14px;margin:14px 0;padding:18px 16px;min-width:0}
   .live .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-  .live .big{font-size:32px;font-weight:800;color:var(--teal);margin:3px 0}
-  .live .big small{font-size:15px;color:var(--text);font-weight:600}
+  .live .big{font-size:32px;font-weight:800;color:var(--teal);margin:3px 0;line-height:1.2}
+  .live .big small{display:inline-block;font-size:15px;color:var(--text);font-weight:600;line-height:1.35}
   .live .types{font-size:13px;color:var(--muted);margin:2px 0 4px}
   table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px}
   th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;
@@ -141,7 +141,7 @@
   .lockline{text-align:center;color:var(--muted);font-style:italic;font-size:13.5px;margin:12px 0 0}
   .lockline:empty{display:none}
 
-  /* One real row from the current build, field by field: what the weekly file holds and
+  /* One real row from the current file, field by field: what the weekly file holds and
      what this free page hides. Values come from data.json at run time. */
   .proof{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
   .rowcard{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 16px;min-width:0}
@@ -301,12 +301,12 @@
           <input type="email" id="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" placeholder="you@yourcompany.com" aria-describedby="signup-err" required>
         </div>
         <button class="cta" type="submit" id="sample-submit">Send my free sample</button>
-        <p class="fine">You get a download link right here and a copy by email, then two short follow-ups over the next week. Reply stop to end them.</p>
+        <p class="fine">You get a download link right here, and the sample by email, then two short follow-ups over the next week. Reply stop to end them.</p>
       </form>
       <div class="ok" id="signup-ok" tabindex="-1" style="display:none">
         <p class="okhead">&#10003; Got it. Your free sample is ready.</p>
         <a class="cta" id="sample-dl" href="/api/sample">Download the free sample</a>
-        <p class="fine" style="margin-top:10px">It is a ZIP file. Open MassPermits-Leads.html inside it in any web browser; that is easiest on a computer. The same link is in your inbox.</p>
+        <p class="fine" style="margin-top:10px">It is a ZIP file. Open MassPermits-Leads.html inside it in any web browser; that is easiest on a computer. Check your inbox for a copy too.</p>
         <div class="okfeed">
           <p>The weekly file has every full address, every Monday.</p>
           <a class="cta ghost" id="sample-feed-cta" href="#get">Subscribe: $99 a month</a>
@@ -325,7 +325,7 @@
   </div>
 
   <h2 class="sec">What is in the file</h2>
-  <p class="secsub">Live from the current build. This page hides house numbers; the weekly file shows them.</p>
+  <p class="secsub">Live from the current file. This page hides house numbers; the weekly file shows them.</p>
   <div class="proof">
     <div class="live">
       <div class="lbl">On file: <span id="live-area">Massachusetts</span></div>
@@ -346,7 +346,7 @@
 
     <div class="rowcard" id="row-example">
       <h3>One row, field by field</h3>
-      <p class="fine">A real permit from the current build for your selection.</p>
+      <p class="fine">A real permit from the current file for your selection.</p>
       <dl>
         <dt>Permit date</dt><dd id="ex-d">&hellip;</dd>
         <dt>Town</dt><dd id="ex-town">&hellip;</dd>
@@ -362,7 +362,7 @@
 
   <div class="pgrid">
     <div class="pcard"><h3>How fresh</h3><p id="fresh-line">A new file every Monday. Some towns publish monthly or less often, so their permits arrive in batches. Every row shows its permit date.</p></div>
-    <div class="pcard"><h3>Which towns</h3><p id="cov-line">Cities and towns from Cape Cod and the Islands to Western Massachusetts. Not every town publishes permit records we can include, so check yours in the sample form.</p><p><a class="inl" href="/research/coverage">Every town in the file, with its dates</a></p></div>
+    <div class="pcard"><h3>Which towns</h3><p id="cov-line">Cities and towns from Cape Cod to the Berkshires. Not every town publishes permit records we can include, so check yours in the sample form.</p><p><a class="inl" href="/research/coverage" style="display:inline-block;padding:12px 0">Every town in the file, with its dates</a></p></div>
     <div class="pcard"><h3>What it costs</h3><p>$99 a month for the whole file, every trade and every town we cover. Month to month, no contract, cancel anytime. Files already sent are yours to keep.</p></div>
   </div>
 
@@ -423,7 +423,7 @@
     </details>
     <details>
       <summary>Which towns are in it?</summary>
-      <p>Massachusetts cities and towns from Cape Cod and the Islands to Western Massachusetts. <span id="faq-cov"></span>Not every town publishes permit records we can include, so check yours before you pay: type it into the sample form above, or see <a class="inl" href="/research/coverage">every town in the file, with its dates</a>.</p>
+      <p>Massachusetts cities and towns from Cape Cod to the Berkshires. <span id="faq-cov"></span>Not every town publishes permit records we can include, so check yours before you pay: type it into the sample form above, or see <a class="inl" href="/research/coverage">every town in the file, with its dates</a>.</p>
     </details>
     <details>
       <summary>How fresh is it?</summary>
@@ -625,19 +625,19 @@ function render(){
   const word = trade ? lowerWord(trade) : "";
   const typeWords = (pick.types || []).map(lowerWord);
   $("h-area").textContent = area.label;
-  $("h-trade").textContent = pick.kind === "type" ? word + " permits" : pick.kind === "follow" ? "permits for " + word : "building permits";
+  $("h-trade").textContent = pick.kind === "type" ? word + " permits" : "building permits";
   $("live-area").textContent = area.label;
-  if($("p-trade2")) $("p-trade2").textContent = trade ? word : "your trade";
+  if($("p-trade2")) $("p-trade2").textContent = pick.kind === "type" ? word : pick.kind === "follow" ? "the permit types " + word + " follows" : "your trade";
   if($("p-area2")) $("p-area2").textContent = area.label;
   // With no trade chosen the sentence reads "Filter it to your trade and towns." (it
   // read "Filter it to  permits in Massachusetts." before, with an empty trade).
   if($("p-trade3")) $("p-trade3").textContent = pick.kind === "type" ? word + " permits in " + area.label
     : pick.kind === "follow" ? "the " + joinAnd(typeWords) + " permits in " + area.label : "your trade and towns";
   wireBuyButtons();  // refresh Stripe links with current trade/area
-  const unit = escHtml(pick.kind === "type" ? word + " permits" : pick.kind === "follow" ? "permits for " + word : "permits");
+  const unit = escHtml(pick.kind === "type" ? word + " permits" : pick.kind === "follow" ? joinAnd(typeWords) + " permits" : "permits");
   $("live-count").innerHTML = `${(seg.count||0).toLocaleString()} <small>${unit}</small>`;
   $("live-types").textContent = pick.kind === "follow"
-    ? "Counted from " + joinAnd(typeWords) + " permits: the work " + word + " follows." : "";
+    ? "The permit types " + word + " work usually follows. Not every one of them will need it." : "";
   $("live-val").textContent = (seg.total_val > 0) ? fmtMoney(seg.total_val) + " in declared project value" : "";
   if($("freshness")){
     const newest = seg.newest || "", fileNewest = DATA.newest || "";
@@ -654,10 +654,10 @@ function render(){
     // the page exists; villages like Hyannis carry their own slug). Rows
     // without it (older data.json, sub-threshold towns) render as plain text.
     tb.innerHTML = rows.map(t=>`<tr>
-      <td style="color:var(--muted)">${t.d}</td><td>${t.s?`<a class="townlink" href="/permits/${t.s}">${t.city}</a>`:t.city}</td>
-      <td><span class="blur">${t.addr}</span></td>
-      <td><span class="badge">${t.trade}</span></td>
-      <td class="val">${t.val}</td></tr>`).join("");
+      <td style="color:var(--muted)">${escHtml(t.d)}</td><td>${t.s?`<a class="townlink" href="/permits/${encodeURIComponent(t.s)}">${escHtml(t.city)}</a>`:escHtml(t.city)}</td>
+      <td><span class="blur">${escHtml(t.addr)}</span></td>
+      <td><span class="badge">${escHtml(t.trade)}</span></td>
+      <td class="val">${escHtml(t.val)}</td></tr>`).join("");
     // Outside the table, so a phone reads it without scrolling the table sideways.
     $("lockline").textContent = "+ " + Math.max(0,(seg.count||0)-rows.length).toLocaleString() + " more. Full addresses are in the weekly file. \u{1F512}";
   } else {
@@ -700,12 +700,6 @@ function initSelectors(){
     const qt = qp.get("trade") || "", qa = qp.get("area") || "";
     if (qt && (DATA.trade_list.includes(qt) || isFollow(qt))) { SELTRADE = qt; st.value = qt; }
     if (qa && DATA.areas.some(a => a.key === qa)) { SELAREA = qa; sa.value = qa; }
-    // ?town= (2026-11-03): a generated town page can pass its town, so the sample form opens
-    // with it filled in and the town check answers "is my town in it?" before anything is typed.
-    // Tidied by cleanTowns() and written as a field value, never as HTML.
-    const qtown = cleanTowns(qp.get("town") || "");
-    const ti = $("sample-towns");
-    if (qtown && ti && !ti.value) { ti.value = qtown; townCheck(); }
   } catch (_e) {}
   st.onchange = ()=>{ SELTRADE = st.value; render(); keepInUrl(); };
   sa.onchange = ()=>{ SELAREA = sa.value; render(); keepInUrl(); };
@@ -769,8 +763,10 @@ function wireBuyButtons(){
 // "Which towns?" is the first question a buyer asks. The answer comes from the build's
 // own coverage file, the one /research/coverage is made from: every town that reported on
 // the latest run (with its permit count and newest date), the towns that publish monthly or
-// less often, and the towns that returned nothing on the latest run. Nothing is typed here
-// except the neighbourhood and village names below, which are filed under their town.
+// less often, and the towns that returned nothing on the latest run (they have no permits in
+// the file, so the page says exactly that). Nothing is typed here except the neighbourhood
+// and village names below, which are filed under their town. Only villages of a town go in
+// this list: never map one town to another (West Boylston is not Boylston).
 const ALIAS = {
   "allston": "boston", "brighton": "boston", "charlestown": "boston", "dorchester": "boston",
   "east boston": "boston", "hyde park": "boston", "jamaica plain": "boston", "mattapan": "boston",
@@ -778,9 +774,17 @@ const ALIAS = {
   "west roxbury": "boston", "back bay": "boston", "south end": "boston", "north end": "boston",
   "hyannis": "barnstable", "osterville": "barnstable", "centerville": "barnstable", "cotuit": "barnstable",
   "marstons mills": "barnstable", "west barnstable": "barnstable", "barnstable village": "barnstable",
+  "hyannis port": "barnstable", "hyannisport": "barnstable", "cummaquid": "barnstable",
+  "east falmouth": "falmouth", "north falmouth": "falmouth", "west falmouth": "falmouth", "woods hole": "falmouth",
+  "teaticket": "falmouth", "waquoit": "falmouth", "hatchville": "falmouth",
+  "south yarmouth": "yarmouth", "west yarmouth": "yarmouth", "yarmouth port": "yarmouth", "yarmouthport": "yarmouth",
+  "bass river": "yarmouth",
+  "harwich port": "harwich", "harwichport": "harwich", "west harwich": "harwich", "east harwich": "harwich",
+  "north harwich": "harwich", "pleasant lake": "harwich",
+  "east sandwich": "sandwich", "forestdale": "sandwich", "new seabury": "mashpee",
 };
-const normTown = s => String(s || "").toLowerCase().replace(/,?\s*(ma|mass|massachusetts)\.?$/, "")
-  .replace(/[^a-z' -]/g, " ").replace(/\s+/g, " ").trim();
+const normTown = s => String(s || "").toLowerCase().replace(/['’]/g, "").replace(/,?\s*(ma|mass|massachusetts)\.?$/, "")
+  .replace(/[^a-z -]/g, " ").replace(/\s+/g, " ").trim();
 function parseCoverage(j){
   try{
     const s = j && j.stats;
@@ -812,11 +816,9 @@ function renderCoverage(){
   if ($("faq-fresh")) $("faq-fresh").textContent = newest ? "The newest permit on file is dated " + newest + "." : "";
   if (!COV) return;
   const quietN = COV.quiet.size;
-  if ($("cov-line")) $("cov-line").textContent = COV.n + " Massachusetts cities and towns reported in the latest build, with "
-    + fmtNum(COV.rows) + " permits on file."
-    + (quietN ? " " + quietN + " more returned nothing on the latest run." : "")
-    + " Massachusetts has 351 cities and towns, so check yours in the sample form.";
-  if ($("faq-cov")) $("faq-cov").textContent = COV.n + " of them reported in the latest build. ";
+  if ($("cov-line")) $("cov-line").textContent = COV.n + " Massachusetts cities and towns have permits in the current file, "
+    + fmtNum(COV.rows) + " permits in all. Massachusetts has 351 cities and towns, so check yours in the sample form.";
+  if ($("faq-cov")) $("faq-cov").textContent = COV.n + " of them have permits in the current file. ";
 }
 function lookupTown(typed){
   const k = normTown(typed);
@@ -855,7 +857,7 @@ function townCheck(){
         + (r.monthly ? " Publishes monthly or less often, so new permits arrive in batches." : "");
     } else if (r.kind === "quiet") {
       d.className = "quiet";
-      d.textContent = (r.via ? r.via + " is filed under " + r.name : r.name) + ": listed, but it returned nothing on the latest run.";
+      d.textContent = (r.via ? r.via + " is filed under " + r.name : r.name) + ": no permits in the file right now.";
     } else {
       d.textContent = r.name + ": not in the file yet. Leave it in the box; it tells us where people want coverage.";
     }
@@ -870,6 +872,8 @@ async function load(){
     initSelectors(); render();
   }catch(e){
     $("teaser").innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Live data loading shortly.</td></tr>`;
+    if ($("row-example")) $("row-example").style.display = "none";
+    if ($("live-count")) $("live-count").textContent = "";
   }
   wireBuyButtons();
   loadCoverage();
@@ -953,6 +957,18 @@ $("signup-form").addEventListener("submit", async e=>{
         : "That didn't work. Please check the email address.";
     }catch(err){ msg.textContent = "Network hiccup. Please try again in a second."; }
   });
+})();
+
+// ?town= (2026-11-03): a generated town page can pass its town, so the sample form opens
+// with it filled in and the town check answers "is my town in it?" before anything is typed.
+// Tidied by cleanTowns() and written as a field value, never as HTML. Runs on its own, so it
+// works even when data.json does not load.
+(function(){
+  try {
+    const qtown = cleanTowns(new URL(location.href).searchParams.get("town") || "");
+    const ti = $("sample-towns");
+    if (qtown && ti && !ti.value) { ti.value = qtown; townCheck(); }
+  } catch (_e) {}
 })();
 
 load();

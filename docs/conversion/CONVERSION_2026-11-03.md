@@ -39,9 +39,9 @@ Rendered with Playwright (installed Chrome), 375 by 812 with mobile emulation an
 | Sideways scroll at 375 px (`scrollWidth`) | none (375) on all three pages | none (375) on all three pages |
 | Em dashes a visitor can read | home 8 (+1 in the success message), `offer.html` 1, `/offer/` 3, 404 title 1 | 0 |
 | Exclamation marks a visitor can read | 1 ("Got it[!]" after a sample request) | 0 |
-| `/offer/` page weight | 131,223 bytes, 4 requests (data.json 116,895) | 33,798 bytes, 4 requests (coverage.json 17,710) |
-| Home page weight | 163 KB (HTML 41.6 KB + data.json 117 KB) | 204 KB (HTML 64.8 KB + data.json 117 KB + coverage.json 17.7 KB, fetched after the page loads) |
-| Home page height, 375 px | 5,597 px | 6,949 px (proof section and FAQ answers added) |
+| `/offer/` page weight | 131,223 bytes, 4 requests (data.json 116,895) | 33,819 bytes, 4 requests (coverage.json 17,710) |
+| Home page weight | 163 KB (HTML 41.6 KB + data.json 117 KB) | 206 KB (HTML 66.7 KB + data.json 117 KB + coverage.json 17.7 KB, fetched after the page loads) |
+| Home page height, 375 px | 5,597 px | 6,927 px (proof section and FAQ answers added) |
 
 Byte counts are uncompressed, as served by the local server; Cloudflare compresses HTML and JSON on the wire.
 
@@ -66,7 +66,7 @@ Each change has a before, an after and a reason, and can be kept or dropped on i
 
 **C1.3 Eyebrow line, filled from the visitor's selection**
 - Before: the H1 carried two spans, `<span id="h-area">` and `<span id="h-trade">`, so it read for example "Cape Cod &amp; Islands building permits, sorted into roofing leads and sent every Monday."
-- After: the same two spans move to a small line above the headline: `Massachusetts building permits, every Monday`, which becomes for example `Cape Cod & Islands roofing permits, every Monday`, or `Cape Cod & Islands permits for insulation, every Monday` for a trade with no permit type (C2.3).
+- After: the same two spans move to a small line above the headline: `Massachusetts building permits, every Monday`, which becomes for example `Cape Cod & Islands roofing permits, every Monday`. For a trade with no permit type of its own (C2.3) it stays `Cape Cod & Islands building permits, every Monday`, so it never reads as if insulation had permits of its own.
 - Why: visitors from the generated pages arrive with `?trade=&area=` and should still see their trade and area at once, but the headline itself now has a job of its own (C1.4).
 
 **C1.4 Headline**
@@ -106,16 +106,16 @@ Each change has a before, an after and a reason, and can be kept or dropped on i
 
 **C2.3 Trades and suppliers who have no permit type**
 - Before: the trade list was the 19 permit types in `data.json` (`Addition` ... `Windows/Doors/Siding`). Insulation, drywall, flooring, a lumber yard and a dumpster company found nothing that named them.
-- After: a first option group, `Trades and suppliers after the permit`: Insulation, Drywall and plaster, Flooring and tile, Cabinets and countertops, Painting, Gutters, Sitework and excavation, Dumpsters and hauling, Lumber and building supply. Picking one shows the permit types that work follows, summed, and says which: for Insulation in Cape Cod &amp; Islands the box reads `1,790 permits for insulation` and `Counted from addition, renovation/remodel and new construction permits: the work insulation follows.` The permit types stay in a second group, `Permit types`. `?trade=` accepts both lists.
-- Why: these are the buyers this page is now written for. The count is a sum of whole permit types, never a claim that every one of those permits needs the trade, and the line under it says so. The map is in one `FOLLOW` constant in `index.html`, commented; see owner check K3.
+- After: a first option group, `Trades and suppliers after the permit`: Insulation, Drywall and plaster, Flooring and tile, Cabinets and countertops, Painting, Gutters, Sitework and excavation, Dumpsters and hauling, Lumber and building supply. Picking one shows the permit types that work follows, summed, and says which: for Insulation in Cape Cod &amp; Islands the box reads `1,790 addition, renovation/remodel and new construction permits` and `The permit types insulation work usually follows. Not every one of them will need it.` The price box says `which you filter to the permit types insulation follows`. The permit types stay in a second group, `Permit types`. `?trade=` accepts both lists.
+- Why: these are the buyers this page is now written for. The count is a sum of whole permit types and is labelled with those types, never as "permits for insulation", and the line under it says not every one will need the trade. (A first draft labelled it "permits for insulation"; the review below caught that as an overclaim.) The map is in one `FOLLOW` constant in `index.html`, commented; see owner check K3.
 
 **C2.4 Town check as you type (new)**
 - After: each town typed into `#sample-towns` gets one line, read from `/research/evidence/coverage.json` (the file `/research/coverage` is built from):
   - `✓ Falmouth: 2,400 permits on file, newest dated 2026-11-02.`
   - `✓ Hyannis is filed under Barnstable: 619 permits on file, newest dated 2026-08-31. Publishes monthly or less often, so new permits arrive in batches.`
-  - `Bourne: listed, but it returned nothing on the latest run.`
+  - `Bourne: no permits in the file right now.` (the 17 towns that returned nothing on the latest run have no rows in the file, so the page says exactly that)
   - `Wellfleet: not in the file yet. Leave it in the box; it tells us where people want coverage.`
-  - Boston neighbourhoods and Barnstable villages seen in `data.json` are mapped to their town; `Foxboro` finds Foxborough (a unique prefix of four or more letters).
+  - Villages are mapped to their own town only: Boston neighbourhoods; the Barnstable villages (Hyannis, Osterville, Centerville, Cotuit, Marstons Mills, West Barnstable and others); Falmouth's (East, North and West Falmouth, Woods Hole, Teaticket, Waquoit, Hatchville); Yarmouth's (South and West Yarmouth, Yarmouth Port, Bass River); Harwich's (Harwich Port, East, West and North Harwich, Pleasant Lake); East Sandwich and Forestdale; New Seabury. Apostrophes are ignored (Marston's Mills). One town is never mapped to another: `West Boylston` answers "not in the file yet", not Boylston. `Foxboro` finds Foxborough (a unique prefix of four or more letters).
   - If the file cannot be read: `The town check is not available just now. See every town in the file.` (linked).
 - Why: "which towns?" is the first question a buyer asks, and the honest answer differs per town. Answering it at the moment of asking, from the build's own numbers, beats a paragraph. A visitor whose town is missing finds out before paying, not after.
 
@@ -125,8 +125,8 @@ Each change has a before, an after and a reason, and can be kept or dropped on i
 - Why: no typed count (home-copy H6; the sample build sets the size); says what is hidden, as the sample email already does ("names &amp; street numbers masked"), so the download is not a surprise; drops "opens in any browser", which is not true of a ZIP on a phone (C2.8).
 
 **C2.6 What happens after you press the button (new)**
-- After: `You get a download link right here and a copy by email, then two short follow-ups over the next week. Reply stop to end them.`
-- Why: removes the fear of a mailing list. Matches what the code does: `request-sample.js` sends the sample and the page shows the link; `nurture.js` sends exactly two follow-ups (day 3 and day 7); the emails say to reply "stop".
+- After: `You get a download link right here, and the sample by email, then two short follow-ups over the next week. Reply stop to end them.`
+- Why: removes the fear of a mailing list. Matches what the code does: `request-sample.js` sends the sample and the page shows the link; `nurture.js` sends exactly two follow-ups (day 3 and day 7); the sample email already says to reply "stop". Edge cases where no email goes out (an address enrolled before, more than five requests from one address, more than 50 new requests in a day) still get the download link on the page; see S6 and owner check K7.
 
 **C2.7 Success follows the system that sends the sample**
 - Before: `/api/request-sample` was fired and forgotten; the page showed success only when Web3Forms (the owner notification) said so, and otherwise showed `d?.message||"Something went wrong: please email us directly."`, even though the sample had already gone out. A retry then did nothing, because an address is only ever enrolled once.
@@ -135,7 +135,7 @@ Each change has a before, an after and a reason, and can be kept or dropped on i
 
 **C2.8 Success message**
 - Before: `&#10003; Got it[!] Your free sample is ready [em dash] download it here (also check your inbox).` then `Keep them coming [em dash] Weekly Feed, $99/mo &rarr;` and `A new file arrives every Monday. Cancel anytime.`
-- After: `&#10003; Got it. Your free sample is ready.`, a full-width button `Download the free sample` (`/api/sample`, unchanged), `It is a ZIP file. Open MassPermits-Leads.html inside it in any web browser; that is easiest on a computer. The same link is in your inbox.`, then `The weekly file has every full address, every Monday.`, an outlined `Subscribe: $99 a month` (still the Stripe link with the selection) and `Month to month. Cancel anytime.`
+- After: `&#10003; Got it. Your free sample is ready.`, a full-width button `Download the free sample` (`/api/sample`, unchanged), `It is a ZIP file. Open MassPermits-Leads.html inside it in any web browser; that is easiest on a computer. Check your inbox for a copy too.`, then `The weekly file has every full address, every Monday.`, an outlined `Subscribe: $99 a month` (still the Stripe link with the selection) and `Month to month. Cancel anytime.`
 - Why: the download is a real button, the ZIP is described honestly so a phone user is not stranded (the fix is server change S1), and the next step to the paid file is offered without pressure.
 
 **C2.9 What the request carries**
@@ -150,12 +150,12 @@ Each change has a before, an after and a reason, and can be kept or dropped on i
 
 ### C3. Trust and proof (index.html)
 
-**C3.1 Section heading (new)**: `What is in the file` / `Live from the current build. This page hides house numbers; the weekly file shows them.`
+**C3.1 Section heading (new)**: `What is in the file` / `Live from the current file. This page hides house numbers; the weekly file shows them.`
 
 **C3.2 The live box**
 - Before: lock row inside the table, `+ 72,160 more [em dash] full addresses unlocked in the weekly feed 🔒`; empty state `No permits in this selection yet [em dash] try another trade or area.`; freshness line ending `From public municipal building-permit records. New file every Monday.`
-- After: the lock line sits under the table, `+ 72,160 more. Full addresses are in the weekly file. 🔒`, so a phone reads it without scrolling the table; `No permits in this selection yet. Try another trade or area.`; `From public municipal permit records. New file every Monday.`; the count label and a types line for the follow-on trades (C2.3); the date column no longer wraps.
-- Why: dashes out, readable on a phone, wording held to "public municipal permit records".
+- After: the lock line sits under the table, `+ 72,160 more. Full addresses are in the weekly file. 🔒`, so a phone reads it without scrolling the table; `No permits in this selection yet. Try another trade or area.`; `From public municipal permit records. New file every Monday.`; the count label and a types line for the follow-on trades (C2.3); the date column no longer wraps. The preview values from `data.json` are now escaped before they are written into the table (they come from town records; they were written raw before).
+- Why: dashes out, readable on a phone, wording held to "public municipal permit records", and one less way for odd town data to break the page.
 
 **C3.3 One row, field by field (new)**
 - After: a card filled from the first preview row of the visitor's selection that has a declared value (else the newest): `Permit date 2026-11-02`, `Town Boston`, `Address [house no.] Commonwealth Av`, `Project type Gas`, `Declared value $50,000` (or `Not published by this town`), then `Work description: In the weekly file, in the town's own words, where the town publishes one`, `Permit holder: In the weekly file where the town lists one: usually the contractor or the applicant`, `Homeowner name: Not a column in the file`.
@@ -163,7 +163,7 @@ Each change has a before, an after and a reason, and can be kept or dropped on i
 
 **C3.4 Three proof cards (new)**
 - `How fresh`: `A new file every Monday. The newest permit on file is dated 2026-11-02. 6 towns publish monthly or less often, so theirs arrive in batches. Every row shows its permit date.` (date from `data.json`, count from `coverage.json`).
-- `Which towns`: `81 Massachusetts cities and towns reported in the latest build, with 72,166 permits on file. 17 more returned nothing on the latest run. Massachusetts has 351 cities and towns, so check yours in the sample form.` plus a link to `/research/coverage`.
+- `Which towns`: `81 Massachusetts cities and towns have permits in the current file, 72,166 permits in all. Massachusetts has 351 cities and towns, so check yours in the sample form.` plus a link to `/research/coverage` (fallback in the HTML: `Cities and towns from Cape Cod to the Berkshires. Not every town publishes permit records we can include, so check yours in the sample form.`).
 - `What it costs`: `$99 a month for the whole file, every trade and every town we cover. Month to month, no contract, cancel anytime. Files already sent are yours to keep.`
 - Each has a plain-words fallback in the HTML if a file cannot be read. No number is typed into the page (the head comment explaining why is kept and updated).
 - Why: freshness, coverage stated honestly, and cancel anytime, as the brief asks. Saying "81 of 351" out loud costs less than a buyer discovering it after paying, and the town check is right there.
@@ -191,7 +191,7 @@ Each change has a before, an after and a reason, and can be kept or dropped on i
 `Often, for the trade named on the permit. The rest of the job usually is not. An addition or a gut remodel still needs insulation, drywall, flooring and cabinets after the framing permit. A new house needs sitework, gutters and often solar. Every one of those jobs buys lumber and materials from a supply yard. The file gives you the address, project type and date, plus the permit holder (usually the contractor or applicant) where the town lists one, so you can reach the job, or the contractor who pulled the permit, before the next trade is picked.` (home-copy H2, adjusted)
 
 **C4.3 New: `Which towns are in it?`**
-`Massachusetts cities and towns from Cape Cod and the Islands to Western Massachusetts. 81 of them reported in the latest build. Not every town publishes permit records we can include, so check yours before you pay: type it into the sample form above, or see every town in the file, with its dates.` (the count is live; the sentence reads correctly without it)
+`Massachusetts cities and towns from Cape Cod to the Berkshires. 81 of them have permits in the current file. Not every town publishes permit records we can include, so check yours before you pay: type it into the sample form above, or see every town in the file, with its dates.` (the count is live; the sentence reads correctly without it)
 
 **C4.4 Rewritten: `How fresh is it?`** (was `How recent are they?`)
 Before: `The weekly feed arrives every Monday, and you filter it to your trade and towns. Each town publishes on its own schedule, and some publish monthly or less often, so their permits arrive in batches when the town publishes. Every row shows its date, and the coverage page names the towns that publish monthly and shows each town's date range.`
@@ -225,7 +225,7 @@ Why: the rule allows "public municipal permit records" and nothing about how; "g
 ### C5. Phone layout at 375 px (index.html)
 
 - **C5.1** Every form field is 16 px: trade and area selects (were 14), towns (new), sample email (was 15), digest email (was 14), and the hidden honeypot. iOS Safari no longer zooms on focus.
-- **C5.2** Tap targets: fields 48 px tall, buttons 52 to 60 px, the first-screen sample action 56 px (was a 20 px text link), FAQ rows at least 44 px, the price-box sample link 47 px.
+- **C5.2** Tap targets: fields 48 px tall, buttons 52 to 60 px, the first-screen sample action 56 px (was a 20 px text link), FAQ rows at least 44 px, the price-box sample link 47 px, the coverage-page link in the proof card 46 px.
 - **C5.3** No sideways scroll: `scrollWidth` 375 on the home page, `offer.html` and `/offer/`, before and after. The grid columns use `minmax(0, 1fr)` so a long word cannot widen the page; the preview table still scrolls inside its own box.
 - **C5.4** The preview table's date column does not wrap, and the "+ N more" line is outside the scrolling box (C3.2).
 - **C5.5** The digest form puts its email field on its own row on a phone (it was squeezed to about 145 px beside the button).
@@ -263,7 +263,8 @@ Why: the rule allows "public municipal permit records" and nothing about how; "g
 
 - **C9.1** `agents.html`: `plus the name on the permit where the town lists one` becomes `plus the permit holder (usually the contractor or applicant) where the town lists one` (home-copy A1; "the name on the permit" reads as the homeowner).
 - **C9.2** `404.html` title: `Page not found [em dash] MassPermits` becomes `Page not found | MassPermits`.
-- **C9.3** `404.html` button: `Find leads in your trade &rarr;` (to `/`) becomes `Get a free sample for your trade and towns &rarr;` (to `/#sample`). A visitor on a dead link is one tap from the form.
+- **C9.3** `404.html` button: `Find leads in your trade &rarr;` (to `/`) becomes `Get a free sample &rarr;` (to `/#sample`). A visitor on a dead link is one tap from the form.
+- **C9.4** `agents.html`: the sample form's email and town inputs go from 14 px to 16 px, so iOS stops zooming on them (the same rule as C5.1).
 
 ## Not changed, on purpose
 
@@ -284,7 +285,7 @@ Why: the rule allows "public municipal permit records" and nothing about how; "g
 - **S1. Make the free sample open on a phone** (audit change 2). Add `?view=1` to `functions/api/sample.js` that streams the dashboard HTML from the same R2 object with `Content-Type: text/html`, as `functions/leads.js` already does for subscribers. Then the success message becomes `Got it. Open your free sample (it opens in this browser). The same link is in your inbox.` and the ZIP becomes the second link. This is the most valuable server change on the sample path.
 - **S2. Store and use `towns`** in `functions/api/request-sample.js`: accept a string of at most 160 characters matching `^[A-Za-z' .,-]*$`, store it on the `prospects/<email>` object and its `customMetadata`, and print it in `notifyOwner`. Later, cut the sample to the visitor's towns and trade (audit change 3).
 - **S3. Widen the whitelists** in `request-sample.js`: `AREAS` lacks `metrowest`, `northshore`, `central` and `western` (four of the seven `data.json` regions), so those selections are stored as empty today; `TRADES` lacks `Septic`, `Building` and `Asbestos`, and would need the nine follow-on labels from C2.3 (or a mapping) to keep them.
-- **S4. Correct the sample email**: `~45 towns` (the coverage page says 81 sources reported in the latest build) and `the name on the permit` (audit changes 7 and 8). Say it is a ZIP and how to open it until S1 ships.
+- **S4. Correct the sample email**: `~45 towns` (the coverage page lists 81 reporting sources) and `the name on the permit` (audit changes 7 and 8). Say it is a ZIP and how to open it until S1 ships.
 - **S5. Nurture emails** (audit change 14): drop "every competitor's ... value" and "(Boston, Cape Cod, the South Shore)".
 - **S6. Optional:** return `{ok:true, sent:false}` when an address was already enrolled, so the page can say "we sent it to you earlier; here is the link again".
 - **S7. Phone access for subscribers:** link the `/leads` portal from the welcome and Monday emails. Until then the site does not claim the paid file opens on a phone.
@@ -313,6 +314,7 @@ The refresh bot regenerates the town, region, project and guide pages, so these 
 - **K4.** Showing "Massachusetts has 351 cities and towns" next to the live count is deliberate honesty. Keep it or drop that sentence.
 - **K5.** `≈ $23 a week` in the price box was kept as it was. It is the same $99 a month, but if the rule is that only "$99 a month" may appear, delete that line.
 - **K6.** The title now says "for trades and suppliers" where it said "for MA contractors". Watch Search Console for the home page's queries for a few weeks.
+- **K7.** "Reply stop to end them" repeats what the sample email already promises; `nurture.js` has no automatic opt-out, so a "stop" reply is honoured by hand. And the page shows the download link and "check your inbox for a copy too" even in the rare cases where the function enrols nobody (an address seen before, the per-address limit, the 50-a-day cap). Server change S6 would let the page tell those apart.
 
 ## Screenshots
 
@@ -337,8 +339,24 @@ The "after a request" shots use a local stub that answers `/api/request-sample` 
 
 - The repo's tests that read these pages, `node --test test/promo-switch.test.mjs test/growth/hit.test.mjs test/growth/review.test.mjs`: 27 of 27 pass (they hold the promo switch, the checkout button ids, the one `buy-click.js` per page with a Stripe link, and the `/offer` beacons).
 - The whole suite, `node --test "test/**/*.test.mjs"`: 427 tests, 411 pass, 16 skipped, 0 fail, the same as `main` before the change. One later full run had 1 failure in `test/manual/store.test.mjs` ("index concurrency: two interleaved writers both land"), a timing test of `functions/api/_manual_store.js`, which this change does not touch; it passed 5 of 5 times on its own, and claude/home-copy reports the same flake on `main`. (Run with LF line endings; on a Windows checkout with `core.autocrlf=true` the `_headers` test fails on `main` too, because it looks for `\n`.)
-- Behaviour checks in a real browser against the local server (34 of 34 pass): prefill from `?trade=&area=` and `?town=`; the eyebrow and the Stripe `client_reference_id` follow the selection; the town check for a live town, a village alias, a prefix, a quiet town and a missing town; the request body keeps `email`, `trade`, `area`, `company` and adds `towns`; success when only the function answers and when only Web3Forms answers; "check the email" on a 400 with the button restored; the error with a written route when both fail; a bad address stopped before any request; unknown `?trade=` and `?area=` ignored; markup in `?town=` reduced to letters; the page still works with `coverage.json` or `data.json` missing; no page errors and no request leaving the machine.
+- Behaviour checks in a real browser against the local server (39 of 39 pass): prefill from `?trade=&area=` and `?town=`; the eyebrow and the Stripe `client_reference_id` follow the selection; the follow-on count names the permit types it sums; the town check for a live town, village aliases (Hyannis, East Falmouth, Marston's Mills), a prefix (Foxboro), a quiet town (Bourne), a missing town (Wellfleet) and a neighbouring town that must not be mapped (West Boylston); the request body keeps `email`, `trade`, `area`, `company` and adds `towns`; success when only the function answers and when only Web3Forms answers; "check the email" on a 400 with the button restored; the error with a written route when both fail; a bad address stopped before any request; unknown `?trade=` and `?area=` ignored; markup in `?town=` reduced to letters; the page still works with `coverage.json` or `data.json` missing; no page errors and no request leaving the machine.
 - Copy check over the visible text and script strings of all five pages: no em or en dash, no exclamation mark, no price but $99 a month (and the existing `≈ $23 a week`), no promo word, no call or Zoom offer; every "homeowner name" mention is a statement that there is none.
+
+## Independent review
+
+A separate read-only review of the page diff (fresh context, given the code and the rules, not this write-up) reported nine findings. Fixed on this branch:
+
+- Quiet towns were told they were "listed"; they have no rows in the file. Now `no permits in the file right now`, and the coverage card no longer counts them.
+- Village names of covered towns (East Falmouth, South Yarmouth, Harwich Port, Marston's Mills with the apostrophe) answered "not in the file yet". Added, with the rule that a separate town is never mapped to a neighbour.
+- The follow-on count read "1,790 permits for insulation". Now labelled with the permit types it sums; the price-box line likewise.
+- "A copy by email" and "the same link is in your inbox" were stated as certain; now softer (C2.6, C2.8), with the edge cases in K7.
+- The 404 button said "for your trade and towns" (the sample is not cut to them). Now `Get a free sample`.
+- Preview values from `data.json` were written into the table unescaped (this predates the change). Now escaped.
+- If `data.json` failed, the example row showed an ellipsis forever and `?town=` did nothing. The row hides, and `?town=` runs on its own.
+- "Latest build" wording on the page described the pipeline; now "current file". "Cape Cod and the Islands to Western Massachusetts" became "Cape Cod to the Berkshires" (one island town reports).
+- `agents.html` form inputs at 14 px; now 16 px (C9.4).
+
+Left as they are, with the reason: the server drops the new trade and area values and the towns (S2, S3: `functions/` is out of scope; the Web3Forms notice carries them today); `≈ $23 a week` (K5); the 404 chips at about 40 px and the selects cutting long option text on a phone (both predate this change and are cosmetic); the sample email's "~45 towns" and "name on the permit" (S4).
 
 ## Method
 
