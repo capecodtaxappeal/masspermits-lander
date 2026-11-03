@@ -35,6 +35,11 @@
   .chip .n{font-size:20px;font-weight:800;color:var(--teal)}.chip .l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
   .guarantee{border-color:rgba(74,222,128,.35)}
   a.plain{color:var(--teal)}
+  /* 2026-11-03: a route to the free sample for visitors who are not ready to pay. */
+  .cta2{display:block;text-align:center;border:2px solid var(--teal);color:var(--teal);font-weight:800;font-size:16px;
+    padding:13px 20px;border-radius:12px;text-decoration:none;margin:12px 0 0}
+  .cta2:hover{background:rgba(45,212,191,.10)}
+  .who{color:var(--teal);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
 </style>
 <!-- Promotion codes are switched in ONE place, /js/promo-switch.js (FIRST90 is OFF). -->
 <script src="/js/promo-switch.js"></script>
@@ -52,13 +57,15 @@
   <h1>Your first month of permit leads:<br><span class="strike">$99</span> <span class="now">$9.90</span></h1>
   </template>
   <script>window.mpPromo&&mpPromo("FIRST90")</script>
-  <p class="lead">A building permit is a public record that a property owner was just approved for work. We collect permits from the Massachusetts towns we cover, sort them by trade and town, and send them to you every Monday.</p>
+  <p class="who">For trades and suppliers who sell after the permit</p>
+  <p class="lead">A building permit is a dated public record of approved work at a real address. The trade named on it is usually hired already; the trades and suppliers who come next are not. We send you the new permits from the Massachusetts towns we cover, sorted by trade and town, every Monday.</p>
 
   <div class="panel">
     <ul class="what">
       <li><b>A new file every Monday</b>: every town we cover, filterable to your trade and towns</li>
       <li><b>Full lead detail</b>: exact address and project type, plus the permit holder and declared value where the town lists them</li>
-      <li><b>Sortable file + live dashboard</b> — filter by trade, town, project size</li>
+      <li><b>Spreadsheets and a browser dashboard</b>: filter by trade, town, project size</li>
+      <li><b>No homeowner names</b>: the permit holder is usually the contractor or applicant</li>
     </ul>
     <a class="cta" id="buy" data-promo-off="FIRST90" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01">Start the weekly feed: $99/mo →</a>
     <template data-promo="FIRST90">
@@ -66,6 +73,8 @@
     </template>
     <script>window.mpPromo&&mpPromo("FIRST90")</script>
     <p class="fine">Cancel anytime · no contract · leads already delivered are yours to keep</p>
+    <a class="cta2" href="/#sample">Not ready? Get a free sample first</a>
+    <p class="fine">Recent permits with house numbers hidden. No card.</p>
   </div>
 
   <div class="row">

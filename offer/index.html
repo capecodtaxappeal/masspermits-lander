@@ -75,6 +75,11 @@
   .final{text-align:center;margin:44px 0 10px}
   footer{border-top:1px solid var(--border);margin-top:44px;padding:22px 0 40px;color:var(--muted);font-size:12.5px;text-align:center}
   footer b{color:var(--muted)}
+  /* 2026-11-03: a route to the free sample under each $99 button, for the visitor who is
+     not ready to pay on a first visit. Outlined, so the $99 button stays the main action here. */
+  .samplelink{display:block;max-width:420px;border:2px solid var(--teal);color:var(--teal);font-weight:800;font-size:16px;
+    padding:12px 18px;border-radius:11px;margin:12px auto 4px;text-align:center}
+  .samplelink:hover{background:rgba(45,212,191,.10)}
 </style>
 <!-- Promotion codes are switched in ONE place, /js/promo-switch.js (FIRST90 is OFF). -->
 <script src="/js/promo-switch.js"></script>
@@ -86,9 +91,9 @@
     <span class="brand"><b>Mass</b>Permits <span class="loc">· Massachusetts</span></span>
   </header>
 
-  <p class="eyebrow">For Massachusetts contractors</p>
-  <h1>This week, homeowners across MA are pulling permits. <span class="hl">Get those permits in one file every Monday.</span></h1>
-  <p class="lead">A building permit means a property owner was just approved for work on their property. MassPermits sends you the permits from the towns we cover with the <b style="color:#eaf0f7">full address and project type</b>, plus the permit holder and declared value where the town lists them, in a new file every Monday.</p>
+  <p class="eyebrow">For Massachusetts trades and suppliers</p>
+  <h1>Sell to the job after the permit is filed. <span class="hl">Get the new permits in one file every Monday.</span></h1>
+  <p class="lead">A building permit is a dated public record of approved work at a real address. The trade named on it is usually hired already; the trades and suppliers who come next are not. MassPermits sends you the permits from the towns we cover with the <b style="color:#eaf0f7">full address and project type</b>, plus the permit holder and declared value where the town lists them, in a new file every Monday.</p>
 
   <div class="livestrip"><span class="dot"></span> <span id="live">Permits from towns across Massachusetts · new file every Monday</span></div>
 
@@ -116,12 +121,13 @@
     <a class="cta" id="cta1" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01?prefilled_promo_code=FIRST90" rel="nofollow">Start for $9.90 &rarr;</a>
     </template>
     <script>window.mpPromo&&mpPromo("FIRST90")</script>
-    <p class="guarantee"><b>Founder guarantee:</b> if your first month doesn't pay for itself, I refund it. No forms, no argument. — Pat</p>
+    <div><a class="samplelink" href="/#sample">Not ready? Get a free sample first</a></div>
+    <p class="guarantee"><b>Founder guarantee:</b> if your first month doesn't pay for itself, I refund it. No forms, no argument. (Pat, founder)</p>
   </div>
 
   <h2>Why a permit is the best lead you can get</h2>
   <div class="grid">
-    <div class="card"><div class="n">01</div><h3>Funded intent</h3><p>A permit means the homeowner is approved and about to spend. Not a tire-kicker — a real, dated project.</p></div>
+    <div class="card"><div class="n">01</div><h3>Real, dated work</h3><p>A permit is approved work at a real address, with a date. The trade named on it is usually hired already; the trades and suppliers who come next are not.</p></div>
     <div class="card"><div class="n">02</div><h3>Everything to win it</h3><p>Full address and project type, plus the permit holder and declared value where the town lists them, so you can reach out and personalize the pitch.</p></div>
     <div class="card"><div class="n">03</div><h3>Weekly and filterable</h3><p>A new file every Monday, filterable by trade and town. Every row shows its date.</p></div>
   </div>
@@ -136,7 +142,7 @@
   </ul>
 
   <div class="why">
-    <p>A building permit is a <b>public record of real, approved work</b>: a dated project at a real address. That is what every lead in the file is.</p>
+    <p>A building permit is a <b>public record of real, approved work</b>: a dated project at a real address. That is what every lead in the file is. No homeowner names: the permit holder, where the town lists one, is usually the contractor or applicant.</p>
   </div>
 
   <div class="final">
@@ -149,22 +155,31 @@
     <p class="guarantee" style="margin-top:12px">then $99/mo · cancel anytime · month-one money-back</p>
     </template>
     <script>window.mpPromo&&mpPromo("FIRST90")</script>
+    <div><a class="samplelink" href="/#sample">Not ready? Get a free sample first</a></div>
+    <p class="guarantee">Recent permits with house numbers hidden. No card.</p>
   </div>
 
   <footer>
-    <b>MassPermits</b> — building-permit leads for Massachusetts contractors.<br>
+    <b>MassPermits</b>: building-permit leads for Massachusetts trades and suppliers.<br>
     Compiled from public municipal building-permit records. Questions? hello@masspermits.com
   </footer>
 
 </div>
 
 <script>
-// live permit count for credibility
+// live permit count for credibility. 2026-11-03: read from the build's coverage file
+// (/research/evidence/coverage.json, corpus_rows and corpus_last, about 18 KB, the file
+// /research/coverage is made from) instead of the 116 KB data.json, which this page
+// downloaded to print one number. Same count: both are the whole build. If the file
+// cannot be read, the plain line already in the HTML stays.
 (function(){
   try{
-    fetch("/data.json?v="+Date.now()).then(function(r){return r.json();}).then(function(d){
-      var a=d.areas&&d.areas[0], n=a&&a.all&&a.all.count;
-      if(n){ document.getElementById("live").innerHTML="<b>"+n.toLocaleString()+"</b> MA permits on file · new file every Monday"; }
+    fetch("/research/evidence/coverage.json").then(function(r){return r.json();}).then(function(d){
+      var n=d&&Number(d.corpus_rows), last=d&&/^\d{4}-\d{2}-\d{2}/.test(String(d.corpus_last||""))?String(d.corpus_last).slice(0,10):"";
+      if(n>0){ var el=document.getElementById("live"); el.textContent=""; var b=document.createElement("b"); b.textContent=n.toLocaleString(); el.appendChild(b);
+        el.appendChild(document.createTextNode(" MA permits on file"+(last?" · newest dated ":"")));
+        if(last){ var t=document.createElement("span"); t.style.whiteSpace="nowrap"; t.textContent=last; el.appendChild(t); }
+        el.appendChild(document.createTextNode(" · new file every Monday")); }
     }).catch(function(){});
   }catch(e){}
 })();
