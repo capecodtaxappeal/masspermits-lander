@@ -272,7 +272,7 @@
         <a class="cta" id="hero-sample" href="#sample">Get a free sample</a>
         <a class="cta ghost" id="buy-hero" href="https://buy.stripe.com/dRmdR80Ms8WzctM9ZJ4gg01" target="_blank" rel="noopener">Subscribe: $99 a month</a>
       </div>
-      <p class="ctanote">The sample needs no card. The subscription is month to month: cancel anytime.</p>
+      <p class="ctanote">Sample: no card. Subscription: month to month, cancel anytime.</p>
     </div>
 
     <!-- THE FREE-SAMPLE FORM. It posts to /api/request-sample with the same field names as
@@ -788,10 +788,11 @@ function parseCoverage(j){
     return { live, monthly, quiet, n: live.size, rows: +s.n_rows || 0 };
   }catch(_e){ return null; }
 }
-let covAsked = false;
+let covAsked = false, covFailed = false;
 function loadCoverage(){
   if (covAsked) return; covAsked = true;
-  fetch(COVERAGE_URL).then(r => r.ok ? r.json() : null).then(j => { COV = parseCoverage(j); renderCoverage(); townCheck(); }).catch(() => {});
+  fetch(COVERAGE_URL).then(r => r.ok ? r.json() : null).then(j => { COV = parseCoverage(j); covFailed = !COV; renderCoverage(); townCheck(); })
+    .catch(() => { covFailed = true; townCheck(); });
 }
 function renderCoverage(){
   const newest = DATA && DATA.newest ? DATA.newest : "";
@@ -832,7 +833,8 @@ function townCheck(){
   if (!parts.length) return;
   if (!COV) {
     const d = document.createElement("div");
-    d.innerHTML = 'Checking towns&hellip; or see <a class="inl" href="/research/coverage">every town in the file</a>.';
+    d.innerHTML = (covFailed ? 'The town check is not available just now. See ' : 'Checking towns&hellip; or see ')
+      + '<a class="inl" href="/research/coverage">every town in the file</a>.';
     box.appendChild(d); loadCoverage(); return;
   }
   for (const p of parts) {
