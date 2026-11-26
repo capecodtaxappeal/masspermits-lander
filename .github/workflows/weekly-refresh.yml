@@ -1430,8 +1430,30 @@ jobs:
           # then correctly sends nothing.
           git diff --cached --name-only > "$GITHUB_WORKSPACE/changed-paths.txt" || true
           echo "changed files: $(wc -l < "$GITHUB_WORKSPACE/changed-paths.txt")"
-          git commit -m "data+seo+report: weekly site refresh (automated)" && git push origin main \
-            || echo "site unchanged — nothing to push"
+          # Nothing staged means nothing to publish. Otherwise commit, then push,
+          # rebasing onto anything pushed to main during the run, up to 3 tries.
+          # A push that still fails is reported as a failure, never as "site
+          # unchanged". The step stays continue-on-error (owner's decision).
+          if git diff --cached --quiet; then
+            echo "site unchanged, nothing to push"
+          else
+            git commit -m "data+seo+report: weekly site refresh (automated)"
+            pushed=0
+            for attempt in 1 2 3; do
+              if git pull --rebase --quiet origin main && git push origin main; then
+                pushed=1
+                break
+              fi
+              git rebase --abort 2>/dev/null || true
+              echo "site push attempt $attempt of 3 failed"
+              if [ "$attempt" != "3" ]; then sleep $((attempt * 10)); fi
+            done
+            if [ "$pushed" != "1" ]; then
+              echo "::error::site push failed after 3 attempts"
+              echo "Site push to main failed after 3 attempts: today's site pages were NOT published." >> "$GITHUB_STEP_SUMMARY"
+              exit 1
+            fi
+          fi
 
       # IndexNow: tell Bing/Yandex/Seznam/Naver (and, indirectly, Google) which
       # pages CHANGED, rather than resubmitting ~2,400 unchanged URLs every day.
